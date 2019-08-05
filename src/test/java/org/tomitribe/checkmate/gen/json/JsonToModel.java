@@ -119,7 +119,9 @@ public class JsonToModel {
         }
         if (isArray) {
             if (name.endsWith("Axes")) return name.replace("Axes", "Axis");
-            if (name.endsWith("Bounds")) return name;
+            if (name.endsWith("Branches")) return "Branch";
+            if (name.endsWith("Vulnerabilities")) return "Vulnerability";
+            if (name.endsWith("Repositories")) return "RepositoryRef";
             if (name.endsWith("s")) return name.substring(0, name.length() - 1);
         }
         return name;
