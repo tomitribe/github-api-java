@@ -47,7 +47,7 @@ public class JsonToModel {
     private void generate(final ParseEvents.Event event) {
         try {
             currentType = event.getTypeName();
-            final Clazz clazz = new Clazz(currentType);
+            final Clazz clazz = new Clazz(currentType, event);
             classes.put(clazz.getName(), clazz);
             final JsonObject jsonObject = Generators.parse(event.getPayload().getJson());
             process(clazz, jsonObject);

@@ -38,6 +38,13 @@ public class ClazzRenderer {
         final PrintString out = new PrintString();
 
         final String className = clazz.getName();
+        final String description;
+
+        if (clazz.getEvent() != null && clazz.getEvent().getDescription() != null) {
+            description = clazz.getEvent().getDescription().replace("\n", "\n * ");
+        } else {
+            description = "";
+        }
 
         out.print("/*\n" +
                 " * Licensed to the Apache Software Foundation (ASF) under one or more\n" +
@@ -58,40 +65,41 @@ public class ClazzRenderer {
                 "\n" +
                 "package " + packageName + ";\n" +
                 "\n" +
-                "import org.apache.johnzon.mapper.JohnzonProperty;\n" +
+                "import javax.json.bind.annotation.JsonbProperty;\n" +
                 "\n" +
-                "import javax.xml.bind.annotation.XmlAccessType;\n" +
-                "import javax.xml.bind.annotation.XmlAccessorType;\n" +
-                "import javax.xml.bind.annotation.XmlRootElement;\n" +
+                "import lombok.Data;\n" +
+                "import lombok.Builder;\n" +
+                "import lombok.AllArgsConstructor;\n" +
+                "import lombok.NoArgsConstructor;\n" +
                 "import java.util.List;\n" +
                 "\n" +
                 "/**\n" +
-                " * Used by:" + Join.join(", ", clazz.getUsedBy()) + "\n" +
+                " * " + description + "\n" +
+                " * Used by:\n * - " + Join.join("\n * - ", clazz.getUsedBy()) + "\n" +
                 " */\n" +
-                "@XmlRootElement\n" +
-                "@XmlAccessorType(XmlAccessType.FIELD)\n" +
+                "@Data\n" +
+                "@Builder\n" +
+                (clazz.getFields().size() > 0 ? "@AllArgsConstructor\n" : "") +
+                "@NoArgsConstructor\n" +
                 "public class " + className + " {\n\n");
 
         for (final Field field : clazz.getFields().values()) {
             out.printf("" +
-                    "    /**%n" +
-                    "     * Used by: %s%n" +
-                    "     */%n" +
-                    "    @JohnzonProperty(\"%s\")%n" +
-                    "    private %s %s;%n%n", Join.join(", ", field.getUsedBy()), field.getJsonName(), field.getType(), field.getName());
+                    "    @JsonbProperty(\"%s\")%n" +
+                    "    private %s %s;%n%n", field.getJsonName(), field.getType(), field.getName());
         }
 
-        for (final Field field : clazz.getFields().values()) {
-            out.printf("" +
-                    "    public %s get%s() {%n" +
-                    "        return %s;%n" +
-                    "    }%n%n", field.getType(), toProperty(field), field.getName());
-
-            out.printf("" +
-                    "    public void set%s(final %s %s) {%n" +
-                    "        this.%s = %s;%n" +
-                    "    }%n%n", toProperty(field), field.getType(), field.getName(), field.getName(), field.getName());
-        }
+//        for (final Field field : clazz.getFields().values()) {
+//            out.printf("" +
+//                    "    public %s get%s() {%n" +
+//                    "        return %s;%n" +
+//                    "    }%n%n", field.getType(), toProperty(field), field.getName());
+//
+//            out.printf("" +
+//                    "    public void set%s(final %s %s) {%n" +
+//                    "        this.%s = %s;%n" +
+//                    "    }%n%n", toProperty(field), field.getType(), field.getName(), field.getName(), field.getName());
+//        }
 
         out.print("}\n");
 

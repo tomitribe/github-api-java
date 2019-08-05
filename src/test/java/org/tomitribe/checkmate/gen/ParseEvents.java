@@ -53,6 +53,7 @@ public class ParseEvents {
         final List<Clazz> generate = JsonToModel.generate(events);
 
         final File packageDir = new File("/Users/dblevins/work/tomitribe/checkmate/src/main/java/org/tomitribe/github/app/events/");
+        packageDir.mkdirs();
         final ClazzRenderer renderer = new ClazzRenderer(packageDir, "org.tomitribe.github.app.events");
         for (final Clazz clazz : generate) {
             System.out.println(clazz);

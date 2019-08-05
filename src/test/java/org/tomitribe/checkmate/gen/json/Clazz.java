@@ -17,6 +17,8 @@
 package org.tomitribe.checkmate.gen.json;
 
 import lombok.ToString;
+import org.apache.openejb.util.Strings;
+import org.tomitribe.checkmate.gen.ParseEvents;
 
 import java.util.Map;
 import java.util.Set;
@@ -28,9 +30,23 @@ public class Clazz {
     private final String name;
     private final Map<String, Field> fields = new TreeMap<>();
     private final Set<String> usedBy = new TreeSet<>();
+    private final ParseEvents.Event event;
+
 
     public Clazz(String name) {
+        this(name, null);
+    }
+
+    public Clazz(String name, final ParseEvents.Event o) {
+        if (name.startsWith("_")) {
+            name = Strings.ucfirst(name.substring(1));
+        }
         this.name = name;
+        this.event = o;
+    }
+
+    public ParseEvents.Event getEvent() {
+        return event;
     }
 
     public String getName() {
