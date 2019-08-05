@@ -17,13 +17,12 @@
 
 package org.tomitribe.github.app.events;
 
-import javax.json.bind.annotation.JsonbProperty;
-
-import lombok.Data;
-import lombok.Builder;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import java.util.List;
+
+import javax.json.bind.annotation.JsonbProperty;
 
 /**
 
@@ -38,9 +37,9 @@ import java.util.List;
 @GithubEvent("fork")
 public class ForkEvent {
 
-/**
- * The created <a href="/v3/repos/">repository</a>.
- */
+    /**
+     * The created <a href="/v3/repos/">repository</a>.
+     */
     @JsonbProperty("forkee")
     private Forkee forkee;
 

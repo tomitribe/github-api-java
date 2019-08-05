@@ -17,20 +17,19 @@
 
 package org.tomitribe.github.app.events;
 
-import javax.json.bind.annotation.JsonbProperty;
-
-import lombok.Data;
-import lombok.Builder;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import java.util.List;
+
+import javax.json.bind.annotation.JsonbProperty;
 
 /**
 
  * <p>Triggered when someone <a href="/v3/activity/starring/#star-a-repository">stars a repository</a>.
  *  This event is not related to <a href="/v3/activity/watching/">watching a repository</a>.
  * See <a href="/changes/2012-09-05-watcher-api/">this API blog post</a> for an explanation.</p>
- * 
+ *
  * <p>The event’s actor is the <a href="/v3/users/">user</a> who starred a repository, and the
  * event’s repository is the <a href="/v3/repos/">repository</a> that was starred.</p>
  * Used by:
@@ -43,9 +42,9 @@ import java.util.List;
 @GithubEvent("watch")
 public class WatchEvent {
 
-/**
- * The action that was performed. Currently, can only be <code>started</code>.
- */
+    /**
+     * The action that was performed. Currently, can only be <code>started</code>.
+     */
     @JsonbProperty("action")
     private String action;
 

@@ -17,12 +17,12 @@
 
 package org.tomitribe.github.app.events;
 
-import javax.json.bind.annotation.JsonbProperty;
-
-import lombok.Data;
-import lombok.Builder;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import javax.json.bind.annotation.JsonbProperty;
 import java.util.List;
 
 /**
@@ -39,34 +39,34 @@ import java.util.List;
 @GithubEvent("installation_repositories")
 public class InstallationRepositoriesEvent {
 
-/**
- * The action that was performed. Can be either <code>added</code> or <code>removed</code>.
- */
+    /**
+     * The action that was performed. Can be either <code>added</code> or <code>removed</code>.
+     */
     @JsonbProperty("action")
     private String action;
 
-/**
- * The installation itself.
- */
+    /**
+     * The installation itself.
+     */
     @JsonbProperty("installation")
     private Installation installation;
 
-/**
- * The choice of repositories the installation is on. Can be either <code>selected</code> or
- * <code>all</code>.
- */
+    /**
+     * The choice of repositories the installation is on. Can be either <code>selected</code> or
+     * <code>all</code>.
+     */
     @JsonbProperty("repository_selection")
     private String repositorySelection;
 
-/**
- * An array of repository objects, which were added to the installation.
- */
+    /**
+     * An array of repository objects, which were added to the installation.
+     */
     @JsonbProperty("repositories_added")
     private List<RepositoriesAdded> repositoriesAdded;
 
-/**
- * An array of repository objects, which were removed from the installation.
- */
+    /**
+     * An array of repository objects, which were removed from the installation.
+     */
     @JsonbProperty("repositories_removed")
     private String[] repositoriesRemoved;
 

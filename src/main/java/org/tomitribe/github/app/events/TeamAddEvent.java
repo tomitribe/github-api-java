@@ -17,19 +17,18 @@
 
 package org.tomitribe.github.app.events;
 
-import javax.json.bind.annotation.JsonbProperty;
-
-import lombok.Data;
-import lombok.Builder;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import java.util.List;
+
+import javax.json.bind.annotation.JsonbProperty;
 
 /**
 
  * <p>Triggered when a <a href="/v3/teams/#add-or-update-team-repository">repository is added to a
  * team</a>.</p>
- * 
+ *
  * <p>Events of this type are not visible in timelines. These events are only used to trigger
  * hooks.</p>
  * Used by:
@@ -42,16 +41,16 @@ import java.util.List;
 @GithubEvent("team_add")
 public class TeamAddEvent {
 
-/**
- * The <a href="/v3/teams/">team</a> that was modified.  <strong>Note:</strong> Older events may not
- * include this in the payload.
- */
+    /**
+     * The <a href="/v3/teams/">team</a> that was modified.  <strong>Note:</strong> Older events may not
+     * include this in the payload.
+     */
     @JsonbProperty("team")
     private Team team;
 
-/**
- * The <a href="/v3/repos/">repository</a> that was added to this team.
- */
+    /**
+     * The <a href="/v3/repos/">repository</a> that was added to this team.
+     */
     @JsonbProperty("repository")
     private Repository repository;
 

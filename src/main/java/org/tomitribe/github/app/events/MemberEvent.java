@@ -17,13 +17,12 @@
 
 package org.tomitribe.github.app.events;
 
-import javax.json.bind.annotation.JsonbProperty;
-
-import lombok.Data;
-import lombok.Builder;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import java.util.List;
+
+import javax.json.bind.annotation.JsonbProperty;
 
 /**
 
@@ -39,16 +38,16 @@ import java.util.List;
 @GithubEvent("member")
 public class MemberEvent {
 
-/**
- * The action that was performed. Can be one of <code>added</code>, <code>deleted</code>, or
- * <code>edited</code>.
- */
+    /**
+     * The action that was performed. Can be one of <code>added</code>, <code>deleted</code>, or
+     * <code>edited</code>.
+     */
     @JsonbProperty("action")
     private String action;
 
-/**
- * The <a href="/v3/users/">user</a> that was added.
- */
+    /**
+     * The <a href="/v3/users/">user</a> that was added.
+     */
     @JsonbProperty("member")
     private Member member;
 

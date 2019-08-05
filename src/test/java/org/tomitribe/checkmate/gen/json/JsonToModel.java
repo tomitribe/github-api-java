@@ -56,6 +56,7 @@ public class JsonToModel {
             throw new IllegalStateException(e);
         }
     }
+
     public void process(Clazz self, JsonObject json) {
         for (final Map.Entry<String, JsonValue> entry : json.entrySet()) {
 

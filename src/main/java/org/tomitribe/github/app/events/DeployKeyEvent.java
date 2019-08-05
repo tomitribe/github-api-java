@@ -17,13 +17,12 @@
 
 package org.tomitribe.github.app.events;
 
-import javax.json.bind.annotation.JsonbProperty;
-
-import lombok.Data;
-import lombok.Builder;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import java.util.List;
+
+import javax.json.bind.annotation.JsonbProperty;
 
 /**
 
@@ -38,15 +37,15 @@ import java.util.List;
 @GithubEvent("deploy_key")
 public class DeployKeyEvent {
 
-/**
- * The action performed. Can be either <code>created</code> or <code>deleted</code>.
- */
+    /**
+     * The action performed. Can be either <code>created</code> or <code>deleted</code>.
+     */
     @JsonbProperty("action")
     private String action;
 
-/**
- * The deploy key resource.
- */
+    /**
+     * The deploy key resource.
+     */
     @JsonbProperty("key")
     private Key key;
 

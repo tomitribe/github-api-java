@@ -17,24 +17,23 @@
 
 package org.tomitribe.github.app.events;
 
-import javax.json.bind.annotation.JsonbProperty;
-
-import lombok.Data;
-import lombok.Builder;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import java.util.List;
+
+import javax.json.bind.annotation.JsonbProperty;
 
 /**
 
  * <div class="alert note">
- * 
+ *
  * <p>GitHub Package Registry is currently available in limited public beta. To request to join the
  * limited public beta, see the "<a href="https://github.com/features/package-registry">GitHub Package
  * Registry page</a>."</p>
- * 
+ *
  * </div>
- * 
+ *
  * <p>Triggered when a package version is <code>published</code> or <code>updated</code> in GitHub
  * Package Registry. See "<a
  * href="https://help.github.com/en/categories/managing-packages-with-github-package-registry">Managing
@@ -50,27 +49,27 @@ import java.util.List;
 @GithubEvent("registry_package")
 public class RegistryPackageEvent {
 
-/**
- * The action that was performed. Can be <code>published</code> or <code>updated</code>.
- */
+    /**
+     * The action that was performed. Can be <code>published</code> or <code>updated</code>.
+     */
     @JsonbProperty("action")
     private String action;
 
-/**
- * Information about the registry package.
- */
+    /**
+     * Information about the registry package.
+     */
     @JsonbProperty("registry_package")
     private RegistryPackage registryPackage;
 
-/**
- * The <a href="/v3/repos/">repository</a> object.
- */
+    /**
+     * The <a href="/v3/repos/">repository</a> object.
+     */
     @JsonbProperty("repository")
     private Repository repository;
 
-/**
- * The GitHub user who is importing the repository.
- */
+    /**
+     * The GitHub user who is importing the repository.
+     */
     @JsonbProperty("sender")
     private Sender sender;
 

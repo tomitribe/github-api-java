@@ -17,13 +17,12 @@
 
 package org.tomitribe.github.app.events;
 
-import javax.json.bind.annotation.JsonbProperty;
-
-import lombok.Data;
-import lombok.Builder;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import java.util.List;
+
+import javax.json.bind.annotation.JsonbProperty;
 
 /**
 
@@ -40,16 +39,16 @@ import java.util.List;
 @GithubEvent("release")
 public class ReleaseEvent {
 
-/**
- * The action that was performed. Currently, can be <code>published</code>, <code>unpublished</code>,
- * <code>created</code>, <code>edited</code>, <code>deleted</code>, or <code>prereleased</code>.
- */
+    /**
+     * The action that was performed. Currently, can be <code>published</code>, <code>unpublished</code>,
+     * <code>created</code>, <code>edited</code>, <code>deleted</code>, or <code>prereleased</code>.
+     */
     @JsonbProperty("action")
     private String action;
 
-/**
- * The <a href="/v3/repos/releases/#get-a-single-release">release</a> object.
- */
+    /**
+     * The <a href="/v3/repos/releases/#get-a-single-release">release</a> object.
+     */
     @JsonbProperty("release")
     private Release release;
 

@@ -17,13 +17,12 @@
 
 package org.tomitribe.github.app.events;
 
-import javax.json.bind.annotation.JsonbProperty;
-
-import lombok.Data;
-import lombok.Builder;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import java.util.List;
+
+import javax.json.bind.annotation.JsonbProperty;
 
 /**
 
@@ -42,28 +41,28 @@ import java.util.List;
 @GithubEvent("repository_import")
 public class RepositoryImportEvent {
 
-/**
- * The final state of the import. This can be one of <code>success</code>, <code>cancelled</code>, or
- * <code>failure</code>.
- */
+    /**
+     * The final state of the import. This can be one of <code>success</code>, <code>cancelled</code>, or
+     * <code>failure</code>.
+     */
     @JsonbProperty("status")
     private String status;
 
-/**
- * The <a href="/v3/repos/">repository</a> you are importing.
- */
+    /**
+     * The <a href="/v3/repos/">repository</a> you are importing.
+     */
     @JsonbProperty("repository")
     private Repository repository;
 
-/**
- * The information about the organization where the imported repository will live.
- */
+    /**
+     * The information about the organization where the imported repository will live.
+     */
     @JsonbProperty("organization")
     private Organization organization;
 
-/**
- * The GitHub user who is importing the repository.
- */
+    /**
+     * The GitHub user who is importing the repository.
+     */
     @JsonbProperty("sender")
     private Sender sender;
 

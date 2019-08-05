@@ -17,19 +17,18 @@
 
 package org.tomitribe.github.app.events;
 
-import javax.json.bind.annotation.JsonbProperty;
-
-import lombok.Data;
-import lombok.Builder;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import java.util.List;
+
+import javax.json.bind.annotation.JsonbProperty;
 
 /**
 
  * <p>Triggered when a repository's label is <code>created</code>, <code>edited</code>, or
  * <code>deleted</code>.</p>
- * 
+ *
  * <p>Events of this type are not visible in timelines. These events are only used to trigger
  * hooks.</p>
  * Used by:

@@ -17,18 +17,18 @@
 
 package org.tomitribe.github.app.events;
 
-import javax.json.bind.annotation.JsonbProperty;
-
-import lombok.Data;
-import lombok.Builder;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import javax.json.bind.annotation.JsonbProperty;
 import java.util.List;
 
 /**
 
  * <p>Triggered when the status of a Git commit changes.</p>
- * 
+ *
  * <p>Events of this type are not visible in timelines. These events are only used to trigger
  * hooks.</p>
  * Used by:
@@ -44,44 +44,44 @@ public class StatusEvent {
     @JsonbProperty("id")
     private Long id;
 
-/**
- * The Commit SHA.
- */
+    /**
+     * The Commit SHA.
+     */
     @JsonbProperty("sha")
     private String sha;
 
     @JsonbProperty("name")
     private String name;
 
-/**
- * The optional link added to the status.
- */
+    /**
+     * The optional link added to the status.
+     */
     @JsonbProperty("target_url")
     private String targetUrl;
 
     @JsonbProperty("context")
     private String context;
 
-/**
- * The optional human-readable description added to the status.
- */
+    /**
+     * The optional human-readable description added to the status.
+     */
     @JsonbProperty("description")
     private String description;
 
-/**
- * The new state. Can be <code>pending</code>, <code>success</code>, <code>failure</code>, or
- * <code>error</code>.
- */
+    /**
+     * The new state. Can be <code>pending</code>, <code>success</code>, <code>failure</code>, or
+     * <code>error</code>.
+     */
     @JsonbProperty("state")
     private String state;
 
     @JsonbProperty("commit")
     private Commit commit;
 
-/**
- * An array of branch objects containing the status' SHA. Each branch contains the given SHA, but the
- * SHA may or may not be the head of the branch. The array includes a maximum of 10 branches.
- */
+    /**
+     * An array of branch objects containing the status' SHA. Each branch contains the given SHA, but the
+     * SHA may or may not be the head of the branch. The array includes a maximum of 10 branches.
+     */
     @JsonbProperty("branches")
     private List<Branch> branches;
 

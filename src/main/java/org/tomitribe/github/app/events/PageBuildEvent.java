@@ -17,21 +17,20 @@
 
 package org.tomitribe.github.app.events;
 
-import javax.json.bind.annotation.JsonbProperty;
-
-import lombok.Data;
-import lombok.Builder;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import java.util.List;
+
+import javax.json.bind.annotation.JsonbProperty;
 
 /**
 
  * <p>Represents an attempted build of a GitHub Pages site, whether successful or not.</p>
- * 
+ *
  * <p>Triggered on push to a GitHub Pages enabled branch (<code>gh-pages</code> for project pages,
  * <code>master</code> for user and organization pages).</p>
- * 
+ *
  * <p>Events of this type are not visible in timelines. These events are only used to trigger
  * hooks.</p>
  * Used by:
@@ -47,9 +46,9 @@ public class PageBuildEvent {
     @JsonbProperty("id")
     private Long id;
 
-/**
- * The <a href="/v3/repos/pages/#list-pages-builds">page build</a> itself.
- */
+    /**
+     * The <a href="/v3/repos/pages/#list-pages-builds">page build</a> itself.
+     */
     @JsonbProperty("build")
     private Build build;
 

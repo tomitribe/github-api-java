@@ -17,23 +17,22 @@
 
 package org.tomitribe.github.app.events;
 
-import javax.json.bind.annotation.JsonbProperty;
-
-import lombok.Data;
-import lombok.Builder;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import java.util.List;
+
+import javax.json.bind.annotation.JsonbProperty;
 
 /**
 
  * <p>Represents a <a href="/v3/git/refs/#delete-a-reference">deleted branch or tag</a>.</p>
- * 
+ *
  * <div class="alert note">
- * 
+ *
  * <p><strong>Note:</strong> You will not receive a webhook for this event when you delete more than
  * three tags at once.</p>
- * 
+ *
  * </div>
  * Used by:
  * - 
@@ -45,15 +44,15 @@ import java.util.List;
 @GithubEvent("delete")
 public class DeleteEvent {
 
-/**
- * The <a href="/v3/git/refs/"><code>git ref</code></a>.
- */
+    /**
+     * The <a href="/v3/git/refs/"><code>git ref</code></a>.
+     */
     @JsonbProperty("ref")
     private String ref;
 
-/**
- * The object that was deleted. Can be <code>branch</code> or <code>tag</code>.
- */
+    /**
+     * The object that was deleted. Can be <code>branch</code> or <code>tag</code>.
+     */
     @JsonbProperty("ref_type")
     private String refType;
 

@@ -17,13 +17,12 @@
 
 package org.tomitribe.github.app.events;
 
-import javax.json.bind.annotation.JsonbProperty;
-
-import lombok.Data;
-import lombok.Builder;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import java.util.List;
+
+import javax.json.bind.annotation.JsonbProperty;
 
 /**
 
@@ -39,22 +38,22 @@ import java.util.List;
 @GithubEvent("issue_comment")
 public class IssueCommentEvent {
 
-/**
- * The action that was performed on the comment. Can be one of <code>created</code>,
- * <code>edited</code>, or <code>deleted</code>.
- */
+    /**
+     * The action that was performed on the comment. Can be one of <code>created</code>,
+     * <code>edited</code>, or <code>deleted</code>.
+     */
     @JsonbProperty("action")
     private String action;
 
-/**
- * The <a href="/v3/issues/">issue</a> the comment belongs to.
- */
+    /**
+     * The <a href="/v3/issues/">issue</a> the comment belongs to.
+     */
     @JsonbProperty("issue")
     private Issue issue;
 
-/**
- * The <a href="/v3/issues/comments/">comment</a> itself.
- */
+    /**
+     * The <a href="/v3/issues/comments/">comment</a> itself.
+     */
     @JsonbProperty("comment")
     private Comment comment;
 

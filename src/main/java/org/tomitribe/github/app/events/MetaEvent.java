@@ -17,13 +17,12 @@
 
 package org.tomitribe.github.app.events;
 
-import javax.json.bind.annotation.JsonbProperty;
-
-import lombok.Data;
-import lombok.Builder;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import java.util.List;
+
+import javax.json.bind.annotation.JsonbProperty;
 
 /**
 
@@ -40,22 +39,22 @@ import java.util.List;
 @GithubEvent("meta")
 public class MetaEvent {
 
-/**
- * The action performed. Can be <code>deleted</code>.
- */
+    /**
+     * The action performed. Can be <code>deleted</code>.
+     */
     @JsonbProperty("action")
     private String action;
 
-/**
- * The id of the modified webhook.
- */
+    /**
+     * The id of the modified webhook.
+     */
     @JsonbProperty("hook_id")
     private Long hookId;
 
-/**
- * The modified webhook. This will contain different keys based on the type of webhook it is:
- * repository, organization, business, app, or GitHub Marketplace.
- */
+    /**
+     * The modified webhook. This will contain different keys based on the type of webhook it is:
+     * repository, organization, business, app, or GitHub Marketplace.
+     */
     @JsonbProperty("hook")
     private Hook hook;
 

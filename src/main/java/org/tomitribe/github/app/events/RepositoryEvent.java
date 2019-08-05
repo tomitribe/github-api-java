@@ -17,13 +17,12 @@
 
 package org.tomitribe.github.app.events;
 
-import javax.json.bind.annotation.JsonbProperty;
-
-import lombok.Data;
-import lombok.Builder;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import java.util.List;
+
+import javax.json.bind.annotation.JsonbProperty;
 
 /**
 
@@ -31,7 +30,7 @@ import java.util.List;
  * <code>unarchived</code>, <code>renamed</code>, <code>edited</code>, <code>transferred</code>, made
  * public, or made private. <a href="/v3/orgs/hooks/">Organization hooks</a> are also triggered when a
  * repository is <code>deleted</code>.</p>
- * 
+ *
  * <p>Events of this type are not visible in timelines. These events are only used to trigger
  * hooks.</p>
  * Used by:
@@ -44,18 +43,18 @@ import java.util.List;
 @GithubEvent("repository")
 public class RepositoryEvent {
 
-/**
- * The action that was performed. This can be one of <code>created</code>, <code>deleted</code> (<a
- * href="/v3/orgs/hooks/">organization hooks</a> only), <code>archived</code>, <code>unarchived</code>,
- * <code>edited</code>, <code>renamed</code>, <code>transferred</code>, <code>publicized</code>, or
- * <code>privatized</code>.
- */
+    /**
+     * The action that was performed. This can be one of <code>created</code>, <code>deleted</code> (<a
+     * href="/v3/orgs/hooks/">organization hooks</a> only), <code>archived</code>, <code>unarchived</code>,
+     * <code>edited</code>, <code>renamed</code>, <code>transferred</code>, <code>publicized</code>, or
+     * <code>privatized</code>.
+     */
     @JsonbProperty("action")
     private String action;
 
-/**
- * The <a href="/v3/repos/">repository</a> itself.
- */
+    /**
+     * The <a href="/v3/repos/">repository</a> itself.
+     */
     @JsonbProperty("repository")
     private Repository repository;
 

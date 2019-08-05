@@ -17,19 +17,18 @@
 
 package org.tomitribe.github.app.events;
 
-import javax.json.bind.annotation.JsonbProperty;
-
-import lombok.Data;
-import lombok.Builder;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import java.util.List;
+
+import javax.json.bind.annotation.JsonbProperty;
 
 /**
 
  * <p>Triggered when a milestone is <code>created</code>, <code>closed</code>, <code>opened</code>,
  * <code>edited</code>, or <code>deleted</code>.</p>
- * 
+ *
  * <p>Events of this type are not visible in timelines. These events are only used to trigger
  * hooks.</p>
  * Used by:
@@ -42,16 +41,16 @@ import java.util.List;
 @GithubEvent("milestone")
 public class MilestoneEvent {
 
-/**
- * The action that was performed. Can be one of <code>created</code>, <code>closed</code>,
- * <code>opened</code>, <code>edited</code>, or <code>deleted</code>.
- */
+    /**
+     * The action that was performed. Can be one of <code>created</code>, <code>closed</code>,
+     * <code>opened</code>, <code>edited</code>, or <code>deleted</code>.
+     */
     @JsonbProperty("action")
     private String action;
 
-/**
- * The milestone itself.
- */
+    /**
+     * The milestone itself.
+     */
     @JsonbProperty("milestone")
     private Milestone milestone;
 

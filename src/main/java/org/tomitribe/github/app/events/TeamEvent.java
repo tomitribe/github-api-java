@@ -17,19 +17,18 @@
 
 package org.tomitribe.github.app.events;
 
-import javax.json.bind.annotation.JsonbProperty;
-
-import lombok.Data;
-import lombok.Builder;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import java.util.List;
+
+import javax.json.bind.annotation.JsonbProperty;
 
 /**
 
  * <p>Triggered when an organization's team is <code>created</code>, <code>deleted</code>,
  * <code>edited</code>, <code>added_to_repository</code>, or <code>removed_from_repository</code>.</p>
- * 
+ *
  * <p>Events of this type are not visible in timelines. These events are only used to trigger
  * organization hooks.</p>
  * Used by:
@@ -42,25 +41,25 @@ import java.util.List;
 @GithubEvent("team")
 public class TeamEvent {
 
-/**
- * The action that was performed. Can be one of <code>created</code>, <code>deleted</code>,
- * <code>edited</code>, <code>added_to_repository</code>, or <code>removed_from_repository</code>.
- */
+    /**
+     * The action that was performed. Can be one of <code>created</code>, <code>deleted</code>,
+     * <code>edited</code>, <code>added_to_repository</code>, or <code>removed_from_repository</code>.
+     */
     @JsonbProperty("action")
     private String action;
 
-/**
- * The team itself.
- */
+    /**
+     * The team itself.
+     */
     @JsonbProperty("team")
     private Team team;
 
-/**
- * The repository that was added or removed from to the team's purview if the action was
- * <code>added_to_repository</code>, <code>removed_from_repository</code>, or <code>edited</code>. For
- * <code>edited</code> actions, <code>repository</code> also contains the team's new permission levels
- * for the repository.
- */
+    /**
+     * The repository that was added or removed from to the team's purview if the action was
+     * <code>added_to_repository</code>, <code>removed_from_repository</code>, or <code>edited</code>. For
+     * <code>edited</code> actions, <code>repository</code> also contains the team's new permission levels
+     * for the repository.
+     */
     @JsonbProperty("repository")
     private Repository repository;
 

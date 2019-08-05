@@ -17,20 +17,19 @@
 
 package org.tomitribe.github.app.events;
 
-import javax.json.bind.annotation.JsonbProperty;
-
-import lombok.Data;
-import lombok.Builder;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import java.util.List;
+
+import javax.json.bind.annotation.JsonbProperty;
 
 /**
 
  * <p>Triggered when someone revokes their authorization of a GitHub App. A GitHub App receives this
  * webhook by default and cannot unsubscribe from this event. This event is not available in the <a
  * href="/v3/activity/events/">Events API</a>.</p>
- * 
+ *
  * <p>Anyone can revoke their authorization of a GitHub App from their <a
  * href="https://github.com/settings/apps/authorizations">GitHub account settings page</a>. Revoking
  * the authorization of a GitHub App does not uninstall the GitHub App. You should program your GitHub

@@ -17,12 +17,12 @@
 
 package org.tomitribe.github.app.events;
 
-import javax.json.bind.annotation.JsonbProperty;
-
-import lombok.Data;
-import lombok.Builder;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import javax.json.bind.annotation.JsonbProperty;
 import java.util.List;
 
 /**
@@ -38,9 +38,9 @@ import java.util.List;
 @GithubEvent("gollum")
 public class GollumEvent {
 
-/**
- * The pages that were updated.
- */
+    /**
+     * The pages that were updated.
+     */
     @JsonbProperty("pages")
     private List<Page> pages;
 

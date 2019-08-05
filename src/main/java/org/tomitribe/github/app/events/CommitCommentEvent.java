@@ -17,13 +17,12 @@
 
 package org.tomitribe.github.app.events;
 
-import javax.json.bind.annotation.JsonbProperty;
-
-import lombok.Data;
-import lombok.Builder;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import java.util.List;
+
+import javax.json.bind.annotation.JsonbProperty;
 
 /**
 
@@ -42,9 +41,9 @@ public class CommitCommentEvent {
     @JsonbProperty("action")
     private String action;
 
-/**
- * The <a href="/v3/repos/comments/#list-commit-comments-for-a-repository">comment</a> itself.
- */
+    /**
+     * The <a href="/v3/repos/comments/#list-commit-comments-for-a-repository">comment</a> itself.
+     */
     @JsonbProperty("comment")
     private Comment comment;
 

@@ -17,18 +17,17 @@
 
 package org.tomitribe.github.app.events;
 
-import javax.json.bind.annotation.JsonbProperty;
-
-import lombok.Data;
-import lombok.Builder;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import java.util.List;
+
+import javax.json.bind.annotation.JsonbProperty;
 
 /**
 
  * <p>Triggered when a user is <code>added</code> or <code>removed</code> from a team.</p>
- * 
+ *
  * <p>Events of this type are not visible in timelines. These events are only used to trigger
  * organization hooks.</p>
  * Used by:
@@ -41,30 +40,30 @@ import java.util.List;
 @GithubEvent("membership")
 public class MembershipEvent {
 
-/**
- * The action that was performed. Can be <code>added</code> or <code>removed</code>.
- */
+    /**
+     * The action that was performed. Can be <code>added</code> or <code>removed</code>.
+     */
     @JsonbProperty("action")
     private String action;
 
-/**
- * The scope of the membership. Currently, can only be <code>team</code>.
- */
+    /**
+     * The scope of the membership. Currently, can only be <code>team</code>.
+     */
     @JsonbProperty("scope")
     private String scope;
 
-/**
- * The <a href="/v3/users/">user</a> that was added or removed.
- */
+    /**
+     * The <a href="/v3/users/">user</a> that was added or removed.
+     */
     @JsonbProperty("member")
     private Member member;
 
     @JsonbProperty("sender")
     private Sender sender;
 
-/**
- * The <a href="/v3/teams/">team</a> for the membership.
- */
+    /**
+     * The <a href="/v3/teams/">team</a> for the membership.
+     */
     @JsonbProperty("team")
     private Team team;
 

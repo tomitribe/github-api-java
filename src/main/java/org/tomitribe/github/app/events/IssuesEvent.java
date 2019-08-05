@@ -17,13 +17,12 @@
 
 package org.tomitribe.github.app.events;
 
-import javax.json.bind.annotation.JsonbProperty;
-
-import lombok.Data;
-import lombok.Builder;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import java.util.List;
+
+import javax.json.bind.annotation.JsonbProperty;
 
 /**
 
@@ -42,25 +41,25 @@ import java.util.List;
 @GithubEvent("issues")
 public class IssuesEvent {
 
-/**
- * The action that was performed. Can be one of <code>opened</code>, <code>edited</code>,
- * <code>deleted</code>, <code>transferred</code>, <code>pinned</code>, <code>unpinned</code>,
- * <code>closed</code>, <code>reopened</code>, <code>assigned</code>, <code>unassigned</code>,
- * <code>labeled</code>, <code>unlabeled</code>, <code>locked</code>, <code>unlocked</code>,
- * <code>milestoned</code>, or <code>demilestoned</code>.
- */
+    /**
+     * The action that was performed. Can be one of <code>opened</code>, <code>edited</code>,
+     * <code>deleted</code>, <code>transferred</code>, <code>pinned</code>, <code>unpinned</code>,
+     * <code>closed</code>, <code>reopened</code>, <code>assigned</code>, <code>unassigned</code>,
+     * <code>labeled</code>, <code>unlabeled</code>, <code>locked</code>, <code>unlocked</code>,
+     * <code>milestoned</code>, or <code>demilestoned</code>.
+     */
     @JsonbProperty("action")
     private String action;
 
-/**
- * The <a href="/v3/issues">issue</a> itself.
- */
+    /**
+     * The <a href="/v3/issues">issue</a> itself.
+     */
     @JsonbProperty("issue")
     private Issue issue;
 
-/**
- * The changes to the issue if the action was <code>edited</code>.
- */
+    /**
+     * The changes to the issue if the action was <code>edited</code>.
+     */
     @JsonbProperty("changes")
     private Changes changes;
 

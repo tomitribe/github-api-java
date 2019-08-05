@@ -17,19 +17,18 @@
 
 package org.tomitribe.github.app.events;
 
-import javax.json.bind.annotation.JsonbProperty;
-
-import lombok.Data;
-import lombok.Builder;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import java.util.List;
+
+import javax.json.bind.annotation.JsonbProperty;
 
 /**
 
  * <p>Triggered when an organization is deleted and renamed, and when a user is added, removed, or
  * invited to an organization.</p>
- * 
+ *
  * <p>Events of this type are not visible in timelines. These events are only used to trigger
  * organization hooks.</p>
  * Used by:
@@ -42,23 +41,23 @@ import java.util.List;
 @GithubEvent("organization")
 public class OrganizationEvent {
 
-/**
- * The action that was performed. Can be one of: <code>deleted</code>, <code>renamed</code>,
- * <code>member_added</code>, <code>member_removed</code>, or <code>member_invited</code>.
- */
+    /**
+     * The action that was performed. Can be one of: <code>deleted</code>, <code>renamed</code>,
+     * <code>member_added</code>, <code>member_removed</code>, or <code>member_invited</code>.
+     */
     @JsonbProperty("action")
     private String action;
 
-/**
- * The membership between the user and the organization.  Not present when the action is
- * <code>member_invited</code>.
- */
+    /**
+     * The membership between the user and the organization.  Not present when the action is
+     * <code>member_invited</code>.
+     */
     @JsonbProperty("membership")
     private Membership membership;
 
-/**
- * The organization in question.
- */
+    /**
+     * The organization in question.
+     */
     @JsonbProperty("organization")
     private Organization organization;
 

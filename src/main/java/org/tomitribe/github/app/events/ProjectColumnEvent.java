@@ -17,13 +17,12 @@
 
 package org.tomitribe.github.app.events;
 
-import javax.json.bind.annotation.JsonbProperty;
-
-import lombok.Data;
-import lombok.Builder;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import java.util.List;
+
+import javax.json.bind.annotation.JsonbProperty;
 
 /**
 
@@ -39,16 +38,16 @@ import java.util.List;
 @GithubEvent("project_column")
 public class ProjectColumnEvent {
 
-/**
- * The action that was performed on the project column. Can be one of <code>created</code>,
- * <code>edited</code>, <code>moved</code> or <code>deleted</code>.
- */
+    /**
+     * The action that was performed on the project column. Can be one of <code>created</code>,
+     * <code>edited</code>, <code>moved</code> or <code>deleted</code>.
+     */
     @JsonbProperty("action")
     private String action;
 
-/**
- * The <a href="/v3/projects/columns">project column</a> itself.
- */
+    /**
+     * The <a href="/v3/projects/columns">project column</a> itself.
+     */
     @JsonbProperty("project_column")
     private ProjectColumn projectColumn;
 

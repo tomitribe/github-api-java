@@ -17,13 +17,12 @@
 
 package org.tomitribe.github.app.events;
 
-import javax.json.bind.annotation.JsonbProperty;
-
-import lombok.Data;
-import lombok.Builder;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import java.util.List;
+
+import javax.json.bind.annotation.JsonbProperty;
 
 /**
 
@@ -43,16 +42,16 @@ import java.util.List;
 @GithubEvent("security_advisory")
 public class SecurityAdvisoryEvent {
 
-/**
- * The action that was performed. The action can be one of <code>published</code>,
- * <code>updated</code>, or <code>performed</code> for all new events.
- */
+    /**
+     * The action that was performed. The action can be one of <code>published</code>,
+     * <code>updated</code>, or <code>performed</code> for all new events.
+     */
     @JsonbProperty("action")
     private String action;
 
-/**
- * The details of the security advisory, including summary, description, and severity.
- */
+    /**
+     * The details of the security advisory, including summary, description, and severity.
+     */
     @JsonbProperty("security_advisory")
     private SecurityAdvisory securityAdvisory;
 

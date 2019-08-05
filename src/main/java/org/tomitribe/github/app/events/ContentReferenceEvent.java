@@ -17,13 +17,12 @@
 
 package org.tomitribe.github.app.events;
 
-import javax.json.bind.annotation.JsonbProperty;
-
-import lombok.Data;
-import lombok.Builder;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import java.util.List;
+
+import javax.json.bind.annotation.JsonbProperty;
 
 /**
 
@@ -33,7 +32,7 @@ import java.util.List;
  * <code>content_reference</code> event receive this webhook event when a new content reference is
  * <code>created</code>. See "<a href="/apps/using-content-attachments/">Using content attachments</a>"
  * to learn more about content references and attachments.</p>
- * 
+ *
  * <p>Webhook events are triggered based on the specificity of the domain you register. For example, if
  * you register a subdomain (<code>https://subdomain.example.com</code>) then only URLs for the
  * subdomain trigger this event. If you register a domain (<code>https://example.com</code>) then URLs

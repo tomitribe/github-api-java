@@ -17,13 +17,12 @@
 
 package org.tomitribe.github.app.events;
 
-import javax.json.bind.annotation.JsonbProperty;
-
-import lombok.Data;
-import lombok.Builder;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import java.util.List;
+
+import javax.json.bind.annotation.JsonbProperty;
 
 /**
 
@@ -42,29 +41,29 @@ import java.util.List;
 @GithubEvent("pull_request")
 public class PullRequestEvent {
 
-/**
- * The action that was performed. Can be one of <code>assigned</code>, <code>unassigned</code>,
- * <code>review_requested</code>, <code>review_request_removed</code>, <code>labeled</code>,
- * <code>unlabeled</code>, <code>opened</code>, <code>edited</code>, <code>closed</code>,
- * <code>ready_for_review</code>, <code>locked</code>, <code>unlocked</code>, or <code>reopened</code>.
- * If the action is <code>closed</code> and the <code>merged</code> key is <code>false</code>, the pull
- * request was closed with unmerged commits. If the action is <code>closed</code> and the
- * <code>merged</code> key is <code>true</code>, the pull request was merged. While webhooks are also
- * triggered when a pull request is synchronized, Events API timelines don't include pull request
- * events with the <code>synchronize</code> action.
- */
+    /**
+     * The action that was performed. Can be one of <code>assigned</code>, <code>unassigned</code>,
+     * <code>review_requested</code>, <code>review_request_removed</code>, <code>labeled</code>,
+     * <code>unlabeled</code>, <code>opened</code>, <code>edited</code>, <code>closed</code>,
+     * <code>ready_for_review</code>, <code>locked</code>, <code>unlocked</code>, or <code>reopened</code>.
+     * If the action is <code>closed</code> and the <code>merged</code> key is <code>false</code>, the pull
+     * request was closed with unmerged commits. If the action is <code>closed</code> and the
+     * <code>merged</code> key is <code>true</code>, the pull request was merged. While webhooks are also
+     * triggered when a pull request is synchronized, Events API timelines don't include pull request
+     * events with the <code>synchronize</code> action.
+     */
     @JsonbProperty("action")
     private String action;
 
-/**
- * The pull request number.
- */
+    /**
+     * The pull request number.
+     */
     @JsonbProperty("number")
     private Long number;
 
-/**
- * The <a href="/v3/pulls">pull request</a> itself.
- */
+    /**
+     * The <a href="/v3/pulls">pull request</a> itself.
+     */
     @JsonbProperty("pull_request")
     private PullRequest pullRequest;
 

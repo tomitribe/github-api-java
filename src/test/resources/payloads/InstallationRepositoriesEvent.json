@@ -44,7 +44,6 @@
       "vulnerability_alerts": "read"
     },
     "events": [
-
     ],
     "created_at": 1557933591,
     "updated_at": 1557933591,
@@ -61,7 +60,6 @@
     }
   ],
   "repositories_removed": [
-
   ],
   "sender": {
     "login": "Codertocat",

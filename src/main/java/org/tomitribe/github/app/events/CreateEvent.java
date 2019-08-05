@@ -17,23 +17,22 @@
 
 package org.tomitribe.github.app.events;
 
-import javax.json.bind.annotation.JsonbProperty;
-
-import lombok.Data;
-import lombok.Builder;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import java.util.List;
+
+import javax.json.bind.annotation.JsonbProperty;
 
 /**
 
  * <p>Represents a created branch or tag.</p>
- * 
+ *
  * <div class="alert note">
- * 
+ *
  * <p><strong>Note:</strong> You will not receive a webhook for this event when you push more than
  * three tags at once.</p>
- * 
+ *
  * </div>
  * Used by:
  * - 
@@ -45,27 +44,27 @@ import java.util.List;
 @GithubEvent("create")
 public class CreateEvent {
 
-/**
- * The <a href="/v3/git/refs/"><code>git ref</code></a>.
- */
+    /**
+     * The <a href="/v3/git/refs/"><code>git ref</code></a>.
+     */
     @JsonbProperty("ref")
     private String ref;
 
-/**
- * The object that was created. Can be either <code>branch</code> or <code>tag</code>.
- */
+    /**
+     * The object that was created. Can be either <code>branch</code> or <code>tag</code>.
+     */
     @JsonbProperty("ref_type")
     private String refType;
 
-/**
- * The name of the repository's default branch (usually <code>master</code>).
- */
+    /**
+     * The name of the repository's default branch (usually <code>master</code>).
+     */
     @JsonbProperty("master_branch")
     private String masterBranch;
 
-/**
- * The repository's current description.
- */
+    /**
+     * The repository's current description.
+     */
     @JsonbProperty("description")
     private String description;
 

@@ -17,13 +17,12 @@
 
 package org.tomitribe.github.app.events;
 
-import javax.json.bind.annotation.JsonbProperty;
-
-import lombok.Data;
-import lombok.Builder;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import java.util.List;
+
+import javax.json.bind.annotation.JsonbProperty;
 
 /**
 
@@ -39,27 +38,27 @@ import java.util.List;
 @GithubEvent("org_block")
 public class OrgBlockEvent {
 
-/**
- * The action performed. Can be <code>blocked</code> or <code>unblocked</code>.
- */
+    /**
+     * The action performed. Can be <code>blocked</code> or <code>unblocked</code>.
+     */
     @JsonbProperty("action")
     private String action;
 
-/**
- * Information about the user that was blocked or unblocked.
- */
+    /**
+     * Information about the user that was blocked or unblocked.
+     */
     @JsonbProperty("blocked_user")
     private BlockedUser blockedUser;
 
-/**
- * Information about the organization that blocked or unblocked the user.
- */
+    /**
+     * Information about the organization that blocked or unblocked the user.
+     */
     @JsonbProperty("organization")
     private Organization organization;
 
-/**
- * Information about the user who sent the blocking/unblocking request on behalf of the organization.
- */
+    /**
+     * Information about the user who sent the blocking/unblocking request on behalf of the organization.
+     */
     @JsonbProperty("sender")
     private Sender sender;
 

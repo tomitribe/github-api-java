@@ -17,12 +17,12 @@
 
 package org.tomitribe.github.app.events;
 
-import javax.json.bind.annotation.JsonbProperty;
-
-import lombok.Data;
-import lombok.Builder;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import javax.json.bind.annotation.JsonbProperty;
 import java.util.List;
 
 /**
@@ -41,16 +41,16 @@ import java.util.List;
 @GithubEvent("installation")
 public class InstallationEvent {
 
-/**
- * The action that was performed. Can be one of <code>created</code>, <code>deleted</code>, or
- * <code>new_permissions_accepted</code>.
- */
+    /**
+     * The action that was performed. Can be one of <code>created</code>, <code>deleted</code>, or
+     * <code>new_permissions_accepted</code>.
+     */
     @JsonbProperty("action")
     private String action;
 
-/**
- * The installation itself.
- */
+    /**
+     * The installation itself.
+     */
     @JsonbProperty("installation")
     private Installation installation;
 

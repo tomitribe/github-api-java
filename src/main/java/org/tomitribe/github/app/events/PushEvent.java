@@ -17,33 +17,32 @@
 
 package org.tomitribe.github.app.events;
 
-import javax.json.bind.annotation.JsonbProperty;
-
-import lombok.Data;
-import lombok.Builder;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import java.util.List;
+
+import javax.json.bind.annotation.JsonbProperty;
 
 /**
 
  * <p>Triggered on a push to a repository branch. Branch pushes and repository tag pushes also trigger
  * webhook <a href="/webhooks/#events"><code>push</code> events</a>.</p>
- * 
+ *
  * <div class="alert note">
- * 
+ *
  * <p><strong>Note:</strong> You will not receive a webhook for this event when you push more than
  * three tags at once.</p>
- * 
+ *
  * </div>
- * 
+ *
  * <div class="alert tip">
- * 
+ *
  * <p><strong>Note</strong>: The webhook payload example following the table differs significantly from
  * the Events API payload described in the table. Among other differences, the webhook payload includes
  * both <code>sender</code> and <code>pusher</code> objects. Sender and pusher are the same user who
  * initiated the <code>push</code> event, but the <code>sender</code> object contains more detail.</p>
- * 
+ *
  * </div>
  * Used by:
  * - 
@@ -55,16 +54,16 @@ import java.util.List;
 @GithubEvent("push")
 public class PushEvent {
 
-/**
- * The full <a href="/v3/git/refs/"><code>git ref</code></a> that was pushed. Example:
- * <code>refs/heads/master</code>.
- */
+    /**
+     * The full <a href="/v3/git/refs/"><code>git ref</code></a> that was pushed. Example:
+     * <code>refs/heads/master</code>.
+     */
     @JsonbProperty("ref")
     private String ref;
 
-/**
- * The SHA of the most recent commit on <code>ref</code> before the push.
- */
+    /**
+     * The SHA of the most recent commit on <code>ref</code> before the push.
+     */
     @JsonbProperty("before")
     private String before;
 
@@ -86,12 +85,12 @@ public class PushEvent {
     @JsonbProperty("compare")
     private String compare;
 
-/**
- * An array of commit objects describing the pushed commits. (The array includes a maximum of 20
- * commits. If necessary, you can use the <a href="/v3/repos/commits/">Commits API</a> to fetch
- * additional commits. This limit is applied to timeline events only and isn't applied to webhook
- * deliveries.)
- */
+    /**
+     * An array of commit objects describing the pushed commits. (The array includes a maximum of 20
+     * commits. If necessary, you can use the <a href="/v3/repos/commits/">Commits API</a> to fetch
+     * additional commits. This limit is applied to timeline events only and isn't applied to webhook
+     * deliveries.)
+     */
     @JsonbProperty("commits")
     private String[] commits;
 

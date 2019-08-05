@@ -17,13 +17,12 @@
 
 package org.tomitribe.github.app.events;
 
-import javax.json.bind.annotation.JsonbProperty;
-
-import lombok.Data;
-import lombok.Builder;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import java.util.List;
+
+import javax.json.bind.annotation.JsonbProperty;
 
 /**
 
@@ -38,17 +37,17 @@ import java.util.List;
 @GithubEvent("star")
 public class StarEvent {
 
-/**
- * The action performed. Can be <code>created</code> or <code>deleted</code>.
- */
+    /**
+     * The action performed. Can be <code>created</code> or <code>deleted</code>.
+     */
     @JsonbProperty("action")
     private String action;
 
-/**
- * The time the star was created. This is a timestamp in <a
- * href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> format:
- * <code>YYYY-MM-DDTHH:MM:SSZ</code>. Will be <code>null</code> for the <code>deleted</code> action.
- */
+    /**
+     * The time the star was created. This is a timestamp in <a
+     * href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> format:
+     * <code>YYYY-MM-DDTHH:MM:SSZ</code>. Will be <code>null</code> for the <code>deleted</code> action.
+     */
     @JsonbProperty("starred_at")
     private String starredAt;
 

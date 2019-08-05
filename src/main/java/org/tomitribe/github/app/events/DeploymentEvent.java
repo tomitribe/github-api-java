@@ -17,18 +17,17 @@
 
 package org.tomitribe.github.app.events;
 
-import javax.json.bind.annotation.JsonbProperty;
-
-import lombok.Data;
-import lombok.Builder;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import java.util.List;
+
+import javax.json.bind.annotation.JsonbProperty;
 
 /**
 
  * <p>Represents a <a href="/v3/repos/deployments/#list-deployments">deployment</a>.</p>
- * 
+ *
  * <p>Events of this type are not visible in timelines. These events are only used to trigger
  * hooks.</p>
  * Used by:
@@ -41,15 +40,15 @@ import java.util.List;
 @GithubEvent("deployment")
 public class DeploymentEvent {
 
-/**
- * The <a href="/v3/repos/deployments/#list-deployments">deployment</a>.
- */
+    /**
+     * The <a href="/v3/repos/deployments/#list-deployments">deployment</a>.
+     */
     @JsonbProperty("deployment")
     private Deployment deployment;
 
-/**
- * The <a href="/v3/repos/">repository</a> for this deployment.
- */
+    /**
+     * The <a href="/v3/repos/">repository</a> for this deployment.
+     */
     @JsonbProperty("repository")
     private Repository repository;
 
