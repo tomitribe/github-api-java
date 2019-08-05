@@ -41,7 +41,8 @@ public class ParseEvents {
         final ClassLoader loader = ParseEvents.class.getClassLoader();
         final URL resource = loader.getResource("event-types.html");
 
-        final List<String> sections = list(IO.slurp(resource).split("<h2>\n<a id="));
+        final String slurp = IO.slurp(resource);
+        final List<String> sections = list(slurp.split("<h2>\n<a id="));
         sections.remove(0);
 
         final List<Event> events = sections.stream()
@@ -52,16 +53,25 @@ public class ParseEvents {
 
         final List<Clazz> generate = JsonToModel.generate(events);
 
-        final File packageDir = new File("/Users/dblevins/work/tomitribe/checkmate/src/main/java/org/tomitribe/github/app/events/");
-        packageDir.mkdirs();
-        final ClazzRenderer renderer = new ClazzRenderer(packageDir, "org.tomitribe.github.app.events");
-        for (final Clazz clazz : generate) {
-            System.out.println(clazz);
-            renderer.render(clazz);
+        {
+            final File packageDir = new File("/Users/dblevins/work/tomitribe/checkmate/src/main/java/org/tomitribe/github/app/events/");
+            packageDir.mkdirs();
+            final ClazzRenderer renderer = new ClazzRenderer(packageDir, "org.tomitribe.github.app.events");
+            for (final Clazz clazz : generate) {
+                System.out.println(clazz);
+                renderer.render(clazz);
+            }
         }
 
-        events.stream()
-                .forEach(ParseEvents::savePayload);
+        events.stream().forEach(ParseEvents::savePayload);
+
+        {
+            final File packageDir = new File("/Users/dblevins/work/tomitribe/checkmate/src/main/java/org/tomitribe/github/app/");
+            packageDir.mkdirs();
+            final GenerateResource generateResource = new GenerateResource(packageDir, "org.tomitribe.github.app");
+
+            generateResource.generate(events);
+        }
     }
 
     private static void savePayload(final Event event) {
