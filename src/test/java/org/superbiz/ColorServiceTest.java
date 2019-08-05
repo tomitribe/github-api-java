@@ -31,17 +31,6 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.net.URL;
 
-/**
- * Arquillian will start the container, deploy all @Deployment bundles, then run all the @Test methods.
- *
- * A strong value-add for Arquillian is that the test is abstracted from the server.
- * It is possible to rerun the same test against multiple adapters or server configurations.
- *
- * A second value-add is it is possible to build WebArchives that are slim and trim and therefore
- * isolate the functionality being tested.  This also makes it easier to swap out one implementation
- * of a class for another allowing for easy mocking.
- *
- */
 @RunWith(Arquillian.class)
 public class ColorServiceTest extends Assert {
 
