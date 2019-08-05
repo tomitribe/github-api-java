@@ -16,12 +16,14 @@
  */
 package org.tomitribe.github.app.events;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.IOException;
 
 import static org.tomitribe.github.app.events.PayloadAsserts.assertPayload;
 
+@Ignore
 public class PushEventTest {
 
     @Test
