@@ -47,6 +47,7 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@GithubEvent("registry_package")
 public class RegistryPackageEvent {
 
 /**

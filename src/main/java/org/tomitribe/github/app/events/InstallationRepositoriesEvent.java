@@ -36,6 +36,7 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@GithubEvent("installation_repositories")
 public class InstallationRepositoriesEvent {
 
 /**

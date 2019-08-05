@@ -29,7 +29,7 @@ public class PayloadAsserts {
     private PayloadAsserts() {
     }
 
-    public static void assertPayload(final Class<CheckRunEvent> eventClass) throws IOException {
+    public static void assertPayload(final Class<?> eventClass) throws IOException {
         final ClassLoader loader = PayloadAsserts.class.getClassLoader();
         final URL resource = loader.getResource("payloads/" + eventClass.getSimpleName() + ".json");
         final String expected = IO.slurp(resource);
@@ -39,7 +39,8 @@ public class PayloadAsserts {
         // Create Jsonb with custom configuration
         final Jsonb jsonb = JsonbBuilder.create(config);
 
-        final String actual = jsonb.toJson(jsonb.fromJson(expected, eventClass));
+        final Object object = jsonb.fromJson(expected, eventClass);
+        final String actual = jsonb.toJson(object);
 
         JsonAsserts.assertJson(expected, actual);
     }

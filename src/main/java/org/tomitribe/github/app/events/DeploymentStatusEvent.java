@@ -38,6 +38,7 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@GithubEvent("deployment_status")
 public class DeploymentStatusEvent {
 
 /**

@@ -64,6 +64,7 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@GithubEvent("check_run")
 public class CheckRunEvent {
 
     @JsonbProperty("action")

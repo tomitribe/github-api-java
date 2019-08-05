@@ -52,6 +52,7 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@GithubEvent("push")
 public class PushEvent {
 
 /**

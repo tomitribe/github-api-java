@@ -37,6 +37,7 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@GithubEvent("meta")
 public class MetaEvent {
 
 /**

@@ -36,6 +36,7 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@GithubEvent("commit_comment")
 public class CommitCommentEvent {
 
     @JsonbProperty("action")

@@ -38,6 +38,7 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@GithubEvent("membership")
 public class MembershipEvent {
 
 /**

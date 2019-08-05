@@ -35,6 +35,7 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@GithubEvent("deploy_key")
 public class DeployKeyEvent {
 
 /**

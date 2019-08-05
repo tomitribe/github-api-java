@@ -36,6 +36,7 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@GithubEvent("issue_comment")
 public class IssueCommentEvent {
 
 /**

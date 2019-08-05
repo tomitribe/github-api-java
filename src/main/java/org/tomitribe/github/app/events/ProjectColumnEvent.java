@@ -36,6 +36,7 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@GithubEvent("project_column")
 public class ProjectColumnEvent {
 
 /**

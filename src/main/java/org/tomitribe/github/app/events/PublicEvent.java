@@ -36,6 +36,7 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@GithubEvent("public")
 public class PublicEvent {
 
     @JsonbProperty("repository")

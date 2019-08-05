@@ -39,6 +39,7 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@GithubEvent("issues")
 public class IssuesEvent {
 
 /**

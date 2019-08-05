@@ -64,6 +64,7 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@GithubEvent("check_suite")
 public class CheckSuiteEvent {
 
 /**

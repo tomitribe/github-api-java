@@ -35,6 +35,7 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@GithubEvent("star")
 public class StarEvent {
 
 /**

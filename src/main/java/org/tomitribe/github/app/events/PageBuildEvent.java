@@ -41,6 +41,7 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@GithubEvent("page_build")
 public class PageBuildEvent {
 
     @JsonbProperty("id")

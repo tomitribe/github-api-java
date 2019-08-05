@@ -36,6 +36,7 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@GithubEvent("pull_request_review_comment")
 public class PullRequestReviewCommentEvent {
 
 /**

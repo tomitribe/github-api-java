@@ -39,6 +39,7 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@GithubEvent("team_add")
 public class TeamAddEvent {
 
 /**

@@ -38,6 +38,7 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@GithubEvent("status")
 public class StatusEvent {
 
     @JsonbProperty("id")

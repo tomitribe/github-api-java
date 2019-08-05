@@ -42,14 +42,18 @@ public class ClazzRenderer {
     public void render(final Clazz clazz) {
         final PrintString out = new PrintString();
 
+        final ParseEvents.Event event = clazz.getEvent();
         final String className = clazz.getName();
         final String description;
+        final String annotation;
 
-        if (clazz.getEvent() != null && clazz.getEvent().getDescription() != null) {
-            final String s = clazz.getEvent().getDescription();
+        if (event != null && event.getDescription() != null) {
+            final String s = event.getDescription();
             description = formatComment(s);
+            annotation = "@GithubEvent(\"" + event.getWebhookName() + "\")\n";
         } else {
             description = "";
+            annotation = "";
         }
 
         out.print("/*\n" +
@@ -87,12 +91,13 @@ public class ClazzRenderer {
                 "@Builder\n" +
                 (clazz.getFields().size() > 0 ? "@AllArgsConstructor\n" : "") +
                 "@NoArgsConstructor\n" +
+                annotation +
                 "public class " + className + " {\n\n");
 
         for (final Field field : clazz.getFields().values()) {
 
-            if (clazz.getEvent() != null && clazz.getEvent().getPayloadFields() != null) {
-                final ParseEvents.PayloadField jsonField = clazz.getEvent().getPayloadFields()
+            if (event != null && event.getPayloadFields() != null) {
+                final ParseEvents.PayloadField jsonField = event.getPayloadFields()
                         .stream()
                         .filter(payloadField -> payloadField.getKey().equals(field.getJsonName()))
                         .findFirst().orElse(null);
@@ -130,6 +135,54 @@ public class ClazzRenderer {
         } catch (IOException e) {
             throw new IllegalStateException("Cannot write class file: " + file.getAbsolutePath(), e);
         }
+
+        if (event != null) {
+            renderTestCase(clazz);
+        }
+    }
+
+    private void renderTestCase(final Clazz clazz) {
+        final PrintString out = new PrintString();
+        out.printf("/*\n" +
+                " * Licensed to the Apache Software Foundation (ASF) under one or more\n" +
+                " * contributor license agreements.  See the NOTICE file distributed with\n" +
+                " * this work for additional information regarding copyright ownership.\n" +
+                " * The ASF licenses this file to You under the Apache License, Version 2.0\n" +
+                " * (the \"License\"); you may not use this file except in compliance with\n" +
+                " * the License.  You may obtain a copy of the License at\n" +
+                " *\n" +
+                " *     http://www.apache.org/licenses/LICENSE-2.0\n" +
+                " *\n" +
+                " *  Unless required by applicable law or agreed to in writing, software\n" +
+                " *  distributed under the License is distributed on an \"AS IS\" BASIS,\n" +
+                " *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n" +
+                " *  See the License for the specific language governing permissions and\n" +
+                " *  limitations under the License.\n" +
+                " */\n" +
+                "package " + packageName + ";\n" +
+                "\n" +
+                "import org.junit.Test;\n" +
+                "\n" +
+                "import java.io.IOException;\n" +
+                "\n" +
+                "import static org.tomitribe.github.app.events.PayloadAsserts.assertPayload;\n" +
+                "\n" +
+                "public class %sTest {\n" +
+                "\n" +
+                "    @Test\n" +
+                "    public void parse() throws IOException {\n" +
+                "        assertPayload(%s.class);\n" +
+                "    }\n" +
+                "}\n", clazz.getName(), clazz.getName());
+
+        final File dir = new File(this.packageDir.getAbsolutePath().replace("src/main/java", "src/test/java"));
+        final File file = new File(dir, clazz.getName() + "Test.java");
+        try {
+            IO.copy(out.toByteArray(), file);
+        } catch (IOException e) {
+            throw new IllegalStateException("Cannot write class file: " + file.getAbsolutePath(), e);
+        }
+
     }
 
     private static String formatComment(final String s) {

@@ -41,6 +41,7 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@GithubEvent("repository")
 public class RepositoryEvent {
 
 /**

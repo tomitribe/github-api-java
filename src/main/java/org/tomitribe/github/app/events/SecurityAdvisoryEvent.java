@@ -40,6 +40,7 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@GithubEvent("security_advisory")
 public class SecurityAdvisoryEvent {
 
 /**

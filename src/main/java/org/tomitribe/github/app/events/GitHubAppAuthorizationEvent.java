@@ -47,6 +47,7 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@GithubEvent("github_app_authorization")
 public class GitHubAppAuthorizationEvent {
 
     @JsonbProperty("action")

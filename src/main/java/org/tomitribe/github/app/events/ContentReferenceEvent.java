@@ -47,6 +47,7 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@GithubEvent("content_reference")
 public class ContentReferenceEvent {
 
     @JsonbProperty("action")

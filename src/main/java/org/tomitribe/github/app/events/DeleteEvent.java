@@ -42,6 +42,7 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@GithubEvent("delete")
 public class DeleteEvent {
 
 /**

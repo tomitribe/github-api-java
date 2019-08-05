@@ -40,6 +40,7 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@GithubEvent("watch")
 public class WatchEvent {
 
 /**

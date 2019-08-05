@@ -18,8 +18,6 @@
 package org.tomitribe.github.app.events;
 
 import javax.json.bind.annotation.JsonbProperty;
-import javax.json.bind.annotation.JsonbPropertyOrder;
-import javax.json.bind.config.PropertyOrderStrategy;
 
 import lombok.Data;
 import lombok.Builder;
@@ -35,7 +33,6 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@JsonbPropertyOrder(PropertyOrderStrategy.ANY)
 public class CheckRun {
 
     @JsonbProperty("id")
