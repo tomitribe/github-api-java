@@ -59,6 +59,20 @@ public class ParseEvents {
             System.out.println(clazz);
             renderer.render(clazz);
         }
+
+        events.stream()
+                .forEach(ParseEvents::savePayload);
+    }
+
+    private static void savePayload(final Event event) {
+        if (event.getPayload() == null) return;
+        try {
+            final File dir = new File("/Users/dblevins/work/tomitribe/checkmate/src/test/resources/payloads");
+            final File jsonFile = new File(dir, event.getTypeName() + ".json");
+            IO.copy(IO.read(event.getPayload().getJson()), jsonFile);
+        } catch (IOException e) {
+            throw new IllegalStateException(e);
+        }
     }
 
 

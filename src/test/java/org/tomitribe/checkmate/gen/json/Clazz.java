@@ -20,6 +20,7 @@ import lombok.ToString;
 import org.apache.openejb.util.Strings;
 import org.tomitribe.checkmate.gen.ParseEvents;
 
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
@@ -28,7 +29,7 @@ import java.util.TreeSet;
 @ToString
 public class Clazz {
     private final String name;
-    private final Map<String, Field> fields = new TreeMap<>();
+    private final Map<String, Field> fields = new LinkedHashMap<>();
     private final Set<String> usedBy = new TreeSet<>();
     private final ParseEvents.Event event;
 
