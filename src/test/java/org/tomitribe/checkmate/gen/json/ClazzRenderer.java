@@ -16,6 +16,8 @@
  */
 package org.tomitribe.checkmate.gen.json;
 
+import org.apache.commons.lang.WordUtils;
+import org.tomitribe.checkmate.gen.ParseEvents;
 import org.tomitribe.util.IO;
 import org.tomitribe.util.Join;
 import org.tomitribe.util.PrintString;
@@ -23,6 +25,9 @@ import org.tomitribe.util.Strings;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class ClazzRenderer {
 
@@ -41,7 +46,8 @@ public class ClazzRenderer {
         final String description;
 
         if (clazz.getEvent() != null && clazz.getEvent().getDescription() != null) {
-            description = clazz.getEvent().getDescription().replace("\n", "\n * ");
+            final String s = clazz.getEvent().getDescription();
+            description = formatComment(s);
         } else {
             description = "";
         }
@@ -74,7 +80,7 @@ public class ClazzRenderer {
                 "import java.util.List;\n" +
                 "\n" +
                 "/**\n" +
-                " * " + description + "\n" +
+                description +
                 " * Used by:\n * - " + Join.join("\n * - ", clazz.getUsedBy()) + "\n" +
                 " */\n" +
                 "@Data\n" +
@@ -84,6 +90,21 @@ public class ClazzRenderer {
                 "public class " + className + " {\n\n");
 
         for (final Field field : clazz.getFields().values()) {
+
+            if (clazz.getEvent() != null && clazz.getEvent().getPayloadFields() != null) {
+                final ParseEvents.PayloadField jsonField = clazz.getEvent().getPayloadFields()
+                        .stream()
+                        .filter(payloadField -> payloadField.getKey().equals(field.getJsonName()))
+                        .findFirst().orElse(null);
+
+                if (jsonField != null && jsonField.getDescription() != null) {
+                    out.printf("/**");
+                    out.print(formatComment(jsonField.getDescription()));
+                    out.printf(" */\n");
+                }
+
+            }
+
             out.printf("" +
                     "    @JsonbProperty(\"%s\")%n" +
                     "    private %s %s;%n%n", field.getJsonName(), field.getType(), field.getName());
@@ -109,6 +130,15 @@ public class ClazzRenderer {
         } catch (IOException e) {
             throw new IllegalStateException("Cannot write class file: " + file.getAbsolutePath(), e);
         }
+    }
+
+    private static String formatComment(final String s) {
+        final List<String> lines = Stream.of(s.split("\n"))
+                .flatMap(s1 -> Stream.of(WordUtils.wrap(s1, 100).split("\n")))
+                .map(s2 -> "\n * " + s2)
+                .collect(Collectors.toList());
+
+        return Join.join("", lines) + "\n";
     }
 
     private static String toProperty(final Field field) {

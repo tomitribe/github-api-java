@@ -133,7 +133,7 @@ public class ParseEvents {
         public static List<PayloadField> parseAll(final String content) {
             return Stream.of(content.split("</?tr>"))
                     .map(String::trim)
-                    .filter(s -> s.length() == 0)
+                    .filter(s -> s.length() != 0)
                     .filter(s1 -> s1.contains("<code>"))
                     .map(PayloadField::parse)
                     .collect(Collectors.toList());
@@ -142,7 +142,7 @@ public class ParseEvents {
         public static PayloadField parse(final String line) {
             final List<String> columns = Stream.of(line.split("</?td>"))
                     .map(String::trim)
-                    .filter(s -> s.length() == 0)
+                    .filter(s -> s.length() != 0)
                     .collect(Collectors.toList());
             return new PayloadField(
                     columns.get(0).replaceAll("</?code>", ""),

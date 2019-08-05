@@ -77,6 +77,12 @@
       <artifactId>lombok</artifactId>
       <version>1.18.8</version>
     </dependency>
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-text</artifactId>
+      <version>1.7</version>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
 
   <build>
