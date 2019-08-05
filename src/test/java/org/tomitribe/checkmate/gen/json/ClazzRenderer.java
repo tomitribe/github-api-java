@@ -85,12 +85,12 @@ public class ClazzRenderer {
             out.printf("" +
                     "    public %s get%s() {%n" +
                     "        return %s;%n" +
-                    "    }%n%n", field.getType(), Strings.ucfirst(field.getName()), field.getName());
+                    "    }%n%n", field.getType(), toProperty(field), field.getName());
 
             out.printf("" +
                     "    public void set%s(final %s %s) {%n" +
                     "        this.%s = %s;%n" +
-                    "    }%n%n", Strings.ucfirst(field.getName()), field.getType(), field.getName(), field.getName(), field.getName());
+                    "    }%n%n", toProperty(field), field.getType(), field.getName(), field.getName(), field.getName());
         }
 
         out.print("}\n");
@@ -101,5 +101,13 @@ public class ClazzRenderer {
         } catch (IOException e) {
             throw new IllegalStateException("Cannot write class file: " + file.getAbsolutePath(), e);
         }
+    }
+
+    private static String toProperty(final Field field) {
+        final String name = field.getName();
+        if (name.startsWith("_")) {
+            return Strings.ucfirst(name.substring(1));
+        }
+        return Strings.ucfirst(name);
     }
 }

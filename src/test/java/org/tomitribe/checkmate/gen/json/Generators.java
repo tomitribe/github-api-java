@@ -26,9 +26,11 @@ import javax.json.JsonValue;
 import javax.json.spi.JsonProvider;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 import static javax.json.JsonValue.ValueType.OBJECT;
@@ -70,12 +72,26 @@ public class Generators {
         return readerFactory.createReader(IO.read(jsonFile)).readObject();
     }
 
+    private static final List<String> keywords = Arrays.asList(
+            "abstract", "assert", "boolean", "break", "byte", "case", "catch", "char",
+            "class", "const", "continue", "default", "do", "double", "else", "enum", "exports",
+            "extends", "false", "final", "finally", "float", "for", "goto", "if", "implements",
+            "import", "instanceof", "int", "interface", "long", "module", "native", "new", "null",
+            "package", "private", "protected", "public", "requires", "return", "short", "static",
+            "strictfp", "super", "switch", "synchronized", "this", "throw", "throws", "transient",
+            "true", "try", "var", "void", "volatile", "while"
+    );
+
     public static String toJavaName(String jsonName) {
         try {
-            final String cleaned = jsonName
+            String cleaned = jsonName
                     .replaceAll("^_", "")
                     .replace("_", "-")
                     .replace("@", "");
+
+            if (keywords.contains(cleaned)) {
+                return "_" + cleaned;
+            }
             return Strings.lcfirst(Strings.camelCase(cleaned));
         } catch (Exception e) {
             throw new IllegalStateException(jsonName, e);

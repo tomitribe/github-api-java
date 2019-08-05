@@ -22,9 +22,11 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.ToString;
 import org.tomitribe.checkmate.gen.json.Clazz;
+import org.tomitribe.checkmate.gen.json.ClazzRenderer;
 import org.tomitribe.checkmate.gen.json.JsonToModel;
 import org.tomitribe.util.IO;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -49,8 +51,12 @@ public class ParseEvents {
                 .collect(Collectors.toList());
 
         final List<Clazz> generate = JsonToModel.generate(events);
+
+        final File packageDir = new File("/Users/dblevins/work/tomitribe/checkmate/src/main/java/org/tomitribe/github/app/events/");
+        final ClazzRenderer renderer = new ClazzRenderer(packageDir, "org.tomitribe.github.app.events");
         for (final Clazz clazz : generate) {
             System.out.println(clazz);
+            renderer.render(clazz);
         }
     }
 
