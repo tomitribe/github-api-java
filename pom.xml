@@ -29,6 +29,13 @@
   <artifactId>github-api-java</artifactId>
   <version>0.3-SNAPSHOT</version>
 
+  <scm>
+    <connection>scm:git:git@github.com:tomitribe/github-api-java.git</connection>
+    <url>scm:git:git@github.com:tomitribe/github-api-java.git</url>
+    <developerConnection>scm:git:git@github.com:tomitribe/github-api-java.git</developerConnection>
+    <tag>HEAD</tag>
+  </scm>
+
   <dependencies>
     <dependency>
       <groupId>org.tomitribe</groupId>
