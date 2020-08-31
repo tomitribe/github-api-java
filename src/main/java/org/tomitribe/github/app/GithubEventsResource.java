@@ -64,6 +64,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.MediaType;
 
+//CHECKSTYLE:OFF 
 @Path("/event")
 @Consumes(MediaType.APPLICATION_JSON)
 public interface GithubEventsResource {
@@ -240,4 +241,5 @@ public interface GithubEventsResource {
     default void event(final WatchEvent WatchEvent) {
     }
 
+//CHECKSTYLE:ON
 }
