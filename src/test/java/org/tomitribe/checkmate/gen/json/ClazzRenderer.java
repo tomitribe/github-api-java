@@ -16,7 +16,7 @@
  */
 package org.tomitribe.checkmate.gen.json;
 
-import org.apache.commons.lang.WordUtils;
+import org.apache.commons.lang3.text.WordUtils;
 import org.tomitribe.checkmate.gen.ParseEvents;
 import org.tomitribe.util.IO;
 import org.tomitribe.util.Join;

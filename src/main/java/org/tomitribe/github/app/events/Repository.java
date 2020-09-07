@@ -23,6 +23,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.json.bind.annotation.JsonbProperty;
+import java.util.List;
 
 /**
  * Used by:
@@ -81,7 +82,34 @@ public class Repository {
     @JsonbProperty("full_name")
     private String fullName;
 
+    @JsonbProperty("allow_merge_commit")
+    private Boolean allowMergeCommit;
+
+    @JsonbProperty("allow_rebase_merge")
+    private Boolean allowRebaseMerge;
+
+    @JsonbProperty("allow_squash_merge")
+    private Boolean allowSquashMerge;
+
+    @JsonbProperty("is_template")
+    private Boolean isTemplate;
+
+    @JsonbProperty("network_count")
+    private Integer networkCount;
+
+    @JsonbProperty("subscribers_count")
+    private Integer subscribersCount;
+
+    @JsonbProperty("topics")
+    private List<String> topics;
+
+    /**
+     * Odd upper-case P required to get around
+     * the fact that "private" is a keyword
+     */
     @JsonbProperty("private")
+    @SuppressWarnings("PMD.FieldNamingConventions")
+    // TODO file bug that capitol P cannot be used
     private Boolean _private;
 
     @JsonbProperty("owner")
@@ -290,6 +318,9 @@ public class Repository {
 
     @JsonbProperty("stargazers")
     private Long stargazers;
+
+    @JsonbProperty("score")
+    private Double score;
 
     @JsonbProperty("master_branch")
     private String masterBranch;
