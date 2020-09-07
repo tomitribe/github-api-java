@@ -674,29 +674,13 @@ public class GithubClientSearchRepositoriesTest {
     public static class MockGithub {
         @GET
         public Response page(@QueryParam("page") int page) throws IOException {
-            final String format = "%s/search/repositories?q=tomee&page=%s";
-            final Link.Builder link = Link.builder();
 
             if (page == 0) page = 1;
 
-            final int first = 1;
-            final int last = 8;
-
-            link.prev(format, uri, page - 1);
-            link.next(format, uri, page + 1);
-            link.first(format, uri, first);
-            link.last(format, uri, last);
-
-            if (page < first || page > last) {
-                return Response.status(400).build();
-            } else if (first == page) {
-                link.prev(null).first(null);
-            } else if (last == page) {
-                link.next(null).last(null);
-            }
+            final Link link = TestLinks.getLink(uri, "%s/search/repositories?q=tomee&page=%s", page, 8);
 
             return Response.ok()
-                    .header("Link", link.build().asHeader())
+                    .header("Link", link.asHeader())
                     .entity(read(String.format("page%s.json", page)))
                     .build();
         }

@@ -230,6 +230,10 @@ public class GithubClient {
         return get(PullRequest.class, "/repos/%s/%s/pulls/%s", owner, repo, pullNumber);
     }
 
+    public Stream<PullRequest> listPullRequests(final String owner, final String repo) {
+        return stream(PullRequest[].class, Arrays::asList, "/repos/%s/%s/pulls", owner, repo);
+    }
+
     /**
      * Requires the full HTTP query string as would be supplied to a command like curl.  For example, these
      * are all valid:
@@ -247,7 +251,7 @@ public class GithubClient {
     }
 
     private Invocation.Builder request(final String path, final Object... details) {
-        final Invocation.Builder builder = client.target(host.resolve(String.format(path, details)))
+        final Invocation.Builder builder = client.target(resolve(path, details))
                 .request()
                 .accept(MEDIA_TYPES);
 
@@ -255,6 +259,10 @@ public class GithubClient {
         handlers.forEach(requestConsumer -> requestConsumer.accept(request));
 
         return builder;
+    }
+
+    private URI resolve(final String path, final Object... details) {
+        return host.resolve(String.format(path, details));
     }
 
     public static Consumer<Request> oauthTokenAuthentication(final String oauthToken) {
@@ -449,6 +457,11 @@ public class GithubClient {
                 }
             }
         }
+    }
+
+    private <Page, Item> Stream<Item> stream(final Class<Page> pageClass, final Function<Page, List<Item>> getItems, final String path, final Object... details) {
+        final URI target = resolve(path, details);
+        return stream(target, pageClass, getItems);
     }
 
     private <Page, Item> Stream<Item> stream(final URI target, final Class<Page> pageClass, final Function<Page, List<Item>> getItems) {
