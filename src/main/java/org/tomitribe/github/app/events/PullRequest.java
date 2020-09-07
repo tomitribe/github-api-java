@@ -105,16 +105,16 @@ public class PullRequest {
     private String[] assignees;
 
     @JsonbProperty("requested_reviewers")
-    private String[] requestedReviewers;
+    private User[] requestedReviewers;
 
     @JsonbProperty("requested_teams")
     private String[] requestedTeams;
 
     @JsonbProperty("labels")
-    private String[] labels;
+    private Label[] labels;
 
     @JsonbProperty("milestone")
-    private String milestone;
+    private Milestone milestone;
 
     @JsonbProperty("commits_url")
     private String commitsUrl;
@@ -144,10 +144,10 @@ public class PullRequest {
     private Boolean merged;
 
     @JsonbProperty("mergeable")
-    private String mergeable;
+    private Boolean mergeable;
 
     @JsonbProperty("rebaseable")
-    private String rebaseable;
+    private Boolean rebaseable;
 
     @JsonbProperty("mergeable_state")
     private String mergeableState;

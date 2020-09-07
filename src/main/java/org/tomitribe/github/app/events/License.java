@@ -23,6 +23,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.json.bind.annotation.JsonbProperty;
+import java.net.URI;
 
 /**
  * Used by:
@@ -34,27 +35,20 @@ import javax.json.bind.annotation.JsonbProperty;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Label {
+public class License {
 
-    @JsonbProperty("id")
-    private Long id;
-
-    @JsonbProperty("node_id")
-    private String nodeId;
-
-    @JsonbProperty("url")
-    private String url;
+    @JsonbProperty("key")
+    private String key;
 
     @JsonbProperty("name")
     private String name;
 
-    @JsonbProperty("description")
-    private String description;
+    @JsonbProperty("node_id")
+    private String nodeId;
 
-    @JsonbProperty("color")
-    private String color;
+    @JsonbProperty("spdx_id")
+    private String spdxId;
 
-    @JsonbProperty("default")
-    private Boolean _default;
-
+    @JsonbProperty("url")
+    private URI url;
 }

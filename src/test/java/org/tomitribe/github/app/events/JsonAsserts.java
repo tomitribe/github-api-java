@@ -17,6 +17,7 @@
 package org.tomitribe.github.app.events;
 
 import org.junit.Assert;
+import org.tomitribe.github.app.JsonbInstances;
 import org.tomitribe.util.IO;
 import org.tomitribe.util.PrintString;
 
@@ -27,10 +28,14 @@ import javax.json.JsonObject;
 import javax.json.JsonObjectBuilder;
 import javax.json.JsonReader;
 import javax.json.JsonValue;
+import javax.json.bind.Jsonb;
 import javax.json.stream.JsonGenerator;
 import javax.json.stream.JsonGeneratorFactory;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.Consumer;
+
+import static org.junit.Assert.fail;
 
 public class JsonAsserts {
 
@@ -38,13 +43,16 @@ public class JsonAsserts {
     }
 
     public static void assertJson(final String expected, final String actual) {
-        Assert.assertEquals(normalize(expected), normalize(actual));
+        final String e = normalize(expected);
+        final String a = normalize(actual);
+        Assert.assertEquals(e, a);
     }
 
     private static String normalize(final String json) {
         final JsonReader reader = Json.createReader(IO.read(json));
 
-        final JsonObject jsonObject = sort(reader.readObject());
+        final JsonValue object = reader.readValue();
+        final JsonValue jsonObject = sort(object);
 
         final Map<String, Object> properties = new HashMap<>(1);
         properties.put(JsonGenerator.PRETTY_PRINTING, true);
@@ -80,7 +88,7 @@ public class JsonAsserts {
 
         jsonObject.keySet().stream()
                 .sorted()
-                .filter(s1 -> JsonValue.ValueType.NULL.equals(jsonObject.get(s1).getValueType()))
+                .filter(s1 -> !JsonValue.ValueType.NULL.equals(jsonObject.get(s1).getValueType()))
                 .forEach(s -> {
                             final JsonValue sorted = sort(jsonObject.get(s));
                             copy.add(s, sorted);
@@ -90,4 +98,62 @@ public class JsonAsserts {
         return copy.build();
     }
 
+    public static void assertJsonb(final String expectedJson, final Object actualObject) {
+        final Jsonb jsonb = JsonbInstances.get();
+        final String actualJson = jsonb.toJson(actualObject);
+        assertJson(expectedJson, actualJson);
+    }
+
+    public static <Object> void assertJsonb(final String expectedJson, final Class<Object> aClass) {
+        {
+            final Jsonb jsonb = JsonbInstances.get();
+            final Object object = jsonb.fromJson(expectedJson, aClass);
+            final String actual = jsonb.toJson(object);
+            assertJson(expectedJson, actual);
+        }
+    }
+
+    public static <Object> void assertJsonb(final String json, final Class<Object> aClass, final Consumer<Object>... mutators) {
+        // Unmarshal, marshal and assert both json documents are the same
+        // We should not gain or lose any data
+        {
+            final Jsonb jsonb = JsonbInstances.get();
+            final Object object = jsonb.fromJson(json, aClass);
+            final String actual = jsonb.toJson(object);
+            assertJson(json, actual);
+        }
+
+        // Unmarshal, mutate the object, marshal and assert both json documents are NOT the same
+        // We should not gain or lose any data
+        for (final Consumer<Object> mutator : mutators) {
+            try {
+                final Jsonb jsonb = JsonbInstances.get();
+                final Object object = jsonb.fromJson(json, aClass);
+
+                mutator.accept(object);
+
+                final String actual = jsonb.toJson(object);
+                assertJson(json, actual);
+
+                fail("Expected a comparison failure");
+            } catch (org.junit.ComparisonFailure expected) {
+                // pass
+            }
+        }
+    }
+
+    public static void assertJsonbReadWrite(final Object data, final String expectedJson) {
+        final Jsonb jsonb = JsonbInstances.get();
+
+        { // Assert write
+            final String actualJson = jsonb.toJson(data);
+            assertJson(expectedJson, actualJson);
+        }
+
+        { // Assert read
+            final Object object = jsonb.fromJson(expectedJson, data.getClass());
+            final String actualJson = jsonb.toJson(object);
+            assertJson(expectedJson, actualJson);
+        }
+    }
 }

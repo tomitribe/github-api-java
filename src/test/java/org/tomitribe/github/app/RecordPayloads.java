@@ -57,7 +57,6 @@ public class RecordPayloads<T> implements Consumer<T> {
         for (; i < stackTrace.length; i++) {
             final StackTraceElement element = stackTrace[i];
             if (!element.getClassName().equals(RecordPayloads.class.getName())) continue;
-            if (!element.getMethodName().equals("here")) continue;
             stackTraceElement = stackTrace[i + 1];
         }
         return stackTraceElement;

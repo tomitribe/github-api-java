@@ -302,7 +302,7 @@ public class Repository {
     private Long openIssuesCount;
 
     @JsonbProperty("license")
-    private String license;
+    private License license;
 
     @JsonbProperty("forks")
     private Long forks;

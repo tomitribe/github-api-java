@@ -243,7 +243,10 @@ public class Repo {
     private Long openIssuesCount;
 
     @JsonbProperty("license")
-    private String license;
+    private License license;
+
+    @JsonbProperty("topics")
+    private String[] topics;
 
     @JsonbProperty("forks")
     private Long forks;

@@ -14,47 +14,18 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-
 package org.tomitribe.github.app.events;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import org.junit.Test;
 
-import javax.json.bind.annotation.JsonbProperty;
+import java.io.IOException;
 
-/**
- * Used by:
- * - IssueCommentEvent
- * - IssuesEvent
- * - LabelEvent
- */
-@Data
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
-public class Label {
+import static org.tomitribe.github.app.events.PayloadAsserts.assertPayload;
 
-    @JsonbProperty("id")
-    private Long id;
+public class MilestoneTest {
 
-    @JsonbProperty("node_id")
-    private String nodeId;
-
-    @JsonbProperty("url")
-    private String url;
-
-    @JsonbProperty("name")
-    private String name;
-
-    @JsonbProperty("description")
-    private String description;
-
-    @JsonbProperty("color")
-    private String color;
-
-    @JsonbProperty("default")
-    private Boolean _default;
-
+    @Test
+    public void parse() throws IOException {
+        assertPayload(Milestone.class);
+    }
 }
