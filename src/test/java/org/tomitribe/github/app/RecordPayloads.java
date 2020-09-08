@@ -17,6 +17,7 @@
 package org.tomitribe.github.app;
 
 import org.apache.openejb.loader.Files;
+import org.tomitribe.github.core.JsonMarshalling;
 import org.tomitribe.util.IO;
 import org.tomitribe.util.JarLocation;
 

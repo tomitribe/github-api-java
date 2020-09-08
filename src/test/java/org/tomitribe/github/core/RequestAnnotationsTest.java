@@ -14,7 +14,7 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package org.tomitribe.github.app;
+package org.tomitribe.github.core;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -22,6 +22,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.junit.Before;
 import org.junit.Test;
+import org.tomitribe.github.core.Request;
 
 import javax.json.bind.annotation.JsonbProperty;
 import javax.json.bind.annotation.JsonbTransient;

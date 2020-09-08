@@ -25,6 +25,7 @@ import org.tomitribe.github.app.events.RepositoriesPage;
 import org.tomitribe.github.app.events.Repository;
 import org.tomitribe.github.app.events.Topics;
 import org.tomitribe.github.core.Api;
+import org.tomitribe.github.core.Request;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.Invocation;
@@ -37,8 +38,8 @@ import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.Consumer;
 import java.util.stream.Stream;
 
-import static org.tomitribe.github.app.Request.from;
-import static org.tomitribe.github.app.Request.target;
+import static org.tomitribe.github.core.Request.from;
+import static org.tomitribe.github.core.Request.target;
 
 /**
  * Using the `org.kohsuke.github.GitHub` client is preferred, however it doesn't

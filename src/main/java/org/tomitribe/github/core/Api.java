@@ -17,9 +17,6 @@
 package org.tomitribe.github.core;
 
 
-import org.tomitribe.github.app.JsonMarshalling;
-import org.tomitribe.github.app.Request;
-import org.tomitribe.github.app.Suppliers;
 import org.tomitribe.github.app.events.Link;
 
 import javax.json.bind.Jsonb;

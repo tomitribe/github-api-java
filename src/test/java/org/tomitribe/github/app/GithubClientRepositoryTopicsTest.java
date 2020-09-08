@@ -20,6 +20,7 @@ package org.tomitribe.github.app;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.tomitribe.github.app.events.Topics;
+import org.tomitribe.github.core.JsonMarshalling;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.HeaderParam;

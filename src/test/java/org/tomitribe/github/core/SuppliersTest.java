@@ -14,9 +14,10 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package org.tomitribe.github.app;
+package org.tomitribe.github.core;
 
 import org.junit.Test;
+import org.tomitribe.github.core.Suppliers;
 import org.tomitribe.util.Join;
 
 import java.util.ArrayList;

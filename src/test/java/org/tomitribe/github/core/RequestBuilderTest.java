@@ -14,9 +14,10 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package org.tomitribe.github.app;
+package org.tomitribe.github.core;
 
 import org.junit.Test;
+import org.tomitribe.github.core.Request;
 
 import static org.junit.Assert.assertEquals;
 

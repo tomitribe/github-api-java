@@ -17,7 +17,7 @@
 package org.tomitribe.github.app.events;
 
 import org.junit.Assert;
-import org.tomitribe.github.app.JsonbInstances;
+import org.tomitribe.github.core.JsonbInstances;
 import org.tomitribe.util.IO;
 import org.tomitribe.util.PrintString;
 
