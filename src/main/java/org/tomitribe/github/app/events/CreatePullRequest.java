@@ -22,6 +22,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.json.bind.annotation.JsonbProperty;
+import javax.json.bind.annotation.JsonbTransient;
+import javax.ws.rs.PathParam;
 
 /**
  * Example:
@@ -38,6 +40,14 @@ import javax.json.bind.annotation.JsonbProperty;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CreatePullRequest {
+
+    @JsonbTransient
+    @PathParam("owner")
+    private String owner;
+
+    @JsonbTransient
+    @PathParam("repo")
+    private String repo;
 
     /**
      * Required. The title of the new pull request.

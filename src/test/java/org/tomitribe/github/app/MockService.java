@@ -28,10 +28,13 @@ import java.net.URL;
 public interface MockService {
 
     static URI run(final Class<?> serviceClass) throws Exception {
+        // We intentionally put a fake path component /foo in there
+        // to ensure that all client API calls can handle speaking
+        // to a relative path
         return Server.builder()
-                .add("webapps/ROOT/WEB-INF/classes", Archive.archive()
+                .add("webapps/foo/WEB-INF/classes", Archive.archive()
                         .add(serviceClass)
-                ).build().getURI();
+                ).build().getURI().resolve("/foo");
     }
 
     default Response response(final String name) throws IOException {

@@ -46,6 +46,8 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.stream.Stream;
 
+import static org.tomitribe.github.app.Request.target;
+
 /**
  * Using the `org.kohsuke.github.GitHub` client is preferred, however it doesn't
  * implement any of the preview APIs.
@@ -79,15 +81,24 @@ public class GithubClient {
     };
 
     private final URI host;
-    private final List<Consumer<Request>> handlers;
+    private final List<Consumer<Invocation.Builder>> handlers;
     private final Consumer<Object> responses;
     private final Client client;
 
-    private GithubClient(final URI host, final Client client, final List<Consumer<Request>> handlers, final Consumer<Object> responses) {
-        this.host = host;
+    private GithubClient(final URI host, final Client client, final List<Consumer<Invocation.Builder>> handlers, final Consumer<Object> responses) {
+        this.host = normalize(host);
         this.handlers = handlers;
-        this.client = client;
+        this.client = client
+//                .register(new MessageLogger.RequestFilter())
+//                .register(new MessageLogger.ResponseFilter())
+        ;
         this.responses = responses;
+    }
+
+    private URI normalize(final URI uri) {
+        final String string = uri.toASCIIString();
+        if (string.endsWith("/")) return uri;
+        return URI.create(string + "/");
     }
 
     /**
@@ -99,18 +110,12 @@ public class GithubClient {
      * @return the full list of topics on this repository
      */
     public List<String> getTopics(final String owner, final String repo) {
-        final String content = client.target(host.resolve(String.format("/repos/%s/%s/topics", owner, repo)))
+        final String content = client.target(host.resolve(String.format("repos/%s/%s/topics", owner, repo)))
                 .request()
                 .accept("application/vnd.github.mercy-preview+json")
                 .get(String.class);
 
         return JsonMarshalling.unmarshal(Topics.class, content).getNames();
-    }
-
-    public class Installations {
-        public String getAccessToken(final long installationId) {
-            return post(String.class, "/app/installations/%s/access_tokens", installationId);
-        }
     }
 
     /**
@@ -123,8 +128,11 @@ public class GithubClient {
      * @return the full list of topics now on this repository
      */
     public List<String> setTopics(final String owner, final String repo, final List<String> topics) {
+        final Request<Topics> request = target("repos/{owner}/{repo}/topics", owner, repo)
+                .body(new Topics(topics))
+                .response(Topics.class);
 
-        final Topics response = put(new Topics(topics), Topics.class, "/repos/%s/%s/topics", owner, repo);
+        final Topics response = put(request);
 
         return response.getNames();
     }
@@ -166,7 +174,7 @@ public class GithubClient {
      * @return the full list of topics now on this repository
      */
     public Repository getRepository(final String owner, final String repo) {
-        return get(Repository.class, "/repos/%s/%s", owner, repo);
+        return get(target("repos/{owner}/{repo}").response(Repository.class));
     }
 
     /**
@@ -198,6 +206,8 @@ public class GithubClient {
                                          final boolean maintainerCanModify,
                                          final boolean draft) {
         final CreatePullRequest createPullRequest = CreatePullRequest.builder()
+                .owner(owner)
+                .repo(repo)
                 .title(title)
                 .head(head)
                 .base(base)
@@ -206,7 +216,39 @@ public class GithubClient {
                 .draft(draft)
                 .build();
 
-        return post(createPullRequest, PullRequest.class, "/repos/%s/%s/pulls", owner, repo);
+        return createPullRequest(createPullRequest);
+    }
+
+    public PullRequest createPullRequest(final CreatePullRequest createPullRequest) {
+        final Request request = Request.from("repos/{owner}/{repo}/pulls", createPullRequest);
+
+
+        return post(request, PullRequest.class);
+    }
+
+    /**
+     * Executes a POST to the specified path using the specified 'post' object
+     * marshalled to json via Jsonb and sent as 'application/json'
+     *
+     * @param responseType  A Jsonb compatible class to marshall the response
+     * @param <JsonbType> A Jsonb compatible class to marshall the response
+     * @return A fully Jsonb unmarshalled instance of JsonbType
+     */
+    private <JsonbType> JsonbType post(final Request request, final Class<JsonbType> responseType) {
+        final URI uri = request.getURI();
+        final Invocation.Builder builder = client.target(resolve(uri))
+                .request()
+                .accept(MEDIA_TYPES);
+
+        handlers.forEach(requestConsumer -> requestConsumer.accept(builder));
+
+        final Entity<String> entity = request.getEntity();
+
+        final String content = builder.post(entity, String.class);
+
+        responses.accept(content);
+
+        return JsonMarshalling.unmarshal(responseType, content);
     }
 
     /**
@@ -221,17 +263,17 @@ public class GithubClient {
      * @see <a href="https://help.github.com/en/articles/searching-for-repositories">Repository Search Syntax</a>
      */
     public Stream<Repository> searchRepositories(final String queryString) {
-        final URI target = host.resolve("/search/repositories?" + queryString);
+        final URI target = host.resolve("search/repositories?" + queryString);
         // new RecordPayloads<>(new File("/Users/dblevins/work/tomitribe/github-api-java/src/test/resources/GithubClientSearchRepositoriesTest"), "page")
         return stream(target, RepositoriesPage.class, RepositoriesPage::getItems);
     }
 
     public PullRequest getPullRequest(final String owner, final String repo, final int pullNumber) {
-        return get(PullRequest.class, "/repos/%s/%s/pulls/%s", owner, repo, pullNumber);
+        return get(target("repos/{owner}/{repo}/pulls/{pull_number}", owner, repo, pullNumber).response(PullRequest.class));
     }
 
     public Stream<PullRequest> listPullRequests(final String owner, final String repo) {
-        return stream(PullRequest[].class, Arrays::asList, "/repos/%s/%s/pulls", owner, repo);
+        return stream(PullRequest[].class, Arrays::asList, "repos/%s/%s/pulls", owner, repo);
     }
 
     /**
@@ -245,31 +287,24 @@ public class GithubClient {
      * @see <a href="https://help.github.com/en/articles/searching-code">Code Search Syntax</a>
      */
     public Stream<Code> searchCode(final String queryString) {
-        final URI target = host.resolve("/search/code?" + queryString);
+        final URI target = host.resolve("search/code?" + queryString);
 
         return stream(target, CodePage.class, CodePage::getItems);
-    }
-
-    private Invocation.Builder request(final String path, final Object... details) {
-        final Invocation.Builder builder = client.target(resolve(path, details))
-                .request()
-                .accept(MEDIA_TYPES);
-
-        final Request request = new Request(builder);
-        handlers.forEach(requestConsumer -> requestConsumer.accept(request));
-
-        return builder;
     }
 
     private URI resolve(final String path, final Object... details) {
         return host.resolve(String.format(path, details));
     }
 
-    public static Consumer<Request> oauthTokenAuthentication(final String oauthToken) {
+    private URI resolve(final URI path) {
+        return host.resolve(path);
+    }
+
+    public static Consumer<Invocation.Builder> oauthTokenAuthentication(final String oauthToken) {
         return request -> request.header("Authorization", "token " + oauthToken);
     }
 
-    public static Consumer<Request> githubAppAuthentication(final GithubApp githubApp) {
+    public static Consumer<Invocation.Builder> githubAppAuthentication(final GithubApp githubApp) {
         final AtomicReference<Token> cache = new AtomicReference<>(githubApp.createToken());
         return request -> {
             final Token token = cache.updateAndGet(current -> current.isExpired() ? githubApp.createToken() : current);
@@ -278,79 +313,33 @@ public class GithubClient {
     }
 
     /**
-     * Executes a POST to the specified path using no payload
-     *
-     * @param responseType  A Jsonb compatible class to marshall the response
-     * @param path the API path relative to host used to build this client
-     * @param details the path parameters that apply to the path
-     * @param <JsonbType> A Jsonb compatible class to marshall the response
-     * @return A fully Jsonb unmarshalled instance of JsonbType
-     */
-    private <JsonbType> JsonbType post(final Class<JsonbType> responseType, final String path, final Object... details) {
-        final String content = request(path, details).post(null, String.class);
-
-        responses.accept(content);
-
-        return JsonMarshalling.unmarshal(responseType, content);
-    }
-
-    /**
-     * Executes a POST to the specified path using the specified 'post' object
-     * marshalled to json via Jsonb and sent as 'application/json'
-     *
-     * @param responseType  A Jsonb compatible class to marshall the response
-     * @param path the API path relative to host used to build this client
-     * @param details the path parameters that apply to the path
-     * @param <JsonbType> A Jsonb compatible class to marshall the response
-     * @return A fully Jsonb unmarshalled instance of JsonbType
-     */
-    private <JsonbType> JsonbType post(final Object post, final Class<JsonbType> responseType, final String path, final Object... details) {
-        final String payload = JsonMarshalling.toFormattedJson(post);
-        final Entity<String> entity = Entity.entity(payload, MediaType.APPLICATION_JSON_TYPE);
-
-        final String content = request(path, details).post(entity, String.class);
-
-        responses.accept(content);
-
-        return JsonMarshalling.unmarshal(responseType, content);
-    }
-
-    /**
      * Executes a PUT to the specified path using the specified 'put' object
      * marshalled to json via Jsonb and sent as 'application/json'
      *
-     * @param responseType  A Jsonb compatible class to marshall the response
-     * @param path the API path relative to host used to build this client
-     * @param details the path parameters that apply to the path
      * @param <JsonbType> A Jsonb compatible class to marshall the response
      * @return A fully Jsonb unmarshalled instance of JsonbType
      */
-    private <JsonbType> JsonbType put(final Object put, final Class<JsonbType> responseType, final String path, final Object... details) {
-        final String payload = JsonMarshalling.toFormattedJson(put);
-        final Entity<String> entity = Entity.entity(payload, MediaType.APPLICATION_JSON_TYPE);
+    private <JsonbType> JsonbType put(final Request<JsonbType> request) {
+        Objects.requireNonNull(request, () -> "Request cannot be null");
+        Objects.requireNonNull(request.getResponseType(), () -> "Request responseType cannot be null");
 
-        final String content = request(path, details).put(entity, String.class);
+        final URI uri = request.getURI();
 
-        responses.accept(content);
+        Objects.requireNonNull(uri, () -> "Request.getURI cannot be null");
 
-        return JsonMarshalling.unmarshal(responseType, content);
-    }
+        final Invocation.Builder builder = client.target(resolve(uri))
+                .request()
+                .accept(MEDIA_TYPES);
 
-    /**
-     * Executes a PUT to the specified path using no payload
-     *
-     * @param responseType  A Jsonb compatible class to marshall the response
-     * @param path the API path relative to host used to build this client
-     * @param details the path parameters that apply to the path
-     * @param <JsonbType> A Jsonb compatible class to marshall the response
-     * @return A fully Jsonb unmarshalled instance of JsonbType
-     */
-    private <JsonbType> JsonbType put(final Class<JsonbType> responseType, final String path, final Object... details) {
-        final String content = request(path, details).put(null, String.class);
+        handlers.forEach(requestConsumer -> requestConsumer.accept(builder));
+
+        final Entity<String> entity = request.getEntity();
+
+        final String content = builder.put(entity, String.class);
 
         responses.accept(content);
 
-        return JsonMarshalling.unmarshal(responseType, content);
+        return (JsonbType) JsonMarshalling.unmarshal(request.getResponseType(), content);
     }
 
     /**
@@ -358,33 +347,20 @@ public class GithubClient {
      * marshalled to json via Jsonb and sent as 'application/json'
      *
      * @param responseType  A Jsonb compatible class to marshall the response
-     * @param path the API path relative to host used to build this client
-     * @param details the path parameters that apply to the path
      * @param <JsonbType> A Jsonb compatible class to marshall the response
      * @return A fully Jsonb unmarshalled instance of JsonbType
      */
-    private <JsonbType> JsonbType patch(final Object patch, final Class<JsonbType> responseType, final String path, final Object... details) {
-        final String payload = JsonMarshalling.toFormattedJson(patch);
-        final Entity<String> entity = Entity.entity(payload, MediaType.APPLICATION_JSON_TYPE);
+    private <JsonbType> JsonbType patch(final Request request, final Class<JsonbType> responseType) {
+        final URI uri = request.getURI();
+        final Invocation.Builder builder = client.target(resolve(uri))
+                .request()
+                .accept(MEDIA_TYPES);
 
-        final String content = request(path, details).method("PATCH", entity, String.class);
+        handlers.forEach(requestConsumer -> requestConsumer.accept(builder));
 
-        responses.accept(content);
+        final Entity<String> entity = request.getEntity();
 
-        return JsonMarshalling.unmarshal(responseType, content);
-    }
-
-    /**
-     * Executes a PATCH to the specified path using no payload
-     *
-     * @param responseType  A Jsonb compatible class to marshall the response
-     * @param path the API path relative to host used to build this client
-     * @param details the path parameters that apply to the path
-     * @param <JsonbType> A Jsonb compatible class to marshall the response
-     * @return A fully Jsonb unmarshalled instance of JsonbType
-     */
-    private <JsonbType> JsonbType patch(final Class<JsonbType> responseType, final String path, final Object... details) {
-        final String content = request(path, details).method("PATCH", String.class);
+        final String content = builder.method("PATCH", entity, String.class);
 
         responses.accept(content);
 
@@ -394,53 +370,64 @@ public class GithubClient {
     /**
      * Executes a GET to the specified path
      *
-     * @param responseType  A Jsonb compatible class to marshall the response
-     * @param path the API path relative to host used to build this client
-     * @param details the path parameters that apply to the path
      * @param <JsonbType> A Jsonb compatible class to marshall the response
      * @return A fully Jsonb unmarshalled instance of JsonbType
      */
-    private <JsonbType> JsonbType get(final Class<JsonbType> responseType, final String path, final Object... details) {
-        final String content = request(path, details).get(String.class);
+    private <JsonbType> JsonbType get(final Request<JsonbType> request) {
+        final URI uri = request.getURI();
+        final Invocation.Builder builder = client.target(resolve(uri))
+                .request()
+                .accept(MEDIA_TYPES);
+
+        handlers.forEach(requestConsumer -> requestConsumer.accept(builder));
+
+        final String content = builder.get(String.class);
 
         responses.accept(content);
 
-        return JsonMarshalling.unmarshal(responseType, content);
+        return JsonMarshalling.unmarshal(request.getResponseType(), content);
     }
 
     /**
      * Executes a DELETE to the specified path
      *
      * @param responseType  A Jsonb compatible class to marshall the response
-     * @param path the API path relative to host used to build this client
-     * @param details the path parameters that apply to the path
      * @param <JsonbType> A Jsonb compatible class to marshall the response
      * @return A fully Jsonb unmarshalled instance of JsonbType
      */
-    private <JsonbType> JsonbType delete(final Class<JsonbType> responseType, final String path, final Object... details) {
-        final String content = request(path, details).delete(String.class);
+    private <JsonbType> JsonbType delete(final Request request, final Class<JsonbType> responseType) {
+        final URI uri = request.getURI();
+        final Invocation.Builder builder = client.target(resolve(uri))
+                .request()
+                .accept(MEDIA_TYPES);
+
+        handlers.forEach(requestConsumer -> requestConsumer.accept(builder));
+
+        final String content = builder.get(String.class);
 
         responses.accept(content);
 
         return JsonMarshalling.unmarshal(responseType, content);
     }
 
-    private class PagedSupplier<JsonbType> implements Supplier<JsonbType> {
+    private class Paged<JsonbType> implements Supplier<JsonbType> {
         private final Class<JsonbType> jsonbType;
-        private URI next;
+        private Invocation.Builder next;
 
-        public PagedSupplier(final URI next, final Class<JsonbType> jsonbType) {
-            this.next = next;
+        public Paged(final Class<JsonbType> jsonbType, final URI target) {
+            this(jsonbType, client.target(target).request());
+        }
+
+        public Paged(final Class<JsonbType> jsonbType, final Invocation.Builder invocation) {
             this.jsonbType = jsonbType;
+            this.next = invocation;
         }
 
         @Override
         public JsonbType get() {
             if (next == null) return null;
 
-            final Response response = client.target(next)
-                    .request()
-                    .get();
+            final Response response = next.get();
 
             try {
                 final String json = response.readEntity(String.class);
@@ -451,7 +438,7 @@ public class GithubClient {
                 final Link link = Link.parse(response.getHeaderString("Link"));
 
                 if (link.hasNext()) {
-                    next = link.getNext();
+                    next = client.target(link.getNext()).request();
                 } else {
                     next = null;
                 }
@@ -459,13 +446,14 @@ public class GithubClient {
         }
     }
 
+
     private <Page, Item> Stream<Item> stream(final Class<Page> pageClass, final Function<Page, List<Item>> getItems, final String path, final Object... details) {
         final URI target = resolve(path, details);
         return stream(target, pageClass, getItems);
     }
 
     private <Page, Item> Stream<Item> stream(final URI target, final Class<Page> pageClass, final Function<Page, List<Item>> getItems) {
-        final PagedSupplier<Page> supplier = new PagedSupplier(target, pageClass);
+        final Paged<Page> supplier = new Paged(pageClass, target);
 
         return Suppliers.asStream(supplier)
                 .map(getItems)
@@ -480,7 +468,7 @@ public class GithubClient {
     public static class Builder {
         private URI api;
         private Client client;
-        private final List<Consumer<Request>> handlers = new ArrayList<>();
+        private final List<Consumer<Invocation.Builder>> handlers = new ArrayList<>();
         private Consumer<Object> responses = o -> {
         };
 
@@ -520,26 +508,4 @@ public class GithubClient {
             return new GithubClient(api, client, handlers, responses);
         }
     }
-
-    /**
-     * Thin abstraction so we don't bind ourselves to Jersey Client
-     */
-    public static class Request {
-        private final Invocation.Builder builder;
-
-        public Request(final Invocation.Builder builder) {
-            this.builder = builder;
-        }
-
-        public Request accept(final MediaType... mediaTypes) {
-            builder.accept(mediaTypes);
-            return this;
-        }
-
-        public Request header(final String name, final Object value) {
-            builder.header(name, value);
-            return this;
-        }
-    }
-
 }
