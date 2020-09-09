@@ -17,7 +17,7 @@
 package org.tomitribe.github.core;
 
 
-import org.tomitribe.github.app.events.Link;
+import org.tomitribe.github.model.Link;
 
 import javax.json.bind.Jsonb;
 import javax.json.bind.JsonbBuilder;
