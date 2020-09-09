@@ -17,6 +17,8 @@
 package org.tomitribe.github.client;
 
 
+import org.tomitribe.github.core.Api;
+import org.tomitribe.github.core.Request;
 import org.tomitribe.github.model.Code;
 import org.tomitribe.github.model.CodePage;
 import org.tomitribe.github.model.CreatePullRequest;
@@ -24,8 +26,6 @@ import org.tomitribe.github.model.PullRequest;
 import org.tomitribe.github.model.RepositoriesPage;
 import org.tomitribe.github.model.Repository;
 import org.tomitribe.github.model.Topics;
-import org.tomitribe.github.core.Api;
-import org.tomitribe.github.core.Request;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.Invocation;
@@ -175,7 +175,7 @@ public class GithubClient {
     }
 
     public Stream<PullRequest> listPullRequests(final String owner, final String repo) {
-        return client.stream(PullRequest[].class, Arrays::asList, "repos/%s/%s/pulls", owner, repo);
+        return client.stream(target("repos/{owner}/{repo}/pulls", owner, repo).response(PullRequest[].class), Arrays::asList);
     }
 
     /**

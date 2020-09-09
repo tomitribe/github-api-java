@@ -193,6 +193,37 @@ public class Api {
         return JsonMarshalling.unmarshal(responseType, content);
     }
 
+    public <Page, Item> Stream<Item> stream(final Request<Page> request, final Function<Page, List<Item>> getItems) {
+        final URI uri = resolve(request.getURI());
+        final Invocation.Builder builder = client.target(uri)
+                .request()
+                .accept(mediaTypes);
+
+        handlers.forEach(requestConsumer -> requestConsumer.accept(builder));
+
+        final Paged<Page> supplier = new Paged<>(request.getResponseType(), uri);
+
+        return Suppliers.asStream(supplier)
+                .map(getItems)
+                .filter(Objects::nonNull)
+                .flatMap(Collection::stream);
+    }
+
+    public <Page, Item> Stream<Item> stream(final Class<Page> pageClass, final Function<Page, List<Item>> getItems, final String path, final Object... details) {
+        final URI target = resolve(path, details);
+        return stream(target, pageClass, getItems);
+    }
+
+    public <Page, Item> Stream<Item> stream(final URI target, final Class<Page> pageClass, final Function<Page, List<Item>> getItems) {
+        final Paged<Page> supplier = new Paged(pageClass, target);
+
+        return Suppliers.asStream(supplier)
+                .map(getItems)
+                .filter(Objects::nonNull)
+                .flatMap(Collection::stream);
+    }
+
+
     private class Paged<JsonbType> implements Supplier<JsonbType> {
         private final Class<JsonbType> jsonbType;
         private Invocation.Builder next;
@@ -229,20 +260,6 @@ public class Api {
         }
     }
 
-
-    public <Page, Item> Stream<Item> stream(final Class<Page> pageClass, final Function<Page, List<Item>> getItems, final String path, final Object... details) {
-        final URI target = resolve(path, details);
-        return stream(target, pageClass, getItems);
-    }
-
-    public <Page, Item> Stream<Item> stream(final URI target, final Class<Page> pageClass, final Function<Page, List<Item>> getItems) {
-        final Paged<Page> supplier = new Paged(pageClass, target);
-
-        return Suppliers.asStream(supplier)
-                .map(getItems)
-                .filter(Objects::nonNull)
-                .flatMap(Collection::stream);
-    }
 
     public static Builder builder() {
         return new Builder();
