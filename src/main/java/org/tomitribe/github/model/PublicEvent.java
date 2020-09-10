@@ -20,12 +20,12 @@ package org.tomitribe.github.model;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.json.bind.annotation.JsonbProperty;
 
 /**
-
  * <p>Triggered when a private repository is made <a href="/v3/repos/#edit">public</a>.  Without a
  * doubt: the best GitHub event.</p>
  * Used by:
@@ -36,7 +36,8 @@ import javax.json.bind.annotation.JsonbProperty;
 @AllArgsConstructor
 @NoArgsConstructor
 @GithubEvent("public")
-public class PublicEvent {
+@EqualsAndHashCode(callSuper = true)
+public class PublicEvent extends Event {
 
     @JsonbProperty("repository")
     private Repository repository;

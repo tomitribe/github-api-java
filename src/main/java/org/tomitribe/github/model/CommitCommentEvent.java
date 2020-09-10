@@ -20,12 +20,12 @@ package org.tomitribe.github.model;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.json.bind.annotation.JsonbProperty;
 
 /**
-
  * <p>Triggered when a <a href="/v3/repos/comments/#list-commit-comments-for-a-repository">commit
  * comment</a> is created.</p>
  * Used by:
@@ -36,7 +36,8 @@ import javax.json.bind.annotation.JsonbProperty;
 @AllArgsConstructor
 @NoArgsConstructor
 @GithubEvent("commit_comment")
-public class CommitCommentEvent {
+@EqualsAndHashCode(callSuper = true)
+public class CommitCommentEvent extends Event {
 
     @JsonbProperty("action")
     private String action;

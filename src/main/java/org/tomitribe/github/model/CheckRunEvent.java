@@ -20,12 +20,12 @@ package org.tomitribe.github.model;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.json.bind.annotation.JsonbProperty;
 
 /**
-
  * <p>Triggered when a check run is <code>created</code>, <code>rerequested</code>,
  * <code>completed</code>, or has a <code>requested_action</code>. The <code>checks</code> permission
  * allows you to use the checks API. If you plan to create or modify check runs, your GitHub App will
@@ -64,7 +64,8 @@ import javax.json.bind.annotation.JsonbProperty;
 @AllArgsConstructor
 @NoArgsConstructor
 @GithubEvent("check_run")
-public class CheckRunEvent {
+@EqualsAndHashCode(callSuper = true)
+public class CheckRunEvent extends Event {
 
     @JsonbProperty("action")
     private String action;

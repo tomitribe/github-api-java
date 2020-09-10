@@ -20,12 +20,12 @@ package org.tomitribe.github.model;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.json.bind.annotation.JsonbProperty;
 
 /**
-
  * <p>Triggered when someone revokes their authorization of a GitHub App. A GitHub App receives this
  * webhook by default and cannot unsubscribe from this event. This event is not available in the <a
  * href="/v3/activity/events/">Events API</a>.</p>
@@ -47,7 +47,8 @@ import javax.json.bind.annotation.JsonbProperty;
 @AllArgsConstructor
 @NoArgsConstructor
 @GithubEvent("github_app_authorization")
-public class GitHubAppAuthorizationEvent {
+@EqualsAndHashCode(callSuper = true)
+public class GitHubAppAuthorizationEvent extends Event {
 
     @JsonbProperty("action")
     private String action;

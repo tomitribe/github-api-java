@@ -20,12 +20,12 @@ package org.tomitribe.github.model;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.json.bind.annotation.JsonbProperty;
 
 /**
-
  * <p>Triggered when a repository's label is <code>created</code>, <code>edited</code>, or
  * <code>deleted</code>.</p>
  *
@@ -39,7 +39,8 @@ import javax.json.bind.annotation.JsonbProperty;
 @AllArgsConstructor
 @NoArgsConstructor
 @GithubEvent("label")
-public class LabelEvent {
+@EqualsAndHashCode(callSuper = true)
+public class LabelEvent extends Event {
 
     @JsonbProperty("action")
     private String action;

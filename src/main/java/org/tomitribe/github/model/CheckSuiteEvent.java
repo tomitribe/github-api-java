@@ -20,12 +20,12 @@ package org.tomitribe.github.model;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.json.bind.annotation.JsonbProperty;
 
 /**
-
  * <p>Triggered when a check suite is <code>completed</code>, <code>requested</code>, or
  * <code>rerequested</code>. The <code>checks</code> permission allows you to use the Checks API. If
  * you plan to create or modify check runs, your GitHub App will need to have the
@@ -64,7 +64,8 @@ import javax.json.bind.annotation.JsonbProperty;
 @AllArgsConstructor
 @NoArgsConstructor
 @GithubEvent("check_suite")
-public class CheckSuiteEvent {
+@EqualsAndHashCode(callSuper = true)
+public class CheckSuiteEvent extends Event {
 
     /**
      * The action performed. Can be <code>completed</code>, <code>requested</code> or

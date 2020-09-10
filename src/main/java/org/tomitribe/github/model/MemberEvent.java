@@ -20,12 +20,12 @@ package org.tomitribe.github.model;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.json.bind.annotation.JsonbProperty;
 
 /**
-
  * <p>Triggered when a user accepts an invitation or is removed as a collaborator to a repository, or
  * has their permissions changed.</p>
  * Used by:
@@ -36,7 +36,8 @@ import javax.json.bind.annotation.JsonbProperty;
 @AllArgsConstructor
 @NoArgsConstructor
 @GithubEvent("member")
-public class MemberEvent {
+@EqualsAndHashCode(callSuper = true)
+public class MemberEvent extends Event {
 
     /**
      * The action that was performed. Can be one of <code>added</code>, <code>deleted</code>, or

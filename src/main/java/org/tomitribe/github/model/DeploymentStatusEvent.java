@@ -20,12 +20,12 @@ package org.tomitribe.github.model;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.json.bind.annotation.JsonbProperty;
 
 /**
-
  * <p>Represents a <a href="/v3/repos/deployments/#list-deployment-statuses">deployment status</a>.</p>
  *
  * <p>Events of this type are not visible in timelines. These events are only used to trigger
@@ -38,7 +38,8 @@ import javax.json.bind.annotation.JsonbProperty;
 @AllArgsConstructor
 @NoArgsConstructor
 @GithubEvent("deployment_status")
-public class DeploymentStatusEvent {
+@EqualsAndHashCode(callSuper = true)
+public class DeploymentStatusEvent extends Event {
 
     /**
      * The <a href="/v3/repos/deployments/#list-deployment-statuses">deployment status</a>.

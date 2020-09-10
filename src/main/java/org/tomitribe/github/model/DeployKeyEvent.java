@@ -20,12 +20,12 @@ package org.tomitribe.github.model;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.json.bind.annotation.JsonbProperty;
 
 /**
-
  * <p>Triggered when a deploy key is added or removed from a repository.</p>
  * Used by:
  * - 
@@ -35,7 +35,8 @@ import javax.json.bind.annotation.JsonbProperty;
 @AllArgsConstructor
 @NoArgsConstructor
 @GithubEvent("deploy_key")
-public class DeployKeyEvent {
+@EqualsAndHashCode(callSuper = true)
+public class DeployKeyEvent extends Event {
 
     /**
      * The action performed. Can be either <code>created</code> or <code>deleted</code>.

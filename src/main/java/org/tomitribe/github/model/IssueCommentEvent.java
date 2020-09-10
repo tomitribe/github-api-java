@@ -20,12 +20,12 @@ package org.tomitribe.github.model;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.json.bind.annotation.JsonbProperty;
 
 /**
-
  * <p>Triggered when an <a href="/v3/issues/comments/">issue comment</a> is <code>created</code>,
  * <code>edited</code>, or <code>deleted</code>.</p>
  * Used by:
@@ -36,7 +36,8 @@ import javax.json.bind.annotation.JsonbProperty;
 @AllArgsConstructor
 @NoArgsConstructor
 @GithubEvent("issue_comment")
-public class IssueCommentEvent {
+@EqualsAndHashCode(callSuper = true)
+public class IssueCommentEvent extends Event {
 
     /**
      * The action that was performed on the comment. Can be one of <code>created</code>,

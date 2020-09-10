@@ -20,12 +20,12 @@ package org.tomitribe.github.model;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.json.bind.annotation.JsonbProperty;
 
 /**
-
  * <p>Triggered when a user <a href="/v3/repos/forks/#create-a-fork">forks a repository</a>.</p>
  * Used by:
  * - 
@@ -35,7 +35,8 @@ import javax.json.bind.annotation.JsonbProperty;
 @AllArgsConstructor
 @NoArgsConstructor
 @GithubEvent("fork")
-public class ForkEvent {
+@EqualsAndHashCode(callSuper = true)
+public class ForkEvent extends Event {
 
     /**
      * The created <a href="/v3/repos/">repository</a>.

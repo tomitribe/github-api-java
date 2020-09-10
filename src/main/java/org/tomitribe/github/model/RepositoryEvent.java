@@ -20,12 +20,12 @@ package org.tomitribe.github.model;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.json.bind.annotation.JsonbProperty;
 
 /**
-
  * <p>Triggered when a repository is <code>created</code>, <code>archived</code>,
  * <code>unarchived</code>, <code>renamed</code>, <code>edited</code>, <code>transferred</code>, made
  * public, or made private. <a href="/v3/orgs/hooks/">Organization hooks</a> are also triggered when a
@@ -41,7 +41,8 @@ import javax.json.bind.annotation.JsonbProperty;
 @AllArgsConstructor
 @NoArgsConstructor
 @GithubEvent("repository")
-public class RepositoryEvent {
+@EqualsAndHashCode(callSuper = true)
+public class RepositoryEvent extends Event {
 
     /**
      * The action that was performed. This can be one of <code>created</code>, <code>deleted</code> (<a

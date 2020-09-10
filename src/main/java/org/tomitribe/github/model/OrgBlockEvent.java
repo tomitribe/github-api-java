@@ -20,12 +20,12 @@ package org.tomitribe.github.model;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.json.bind.annotation.JsonbProperty;
 
 /**
-
  * <p>Triggered when an organization blocks or unblocks a user. These events are only used to trigger
  * organization hooks.</p>
  * Used by:
@@ -36,7 +36,8 @@ import javax.json.bind.annotation.JsonbProperty;
 @AllArgsConstructor
 @NoArgsConstructor
 @GithubEvent("org_block")
-public class OrgBlockEvent {
+@EqualsAndHashCode(callSuper = true)
+public class OrgBlockEvent extends Event {
 
     /**
      * The action performed. Can be <code>blocked</code> or <code>unblocked</code>.

@@ -20,12 +20,12 @@ package org.tomitribe.github.model;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.json.bind.annotation.JsonbProperty;
 
 /**
-
  * <p>Triggered when a successful, cancelled, or failed repository import finishes for a GitHub
  * organization or a personal repository. To receive this event for a personal repository, you must
  * create an empty repository prior to the import. This event can be triggered using either the <a
@@ -39,7 +39,8 @@ import javax.json.bind.annotation.JsonbProperty;
 @AllArgsConstructor
 @NoArgsConstructor
 @GithubEvent("repository_import")
-public class RepositoryImportEvent {
+@EqualsAndHashCode(callSuper = true)
+public class RepositoryImportEvent extends Event {
 
     /**
      * The final state of the import. This can be one of <code>success</code>, <code>cancelled</code>, or

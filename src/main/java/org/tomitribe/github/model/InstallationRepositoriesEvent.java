@@ -20,13 +20,13 @@ package org.tomitribe.github.model;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.json.bind.annotation.JsonbProperty;
 import java.util.List;
 
 /**
-
  * <p>Triggered when a repository is <code>added</code> or <code>removed</code> from an
  * installation.</p>
  * Used by:
@@ -37,7 +37,8 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @GithubEvent("installation_repositories")
-public class InstallationRepositoriesEvent {
+@EqualsAndHashCode(callSuper = true)
+public class InstallationRepositoriesEvent extends Event {
 
     /**
      * The action that was performed. Can be either <code>added</code> or <code>removed</code>.

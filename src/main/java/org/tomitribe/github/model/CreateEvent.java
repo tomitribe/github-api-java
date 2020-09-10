@@ -20,12 +20,12 @@ package org.tomitribe.github.model;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.json.bind.annotation.JsonbProperty;
 
 /**
-
  * <p>Represents a created branch or tag.</p>
  *
  * <div class="alert note">
@@ -42,7 +42,8 @@ import javax.json.bind.annotation.JsonbProperty;
 @AllArgsConstructor
 @NoArgsConstructor
 @GithubEvent("create")
-public class CreateEvent {
+@EqualsAndHashCode(callSuper = true)
+public class CreateEvent extends Event {
 
     /**
      * The <a href="/v3/git/refs/"><code>git ref</code></a>.

@@ -20,12 +20,12 @@ package org.tomitribe.github.model;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.json.bind.annotation.JsonbProperty;
 
 /**
-
  * <p>Triggered when a <a href="/v3/teams/#add-or-update-team-repository">repository is added to a
  * team</a>.</p>
  *
@@ -39,7 +39,8 @@ import javax.json.bind.annotation.JsonbProperty;
 @AllArgsConstructor
 @NoArgsConstructor
 @GithubEvent("team_add")
-public class TeamAddEvent {
+@EqualsAndHashCode(callSuper = true)
+public class TeamAddEvent extends Event {
 
     /**
      * The <a href="/v3/teams/">team</a> that was modified.  <strong>Note:</strong> Older events may not

@@ -80,7 +80,7 @@ public class CreatePullRequest {
 
     /**
      * Indicates whether maintainers can modify the pull request.
-     * 
+     *
      * https://help.github.com/articles/allowing-changes-to-a-pull-request-branch-created-from-a-fork/
      */
     @JsonbProperty("maintainer_can_modify")
@@ -89,7 +89,7 @@ public class CreatePullRequest {
     /**
      * Indicates whether the pull request is a draft. See "Draft Pull Requests"
      * in the GitHub Help documentation to learn more.
-     * 
+     *
      * https://help.github.com/en/articles/about-pull-requests#draft-pull-requests
      */
     @JsonbProperty("draft")

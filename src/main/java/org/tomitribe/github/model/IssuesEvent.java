@@ -20,12 +20,12 @@ package org.tomitribe.github.model;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.json.bind.annotation.JsonbProperty;
 
 /**
-
  * <p>Triggered when an <a href="/v3/issues">issue</a> is <code>opened</code>, <code>edited</code>,
  * <code>deleted</code>, <code>transferred</code>, <code>pinned</code>, <code>unpinned</code>,
  * <code>closed</code>, <code>reopened</code>, <code>assigned</code>, <code>unassigned</code>,
@@ -39,7 +39,8 @@ import javax.json.bind.annotation.JsonbProperty;
 @AllArgsConstructor
 @NoArgsConstructor
 @GithubEvent("issues")
-public class IssuesEvent {
+@EqualsAndHashCode(callSuper = true)
+public class IssuesEvent extends Event {
 
     /**
      * The action that was performed. Can be one of <code>opened</code>, <code>edited</code>,

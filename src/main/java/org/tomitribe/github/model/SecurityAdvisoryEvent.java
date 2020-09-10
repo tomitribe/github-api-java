@@ -20,12 +20,12 @@ package org.tomitribe.github.model;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.json.bind.annotation.JsonbProperty;
 
 /**
-
  * <p>Triggered when a new security advisory is published, updated, or withdrawn. A security advisory
  * provides information about security-related vulnerabilities in software on GitHub. Security Advisory
  * webhooks are available to GitHub Apps only. The security advisory dataset also powers the GitHub
@@ -40,7 +40,8 @@ import javax.json.bind.annotation.JsonbProperty;
 @AllArgsConstructor
 @NoArgsConstructor
 @GithubEvent("security_advisory")
-public class SecurityAdvisoryEvent {
+@EqualsAndHashCode(callSuper = true)
+public class SecurityAdvisoryEvent extends Event {
 
     /**
      * The action that was performed. The action can be one of <code>published</code>,

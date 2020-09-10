@@ -20,12 +20,12 @@ package org.tomitribe.github.model;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.json.bind.annotation.JsonbProperty;
 
 /**
-
  * <p>Triggered when a <a href="/v3/projects/columns">project column</a> is <code>created</code>,
  * <code>updated</code>, <code>moved</code>, or <code>deleted</code>.</p>
  * Used by:
@@ -36,7 +36,8 @@ import javax.json.bind.annotation.JsonbProperty;
 @AllArgsConstructor
 @NoArgsConstructor
 @GithubEvent("project_column")
-public class ProjectColumnEvent {
+@EqualsAndHashCode(callSuper = true)
+public class ProjectColumnEvent extends Event {
 
     /**
      * The action that was performed on the project column. Can be one of <code>created</code>,

@@ -20,13 +20,13 @@ package org.tomitribe.github.model;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.json.bind.annotation.JsonbProperty;
 import java.util.List;
 
 /**
-
  * <p>Triggered when the status of a Git commit changes.</p>
  *
  * <p>Events of this type are not visible in timelines. These events are only used to trigger
@@ -39,10 +39,8 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @GithubEvent("status")
-public class StatusEvent {
-
-    @JsonbProperty("id")
-    private Long id;
+@EqualsAndHashCode(callSuper = true)
+public class StatusEvent extends Event {
 
     /**
      * The Commit SHA.

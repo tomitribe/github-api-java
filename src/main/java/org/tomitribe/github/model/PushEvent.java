@@ -20,12 +20,12 @@ package org.tomitribe.github.model;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.json.bind.annotation.JsonbProperty;
 
 /**
-
  * <p>Triggered on a push to a repository branch. Branch pushes and repository tag pushes also trigger
  * webhook <a href="/webhooks/#events"><code>push</code> events</a>.</p>
  *
@@ -52,7 +52,8 @@ import javax.json.bind.annotation.JsonbProperty;
 @AllArgsConstructor
 @NoArgsConstructor
 @GithubEvent("push")
-public class PushEvent {
+@EqualsAndHashCode(callSuper = true)
+public class PushEvent extends Event {
 
     /**
      * The full <a href="/v3/git/refs/"><code>git ref</code></a> that was pushed. Example:

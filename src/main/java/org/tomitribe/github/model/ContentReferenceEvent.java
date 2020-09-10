@@ -20,12 +20,12 @@ package org.tomitribe.github.model;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.json.bind.annotation.JsonbProperty;
 
 /**
-
  * <p>Triggered when the body or comment of an issue or pull request includes a URL that matches a
  * configured content reference domain. Only GitHub Apps can receive this event. GitHub Apps that have
  * the <code>content_references</code> <code>write</code> permission and subscribe to the
@@ -47,7 +47,8 @@ import javax.json.bind.annotation.JsonbProperty;
 @AllArgsConstructor
 @NoArgsConstructor
 @GithubEvent("content_reference")
-public class ContentReferenceEvent {
+@EqualsAndHashCode(callSuper = true)
+public class ContentReferenceEvent extends Event {
 
     @JsonbProperty("action")
     private String action;

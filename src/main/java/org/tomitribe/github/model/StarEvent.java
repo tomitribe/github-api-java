@@ -20,12 +20,12 @@ package org.tomitribe.github.model;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.json.bind.annotation.JsonbProperty;
 
 /**
-
  * <p>Triggered when a star is added or removed from a repository.</p>
  * Used by:
  * - 
@@ -35,7 +35,8 @@ import javax.json.bind.annotation.JsonbProperty;
 @AllArgsConstructor
 @NoArgsConstructor
 @GithubEvent("star")
-public class StarEvent {
+@EqualsAndHashCode(callSuper = true)
+public class StarEvent extends Event {
 
     /**
      * The action performed. Can be <code>created</code> or <code>deleted</code>.

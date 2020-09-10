@@ -20,13 +20,13 @@ package org.tomitribe.github.model;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.json.bind.annotation.JsonbProperty;
 import java.util.List;
 
 /**
-
  * <p>Triggered when someone installs (<code>created</code>) , uninstalls (<code>deleted</code>), or
  * accepts new permissions (<code>new_permissions_accepted</code>) for a GitHub App. When a GitHub App
  * owner requests new permissions, the person who installed the GitHub App must accept the new
@@ -39,7 +39,8 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @GithubEvent("installation")
-public class InstallationEvent {
+@EqualsAndHashCode(callSuper = true)
+public class InstallationEvent extends Event {
 
     /**
      * The action that was performed. Can be one of <code>created</code>, <code>deleted</code>, or

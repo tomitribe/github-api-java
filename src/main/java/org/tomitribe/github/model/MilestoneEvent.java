@@ -20,12 +20,12 @@ package org.tomitribe.github.model;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.json.bind.annotation.JsonbProperty;
 
 /**
-
  * <p>Triggered when a milestone is <code>created</code>, <code>closed</code>, <code>opened</code>,
  * <code>edited</code>, or <code>deleted</code>.</p>
  *
@@ -39,7 +39,8 @@ import javax.json.bind.annotation.JsonbProperty;
 @AllArgsConstructor
 @NoArgsConstructor
 @GithubEvent("milestone")
-public class MilestoneEvent {
+@EqualsAndHashCode(callSuper = true)
+public class MilestoneEvent extends Event {
 
     /**
      * The action that was performed. Can be one of <code>created</code>, <code>closed</code>,

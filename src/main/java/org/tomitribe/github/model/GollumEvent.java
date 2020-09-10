@@ -20,13 +20,13 @@ package org.tomitribe.github.model;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.json.bind.annotation.JsonbProperty;
 import java.util.List;
 
 /**
-
  * <p>Triggered when a Wiki page is created or updated.</p>
  * Used by:
  * - 
@@ -36,7 +36,8 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @GithubEvent("gollum")
-public class GollumEvent {
+@EqualsAndHashCode(callSuper = true)
+public class GollumEvent extends Event {
 
     /**
      * The pages that were updated.

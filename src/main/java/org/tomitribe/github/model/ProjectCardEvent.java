@@ -20,12 +20,12 @@ package org.tomitribe.github.model;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.json.bind.annotation.JsonbProperty;
 
 /**
-
  * <p>Triggered when a <a href="/v3/projects/cards">project card</a> is <code>created</code>,
  * <code>edited</code>, <code>moved</code>, <code>converted</code> to an issue, or
  * <code>deleted</code>.</p>
@@ -37,7 +37,8 @@ import javax.json.bind.annotation.JsonbProperty;
 @AllArgsConstructor
 @NoArgsConstructor
 @GithubEvent("project_card")
-public class ProjectCardEvent {
+@EqualsAndHashCode(callSuper = true)
+public class ProjectCardEvent extends Event {
 
     /**
      * The action performed on the project card. Can be <code>created</code>, <code>edited</code>,

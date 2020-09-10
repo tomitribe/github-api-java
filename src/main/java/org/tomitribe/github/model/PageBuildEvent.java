@@ -20,12 +20,12 @@ package org.tomitribe.github.model;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.json.bind.annotation.JsonbProperty;
 
 /**
-
  * <p>Represents an attempted build of a GitHub Pages site, whether successful or not.</p>
  *
  * <p>Triggered on push to a GitHub Pages enabled branch (<code>gh-pages</code> for project pages,
@@ -41,10 +41,8 @@ import javax.json.bind.annotation.JsonbProperty;
 @AllArgsConstructor
 @NoArgsConstructor
 @GithubEvent("page_build")
-public class PageBuildEvent {
-
-    @JsonbProperty("id")
-    private Long id;
+@EqualsAndHashCode(callSuper = true)
+public class PageBuildEvent extends Event {
 
     /**
      * The <a href="/v3/repos/pages/#list-pages-builds">page build</a> itself.

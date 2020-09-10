@@ -20,12 +20,12 @@ package org.tomitribe.github.model;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.json.bind.annotation.JsonbProperty;
 
 /**
-
  * <p>Triggered when a <a href="/v3/repos/releases/#get-a-single-release">release</a> is
  * <code>published</code>, <code>unpublished</code>, <code>created</code>, <code>edited</code>,
  * <code>deleted</code>, or <code>prereleased</code>.</p>
@@ -37,7 +37,8 @@ import javax.json.bind.annotation.JsonbProperty;
 @AllArgsConstructor
 @NoArgsConstructor
 @GithubEvent("release")
-public class ReleaseEvent {
+@EqualsAndHashCode(callSuper = true)
+public class ReleaseEvent extends Event {
 
     /**
      * The action that was performed. Currently, can be <code>published</code>, <code>unpublished</code>,

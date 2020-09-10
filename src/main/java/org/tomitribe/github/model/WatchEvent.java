@@ -20,12 +20,12 @@ package org.tomitribe.github.model;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.json.bind.annotation.JsonbProperty;
 
 /**
-
  * <p>Triggered when someone <a href="/v3/activity/starring/#star-a-repository">stars a repository</a>.
  *  This event is not related to <a href="/v3/activity/watching/">watching a repository</a>.
  * See <a href="/changes/2012-09-05-watcher-api/">this API blog post</a> for an explanation.</p>
@@ -40,7 +40,8 @@ import javax.json.bind.annotation.JsonbProperty;
 @AllArgsConstructor
 @NoArgsConstructor
 @GithubEvent("watch")
-public class WatchEvent {
+@EqualsAndHashCode(callSuper = true)
+public class WatchEvent extends Event {
 
     /**
      * The action that was performed. Currently, can only be <code>started</code>.

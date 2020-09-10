@@ -20,12 +20,12 @@ package org.tomitribe.github.model;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.json.bind.annotation.JsonbProperty;
 
 /**
-
  * <p>Triggered when an organization's team is <code>created</code>, <code>deleted</code>,
  * <code>edited</code>, <code>added_to_repository</code>, or <code>removed_from_repository</code>.</p>
  *
@@ -39,7 +39,8 @@ import javax.json.bind.annotation.JsonbProperty;
 @AllArgsConstructor
 @NoArgsConstructor
 @GithubEvent("team")
-public class TeamEvent {
+@EqualsAndHashCode(callSuper = true)
+public class TeamEvent extends Event {
 
     /**
      * The action that was performed. Can be one of <code>created</code>, <code>deleted</code>,

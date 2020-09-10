@@ -20,12 +20,12 @@ package org.tomitribe.github.model;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.json.bind.annotation.JsonbProperty;
 
 /**
-
  * <p>Triggered when a <a href="/v3/pulls/comments">comment on a pull request's unified diff</a> is
  * <code>created</code>, <code>edited</code>, or <code>deleted</code> (in the Files Changed tab).</p>
  * Used by:
@@ -36,7 +36,8 @@ import javax.json.bind.annotation.JsonbProperty;
 @AllArgsConstructor
 @NoArgsConstructor
 @GithubEvent("pull_request_review_comment")
-public class PullRequestReviewCommentEvent {
+@EqualsAndHashCode(callSuper = true)
+public class PullRequestReviewCommentEvent extends Event {
 
     /**
      * The action that was performed on the comment. Can be one of <code>created</code>,

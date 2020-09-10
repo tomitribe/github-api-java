@@ -20,12 +20,12 @@ package org.tomitribe.github.model;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.json.bind.annotation.JsonbProperty;
 
 /**
-
  * <p>Triggered when an organization is deleted and renamed, and when a user is added, removed, or
  * invited to an organization.</p>
  *
@@ -39,7 +39,8 @@ import javax.json.bind.annotation.JsonbProperty;
 @AllArgsConstructor
 @NoArgsConstructor
 @GithubEvent("organization")
-public class OrganizationEvent {
+@EqualsAndHashCode(callSuper = true)
+public class OrganizationEvent extends Event {
 
     /**
      * The action that was performed. Can be one of: <code>deleted</code>, <code>renamed</code>,

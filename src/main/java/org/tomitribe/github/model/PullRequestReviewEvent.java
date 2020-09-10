@@ -20,12 +20,12 @@ package org.tomitribe.github.model;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.json.bind.annotation.JsonbProperty;
 
 /**
-
  * <p>Triggered when a pull request review is <code>submitted</code> into a non-pending state, the body
  * is <code>edited</code>, or the review is <code>dismissed</code>.</p>
  * Used by:
@@ -36,7 +36,8 @@ import javax.json.bind.annotation.JsonbProperty;
 @AllArgsConstructor
 @NoArgsConstructor
 @GithubEvent("pull_request_review")
-public class PullRequestReviewEvent {
+@EqualsAndHashCode(callSuper = true)
+public class PullRequestReviewEvent extends Event {
 
     @JsonbProperty("action")
     private String action;

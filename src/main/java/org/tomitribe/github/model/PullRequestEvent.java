@@ -20,12 +20,12 @@ package org.tomitribe.github.model;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.json.bind.annotation.JsonbProperty;
 
 /**
-
  * <p>Triggered when a <a href="/v3/pulls">pull request</a> is <code>assigned</code>,
  * <code>unassigned</code>, <code>labeled</code>, <code>unlabeled</code>, <code>opened</code>,
  * <code>edited</code>, <code>closed</code>, <code>reopened</code>, <code>synchronize</code>,
@@ -39,7 +39,8 @@ import javax.json.bind.annotation.JsonbProperty;
 @AllArgsConstructor
 @NoArgsConstructor
 @GithubEvent("pull_request")
-public class PullRequestEvent {
+@EqualsAndHashCode(callSuper = true)
+public class PullRequestEvent extends Event {
 
     /**
      * The action that was performed. Can be one of <code>assigned</code>, <code>unassigned</code>,

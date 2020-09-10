@@ -20,12 +20,12 @@ package org.tomitribe.github.model;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.json.bind.annotation.JsonbProperty;
 
 /**
-
  * <div class="alert note">
  *
  * <p>GitHub Package Registry is currently available in limited public beta. To request to join the
@@ -47,7 +47,8 @@ import javax.json.bind.annotation.JsonbProperty;
 @AllArgsConstructor
 @NoArgsConstructor
 @GithubEvent("registry_package")
-public class RegistryPackageEvent {
+@EqualsAndHashCode(callSuper = true)
+public class RegistryPackageEvent extends Event {
 
     /**
      * The action that was performed. Can be <code>published</code> or <code>updated</code>.

@@ -20,12 +20,12 @@ package org.tomitribe.github.model;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.json.bind.annotation.JsonbProperty;
 
 /**
-
  * <p>Represents a <a href="/v3/git/refs/#delete-a-reference">deleted branch or tag</a>.</p>
  *
  * <div class="alert note">
@@ -42,7 +42,8 @@ import javax.json.bind.annotation.JsonbProperty;
 @AllArgsConstructor
 @NoArgsConstructor
 @GithubEvent("delete")
-public class DeleteEvent {
+@EqualsAndHashCode(callSuper = true)
+public class DeleteEvent extends Event {
 
     /**
      * The <a href="/v3/git/refs/"><code>git ref</code></a>.

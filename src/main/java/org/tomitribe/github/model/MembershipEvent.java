@@ -20,12 +20,12 @@ package org.tomitribe.github.model;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.json.bind.annotation.JsonbProperty;
 
 /**
-
  * <p>Triggered when a user is <code>added</code> or <code>removed</code> from a team.</p>
  *
  * <p>Events of this type are not visible in timelines. These events are only used to trigger
@@ -38,7 +38,8 @@ import javax.json.bind.annotation.JsonbProperty;
 @AllArgsConstructor
 @NoArgsConstructor
 @GithubEvent("membership")
-public class MembershipEvent {
+@EqualsAndHashCode(callSuper = true)
+public class MembershipEvent extends Event {
 
     /**
      * The action that was performed. Can be <code>added</code> or <code>removed</code>.
