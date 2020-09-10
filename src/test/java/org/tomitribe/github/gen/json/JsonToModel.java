@@ -57,7 +57,7 @@ public class JsonToModel {
         }
     }
 
-    public void process(Clazz self, JsonObject json) {
+    public void process(final Clazz self, final JsonObject json) {
         for (final Map.Entry<String, JsonValue> entry : json.entrySet()) {
 
             final JsonValue value = entry.getValue();
