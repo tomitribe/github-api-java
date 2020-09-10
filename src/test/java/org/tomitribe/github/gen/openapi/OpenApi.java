@@ -52,8 +52,48 @@ public class OpenApi {
     private Map<String, Path> paths;
 
     @JsonbProperty("components")
-    private Map<String, Object> components;
+    private Components components;
 
+
+    @Data
+    @NoArgsConstructor
+    @AllArgsConstructor
+    @Builder
+    @EqualsAndHashCode(onlyExplicitlyIncluded = true)
+    public static class Components {
+        @JsonbProperty("schemas")
+        private Map<String, Schema> schemas;
+
+        @JsonbProperty("name")
+        private Map<String, String> name;
+
+        @JsonbProperty("examples")
+        private Map<String, Example> examples;
+
+        @JsonbProperty("responses")
+        private Map<String, Response> responses;
+
+        @JsonbProperty("headers")
+        private Map<String, Header> headers;
+
+        @JsonbProperty("parameters")
+        private Map<String, Parameter> parameters;
+    }
+
+
+    @Data
+    @NoArgsConstructor
+    @AllArgsConstructor
+    @Builder
+    @EqualsAndHashCode(onlyExplicitlyIncluded = true)
+    public static class Example {
+        @JsonbProperty("value")
+        private Object value;
+
+        @JsonbProperty("summary")
+        private String summary;
+        
+    }
 
     @Data
     @NoArgsConstructor
@@ -187,7 +227,7 @@ public class OpenApi {
         private String type;
 
         @JsonbProperty("properties")
-        private Map<String, Property> properties;
+        private Map<String, Schema> properties;
 
         @JsonbProperty("required")
         private List<String> required;
@@ -196,13 +236,16 @@ public class OpenApi {
         private String ref;
 
         @JsonbProperty("items")
-        private SchemaItems items;
+        private Schema items;
 
         @JsonbProperty("allOf")
-        private List<Ref> allOf;
+        private List<Schema> allOf;
+
+        @JsonbProperty("anyOf")
+        private List<Schema> anyOf;
 
         @JsonbProperty("oneOf")
-        private List<Ref> oneOf;
+        private List<Schema> oneOf;
 
         @JsonbProperty("nullable")
         private Boolean nullable;
@@ -214,11 +257,34 @@ public class OpenApi {
         private List<String> enumValues;
 
         @JsonbProperty("default")
-        private String defaultValue;
+        private Object defaultValue;
 
         @JsonbProperty("example")
         private Object example;
 
+        @JsonbProperty("format")
+        private String format;
+
+        @JsonbProperty("description")
+        private String description;
+
+        @JsonbProperty("title")
+        private String title;
+
+        @JsonbProperty("maxLength")
+        private Long maxLength;
+
+        @JsonbProperty("minLength")
+        private Long minLength;
+
+        @JsonbProperty("minimum")
+        private Long minimum;
+
+        @JsonbProperty("maximum")
+        private Long maximum;
+
+        @JsonbProperty("minItems")
+        private Long minItems;
     }
 
 
@@ -322,31 +388,6 @@ public class OpenApi {
 
         @JsonbProperty("example")
         private List<String> example;
-
-    }
-
-
-    @Data
-    @NoArgsConstructor
-    @AllArgsConstructor
-    @Builder
-    @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-    public static class Property {
-        @JsonbProperty("format")
-        private String format;
-
-        @JsonbProperty("type")
-        private String type;
-
-        @JsonbProperty("allOf")
-        private List<Ref> allOf;
-
-        @JsonbProperty("items")
-        private SchemaItems items;
-
-        @JsonbProperty("example")
-        private Object example;
-
 
     }
 
