@@ -1,0 +1,267 @@
+[
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.sombra-preview+json\" \\\n  https://api.github.com/orgs/ORG/interaction-limits\n",
+        "type":"Shell"
+      },
+      {
+        "content":"application/vnd.github.sombra-preview\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"interactions",
+    "id":"get-interaction-restrictions-for-an-organization",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>This API is under preview and subject to change.</p> <a href=\"#get-interaction-restrictions-for-an-organization-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"limit\": \"collaborators_only\",\n  \"origin\": \"organization\",\n  \"expires_at\": \"2018-08-17T04:18:39Z\"\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/orgs/{org}/interaction-limits"
+    },
+    "title":"Get interaction restrictions for an organization"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X PUT \\\n  -H \"Accept: application/vnd.github.sombra-preview+json\" \\\n  https://api.github.com/orgs/ORG/interaction-limits \\\n  -d '{\"limit\":\"limit\"}'\n",
+        "type":"Shell"
+      },
+      {
+        "content":"application/vnd.github.sombra-preview\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"interactions",
+    "id":"set-interaction-restrictions-for-an-organization",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>This API is under preview and subject to change.</p> <a href=\"#set-interaction-restrictions-for-an-organization-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "description":"<p><strong>Required</strong>. Specifies the group of GitHub users who can comment, open issues, or create pull requests in public repositories for the given organization. Must be one of: <code>existing_users</code>, <code>contributors_only</code>, or <code>collaborators_only</code>.</p>",
+        "in":"body ",
+        "name":"limit ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"limit\": \"collaborators_only\",\n  \"origin\": \"organization\",\n  \"expires_at\": \"2018-08-17T04:18:39Z\"\n}\n"
+      }
+    ],
+    "target":{
+      "method":"put",
+      "path":"/orgs/{org}/interaction-limits"
+    },
+    "title":"Set interaction restrictions for an organization"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X DELETE \\\n  -H \"Accept: application/vnd.github.sombra-preview+json\" \\\n  https://api.github.com/orgs/ORG/interaction-limits\n",
+        "type":"Shell"
+      },
+      {
+        "content":"application/vnd.github.sombra-preview\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"interactions",
+    "id":"remove-interaction-restrictions-for-an-organization",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>This API is under preview and subject to change.</p> <a href=\"#remove-interaction-restrictions-for-an-organization-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"delete",
+      "path":"/orgs/{org}/interaction-limits"
+    },
+    "title":"Remove interaction restrictions for an organization"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.sombra-preview+json\" \\\n  https://api.github.com/repos/octocat/hello-world/interaction-limits\n",
+        "type":"Shell"
+      },
+      {
+        "content":"application/vnd.github.sombra-preview\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"interactions",
+    "id":"get-interaction-restrictions-for-a-repository",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>This API is under preview and subject to change.</p> <a href=\"#get-interaction-restrictions-for-a-repository-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"limit\": \"collaborators_only\",\n  \"origin\": \"repository\",\n  \"expires_at\": \"2018-08-17T04:18:39Z\"\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/repos/{owner}/{repo}/interaction-limits"
+    },
+    "title":"Get interaction restrictions for a repository"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X PUT \\\n  -H \"Accept: application/vnd.github.sombra-preview+json\" \\\n  https://api.github.com/repos/octocat/hello-world/interaction-limits \\\n  -d '{\"limit\":\"limit\"}'\n",
+        "type":"Shell"
+      },
+      {
+        "content":"application/vnd.github.sombra-preview\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"interactions",
+    "id":"set-interaction-restrictions-for-a-repository",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>This API is under preview and subject to change.</p> <a href=\"#set-interaction-restrictions-for-a-repository-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "description":"<p><strong>Required</strong>. Specifies the group of GitHub users who can comment, open issues, or create pull requests for the given repository. Must be one of: <code>existing_users</code>, <code>contributors_only</code>, or <code>collaborators_only</code>.</p>",
+        "in":"body ",
+        "name":"limit ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"limit\": \"collaborators_only\",\n  \"origin\": \"repository\",\n  \"expires_at\": \"2018-08-17T04:18:39Z\"\n}\n"
+      }
+    ],
+    "target":{
+      "method":"put",
+      "path":"/repos/{owner}/{repo}/interaction-limits"
+    },
+    "title":"Set interaction restrictions for a repository"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X DELETE \\\n  -H \"Accept: application/vnd.github.sombra-preview+json\" \\\n  https://api.github.com/repos/octocat/hello-world/interaction-limits\n",
+        "type":"Shell"
+      },
+      {
+        "content":"application/vnd.github.sombra-preview\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"interactions",
+    "id":"remove-interaction-restrictions-for-a-repository",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>This API is under preview and subject to change.</p> <a href=\"#remove-interaction-restrictions-for-a-repository-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"delete",
+      "path":"/repos/{owner}/{repo}/interaction-limits"
+    },
+    "title":"Remove interaction restrictions for a repository"
+  }
+]

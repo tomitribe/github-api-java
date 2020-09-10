@@ -1,0 +1,1014 @@
+[
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X POST \\\n  -H \"Accept: application/vnd.github.antiope-preview+json\" \\\n  https://api.github.com/repos/octocat/hello-world/check-runs \\\n  -d '{\"name\":\"name\",\"head_sha\":\"head_sha\"}'\n",
+        "type":"Shell"
+      },
+      {
+        "content":"application/vnd.github.antiope-preview+json\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"checks",
+    "id":"create-a-check-run",
+    "parameterProperties":[
+      {
+        "description":"<strong>Required</strong>. The title of the check run.",
+        "name":"title",
+        "of":"output",
+        "type":"string"
+      },
+      {
+        "description":"<strong>Required</strong>. The summary of the check run. This parameter supports Markdown.",
+        "name":"summary",
+        "of":"output",
+        "type":"string"
+      },
+      {
+        "description":"The details of the check run. This parameter supports Markdown.",
+        "name":"text",
+        "of":"output",
+        "type":"string"
+      },
+      {
+        "description":"Adds information from your analysis to specific lines of code. Annotations are visible on GitHub in the <strong>Checks</strong> and <strong>Files changed</strong> tab of the pull request. The Checks API limits the number of annotations to a maximum of 50 per API request. To create more than 50 annotations, you have to make multiple requests to the <a href=\"https://developer.github.com/v3/checks/runs/#update-a-check-run\">Update a check run</a> endpoint. Each time you update the check run, annotations are appended to the list of annotations that already exist for the check run. For details about how you can view annotations on GitHub, see &quot;<a href=\"https://docs.github.com/articles/about-status-checks#checks\">About status checks</a>&quot;. See the <a href=\"https://developer.github.com/v3/checks/runs/#annotations-object\"><code>annotations</code> object</a> description for details about how to use this parameter.",
+        "name":"annotations",
+        "of":"output",
+        "type":"array of objects"
+      },
+      {
+        "description":"Adds images to the output displayed in the GitHub pull request UI. See the <a href=\"https://developer.github.com/v3/checks/runs/#images-object\"><code>images</code> object</a> description for details.",
+        "name":"images",
+        "of":"output",
+        "type":"array of objects"
+      },
+      {
+        "description":"<strong>Required</strong>. The path of the file to add an annotation to. For example, <code>assets/css/main.css</code>.",
+        "name":"path",
+        "of":"annotations",
+        "type":"string"
+      },
+      {
+        "description":"<strong>Required</strong>. The start line of the annotation.",
+        "name":"start_line",
+        "of":"annotations",
+        "type":"integer"
+      },
+      {
+        "description":"<strong>Required</strong>. The end line of the annotation.",
+        "name":"end_line",
+        "of":"annotations",
+        "type":"integer"
+      },
+      {
+        "description":"The start column of the annotation. Annotations only support <code>start_column</code> and <code>end_column</code> on the same line. Omit this parameter if <code>start_line</code> and <code>end_line</code> have different values.",
+        "name":"start_column",
+        "of":"annotations",
+        "type":"integer"
+      },
+      {
+        "description":"The end column of the annotation. Annotations only support <code>start_column</code> and <code>end_column</code> on the same line. Omit this parameter if <code>start_line</code> and <code>end_line</code> have different values.",
+        "name":"end_column",
+        "of":"annotations",
+        "type":"integer"
+      },
+      {
+        "description":"<strong>Required</strong>. The level of the annotation. Can be one of <code>notice</code>, <code>warning</code>, or <code>failure</code>.",
+        "name":"annotation_level",
+        "of":"annotations",
+        "type":"string"
+      },
+      {
+        "description":"<strong>Required</strong>. A short description of the feedback for these lines of code. The maximum size is 64 KB.",
+        "name":"message",
+        "of":"annotations",
+        "type":"string"
+      },
+      {
+        "description":"The title that represents the annotation. The maximum size is 255 characters.",
+        "name":"title",
+        "of":"annotations",
+        "type":"string"
+      },
+      {
+        "description":"Details about this annotation. The maximum size is 64 KB.",
+        "name":"raw_details",
+        "of":"annotations",
+        "type":"string"
+      },
+      {
+        "description":"<strong>Required</strong>. The alternative text for the image.",
+        "name":"alt",
+        "of":"images",
+        "type":"string"
+      },
+      {
+        "description":"<strong>Required</strong>. The full URL of the image.",
+        "name":"image_url",
+        "of":"images",
+        "type":"string"
+      },
+      {
+        "description":"A short image description.",
+        "name":"caption",
+        "of":"images",
+        "type":"string"
+      },
+      {
+        "description":"<strong>Required</strong>. The text to be displayed on a button in the web UI. The maximum size is 20 characters.",
+        "name":"label",
+        "of":"actions",
+        "type":"string"
+      },
+      {
+        "description":"<strong>Required</strong>. A short explanation of what this action would do. The maximum size is 40 characters.",
+        "name":"description",
+        "of":"actions",
+        "type":"string"
+      },
+      {
+        "description":"<strong>Required</strong>. A reference for the action on the integrator&apos;s system. The maximum size is 20 characters.",
+        "name":"identifier",
+        "of":"actions",
+        "type":"string"
+      }
+    ],
+    "parameters":[
+      {
+        "description":"<p>This API is under preview and subject to change.</p> <a href=\"#create-a-check-run-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "description":"<p><strong>Required</strong>. The name of the check. For example, &quot;code-coverage&quot;.</p>",
+        "in":"body ",
+        "name":"name ",
+        "type":"string "
+      },
+      {
+        "description":"<p><strong>Required</strong>. The SHA of the commit.</p>",
+        "in":"body ",
+        "name":"head_sha ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The URL of the integrator&apos;s site that has the full details of the check. If the integrator does not provide this, then the homepage of the GitHub app is used.</p>",
+        "in":"body ",
+        "name":"details_url ",
+        "type":"string "
+      },
+      {
+        "description":"<p>A reference for the run on the integrator&apos;s system.</p>",
+        "in":"body ",
+        "name":"external_id ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The current status. Can be one of <code>queued</code>, <code>in_progress</code>, or <code>completed</code>.</p> Default: <code>queued</code>",
+        "in":"body ",
+        "name":"status ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The time that the check run began. This is a timestamp in <a href=\"https://en.wikipedia.org/wiki/ISO_8601\">ISO 8601</a> format: <code>YYYY-MM-DDTHH:MM:SSZ</code>.</p>",
+        "in":"body ",
+        "name":"started_at ",
+        "type":"string "
+      },
+      {
+        "description":"<p><strong>Required if you provide <code>completed_at</code> or a <code>status</code> of <code>completed</code></strong>. The final conclusion of the check. Can be one of <code>success</code>, <code>failure</code>, <code>neutral</code>, <code>cancelled</code>, <code>skipped</code>, <code>timed_out</code>, or <code>action_required</code>. When the conclusion is <code>action_required</code>, additional details should be provided on the site specified by <code>details_url</code>. <strong>Note:</strong> Providing <code>conclusion</code> will automatically set the <code>status</code> parameter to <code>completed</code>. Only GitHub can change a check run conclusion to <code>stale</code>.</p>",
+        "in":"body ",
+        "name":"conclusion ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The time the check completed. This is a timestamp in <a href=\"https://en.wikipedia.org/wiki/ISO_8601\">ISO 8601</a> format: <code>YYYY-MM-DDTHH:MM:SSZ</code>.</p>",
+        "in":"body ",
+        "name":"completed_at ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Check runs can accept a variety of data in the <code>output</code> object, including a <code>title</code> and <code>summary</code> and can optionally provide descriptive details about the run. See the <a href=\"https://developer.github.com/v3/checks/runs/#output-object\"><code>output</code> object</a> description.</p>",
+        "in":"body ",
+        "name":"output ",
+        "type":"object "
+      },
+      {
+        "description":"<p>Displays a button on GitHub that can be clicked to alert your app to do additional tasks. For example, a code linting app can display a button that automatically fixes detected errors. The button created in this object is displayed after the check run completes. When a user clicks the button, GitHub sends the <a href=\"https://developer.github.com/webhooks/event-payloads/#check_run\"><code>check_run.requested_action</code> webhook</a> to your app. Each action includes a <code>label</code>, <code>identifier</code> and <code>description</code>. A maximum of three actions are accepted. See the <a href=\"https://developer.github.com/v3/checks/runs/#actions-object\"><code>actions</code> object</a> description. To learn more about check runs and requested actions, see &quot;<a href=\"https://developer.github.com/v3/checks/runs/#check-runs-and-requested-actions\">Check runs and requested actions</a>.&quot; To learn more about check runs and requested actions, see &quot;<a href=\"https://developer.github.com/v3/checks/runs/#check-runs-and-requested-actions\">Check runs and requested actions</a>.&quot;</p>",
+        "in":"body ",
+        "name":"actions ",
+        "type":"array of objects "
+      }
+    ],
+    "responses":[
+      {
+        "code":"201 Created",
+        "content":"{\n  \"id\": 4,\n  \"head_sha\": \"ce587453ced02b1526dfb4cb910479d431683101\",\n  \"node_id\": \"MDg6Q2hlY2tSdW40\",\n  \"external_id\": \"42\",\n  \"url\": \"https://api.github.com/repos/github/hello-world/check-runs/4\",\n  \"html_url\": \"http://github.com/github/hello-world/runs/4\",\n  \"details_url\": \"https://example.com\",\n  \"status\": \"in_progress\",\n  \"conclusion\": null,\n  \"started_at\": \"2018-05-04T01:14:52Z\",\n  \"completed_at\": null,\n  \"output\": {\n    \"title\": \"Mighty Readme Report\",\n    \"summary\": \"\",\n    \"text\": \"\"\n  },\n  \"name\": \"mighty_readme\",\n  \"check_suite\": {\n    \"id\": 5\n  },\n  \"app\": {\n    \"id\": 1,\n    \"slug\": \"octoapp\",\n    \"node_id\": \"MDExOkludGVncmF0aW9uMQ==\",\n    \"owner\": {\n      \"login\": \"github\",\n      \"id\": 1,\n      \"node_id\": \"MDEyOk9yZ2FuaXphdGlvbjE=\",\n      \"url\": \"https://api.github.com/orgs/github\",\n      \"repos_url\": \"https://api.github.com/orgs/github/repos\",\n      \"events_url\": \"https://api.github.com/orgs/github/events\",\n      \"hooks_url\": \"https://api.github.com/orgs/github/hooks\",\n      \"issues_url\": \"https://api.github.com/orgs/github/issues\",\n      \"members_url\": \"https://api.github.com/orgs/github/members{/member}\",\n      \"public_members_url\": \"https://api.github.com/orgs/github/public_members{/member}\",\n      \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n      \"description\": \"A great organization\"\n    },\n    \"name\": \"Octocat App\",\n    \"description\": \"\",\n    \"external_url\": \"https://example.com\",\n    \"html_url\": \"https://github.com/apps/octoapp\",\n    \"created_at\": \"2017-07-08T16:18:44-04:00\",\n    \"updated_at\": \"2017-07-08T16:18:44-04:00\",\n    \"permissions\": {\n      \"metadata\": \"read\",\n      \"contents\": \"read\",\n      \"issues\": \"write\",\n      \"single_file\": \"write\"\n    },\n    \"events\": [\n      \"push\",\n      \"pull_request\"\n    ]\n  },\n  \"pull_requests\": [\n    {\n      \"url\": \"https://api.github.com/repos/github/hello-world/pulls/1\",\n      \"id\": 1934,\n      \"number\": 3956,\n      \"head\": {\n        \"ref\": \"say-hello\",\n        \"sha\": \"3dca65fa3e8d4b3da3f3d056c59aee1c50f41390\",\n        \"repo\": {\n          \"id\": 526,\n          \"url\": \"https://api.github.com/repos/github/hello-world\",\n          \"name\": \"hello-world\"\n        }\n      },\n      \"base\": {\n        \"ref\": \"master\",\n        \"sha\": \"e7fdf7640066d71ad16a86fbcbb9c6a10a18af4f\",\n        \"repo\": {\n          \"id\": 526,\n          \"url\": \"https://api.github.com/repos/github/hello-world\",\n          \"name\": \"hello-world\"\n        }\n      }\n    }\n  ]\n}\n"
+      },
+      {
+        "code":"201 Created",
+        "content":"{\n  \"id\": 4,\n  \"head_sha\": \"ce587453ced02b1526dfb4cb910479d431683101\",\n  \"node_id\": \"MDg6Q2hlY2tSdW40\",\n  \"external_id\": \"\",\n  \"url\": \"https://api.github.com/repos/github/hello-world/check-runs/4\",\n  \"html_url\": \"http://github.com/github/hello-world/runs/4\",\n  \"details_url\": \"https://example.com\",\n  \"status\": \"completed\",\n  \"conclusion\": \"neutral\",\n  \"started_at\": \"2018-05-04T01:14:52Z\",\n  \"completed_at\": \"2018-05-04T01:14:52Z\",\n  \"output\": {\n    \"title\": \"Mighty Readme report\",\n    \"summary\": \"There are 0 failures, 2 warnings, and 1 notice.\",\n    \"text\": \"You may have some misspelled words on lines 2 and 4. You also may want to add a section in your README about how to install your app.\",\n    \"annotations_count\": 2,\n    \"annotations_url\": \"https://api.github.com/repos/github/hello-world/check-runs/4/annotations\"\n  },\n  \"name\": \"mighty_readme\",\n  \"check_suite\": {\n    \"id\": 5\n  },\n  \"app\": {\n    \"id\": 1,\n    \"slug\": \"octoapp\",\n    \"node_id\": \"MDExOkludGVncmF0aW9uMQ==\",\n    \"owner\": {\n      \"login\": \"github\",\n      \"id\": 1,\n      \"node_id\": \"MDEyOk9yZ2FuaXphdGlvbjE=\",\n      \"url\": \"https://api.github.com/orgs/github\",\n      \"repos_url\": \"https://api.github.com/orgs/github/repos\",\n      \"events_url\": \"https://api.github.com/orgs/github/events\",\n      \"hooks_url\": \"https://api.github.com/orgs/github/hooks\",\n      \"issues_url\": \"https://api.github.com/orgs/github/issues\",\n      \"members_url\": \"https://api.github.com/orgs/github/members{/member}\",\n      \"public_members_url\": \"https://api.github.com/orgs/github/public_members{/member}\",\n      \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n      \"description\": \"A great organization\"\n    },\n    \"name\": \"Octocat App\",\n    \"description\": \"\",\n    \"external_url\": \"https://example.com\",\n    \"html_url\": \"https://github.com/apps/octoapp\",\n    \"created_at\": \"2017-07-08T16:18:44-04:00\",\n    \"updated_at\": \"2017-07-08T16:18:44-04:00\",\n    \"permissions\": {\n      \"metadata\": \"read\",\n      \"contents\": \"read\",\n      \"issues\": \"write\",\n      \"single_file\": \"write\"\n    },\n    \"events\": [\n      \"push\",\n      \"pull_request\"\n    ]\n  },\n  \"pull_requests\": [\n    {\n      \"url\": \"https://api.github.com/repos/github/hello-world/pulls/1\",\n      \"id\": 1934,\n      \"number\": 3956,\n      \"head\": {\n        \"ref\": \"say-hello\",\n        \"sha\": \"3dca65fa3e8d4b3da3f3d056c59aee1c50f41390\",\n        \"repo\": {\n          \"id\": 526,\n          \"url\": \"https://api.github.com/repos/github/hello-world\",\n          \"name\": \"hello-world\"\n        }\n      },\n      \"base\": {\n        \"ref\": \"master\",\n        \"sha\": \"e7fdf7640066d71ad16a86fbcbb9c6a10a18af4f\",\n        \"repo\": {\n          \"id\": 526,\n          \"url\": \"https://api.github.com/repos/github/hello-world\",\n          \"name\": \"hello-world\"\n        }\n      }\n    }\n  ]\n}\n"
+      }
+    ],
+    "target":{
+      "method":"post",
+      "path":"/repos/{owner}/{repo}/check-runs"
+    },
+    "title":"Create a check run"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.antiope-preview+json\" \\\n  https://api.github.com/repos/octocat/hello-world/check-runs/42\n",
+        "type":"Shell"
+      },
+      {
+        "content":"application/vnd.github.antiope-preview+json\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"checks",
+    "id":"get-a-check-run",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>This API is under preview and subject to change.</p> <a href=\"#get-a-check-run-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"check_run_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"id\": 4,\n  \"head_sha\": \"ce587453ced02b1526dfb4cb910479d431683101\",\n  \"node_id\": \"MDg6Q2hlY2tSdW40\",\n  \"external_id\": \"\",\n  \"url\": \"https://api.github.com/repos/github/hello-world/check-runs/4\",\n  \"html_url\": \"http://github.com/github/hello-world/runs/4\",\n  \"details_url\": \"https://example.com\",\n  \"status\": \"completed\",\n  \"conclusion\": \"neutral\",\n  \"started_at\": \"2018-05-04T01:14:52Z\",\n  \"completed_at\": \"2018-05-04T01:14:52Z\",\n  \"output\": {\n    \"title\": \"Mighty Readme report\",\n    \"summary\": \"There are 0 failures, 2 warnings, and 1 notice.\",\n    \"text\": \"You may have some misspelled words on lines 2 and 4. You also may want to add a section in your README about how to install your app.\",\n    \"annotations_count\": 2,\n    \"annotations_url\": \"https://api.github.com/repos/github/hello-world/check-runs/4/annotations\"\n  },\n  \"name\": \"mighty_readme\",\n  \"check_suite\": {\n    \"id\": 5\n  },\n  \"app\": {\n    \"id\": 1,\n    \"slug\": \"octoapp\",\n    \"node_id\": \"MDExOkludGVncmF0aW9uMQ==\",\n    \"owner\": {\n      \"login\": \"github\",\n      \"id\": 1,\n      \"node_id\": \"MDEyOk9yZ2FuaXphdGlvbjE=\",\n      \"url\": \"https://api.github.com/orgs/github\",\n      \"repos_url\": \"https://api.github.com/orgs/github/repos\",\n      \"events_url\": \"https://api.github.com/orgs/github/events\",\n      \"hooks_url\": \"https://api.github.com/orgs/github/hooks\",\n      \"issues_url\": \"https://api.github.com/orgs/github/issues\",\n      \"members_url\": \"https://api.github.com/orgs/github/members{/member}\",\n      \"public_members_url\": \"https://api.github.com/orgs/github/public_members{/member}\",\n      \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n      \"description\": \"A great organization\"\n    },\n    \"name\": \"Octocat App\",\n    \"description\": \"\",\n    \"external_url\": \"https://example.com\",\n    \"html_url\": \"https://github.com/apps/octoapp\",\n    \"created_at\": \"2017-07-08T16:18:44-04:00\",\n    \"updated_at\": \"2017-07-08T16:18:44-04:00\",\n    \"permissions\": {\n      \"metadata\": \"read\",\n      \"contents\": \"read\",\n      \"issues\": \"write\",\n      \"single_file\": \"write\"\n    },\n    \"events\": [\n      \"push\",\n      \"pull_request\"\n    ]\n  },\n  \"pull_requests\": [\n    {\n      \"url\": \"https://api.github.com/repos/github/hello-world/pulls/1\",\n      \"id\": 1934,\n      \"number\": 3956,\n      \"head\": {\n        \"ref\": \"say-hello\",\n        \"sha\": \"3dca65fa3e8d4b3da3f3d056c59aee1c50f41390\",\n        \"repo\": {\n          \"id\": 526,\n          \"url\": \"https://api.github.com/repos/github/hello-world\",\n          \"name\": \"hello-world\"\n        }\n      },\n      \"base\": {\n        \"ref\": \"master\",\n        \"sha\": \"e7fdf7640066d71ad16a86fbcbb9c6a10a18af4f\",\n        \"repo\": {\n          \"id\": 526,\n          \"url\": \"https://api.github.com/repos/github/hello-world\",\n          \"name\": \"hello-world\"\n        }\n      }\n    }\n  ]\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/repos/{owner}/{repo}/check-runs/{check_run_id}"
+    },
+    "title":"Get a check run"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X PATCH \\\n  -H \"Accept: application/vnd.github.antiope-preview+json\" \\\n  https://api.github.com/repos/octocat/hello-world/check-runs/42 \\\n  -d '{\"name\":\"name\"}'\n",
+        "type":"Shell"
+      },
+      {
+        "content":"application/vnd.github.antiope-preview+json\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"checks",
+    "id":"update-a-check-run",
+    "parameterProperties":[
+      {
+        "description":"<strong>Required</strong>.",
+        "name":"title",
+        "of":"output",
+        "type":"string"
+      },
+      {
+        "description":"<strong>Required</strong>. Can contain Markdown.",
+        "name":"summary",
+        "of":"output",
+        "type":"string"
+      },
+      {
+        "description":"Can contain Markdown.",
+        "name":"text",
+        "of":"output",
+        "type":"string"
+      },
+      {
+        "description":"Adds information from your analysis to specific lines of code. Annotations are visible in GitHub&apos;s pull request UI. Annotations are visible in GitHub&apos;s pull request UI. The Checks API limits the number of annotations to a maximum of 50 per API request. To create more than 50 annotations, you have to make multiple requests to the <a href=\"https://developer.github.com/v3/checks/runs/#update-a-check-run\">Update a check run</a> endpoint. Each time you update the check run, annotations are appended to the list of annotations that already exist for the check run. For details about annotations in the UI, see &quot;<a href=\"https://docs.github.com/articles/about-status-checks#checks\">About status checks</a>&quot;. See the <a href=\"https://developer.github.com/v3/checks/runs/#annotations-object-1\"><code>annotations</code> object</a> description for details.",
+        "name":"annotations",
+        "of":"output",
+        "type":"array of objects"
+      },
+      {
+        "description":"Adds images to the output displayed in the GitHub pull request UI. See the <a href=\"https://developer.github.com/v3/checks/runs/#annotations-object-1\"><code>images</code> object</a> description for details.",
+        "name":"images",
+        "of":"output",
+        "type":"array of objects"
+      },
+      {
+        "description":"<strong>Required</strong>. The path of the file to add an annotation to. For example, <code>assets/css/main.css</code>.",
+        "name":"path",
+        "of":"annotations",
+        "type":"string"
+      },
+      {
+        "description":"<strong>Required</strong>. The start line of the annotation.",
+        "name":"start_line",
+        "of":"annotations",
+        "type":"integer"
+      },
+      {
+        "description":"<strong>Required</strong>. The end line of the annotation.",
+        "name":"end_line",
+        "of":"annotations",
+        "type":"integer"
+      },
+      {
+        "description":"The start column of the annotation. Annotations only support <code>start_column</code> and <code>end_column</code> on the same line. Omit this parameter if <code>start_line</code> and <code>end_line</code> have different values.",
+        "name":"start_column",
+        "of":"annotations",
+        "type":"integer"
+      },
+      {
+        "description":"The end column of the annotation. Annotations only support <code>start_column</code> and <code>end_column</code> on the same line. Omit this parameter if <code>start_line</code> and <code>end_line</code> have different values.",
+        "name":"end_column",
+        "of":"annotations",
+        "type":"integer"
+      },
+      {
+        "description":"<strong>Required</strong>. The level of the annotation. Can be one of <code>notice</code>, <code>warning</code>, or <code>failure</code>.",
+        "name":"annotation_level",
+        "of":"annotations",
+        "type":"string"
+      },
+      {
+        "description":"<strong>Required</strong>. A short description of the feedback for these lines of code. The maximum size is 64 KB.",
+        "name":"message",
+        "of":"annotations",
+        "type":"string"
+      },
+      {
+        "description":"The title that represents the annotation. The maximum size is 255 characters.",
+        "name":"title",
+        "of":"annotations",
+        "type":"string"
+      },
+      {
+        "description":"Details about this annotation. The maximum size is 64 KB.",
+        "name":"raw_details",
+        "of":"annotations",
+        "type":"string"
+      },
+      {
+        "description":"<strong>Required</strong>. The alternative text for the image.",
+        "name":"alt",
+        "of":"images",
+        "type":"string"
+      },
+      {
+        "description":"<strong>Required</strong>. The full URL of the image.",
+        "name":"image_url",
+        "of":"images",
+        "type":"string"
+      },
+      {
+        "description":"A short image description.",
+        "name":"caption",
+        "of":"images",
+        "type":"string"
+      },
+      {
+        "description":"<strong>Required</strong>. The text to be displayed on a button in the web UI. The maximum size is 20 characters.",
+        "name":"label",
+        "of":"actions",
+        "type":"string"
+      },
+      {
+        "description":"<strong>Required</strong>. A short explanation of what this action would do. The maximum size is 40 characters.",
+        "name":"description",
+        "of":"actions",
+        "type":"string"
+      },
+      {
+        "description":"<strong>Required</strong>. A reference for the action on the integrator&apos;s system. The maximum size is 20 characters.",
+        "name":"identifier",
+        "of":"actions",
+        "type":"string"
+      }
+    ],
+    "parameters":[
+      {
+        "description":"<p>This API is under preview and subject to change.</p> <a href=\"#update-a-check-run-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"check_run_id ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>The name of the check. For example, &quot;code-coverage&quot;.</p>",
+        "in":"body ",
+        "name":"name ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The URL of the integrator&apos;s site that has the full details of the check.</p>",
+        "in":"body ",
+        "name":"details_url ",
+        "type":"string "
+      },
+      {
+        "description":"<p>A reference for the run on the integrator&apos;s system.</p>",
+        "in":"body ",
+        "name":"external_id ",
+        "type":"string "
+      },
+      {
+        "description":"<p>This is a timestamp in <a href=\"https://en.wikipedia.org/wiki/ISO_8601\">ISO 8601</a> format: <code>YYYY-MM-DDTHH:MM:SSZ</code>.</p>",
+        "in":"body ",
+        "name":"started_at ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The current status. Can be one of <code>queued</code>, <code>in_progress</code>, or <code>completed</code>.</p>",
+        "in":"body ",
+        "name":"status ",
+        "type":"string "
+      },
+      {
+        "description":"<p><strong>Required if you provide <code>completed_at</code> or a <code>status</code> of <code>completed</code></strong>. The final conclusion of the check. Can be one of <code>success</code>, <code>failure</code>, <code>neutral</code>, <code>cancelled</code>, <code>skipped</code>, <code>timed_out</code>, or <code>action_required</code>.<br> <strong>Note:</strong> Providing <code>conclusion</code> will automatically set the <code>status</code> parameter to <code>completed</code>. Only GitHub can change a check run conclusion to <code>stale</code>.</p>",
+        "in":"body ",
+        "name":"conclusion ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The time the check completed. This is a timestamp in <a href=\"https://en.wikipedia.org/wiki/ISO_8601\">ISO 8601</a> format: <code>YYYY-MM-DDTHH:MM:SSZ</code>.</p>",
+        "in":"body ",
+        "name":"completed_at ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Check runs can accept a variety of data in the <code>output</code> object, including a <code>title</code> and <code>summary</code> and can optionally provide descriptive details about the run. See the <a href=\"https://developer.github.com/v3/checks/runs/#output-object-1\"><code>output</code> object</a> description.</p>",
+        "in":"body ",
+        "name":"output ",
+        "type":"object "
+      },
+      {
+        "description":"<p>Possible further actions the integrator can perform, which a user may trigger. Each action includes a <code>label</code>, <code>identifier</code> and <code>description</code>. A maximum of three actions are accepted. See the <a href=\"https://developer.github.com/v3/checks/runs/#actions-object\"><code>actions</code> object</a> description. To learn more about check runs and requested actions, see &quot;<a href=\"https://developer.github.com/v3/checks/runs/#check-runs-and-requested-actions\">Check runs and requested actions</a>.&quot;</p>",
+        "in":"body ",
+        "name":"actions ",
+        "type":"array of objects "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"id\": 4,\n  \"head_sha\": \"ce587453ced02b1526dfb4cb910479d431683101\",\n  \"node_id\": \"MDg6Q2hlY2tSdW40\",\n  \"external_id\": \"\",\n  \"url\": \"https://api.github.com/repos/github/hello-world/check-runs/4\",\n  \"html_url\": \"http://github.com/github/hello-world/runs/4\",\n  \"details_url\": \"https://example.com\",\n  \"status\": \"completed\",\n  \"conclusion\": \"neutral\",\n  \"started_at\": \"2018-05-04T01:14:52Z\",\n  \"completed_at\": \"2018-05-04T01:14:52Z\",\n  \"output\": {\n    \"title\": \"Mighty Readme report\",\n    \"summary\": \"There are 0 failures, 2 warnings, and 1 notice.\",\n    \"text\": \"You may have some misspelled words on lines 2 and 4. You also may want to add a section in your README about how to install your app.\",\n    \"annotations_count\": 2,\n    \"annotations_url\": \"https://api.github.com/repos/github/hello-world/check-runs/4/annotations\"\n  },\n  \"name\": \"mighty_readme\",\n  \"check_suite\": {\n    \"id\": 5\n  },\n  \"app\": {\n    \"id\": 1,\n    \"slug\": \"octoapp\",\n    \"node_id\": \"MDExOkludGVncmF0aW9uMQ==\",\n    \"owner\": {\n      \"login\": \"github\",\n      \"id\": 1,\n      \"node_id\": \"MDEyOk9yZ2FuaXphdGlvbjE=\",\n      \"url\": \"https://api.github.com/orgs/github\",\n      \"repos_url\": \"https://api.github.com/orgs/github/repos\",\n      \"events_url\": \"https://api.github.com/orgs/github/events\",\n      \"hooks_url\": \"https://api.github.com/orgs/github/hooks\",\n      \"issues_url\": \"https://api.github.com/orgs/github/issues\",\n      \"members_url\": \"https://api.github.com/orgs/github/members{/member}\",\n      \"public_members_url\": \"https://api.github.com/orgs/github/public_members{/member}\",\n      \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n      \"description\": \"A great organization\"\n    },\n    \"name\": \"Octocat App\",\n    \"description\": \"\",\n    \"external_url\": \"https://example.com\",\n    \"html_url\": \"https://github.com/apps/octoapp\",\n    \"created_at\": \"2017-07-08T16:18:44-04:00\",\n    \"updated_at\": \"2017-07-08T16:18:44-04:00\",\n    \"permissions\": {\n      \"metadata\": \"read\",\n      \"contents\": \"read\",\n      \"issues\": \"write\",\n      \"single_file\": \"write\"\n    },\n    \"events\": [\n      \"push\",\n      \"pull_request\"\n    ]\n  },\n  \"pull_requests\": [\n    {\n      \"url\": \"https://api.github.com/repos/github/hello-world/pulls/1\",\n      \"id\": 1934,\n      \"number\": 3956,\n      \"head\": {\n        \"ref\": \"say-hello\",\n        \"sha\": \"3dca65fa3e8d4b3da3f3d056c59aee1c50f41390\",\n        \"repo\": {\n          \"id\": 526,\n          \"url\": \"https://api.github.com/repos/github/hello-world\",\n          \"name\": \"hello-world\"\n        }\n      },\n      \"base\": {\n        \"ref\": \"master\",\n        \"sha\": \"e7fdf7640066d71ad16a86fbcbb9c6a10a18af4f\",\n        \"repo\": {\n          \"id\": 526,\n          \"url\": \"https://api.github.com/repos/github/hello-world\",\n          \"name\": \"hello-world\"\n        }\n      }\n    }\n  ]\n}\n"
+      }
+    ],
+    "target":{
+      "method":"patch",
+      "path":"/repos/{owner}/{repo}/check-runs/{check_run_id}"
+    },
+    "title":"Update a check run"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.antiope-preview+json\" \\\n  https://api.github.com/repos/octocat/hello-world/check-runs/42/annotations\n",
+        "type":"Shell"
+      },
+      {
+        "content":"application/vnd.github.antiope-preview+json\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"checks",
+    "id":"list-check-run-annotations",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>This API is under preview and subject to change.</p> <a href=\"#list-check-run-annotations-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"check_run_id ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"path\": \"README.md\",\n    \"start_line\": 2,\n    \"end_line\": 2,\n    \"start_column\": 5,\n    \"end_column\": 10,\n    \"annotation_level\": \"warning\",\n    \"title\": \"Spell Checker\",\n    \"message\": \"Check your spelling for 'banaas'.\",\n    \"raw_details\": \"Do you mean 'bananas' or 'banana'?\"\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/repos/{owner}/{repo}/check-runs/{check_run_id}/annotations"
+    },
+    "title":"List check run annotations"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.antiope-preview+json\" \\\n  https://api.github.com/repos/octocat/hello-world/check-suites/42/check-runs\n",
+        "type":"Shell"
+      },
+      {
+        "content":"application/vnd.github.antiope-preview+json\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"checks",
+    "id":"list-check-runs-in-a-check-suite",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>This API is under preview and subject to change.</p> <a href=\"#list-check-runs-in-a-check-suite-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"check_suite_id ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Returns check runs with the specified <code>name</code>.</p>",
+        "in":"query ",
+        "name":"check_name ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Returns check runs with the specified <code>status</code>. Can be one of <code>queued</code>, <code>in_progress</code>, or <code>completed</code>.</p>",
+        "in":"query ",
+        "name":"status ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Filters check runs by their <code>completed_at</code> timestamp. Can be one of <code>latest</code> (returning the most recent check runs) or <code>all</code>.</p>",
+        "in":"query ",
+        "name":"filter ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"total_count\": 1,\n  \"check_runs\": [\n    {\n      \"id\": 4,\n      \"head_sha\": \"ce587453ced02b1526dfb4cb910479d431683101\",\n      \"node_id\": \"MDg6Q2hlY2tSdW40\",\n      \"external_id\": \"\",\n      \"url\": \"https://api.github.com/repos/github/hello-world/check-runs/4\",\n      \"html_url\": \"http://github.com/github/hello-world/runs/4\",\n      \"details_url\": \"https://example.com\",\n      \"status\": \"completed\",\n      \"conclusion\": \"neutral\",\n      \"started_at\": \"2018-05-04T01:14:52Z\",\n      \"completed_at\": \"2018-05-04T01:14:52Z\",\n      \"output\": {\n        \"title\": \"Mighty Readme report\",\n        \"summary\": \"There are 0 failures, 2 warnings, and 1 notice.\",\n        \"text\": \"You may have some misspelled words on lines 2 and 4. You also may want to add a section in your README about how to install your app.\",\n        \"annotations_count\": 2,\n        \"annotations_url\": \"https://api.github.com/repos/github/hello-world/check-runs/4/annotations\"\n      },\n      \"name\": \"mighty_readme\",\n      \"check_suite\": {\n        \"id\": 5\n      },\n      \"app\": {\n        \"id\": 1,\n        \"slug\": \"octoapp\",\n        \"node_id\": \"MDExOkludGVncmF0aW9uMQ==\",\n        \"owner\": {\n          \"login\": \"github\",\n          \"id\": 1,\n          \"node_id\": \"MDEyOk9yZ2FuaXphdGlvbjE=\",\n          \"url\": \"https://api.github.com/orgs/github\",\n          \"repos_url\": \"https://api.github.com/orgs/github/repos\",\n          \"events_url\": \"https://api.github.com/orgs/github/events\",\n          \"hooks_url\": \"https://api.github.com/orgs/github/hooks\",\n          \"issues_url\": \"https://api.github.com/orgs/github/issues\",\n          \"members_url\": \"https://api.github.com/orgs/github/members{/member}\",\n          \"public_members_url\": \"https://api.github.com/orgs/github/public_members{/member}\",\n          \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n          \"description\": \"A great organization\"\n        },\n        \"name\": \"Octocat App\",\n        \"description\": \"\",\n        \"external_url\": \"https://example.com\",\n        \"html_url\": \"https://github.com/apps/octoapp\",\n        \"created_at\": \"2017-07-08T16:18:44-04:00\",\n        \"updated_at\": \"2017-07-08T16:18:44-04:00\",\n        \"permissions\": {\n          \"metadata\": \"read\",\n          \"contents\": \"read\",\n          \"issues\": \"write\",\n          \"single_file\": \"write\"\n        },\n        \"events\": [\n          \"push\",\n          \"pull_request\"\n        ]\n      },\n      \"pull_requests\": [\n        {\n          \"url\": \"https://api.github.com/repos/github/hello-world/pulls/1\",\n          \"id\": 1934,\n          \"number\": 3956,\n          \"head\": {\n            \"ref\": \"say-hello\",\n            \"sha\": \"3dca65fa3e8d4b3da3f3d056c59aee1c50f41390\",\n            \"repo\": {\n              \"id\": 526,\n              \"url\": \"https://api.github.com/repos/github/hello-world\",\n              \"name\": \"hello-world\"\n            }\n          },\n          \"base\": {\n            \"ref\": \"master\",\n            \"sha\": \"e7fdf7640066d71ad16a86fbcbb9c6a10a18af4f\",\n            \"repo\": {\n              \"id\": 526,\n              \"url\": \"https://api.github.com/repos/github/hello-world\",\n              \"name\": \"hello-world\"\n            }\n          }\n        }\n      ]\n    }\n  ]\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/repos/{owner}/{repo}/check-suites/{check_suite_id}/check-runs"
+    },
+    "title":"List check runs in a check suite"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.antiope-preview+json\" \\\n  https://api.github.com/repos/octocat/hello-world/commits/REF/check-runs\n",
+        "type":"Shell"
+      },
+      {
+        "content":"application/vnd.github.antiope-preview+json\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"checks",
+    "id":"list-check-runs-for-a-git-reference",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>This API is under preview and subject to change.</p> <a href=\"#list-check-runs-for-a-git-reference-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"ref ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Returns check runs with the specified <code>name</code>.</p>",
+        "in":"query ",
+        "name":"check_name ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Returns check runs with the specified <code>status</code>. Can be one of <code>queued</code>, <code>in_progress</code>, or <code>completed</code>.</p>",
+        "in":"query ",
+        "name":"status ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Filters check runs by their <code>completed_at</code> timestamp. Can be one of <code>latest</code> (returning the most recent check runs) or <code>all</code>.</p>",
+        "in":"query ",
+        "name":"filter ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"total_count\": 1,\n  \"check_runs\": [\n    {\n      \"id\": 4,\n      \"head_sha\": \"ce587453ced02b1526dfb4cb910479d431683101\",\n      \"node_id\": \"MDg6Q2hlY2tSdW40\",\n      \"external_id\": \"\",\n      \"url\": \"https://api.github.com/repos/github/hello-world/check-runs/4\",\n      \"html_url\": \"http://github.com/github/hello-world/runs/4\",\n      \"details_url\": \"https://example.com\",\n      \"status\": \"completed\",\n      \"conclusion\": \"neutral\",\n      \"started_at\": \"2018-05-04T01:14:52Z\",\n      \"completed_at\": \"2018-05-04T01:14:52Z\",\n      \"output\": {\n        \"title\": \"Mighty Readme report\",\n        \"summary\": \"There are 0 failures, 2 warnings, and 1 notice.\",\n        \"text\": \"You may have some misspelled words on lines 2 and 4. You also may want to add a section in your README about how to install your app.\",\n        \"annotations_count\": 2,\n        \"annotations_url\": \"https://api.github.com/repos/github/hello-world/check-runs/4/annotations\"\n      },\n      \"name\": \"mighty_readme\",\n      \"check_suite\": {\n        \"id\": 5\n      },\n      \"app\": {\n        \"id\": 1,\n        \"slug\": \"octoapp\",\n        \"node_id\": \"MDExOkludGVncmF0aW9uMQ==\",\n        \"owner\": {\n          \"login\": \"github\",\n          \"id\": 1,\n          \"node_id\": \"MDEyOk9yZ2FuaXphdGlvbjE=\",\n          \"url\": \"https://api.github.com/orgs/github\",\n          \"repos_url\": \"https://api.github.com/orgs/github/repos\",\n          \"events_url\": \"https://api.github.com/orgs/github/events\",\n          \"hooks_url\": \"https://api.github.com/orgs/github/hooks\",\n          \"issues_url\": \"https://api.github.com/orgs/github/issues\",\n          \"members_url\": \"https://api.github.com/orgs/github/members{/member}\",\n          \"public_members_url\": \"https://api.github.com/orgs/github/public_members{/member}\",\n          \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n          \"description\": \"A great organization\"\n        },\n        \"name\": \"Octocat App\",\n        \"description\": \"\",\n        \"external_url\": \"https://example.com\",\n        \"html_url\": \"https://github.com/apps/octoapp\",\n        \"created_at\": \"2017-07-08T16:18:44-04:00\",\n        \"updated_at\": \"2017-07-08T16:18:44-04:00\",\n        \"permissions\": {\n          \"metadata\": \"read\",\n          \"contents\": \"read\",\n          \"issues\": \"write\",\n          \"single_file\": \"write\"\n        },\n        \"events\": [\n          \"push\",\n          \"pull_request\"\n        ]\n      },\n      \"pull_requests\": [\n        {\n          \"url\": \"https://api.github.com/repos/github/hello-world/pulls/1\",\n          \"id\": 1934,\n          \"number\": 3956,\n          \"head\": {\n            \"ref\": \"say-hello\",\n            \"sha\": \"3dca65fa3e8d4b3da3f3d056c59aee1c50f41390\",\n            \"repo\": {\n              \"id\": 526,\n              \"url\": \"https://api.github.com/repos/github/hello-world\",\n              \"name\": \"hello-world\"\n            }\n          },\n          \"base\": {\n            \"ref\": \"master\",\n            \"sha\": \"e7fdf7640066d71ad16a86fbcbb9c6a10a18af4f\",\n            \"repo\": {\n              \"id\": 526,\n              \"url\": \"https://api.github.com/repos/github/hello-world\",\n              \"name\": \"hello-world\"\n            }\n          }\n        }\n      ]\n    }\n  ]\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/repos/{owner}/{repo}/commits/{ref}/check-runs"
+    },
+    "title":"List check runs for a Git reference"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X POST \\\n  -H \"Accept: application/vnd.github.antiope-preview+json\" \\\n  https://api.github.com/repos/octocat/hello-world/check-suites \\\n  -d '{\"head_sha\":\"head_sha\"}'\n",
+        "type":"Shell"
+      },
+      {
+        "content":"application/vnd.github.antiope-preview+json\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"checks",
+    "id":"create-a-check-suite",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>This API is under preview and subject to change.</p> <a href=\"#create-a-check-suite-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "description":"<p><strong>Required</strong>. The sha of the head commit.</p>",
+        "in":"body ",
+        "name":"head_sha ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"201 Created",
+        "content":"{\n  \"id\": 5,\n  \"node_id\": \"MDEwOkNoZWNrU3VpdGU1\",\n  \"head_branch\": \"master\",\n  \"head_sha\": \"d6fde92930d4715a2b49857d24b940956b26d2d3\",\n  \"status\": \"completed\",\n  \"conclusion\": \"neutral\",\n  \"url\": \"https://api.github.com/repos/github/hello-world/check-suites/5\",\n  \"before\": \"146e867f55c26428e5f9fade55a9bbf5e95a7912\",\n  \"after\": \"d6fde92930d4715a2b49857d24b940956b26d2d3\",\n  \"pull_requests\": [],\n  \"app\": {\n    \"id\": 1,\n    \"slug\": \"octoapp\",\n    \"node_id\": \"MDExOkludGVncmF0aW9uMQ==\",\n    \"owner\": {\n      \"login\": \"github\",\n      \"id\": 1,\n      \"node_id\": \"MDEyOk9yZ2FuaXphdGlvbjE=\",\n      \"url\": \"https://api.github.com/orgs/github\",\n      \"repos_url\": \"https://api.github.com/orgs/github/repos\",\n      \"events_url\": \"https://api.github.com/orgs/github/events\",\n      \"hooks_url\": \"https://api.github.com/orgs/github/hooks\",\n      \"issues_url\": \"https://api.github.com/orgs/github/issues\",\n      \"members_url\": \"https://api.github.com/orgs/github/members{/member}\",\n      \"public_members_url\": \"https://api.github.com/orgs/github/public_members{/member}\",\n      \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n      \"description\": \"A great organization\"\n    },\n    \"name\": \"Octocat App\",\n    \"description\": \"\",\n    \"external_url\": \"https://example.com\",\n    \"html_url\": \"https://github.com/apps/octoapp\",\n    \"created_at\": \"2017-07-08T16:18:44-04:00\",\n    \"updated_at\": \"2017-07-08T16:18:44-04:00\",\n    \"permissions\": {\n      \"metadata\": \"read\",\n      \"contents\": \"read\",\n      \"issues\": \"write\",\n      \"single_file\": \"write\"\n    },\n    \"events\": [\n      \"push\",\n      \"pull_request\"\n    ]\n  },\n  \"repository\": {\n    \"id\": 1296269,\n    \"node_id\": \"MDEwOlJlcG9zaXRvcnkxMjk2MjY5\",\n    \"name\": \"Hello-World\",\n    \"full_name\": \"octocat/Hello-World\",\n    \"owner\": {\n      \"login\": \"octocat\",\n      \"id\": 1,\n      \"node_id\": \"MDQ6VXNlcjE=\",\n      \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n      \"gravatar_id\": \"\",\n      \"url\": \"https://api.github.com/users/octocat\",\n      \"html_url\": \"https://github.com/octocat\",\n      \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n      \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n      \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n      \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n      \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n      \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n      \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n      \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n      \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n      \"type\": \"User\",\n      \"site_admin\": false\n    },\n    \"private\": false,\n    \"html_url\": \"https://github.com/octocat/Hello-World\",\n    \"description\": \"This your first repo!\",\n    \"fork\": false,\n    \"url\": \"https://api.github.com/repos/octocat/Hello-World\",\n    \"archive_url\": \"http://api.github.com/repos/octocat/Hello-World/{archive_format}{/ref}\",\n    \"assignees_url\": \"http://api.github.com/repos/octocat/Hello-World/assignees{/user}\",\n    \"blobs_url\": \"http://api.github.com/repos/octocat/Hello-World/git/blobs{/sha}\",\n    \"branches_url\": \"http://api.github.com/repos/octocat/Hello-World/branches{/branch}\",\n    \"collaborators_url\": \"http://api.github.com/repos/octocat/Hello-World/collaborators{/collaborator}\",\n    \"comments_url\": \"http://api.github.com/repos/octocat/Hello-World/comments{/number}\",\n    \"commits_url\": \"http://api.github.com/repos/octocat/Hello-World/commits{/sha}\",\n    \"compare_url\": \"http://api.github.com/repos/octocat/Hello-World/compare/{base}...{head}\",\n    \"contents_url\": \"http://api.github.com/repos/octocat/Hello-World/contents/{+path}\",\n    \"contributors_url\": \"http://api.github.com/repos/octocat/Hello-World/contributors\",\n    \"deployments_url\": \"http://api.github.com/repos/octocat/Hello-World/deployments\",\n    \"downloads_url\": \"http://api.github.com/repos/octocat/Hello-World/downloads\",\n    \"events_url\": \"http://api.github.com/repos/octocat/Hello-World/events\",\n    \"forks_url\": \"http://api.github.com/repos/octocat/Hello-World/forks\",\n    \"git_commits_url\": \"http://api.github.com/repos/octocat/Hello-World/git/commits{/sha}\",\n    \"git_refs_url\": \"http://api.github.com/repos/octocat/Hello-World/git/refs{/sha}\",\n    \"git_tags_url\": \"http://api.github.com/repos/octocat/Hello-World/git/tags{/sha}\",\n    \"git_url\": \"git:github.com/octocat/Hello-World.git\",\n    \"issue_comment_url\": \"http://api.github.com/repos/octocat/Hello-World/issues/comments{/number}\",\n    \"issue_events_url\": \"http://api.github.com/repos/octocat/Hello-World/issues/events{/number}\",\n    \"issues_url\": \"http://api.github.com/repos/octocat/Hello-World/issues{/number}\",\n    \"keys_url\": \"http://api.github.com/repos/octocat/Hello-World/keys{/key_id}\",\n    \"labels_url\": \"http://api.github.com/repos/octocat/Hello-World/labels{/name}\",\n    \"languages_url\": \"http://api.github.com/repos/octocat/Hello-World/languages\",\n    \"merges_url\": \"http://api.github.com/repos/octocat/Hello-World/merges\",\n    \"milestones_url\": \"http://api.github.com/repos/octocat/Hello-World/milestones{/number}\",\n    \"notifications_url\": \"http://api.github.com/repos/octocat/Hello-World/notifications{?since,all,participating}\",\n    \"pulls_url\": \"http://api.github.com/repos/octocat/Hello-World/pulls{/number}\",\n    \"releases_url\": \"http://api.github.com/repos/octocat/Hello-World/releases{/id}\",\n    \"ssh_url\": \"git@github.com:octocat/Hello-World.git\",\n    \"stargazers_url\": \"http://api.github.com/repos/octocat/Hello-World/stargazers\",\n    \"statuses_url\": \"http://api.github.com/repos/octocat/Hello-World/statuses/{sha}\",\n    \"subscribers_url\": \"http://api.github.com/repos/octocat/Hello-World/subscribers\",\n    \"subscription_url\": \"http://api.github.com/repos/octocat/Hello-World/subscription\",\n    \"tags_url\": \"http://api.github.com/repos/octocat/Hello-World/tags\",\n    \"teams_url\": \"http://api.github.com/repos/octocat/Hello-World/teams\",\n    \"trees_url\": \"http://api.github.com/repos/octocat/Hello-World/git/trees{/sha}\",\n    \"clone_url\": \"https://github.com/octocat/Hello-World.git\",\n    \"mirror_url\": \"git:git.example.com/octocat/Hello-World\",\n    \"hooks_url\": \"http://api.github.com/repos/octocat/Hello-World/hooks\",\n    \"svn_url\": \"https://svn.github.com/octocat/Hello-World\",\n    \"homepage\": \"https://github.com\",\n    \"language\": null,\n    \"forks_count\": 9,\n    \"stargazers_count\": 80,\n    \"watchers_count\": 80,\n    \"size\": 108,\n    \"default_branch\": \"master\",\n    \"open_issues_count\": 0,\n    \"is_template\": true,\n    \"topics\": [\n      \"octocat\",\n      \"atom\",\n      \"electron\",\n      \"api\"\n    ],\n    \"has_issues\": true,\n    \"has_projects\": true,\n    \"has_wiki\": true,\n    \"has_pages\": false,\n    \"has_downloads\": true,\n    \"archived\": false,\n    \"disabled\": false,\n    \"visibility\": \"public\",\n    \"pushed_at\": \"2011-01-26T19:06:43Z\",\n    \"created_at\": \"2011-01-26T19:01:12Z\",\n    \"updated_at\": \"2011-01-26T19:14:43Z\",\n    \"permissions\": {\n      \"admin\": false,\n      \"push\": false,\n      \"pull\": true\n    },\n    \"allow_rebase_merge\": true,\n    \"template_repository\": null,\n    \"temp_clone_token\": \"ABTLWHOULUVAXGTRYU7OC2876QJ2O\",\n    \"allow_squash_merge\": true,\n    \"delete_branch_on_merge\": true,\n    \"allow_merge_commit\": true,\n    \"subscribers_count\": 42,\n    \"network_count\": 0\n  }\n}\n"
+      }
+    ],
+    "target":{
+      "method":"post",
+      "path":"/repos/{owner}/{repo}/check-suites"
+    },
+    "title":"Create a check suite"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X PATCH \\\n  -H \"Accept: application/vnd.github.antiope-preview+json\" \\\n  https://api.github.com/repos/octocat/hello-world/check-suites/preferences \\\n  -d '{\"auto_trigger_checks\":[{\"app_id\":42,\"setting\":true}]}'\n",
+        "type":"Shell"
+      },
+      {
+        "content":"application/vnd.github.antiope-preview+json\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"checks",
+    "id":"update-repository-preferences-for-check-suites",
+    "parameterProperties":[
+      {
+        "description":"<strong>Required</strong>. The <code>id</code> of the GitHub App.",
+        "name":"app_id",
+        "of":"auto_trigger_checks",
+        "type":"integer"
+      },
+      {
+        "description":"<strong>Required</strong>. Set to <code>true</code> to enable automatic creation of CheckSuite events upon pushes to the repository, or <code>false</code> to disable them.",
+        "name":"setting",
+        "of":"auto_trigger_checks",
+        "type":"boolean"
+      }
+    ],
+    "parameters":[
+      {
+        "description":"<p>This API is under preview and subject to change.</p> <a href=\"#update-repository-preferences-for-check-suites-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Enables or disables automatic creation of CheckSuite events upon pushes to the repository. Enabled by default. See the <a href=\"https://developer.github.com/v3/checks/suites/#auto_trigger_checks-object\"><code>auto_trigger_checks</code> object</a> description for details.</p>",
+        "in":"body ",
+        "name":"auto_trigger_checks ",
+        "type":"array of objects "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"preferences\": {\n    \"auto_trigger_checks\": [\n      {\n        \"app_id\": 2,\n        \"setting\": true\n      },\n      {\n        \"app_id\": 4,\n        \"setting\": false\n      }\n    ]\n  },\n  \"repository\": {\n    \"id\": 1296269,\n    \"node_id\": \"MDEwOlJlcG9zaXRvcnkxMjk2MjY5\",\n    \"name\": \"Hello-World\",\n    \"full_name\": \"octocat/Hello-World\",\n    \"owner\": {\n      \"login\": \"octocat\",\n      \"id\": 1,\n      \"node_id\": \"MDQ6VXNlcjE=\",\n      \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n      \"gravatar_id\": \"\",\n      \"url\": \"https://api.github.com/users/octocat\",\n      \"html_url\": \"https://github.com/octocat\",\n      \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n      \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n      \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n      \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n      \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n      \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n      \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n      \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n      \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n      \"type\": \"User\",\n      \"site_admin\": false\n    },\n    \"private\": false,\n    \"html_url\": \"https://github.com/octocat/Hello-World\",\n    \"description\": \"This your first repo!\",\n    \"fork\": false,\n    \"url\": \"https://api.github.com/repos/octocat/Hello-World\",\n    \"archive_url\": \"http://api.github.com/repos/octocat/Hello-World/{archive_format}{/ref}\",\n    \"assignees_url\": \"http://api.github.com/repos/octocat/Hello-World/assignees{/user}\",\n    \"blobs_url\": \"http://api.github.com/repos/octocat/Hello-World/git/blobs{/sha}\",\n    \"branches_url\": \"http://api.github.com/repos/octocat/Hello-World/branches{/branch}\",\n    \"collaborators_url\": \"http://api.github.com/repos/octocat/Hello-World/collaborators{/collaborator}\",\n    \"comments_url\": \"http://api.github.com/repos/octocat/Hello-World/comments{/number}\",\n    \"commits_url\": \"http://api.github.com/repos/octocat/Hello-World/commits{/sha}\",\n    \"compare_url\": \"http://api.github.com/repos/octocat/Hello-World/compare/{base}...{head}\",\n    \"contents_url\": \"http://api.github.com/repos/octocat/Hello-World/contents/{+path}\",\n    \"contributors_url\": \"http://api.github.com/repos/octocat/Hello-World/contributors\",\n    \"deployments_url\": \"http://api.github.com/repos/octocat/Hello-World/deployments\",\n    \"downloads_url\": \"http://api.github.com/repos/octocat/Hello-World/downloads\",\n    \"events_url\": \"http://api.github.com/repos/octocat/Hello-World/events\",\n    \"forks_url\": \"http://api.github.com/repos/octocat/Hello-World/forks\",\n    \"git_commits_url\": \"http://api.github.com/repos/octocat/Hello-World/git/commits{/sha}\",\n    \"git_refs_url\": \"http://api.github.com/repos/octocat/Hello-World/git/refs{/sha}\",\n    \"git_tags_url\": \"http://api.github.com/repos/octocat/Hello-World/git/tags{/sha}\",\n    \"git_url\": \"git:github.com/octocat/Hello-World.git\",\n    \"issue_comment_url\": \"http://api.github.com/repos/octocat/Hello-World/issues/comments{/number}\",\n    \"issue_events_url\": \"http://api.github.com/repos/octocat/Hello-World/issues/events{/number}\",\n    \"issues_url\": \"http://api.github.com/repos/octocat/Hello-World/issues{/number}\",\n    \"keys_url\": \"http://api.github.com/repos/octocat/Hello-World/keys{/key_id}\",\n    \"labels_url\": \"http://api.github.com/repos/octocat/Hello-World/labels{/name}\",\n    \"languages_url\": \"http://api.github.com/repos/octocat/Hello-World/languages\",\n    \"merges_url\": \"http://api.github.com/repos/octocat/Hello-World/merges\",\n    \"milestones_url\": \"http://api.github.com/repos/octocat/Hello-World/milestones{/number}\",\n    \"notifications_url\": \"http://api.github.com/repos/octocat/Hello-World/notifications{?since,all,participating}\",\n    \"pulls_url\": \"http://api.github.com/repos/octocat/Hello-World/pulls{/number}\",\n    \"releases_url\": \"http://api.github.com/repos/octocat/Hello-World/releases{/id}\",\n    \"ssh_url\": \"git@github.com:octocat/Hello-World.git\",\n    \"stargazers_url\": \"http://api.github.com/repos/octocat/Hello-World/stargazers\",\n    \"statuses_url\": \"http://api.github.com/repos/octocat/Hello-World/statuses/{sha}\",\n    \"subscribers_url\": \"http://api.github.com/repos/octocat/Hello-World/subscribers\",\n    \"subscription_url\": \"http://api.github.com/repos/octocat/Hello-World/subscription\",\n    \"tags_url\": \"http://api.github.com/repos/octocat/Hello-World/tags\",\n    \"teams_url\": \"http://api.github.com/repos/octocat/Hello-World/teams\",\n    \"trees_url\": \"http://api.github.com/repos/octocat/Hello-World/git/trees{/sha}\",\n    \"clone_url\": \"https://github.com/octocat/Hello-World.git\",\n    \"mirror_url\": \"git:git.example.com/octocat/Hello-World\",\n    \"hooks_url\": \"http://api.github.com/repos/octocat/Hello-World/hooks\",\n    \"svn_url\": \"https://svn.github.com/octocat/Hello-World\",\n    \"homepage\": \"https://github.com\",\n    \"language\": null,\n    \"forks_count\": 9,\n    \"stargazers_count\": 80,\n    \"watchers_count\": 80,\n    \"size\": 108,\n    \"default_branch\": \"master\",\n    \"open_issues_count\": 0,\n    \"is_template\": true,\n    \"topics\": [\n      \"octocat\",\n      \"atom\",\n      \"electron\",\n      \"api\"\n    ],\n    \"has_issues\": true,\n    \"has_projects\": true,\n    \"has_wiki\": true,\n    \"has_pages\": false,\n    \"has_downloads\": true,\n    \"archived\": false,\n    \"disabled\": false,\n    \"visibility\": \"public\",\n    \"pushed_at\": \"2011-01-26T19:06:43Z\",\n    \"created_at\": \"2011-01-26T19:01:12Z\",\n    \"updated_at\": \"2011-01-26T19:14:43Z\",\n    \"permissions\": {\n      \"admin\": false,\n      \"push\": false,\n      \"pull\": true\n    },\n    \"allow_rebase_merge\": true,\n    \"template_repository\": null,\n    \"temp_clone_token\": \"ABTLWHOULUVAXGTRYU7OC2876QJ2O\",\n    \"allow_squash_merge\": true,\n    \"delete_branch_on_merge\": true,\n    \"allow_merge_commit\": true,\n    \"subscribers_count\": 42,\n    \"network_count\": 0\n  }\n}\n"
+      }
+    ],
+    "target":{
+      "method":"patch",
+      "path":"/repos/{owner}/{repo}/check-suites/preferences"
+    },
+    "title":"Update repository preferences for check suites"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.antiope-preview+json\" \\\n  https://api.github.com/repos/octocat/hello-world/check-suites/42\n",
+        "type":"Shell"
+      },
+      {
+        "content":"application/vnd.github.antiope-preview+json\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"checks",
+    "id":"get-a-check-suite",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>This API is under preview and subject to change.</p> <a href=\"#get-a-check-suite-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"check_suite_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"id\": 5,\n  \"node_id\": \"MDEwOkNoZWNrU3VpdGU1\",\n  \"head_branch\": \"master\",\n  \"head_sha\": \"d6fde92930d4715a2b49857d24b940956b26d2d3\",\n  \"status\": \"completed\",\n  \"conclusion\": \"neutral\",\n  \"url\": \"https://api.github.com/repos/github/hello-world/check-suites/5\",\n  \"before\": \"146e867f55c26428e5f9fade55a9bbf5e95a7912\",\n  \"after\": \"d6fde92930d4715a2b49857d24b940956b26d2d3\",\n  \"pull_requests\": [],\n  \"app\": {\n    \"id\": 1,\n    \"slug\": \"octoapp\",\n    \"node_id\": \"MDExOkludGVncmF0aW9uMQ==\",\n    \"owner\": {\n      \"login\": \"github\",\n      \"id\": 1,\n      \"node_id\": \"MDEyOk9yZ2FuaXphdGlvbjE=\",\n      \"url\": \"https://api.github.com/orgs/github\",\n      \"repos_url\": \"https://api.github.com/orgs/github/repos\",\n      \"events_url\": \"https://api.github.com/orgs/github/events\",\n      \"hooks_url\": \"https://api.github.com/orgs/github/hooks\",\n      \"issues_url\": \"https://api.github.com/orgs/github/issues\",\n      \"members_url\": \"https://api.github.com/orgs/github/members{/member}\",\n      \"public_members_url\": \"https://api.github.com/orgs/github/public_members{/member}\",\n      \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n      \"description\": \"A great organization\"\n    },\n    \"name\": \"Octocat App\",\n    \"description\": \"\",\n    \"external_url\": \"https://example.com\",\n    \"html_url\": \"https://github.com/apps/octoapp\",\n    \"created_at\": \"2017-07-08T16:18:44-04:00\",\n    \"updated_at\": \"2017-07-08T16:18:44-04:00\",\n    \"permissions\": {\n      \"metadata\": \"read\",\n      \"contents\": \"read\",\n      \"issues\": \"write\",\n      \"single_file\": \"write\"\n    },\n    \"events\": [\n      \"push\",\n      \"pull_request\"\n    ]\n  },\n  \"repository\": {\n    \"id\": 1296269,\n    \"node_id\": \"MDEwOlJlcG9zaXRvcnkxMjk2MjY5\",\n    \"name\": \"Hello-World\",\n    \"full_name\": \"octocat/Hello-World\",\n    \"owner\": {\n      \"login\": \"octocat\",\n      \"id\": 1,\n      \"node_id\": \"MDQ6VXNlcjE=\",\n      \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n      \"gravatar_id\": \"\",\n      \"url\": \"https://api.github.com/users/octocat\",\n      \"html_url\": \"https://github.com/octocat\",\n      \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n      \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n      \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n      \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n      \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n      \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n      \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n      \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n      \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n      \"type\": \"User\",\n      \"site_admin\": false\n    },\n    \"private\": false,\n    \"html_url\": \"https://github.com/octocat/Hello-World\",\n    \"description\": \"This your first repo!\",\n    \"fork\": false,\n    \"url\": \"https://api.github.com/repos/octocat/Hello-World\",\n    \"archive_url\": \"http://api.github.com/repos/octocat/Hello-World/{archive_format}{/ref}\",\n    \"assignees_url\": \"http://api.github.com/repos/octocat/Hello-World/assignees{/user}\",\n    \"blobs_url\": \"http://api.github.com/repos/octocat/Hello-World/git/blobs{/sha}\",\n    \"branches_url\": \"http://api.github.com/repos/octocat/Hello-World/branches{/branch}\",\n    \"collaborators_url\": \"http://api.github.com/repos/octocat/Hello-World/collaborators{/collaborator}\",\n    \"comments_url\": \"http://api.github.com/repos/octocat/Hello-World/comments{/number}\",\n    \"commits_url\": \"http://api.github.com/repos/octocat/Hello-World/commits{/sha}\",\n    \"compare_url\": \"http://api.github.com/repos/octocat/Hello-World/compare/{base}...{head}\",\n    \"contents_url\": \"http://api.github.com/repos/octocat/Hello-World/contents/{+path}\",\n    \"contributors_url\": \"http://api.github.com/repos/octocat/Hello-World/contributors\",\n    \"deployments_url\": \"http://api.github.com/repos/octocat/Hello-World/deployments\",\n    \"downloads_url\": \"http://api.github.com/repos/octocat/Hello-World/downloads\",\n    \"events_url\": \"http://api.github.com/repos/octocat/Hello-World/events\",\n    \"forks_url\": \"http://api.github.com/repos/octocat/Hello-World/forks\",\n    \"git_commits_url\": \"http://api.github.com/repos/octocat/Hello-World/git/commits{/sha}\",\n    \"git_refs_url\": \"http://api.github.com/repos/octocat/Hello-World/git/refs{/sha}\",\n    \"git_tags_url\": \"http://api.github.com/repos/octocat/Hello-World/git/tags{/sha}\",\n    \"git_url\": \"git:github.com/octocat/Hello-World.git\",\n    \"issue_comment_url\": \"http://api.github.com/repos/octocat/Hello-World/issues/comments{/number}\",\n    \"issue_events_url\": \"http://api.github.com/repos/octocat/Hello-World/issues/events{/number}\",\n    \"issues_url\": \"http://api.github.com/repos/octocat/Hello-World/issues{/number}\",\n    \"keys_url\": \"http://api.github.com/repos/octocat/Hello-World/keys{/key_id}\",\n    \"labels_url\": \"http://api.github.com/repos/octocat/Hello-World/labels{/name}\",\n    \"languages_url\": \"http://api.github.com/repos/octocat/Hello-World/languages\",\n    \"merges_url\": \"http://api.github.com/repos/octocat/Hello-World/merges\",\n    \"milestones_url\": \"http://api.github.com/repos/octocat/Hello-World/milestones{/number}\",\n    \"notifications_url\": \"http://api.github.com/repos/octocat/Hello-World/notifications{?since,all,participating}\",\n    \"pulls_url\": \"http://api.github.com/repos/octocat/Hello-World/pulls{/number}\",\n    \"releases_url\": \"http://api.github.com/repos/octocat/Hello-World/releases{/id}\",\n    \"ssh_url\": \"git@github.com:octocat/Hello-World.git\",\n    \"stargazers_url\": \"http://api.github.com/repos/octocat/Hello-World/stargazers\",\n    \"statuses_url\": \"http://api.github.com/repos/octocat/Hello-World/statuses/{sha}\",\n    \"subscribers_url\": \"http://api.github.com/repos/octocat/Hello-World/subscribers\",\n    \"subscription_url\": \"http://api.github.com/repos/octocat/Hello-World/subscription\",\n    \"tags_url\": \"http://api.github.com/repos/octocat/Hello-World/tags\",\n    \"teams_url\": \"http://api.github.com/repos/octocat/Hello-World/teams\",\n    \"trees_url\": \"http://api.github.com/repos/octocat/Hello-World/git/trees{/sha}\",\n    \"clone_url\": \"https://github.com/octocat/Hello-World.git\",\n    \"mirror_url\": \"git:git.example.com/octocat/Hello-World\",\n    \"hooks_url\": \"http://api.github.com/repos/octocat/Hello-World/hooks\",\n    \"svn_url\": \"https://svn.github.com/octocat/Hello-World\",\n    \"homepage\": \"https://github.com\",\n    \"language\": null,\n    \"forks_count\": 9,\n    \"stargazers_count\": 80,\n    \"watchers_count\": 80,\n    \"size\": 108,\n    \"default_branch\": \"master\",\n    \"open_issues_count\": 0,\n    \"is_template\": true,\n    \"topics\": [\n      \"octocat\",\n      \"atom\",\n      \"electron\",\n      \"api\"\n    ],\n    \"has_issues\": true,\n    \"has_projects\": true,\n    \"has_wiki\": true,\n    \"has_pages\": false,\n    \"has_downloads\": true,\n    \"archived\": false,\n    \"disabled\": false,\n    \"visibility\": \"public\",\n    \"pushed_at\": \"2011-01-26T19:06:43Z\",\n    \"created_at\": \"2011-01-26T19:01:12Z\",\n    \"updated_at\": \"2011-01-26T19:14:43Z\",\n    \"permissions\": {\n      \"admin\": false,\n      \"push\": false,\n      \"pull\": true\n    },\n    \"allow_rebase_merge\": true,\n    \"template_repository\": null,\n    \"temp_clone_token\": \"ABTLWHOULUVAXGTRYU7OC2876QJ2O\",\n    \"allow_squash_merge\": true,\n    \"delete_branch_on_merge\": true,\n    \"allow_merge_commit\": true,\n    \"subscribers_count\": 42,\n    \"network_count\": 0\n  }\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/repos/{owner}/{repo}/check-suites/{check_suite_id}"
+    },
+    "title":"Get a check suite"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X POST \\\n  -H \"Accept: application/vnd.github.antiope-preview+json\" \\\n  https://api.github.com/repos/octocat/hello-world/check-suites/42/rerequest\n",
+        "type":"Shell"
+      },
+      {
+        "content":"application/vnd.github.antiope-preview+json\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"checks",
+    "id":"rerequest-a-check-suite",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>This API is under preview and subject to change.</p> <a href=\"#rerequest-a-check-suite-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"check_suite_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"201 Created"
+      }
+    ],
+    "target":{
+      "method":"post",
+      "path":"/repos/{owner}/{repo}/check-suites/{check_suite_id}/rerequest"
+    },
+    "title":"Rerequest a check suite"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.antiope-preview+json\" \\\n  https://api.github.com/repos/octocat/hello-world/commits/REF/check-suites\n",
+        "type":"Shell"
+      },
+      {
+        "content":"application/vnd.github.antiope-preview+json\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"checks",
+    "id":"list-check-suites-for-a-git-reference",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>This API is under preview and subject to change.</p> <a href=\"#list-check-suites-for-a-git-reference-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"ref ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Filters check suites by GitHub App <code>id</code>.</p>",
+        "in":"query ",
+        "name":"app_id ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Filters checks suites by the name of the <a href=\"https://developer.github.com/v3/checks/runs/\">check run</a>.</p>",
+        "in":"query ",
+        "name":"check_name ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"total_count\": 1,\n  \"check_suites\": [\n    {\n      \"id\": 5,\n      \"node_id\": \"MDEwOkNoZWNrU3VpdGU1\",\n      \"head_branch\": \"master\",\n      \"head_sha\": \"d6fde92930d4715a2b49857d24b940956b26d2d3\",\n      \"status\": \"completed\",\n      \"conclusion\": \"neutral\",\n      \"url\": \"https://api.github.com/repos/github/hello-world/check-suites/5\",\n      \"before\": \"146e867f55c26428e5f9fade55a9bbf5e95a7912\",\n      \"after\": \"d6fde92930d4715a2b49857d24b940956b26d2d3\",\n      \"pull_requests\": [],\n      \"app\": {\n        \"id\": 1,\n        \"slug\": \"octoapp\",\n        \"node_id\": \"MDExOkludGVncmF0aW9uMQ==\",\n        \"owner\": {\n          \"login\": \"github\",\n          \"id\": 1,\n          \"node_id\": \"MDEyOk9yZ2FuaXphdGlvbjE=\",\n          \"url\": \"https://api.github.com/orgs/github\",\n          \"repos_url\": \"https://api.github.com/orgs/github/repos\",\n          \"events_url\": \"https://api.github.com/orgs/github/events\",\n          \"hooks_url\": \"https://api.github.com/orgs/github/hooks\",\n          \"issues_url\": \"https://api.github.com/orgs/github/issues\",\n          \"members_url\": \"https://api.github.com/orgs/github/members{/member}\",\n          \"public_members_url\": \"https://api.github.com/orgs/github/public_members{/member}\",\n          \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n          \"description\": \"A great organization\"\n        },\n        \"name\": \"Octocat App\",\n        \"description\": \"\",\n        \"external_url\": \"https://example.com\",\n        \"html_url\": \"https://github.com/apps/octoapp\",\n        \"created_at\": \"2017-07-08T16:18:44-04:00\",\n        \"updated_at\": \"2017-07-08T16:18:44-04:00\",\n        \"permissions\": {\n          \"metadata\": \"read\",\n          \"contents\": \"read\",\n          \"issues\": \"write\",\n          \"single_file\": \"write\"\n        },\n        \"events\": [\n          \"push\",\n          \"pull_request\"\n        ]\n      },\n      \"repository\": {\n        \"id\": 1296269,\n        \"node_id\": \"MDEwOlJlcG9zaXRvcnkxMjk2MjY5\",\n        \"name\": \"Hello-World\",\n        \"full_name\": \"octocat/Hello-World\",\n        \"owner\": {\n          \"login\": \"octocat\",\n          \"id\": 1,\n          \"node_id\": \"MDQ6VXNlcjE=\",\n          \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n          \"gravatar_id\": \"\",\n          \"url\": \"https://api.github.com/users/octocat\",\n          \"html_url\": \"https://github.com/octocat\",\n          \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n          \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n          \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n          \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n          \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n          \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n          \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n          \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n          \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n          \"type\": \"User\",\n          \"site_admin\": false\n        },\n        \"private\": false,\n        \"html_url\": \"https://github.com/octocat/Hello-World\",\n        \"description\": \"This your first repo!\",\n        \"fork\": false,\n        \"url\": \"https://api.github.com/repos/octocat/Hello-World\",\n        \"archive_url\": \"http://api.github.com/repos/octocat/Hello-World/{archive_format}{/ref}\",\n        \"assignees_url\": \"http://api.github.com/repos/octocat/Hello-World/assignees{/user}\",\n        \"blobs_url\": \"http://api.github.com/repos/octocat/Hello-World/git/blobs{/sha}\",\n        \"branches_url\": \"http://api.github.com/repos/octocat/Hello-World/branches{/branch}\",\n        \"collaborators_url\": \"http://api.github.com/repos/octocat/Hello-World/collaborators{/collaborator}\",\n        \"comments_url\": \"http://api.github.com/repos/octocat/Hello-World/comments{/number}\",\n        \"commits_url\": \"http://api.github.com/repos/octocat/Hello-World/commits{/sha}\",\n        \"compare_url\": \"http://api.github.com/repos/octocat/Hello-World/compare/{base}...{head}\",\n        \"contents_url\": \"http://api.github.com/repos/octocat/Hello-World/contents/{+path}\",\n        \"contributors_url\": \"http://api.github.com/repos/octocat/Hello-World/contributors\",\n        \"deployments_url\": \"http://api.github.com/repos/octocat/Hello-World/deployments\",\n        \"downloads_url\": \"http://api.github.com/repos/octocat/Hello-World/downloads\",\n        \"events_url\": \"http://api.github.com/repos/octocat/Hello-World/events\",\n        \"forks_url\": \"http://api.github.com/repos/octocat/Hello-World/forks\",\n        \"git_commits_url\": \"http://api.github.com/repos/octocat/Hello-World/git/commits{/sha}\",\n        \"git_refs_url\": \"http://api.github.com/repos/octocat/Hello-World/git/refs{/sha}\",\n        \"git_tags_url\": \"http://api.github.com/repos/octocat/Hello-World/git/tags{/sha}\",\n        \"git_url\": \"git:github.com/octocat/Hello-World.git\",\n        \"issue_comment_url\": \"http://api.github.com/repos/octocat/Hello-World/issues/comments{/number}\",\n        \"issue_events_url\": \"http://api.github.com/repos/octocat/Hello-World/issues/events{/number}\",\n        \"issues_url\": \"http://api.github.com/repos/octocat/Hello-World/issues{/number}\",\n        \"keys_url\": \"http://api.github.com/repos/octocat/Hello-World/keys{/key_id}\",\n        \"labels_url\": \"http://api.github.com/repos/octocat/Hello-World/labels{/name}\",\n        \"languages_url\": \"http://api.github.com/repos/octocat/Hello-World/languages\",\n        \"merges_url\": \"http://api.github.com/repos/octocat/Hello-World/merges\",\n        \"milestones_url\": \"http://api.github.com/repos/octocat/Hello-World/milestones{/number}\",\n        \"notifications_url\": \"http://api.github.com/repos/octocat/Hello-World/notifications{?since,all,participating}\",\n        \"pulls_url\": \"http://api.github.com/repos/octocat/Hello-World/pulls{/number}\",\n        \"releases_url\": \"http://api.github.com/repos/octocat/Hello-World/releases{/id}\",\n        \"ssh_url\": \"git@github.com:octocat/Hello-World.git\",\n        \"stargazers_url\": \"http://api.github.com/repos/octocat/Hello-World/stargazers\",\n        \"statuses_url\": \"http://api.github.com/repos/octocat/Hello-World/statuses/{sha}\",\n        \"subscribers_url\": \"http://api.github.com/repos/octocat/Hello-World/subscribers\",\n        \"subscription_url\": \"http://api.github.com/repos/octocat/Hello-World/subscription\",\n        \"tags_url\": \"http://api.github.com/repos/octocat/Hello-World/tags\",\n        \"teams_url\": \"http://api.github.com/repos/octocat/Hello-World/teams\",\n        \"trees_url\": \"http://api.github.com/repos/octocat/Hello-World/git/trees{/sha}\",\n        \"clone_url\": \"https://github.com/octocat/Hello-World.git\",\n        \"mirror_url\": \"git:git.example.com/octocat/Hello-World\",\n        \"hooks_url\": \"http://api.github.com/repos/octocat/Hello-World/hooks\",\n        \"svn_url\": \"https://svn.github.com/octocat/Hello-World\",\n        \"homepage\": \"https://github.com\",\n        \"language\": null,\n        \"forks_count\": 9,\n        \"stargazers_count\": 80,\n        \"watchers_count\": 80,\n        \"size\": 108,\n        \"default_branch\": \"master\",\n        \"open_issues_count\": 0,\n        \"is_template\": true,\n        \"topics\": [\n          \"octocat\",\n          \"atom\",\n          \"electron\",\n          \"api\"\n        ],\n        \"has_issues\": true,\n        \"has_projects\": true,\n        \"has_wiki\": true,\n        \"has_pages\": false,\n        \"has_downloads\": true,\n        \"archived\": false,\n        \"disabled\": false,\n        \"visibility\": \"public\",\n        \"pushed_at\": \"2011-01-26T19:06:43Z\",\n        \"created_at\": \"2011-01-26T19:01:12Z\",\n        \"updated_at\": \"2011-01-26T19:14:43Z\",\n        \"permissions\": {\n          \"admin\": false,\n          \"push\": false,\n          \"pull\": true\n        },\n        \"allow_rebase_merge\": true,\n        \"template_repository\": null,\n        \"temp_clone_token\": \"ABTLWHOULUVAXGTRYU7OC2876QJ2O\",\n        \"allow_squash_merge\": true,\n        \"delete_branch_on_merge\": true,\n        \"allow_merge_commit\": true,\n        \"subscribers_count\": 42,\n        \"network_count\": 0\n      }\n    }\n  ]\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/repos/{owner}/{repo}/commits/{ref}/check-suites"
+    },
+    "title":"List check suites for a Git reference"
+  }
+]

@@ -1,0 +1,1323 @@
+[
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/user\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"users",
+    "id":"get-the-authenticated-user",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"login\": \"octocat\",\n  \"id\": 1,\n  \"node_id\": \"MDQ6VXNlcjE=\",\n  \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n  \"gravatar_id\": \"\",\n  \"url\": \"https://api.github.com/users/octocat\",\n  \"html_url\": \"https://github.com/octocat\",\n  \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n  \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n  \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n  \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n  \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n  \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n  \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n  \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n  \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n  \"type\": \"User\",\n  \"site_admin\": false,\n  \"name\": \"monalisa octocat\",\n  \"company\": \"GitHub\",\n  \"blog\": \"https://github.com/blog\",\n  \"location\": \"San Francisco\",\n  \"email\": \"octocat@github.com\",\n  \"hireable\": false,\n  \"bio\": \"There once was...\",\n  \"twitter_username\": \"monatheoctocat\",\n  \"public_repos\": 2,\n  \"public_gists\": 1,\n  \"followers\": 20,\n  \"following\": 0,\n  \"created_at\": \"2008-01-14T04:33:35Z\",\n  \"updated_at\": \"2008-01-14T04:33:35Z\",\n  \"private_gists\": 81,\n  \"total_private_repos\": 100,\n  \"owned_private_repos\": 100,\n  \"disk_usage\": 10000,\n  \"collaborators\": 8,\n  \"two_factor_authentication\": true,\n  \"plan\": {\n    \"name\": \"Medium\",\n    \"space\": 400,\n    \"private_repos\": 20,\n    \"collaborators\": 0\n  }\n}\n"
+      },
+      {
+        "code":"200 OK",
+        "content":"{\n  \"login\": \"octocat\",\n  \"id\": 1,\n  \"node_id\": \"MDQ6VXNlcjE=\",\n  \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n  \"gravatar_id\": \"\",\n  \"url\": \"https://api.github.com/users/octocat\",\n  \"html_url\": \"https://github.com/octocat\",\n  \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n  \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n  \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n  \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n  \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n  \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n  \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n  \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n  \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n  \"type\": \"User\",\n  \"site_admin\": false,\n  \"name\": \"monalisa octocat\",\n  \"company\": \"GitHub\",\n  \"blog\": \"https://github.com/blog\",\n  \"location\": \"San Francisco\",\n  \"email\": \"octocat@github.com\",\n  \"hireable\": false,\n  \"bio\": \"There once was...\",\n  \"twitter_username\": \"monatheoctocat\",\n  \"public_repos\": 2,\n  \"public_gists\": 1,\n  \"followers\": 20,\n  \"following\": 0,\n  \"created_at\": \"2008-01-14T04:33:35Z\",\n  \"updated_at\": \"2008-01-14T04:33:35Z\"\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/user"
+    },
+    "title":"Get the authenticated user"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X PATCH \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/user \\\n  -d '{\"name\":\"name\"}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"users",
+    "id":"update-the-authenticated-user",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The new name of the user.</p>",
+        "in":"body ",
+        "name":"name ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The publicly visible email address of the user.</p>",
+        "in":"body ",
+        "name":"email ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The new blog URL of the user.</p>",
+        "in":"body ",
+        "name":"blog ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The new company of the user.</p>",
+        "in":"body ",
+        "name":"company ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The new location of the user.</p>",
+        "in":"body ",
+        "name":"location ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The new hiring availability of the user.</p>",
+        "in":"body ",
+        "name":"hireable ",
+        "type":"boolean "
+      },
+      {
+        "description":"<p>The new short biography of the user.</p>",
+        "in":"body ",
+        "name":"bio ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The new Twitter username of the user.</p>",
+        "in":"body ",
+        "name":"twitter_username ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"login\": \"octocat\",\n  \"id\": 1,\n  \"node_id\": \"MDQ6VXNlcjE=\",\n  \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n  \"gravatar_id\": \"\",\n  \"url\": \"https://api.github.com/users/octocat\",\n  \"html_url\": \"https://github.com/octocat\",\n  \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n  \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n  \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n  \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n  \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n  \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n  \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n  \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n  \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n  \"type\": \"User\",\n  \"site_admin\": false,\n  \"name\": \"monalisa octocat\",\n  \"company\": \"GitHub\",\n  \"blog\": \"https://github.com/blog\",\n  \"location\": \"San Francisco\",\n  \"email\": \"octocat@github.com\",\n  \"hireable\": false,\n  \"bio\": \"There once was...\",\n  \"twitter_username\": \"monatheoctocat\",\n  \"public_repos\": 2,\n  \"public_gists\": 1,\n  \"followers\": 20,\n  \"following\": 0,\n  \"created_at\": \"2008-01-14T04:33:35Z\",\n  \"updated_at\": \"2008-01-14T04:33:35Z\",\n  \"private_gists\": 81,\n  \"total_private_repos\": 100,\n  \"owned_private_repos\": 100,\n  \"disk_usage\": 10000,\n  \"collaborators\": 8,\n  \"two_factor_authentication\": true,\n  \"plan\": {\n    \"name\": \"Medium\",\n    \"space\": 400,\n    \"private_repos\": 20,\n    \"collaborators\": 0\n  }\n}\n"
+      }
+    ],
+    "target":{
+      "method":"patch",
+      "path":"/user"
+    },
+    "title":"Update the authenticated user"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/users\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"users",
+    "id":"list-users",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The integer ID of the last User that you&apos;ve seen.</p>",
+        "in":"query ",
+        "name":"since ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"login\": \"octocat\",\n    \"id\": 1,\n    \"node_id\": \"MDQ6VXNlcjE=\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/users/octocat\",\n    \"html_url\": \"https://github.com/octocat\",\n    \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n    \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n    \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n    \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n    \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n    \"type\": \"User\",\n    \"site_admin\": false\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/users"
+    },
+    "title":"List users"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/users/USERNAME\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"users",
+    "id":"get-a-user",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"username ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"login\": \"octocat\",\n  \"id\": 1,\n  \"node_id\": \"MDQ6VXNlcjE=\",\n  \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n  \"gravatar_id\": \"\",\n  \"url\": \"https://api.github.com/users/octocat\",\n  \"html_url\": \"https://github.com/octocat\",\n  \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n  \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n  \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n  \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n  \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n  \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n  \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n  \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n  \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n  \"type\": \"User\",\n  \"site_admin\": false,\n  \"name\": \"monalisa octocat\",\n  \"company\": \"GitHub\",\n  \"blog\": \"https://github.com/blog\",\n  \"location\": \"San Francisco\",\n  \"email\": \"octocat@github.com\",\n  \"hireable\": false,\n  \"bio\": \"There once was...\",\n  \"twitter_username\": \"monatheoctocat\",\n  \"public_repos\": 2,\n  \"public_gists\": 1,\n  \"followers\": 20,\n  \"following\": 0,\n  \"created_at\": \"2008-01-14T04:33:35Z\",\n  \"updated_at\": \"2008-01-14T04:33:35Z\"\n}\n"
+      },
+      {
+        "code":"200 OK",
+        "content":"{\n  \"login\": \"octocat\",\n  \"id\": 1,\n  \"node_id\": \"MDQ6VXNlcjE=\",\n  \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n  \"gravatar_id\": \"\",\n  \"url\": \"https://api.github.com/users/octocat\",\n  \"html_url\": \"https://github.com/octocat\",\n  \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n  \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n  \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n  \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n  \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n  \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n  \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n  \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n  \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n  \"type\": \"User\",\n  \"site_admin\": false,\n  \"name\": \"monalisa octocat\",\n  \"company\": \"GitHub\",\n  \"blog\": \"https://github.com/blog\",\n  \"location\": \"San Francisco\",\n  \"email\": \"octocat@github.com\",\n  \"hireable\": false,\n  \"bio\": \"There once was...\",\n  \"twitter_username\": \"monatheoctocat\",\n  \"public_repos\": 2,\n  \"public_gists\": 1,\n  \"followers\": 20,\n  \"following\": 0,\n  \"created_at\": \"2008-01-14T04:33:35Z\",\n  \"updated_at\": \"2008-01-14T04:33:35Z\",\n  \"plan\": {\n    \"name\": \"pro\",\n    \"space\": 976562499,\n    \"collaborators\": 0,\n    \"private_repos\": 9999\n  }\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/users/{username}"
+    },
+    "title":"Get a user"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":" curl -u username:token\n  https://api.github.com/users/octocat/hovercard?subject_type=repository&subject_id=1300192\n",
+        "type":"Shell"
+      },
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/users/USERNAME/hovercard\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"users",
+    "id":"get-contextual-information-for-a-user",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"username ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Identifies which additional information you&apos;d like to receive about the person&apos;s hovercard. Can be <code>organization</code>, <code>repository</code>, <code>issue</code>, <code>pull_request</code>. <strong>Required</strong> when using <code>subject_id</code>.</p>",
+        "in":"query ",
+        "name":"subject_type ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Uses the ID for the <code>subject_type</code> you specified. <strong>Required</strong> when using <code>subject_type</code>.</p>",
+        "in":"query ",
+        "name":"subject_id ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"contexts\": [\n    {\n      \"message\": \"Owns this repository\",\n      \"octicon\": \"repo\"\n    }\n  ]\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/users/{username}/hovercard"
+    },
+    "title":"Get contextual information for a user"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/user/blocks\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"users",
+    "id":"list-users-blocked-by-the-authenticated-user",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"login\": \"octocat\",\n    \"id\": 1,\n    \"node_id\": \"MDQ6VXNlcjE=\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/users/octocat\",\n    \"html_url\": \"https://github.com/octocat\",\n    \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n    \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n    \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n    \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n    \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n    \"type\": \"User\",\n    \"site_admin\": false\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/user/blocks"
+    },
+    "title":"List users blocked by the authenticated user"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/user/blocks/USERNAME\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"users",
+    "id":"check-if-a-user-is-blocked-by-the-authenticated-user",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"username ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      },
+      {
+        "code":"404 Not Found"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/user/blocks/{username}"
+    },
+    "title":"Check if a user is blocked by the authenticated user"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X PUT \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/user/blocks/USERNAME\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"users",
+    "id":"block-a-user",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"username ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"put",
+      "path":"/user/blocks/{username}"
+    },
+    "title":"Block a user"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X DELETE \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/user/blocks/USERNAME\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"users",
+    "id":"unblock-a-user",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"username ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"delete",
+      "path":"/user/blocks/{username}"
+    },
+    "title":"Unblock a user"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X PATCH \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/user/email/visibility \\\n  -d '{\"email\":\"octocat@github.com\",\"visibility\":\"visibility\"}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"users",
+    "id":"set-primary-email-visibility-for-the-authenticated-user",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "description":"<p><strong>Required</strong>. Specify the <em>primary</em> email address that needs a visibility change.</p>",
+        "in":"body ",
+        "name":"email ",
+        "type":"string "
+      },
+      {
+        "description":"<p><strong>Required</strong>. Use <code>public</code> to enable an authenticated user to view the specified email address, or use <code>private</code> so this primary email address cannot be seen publicly.</p>",
+        "in":"body ",
+        "name":"visibility ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"email\": \"octocat@github.com\",\n    \"primary\": true,\n    \"verified\": true,\n    \"visibility\": \"private\"\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"patch",
+      "path":"/user/email/visibility"
+    },
+    "title":"Set primary email visibility for the authenticated user"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/user/emails\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"users",
+    "id":"list-email-addresses-for-the-authenticated-user",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"email\": \"octocat@github.com\",\n    \"verified\": true,\n    \"primary\": true,\n    \"visibility\": \"public\"\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/user/emails"
+    },
+    "title":"List email addresses for the authenticated user"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X POST \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/user/emails \\\n  -d '{\"emails\":[\"octocat@github.com\"]}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"users",
+    "id":"add-an-email-address-for-the-authenticated-user",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "description":"<p><strong>Required</strong>. Adds one or more email addresses to your GitHub account. Must contain at least one email address. <strong>Note:</strong> Alternatively, you can pass a single email address or an <code>array</code> of emails addresses directly, but we recommend that you pass an object using the <code>emails</code> key.</p>",
+        "in":"body ",
+        "name":"emails ",
+        "type":"array of strings "
+      }
+    ],
+    "responses":[
+      {
+        "code":"201 Created",
+        "content":"[\n  {\n    \"email\": \"octocat@octocat.org\",\n    \"primary\": false,\n    \"verified\": false,\n    \"visibility\": \"public\"\n  },\n  {\n    \"email\": \"octocat@github.com\",\n    \"primary\": false,\n    \"verified\": false,\n    \"visibility\": null\n  },\n  {\n    \"email\": \"support@github.com\",\n    \"primary\": false,\n    \"verified\": false,\n    \"visibility\": null\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"post",
+      "path":"/user/emails"
+    },
+    "title":"Add an email address for the authenticated user"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X DELETE \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/user/emails \\\n  -d '{\"emails\":[\"octocat@github.com\"]}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"users",
+    "id":"delete-an-email-address-for-the-authenticated-user",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "description":"<p><strong>Required</strong>. Deletes one or more email addresses from your GitHub account. Must contain at least one email address. <strong>Note:</strong> Alternatively, you can pass a single email address or an <code>array</code> of emails addresses directly, but we recommend that you pass an object using the <code>emails</code> key.</p>",
+        "in":"body ",
+        "name":"emails ",
+        "type":"array of strings "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"delete",
+      "path":"/user/emails"
+    },
+    "title":"Delete an email address for the authenticated user"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/user/public_emails\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"users",
+    "id":"list-public-email-addresses-for-the-authenticated-user",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"email\": \"octocat@github.com\",\n    \"verified\": true,\n    \"primary\": true,\n    \"visibility\": \"public\"\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/user/public_emails"
+    },
+    "title":"List public email addresses for the authenticated user"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/user/followers\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"users",
+    "id":"list-followers-of-the-authenticated-user",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"login\": \"octocat\",\n    \"id\": 1,\n    \"node_id\": \"MDQ6VXNlcjE=\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/users/octocat\",\n    \"html_url\": \"https://github.com/octocat\",\n    \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n    \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n    \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n    \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n    \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n    \"type\": \"User\",\n    \"site_admin\": false\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/user/followers"
+    },
+    "title":"List followers of the authenticated user"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/user/following\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"users",
+    "id":"list-the-people-the-authenticated-user-follows",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"login\": \"octocat\",\n    \"id\": 1,\n    \"node_id\": \"MDQ6VXNlcjE=\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/users/octocat\",\n    \"html_url\": \"https://github.com/octocat\",\n    \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n    \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n    \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n    \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n    \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n    \"type\": \"User\",\n    \"site_admin\": false\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/user/following"
+    },
+    "title":"List the people the authenticated user follows"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/user/following/USERNAME\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"users",
+    "id":"check-if-a-person-is-followed-by-the-authenticated-user",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"username ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      },
+      {
+        "code":"404 Not Found"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/user/following/{username}"
+    },
+    "title":"Check if a person is followed by the authenticated user"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X PUT \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/user/following/USERNAME\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"users",
+    "id":"follow-a-user",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"username ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"put",
+      "path":"/user/following/{username}"
+    },
+    "title":"Follow a user"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X DELETE \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/user/following/USERNAME\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"users",
+    "id":"unfollow-a-user",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"username ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"delete",
+      "path":"/user/following/{username}"
+    },
+    "title":"Unfollow a user"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/users/USERNAME/followers\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"users",
+    "id":"list-followers-of-a-user",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"username ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"login\": \"octocat\",\n    \"id\": 1,\n    \"node_id\": \"MDQ6VXNlcjE=\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/users/octocat\",\n    \"html_url\": \"https://github.com/octocat\",\n    \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n    \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n    \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n    \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n    \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n    \"type\": \"User\",\n    \"site_admin\": false\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/users/{username}/followers"
+    },
+    "title":"List followers of a user"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/users/USERNAME/following\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"users",
+    "id":"list-the-people-a-user-follows",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"username ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"login\": \"octocat\",\n    \"id\": 1,\n    \"node_id\": \"MDQ6VXNlcjE=\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/users/octocat\",\n    \"html_url\": \"https://github.com/octocat\",\n    \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n    \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n    \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n    \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n    \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n    \"type\": \"User\",\n    \"site_admin\": false\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/users/{username}/following"
+    },
+    "title":"List the people a user follows"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/users/USERNAME/following/TARGET_USER\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"users",
+    "id":"check-if-a-user-follows-another-user",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"username ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"target_user ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      },
+      {
+        "code":"404 Not Found"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/users/{username}/following/{target_user}"
+    },
+    "title":"Check if a user follows another user"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/user/keys\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"users",
+    "id":"list-public-ssh-keys-for-the-authenticated-user",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"key_id\": \"012345678912345678\",\n    \"key\": \"2Sg8iYjAxxmI2LvUXpJjkYrMxURPc8r+dB7TJyvv1234\"\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/user/keys"
+    },
+    "title":"List public SSH keys for the authenticated user"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X POST \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/user/keys \\\n  -d '{\"title\":\"title\"}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"users",
+    "id":"create-a-public-ssh-key-for-the-authenticated-user",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "description":"<p>A descriptive name for the new key. Use a name that will help you recognize this key in your GitHub account. For example, if you&apos;re using a personal Mac, you might call this key &quot;Personal MacBook Air&quot;.</p>",
+        "in":"body ",
+        "name":"title ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The public SSH key to add to your GitHub account. See &quot;<a href=\"https://docs.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/\">Generating a new SSH key</a>&quot; for guidance on how to create a public SSH key.</p>",
+        "in":"body ",
+        "name":"key ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"201 Created",
+        "content":"{\n  \"key_id\": \"012345678912345678\",\n  \"key\": \"2Sg8iYjAxxmI2LvUXpJjkYrMxURPc8r+dB7TJyvv1234\"\n}\n"
+      }
+    ],
+    "target":{
+      "method":"post",
+      "path":"/user/keys"
+    },
+    "title":"Create a public SSH key for the authenticated user"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/user/keys/42\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"users",
+    "id":"get-a-public-ssh-key-for-the-authenticated-user",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"key_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"key_id\": \"012345678912345678\",\n  \"key\": \"2Sg8iYjAxxmI2LvUXpJjkYrMxURPc8r+dB7TJyvv1234\"\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/user/keys/{key_id}"
+    },
+    "title":"Get a public SSH key for the authenticated user"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X DELETE \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/user/keys/42\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"users",
+    "id":"delete-a-public-ssh-key-for-the-authenticated-user",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"key_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"delete",
+      "path":"/user/keys/{key_id}"
+    },
+    "title":"Delete a public SSH key for the authenticated user"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/users/USERNAME/keys\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"users",
+    "id":"list-public-keys-for-a-user",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"username ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"id\": 1,\n    \"key\": \"ssh-rsa AAA...\"\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/users/{username}/keys"
+    },
+    "title":"List public keys for a user"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/user/gpg_keys\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"users",
+    "id":"list-gpg-keys-for-the-authenticated-user",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"id\": 3,\n    \"primary_key_id\": null,\n    \"key_id\": \"3262EFF25BA0D270\",\n    \"public_key\": \"xsBNBFayYZ...\",\n    \"emails\": [\n      {\n        \"email\": \"mastahyeti@users.noreply.github.com\",\n        \"verified\": true\n      }\n    ],\n    \"subkeys\": [\n      {\n        \"id\": 4,\n        \"primary_key_id\": 3,\n        \"key_id\": \"4A595D4C72EE49C7\",\n        \"public_key\": \"zsBNBFayYZ...\",\n        \"emails\": [],\n        \"subkeys\": [],\n        \"can_sign\": false,\n        \"can_encrypt_comms\": true,\n        \"can_encrypt_storage\": true,\n        \"can_certify\": false,\n        \"created_at\": \"2016-03-24T11:31:04-06:00\",\n        \"expires_at\": null\n      }\n    ],\n    \"can_sign\": true,\n    \"can_encrypt_comms\": false,\n    \"can_encrypt_storage\": false,\n    \"can_certify\": true,\n    \"created_at\": \"2016-03-24T11:31:04-06:00\",\n    \"expires_at\": null\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/user/gpg_keys"
+    },
+    "title":"List GPG keys for the authenticated user"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X POST \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/user/gpg_keys \\\n  -d '{\"armored_public_key\":\"armored_public_key\"}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"users",
+    "id":"create-a-gpg-key-for-the-authenticated-user",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Your GPG key, generated in ASCII-armored format. See &quot;<a href=\"https://docs.github.com/articles/generating-a-new-gpg-key/\">Generating a new GPG key</a>&quot; for help creating a GPG key.</p>",
+        "in":"body ",
+        "name":"armored_public_key ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"201 Created",
+        "content":"{\n  \"id\": 3,\n  \"primary_key_id\": null,\n  \"key_id\": \"3262EFF25BA0D270\",\n  \"public_key\": \"xsBNBFayYZ...\",\n  \"emails\": [\n    {\n      \"email\": \"mastahyeti@users.noreply.github.com\",\n      \"verified\": true\n    }\n  ],\n  \"subkeys\": [\n    {\n      \"id\": 4,\n      \"primary_key_id\": 3,\n      \"key_id\": \"4A595D4C72EE49C7\",\n      \"public_key\": \"zsBNBFayYZ...\",\n      \"emails\": [],\n      \"subkeys\": [],\n      \"can_sign\": false,\n      \"can_encrypt_comms\": true,\n      \"can_encrypt_storage\": true,\n      \"can_certify\": false,\n      \"created_at\": \"2016-03-24T11:31:04-06:00\",\n      \"expires_at\": null\n    }\n  ],\n  \"can_sign\": true,\n  \"can_encrypt_comms\": false,\n  \"can_encrypt_storage\": false,\n  \"can_certify\": true,\n  \"created_at\": \"2016-03-24T11:31:04-06:00\",\n  \"expires_at\": null\n}\n"
+      }
+    ],
+    "target":{
+      "method":"post",
+      "path":"/user/gpg_keys"
+    },
+    "title":"Create a GPG key for the authenticated user"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/user/gpg_keys/42\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"users",
+    "id":"get-a-gpg-key-for-the-authenticated-user",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"gpg_key_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"id\": 3,\n  \"primary_key_id\": null,\n  \"key_id\": \"3262EFF25BA0D270\",\n  \"public_key\": \"xsBNBFayYZ...\",\n  \"emails\": [\n    {\n      \"email\": \"mastahyeti@users.noreply.github.com\",\n      \"verified\": true\n    }\n  ],\n  \"subkeys\": [\n    {\n      \"id\": 4,\n      \"primary_key_id\": 3,\n      \"key_id\": \"4A595D4C72EE49C7\",\n      \"public_key\": \"zsBNBFayYZ...\",\n      \"emails\": [],\n      \"subkeys\": [],\n      \"can_sign\": false,\n      \"can_encrypt_comms\": true,\n      \"can_encrypt_storage\": true,\n      \"can_certify\": false,\n      \"created_at\": \"2016-03-24T11:31:04-06:00\",\n      \"expires_at\": null\n    }\n  ],\n  \"can_sign\": true,\n  \"can_encrypt_comms\": false,\n  \"can_encrypt_storage\": false,\n  \"can_certify\": true,\n  \"created_at\": \"2016-03-24T11:31:04-06:00\",\n  \"expires_at\": null\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/user/gpg_keys/{gpg_key_id}"
+    },
+    "title":"Get a GPG key for the authenticated user"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X DELETE \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/user/gpg_keys/42\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"users",
+    "id":"delete-a-gpg-key-for-the-authenticated-user",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"gpg_key_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"delete",
+      "path":"/user/gpg_keys/{gpg_key_id}"
+    },
+    "title":"Delete a GPG key for the authenticated user"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/users/USERNAME/gpg_keys\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"users",
+    "id":"list-gpg-keys-for-a-user",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"username ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"id\": 3,\n    \"primary_key_id\": null,\n    \"key_id\": \"3262EFF25BA0D270\",\n    \"public_key\": \"xsBNBFayYZ...\",\n    \"emails\": [\n      {\n        \"email\": \"mastahyeti@users.noreply.github.com\",\n        \"verified\": true\n      }\n    ],\n    \"subkeys\": [\n      {\n        \"id\": 4,\n        \"primary_key_id\": 3,\n        \"key_id\": \"4A595D4C72EE49C7\",\n        \"public_key\": \"zsBNBFayYZ...\",\n        \"emails\": [],\n        \"subkeys\": [],\n        \"can_sign\": false,\n        \"can_encrypt_comms\": true,\n        \"can_encrypt_storage\": true,\n        \"can_certify\": false,\n        \"created_at\": \"2016-03-24T11:31:04-06:00\",\n        \"expires_at\": null\n      }\n    ],\n    \"can_sign\": true,\n    \"can_encrypt_comms\": false,\n    \"can_encrypt_storage\": false,\n    \"can_certify\": true,\n    \"created_at\": \"2016-03-24T11:31:04-06:00\",\n    \"expires_at\": null\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/users/{username}/gpg_keys"
+    },
+    "title":"List GPG keys for a user"
+  }
+]

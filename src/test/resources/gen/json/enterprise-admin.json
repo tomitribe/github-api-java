@@ -1,0 +1,1724 @@
+[
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/enterprises/ENTERPRISE/settings/billing/actions\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"enterprise-admin",
+    "id":"get-github-actions-billing-for-an-enterprise",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The slug version of the enterprise name. You can also substitute this value with the enterprise id.</p>",
+        "in":"path ",
+        "name":"enterprise ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"total_minutes_used\": 305,\n  \"total_paid_minutes_used\": 0,\n  \"included_minutes\": 3000,\n  \"minutes_used_breakdown\": {\n    \"UBUNTU\": 205,\n    \"MACOS\": 10,\n    \"WINDOWS\": 90\n  }\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/enterprises/{enterprise}/settings/billing/actions"
+    },
+    "title":"Get GitHub Actions billing for an enterprise"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/enterprises/ENTERPRISE/settings/billing/packages\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"enterprise-admin",
+    "id":"get-github-packages-billing-for-an-enterprise",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The slug version of the enterprise name. You can also substitute this value with the enterprise id.</p>",
+        "in":"path ",
+        "name":"enterprise ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"total_gigabytes_bandwidth_used\": 50,\n  \"total_paid_gigabytes_bandwidth_used\": 40,\n  \"included_gigabytes_bandwidth\": 10\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/enterprises/{enterprise}/settings/billing/packages"
+    },
+    "title":"Get GitHub Packages billing for an enterprise"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/enterprises/ENTERPRISE/settings/billing/shared-storage\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"enterprise-admin",
+    "id":"get-shared-storage-billing-for-an-enterprise",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The slug version of the enterprise name. You can also substitute this value with the enterprise id.</p>",
+        "in":"path ",
+        "name":"enterprise ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"days_left_in_billing_cycle\": 20,\n  \"estimated_paid_storage_for_month\": 15,\n  \"estimated_storage_for_month\": 40\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/enterprises/{enterprise}/settings/billing/shared-storage"
+    },
+    "title":"Get shared storage billing for an enterprise"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/enterprises/ENTERPRISE/actions/runners/downloads\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"enterprise-admin",
+    "id":"list-runner-applications-for-an-enterprise",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The slug version of the enterprise name. You can also substitute this value with the enterprise id.</p>",
+        "in":"path ",
+        "name":"enterprise ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"os\": \"osx\",\n    \"architecture\": \"x64\",\n    \"download_url\": \"https://github.com/actions/runner/releases/download/v2.164.0/actions-runner-osx-x64-2.164.0.tar.gz\",\n    \"filename\": \"actions-runner-osx-x64-2.164.0.tar.gz\"\n  },\n  {\n    \"os\": \"linux\",\n    \"architecture\": \"x64\",\n    \"download_url\": \"https://github.com/actions/runner/releases/download/v2.164.0/actions-runner-linux-x64-2.164.0.tar.gz\",\n    \"filename\": \"actions-runner-linux-x64-2.164.0.tar.gz\"\n  },\n  {\n    \"os\": \"linux\",\n    \"architecture\": \"arm\",\n    \"download_url\": \"https://github.com/actions/runner/releases/download/v2.164.0/actions-runner-linux-arm-2.164.0.tar.gz\",\n    \"filename\": \"actions-runner-linux-arm-2.164.0.tar.gz\"\n  },\n  {\n    \"os\": \"win\",\n    \"architecture\": \"x64\",\n    \"download_url\": \"https://github.com/actions/runner/releases/download/v2.164.0/actions-runner-win-x64-2.164.0.zip\",\n    \"filename\": \"actions-runner-win-x64-2.164.0.zip\"\n  },\n  {\n    \"os\": \"linux\",\n    \"architecture\": \"arm64\",\n    \"download_url\": \"https://github.com/actions/runner/releases/download/v2.164.0/actions-runner-linux-arm64-2.164.0.tar.gz\",\n    \"filename\": \"actions-runner-linux-arm64-2.164.0.tar.gz\"\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/enterprises/{enterprise}/actions/runners/downloads"
+    },
+    "title":"List runner applications for an enterprise"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X POST \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/enterprises/ENTERPRISE/actions/runners/registration-token\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"enterprise-admin",
+    "id":"create-a-registration-token-for-an-enterprise",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The slug version of the enterprise name. You can also substitute this value with the enterprise id.</p>",
+        "in":"path ",
+        "name":"enterprise ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"201 Created",
+        "content":"{\n  \"token\": \"LLBF3JGZDX3P5PMEXLND6TS6FCWO6\",\n  \"expires_at\": \"2020-01-22T12:13:35.123-08:00\"\n}\n"
+      }
+    ],
+    "target":{
+      "method":"post",
+      "path":"/enterprises/{enterprise}/actions/runners/registration-token"
+    },
+    "title":"Create a registration token for an enterprise"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X POST \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/enterprises/ENTERPRISE/actions/runners/remove-token\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"enterprise-admin",
+    "id":"create-a-remove-token-for-an-enterprise",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The slug version of the enterprise name. You can also substitute this value with the enterprise id.</p>",
+        "in":"path ",
+        "name":"enterprise ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"201 Created",
+        "content":"{\n  \"token\": \"AABF3JGZDX3P5PMEXLND6TS6FCWO6\",\n  \"expires_at\": \"2020-01-29T12:13:35.123-08:00\"\n}\n"
+      }
+    ],
+    "target":{
+      "method":"post",
+      "path":"/enterprises/{enterprise}/actions/runners/remove-token"
+    },
+    "title":"Create a remove token for an enterprise"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/enterprises/ENTERPRISE/actions/runners/42\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"enterprise-admin",
+    "id":"get-a-self-hosted-runner-for-an-enterprise",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The slug version of the enterprise name. You can also substitute this value with the enterprise id.</p>",
+        "in":"path ",
+        "name":"enterprise ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Unique identifier of the self-hosted runner.</p>",
+        "in":"path ",
+        "name":"runner_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"id\": 23,\n  \"name\": \"mac_runner\",\n  \"os\": \"macos\",\n  \"status\": \"online\",\n  \"busy\": true,\n  \"labels\": [\n    {\n      \"id\": 5,\n      \"name\": \"self-hosted\",\n      \"type\": \"read-only\"\n    },\n    {\n      \"id\": 7,\n      \"name\": \"X64\",\n      \"type\": \"read-only\"\n    },\n    {\n      \"id\": 20,\n      \"name\": \"macOS\",\n      \"type\": \"read-only\"\n    },\n    {\n      \"id\": 21,\n      \"name\": \"no-gpu\",\n      \"type\": \"custom\"\n    }\n  ]\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/enterprises/{enterprise}/actions/runners/{runner_id}"
+    },
+    "title":"Get a self-hosted runner for an enterprise"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X DELETE \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/enterprises/ENTERPRISE/actions/runners/42\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"enterprise-admin",
+    "id":"delete-a-self-hosted-runner-from-an-enterprise",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The slug version of the enterprise name. You can also substitute this value with the enterprise id.</p>",
+        "in":"path ",
+        "name":"enterprise ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Unique identifier of the self-hosted runner.</p>",
+        "in":"path ",
+        "name":"runner_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"delete",
+      "path":"/enterprises/{enterprise}/actions/runners/{runner_id}"
+    },
+    "title":"Delete a self-hosted runner from an enterprise"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/enterprises/ENTERPRISE/actions/runners\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"enterprise-admin",
+    "id":"list-self-hosted-runners-for-an-enterprise",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The slug version of the enterprise name. You can also substitute this value with the enterprise id.</p>",
+        "in":"path ",
+        "name":"enterprise ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"total_count\": 2,\n  \"runners\": [\n    {\n      \"id\": 23,\n      \"name\": \"linux_runner\",\n      \"os\": \"linux\",\n      \"status\": \"online\",\n      \"busy\": true,\n      \"labels\": [\n        {\n          \"id\": 5,\n          \"name\": \"self-hosted\",\n          \"type\": \"read-only\"\n        },\n        {\n          \"id\": 7,\n          \"name\": \"X64\",\n          \"type\": \"read-only\"\n        },\n        {\n          \"id\": 11,\n          \"name\": \"Linux\",\n          \"type\": \"read-only\"\n        }\n      ]\n    },\n    {\n      \"id\": 24,\n      \"name\": \"mac_runner\",\n      \"os\": \"macos\",\n      \"status\": \"offline\",\n      \"busy\": false,\n      \"labels\": [\n        {\n          \"id\": 5,\n          \"name\": \"self-hosted\",\n          \"type\": \"read-only\"\n        },\n        {\n          \"id\": 7,\n          \"name\": \"X64\",\n          \"type\": \"read-only\"\n        },\n        {\n          \"id\": 20,\n          \"name\": \"macOS\",\n          \"type\": \"read-only\"\n        },\n        {\n          \"id\": 21,\n          \"name\": \"no-gpu\",\n          \"type\": \"custom\"\n        }\n      ]\n    }\n  ]\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/enterprises/{enterprise}/actions/runners"
+    },
+    "title":"List self-hosted runners for an enterprise"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/enterprises/ENTERPRISE/actions/runner-groups\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"enterprise-admin",
+    "id":"list-self-hosted-runner-groups-for-an-enterprise",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The slug version of the enterprise name. You can also substitute this value with the enterprise id.</p>",
+        "in":"path ",
+        "name":"enterprise ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"total_count\": 3,\n  \"runner_groups\": [\n    {\n      \"id\": 1,\n      \"name\": \"Default\",\n      \"visibility\": \"all\",\n      \"default\": true,\n      \"runners_url\": \"https://api.github.com/enterprises/octo-corp/actions/runner_groups/1/runners\"\n    },\n    {\n      \"id\": 2,\n      \"name\": \"octo-runner-group\",\n      \"visibility\": \"selected\",\n      \"default\": false,\n      \"selected_organizations_url\": \"https://api.github.com/enterprises/octo-corp/actions/runner_groups/2/organizations\",\n      \"runners_url\": \"https://api.github.com/enterprises/octo-corp/actions/runner_groups/2/runners\"\n    },\n    {\n      \"id\": 3,\n      \"name\": \"expensive-hardware\",\n      \"visibility\": \"private\",\n      \"default\": false,\n      \"runners_url\": \"https://api.github.com/enterprises/octo-corp/actions/runner_groups/3/runners\"\n    }\n  ]\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/enterprises/{enterprise}/actions/runner-groups"
+    },
+    "title":"List self-hosted runner groups for an enterprise"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X POST \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/enterprises/ENTERPRISE/actions/runner-groups \\\n  -d '{\"name\":\"name\"}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"enterprise-admin",
+    "id":"create-a-self-hosted-runner-group-for-an-enterprise",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The slug version of the enterprise name. You can also substitute this value with the enterprise id.</p>",
+        "in":"path ",
+        "name":"enterprise ",
+        "type":"string "
+      },
+      {
+        "description":"<p><strong>Required</strong>. Name of the runner group.</p>",
+        "in":"body ",
+        "name":"name ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Visibility of a runner group. You can select all organizations or select individual organization. Can be one of: <code>all</code> or <code>selected</code></p> Default: <code>all</code>",
+        "in":"body ",
+        "name":"visibility ",
+        "type":"string "
+      },
+      {
+        "description":"<p>List of organization IDs that can access the runner group.</p>",
+        "in":"body ",
+        "name":"selected_organization_ids ",
+        "type":"array of integers "
+      },
+      {
+        "description":"<p>List of runner IDs to add to the runner group.</p>",
+        "in":"body ",
+        "name":"runners ",
+        "type":"array of integers "
+      }
+    ],
+    "responses":[
+      {
+        "code":"201 Created",
+        "content":"{\n  \"id\": 2,\n  \"name\": \"octo-runner-group\",\n  \"visibility\": \"selected\",\n  \"default\": false,\n  \"selected_organizations_url\": \"https://api.github.com/enterprises/octo-corp/actions/runner-groups/2/organizations\",\n  \"runners_url\": \"https://api.github.com/enterprises/octo-corp/actions/runner-groups/2/runners\"\n}\n"
+      }
+    ],
+    "target":{
+      "method":"post",
+      "path":"/enterprises/{enterprise}/actions/runner-groups"
+    },
+    "title":"Create a self-hosted runner group for an enterprise"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/enterprises/ENTERPRISE/actions/runner-groups/42\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"enterprise-admin",
+    "id":"get-a-self-hosted-runner-group-for-an-enterprise",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The slug version of the enterprise name. You can also substitute this value with the enterprise id.</p>",
+        "in":"path ",
+        "name":"enterprise ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Unique identifier of the self-hosted runner group.</p>",
+        "in":"path ",
+        "name":"runner_group_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"id\": 2,\n  \"name\": \"octo-runner-group\",\n  \"visibility\": \"selected\",\n  \"default\": false,\n  \"selected_organizations_url\": \"https://api.github.com/enterprises/octo-corp/actions/runner-groups/2/organizations\",\n  \"runners_url\": \"https://api.github.com/enterprises/octo-corp/actions/runner-groups/2/runners\"\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}"
+    },
+    "title":"Get a self-hosted runner group for an enterprise"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X PATCH \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/enterprises/ENTERPRISE/actions/runner-groups/42 \\\n  -d '{\"name\":\"name\"}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"enterprise-admin",
+    "id":"update-a-self-hosted-runner-group-for-an-enterprise",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The slug version of the enterprise name. You can also substitute this value with the enterprise id.</p>",
+        "in":"path ",
+        "name":"enterprise ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Unique identifier of the self-hosted runner group.</p>",
+        "in":"path ",
+        "name":"runner_group_id ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Name of the runner group.</p>",
+        "in":"body ",
+        "name":"name ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Visibility of a runner group. You can select all organizations or select individual organizations. Can be one of: <code>all</code> or <code>selected</code></p> Default: <code>all</code>",
+        "in":"body ",
+        "name":"visibility ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"id\": 2,\n  \"name\": \"Expensive hardware runners\",\n  \"visibility\": \"selected\",\n  \"default\": false,\n  \"selected_organizations_url\": \"https://api.github.com/enterprises/octo-corp/actions/runner-groups/2/organizations\",\n  \"runners_url\": \"https://api.github.com/enterprises/octo-corp/actions/runner-groups/2/runners\"\n}\n"
+      }
+    ],
+    "target":{
+      "method":"patch",
+      "path":"/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}"
+    },
+    "title":"Update a self-hosted runner group for an enterprise"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X DELETE \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/enterprises/ENTERPRISE/actions/runner-groups/42\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"enterprise-admin",
+    "id":"delete-a-self-hosted-runner-group-from-an-enterprise",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The slug version of the enterprise name. You can also substitute this value with the enterprise id.</p>",
+        "in":"path ",
+        "name":"enterprise ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Unique identifier of the self-hosted runner group.</p>",
+        "in":"path ",
+        "name":"runner_group_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"delete",
+      "path":"/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}"
+    },
+    "title":"Delete a self-hosted runner group from an enterprise"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/enterprises/ENTERPRISE/actions/runner-groups/42/runners\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"enterprise-admin",
+    "id":"list-self-hosted-runners-in-a-group-for-an-enterprise",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The slug version of the enterprise name. You can also substitute this value with the enterprise id.</p>",
+        "in":"path ",
+        "name":"enterprise ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Unique identifier of the self-hosted runner group.</p>",
+        "in":"path ",
+        "name":"runner_group_id ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"total_count\": 2,\n  \"runners\": [\n    {\n      \"id\": 23,\n      \"name\": \"linux_runner\",\n      \"os\": \"linux\",\n      \"status\": \"online\",\n      \"busy\": true,\n      \"labels\": [\n        {\n          \"id\": 5,\n          \"name\": \"self-hosted\",\n          \"type\": \"read-only\"\n        },\n        {\n          \"id\": 7,\n          \"name\": \"X64\",\n          \"type\": \"read-only\"\n        },\n        {\n          \"id\": 11,\n          \"name\": \"Linux\",\n          \"type\": \"read-only\"\n        }\n      ]\n    },\n    {\n      \"id\": 24,\n      \"name\": \"mac_runner\",\n      \"os\": \"macos\",\n      \"status\": \"offline\",\n      \"busy\": false,\n      \"labels\": [\n        {\n          \"id\": 5,\n          \"name\": \"self-hosted\",\n          \"type\": \"read-only\"\n        },\n        {\n          \"id\": 7,\n          \"name\": \"X64\",\n          \"type\": \"read-only\"\n        },\n        {\n          \"id\": 20,\n          \"name\": \"macOS\",\n          \"type\": \"read-only\"\n        },\n        {\n          \"id\": 21,\n          \"name\": \"no-gpu\",\n          \"type\": \"custom\"\n        }\n      ]\n    }\n  ]\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners"
+    },
+    "title":"List self-hosted runners in a group for an enterprise"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X PUT \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/enterprises/ENTERPRISE/actions/runner-groups/42/runners \\\n  -d '{\"runners\":[42]}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"enterprise-admin",
+    "id":"set-self-hosted-runners-in-a-group-for-an-enterprise",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The slug version of the enterprise name. You can also substitute this value with the enterprise id.</p>",
+        "in":"path ",
+        "name":"enterprise ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Unique identifier of the self-hosted runner group.</p>",
+        "in":"path ",
+        "name":"runner_group_id ",
+        "type":"integer "
+      },
+      {
+        "description":"<p><strong>Required</strong>. List of runner IDs to add to the runner group.</p>",
+        "in":"body ",
+        "name":"runners ",
+        "type":"array of integers "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"put",
+      "path":"/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners"
+    },
+    "title":"Set self-hosted runners in a group for an enterprise"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X PUT \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/enterprises/ENTERPRISE/actions/runner-groups/42/runners/42\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"enterprise-admin",
+    "id":"add-a-self-hosted-runner-to-a-group-for-an-enterprise",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The slug version of the enterprise name. You can also substitute this value with the enterprise id.</p>",
+        "in":"path ",
+        "name":"enterprise ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Unique identifier of the self-hosted runner group.</p>",
+        "in":"path ",
+        "name":"runner_group_id ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Unique identifier of the self-hosted runner.</p>",
+        "in":"path ",
+        "name":"runner_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"put",
+      "path":"/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners/{runner_id}"
+    },
+    "title":"Add a self-hosted runner to a group for an enterprise"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X DELETE \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/enterprises/ENTERPRISE/actions/runner-groups/42/runners/42\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"enterprise-admin",
+    "id":"remove-a-self-hosted-runner-from-a-group-for-an-enterprise",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The slug version of the enterprise name. You can also substitute this value with the enterprise id.</p>",
+        "in":"path ",
+        "name":"enterprise ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Unique identifier of the self-hosted runner group.</p>",
+        "in":"path ",
+        "name":"runner_group_id ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Unique identifier of the self-hosted runner.</p>",
+        "in":"path ",
+        "name":"runner_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"delete",
+      "path":"/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners/{runner_id}"
+    },
+    "title":"Remove a self-hosted runner from a group for an enterprise"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/enterprises/ENTERPRISE/actions/runner-groups/42/organizations\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"enterprise-admin",
+    "id":"list-organization-access-to-a-self-hosted-runner-group-in-an-enterprise",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The slug version of the enterprise name. You can also substitute this value with the enterprise id.</p>",
+        "in":"path ",
+        "name":"enterprise ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Unique identifier of the self-hosted runner group.</p>",
+        "in":"path ",
+        "name":"runner_group_id ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"total_count\": 1,\n  \"organizations\": [\n    {\n      \"login\": \"octocat\",\n      \"id\": 161335,\n      \"node_id\": \"MDEwOlJlcG9zaXRvcnkxMjk2MjY5\",\n      \"url\": \"https://api.github.com/orgs/octo-org\",\n      \"repos_url\": \"https://api.github.com/orgs/octo-org/repos\",\n      \"events_url\": \"https://api.github.com/orgs/octo-org/events\",\n      \"hooks_url\": \"https://api.github.com/orgs/octo-org/hooks\",\n      \"issues_url\": \"https://api.github.com/orgs/octo-org/issues\",\n      \"members_url\": \"https://api.github.com/orgs/octo-org/members{/member}\",\n      \"public_members_url\": \"https://api.github.com/orgs/octo-org/public_members{/member}\",\n      \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n      \"description\": \"A great organization\"\n    }\n  ]\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations"
+    },
+    "title":"List organization access to a self-hosted runner group in an enterprise"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X PUT \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/enterprises/ENTERPRISE/actions/runner-groups/42/organizations \\\n  -d '{\"selected_organization_ids\":[42]}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"enterprise-admin",
+    "id":"set-organization-access-for-a-self-hosted-runner-group-in-an-enterprise",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The slug version of the enterprise name. You can also substitute this value with the enterprise id.</p>",
+        "in":"path ",
+        "name":"enterprise ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Unique identifier of the self-hosted runner group.</p>",
+        "in":"path ",
+        "name":"runner_group_id ",
+        "type":"integer "
+      },
+      {
+        "description":"<p><strong>Required</strong>. List of organization IDs that can access the runner group.</p>",
+        "in":"body ",
+        "name":"selected_organization_ids ",
+        "type":"array of integers "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"put",
+      "path":"/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations"
+    },
+    "title":"Set organization access for a self-hosted runner group in an enterprise"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X PUT \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/enterprises/ENTERPRISE/actions/runner-groups/42/organizations/42\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"enterprise-admin",
+    "id":"add-organization-access-to-a-self-hosted-runner-group-in-an-enterprise",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The slug version of the enterprise name. You can also substitute this value with the enterprise id.</p>",
+        "in":"path ",
+        "name":"enterprise ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Unique identifier of the self-hosted runner group.</p>",
+        "in":"path ",
+        "name":"runner_group_id ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Unique identifier of an organization.</p>",
+        "in":"path ",
+        "name":"org_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"put",
+      "path":"/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations/{org_id}"
+    },
+    "title":"Add organization access to a self-hosted runner group in an enterprise"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X DELETE \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/enterprises/ENTERPRISE/actions/runner-groups/42/organizations/42\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"enterprise-admin",
+    "id":"remove-organization-access-to-a-self-hosted-runner-group-in-an-enterprise",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The slug version of the enterprise name. You can also substitute this value with the enterprise id.</p>",
+        "in":"path ",
+        "name":"enterprise ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Unique identifier of the self-hosted runner group.</p>",
+        "in":"path ",
+        "name":"runner_group_id ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Unique identifier of an organization.</p>",
+        "in":"path ",
+        "name":"org_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"delete",
+      "path":"/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations/{org_id}"
+    },
+    "title":"Remove organization access to a self-hosted runner group in an enterprise"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/scim/v2/enterprises/ENTERPRISE/Groups\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"enterprise-admin",
+    "id":"list-provisioned-scim-groups-for-an-enterprise",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The slug version of the enterprise name. You can also substitute this value with the enterprise id.</p>",
+        "in":"path ",
+        "name":"enterprise ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Used for pagination: the index of the first result to return.</p>",
+        "in":"query ",
+        "name":"startIndex ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Used for pagination: the number of results to return.</p>",
+        "in":"query ",
+        "name":"count ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"schemas\": [\n    \"urn:ietf:params:scim:api:messages:2.0:ListResponse\"\n  ],\n  \"totalResults\": 2,\n  \"itemsPerPage\": 2,\n  \"startIndex\": 1,\n  \"Resources\": [\n    {\n      \"schemas\": [\n        \"urn:ietf:params:scim:schemas:core:2.0:Group\"\n      ],\n      \"id\": \"abcd27f8-a9aa-11ea-8221-f59b2be9cccc\",\n      \"externalId\": null,\n      \"displayName\": \"octo-org\",\n      \"members\": [\n        {\n          \"value\": \"92b58aaa-a1d6-11ea-8227-b9ce9e023ccc\",\n          \"$ref\": \"https://api.github.com/scim/v2/enterprises/octo-corp/Users/92b58aaa-a1d6-11ea-8227-b9ce9e023ccc\",\n          \"display\": \"octocat@github.com\"\n        },\n        {\n          \"value\": \"aaaa8c34-a6b2-11ea-9d70-bbbbbd1c8fd5\",\n          \"$ref\": \"https://api.github.com/scim/v2/enterprises/octo-corp/Users/aaaa8c34-a6b2-11ea-9d70-bbbbbd1c8fd5\",\n          \"display\": \"hubot@example.com\"\n        }\n      ],\n      \"meta\": {\n        \"resourceType\": \"Group\",\n        \"created\": \"2020-06-09T03:10:17.000+10:00\",\n        \"lastModified\": \"2020-06-09T03:10:17.000+10:00\",\n        \"location\": \"https://api.github.com/scim/v2/enterprises/octo-corp/Groups/abcd27f8-a9aa-11ea-8221-f59b2be9cccc\"\n      }\n    },\n    {\n      \"schemas\": [\n        \"urn:ietf:params:scim:schemas:core:2.0:Group\"\n      ],\n      \"id\": \"5e75bbbb-aa1a-11ea-8644-75ff655cdddd\",\n      \"externalId\": null,\n      \"displayName\": \"octo-docs-org\",\n      \"members\": [\n        {\n          \"value\": \"92b58aaa-a1d6-11ea-8227-b9ce9e023ccc\",\n          \"$ref\": \"https://api.github.com/scim/v2/enterprises/octo-corp/Users/92b58aaa-a1d6-11ea-8227-b9ce9e023ccc\",\n          \"display\": \"octocat@github.com\"\n        }\n      ],\n      \"meta\": {\n        \"resourceType\": \"Group\",\n        \"created\": \"2020-06-09T16:28:01.000+10:00\",\n        \"lastModified\": \"2020-06-09T16:28:01.000+10:00\",\n        \"location\": \"https://api.github.com/scim/v2/enterprises/octo-corp/Groups/5e75bbbb-aa1a-11ea-8644-75ff655cdddd\"\n      }\n    }\n  ]\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/scim/v2/enterprises/{enterprise}/Groups"
+    },
+    "title":"List provisioned SCIM groups for an enterprise"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X POST \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/scim/v2/enterprises/ENTERPRISE/Groups \\\n  -d '{\"schemas\":[\"schemas\"],\"displayName\":\"displayName\"}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"enterprise-admin",
+    "id":"provision-a-scim-enterprise-group-and-invite-users",
+    "parameterProperties":[
+      {
+        "description":"<strong>Required</strong>. The SCIM user ID for a user.",
+        "name":"value",
+        "of":"members",
+        "type":"string"
+      }
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The slug version of the enterprise name. You can also substitute this value with the enterprise id.</p>",
+        "in":"path ",
+        "name":"enterprise ",
+        "type":"string "
+      },
+      {
+        "description":"<p><strong>Required</strong>. The SCIM schema URIs.</p>",
+        "in":"body ",
+        "name":"schemas ",
+        "type":"array of strings "
+      },
+      {
+        "description":"<p><strong>Required</strong>. The name of the SCIM group. This must match the GitHub organization that the group maps to.</p>",
+        "in":"body ",
+        "name":"displayName ",
+        "type":"string "
+      },
+      {
+        "description":"<p>undefined</p>",
+        "in":"body ",
+        "name":"members ",
+        "type":"array of objects "
+      }
+    ],
+    "responses":[
+      {
+        "code":"201 Created",
+        "content":"{\n  \"schemas\": [\n    \"urn:ietf:params:scim:schemas:core:2.0:Group\"\n  ],\n  \"id\": \"abcd27f8-a9aa-11ea-8221-f59b2be9cccc\",\n  \"externalId\": null,\n  \"displayName\": \"octo-org\",\n  \"members\": [\n    {\n      \"value\": \"92b58aaa-a1d6-11ea-8227-b9ce9e023ccc\",\n      \"$ref\": \"https://api.github.com/scim/v2/enterprises/octo-corp/Users/92b58aaa-a1d6-11ea-8227-b9ce9e023ccc\",\n      \"display\": \"octocat@github.com\"\n    },\n    {\n      \"value\": \"aaaa8c34-a6b2-11ea-9d70-bbbbbd1c8fd5\",\n      \"$ref\": \"https://api.github.com/scim/v2/enterprises/octo-corp/Users/aaaa8c34-a6b2-11ea-9d70-bbbbbd1c8fd5\",\n      \"display\": \"hubot@example.com\"\n    }\n  ],\n  \"meta\": {\n    \"resourceType\": \"Group\",\n    \"created\": \"2020-06-09T03:10:17.000+10:0\",\n    \"lastModified\": \"2020-06-09T03:10:17.000+10:00\",\n    \"location\": \"https://api.github.com/scim/v2/enterprises/octo-corp/Groups/abcd27f8-a9aa-11ea-8221-f59b2be9cccc\"\n  }\n}\n"
+      }
+    ],
+    "target":{
+      "method":"post",
+      "path":"/scim/v2/enterprises/{enterprise}/Groups"
+    },
+    "title":"Provision a SCIM enterprise group and invite users"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/scim/v2/enterprises/ENTERPRISE/Groups/SCIM_GROUP_ID\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"enterprise-admin",
+    "id":"get-scim-provisioning-information-for-an-enterprise-group",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The slug version of the enterprise name. You can also substitute this value with the enterprise id.</p>",
+        "in":"path ",
+        "name":"enterprise ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Identifier generated by the GitHub SCIM endpoint.</p>",
+        "in":"path ",
+        "name":"scim_group_id ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"schemas\": [\n    \"urn:ietf:params:scim:schemas:core:2.0:Group\"\n  ],\n  \"id\": \"abcd27f8-a9aa-11ea-8221-f59b2be9cccc\",\n  \"externalId\": null,\n  \"displayName\": \"octo-org\",\n  \"members\": [\n    {\n      \"value\": \"92b58aaa-a1d6-11ea-8227-b9ce9e023ccc\",\n      \"$ref\": \"https://api.github.com/scim/v2/enterprises/octo-corp/Users/92b58aaa-a1d6-11ea-8227-b9ce9e023ccc\",\n      \"display\": \"octocat@github.com\"\n    },\n    {\n      \"value\": \"aaaa8c34-a6b2-11ea-9d70-bbbbbd1c8fd5\",\n      \"$ref\": \"https://api.github.com/scim/v2/enterprises/octo-corp/Users/aaaa8c34-a6b2-11ea-9d70-bbbbbd1c8fd5\",\n      \"display\": \"hubot@example.com\"\n    }\n  ],\n  \"meta\": {\n    \"resourceType\": \"Group\",\n    \"created\": \"2020-06-09T03:10:17.000+10:0\",\n    \"lastModified\": \"2020-06-09T03:10:17.000+10:00\",\n    \"location\": \"https://api.github.com/scim/v2/enterprises/octo-corp/Groups/abcd27f8-a9aa-11ea-8221-f59b2be9cccc\"\n  }\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}"
+    },
+    "title":"Get SCIM provisioning information for an enterprise group"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X PUT \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/scim/v2/enterprises/ENTERPRISE/Groups/SCIM_GROUP_ID \\\n  -d '{\"schemas\":[\"schemas\"],\"displayName\":\"displayName\"}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"enterprise-admin",
+    "id":"set-scim-information-for-a-provisioned-enterprise-group",
+    "parameterProperties":[
+      {
+        "description":"<strong>Required</strong>. The SCIM user ID for a user.",
+        "name":"value",
+        "of":"members",
+        "type":"string"
+      }
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The slug version of the enterprise name. You can also substitute this value with the enterprise id.</p>",
+        "in":"path ",
+        "name":"enterprise ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Identifier generated by the GitHub SCIM endpoint.</p>",
+        "in":"path ",
+        "name":"scim_group_id ",
+        "type":"string "
+      },
+      {
+        "description":"<p><strong>Required</strong>. The SCIM schema URIs.</p>",
+        "in":"body ",
+        "name":"schemas ",
+        "type":"array of strings "
+      },
+      {
+        "description":"<p><strong>Required</strong>. The name of the SCIM group. This must match the GitHub organization that the group maps to.</p>",
+        "in":"body ",
+        "name":"displayName ",
+        "type":"string "
+      },
+      {
+        "description":"<p>undefined</p>",
+        "in":"body ",
+        "name":"members ",
+        "type":"array of objects "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"schemas\": [\n    \"urn:ietf:params:scim:schemas:core:2.0:Group\"\n  ],\n  \"id\": \"abcd27f8-a9aa-11ea-8221-f59b2be9cccc\",\n  \"externalId\": null,\n  \"displayName\": \"octo-org\",\n  \"members\": [\n    {\n      \"value\": \"92b58aaa-a1d6-11ea-8227-b9ce9e023ccc\",\n      \"$ref\": \"https://api.github.com/scim/v2/enterprises/octo-corp/Users/92b58aaa-a1d6-11ea-8227-b9ce9e023ccc\",\n      \"display\": \"octocat@github.com\"\n    },\n    {\n      \"value\": \"aaaa8c34-a6b2-11ea-9d70-bbbbbd1c8fd5\",\n      \"$ref\": \"https://api.github.com/scim/v2/enterprises/octo-corp/Users/aaaa8c34-a6b2-11ea-9d70-bbbbbd1c8fd5\",\n      \"display\": \"hubot@example.com\"\n    }\n  ],\n  \"meta\": {\n    \"resourceType\": \"Group\",\n    \"created\": \"2020-06-09T03:10:17.000+10:0\",\n    \"lastModified\": \"2020-06-09T03:10:17.000+10:00\",\n    \"location\": \"https://api.github.com/scim/v2/enterprises/octo-corp/Groups/abcd27f8-a9aa-11ea-8221-f59b2be9cccc\"\n  }\n}\n"
+      }
+    ],
+    "target":{
+      "method":"put",
+      "path":"/scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}"
+    },
+    "title":"Set SCIM information for a provisioned enterprise group"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X PATCH \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/scim/v2/enterprises/ENTERPRISE/Groups/SCIM_GROUP_ID \\\n  -d '{\"schemas\":[\"schemas\"],\"Operations\":[{}]}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"enterprise-admin",
+    "id":"update-an-attribute-for-a-scim-enterprise-group",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The slug version of the enterprise name. You can also substitute this value with the enterprise id.</p>",
+        "in":"path ",
+        "name":"enterprise ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Identifier generated by the GitHub SCIM endpoint.</p>",
+        "in":"path ",
+        "name":"scim_group_id ",
+        "type":"string "
+      },
+      {
+        "description":"<p><strong>Required</strong>. The SCIM schema URIs.</p>",
+        "in":"body ",
+        "name":"schemas ",
+        "type":"array of strings "
+      },
+      {
+        "description":"<p><strong>Required</strong>. Array of <a href=\"https://tools.ietf.org/html/rfc7644#section-3.5.2\">SCIM operations</a>.</p>",
+        "in":"body ",
+        "name":"Operations ",
+        "type":"array of objects "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"schemas\": [\n    \"urn:ietf:params:scim:schemas:core:2.0:Group\"\n  ],\n  \"id\": \"abcd27f8-a9aa-11ea-8221-f59b2be9cccc\",\n  \"externalId\": null,\n  \"displayName\": \"octo-org\",\n  \"members\": [\n    {\n      \"value\": \"92b58aaa-a1d6-11ea-8227-b9ce9e023ccc\",\n      \"$ref\": \"https://api.github.com/scim/v2/enterprises/octo-corp/Users/92b58aaa-a1d6-11ea-8227-b9ce9e023ccc\",\n      \"display\": \"octocat@github.com\"\n    }\n  ],\n  \"meta\": {\n    \"resourceType\": \"Group\",\n    \"created\": \"2020-06-09T03:10:17.000+10:00\",\n    \"lastModified\": \"2020-06-09T03:10:17.000+10:00\",\n    \"location\": \"https://api.github.com/scim/v2/enterprises/octo-corp/Groups/abcd27f8-a9aa-11ea-8221-f59b2be9cccc\"\n  }\n}\n"
+      }
+    ],
+    "target":{
+      "method":"patch",
+      "path":"/scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}"
+    },
+    "title":"Update an attribute for a SCIM enterprise group"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X DELETE \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/scim/v2/enterprises/ENTERPRISE/Groups/SCIM_GROUP_ID\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"enterprise-admin",
+    "id":"delete-a-scim-group-from-an-enterprise",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The slug version of the enterprise name. You can also substitute this value with the enterprise id.</p>",
+        "in":"path ",
+        "name":"enterprise ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Identifier generated by the GitHub SCIM endpoint.</p>",
+        "in":"path ",
+        "name":"scim_group_id ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"delete",
+      "path":"/scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}"
+    },
+    "title":"Delete a SCIM group from an enterprise"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/scim/v2/enterprises/ENTERPRISE/Users\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"enterprise-admin",
+    "id":"list-scim-provisioned-identities-for-an-enterprise",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The slug version of the enterprise name. You can also substitute this value with the enterprise id.</p>",
+        "in":"path ",
+        "name":"enterprise ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Used for pagination: the index of the first result to return.</p>",
+        "in":"query ",
+        "name":"startIndex ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Used for pagination: the number of results to return.</p>",
+        "in":"query ",
+        "name":"count ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"schemas\": [\n    \"urn:ietf:params:scim:api:messages:2.0:ListResponse\"\n  ],\n  \"totalResults\": 2,\n  \"itemsPerPage\": 2,\n  \"startIndex\": 1,\n  \"Resources\": [\n    {\n      \"schemas\": [\n        \"urn:ietf:params:scim:schemas:core:2.0:User\"\n      ],\n      \"id\": \"92b58aaa-a1d6-11ea-8227-b9ce9e023ccc\",\n      \"externalId\": \"00dowz5dr9oSfDFRA0h7\",\n      \"userName\": \"octocat@github.com\",\n      \"name\": {\n        \"givenName\": \"Mona\",\n        \"familyName\": \"Octocat\"\n      },\n      \"emails\": [\n        {\n          \"value\": \"octocat@github.com\",\n          \"primary\": true,\n          \"type\": \"work\"\n        }\n      ],\n      \"groups\": [\n        {\n          \"value\": \"468dd3fa-a1d6-11ea-9031-15a1f0d7811d\"\n        }\n      ],\n      \"active\": true,\n      \"meta\": {\n        \"resourceType\": \"User\",\n        \"created\": \"2020-05-30T04:02:34.000+10:00\",\n        \"lastModified\": \"2020-05-30T04:05:04.000+10:00\",\n        \"location\": \"https://api.github.com/scim/v2/enterprises/octo-corp/Users/92b58aaa-a1d6-11ea-8227-b9ce9e023ccc\"\n      }\n    },\n    {\n      \"schemas\": [\n        \"urn:ietf:params:scim:schemas:core:2.0:User\"\n      ],\n      \"id\": \"e18b8c34-a6b2-11ea-9d70-54abbd1c8fd5\",\n      \"externalId\": \"sdfoiausdofiua\",\n      \"userName\": \"hubot@example.com\",\n      \"name\": {\n        \"givenName\": \"hu\",\n        \"familyName\": \"bot\"\n      },\n      \"emails\": [\n        {\n          \"value\": \"hubot@example.com\",\n          \"type\": \"work\",\n          \"primary\": true\n        }\n      ],\n      \"groups\": [],\n      \"active\": true,\n      \"meta\": {\n        \"resourceType\": \"User\",\n        \"created\": \"2020-06-05T08:29:40.000+10:00\",\n        \"lastModified\": \"2020-06-05T08:30:19.000+10:00\",\n        \"location\": \"https://api.github.com/scim/v2/enterprises/octo-corp/Users/e18b8c34-a6b2-11ea-9d70-54abbd1c8fd5\"\n      }\n    }\n  ]\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/scim/v2/enterprises/{enterprise}/Users"
+    },
+    "title":"List SCIM provisioned identities for an enterprise"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X POST \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/scim/v2/enterprises/ENTERPRISE/Users \\\n  -d '{\"schemas\":[\"schemas\"],\"userName\":\"userName\",\"name\":{\"givenName\":\"givenName\",\"familyName\":\"familyName\"},\"emails\":[\"octocat@github.com\"]}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"enterprise-admin",
+    "id":"provision-and-invite-a-scim-enterprise-user",
+    "parameterProperties":[
+      {
+        "description":"<strong>Required</strong>. The first name of the user.",
+        "name":"givenName",
+        "of":"name",
+        "type":"string"
+      },
+      {
+        "description":"<strong>Required</strong>. The last name of the user.",
+        "name":"familyName",
+        "of":"name",
+        "type":"string"
+      },
+      {
+        "description":"<strong>Required</strong>. The email address.",
+        "name":"value",
+        "of":"emails",
+        "type":"string"
+      },
+      {
+        "description":"<strong>Required</strong>. The type of email address.",
+        "name":"type",
+        "of":"emails",
+        "type":"string"
+      },
+      {
+        "description":"<strong>Required</strong>. Whether this email address is the primary address.",
+        "name":"primary",
+        "of":"emails",
+        "type":"boolean"
+      },
+      {
+        "description":"undefined",
+        "name":"value",
+        "of":"groups",
+        "type":"string"
+      }
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The slug version of the enterprise name. You can also substitute this value with the enterprise id.</p>",
+        "in":"path ",
+        "name":"enterprise ",
+        "type":"string "
+      },
+      {
+        "description":"<p><strong>Required</strong>. The SCIM schema URIs.</p>",
+        "in":"body ",
+        "name":"schemas ",
+        "type":"array of strings "
+      },
+      {
+        "description":"<p><strong>Required</strong>. The username for the user.</p>",
+        "in":"body ",
+        "name":"userName ",
+        "type":"string "
+      },
+      {
+        "description":"<p><strong>Required</strong>. undefined</p>",
+        "in":"body ",
+        "name":"name ",
+        "type":"object "
+      },
+      {
+        "description":"<p><strong>Required</strong>. List of user emails.</p>",
+        "in":"body ",
+        "name":"emails ",
+        "type":"array of objects "
+      },
+      {
+        "description":"<p>List of SCIM group IDs the user is a member of.</p>",
+        "in":"body ",
+        "name":"groups ",
+        "type":"array of objects "
+      }
+    ],
+    "responses":[
+      {
+        "code":"201 Created",
+        "content":"{\n  \"schemas\": [\n    \"urn:ietf:params:scim:schemas:core:2.0:User\"\n  ],\n  \"id\": \"92b58aaa-a1d6-11ea-8227-b9ce9e023ccc\",\n  \"externalId\": \"00dowz5dr9oSfDFRA0h7\",\n  \"userName\": \"mona.octocat@okta.example.com\",\n  \"name\": {\n    \"givenName\": \"Mona\",\n    \"familyName\": \"Octocat\"\n  },\n  \"emails\": [\n    {\n      \"value\": \"mona.octocat@okta.example.com\",\n      \"type\": \"work\",\n      \"primary\": true\n    }\n  ],\n  \"groups\": [\n    {\n      \"value\": \"468dd3fa-a1d6-11ea-9031-15a1f0d7811d\"\n    }\n  ],\n  \"active\": true,\n  \"meta\": {\n    \"resourceType\": \"User\",\n    \"created\": \"2017-03-09T16:11:13-05:00\",\n    \"lastModified\": \"2017-03-09T16:11:13-05:00\",\n    \"location\": \"https://api.github.com/scim/v2/enterprises/octo-corp/Users/92b58aaa-a1d6-11ea-8227-b9ce9e023ccc\"\n  }\n}\n"
+      }
+    ],
+    "target":{
+      "method":"post",
+      "path":"/scim/v2/enterprises/{enterprise}/Users"
+    },
+    "title":"Provision and invite a SCIM enterprise user"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/scim/v2/enterprises/ENTERPRISE/Users/SCIM_USER_ID\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"enterprise-admin",
+    "id":"get-scim-provisioning-information-for-an-enterprise-user",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The slug version of the enterprise name. You can also substitute this value with the enterprise id.</p>",
+        "in":"path ",
+        "name":"enterprise ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Identifier generated by the GitHub SCIM endpoint.</p>",
+        "in":"path ",
+        "name":"scim_user_id ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"schemas\": [\n    \"urn:ietf:params:scim:schemas:core:2.0:User\"\n  ],\n  \"id\": \"92b58aaa-a1d6-11ea-8227-b9ce9e023ccc\",\n  \"externalId\": \"00dowz5dr9oSfDFRA0h7\",\n  \"userName\": \"mona.octocat@okta.example.com\",\n  \"name\": {\n    \"givenName\": \"Mona\",\n    \"familyName\": \"Octocat\"\n  },\n  \"emails\": [\n    {\n      \"value\": \"mona.octocat@okta.example.com\",\n      \"type\": \"work\",\n      \"primary\": true\n    }\n  ],\n  \"groups\": [\n    {\n      \"value\": \"468dd3fa-a1d6-11ea-9031-15a1f0d7811d\"\n    }\n  ],\n  \"active\": true,\n  \"meta\": {\n    \"resourceType\": \"User\",\n    \"created\": \"2017-03-09T16:11:13-05:00\",\n    \"lastModified\": \"2017-03-09T16:11:13-05:00\",\n    \"location\": \"https://api.github.com/scim/v2/enterprises/octo-corp/Users/92b58aaa-a1d6-11ea-8227-b9ce9e023ccc\"\n  }\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/scim/v2/enterprises/{enterprise}/Users/{scim_user_id}"
+    },
+    "title":"Get SCIM provisioning information for an enterprise user"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X PUT \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/scim/v2/enterprises/ENTERPRISE/Users/SCIM_USER_ID \\\n  -d '{\"schemas\":[\"schemas\"],\"userName\":\"userName\",\"name\":{\"givenName\":\"givenName\",\"familyName\":\"familyName\"},\"emails\":[\"octocat@github.com\"]}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"enterprise-admin",
+    "id":"set-scim-information-for-a-provisioned-enterprise-user",
+    "parameterProperties":[
+      {
+        "description":"<strong>Required</strong>. The first name of the user.",
+        "name":"givenName",
+        "of":"name",
+        "type":"string"
+      },
+      {
+        "description":"<strong>Required</strong>. The last name of the user.",
+        "name":"familyName",
+        "of":"name",
+        "type":"string"
+      },
+      {
+        "description":"<strong>Required</strong>. The email address.",
+        "name":"value",
+        "of":"emails",
+        "type":"string"
+      },
+      {
+        "description":"<strong>Required</strong>. The type of email address.",
+        "name":"type",
+        "of":"emails",
+        "type":"string"
+      },
+      {
+        "description":"<strong>Required</strong>. Whether this email address is the primary address.",
+        "name":"primary",
+        "of":"emails",
+        "type":"boolean"
+      },
+      {
+        "description":"undefined",
+        "name":"value",
+        "of":"groups",
+        "type":"string"
+      }
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The slug version of the enterprise name. You can also substitute this value with the enterprise id.</p>",
+        "in":"path ",
+        "name":"enterprise ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Identifier generated by the GitHub SCIM endpoint.</p>",
+        "in":"path ",
+        "name":"scim_user_id ",
+        "type":"string "
+      },
+      {
+        "description":"<p><strong>Required</strong>. The SCIM schema URIs.</p>",
+        "in":"body ",
+        "name":"schemas ",
+        "type":"array of strings "
+      },
+      {
+        "description":"<p><strong>Required</strong>. The username for the user.</p>",
+        "in":"body ",
+        "name":"userName ",
+        "type":"string "
+      },
+      {
+        "description":"<p><strong>Required</strong>. undefined</p>",
+        "in":"body ",
+        "name":"name ",
+        "type":"object "
+      },
+      {
+        "description":"<p><strong>Required</strong>. List of user emails.</p>",
+        "in":"body ",
+        "name":"emails ",
+        "type":"array of objects "
+      },
+      {
+        "description":"<p>List of SCIM group IDs the user is a member of.</p>",
+        "in":"body ",
+        "name":"groups ",
+        "type":"array of objects "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"schemas\": [\n    \"urn:ietf:params:scim:schemas:core:2.0:User\"\n  ],\n  \"id\": \"92b58aaa-a1d6-11ea-8227-b9ce9e023ccc\",\n  \"externalId\": \"00dowz5dr9oSfDFRA0h7\",\n  \"userName\": \"mona.octocat@okta.example.com\",\n  \"name\": {\n    \"givenName\": \"Mona\",\n    \"familyName\": \"Octocat\"\n  },\n  \"emails\": [\n    {\n      \"value\": \"mona.octocat@okta.example.com\",\n      \"type\": \"work\",\n      \"primary\": true\n    }\n  ],\n  \"groups\": [\n    {\n      \"value\": \"468dd3fa-a1d6-11ea-9031-15a1f0d7811d\"\n    }\n  ],\n  \"active\": true,\n  \"meta\": {\n    \"resourceType\": \"User\",\n    \"created\": \"2017-03-09T16:11:13-05:00\",\n    \"lastModified\": \"2017-03-09T16:11:13-05:00\",\n    \"location\": \"https://api.github.com/scim/v2/enterprises/octo-corp/Users/92b58aaa-a1d6-11ea-8227-b9ce9e023ccc\"\n  }\n}\n"
+      }
+    ],
+    "target":{
+      "method":"put",
+      "path":"/scim/v2/enterprises/{enterprise}/Users/{scim_user_id}"
+    },
+    "title":"Set SCIM information for a provisioned enterprise user"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X PATCH \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/scim/v2/enterprises/ENTERPRISE/Users/SCIM_USER_ID \\\n  -d '{\"schemas\":[\"schemas\"],\"Operations\":[{}]}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"enterprise-admin",
+    "id":"update-an-attribute-for-a-scim-enterprise-user",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The slug version of the enterprise name. You can also substitute this value with the enterprise id.</p>",
+        "in":"path ",
+        "name":"enterprise ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Identifier generated by the GitHub SCIM endpoint.</p>",
+        "in":"path ",
+        "name":"scim_user_id ",
+        "type":"string "
+      },
+      {
+        "description":"<p><strong>Required</strong>. The SCIM schema URIs.</p>",
+        "in":"body ",
+        "name":"schemas ",
+        "type":"array of strings "
+      },
+      {
+        "description":"<p><strong>Required</strong>. Array of <a href=\"https://tools.ietf.org/html/rfc7644#section-3.5.2\">SCIM operations</a>.</p>",
+        "in":"body ",
+        "name":"Operations ",
+        "type":"array of objects "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"schemas\": [\n    \"urn:ietf:params:scim:schemas:core:2.0:User\"\n  ],\n  \"id\": \"92b58aaa-a1d6-11ea-8227-b9ce9e023ccc\",\n  \"externalId\": \"00dowz5dr9oSfDFRA0h7\",\n  \"userName\": \"mona.octocat@okta.example.com\",\n  \"name\": {\n    \"givenName\": \"Monalisa\",\n    \"familyName\": \"Octocat\"\n  },\n  \"emails\": [\n    {\n      \"value\": \"mona.octocat@okta.example.com\",\n      \"type\": \"work\",\n      \"primary\": true\n    },\n    {\n      \"value\": \"monalisa@octocat.github.com\",\n      \"type\": \"home\"\n    }\n  ],\n  \"groups\": [\n    {\n      \"value\": \"468dd3fa-a1d6-11ea-9031-15a1f0d7811d\"\n    }\n  ],\n  \"active\": true,\n  \"meta\": {\n    \"resourceType\": \"User\",\n    \"created\": \"2017-03-09T16:11:13-05:00\",\n    \"lastModified\": \"2017-03-09T16:11:13-05:00\",\n    \"location\": \"https://api.github.com/scim/v2/enterprises/octo-corp/Users/92b58aaa-a1d6-11ea-8227-b9ce9e023ccc\"\n  }\n}\n"
+      }
+    ],
+    "target":{
+      "method":"patch",
+      "path":"/scim/v2/enterprises/{enterprise}/Users/{scim_user_id}"
+    },
+    "title":"Update an attribute for a SCIM enterprise user"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X DELETE \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/scim/v2/enterprises/ENTERPRISE/Users/SCIM_USER_ID\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"enterprise-admin",
+    "id":"delete-a-scim-user-from-an-enterprise",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The slug version of the enterprise name. You can also substitute this value with the enterprise id.</p>",
+        "in":"path ",
+        "name":"enterprise ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Identifier generated by the GitHub SCIM endpoint.</p>",
+        "in":"path ",
+        "name":"scim_user_id ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"delete",
+      "path":"/scim/v2/enterprises/{enterprise}/Users/{scim_user_id}"
+    },
+    "title":"Delete a SCIM user from an enterprise"
+  }
+]

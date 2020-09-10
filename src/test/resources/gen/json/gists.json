@@ -1,0 +1,870 @@
+[
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/gists\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"gists",
+    "id":"list-gists-for-the-authenticated-user",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "description":"<p>This is a timestamp in <a href=\"https://en.wikipedia.org/wiki/ISO_8601\">ISO 8601</a> format: <code>YYYY-MM-DDTHH:MM:SSZ</code>. Only gists updated at or after this time are returned.</p>",
+        "in":"query ",
+        "name":"since ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"url\": \"https://api.github.com/gists/aa5a315d61ae9438b18d\",\n    \"forks_url\": \"https://api.github.com/gists/aa5a315d61ae9438b18d/forks\",\n    \"commits_url\": \"https://api.github.com/gists/aa5a315d61ae9438b18d/commits\",\n    \"id\": \"aa5a315d61ae9438b18d\",\n    \"node_id\": \"MDQ6R2lzdGFhNWEzMTVkNjFhZTk0MzhiMThk\",\n    \"git_pull_url\": \"https://gist.github.com/aa5a315d61ae9438b18d.git\",\n    \"git_push_url\": \"https://gist.github.com/aa5a315d61ae9438b18d.git\",\n    \"html_url\": \"https://gist.github.com/aa5a315d61ae9438b18d\",\n    \"files\": {\n      \"hello_world.rb\": {\n        \"filename\": \"hello_world.rb\",\n        \"type\": \"application/x-ruby\",\n        \"language\": \"Ruby\",\n        \"raw_url\": \"https://gist.githubusercontent.com/octocat/6cad326836d38bd3a7ae/raw/db9c55113504e46fa076e7df3a04ce592e2e86d8/hello_world.rb\",\n        \"size\": 167\n      }\n    },\n    \"public\": true,\n    \"created_at\": \"2010-04-14T02:15:15Z\",\n    \"updated_at\": \"2011-06-20T11:34:15Z\",\n    \"description\": \"Hello World Examples\",\n    \"comments\": 0,\n    \"user\": null,\n    \"comments_url\": \"https://api.github.com/gists/aa5a315d61ae9438b18d/comments/\",\n    \"owner\": {\n      \"login\": \"octocat\",\n      \"id\": 1,\n      \"node_id\": \"MDQ6VXNlcjE=\",\n      \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n      \"gravatar_id\": \"\",\n      \"url\": \"https://api.github.com/users/octocat\",\n      \"html_url\": \"https://github.com/octocat\",\n      \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n      \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n      \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n      \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n      \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n      \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n      \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n      \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n      \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n      \"type\": \"User\",\n      \"site_admin\": false\n    },\n    \"truncated\": false\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/gists"
+    },
+    "title":"List gists for the authenticated user"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X POST \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/gists \\\n  -d '{\"files\":{}}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"gists",
+    "id":"create-a-gist",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "description":"<p><strong>Required</strong>. The filenames and content of each file in the gist. The keys in the <code>files</code> object represent the filename and have the type <code>string</code>.</p>",
+        "in":"body ",
+        "name":"files ",
+        "type":"object "
+      },
+      {
+        "description":"<p>A descriptive name for this gist.</p>",
+        "in":"body ",
+        "name":"description ",
+        "type":"string "
+      },
+      {
+        "description":"<p>When <code>true</code>, the gist will be public and available for anyone to see.</p>",
+        "in":"body ",
+        "name":"public ",
+        "type":"boolean "
+      }
+    ],
+    "responses":[
+      {
+        "code":"201 Created",
+        "content":"{\n  \"url\": \"https://api.github.com/gists/aa5a315d61ae9438b18d\",\n  \"forks_url\": \"https://api.github.com/gists/aa5a315d61ae9438b18d/forks\",\n  \"commits_url\": \"https://api.github.com/gists/aa5a315d61ae9438b18d/commits\",\n  \"id\": \"aa5a315d61ae9438b18d\",\n  \"node_id\": \"MDQ6R2lzdGFhNWEzMTVkNjFhZTk0MzhiMThk\",\n  \"git_pull_url\": \"https://gist.github.com/aa5a315d61ae9438b18d.git\",\n  \"git_push_url\": \"https://gist.github.com/aa5a315d61ae9438b18d.git\",\n  \"html_url\": \"https://gist.github.com/aa5a315d61ae9438b18d\",\n  \"files\": {\n    \"hello_world.rb\": {\n      \"filename\": \"hello_world.rb\",\n      \"type\": \"application/x-ruby\",\n      \"language\": \"Ruby\",\n      \"raw_url\": \"https://gist.githubusercontent.com/octocat/6cad326836d38bd3a7ae/raw/db9c55113504e46fa076e7df3a04ce592e2e86d8/hello_world.rb\",\n      \"size\": 167,\n      \"truncated\": false,\n      \"content\": \"class HelloWorld\\n   def initialize(name)\\n      @name = name.capitalize\\n   end\\n   def sayHi\\n      puts \\\"Hello !\\\"\\n   end\\nend\\n\\nhello = HelloWorld.new(\\\"World\\\")\\nhello.sayHi\"\n    },\n    \"hello_world.py\": {\n      \"filename\": \"hello_world.py\",\n      \"type\": \"application/x-python\",\n      \"language\": \"Python\",\n      \"raw_url\": \"https://gist.githubusercontent.com/octocat/e29f3839074953e1cc2934867fa5f2d2/raw/99c1bf3a345505c2e6195198d5f8c36267de570b/hello_world.py\",\n      \"size\": 199,\n      \"truncated\": false,\n      \"content\": \"class HelloWorld:\\n\\n    def __init__(self, name):\\n        self.name = name.capitalize()\\n       \\n    def sayHi(self):\\n        print \\\"Hello \\\" + self.name + \\\"!\\\"\\n\\nhello = HelloWorld(\\\"world\\\")\\nhello.sayHi()\"\n    },\n    \"hello_world_ruby.txt\": {\n      \"filename\": \"hello_world_ruby.txt\",\n      \"type\": \"text/plain\",\n      \"language\": \"Text\",\n      \"raw_url\": \"https://gist.githubusercontent.com/octocat/e29f3839074953e1cc2934867fa5f2d2/raw/9e4544db60e01a261aac098592b11333704e9082/hello_world_ruby.txt\",\n      \"size\": 46,\n      \"truncated\": false,\n      \"content\": \"Run `ruby hello_world.rb` to print Hello World\"\n    },\n    \"hello_world_python.txt\": {\n      \"filename\": \"hello_world_python.txt\",\n      \"type\": \"text/plain\",\n      \"language\": \"Text\",\n      \"raw_url\": \"https://gist.githubusercontent.com/octocat/e29f3839074953e1cc2934867fa5f2d2/raw/076b4b78c10c9b7e1e0b73ffb99631bfc948de3b/hello_world_python.txt\",\n      \"size\": 48,\n      \"truncated\": false,\n      \"content\": \"Run `python hello_world.py` to print Hello World\"\n    }\n  },\n  \"public\": true,\n  \"created_at\": \"2010-04-14T02:15:15Z\",\n  \"updated_at\": \"2011-06-20T11:34:15Z\",\n  \"description\": \"Hello World Examples\",\n  \"comments\": 0,\n  \"user\": null,\n  \"comments_url\": \"https://api.github.com/gists/aa5a315d61ae9438b18d/comments/\",\n  \"owner\": {\n    \"login\": \"octocat\",\n    \"id\": 1,\n    \"node_id\": \"MDQ6VXNlcjE=\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/users/octocat\",\n    \"html_url\": \"https://github.com/octocat\",\n    \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n    \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n    \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n    \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n    \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n    \"type\": \"User\",\n    \"site_admin\": false\n  },\n  \"truncated\": false,\n  \"forks\": [\n    {\n      \"user\": {\n        \"login\": \"octocat\",\n        \"id\": 1,\n        \"node_id\": \"MDQ6VXNlcjE=\",\n        \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n        \"gravatar_id\": \"\",\n        \"url\": \"https://api.github.com/users/octocat\",\n        \"html_url\": \"https://github.com/octocat\",\n        \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n        \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n        \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n        \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n        \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n        \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n        \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n        \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n        \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n        \"type\": \"User\",\n        \"site_admin\": false\n      },\n      \"url\": \"https://api.github.com/gists/dee9c42e4998ce2ea439\",\n      \"id\": \"dee9c42e4998ce2ea439\",\n      \"created_at\": \"2011-04-14T16:00:49Z\",\n      \"updated_at\": \"2011-04-14T16:00:49Z\"\n    }\n  ],\n  \"history\": [\n    {\n      \"url\": \"https://api.github.com/gists/aa5a315d61ae9438b18d/57a7f021a713b1c5a6a199b54cc514735d2d462f\",\n      \"version\": \"57a7f021a713b1c5a6a199b54cc514735d2d462f\",\n      \"user\": {\n        \"login\": \"octocat\",\n        \"id\": 1,\n        \"node_id\": \"MDQ6VXNlcjE=\",\n        \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n        \"gravatar_id\": \"\",\n        \"url\": \"https://api.github.com/users/octocat\",\n        \"html_url\": \"https://github.com/octocat\",\n        \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n        \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n        \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n        \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n        \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n        \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n        \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n        \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n        \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n        \"type\": \"User\",\n        \"site_admin\": false\n      },\n      \"change_status\": {\n        \"deletions\": 0,\n        \"additions\": 180,\n        \"total\": 180\n      },\n      \"committed_at\": \"2010-04-14T02:15:15Z\"\n    }\n  ]\n}\n"
+      }
+    ],
+    "target":{
+      "method":"post",
+      "path":"/gists"
+    },
+    "title":"Create a gist"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/gists/public\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"gists",
+    "id":"list-public-gists",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "description":"<p>This is a timestamp in <a href=\"https://en.wikipedia.org/wiki/ISO_8601\">ISO 8601</a> format: <code>YYYY-MM-DDTHH:MM:SSZ</code>. Only gists updated at or after this time are returned.</p>",
+        "in":"query ",
+        "name":"since ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"url\": \"https://api.github.com/gists/aa5a315d61ae9438b18d\",\n    \"forks_url\": \"https://api.github.com/gists/aa5a315d61ae9438b18d/forks\",\n    \"commits_url\": \"https://api.github.com/gists/aa5a315d61ae9438b18d/commits\",\n    \"id\": \"aa5a315d61ae9438b18d\",\n    \"node_id\": \"MDQ6R2lzdGFhNWEzMTVkNjFhZTk0MzhiMThk\",\n    \"git_pull_url\": \"https://gist.github.com/aa5a315d61ae9438b18d.git\",\n    \"git_push_url\": \"https://gist.github.com/aa5a315d61ae9438b18d.git\",\n    \"html_url\": \"https://gist.github.com/aa5a315d61ae9438b18d\",\n    \"files\": {\n      \"hello_world.rb\": {\n        \"filename\": \"hello_world.rb\",\n        \"type\": \"application/x-ruby\",\n        \"language\": \"Ruby\",\n        \"raw_url\": \"https://gist.githubusercontent.com/octocat/6cad326836d38bd3a7ae/raw/db9c55113504e46fa076e7df3a04ce592e2e86d8/hello_world.rb\",\n        \"size\": 167\n      }\n    },\n    \"public\": true,\n    \"created_at\": \"2010-04-14T02:15:15Z\",\n    \"updated_at\": \"2011-06-20T11:34:15Z\",\n    \"description\": \"Hello World Examples\",\n    \"comments\": 0,\n    \"user\": null,\n    \"comments_url\": \"https://api.github.com/gists/aa5a315d61ae9438b18d/comments/\",\n    \"owner\": {\n      \"login\": \"octocat\",\n      \"id\": 1,\n      \"node_id\": \"MDQ6VXNlcjE=\",\n      \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n      \"gravatar_id\": \"\",\n      \"url\": \"https://api.github.com/users/octocat\",\n      \"html_url\": \"https://github.com/octocat\",\n      \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n      \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n      \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n      \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n      \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n      \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n      \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n      \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n      \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n      \"type\": \"User\",\n      \"site_admin\": false\n    },\n    \"truncated\": false\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/gists/public"
+    },
+    "title":"List public gists"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/gists/starred\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"gists",
+    "id":"list-starred-gists",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "description":"<p>This is a timestamp in <a href=\"https://en.wikipedia.org/wiki/ISO_8601\">ISO 8601</a> format: <code>YYYY-MM-DDTHH:MM:SSZ</code>. Only gists updated at or after this time are returned.</p>",
+        "in":"query ",
+        "name":"since ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"url\": \"https://api.github.com/gists/aa5a315d61ae9438b18d\",\n    \"forks_url\": \"https://api.github.com/gists/aa5a315d61ae9438b18d/forks\",\n    \"commits_url\": \"https://api.github.com/gists/aa5a315d61ae9438b18d/commits\",\n    \"id\": \"aa5a315d61ae9438b18d\",\n    \"node_id\": \"MDQ6R2lzdGFhNWEzMTVkNjFhZTk0MzhiMThk\",\n    \"git_pull_url\": \"https://gist.github.com/aa5a315d61ae9438b18d.git\",\n    \"git_push_url\": \"https://gist.github.com/aa5a315d61ae9438b18d.git\",\n    \"html_url\": \"https://gist.github.com/aa5a315d61ae9438b18d\",\n    \"files\": {\n      \"hello_world.rb\": {\n        \"filename\": \"hello_world.rb\",\n        \"type\": \"application/x-ruby\",\n        \"language\": \"Ruby\",\n        \"raw_url\": \"https://gist.githubusercontent.com/octocat/6cad326836d38bd3a7ae/raw/db9c55113504e46fa076e7df3a04ce592e2e86d8/hello_world.rb\",\n        \"size\": 167\n      }\n    },\n    \"public\": true,\n    \"created_at\": \"2010-04-14T02:15:15Z\",\n    \"updated_at\": \"2011-06-20T11:34:15Z\",\n    \"description\": \"Hello World Examples\",\n    \"comments\": 0,\n    \"user\": null,\n    \"comments_url\": \"https://api.github.com/gists/aa5a315d61ae9438b18d/comments/\",\n    \"owner\": {\n      \"login\": \"octocat\",\n      \"id\": 1,\n      \"node_id\": \"MDQ6VXNlcjE=\",\n      \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n      \"gravatar_id\": \"\",\n      \"url\": \"https://api.github.com/users/octocat\",\n      \"html_url\": \"https://github.com/octocat\",\n      \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n      \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n      \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n      \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n      \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n      \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n      \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n      \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n      \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n      \"type\": \"User\",\n      \"site_admin\": false\n    },\n    \"truncated\": false\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/gists/starred"
+    },
+    "title":"List starred gists"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/gists/GIST_ID\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"gists",
+    "id":"get-a-gist",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"gist_id ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"url\": \"https://api.github.com/gists/aa5a315d61ae9438b18d\",\n  \"forks_url\": \"https://api.github.com/gists/aa5a315d61ae9438b18d/forks\",\n  \"commits_url\": \"https://api.github.com/gists/aa5a315d61ae9438b18d/commits\",\n  \"id\": \"aa5a315d61ae9438b18d\",\n  \"node_id\": \"MDQ6R2lzdGFhNWEzMTVkNjFhZTk0MzhiMThk\",\n  \"git_pull_url\": \"https://gist.github.com/aa5a315d61ae9438b18d.git\",\n  \"git_push_url\": \"https://gist.github.com/aa5a315d61ae9438b18d.git\",\n  \"html_url\": \"https://gist.github.com/aa5a315d61ae9438b18d\",\n  \"files\": {\n    \"hello_world.rb\": {\n      \"filename\": \"hello_world.rb\",\n      \"type\": \"application/x-ruby\",\n      \"language\": \"Ruby\",\n      \"raw_url\": \"https://gist.githubusercontent.com/octocat/6cad326836d38bd3a7ae/raw/db9c55113504e46fa076e7df3a04ce592e2e86d8/hello_world.rb\",\n      \"size\": 167,\n      \"truncated\": false,\n      \"content\": \"class HelloWorld\\n   def initialize(name)\\n      @name = name.capitalize\\n   end\\n   def sayHi\\n      puts \\\"Hello !\\\"\\n   end\\nend\\n\\nhello = HelloWorld.new(\\\"World\\\")\\nhello.sayHi\"\n    },\n    \"hello_world.py\": {\n      \"filename\": \"hello_world.py\",\n      \"type\": \"application/x-python\",\n      \"language\": \"Python\",\n      \"raw_url\": \"https://gist.githubusercontent.com/octocat/e29f3839074953e1cc2934867fa5f2d2/raw/99c1bf3a345505c2e6195198d5f8c36267de570b/hello_world.py\",\n      \"size\": 199,\n      \"truncated\": false,\n      \"content\": \"class HelloWorld:\\n\\n    def __init__(self, name):\\n        self.name = name.capitalize()\\n       \\n    def sayHi(self):\\n        print \\\"Hello \\\" + self.name + \\\"!\\\"\\n\\nhello = HelloWorld(\\\"world\\\")\\nhello.sayHi()\"\n    },\n    \"hello_world_ruby.txt\": {\n      \"filename\": \"hello_world_ruby.txt\",\n      \"type\": \"text/plain\",\n      \"language\": \"Text\",\n      \"raw_url\": \"https://gist.githubusercontent.com/octocat/e29f3839074953e1cc2934867fa5f2d2/raw/9e4544db60e01a261aac098592b11333704e9082/hello_world_ruby.txt\",\n      \"size\": 46,\n      \"truncated\": false,\n      \"content\": \"Run `ruby hello_world.rb` to print Hello World\"\n    },\n    \"hello_world_python.txt\": {\n      \"filename\": \"hello_world_python.txt\",\n      \"type\": \"text/plain\",\n      \"language\": \"Text\",\n      \"raw_url\": \"https://gist.githubusercontent.com/octocat/e29f3839074953e1cc2934867fa5f2d2/raw/076b4b78c10c9b7e1e0b73ffb99631bfc948de3b/hello_world_python.txt\",\n      \"size\": 48,\n      \"truncated\": false,\n      \"content\": \"Run `python hello_world.py` to print Hello World\"\n    }\n  },\n  \"public\": true,\n  \"created_at\": \"2010-04-14T02:15:15Z\",\n  \"updated_at\": \"2011-06-20T11:34:15Z\",\n  \"description\": \"Hello World Examples\",\n  \"comments\": 0,\n  \"user\": null,\n  \"comments_url\": \"https://api.github.com/gists/aa5a315d61ae9438b18d/comments/\",\n  \"owner\": {\n    \"login\": \"octocat\",\n    \"id\": 1,\n    \"node_id\": \"MDQ6VXNlcjE=\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/users/octocat\",\n    \"html_url\": \"https://github.com/octocat\",\n    \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n    \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n    \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n    \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n    \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n    \"type\": \"User\",\n    \"site_admin\": false\n  },\n  \"truncated\": false,\n  \"forks\": [\n    {\n      \"user\": {\n        \"login\": \"octocat\",\n        \"id\": 1,\n        \"node_id\": \"MDQ6VXNlcjE=\",\n        \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n        \"gravatar_id\": \"\",\n        \"url\": \"https://api.github.com/users/octocat\",\n        \"html_url\": \"https://github.com/octocat\",\n        \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n        \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n        \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n        \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n        \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n        \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n        \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n        \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n        \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n        \"type\": \"User\",\n        \"site_admin\": false\n      },\n      \"url\": \"https://api.github.com/gists/dee9c42e4998ce2ea439\",\n      \"id\": \"dee9c42e4998ce2ea439\",\n      \"created_at\": \"2011-04-14T16:00:49Z\",\n      \"updated_at\": \"2011-04-14T16:00:49Z\"\n    }\n  ],\n  \"history\": [\n    {\n      \"url\": \"https://api.github.com/gists/aa5a315d61ae9438b18d/57a7f021a713b1c5a6a199b54cc514735d2d462f\",\n      \"version\": \"57a7f021a713b1c5a6a199b54cc514735d2d462f\",\n      \"user\": {\n        \"login\": \"octocat\",\n        \"id\": 1,\n        \"node_id\": \"MDQ6VXNlcjE=\",\n        \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n        \"gravatar_id\": \"\",\n        \"url\": \"https://api.github.com/users/octocat\",\n        \"html_url\": \"https://github.com/octocat\",\n        \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n        \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n        \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n        \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n        \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n        \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n        \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n        \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n        \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n        \"type\": \"User\",\n        \"site_admin\": false\n      },\n      \"change_status\": {\n        \"deletions\": 0,\n        \"additions\": 180,\n        \"total\": 180\n      },\n      \"committed_at\": \"2010-04-14T02:15:15Z\"\n    }\n  ]\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/gists/{gist_id}"
+    },
+    "title":"Get a gist"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X PATCH \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/gists/GIST_ID \\\n  -d '{\"description\":\"description\"}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"gists",
+    "id":"update-a-gist",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"gist_id ",
+        "type":"string "
+      },
+      {
+        "description":"<p>A descriptive name for this gist.</p>",
+        "in":"body ",
+        "name":"description ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The filenames and content that make up this gist.</p>",
+        "in":"body ",
+        "name":"files ",
+        "type":"object "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"url\": \"https://api.github.com/gists/aa5a315d61ae9438b18d\",\n  \"forks_url\": \"https://api.github.com/gists/aa5a315d61ae9438b18d/forks\",\n  \"commits_url\": \"https://api.github.com/gists/aa5a315d61ae9438b18d/commits\",\n  \"id\": \"aa5a315d61ae9438b18d\",\n  \"node_id\": \"MDQ6R2lzdGFhNWEzMTVkNjFhZTk0MzhiMThk\",\n  \"git_pull_url\": \"https://gist.github.com/aa5a315d61ae9438b18d.git\",\n  \"git_push_url\": \"https://gist.github.com/aa5a315d61ae9438b18d.git\",\n  \"html_url\": \"https://gist.github.com/aa5a315d61ae9438b18d\",\n  \"files\": {\n    \"hello_world.rb\": {\n      \"filename\": \"hello_world.rb\",\n      \"type\": \"application/x-ruby\",\n      \"language\": \"Ruby\",\n      \"raw_url\": \"https://gist.githubusercontent.com/octocat/6cad326836d38bd3a7ae/raw/db9c55113504e46fa076e7df3a04ce592e2e86d8/hello_world.rb\",\n      \"size\": 167,\n      \"truncated\": false,\n      \"content\": \"class HelloWorld\\n   def initialize(name)\\n      @name = name.capitalize\\n   end\\n   def sayHi\\n      puts \\\"Hello !\\\"\\n   end\\nend\\n\\nhello = HelloWorld.new(\\\"World\\\")\\nhello.sayHi\"\n    },\n    \"hello_world.py\": {\n      \"filename\": \"hello_world.py\",\n      \"type\": \"application/x-python\",\n      \"language\": \"Python\",\n      \"raw_url\": \"https://gist.githubusercontent.com/octocat/e29f3839074953e1cc2934867fa5f2d2/raw/99c1bf3a345505c2e6195198d5f8c36267de570b/hello_world.py\",\n      \"size\": 199,\n      \"truncated\": false,\n      \"content\": \"class HelloWorld:\\n\\n    def __init__(self, name):\\n        self.name = name.capitalize()\\n       \\n    def sayHi(self):\\n        print \\\"Hello \\\" + self.name + \\\"!\\\"\\n\\nhello = HelloWorld(\\\"world\\\")\\nhello.sayHi()\"\n    },\n    \"hello_world.md\": {\n      \"filename\": \"hello_world.md\",\n      \"type\": \"text/plain\",\n      \"language\": \"Markdown\",\n      \"raw_url\": \"https://gist.githubusercontent.com/octocat/8df0a8f642973cbda937bf542d37d4e9/raw/4221bb4b942568c4e3ab253022d2b7fec7844f21/hello_world.md\",\n      \"size\": 73,\n      \"truncated\": false,\n      \"content\": \"Run `ruby hello_world.rb` or `python hello_world.py` to print Hello World\"\n    },\n    \"new_file.txt\": {\n      \"filename\": \"new_file.txt\",\n      \"type\": \"text/plain\",\n      \"language\": \"Text\",\n      \"raw_url\": \"https://gist.githubusercontent.com/octocat/8df0a8f642973cbda937bf542d37d4e9/raw/56ab7bdf864fa11c1e16acce2a5116171514d2d1/new_file.txt\",\n      \"size\": 31,\n      \"truncated\": false,\n      \"content\": \"This is a new placeholder file.\"\n    }\n  },\n  \"public\": true,\n  \"created_at\": \"2010-04-14T02:15:15Z\",\n  \"updated_at\": \"2011-06-20T11:34:15Z\",\n  \"description\": \"Hello World Examples\",\n  \"comments\": 0,\n  \"user\": null,\n  \"comments_url\": \"https://api.github.com/gists/aa5a315d61ae9438b18d/comments/\",\n  \"owner\": {\n    \"login\": \"octocat\",\n    \"id\": 1,\n    \"node_id\": \"MDQ6VXNlcjE=\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/users/octocat\",\n    \"html_url\": \"https://github.com/octocat\",\n    \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n    \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n    \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n    \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n    \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n    \"type\": \"User\",\n    \"site_admin\": false\n  },\n  \"truncated\": false,\n  \"forks\": [\n    {\n      \"user\": {\n        \"login\": \"octocat\",\n        \"id\": 1,\n        \"node_id\": \"MDQ6VXNlcjE=\",\n        \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n        \"gravatar_id\": \"\",\n        \"url\": \"https://api.github.com/users/octocat\",\n        \"html_url\": \"https://github.com/octocat\",\n        \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n        \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n        \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n        \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n        \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n        \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n        \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n        \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n        \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n        \"type\": \"User\",\n        \"site_admin\": false\n      },\n      \"url\": \"https://api.github.com/gists/dee9c42e4998ce2ea439\",\n      \"id\": \"dee9c42e4998ce2ea439\",\n      \"created_at\": \"2011-04-14T16:00:49Z\",\n      \"updated_at\": \"2011-04-14T16:00:49Z\"\n    }\n  ],\n  \"history\": [\n    {\n      \"url\": \"https://api.github.com/gists/aa5a315d61ae9438b18d/57a7f021a713b1c5a6a199b54cc514735d2d462f\",\n      \"version\": \"57a7f021a713b1c5a6a199b54cc514735d2d462f\",\n      \"user\": {\n        \"login\": \"octocat\",\n        \"id\": 1,\n        \"node_id\": \"MDQ6VXNlcjE=\",\n        \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n        \"gravatar_id\": \"\",\n        \"url\": \"https://api.github.com/users/octocat\",\n        \"html_url\": \"https://github.com/octocat\",\n        \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n        \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n        \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n        \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n        \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n        \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n        \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n        \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n        \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n        \"type\": \"User\",\n        \"site_admin\": false\n      },\n      \"change_status\": {\n        \"deletions\": 0,\n        \"additions\": 180,\n        \"total\": 180\n      },\n      \"committed_at\": \"2010-04-14T02:15:15Z\"\n    }\n  ]\n}\n"
+      }
+    ],
+    "target":{
+      "method":"patch",
+      "path":"/gists/{gist_id}"
+    },
+    "title":"Update a gist"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X DELETE \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/gists/GIST_ID\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"gists",
+    "id":"delete-a-gist",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"gist_id ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"delete",
+      "path":"/gists/{gist_id}"
+    },
+    "title":"Delete a gist"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/gists/GIST_ID/commits\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"gists",
+    "id":"list-gist-commits",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"gist_id ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"url\": \"https://api.github.com/gists/aa5a315d61ae9438b18d/57a7f021a713b1c5a6a199b54cc514735d2d462f\",\n    \"version\": \"57a7f021a713b1c5a6a199b54cc514735d2d462f\",\n    \"user\": {\n      \"login\": \"octocat\",\n      \"id\": 1,\n      \"node_id\": \"MDQ6VXNlcjE=\",\n      \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n      \"gravatar_id\": \"\",\n      \"url\": \"https://api.github.com/users/octocat\",\n      \"html_url\": \"https://github.com/octocat\",\n      \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n      \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n      \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n      \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n      \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n      \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n      \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n      \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n      \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n      \"type\": \"User\",\n      \"site_admin\": false\n    },\n    \"change_status\": {\n      \"deletions\": 0,\n      \"additions\": 180,\n      \"total\": 180\n    },\n    \"committed_at\": \"2010-04-14T02:15:15Z\"\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/gists/{gist_id}/commits"
+    },
+    "title":"List gist commits"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/gists/GIST_ID/forks\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"gists",
+    "id":"list-gist-forks",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"gist_id ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"user\": {\n      \"login\": \"octocat\",\n      \"id\": 1,\n      \"node_id\": \"MDQ6VXNlcjE=\",\n      \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n      \"gravatar_id\": \"\",\n      \"url\": \"https://api.github.com/users/octocat\",\n      \"html_url\": \"https://github.com/octocat\",\n      \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n      \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n      \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n      \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n      \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n      \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n      \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n      \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n      \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n      \"type\": \"User\",\n      \"site_admin\": false\n    },\n    \"url\": \"https://api.github.com/gists/dee9c42e4998ce2ea439\",\n    \"id\": \"dee9c42e4998ce2ea439\",\n    \"created_at\": \"2011-04-14T16:00:49Z\",\n    \"updated_at\": \"2011-04-14T16:00:49Z\"\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/gists/{gist_id}/forks"
+    },
+    "title":"List gist forks"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X POST \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/gists/GIST_ID/forks\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"gists",
+    "id":"fork-a-gist",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"gist_id ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"201 Created",
+        "content":"{\n  \"url\": \"https://api.github.com/gists/aa5a315d61ae9438b18d\",\n  \"forks_url\": \"https://api.github.com/gists/aa5a315d61ae9438b18d/forks\",\n  \"commits_url\": \"https://api.github.com/gists/aa5a315d61ae9438b18d/commits\",\n  \"id\": \"aa5a315d61ae9438b18d\",\n  \"node_id\": \"MDQ6R2lzdGFhNWEzMTVkNjFhZTk0MzhiMThk\",\n  \"git_pull_url\": \"https://gist.github.com/aa5a315d61ae9438b18d.git\",\n  \"git_push_url\": \"https://gist.github.com/aa5a315d61ae9438b18d.git\",\n  \"html_url\": \"https://gist.github.com/aa5a315d61ae9438b18d\",\n  \"files\": {\n    \"hello_world.rb\": {\n      \"filename\": \"hello_world.rb\",\n      \"type\": \"application/x-ruby\",\n      \"language\": \"Ruby\",\n      \"raw_url\": \"https://gist.githubusercontent.com/octocat/6cad326836d38bd3a7ae/raw/db9c55113504e46fa076e7df3a04ce592e2e86d8/hello_world.rb\",\n      \"size\": 167\n    }\n  },\n  \"public\": true,\n  \"created_at\": \"2010-04-14T02:15:15Z\",\n  \"updated_at\": \"2011-06-20T11:34:15Z\",\n  \"description\": \"Hello World Examples\",\n  \"comments\": 0,\n  \"user\": null,\n  \"comments_url\": \"https://api.github.com/gists/aa5a315d61ae9438b18d/comments/\",\n  \"owner\": {\n    \"login\": \"octocat\",\n    \"id\": 1,\n    \"node_id\": \"MDQ6VXNlcjE=\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/users/octocat\",\n    \"html_url\": \"https://github.com/octocat\",\n    \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n    \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n    \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n    \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n    \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n    \"type\": \"User\",\n    \"site_admin\": false\n  },\n  \"truncated\": false\n}\n"
+      }
+    ],
+    "target":{
+      "method":"post",
+      "path":"/gists/{gist_id}/forks"
+    },
+    "title":"Fork a gist"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/gists/GIST_ID/star\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"gists",
+    "id":"check-if-a-gist-is-starred",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"gist_id ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      },
+      {
+        "code":"404 Not Found"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/gists/{gist_id}/star"
+    },
+    "title":"Check if a gist is starred"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X PUT \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/gists/GIST_ID/star\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"gists",
+    "id":"star-a-gist",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"gist_id ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"put",
+      "path":"/gists/{gist_id}/star"
+    },
+    "title":"Star a gist"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X DELETE \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/gists/GIST_ID/star\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"gists",
+    "id":"unstar-a-gist",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"gist_id ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"delete",
+      "path":"/gists/{gist_id}/star"
+    },
+    "title":"Unstar a gist"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/gists/GIST_ID/SHA\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"gists",
+    "id":"get-a-gist-revision",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"gist_id ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"sha ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"url\": \"https://api.github.com/gists/aa5a315d61ae9438b18d/57a7f021a713b1c5a6a199b54cc514735d2d462f\",\n  \"forks_url\": \"https://api.github.com/gists/aa5a315d61ae9438b18d/forks\",\n  \"commits_url\": \"https://api.github.com/gists/aa5a315d61ae9438b18d/commits\",\n  \"id\": \"aa5a315d61ae9438b18d\",\n  \"node_id\": \"MDQ6R2lzdGFhNWEzMTVkNjFhZTk0MzhiMThk\",\n  \"git_pull_url\": \"https://gist.github.com/aa5a315d61ae9438b18d.git\",\n  \"git_push_url\": \"https://gist.github.com/aa5a315d61ae9438b18d.git\",\n  \"html_url\": \"https://gist.github.com/aa5a315d61ae9438b18d\",\n  \"files\": {\n    \"hello_world.rb\": {\n      \"filename\": \"hello_world.rb\",\n      \"type\": \"application/x-ruby\",\n      \"language\": \"Ruby\",\n      \"raw_url\": \"https://gist.githubusercontent.com/octocat/6cad326836d38bd3a7ae/raw/db9c55113504e46fa076e7df3a04ce592e2e86d8/hello_world.rb\",\n      \"size\": 167,\n      \"truncated\": false,\n      \"content\": \"class HelloWorld\\n   def initialize(name)\\n      @name = name.capitalize\\n   end\\n   def sayHi\\n      puts \\\"Hello !\\\"\\n   end\\nend\\n\\nhello = HelloWorld.new(\\\"World\\\")\\nhello.sayHi\"\n    },\n    \"hello_world.py\": {\n      \"filename\": \"hello_world.py\",\n      \"type\": \"application/x-python\",\n      \"language\": \"Python\",\n      \"raw_url\": \"https://gist.githubusercontent.com/octocat/e29f3839074953e1cc2934867fa5f2d2/raw/99c1bf3a345505c2e6195198d5f8c36267de570b/hello_world.py\",\n      \"size\": 199,\n      \"truncated\": false,\n      \"content\": \"class HelloWorld:\\n\\n    def __init__(self, name):\\n        self.name = name.capitalize()\\n       \\n    def sayHi(self):\\n        print \\\"Hello \\\" + self.name + \\\"!\\\"\\n\\nhello = HelloWorld(\\\"world\\\")\\nhello.sayHi()\"\n    },\n    \"hello_world_ruby.txt\": {\n      \"filename\": \"hello_world_ruby.txt\",\n      \"type\": \"text/plain\",\n      \"language\": \"Text\",\n      \"raw_url\": \"https://gist.githubusercontent.com/octocat/e29f3839074953e1cc2934867fa5f2d2/raw/9e4544db60e01a261aac098592b11333704e9082/hello_world_ruby.txt\",\n      \"size\": 46,\n      \"truncated\": false,\n      \"content\": \"Run `ruby hello_world.rb` to print Hello World\"\n    },\n    \"hello_world_python.txt\": {\n      \"filename\": \"hello_world_python.txt\",\n      \"type\": \"text/plain\",\n      \"language\": \"Text\",\n      \"raw_url\": \"https://gist.githubusercontent.com/octocat/e29f3839074953e1cc2934867fa5f2d2/raw/076b4b78c10c9b7e1e0b73ffb99631bfc948de3b/hello_world_python.txt\",\n      \"size\": 48,\n      \"truncated\": false,\n      \"content\": \"Run `python hello_world.py` to print Hello World\"\n    }\n  },\n  \"public\": true,\n  \"created_at\": \"2010-04-14T02:15:15Z\",\n  \"updated_at\": \"2011-06-20T11:34:15Z\",\n  \"description\": \"Hello World Examples\",\n  \"comments\": 0,\n  \"user\": null,\n  \"comments_url\": \"https://api.github.com/gists/aa5a315d61ae9438b18d/comments/\",\n  \"owner\": {\n    \"login\": \"octocat\",\n    \"id\": 1,\n    \"node_id\": \"MDQ6VXNlcjE=\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/users/octocat\",\n    \"html_url\": \"https://github.com/octocat\",\n    \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n    \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n    \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n    \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n    \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n    \"type\": \"User\",\n    \"site_admin\": false\n  },\n  \"truncated\": false,\n  \"forks\": [\n    {\n      \"user\": {\n        \"login\": \"octocat\",\n        \"id\": 1,\n        \"node_id\": \"MDQ6VXNlcjE=\",\n        \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n        \"gravatar_id\": \"\",\n        \"url\": \"https://api.github.com/users/octocat\",\n        \"html_url\": \"https://github.com/octocat\",\n        \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n        \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n        \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n        \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n        \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n        \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n        \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n        \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n        \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n        \"type\": \"User\",\n        \"site_admin\": false\n      },\n      \"url\": \"https://api.github.com/gists/dee9c42e4998ce2ea439\",\n      \"id\": \"dee9c42e4998ce2ea439\",\n      \"created_at\": \"2011-04-14T16:00:49Z\",\n      \"updated_at\": \"2011-04-14T16:00:49Z\"\n    }\n  ],\n  \"history\": [\n    {\n      \"url\": \"https://api.github.com/gists/aa5a315d61ae9438b18d/57a7f021a713b1c5a6a199b54cc514735d2d462f\",\n      \"version\": \"57a7f021a713b1c5a6a199b54cc514735d2d462f\",\n      \"user\": {\n        \"login\": \"octocat\",\n        \"id\": 1,\n        \"node_id\": \"MDQ6VXNlcjE=\",\n        \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n        \"gravatar_id\": \"\",\n        \"url\": \"https://api.github.com/users/octocat\",\n        \"html_url\": \"https://github.com/octocat\",\n        \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n        \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n        \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n        \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n        \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n        \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n        \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n        \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n        \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n        \"type\": \"User\",\n        \"site_admin\": false\n      },\n      \"change_status\": {\n        \"deletions\": 0,\n        \"additions\": 180,\n        \"total\": 180\n      },\n      \"committed_at\": \"2010-04-14T02:15:15Z\"\n    }\n  ]\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/gists/{gist_id}/{sha}"
+    },
+    "title":"Get a gist revision"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/users/USERNAME/gists\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"gists",
+    "id":"list-gists-for-a-user",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"username ",
+        "type":"string "
+      },
+      {
+        "description":"<p>This is a timestamp in <a href=\"https://en.wikipedia.org/wiki/ISO_8601\">ISO 8601</a> format: <code>YYYY-MM-DDTHH:MM:SSZ</code>. Only gists updated at or after this time are returned.</p>",
+        "in":"query ",
+        "name":"since ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"url\": \"https://api.github.com/gists/aa5a315d61ae9438b18d\",\n    \"forks_url\": \"https://api.github.com/gists/aa5a315d61ae9438b18d/forks\",\n    \"commits_url\": \"https://api.github.com/gists/aa5a315d61ae9438b18d/commits\",\n    \"id\": \"aa5a315d61ae9438b18d\",\n    \"node_id\": \"MDQ6R2lzdGFhNWEzMTVkNjFhZTk0MzhiMThk\",\n    \"git_pull_url\": \"https://gist.github.com/aa5a315d61ae9438b18d.git\",\n    \"git_push_url\": \"https://gist.github.com/aa5a315d61ae9438b18d.git\",\n    \"html_url\": \"https://gist.github.com/aa5a315d61ae9438b18d\",\n    \"files\": {\n      \"hello_world.rb\": {\n        \"filename\": \"hello_world.rb\",\n        \"type\": \"application/x-ruby\",\n        \"language\": \"Ruby\",\n        \"raw_url\": \"https://gist.githubusercontent.com/octocat/6cad326836d38bd3a7ae/raw/db9c55113504e46fa076e7df3a04ce592e2e86d8/hello_world.rb\",\n        \"size\": 167\n      }\n    },\n    \"public\": true,\n    \"created_at\": \"2010-04-14T02:15:15Z\",\n    \"updated_at\": \"2011-06-20T11:34:15Z\",\n    \"description\": \"Hello World Examples\",\n    \"comments\": 0,\n    \"user\": null,\n    \"comments_url\": \"https://api.github.com/gists/aa5a315d61ae9438b18d/comments/\",\n    \"owner\": {\n      \"login\": \"octocat\",\n      \"id\": 1,\n      \"node_id\": \"MDQ6VXNlcjE=\",\n      \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n      \"gravatar_id\": \"\",\n      \"url\": \"https://api.github.com/users/octocat\",\n      \"html_url\": \"https://github.com/octocat\",\n      \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n      \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n      \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n      \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n      \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n      \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n      \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n      \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n      \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n      \"type\": \"User\",\n      \"site_admin\": false\n    },\n    \"truncated\": false\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/users/{username}/gists"
+    },
+    "title":"List gists for a user"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/gists/GIST_ID/comments\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"gists",
+    "id":"list-gist-comments",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"gist_id ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"id\": 1,\n    \"node_id\": \"MDExOkdpc3RDb21tZW50MQ==\",\n    \"url\": \"https://api.github.com/gists/a6db0bec360bb87e9418/comments/1\",\n    \"body\": \"Just commenting for the sake of commenting\",\n    \"user\": {\n      \"login\": \"octocat\",\n      \"id\": 1,\n      \"node_id\": \"MDQ6VXNlcjE=\",\n      \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n      \"gravatar_id\": \"\",\n      \"url\": \"https://api.github.com/users/octocat\",\n      \"html_url\": \"https://github.com/octocat\",\n      \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n      \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n      \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n      \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n      \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n      \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n      \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n      \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n      \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n      \"type\": \"User\",\n      \"site_admin\": false\n    },\n    \"created_at\": \"2011-04-18T23:23:56Z\",\n    \"updated_at\": \"2011-04-18T23:23:56Z\"\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/gists/{gist_id}/comments"
+    },
+    "title":"List gist comments"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X POST \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/gists/GIST_ID/comments \\\n  -d '{\"body\":\"body\"}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"gists",
+    "id":"create-a-gist-comment",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"gist_id ",
+        "type":"string "
+      },
+      {
+        "description":"<p><strong>Required</strong>. The comment text.</p>",
+        "in":"body ",
+        "name":"body ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"201 Created",
+        "content":"{\n  \"id\": 1,\n  \"node_id\": \"MDExOkdpc3RDb21tZW50MQ==\",\n  \"url\": \"https://api.github.com/gists/a6db0bec360bb87e9418/comments/1\",\n  \"body\": \"Just commenting for the sake of commenting\",\n  \"user\": {\n    \"login\": \"octocat\",\n    \"id\": 1,\n    \"node_id\": \"MDQ6VXNlcjE=\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/users/octocat\",\n    \"html_url\": \"https://github.com/octocat\",\n    \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n    \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n    \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n    \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n    \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n    \"type\": \"User\",\n    \"site_admin\": false\n  },\n  \"created_at\": \"2011-04-18T23:23:56Z\",\n  \"updated_at\": \"2011-04-18T23:23:56Z\"\n}\n"
+      }
+    ],
+    "target":{
+      "method":"post",
+      "path":"/gists/{gist_id}/comments"
+    },
+    "title":"Create a gist comment"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/gists/GIST_ID/comments/42\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"gists",
+    "id":"get-a-gist-comment",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"gist_id ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"comment_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"id\": 1,\n  \"node_id\": \"MDExOkdpc3RDb21tZW50MQ==\",\n  \"url\": \"https://api.github.com/gists/a6db0bec360bb87e9418/comments/1\",\n  \"body\": \"Just commenting for the sake of commenting\",\n  \"user\": {\n    \"login\": \"octocat\",\n    \"id\": 1,\n    \"node_id\": \"MDQ6VXNlcjE=\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/users/octocat\",\n    \"html_url\": \"https://github.com/octocat\",\n    \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n    \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n    \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n    \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n    \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n    \"type\": \"User\",\n    \"site_admin\": false\n  },\n  \"created_at\": \"2011-04-18T23:23:56Z\",\n  \"updated_at\": \"2011-04-18T23:23:56Z\"\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/gists/{gist_id}/comments/{comment_id}"
+    },
+    "title":"Get a gist comment"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X PATCH \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/gists/GIST_ID/comments/42 \\\n  -d '{\"body\":\"body\"}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"gists",
+    "id":"update-a-gist-comment",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"gist_id ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"comment_id ",
+        "type":"integer "
+      },
+      {
+        "description":"<p><strong>Required</strong>. The comment text.</p>",
+        "in":"body ",
+        "name":"body ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"id\": 1,\n  \"node_id\": \"MDExOkdpc3RDb21tZW50MQ==\",\n  \"url\": \"https://api.github.com/gists/a6db0bec360bb87e9418/comments/1\",\n  \"body\": \"Just commenting for the sake of commenting\",\n  \"user\": {\n    \"login\": \"octocat\",\n    \"id\": 1,\n    \"node_id\": \"MDQ6VXNlcjE=\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/users/octocat\",\n    \"html_url\": \"https://github.com/octocat\",\n    \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n    \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n    \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n    \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n    \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n    \"type\": \"User\",\n    \"site_admin\": false\n  },\n  \"created_at\": \"2011-04-18T23:23:56Z\",\n  \"updated_at\": \"2011-04-18T23:23:56Z\"\n}\n"
+      }
+    ],
+    "target":{
+      "method":"patch",
+      "path":"/gists/{gist_id}/comments/{comment_id}"
+    },
+    "title":"Update a gist comment"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X DELETE \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/gists/GIST_ID/comments/42\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"gists",
+    "id":"delete-a-gist-comment",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"gist_id ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"comment_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"delete",
+      "path":"/gists/{gist_id}/comments/{comment_id}"
+    },
+    "title":"Delete a gist comment"
+  }
+]

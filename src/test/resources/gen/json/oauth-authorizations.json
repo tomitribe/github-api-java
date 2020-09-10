@@ -1,0 +1,508 @@
+[
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/applications/grants\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"oauth-authorizations",
+    "id":"list-your-grants",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"id\": 1,\n    \"url\": \"https://api.github.com/applications/grants/1\",\n    \"app\": {\n      \"url\": \"http://my-github-app.com\",\n      \"name\": \"my github app\",\n      \"client_id\": \"abcde12345fghij67890\"\n    },\n    \"created_at\": \"2011-09-06T17:26:27Z\",\n    \"updated_at\": \"2011-09-06T20:39:23Z\",\n    \"scopes\": [\n      \"public_repo\"\n    ]\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/applications/grants"
+    },
+    "title":"List your grants"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/applications/grants/42\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"oauth-authorizations",
+    "id":"get-a-single-grant",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"grant_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"id\": 1,\n  \"url\": \"https://api.github.com/applications/grants/1\",\n  \"app\": {\n    \"url\": \"http://my-github-app.com\",\n    \"name\": \"my github app\",\n    \"client_id\": \"abcde12345fghij67890\"\n  },\n  \"created_at\": \"2011-09-06T17:26:27Z\",\n  \"updated_at\": \"2011-09-06T20:39:23Z\",\n  \"scopes\": [\n    \"public_repo\"\n  ]\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/applications/grants/{grant_id}"
+    },
+    "title":"Get a single grant"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X DELETE \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/applications/grants/42\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"oauth-authorizations",
+    "id":"delete-a-grant",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"grant_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"delete",
+      "path":"/applications/grants/{grant_id}"
+    },
+    "title":"Delete a grant"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/authorizations\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"oauth-authorizations",
+    "id":"list-your-authorizations",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"id\": 1,\n    \"url\": \"https://api.github.com/authorizations/1\",\n    \"scopes\": [\n      \"public_repo\"\n    ],\n    \"token\": \"\",\n    \"token_last_eight\": \"12345678\",\n    \"hashed_token\": \"25f94a2a5c7fbaf499c665bc73d67c1c87e496da8985131633ee0a95819db2e8\",\n    \"app\": {\n      \"url\": \"http://my-github-app.com\",\n      \"name\": \"my github app\",\n      \"client_id\": \"abcde12345fghij67890\"\n    },\n    \"note\": \"optional note\",\n    \"note_url\": \"http://optional/note/url\",\n    \"updated_at\": \"2011-09-06T20:39:23Z\",\n    \"created_at\": \"2011-09-06T17:26:27Z\",\n    \"fingerprint\": \"jklmnop12345678\"\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/authorizations"
+    },
+    "title":"List your authorizations"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X POST \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/authorizations \\\n  -d '{\"note\":\"note\"}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"oauth-authorizations",
+    "id":"create-a-new-authorization",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "description":"<p>A list of scopes that this authorization is in.</p>",
+        "in":"body ",
+        "name":"scopes ",
+        "type":"array of strings "
+      },
+      {
+        "description":"<p><strong>Required</strong>. A note to remind you what the OAuth token is for. Tokens not associated with a specific OAuth application (i.e. personal access tokens) must have a unique note.</p>",
+        "in":"body ",
+        "name":"note ",
+        "type":"string "
+      },
+      {
+        "description":"<p>A URL to remind you what app the OAuth token is for.</p>",
+        "in":"body ",
+        "name":"note_url ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The 20 character OAuth app client key for which to create the token.</p>",
+        "in":"body ",
+        "name":"client_id ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The 40 character OAuth app client secret for which to create the token.</p>",
+        "in":"body ",
+        "name":"client_secret ",
+        "type":"string "
+      },
+      {
+        "description":"<p>A unique string to distinguish an authorization from others created for the same client ID and user.</p>",
+        "in":"body ",
+        "name":"fingerprint ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"201 Created",
+        "content":"{\n  \"id\": 1,\n  \"url\": \"https://api.github.com/authorizations/1\",\n  \"scopes\": [\n    \"public_repo\"\n  ],\n  \"token\": \"abcdefgh12345678\",\n  \"token_last_eight\": \"12345678\",\n  \"hashed_token\": \"25f94a2a5c7fbaf499c665bc73d67c1c87e496da8985131633ee0a95819db2e8\",\n  \"app\": {\n    \"url\": \"http://my-github-app.com\",\n    \"name\": \"my github app\",\n    \"client_id\": \"abcde12345fghij67890\"\n  },\n  \"note\": \"optional note\",\n  \"note_url\": \"http://optional/note/url\",\n  \"updated_at\": \"2011-09-06T20:39:23Z\",\n  \"created_at\": \"2011-09-06T17:26:27Z\",\n  \"fingerprint\": \"\"\n}\n"
+      }
+    ],
+    "target":{
+      "method":"post",
+      "path":"/authorizations"
+    },
+    "title":"Create a new authorization"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X PUT \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/authorizations/clients/CLIENT_ID \\\n  -d '{\"client_secret\":\"client_secret\"}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"oauth-authorizations",
+    "id":"get-or-create-an-authorization-for-a-specific-app",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"client_id ",
+        "type":"string "
+      },
+      {
+        "description":"<p><strong>Required</strong>. The 40 character OAuth app client secret associated with the client ID specified in the URL.</p>",
+        "in":"body ",
+        "name":"client_secret ",
+        "type":"string "
+      },
+      {
+        "description":"<p>A list of scopes that this authorization is in.</p>",
+        "in":"body ",
+        "name":"scopes ",
+        "type":"array of strings "
+      },
+      {
+        "description":"<p>A note to remind you what the OAuth token is for.</p>",
+        "in":"body ",
+        "name":"note ",
+        "type":"string "
+      },
+      {
+        "description":"<p>A URL to remind you what app the OAuth token is for.</p>",
+        "in":"body ",
+        "name":"note_url ",
+        "type":"string "
+      },
+      {
+        "description":"<p>A unique string to distinguish an authorization from others created for the same client and user. If provided, this API is functionally equivalent to <a href=\"https://developer.github.com/v3/oauth_authorizations/#get-or-create-an-authorization-for-a-specific-app-and-fingerprint\">Get-or-create an authorization for a specific app and fingerprint</a>.</p>",
+        "in":"body ",
+        "name":"fingerprint ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"id\": 1,\n  \"url\": \"https://api.github.com/authorizations/1\",\n  \"scopes\": [\n    \"public_repo\"\n  ],\n  \"token\": \"\",\n  \"token_last_eight\": \"12345678\",\n  \"hashed_token\": \"25f94a2a5c7fbaf499c665bc73d67c1c87e496da8985131633ee0a95819db2e8\",\n  \"app\": {\n    \"url\": \"http://my-github-app.com\",\n    \"name\": \"my github app\",\n    \"client_id\": \"abcde12345fghij67890\"\n  },\n  \"note\": \"optional note\",\n  \"note_url\": \"http://optional/note/url\",\n  \"updated_at\": \"2011-09-06T20:39:23Z\",\n  \"created_at\": \"2011-09-06T17:26:27Z\",\n  \"fingerprint\": \"\"\n}\n"
+      },
+      {
+        "code":"201 Created",
+        "content":"{\n  \"id\": 1,\n  \"url\": \"https://api.github.com/authorizations/1\",\n  \"scopes\": [\n    \"public_repo\"\n  ],\n  \"token\": \"abcdefgh12345678\",\n  \"token_last_eight\": \"12345678\",\n  \"hashed_token\": \"25f94a2a5c7fbaf499c665bc73d67c1c87e496da8985131633ee0a95819db2e8\",\n  \"app\": {\n    \"url\": \"http://my-github-app.com\",\n    \"name\": \"my github app\",\n    \"client_id\": \"abcde12345fghij67890\"\n  },\n  \"note\": \"optional note\",\n  \"note_url\": \"http://optional/note/url\",\n  \"updated_at\": \"2011-09-06T20:39:23Z\",\n  \"created_at\": \"2011-09-06T17:26:27Z\",\n  \"fingerprint\": \"\"\n}\n"
+      }
+    ],
+    "target":{
+      "method":"put",
+      "path":"/authorizations/clients/{client_id}"
+    },
+    "title":"Get-or-create an authorization for a specific app"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X PUT \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/authorizations/clients/CLIENT_ID/FINGERPRINT \\\n  -d '{\"client_secret\":\"client_secret\"}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"oauth-authorizations",
+    "id":"get-or-create-an-authorization-for-a-specific-app-and-fingerprint",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"client_id ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"fingerprint ",
+        "type":"string "
+      },
+      {
+        "description":"<p><strong>Required</strong>. The 40 character OAuth app client secret associated with the client ID specified in the URL.</p>",
+        "in":"body ",
+        "name":"client_secret ",
+        "type":"string "
+      },
+      {
+        "description":"<p>A list of scopes that this authorization is in.</p>",
+        "in":"body ",
+        "name":"scopes ",
+        "type":"array of strings "
+      },
+      {
+        "description":"<p>A note to remind you what the OAuth token is for.</p>",
+        "in":"body ",
+        "name":"note ",
+        "type":"string "
+      },
+      {
+        "description":"<p>A URL to remind you what app the OAuth token is for.</p>",
+        "in":"body ",
+        "name":"note_url ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"id\": 1,\n  \"url\": \"https://api.github.com/authorizations/1\",\n  \"scopes\": [\n    \"public_repo\"\n  ],\n  \"token\": \"\",\n  \"token_last_eight\": \"12345678\",\n  \"hashed_token\": \"25f94a2a5c7fbaf499c665bc73d67c1c87e496da8985131633ee0a95819db2e8\",\n  \"app\": {\n    \"url\": \"http://my-github-app.com\",\n    \"name\": \"my github app\",\n    \"client_id\": \"abcde12345fghij67890\"\n  },\n  \"note\": \"optional note\",\n  \"note_url\": \"http://optional/note/url\",\n  \"updated_at\": \"2011-09-06T20:39:23Z\",\n  \"created_at\": \"2011-09-06T17:26:27Z\",\n  \"fingerprint\": \"jklmnop12345678\"\n}\n"
+      },
+      {
+        "code":"201 Created",
+        "content":"{\n  \"id\": 1,\n  \"url\": \"https://api.github.com/authorizations/1\",\n  \"scopes\": [\n    \"public_repo\"\n  ],\n  \"token\": \"abcdefgh12345678\",\n  \"token_last_eight\": \"12345678\",\n  \"hashed_token\": \"25f94a2a5c7fbaf499c665bc73d67c1c87e496da8985131633ee0a95819db2e8\",\n  \"app\": {\n    \"url\": \"http://my-github-app.com\",\n    \"name\": \"my github app\",\n    \"client_id\": \"abcde12345fghij67890\"\n  },\n  \"note\": \"optional note\",\n  \"note_url\": \"http://optional/note/url\",\n  \"updated_at\": \"2011-09-06T20:39:23Z\",\n  \"created_at\": \"2011-09-06T17:26:27Z\",\n  \"fingerprint\": \"jklmnop12345678\"\n}\n"
+      }
+    ],
+    "target":{
+      "method":"put",
+      "path":"/authorizations/clients/{client_id}/{fingerprint}"
+    },
+    "title":"Get-or-create an authorization for a specific app and fingerprint"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/authorizations/42\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"oauth-authorizations",
+    "id":"get-a-single-authorization",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"authorization_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"id\": 1,\n  \"url\": \"https://api.github.com/authorizations/1\",\n  \"scopes\": [\n    \"public_repo\"\n  ],\n  \"token\": \"\",\n  \"token_last_eight\": \"12345678\",\n  \"hashed_token\": \"25f94a2a5c7fbaf499c665bc73d67c1c87e496da8985131633ee0a95819db2e8\",\n  \"app\": {\n    \"url\": \"http://my-github-app.com\",\n    \"name\": \"my github app\",\n    \"client_id\": \"abcde12345fghij67890\"\n  },\n  \"note\": \"optional note\",\n  \"note_url\": \"http://optional/note/url\",\n  \"updated_at\": \"2011-09-06T20:39:23Z\",\n  \"created_at\": \"2011-09-06T17:26:27Z\",\n  \"fingerprint\": \"jklmnop12345678\"\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/authorizations/{authorization_id}"
+    },
+    "title":"Get a single authorization"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X PATCH \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/authorizations/42 \\\n  -d '{\"scopes\":[\"scopes\"]}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"oauth-authorizations",
+    "id":"update-an-existing-authorization",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"authorization_id ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Replaces the authorization scopes with these.</p>",
+        "in":"body ",
+        "name":"scopes ",
+        "type":"array of strings "
+      },
+      {
+        "description":"<p>A list of scopes to add to this authorization.</p>",
+        "in":"body ",
+        "name":"add_scopes ",
+        "type":"array of strings "
+      },
+      {
+        "description":"<p>A list of scopes to remove from this authorization.</p>",
+        "in":"body ",
+        "name":"remove_scopes ",
+        "type":"array of strings "
+      },
+      {
+        "description":"<p>A note to remind you what the OAuth token is for. Tokens not associated with a specific OAuth application (i.e. personal access tokens) must have a unique note.</p>",
+        "in":"body ",
+        "name":"note ",
+        "type":"string "
+      },
+      {
+        "description":"<p>A URL to remind you what app the OAuth token is for.</p>",
+        "in":"body ",
+        "name":"note_url ",
+        "type":"string "
+      },
+      {
+        "description":"<p>A unique string to distinguish an authorization from others created for the same client ID and user.</p>",
+        "in":"body ",
+        "name":"fingerprint ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"id\": 1,\n  \"url\": \"https://api.github.com/authorizations/1\",\n  \"scopes\": [\n    \"public_repo\"\n  ],\n  \"token\": \"\",\n  \"token_last_eight\": \"12345678\",\n  \"hashed_token\": \"25f94a2a5c7fbaf499c665bc73d67c1c87e496da8985131633ee0a95819db2e8\",\n  \"app\": {\n    \"url\": \"http://my-github-app.com\",\n    \"name\": \"my github app\",\n    \"client_id\": \"abcde12345fghij67890\"\n  },\n  \"note\": \"optional note\",\n  \"note_url\": \"http://optional/note/url\",\n  \"updated_at\": \"2011-09-06T20:39:23Z\",\n  \"created_at\": \"2011-09-06T17:26:27Z\",\n  \"fingerprint\": \"jklmnop12345678\"\n}\n"
+      }
+    ],
+    "target":{
+      "method":"patch",
+      "path":"/authorizations/{authorization_id}"
+    },
+    "title":"Update an existing authorization"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X DELETE \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/authorizations/42\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"oauth-authorizations",
+    "id":"delete-an-authorization",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"authorization_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"delete",
+      "path":"/authorizations/{authorization_id}"
+    },
+    "title":"Delete an authorization"
+  }
+]

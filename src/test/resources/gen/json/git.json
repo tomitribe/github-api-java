@@ -1,0 +1,794 @@
+[
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X POST \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/repos/octocat/hello-world/git/blobs \\\n  -d '{\"content\":\"content\"}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"git",
+    "id":"create-a-blob",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "description":"<p><strong>Required</strong>. The new blob&apos;s content.</p>",
+        "in":"body ",
+        "name":"content ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The encoding used for <code>content</code>. Currently, <code>&quot;utf-8&quot;</code> and <code>&quot;base64&quot;</code> are supported.</p> Default: <code>utf-8</code>",
+        "in":"body ",
+        "name":"encoding ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"201 Created",
+        "content":"{\n  \"url\": \"https://api.github.com/repos/octocat/example/git/blobs/3a0f86fb8db8eea7ccbb9a95f325ddbedfb25e15\",\n  \"sha\": \"3a0f86fb8db8eea7ccbb9a95f325ddbedfb25e15\"\n}\n"
+      }
+    ],
+    "target":{
+      "method":"post",
+      "path":"/repos/{owner}/{repo}/git/blobs"
+    },
+    "title":"Create a blob"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/repos/octocat/hello-world/git/blobs/FILE_SHA\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"git",
+    "id":"get-a-blob",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"file_sha ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"content\": \"Q29udGVudCBvZiB0aGUgYmxvYg==\\n\",\n  \"encoding\": \"base64\",\n  \"url\": \"https://api.github.com/repos/octocat/example/git/blobs/3a0f86fb8db8eea7ccbb9a95f325ddbedfb25e15\",\n  \"sha\": \"3a0f86fb8db8eea7ccbb9a95f325ddbedfb25e15\",\n  \"size\": 19\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/repos/{owner}/{repo}/git/blobs/{file_sha}"
+    },
+    "title":"Get a blob"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X POST \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/repos/octocat/hello-world/git/commits \\\n  -d '{\"message\":\"message\",\"tree\":\"tree\",\"parents\":[\"parents\"]}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"git",
+    "id":"create-a-commit",
+    "parameterProperties":[
+      {
+        "description":"The name of the author (or committer) of the commit",
+        "name":"name",
+        "of":"author",
+        "type":"string"
+      },
+      {
+        "description":"The email of the author (or committer) of the commit",
+        "name":"email",
+        "of":"author",
+        "type":"string"
+      },
+      {
+        "description":"Indicates when this commit was authored (or committed). This is a timestamp in <a href=\"https://en.wikipedia.org/wiki/ISO_8601\">ISO 8601</a> format: <code>YYYY-MM-DDTHH:MM:SSZ</code>.",
+        "name":"date",
+        "of":"author",
+        "type":"string"
+      },
+      {
+        "description":"The name of the author (or committer) of the commit",
+        "name":"name",
+        "of":"committer",
+        "type":"string"
+      },
+      {
+        "description":"The email of the author (or committer) of the commit",
+        "name":"email",
+        "of":"committer",
+        "type":"string"
+      },
+      {
+        "description":"Indicates when this commit was authored (or committed). This is a timestamp in <a href=\"https://en.wikipedia.org/wiki/ISO_8601\">ISO 8601</a> format: <code>YYYY-MM-DDTHH:MM:SSZ</code>.",
+        "name":"date",
+        "of":"committer",
+        "type":"string"
+      }
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "description":"<p><strong>Required</strong>. The commit message</p>",
+        "in":"body ",
+        "name":"message ",
+        "type":"string "
+      },
+      {
+        "description":"<p><strong>Required</strong>. The SHA of the tree object this commit points to</p>",
+        "in":"body ",
+        "name":"tree ",
+        "type":"string "
+      },
+      {
+        "description":"<p><strong>Required</strong>. The SHAs of the commits that were the parents of this commit. If omitted or empty, the commit will be written as a root commit. For a single parent, an array of one SHA should be provided; for a merge commit, an array of more than one should be provided.</p>",
+        "in":"body ",
+        "name":"parents ",
+        "type":"array of strings "
+      },
+      {
+        "description":"<p>Information about the author of the commit. By default, the <code>author</code> will be the authenticated user and the current date. See the <code>author</code> and <code>committer</code> object below for details.</p>",
+        "in":"body ",
+        "name":"author ",
+        "type":"object "
+      },
+      {
+        "description":"<p>Information about the person who is making the commit. By default, <code>committer</code> will use the information set in <code>author</code>. See the <code>author</code> and <code>committer</code> object below for details.</p>",
+        "in":"body ",
+        "name":"committer ",
+        "type":"object "
+      },
+      {
+        "description":"<p>The <a href=\"https://en.wikipedia.org/wiki/Pretty_Good_Privacy\">PGP signature</a> of the commit. GitHub adds the signature to the <code>gpgsig</code> header of the created commit. For a commit signature to be verifiable by Git or GitHub, it must be an ASCII-armored detached PGP signature over the string commit as it would be written to the object database. To pass a <code>signature</code> parameter, you need to first manually create a valid PGP signature, which can be complicated. You may find it easier to <a href=\"https://git-scm.com/book/id/v2/Git-Tools-Signing-Your-Work\">use the command line</a> to create signed commits.</p>",
+        "in":"body ",
+        "name":"signature ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"201 Created",
+        "content":"{\n  \"sha\": \"7638417db6d59f3c431d3e1f261cc637155684cd\",\n  \"node_id\": \"MDY6Q29tbWl0NzYzODQxN2RiNmQ1OWYzYzQzMWQzZTFmMjYxY2M2MzcxNTU2ODRjZA==\",\n  \"url\": \"https://api.github.com/repos/octocat/Hello-World/git/commits/7638417db6d59f3c431d3e1f261cc637155684cd\",\n  \"author\": {\n    \"date\": \"2014-11-07T22:01:45Z\",\n    \"name\": \"Monalisa Octocat\",\n    \"email\": \"octocat@github.com\"\n  },\n  \"committer\": {\n    \"date\": \"2014-11-07T22:01:45Z\",\n    \"name\": \"Monalisa Octocat\",\n    \"email\": \"octocat@github.com\"\n  },\n  \"message\": \"my commit message\",\n  \"tree\": {\n    \"url\": \"https://api.github.com/repos/octocat/Hello-World/git/trees/827efc6d56897b048c772eb4087f854f46256132\",\n    \"sha\": \"827efc6d56897b048c772eb4087f854f46256132\"\n  },\n  \"parents\": [\n    {\n      \"url\": \"https://api.github.com/repos/octocat/Hello-World/git/commits/7d1b31e74ee336d15cbd21741bc88a537ed063a0\",\n      \"sha\": \"7d1b31e74ee336d15cbd21741bc88a537ed063a0\"\n    }\n  ],\n  \"verification\": {\n    \"verified\": false,\n    \"reason\": \"unsigned\",\n    \"signature\": null,\n    \"payload\": null\n  }\n}\n"
+      }
+    ],
+    "target":{
+      "method":"post",
+      "path":"/repos/{owner}/{repo}/git/commits"
+    },
+    "title":"Create a commit"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/repos/octocat/hello-world/git/commits/COMMIT_SHA\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"git",
+    "id":"get-a-commit",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"commit_sha ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"sha\": \"7638417db6d59f3c431d3e1f261cc637155684cd\",\n  \"node_id\": \"MDY6Q29tbWl0NmRjYjA5YjViNTc4NzVmMzM0ZjYxYWViZWQ2OTVlMmU0MTkzZGI1ZQ==\",\n  \"url\": \"https://api.github.com/repos/octocat/Hello-World/git/commits/7638417db6d59f3c431d3e1f261cc637155684cd\",\n  \"author\": {\n    \"date\": \"2014-11-07T22:01:45Z\",\n    \"name\": \"Monalisa Octocat\",\n    \"email\": \"octocat@github.com\"\n  },\n  \"committer\": {\n    \"date\": \"2014-11-07T22:01:45Z\",\n    \"name\": \"Monalisa Octocat\",\n    \"email\": \"octocat@github.com\"\n  },\n  \"message\": \"added readme, because im a good github citizen\",\n  \"tree\": {\n    \"url\": \"https://api.github.com/repos/octocat/Hello-World/git/trees/691272480426f78a0138979dd3ce63b77f706feb\",\n    \"sha\": \"691272480426f78a0138979dd3ce63b77f706feb\"\n  },\n  \"parents\": [\n    {\n      \"url\": \"https://api.github.com/repos/octocat/Hello-World/git/commits/1acc419d4d6a9ce985db7be48c6349a0475975b5\",\n      \"sha\": \"1acc419d4d6a9ce985db7be48c6349a0475975b5\"\n    }\n  ],\n  \"verification\": {\n    \"verified\": false,\n    \"reason\": \"unsigned\",\n    \"signature\": null,\n    \"payload\": null\n  }\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/repos/{owner}/{repo}/git/commits/{commit_sha}"
+    },
+    "title":"Get a commit"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/repos/octocat/hello-world/git/matching-refs/REF\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"git",
+    "id":"list-matching-references",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"ref ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"ref\": \"refs/heads/feature-a\",\n    \"node_id\": \"MDM6UmVmcmVmcy9oZWFkcy9mZWF0dXJlLWE=\",\n    \"url\": \"https://api.github.com/repos/octocat/Hello-World/git/refs/heads/feature-a\",\n    \"object\": {\n      \"type\": \"commit\",\n      \"sha\": \"aa218f56b14c9653891f9e74264a383fa43fefbd\",\n      \"url\": \"https://api.github.com/repos/octocat/Hello-World/git/commits/aa218f56b14c9653891f9e74264a383fa43fefbd\"\n    }\n  },\n  {\n    \"ref\": \"refs/heads/feature-b\",\n    \"node_id\": \"MDM6UmVmcmVmcy9oZWFkcy9mZWF0dXJlLWI=\",\n    \"url\": \"https://api.github.com/repos/octocat/Hello-World/git/refs/heads/feature-b\",\n    \"object\": {\n      \"type\": \"commit\",\n      \"sha\": \"612077ae6dffb4d2fbd8ce0cccaa58893b07b5ac\",\n      \"url\": \"https://api.github.com/repos/octocat/Hello-World/git/commits/612077ae6dffb4d2fbd8ce0cccaa58893b07b5ac\"\n    }\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/repos/{owner}/{repo}/git/matching-refs/{ref}"
+    },
+    "title":"List matching references"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/repos/octocat/hello-world/git/ref/REF\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"git",
+    "id":"get-a-reference",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"ref ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"ref\": \"refs/heads/featureA\",\n  \"node_id\": \"MDM6UmVmcmVmcy9oZWFkcy9mZWF0dXJlQQ==\",\n  \"url\": \"https://api.github.com/repos/octocat/Hello-World/git/refs/heads/featureA\",\n  \"object\": {\n    \"type\": \"commit\",\n    \"sha\": \"aa218f56b14c9653891f9e74264a383fa43fefbd\",\n    \"url\": \"https://api.github.com/repos/octocat/Hello-World/git/commits/aa218f56b14c9653891f9e74264a383fa43fefbd\"\n  }\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/repos/{owner}/{repo}/git/ref/{ref}"
+    },
+    "title":"Get a reference"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X POST \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/repos/octocat/hello-world/git/refs \\\n  -d '{\"ref\":\"ref\",\"sha\":\"sha\"}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"git",
+    "id":"create-a-reference",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "description":"<p><strong>Required</strong>. The name of the fully qualified reference (ie: <code>refs/heads/master</code>). If it doesn&apos;t start with &apos;refs&apos; and have at least two slashes, it will be rejected.</p>",
+        "in":"body ",
+        "name":"ref ",
+        "type":"string "
+      },
+      {
+        "description":"<p><strong>Required</strong>. The SHA1 value for this reference.</p>",
+        "in":"body ",
+        "name":"sha ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"201 Created",
+        "content":"{\n  \"ref\": \"refs/heads/featureA\",\n  \"node_id\": \"MDM6UmVmcmVmcy9oZWFkcy9mZWF0dXJlQQ==\",\n  \"url\": \"https://api.github.com/repos/octocat/Hello-World/git/refs/heads/featureA\",\n  \"object\": {\n    \"type\": \"commit\",\n    \"sha\": \"aa218f56b14c9653891f9e74264a383fa43fefbd\",\n    \"url\": \"https://api.github.com/repos/octocat/Hello-World/git/commits/aa218f56b14c9653891f9e74264a383fa43fefbd\"\n  }\n}\n"
+      }
+    ],
+    "target":{
+      "method":"post",
+      "path":"/repos/{owner}/{repo}/git/refs"
+    },
+    "title":"Create a reference"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X PATCH \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/repos/octocat/hello-world/git/refs/REF \\\n  -d '{\"sha\":\"sha\"}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"git",
+    "id":"update-a-reference",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"ref ",
+        "type":"string "
+      },
+      {
+        "description":"<p><strong>Required</strong>. The SHA1 value to set this reference to</p>",
+        "in":"body ",
+        "name":"sha ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Indicates whether to force the update or to make sure the update is a fast-forward update. Leaving this out or setting it to <code>false</code> will make sure you&apos;re not overwriting work.</p>",
+        "in":"body ",
+        "name":"force ",
+        "type":"boolean "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"ref\": \"refs/heads/featureA\",\n  \"node_id\": \"MDM6UmVmcmVmcy9oZWFkcy9mZWF0dXJlQQ==\",\n  \"url\": \"https://api.github.com/repos/octocat/Hello-World/git/refs/heads/featureA\",\n  \"object\": {\n    \"type\": \"commit\",\n    \"sha\": \"aa218f56b14c9653891f9e74264a383fa43fefbd\",\n    \"url\": \"https://api.github.com/repos/octocat/Hello-World/git/commits/aa218f56b14c9653891f9e74264a383fa43fefbd\"\n  }\n}\n"
+      }
+    ],
+    "target":{
+      "method":"patch",
+      "path":"/repos/{owner}/{repo}/git/refs/{ref}"
+    },
+    "title":"Update a reference"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X DELETE \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/repos/octocat/hello-world/git/refs/REF\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"git",
+    "id":"delete-a-reference",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"ref ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"delete",
+      "path":"/repos/{owner}/{repo}/git/refs/{ref}"
+    },
+    "title":"Delete a reference"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X POST \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/repos/octocat/hello-world/git/tags \\\n  -d '{\"tag\":\"tag\",\"message\":\"message\",\"object\":\"object\",\"type\":\"type\"}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"git",
+    "id":"create-a-tag-object",
+    "parameterProperties":[
+      {
+        "description":"The name of the author of the tag",
+        "name":"name",
+        "of":"tagger",
+        "type":"string"
+      },
+      {
+        "description":"The email of the author of the tag",
+        "name":"email",
+        "of":"tagger",
+        "type":"string"
+      },
+      {
+        "description":"When this object was tagged. This is a timestamp in <a href=\"https://en.wikipedia.org/wiki/ISO_8601\">ISO 8601</a> format: <code>YYYY-MM-DDTHH:MM:SSZ</code>.",
+        "name":"date",
+        "of":"tagger",
+        "type":"string"
+      }
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "description":"<p><strong>Required</strong>. The tag&apos;s name. This is typically a version (e.g., &quot;v0.0.1&quot;).</p>",
+        "in":"body ",
+        "name":"tag ",
+        "type":"string "
+      },
+      {
+        "description":"<p><strong>Required</strong>. The tag message.</p>",
+        "in":"body ",
+        "name":"message ",
+        "type":"string "
+      },
+      {
+        "description":"<p><strong>Required</strong>. The SHA of the git object this is tagging.</p>",
+        "in":"body ",
+        "name":"object ",
+        "type":"string "
+      },
+      {
+        "description":"<p><strong>Required</strong>. The type of the object we&apos;re tagging. Normally this is a <code>commit</code> but it can also be a <code>tree</code> or a <code>blob</code>.</p>",
+        "in":"body ",
+        "name":"type ",
+        "type":"string "
+      },
+      {
+        "description":"<p>An object with information about the individual creating the tag.</p>",
+        "in":"body ",
+        "name":"tagger ",
+        "type":"object "
+      }
+    ],
+    "responses":[
+      {
+        "code":"201 Created",
+        "content":"{\n  \"node_id\": \"MDM6VGFnOTQwYmQzMzYyNDhlZmFlMGY5ZWU1YmM3YjJkNWM5ODU4ODdiMTZhYw==\",\n  \"tag\": \"v0.0.1\",\n  \"sha\": \"940bd336248efae0f9ee5bc7b2d5c985887b16ac\",\n  \"url\": \"https://api.github.com/repos/octocat/Hello-World/git/tags/940bd336248efae0f9ee5bc7b2d5c985887b16ac\",\n  \"message\": \"initial version\",\n  \"tagger\": {\n    \"name\": \"Monalisa Octocat\",\n    \"email\": \"octocat@github.com\",\n    \"date\": \"2014-11-07T22:01:45Z\"\n  },\n  \"object\": {\n    \"type\": \"commit\",\n    \"sha\": \"c3d0be41ecbe669545ee3e94d31ed9a4bc91ee3c\",\n    \"url\": \"https://api.github.com/repos/octocat/Hello-World/git/commits/c3d0be41ecbe669545ee3e94d31ed9a4bc91ee3c\"\n  },\n  \"verification\": {\n    \"verified\": false,\n    \"reason\": \"unsigned\",\n    \"signature\": null,\n    \"payload\": null\n  }\n}\n"
+      }
+    ],
+    "target":{
+      "method":"post",
+      "path":"/repos/{owner}/{repo}/git/tags"
+    },
+    "title":"Create a tag object"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/repos/octocat/hello-world/git/tags/TAG_SHA\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"git",
+    "id":"get-a-tag",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"tag_sha ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"node_id\": \"MDM6VGFnOTQwYmQzMzYyNDhlZmFlMGY5ZWU1YmM3YjJkNWM5ODU4ODdiMTZhYw==\",\n  \"tag\": \"v0.0.1\",\n  \"sha\": \"940bd336248efae0f9ee5bc7b2d5c985887b16ac\",\n  \"url\": \"https://api.github.com/repos/octocat/Hello-World/git/tags/940bd336248efae0f9ee5bc7b2d5c985887b16ac\",\n  \"message\": \"initial version\",\n  \"tagger\": {\n    \"name\": \"Monalisa Octocat\",\n    \"email\": \"octocat@github.com\",\n    \"date\": \"2014-11-07T22:01:45Z\"\n  },\n  \"object\": {\n    \"type\": \"commit\",\n    \"sha\": \"c3d0be41ecbe669545ee3e94d31ed9a4bc91ee3c\",\n    \"url\": \"https://api.github.com/repos/octocat/Hello-World/git/commits/c3d0be41ecbe669545ee3e94d31ed9a4bc91ee3c\"\n  },\n  \"verification\": {\n    \"verified\": false,\n    \"reason\": \"unsigned\",\n    \"signature\": null,\n    \"payload\": null\n  }\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/repos/{owner}/{repo}/git/tags/{tag_sha}"
+    },
+    "title":"Get a tag"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X POST \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/repos/octocat/hello-world/git/trees \\\n  -d '{\"tree\":[{\"path\":\"path\",\"mode\":\"mode\",\"type\":\"type\",\"sha\":\"sha\",\"content\":\"content\"}]}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"git",
+    "id":"create-a-tree",
+    "parameterProperties":[
+      {
+        "description":"The file referenced in the tree.",
+        "name":"path",
+        "of":"tree",
+        "type":"string"
+      },
+      {
+        "description":"The file mode; one of <code>100644</code> for file (blob), <code>100755</code> for executable (blob), <code>040000</code> for subdirectory (tree), <code>160000</code> for submodule (commit), or <code>120000</code> for a blob that specifies the path of a symlink.",
+        "name":"mode",
+        "of":"tree",
+        "type":"string"
+      },
+      {
+        "description":"Either <code>blob</code>, <code>tree</code>, or <code>commit</code>.",
+        "name":"type",
+        "of":"tree",
+        "type":"string"
+      },
+      {
+        "description":"The SHA1 checksum ID of the object in the tree. Also called <code>tree.sha</code>. If the value is <code>null</code> then the file will be deleted.  </p>\n<p><strong>Note:</strong> Use either <code>tree.sha</code> or <code>content</code> to specify the contents of the entry. Using both <code>tree.sha</code> and <code>content</code> will return an error.",
+        "name":"sha",
+        "of":"tree",
+        "type":"string or null"
+      },
+      {
+        "description":"The content you want this file to have. GitHub will write this blob out and use that SHA for this entry. Use either this, or <code>tree.sha</code>.  </p>\n<p><strong>Note:</strong> Use either <code>tree.sha</code> or <code>content</code> to specify the contents of the entry. Using both <code>tree.sha</code> and <code>content</code> will return an error.",
+        "name":"content",
+        "of":"tree",
+        "type":"string"
+      }
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "description":"<p><strong>Required</strong>. Objects (of <code>path</code>, <code>mode</code>, <code>type</code>, and <code>sha</code>) specifying a tree structure.</p>",
+        "in":"body ",
+        "name":"tree ",
+        "type":"array of objects "
+      },
+      {
+        "description":"<p>The SHA1 of the tree you want to update with new data. If you don&apos;t set this, the commit will be created on top of everything; however, it will only contain your change, the rest of your files will show up as deleted.</p>",
+        "in":"body ",
+        "name":"base_tree ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"201 Created",
+        "content":"{\n  \"sha\": \"cd8274d15fa3ae2ab983129fb037999f264ba9a7\",\n  \"url\": \"https://api.github.com/repos/octocat/Hello-World/trees/cd8274d15fa3ae2ab983129fb037999f264ba9a7\",\n  \"tree\": [\n    {\n      \"path\": \"file.rb\",\n      \"mode\": \"100644\",\n      \"type\": \"blob\",\n      \"size\": 132,\n      \"sha\": \"7c258a9869f33c1e1e1f74fbb32f07c86cb5a75b\",\n      \"url\": \"https://api.github.com/repos/octocat/Hello-World/git/blobs/7c258a9869f33c1e1e1f74fbb32f07c86cb5a75b\"\n    }\n  ]\n}\n"
+      }
+    ],
+    "target":{
+      "method":"post",
+      "path":"/repos/{owner}/{repo}/git/trees"
+    },
+    "title":"Create a tree"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/repos/octocat/hello-world/git/trees/TREE_SHA\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"git",
+    "id":"get-a-tree",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"tree_sha ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Setting this parameter to any value returns the objects or subtrees referenced by the tree specified in <code>:tree_sha</code>. For example, setting <code>recursive</code> to any of the following will enable returning objects or subtrees: <code>0</code>, <code>1</code>, <code>&quot;true&quot;</code>, and <code>&quot;false&quot;</code>. Omit this parameter to prevent recursively returning objects or subtrees.</p>",
+        "in":"query ",
+        "name":"recursive ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"sha\": \"9fb037999f264ba9a7fc6274d15fa3ae2ab98312\",\n  \"url\": \"https://api.github.com/repos/octocat/Hello-World/trees/9fb037999f264ba9a7fc6274d15fa3ae2ab98312\",\n  \"tree\": [\n    {\n      \"path\": \"file.rb\",\n      \"mode\": \"100644\",\n      \"type\": \"blob\",\n      \"size\": 30,\n      \"sha\": \"44b4fc6d56897b048c772eb4087f854f46256132\",\n      \"url\": \"https://api.github.com/repos/octocat/Hello-World/git/blobs/44b4fc6d56897b048c772eb4087f854f46256132\"\n    },\n    {\n      \"path\": \"subdir\",\n      \"mode\": \"040000\",\n      \"type\": \"tree\",\n      \"sha\": \"f484d249c660418515fb01c2b9662073663c242e\",\n      \"url\": \"https://api.github.com/repos/octocat/Hello-World/git/blobs/f484d249c660418515fb01c2b9662073663c242e\"\n    },\n    {\n      \"path\": \"exec_file\",\n      \"mode\": \"100755\",\n      \"type\": \"blob\",\n      \"size\": 75,\n      \"sha\": \"45b983be36b73c0788dc9cbcb76cbb80fc7bb057\",\n      \"url\": \"https://api.github.com/repos/octocat/Hello-World/git/blobs/45b983be36b73c0788dc9cbcb76cbb80fc7bb057\"\n    }\n  ],\n  \"truncated\": false\n}\n"
+      },
+      {
+        "code":"200 OK",
+        "content":"{\n  \"sha\": \"fc6274d15fa3ae2ab983129fb037999f264ba9a7\",\n  \"url\": \"https://api.github.com/repos/octocat/Hello-World/trees/fc6274d15fa3ae2ab983129fb037999f264ba9a7\",\n  \"tree\": [\n    {\n      \"path\": \"subdir/file.txt\",\n      \"mode\": \"100644\",\n      \"type\": \"blob\",\n      \"size\": 132,\n      \"sha\": \"7c258a9869f33c1e1e1f74fbb32f07c86cb5a75b\",\n      \"url\": \"https://api.github.com/repos/octocat/Hello-World/git/7c258a9869f33c1e1e1f74fbb32f07c86cb5a75b\"\n    }\n  ],\n  \"truncated\": false\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/repos/{owner}/{repo}/git/trees/{tree_sha}"
+    },
+    "title":"Get a tree"
+  }
+]

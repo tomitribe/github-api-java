@@ -1,0 +1,2876 @@
+[
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/repos/octocat/hello-world/actions/artifacts\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"actions",
+    "id":"list-artifacts-for-a-repository",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"total_count\": 2,\n  \"artifacts\": [\n    {\n      \"id\": 11,\n      \"node_id\": \"MDg6QXJ0aWZhY3QxMQ==\",\n      \"name\": \"Rails\",\n      \"size_in_bytes\": 556,\n      \"url\": \"https://api.github.com/repos/octo-org/octo-docs/actions/artifacts/11\",\n      \"archive_download_url\": \"https://api.github.com/repos/octo-org/octo-docs/actions/artifacts/11/zip\",\n      \"expired\": false,\n      \"created_at\": \"2020-01-10T14:59:22Z\",\n      \"expires_at\": \"2020-01-21T14:59:22Z\"\n    },\n    {\n      \"id\": 13,\n      \"node_id\": \"MDg6QXJ0aWZhY3QxMw==\",\n      \"name\": \"\",\n      \"size_in_bytes\": 453,\n      \"url\": \"https://api.github.com/repos/octo-org/octo-docs/actions/artifacts/13\",\n      \"archive_download_url\": \"https://api.github.com/repos/octo-org/octo-docs/actions/artifacts/13/zip\",\n      \"expired\": false,\n      \"created_at\": \"2020-01-10T14:59:22Z\",\n      \"expires_at\": \"2020-01-21T14:59:22Z\"\n    }\n  ]\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/repos/{owner}/{repo}/actions/artifacts"
+    },
+    "title":"List artifacts for a repository"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/repos/octocat/hello-world/actions/artifacts/42\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"actions",
+    "id":"get-an-artifact",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"artifact_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"id\": 11,\n  \"node_id\": \"MDg6QXJ0aWZhY3QxMQ==\",\n  \"name\": \"Rails\",\n  \"size_in_bytes\": 556,\n  \"url\": \"https://api.github.com/repos/octo-org/octo-docs/actions/artifacts/11\",\n  \"archive_download_url\": \"https://api.github.com/repos/octo-org/octo-docs/actions/artifacts/11/zip\",\n  \"expired\": false,\n  \"created_at\": \"2020-01-10T14:59:22Z\",\n  \"expires_at\": \"2020-01-21T14:59:22Z\"\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/repos/{owner}/{repo}/actions/artifacts/{artifact_id}"
+    },
+    "title":"Get an artifact"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X DELETE \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/repos/octocat/hello-world/actions/artifacts/42\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"actions",
+    "id":"delete-an-artifact",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"artifact_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"delete",
+      "path":"/repos/{owner}/{repo}/actions/artifacts/{artifact_id}"
+    },
+    "title":"Delete an artifact"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/repos/octocat/hello-world/actions/artifacts/42/ARCHIVE_FORMAT\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"actions",
+    "id":"download-an-artifact",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"artifact_id ",
+        "type":"integer "
+      },
+      {
+        "in":"path",
+        "name":"archive_format ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"302 Found"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/repos/{owner}/{repo}/actions/artifacts/{artifact_id}/{archive_format}"
+    },
+    "title":"Download an artifact"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/repos/octocat/hello-world/actions/runs/42/artifacts\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"actions",
+    "id":"list-workflow-run-artifacts",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"run_id ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"total_count\": 2,\n  \"artifacts\": [\n    {\n      \"id\": 11,\n      \"node_id\": \"MDg6QXJ0aWZhY3QxMQ==\",\n      \"name\": \"Rails\",\n      \"size_in_bytes\": 556,\n      \"url\": \"https://api.github.com/repos/octo-org/octo-docs/actions/artifacts/11\",\n      \"archive_download_url\": \"https://api.github.com/repos/octo-org/octo-docs/actions/artifacts/11/zip\",\n      \"expired\": false,\n      \"created_at\": \"2020-01-10T14:59:22Z\",\n      \"expires_at\": \"2020-01-21T14:59:22Z\"\n    },\n    {\n      \"id\": 13,\n      \"node_id\": \"MDg6QXJ0aWZhY3QxMw==\",\n      \"name\": \"\",\n      \"size_in_bytes\": 453,\n      \"url\": \"https://api.github.com/repos/octo-org/octo-docs/actions/artifacts/13\",\n      \"archive_download_url\": \"https://api.github.com/repos/octo-org/octo-docs/actions/artifacts/13/zip\",\n      \"expired\": false,\n      \"created_at\": \"2020-01-10T14:59:22Z\",\n      \"expires_at\": \"2020-01-21T14:59:22Z\"\n    }\n  ]\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/repos/{owner}/{repo}/actions/runs/{run_id}/artifacts"
+    },
+    "title":"List workflow run artifacts"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG/actions/secrets\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"actions",
+    "id":"list-organization-secrets",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"total_count\": 3,\n  \"secrets\": [\n    {\n      \"name\": \"GIST_ID\",\n      \"created_at\": \"2019-08-10T14:59:22Z\",\n      \"updated_at\": \"2020-01-10T14:59:22Z\",\n      \"visibility\": \"private\"\n    },\n    {\n      \"name\": \"DEPLOY_TOKEN\",\n      \"created_at\": \"2019-08-10T14:59:22Z\",\n      \"updated_at\": \"2020-01-10T14:59:22Z\",\n      \"visibility\": \"all\"\n    },\n    {\n      \"name\": \"GH_TOKEN\",\n      \"created_at\": \"2019-08-10T14:59:22Z\",\n      \"updated_at\": \"2020-01-10T14:59:22Z\",\n      \"visibility\": \"selected\",\n      \"selected_repositories_url\": \"https://api.github.com/orgs/octo-org/actions/secrets/SUPER_SECRET/repositories\"\n    }\n  ]\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/orgs/{org}/actions/secrets"
+    },
+    "title":"List organization secrets"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG/actions/secrets/public-key\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"actions",
+    "id":"get-an-organization-public-key",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"key_id\": \"012345678912345678\",\n  \"key\": \"2Sg8iYjAxxmI2LvUXpJjkYrMxURPc8r+dB7TJyvv1234\"\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/orgs/{org}/actions/secrets/public-key"
+    },
+    "title":"Get an organization public key"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG/actions/secrets/SECRET_NAME\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"actions",
+    "id":"get-an-organization-secret",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"secret_name ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"name\": \"GH_TOKEN\",\n  \"created_at\": \"2019-08-10T14:59:22Z\",\n  \"updated_at\": \"2020-01-10T14:59:22Z\",\n  \"visibility\": \"selected\",\n  \"selected_repositories_url\": \"https://api.github.com/orgs/octo-org/actions/secrets/SUPER_SECRET/repositories\"\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/orgs/{org}/actions/secrets/{secret_name}"
+    },
+    "title":"Get an organization secret"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X PUT \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG/actions/secrets/SECRET_NAME \\\n  -d '{\"encrypted_value\":\"encrypted_value\"}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"actions",
+    "id":"create-or-update-an-organization-secret",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"secret_name ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Value for your secret, encrypted with <a href=\"https://libsodium.gitbook.io/doc/bindings_for_other_languages\">LibSodium</a> using the public key retrieved from the <a href=\"https://developer.github.com/v3/actions/secrets/#get-an-organization-public-key\">Get an organization public key</a> endpoint.</p>",
+        "in":"body ",
+        "name":"encrypted_value ",
+        "type":"string "
+      },
+      {
+        "description":"<p>ID of the key you used to encrypt the secret.</p>",
+        "in":"body ",
+        "name":"key_id ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Configures the access that repositories have to the organization secret. Can be one of: - <code>all</code> - All repositories in an organization can access the secret. - <code>private</code> - Private repositories in an organization can access the secret. - <code>selected</code> - Only specific repositories can access the secret.</p>",
+        "in":"body ",
+        "name":"visibility ",
+        "type":"string "
+      },
+      {
+        "description":"<p>An array of repository ids that can access the organization secret. You can only provide a list of repository ids when the <code>visibility</code> is set to <code>selected</code>. You can manage the list of selected repositories using the <a href=\"https://developer.github.com/v3/actions/secrets/#list-selected-repositories-for-an-organization-secret\">List selected repositories for an organization secret</a>, <a href=\"https://developer.github.com/v3/actions/secrets/#set-selected-repositories-for-an-organization-secret\">Set selected repositories for an organization secret</a>, and <a href=\"https://developer.github.com/v3/actions/secrets/#remove-selected-repository-from-an-organization-secret\">Remove selected repository from an organization secret</a> endpoints.</p>",
+        "in":"body ",
+        "name":"selected_repository_ids ",
+        "type":"array of integers "
+      }
+    ],
+    "responses":[
+      {
+        "code":"201 Created"
+      },
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"put",
+      "path":"/orgs/{org}/actions/secrets/{secret_name}"
+    },
+    "title":"Create or update an organization secret"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X DELETE \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG/actions/secrets/SECRET_NAME\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"actions",
+    "id":"delete-an-organization-secret",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"secret_name ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"delete",
+      "path":"/orgs/{org}/actions/secrets/{secret_name}"
+    },
+    "title":"Delete an organization secret"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG/actions/secrets/SECRET_NAME/repositories\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"actions",
+    "id":"list-selected-repositories-for-an-organization-secret",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"secret_name ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"total_count\": 1,\n  \"repositories\": [\n    {\n      \"id\": 1296269,\n      \"node_id\": \"MDEwOlJlcG9zaXRvcnkxMjk2MjY5\",\n      \"name\": \"Hello-World\",\n      \"full_name\": \"octocat/Hello-World\",\n      \"owner\": {\n        \"login\": \"octocat\",\n        \"id\": 1,\n        \"node_id\": \"MDQ6VXNlcjE=\",\n        \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n        \"gravatar_id\": \"\",\n        \"url\": \"https://api.github.com/users/octocat\",\n        \"html_url\": \"https://github.com/octocat\",\n        \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n        \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n        \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n        \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n        \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n        \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n        \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n        \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n        \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n        \"type\": \"User\",\n        \"site_admin\": false\n      },\n      \"private\": false,\n      \"html_url\": \"https://github.com/octocat/Hello-World\",\n      \"description\": \"This your first repo!\",\n      \"fork\": false,\n      \"url\": \"https://api.github.com/repos/octocat/Hello-World\",\n      \"archive_url\": \"http://api.github.com/repos/octocat/Hello-World/{archive_format}{/ref}\",\n      \"assignees_url\": \"http://api.github.com/repos/octocat/Hello-World/assignees{/user}\",\n      \"blobs_url\": \"http://api.github.com/repos/octocat/Hello-World/git/blobs{/sha}\",\n      \"branches_url\": \"http://api.github.com/repos/octocat/Hello-World/branches{/branch}\",\n      \"collaborators_url\": \"http://api.github.com/repos/octocat/Hello-World/collaborators{/collaborator}\",\n      \"comments_url\": \"http://api.github.com/repos/octocat/Hello-World/comments{/number}\",\n      \"commits_url\": \"http://api.github.com/repos/octocat/Hello-World/commits{/sha}\",\n      \"compare_url\": \"http://api.github.com/repos/octocat/Hello-World/compare/{base}...{head}\",\n      \"contents_url\": \"http://api.github.com/repos/octocat/Hello-World/contents/{+path}\",\n      \"contributors_url\": \"http://api.github.com/repos/octocat/Hello-World/contributors\",\n      \"deployments_url\": \"http://api.github.com/repos/octocat/Hello-World/deployments\",\n      \"downloads_url\": \"http://api.github.com/repos/octocat/Hello-World/downloads\",\n      \"events_url\": \"http://api.github.com/repos/octocat/Hello-World/events\",\n      \"forks_url\": \"http://api.github.com/repos/octocat/Hello-World/forks\",\n      \"git_commits_url\": \"http://api.github.com/repos/octocat/Hello-World/git/commits{/sha}\",\n      \"git_refs_url\": \"http://api.github.com/repos/octocat/Hello-World/git/refs{/sha}\",\n      \"git_tags_url\": \"http://api.github.com/repos/octocat/Hello-World/git/tags{/sha}\",\n      \"git_url\": \"git:github.com/octocat/Hello-World.git\",\n      \"issue_comment_url\": \"http://api.github.com/repos/octocat/Hello-World/issues/comments{/number}\",\n      \"issue_events_url\": \"http://api.github.com/repos/octocat/Hello-World/issues/events{/number}\",\n      \"issues_url\": \"http://api.github.com/repos/octocat/Hello-World/issues{/number}\",\n      \"keys_url\": \"http://api.github.com/repos/octocat/Hello-World/keys{/key_id}\",\n      \"labels_url\": \"http://api.github.com/repos/octocat/Hello-World/labels{/name}\",\n      \"languages_url\": \"http://api.github.com/repos/octocat/Hello-World/languages\",\n      \"merges_url\": \"http://api.github.com/repos/octocat/Hello-World/merges\",\n      \"milestones_url\": \"http://api.github.com/repos/octocat/Hello-World/milestones{/number}\",\n      \"notifications_url\": \"http://api.github.com/repos/octocat/Hello-World/notifications{?since,all,participating}\",\n      \"pulls_url\": \"http://api.github.com/repos/octocat/Hello-World/pulls{/number}\",\n      \"releases_url\": \"http://api.github.com/repos/octocat/Hello-World/releases{/id}\",\n      \"ssh_url\": \"git@github.com:octocat/Hello-World.git\",\n      \"stargazers_url\": \"http://api.github.com/repos/octocat/Hello-World/stargazers\",\n      \"statuses_url\": \"http://api.github.com/repos/octocat/Hello-World/statuses/{sha}\",\n      \"subscribers_url\": \"http://api.github.com/repos/octocat/Hello-World/subscribers\",\n      \"subscription_url\": \"http://api.github.com/repos/octocat/Hello-World/subscription\",\n      \"tags_url\": \"http://api.github.com/repos/octocat/Hello-World/tags\",\n      \"teams_url\": \"http://api.github.com/repos/octocat/Hello-World/teams\",\n      \"trees_url\": \"http://api.github.com/repos/octocat/Hello-World/git/trees{/sha}\"\n    }\n  ]\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/orgs/{org}/actions/secrets/{secret_name}/repositories"
+    },
+    "title":"List selected repositories for an organization secret"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X PUT \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG/actions/secrets/SECRET_NAME/repositories \\\n  -d '{\"selected_repository_ids\":[42]}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"actions",
+    "id":"set-selected-repositories-for-an-organization-secret",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"secret_name ",
+        "type":"string "
+      },
+      {
+        "description":"<p>An array of repository ids that can access the organization secret. You can only provide a list of repository ids when the <code>visibility</code> is set to <code>selected</code>. You can add and remove individual repositories using the <a href=\"https://developer.github.com/v3/actions/secrets/#set-selected-repositories-for-an-organization-secret\">Set selected repositories for an organization secret</a> and <a href=\"https://developer.github.com/v3/actions/secrets/#remove-selected-repository-from-an-organization-secret\">Remove selected repository from an organization secret</a> endpoints.</p>",
+        "in":"body ",
+        "name":"selected_repository_ids ",
+        "type":"array of integers "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"put",
+      "path":"/orgs/{org}/actions/secrets/{secret_name}/repositories"
+    },
+    "title":"Set selected repositories for an organization secret"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X PUT \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG/actions/secrets/SECRET_NAME/repositories/42\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"actions",
+    "id":"add-selected-repository-to-an-organization-secret",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"secret_name ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repository_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      },
+      {
+        "code":"409 Conflict"
+      }
+    ],
+    "target":{
+      "method":"put",
+      "path":"/orgs/{org}/actions/secrets/{secret_name}/repositories/{repository_id}"
+    },
+    "title":"Add selected repository to an organization secret"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X DELETE \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG/actions/secrets/SECRET_NAME/repositories/42\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"actions",
+    "id":"remove-selected-repository-from-an-organization-secret",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"secret_name ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repository_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      },
+      {
+        "code":"409 Conflict"
+      }
+    ],
+    "target":{
+      "method":"delete",
+      "path":"/orgs/{org}/actions/secrets/{secret_name}/repositories/{repository_id}"
+    },
+    "title":"Remove selected repository from an organization secret"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/repos/octocat/hello-world/actions/secrets\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"actions",
+    "id":"list-repository-secrets",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"total_count\": 2,\n  \"secrets\": [\n    {\n      \"name\": \"GH_TOKEN\",\n      \"created_at\": \"2019-08-10T14:59:22Z\",\n      \"updated_at\": \"2020-01-10T14:59:22Z\"\n    },\n    {\n      \"name\": \"GIST_ID\",\n      \"created_at\": \"2020-01-10T10:59:22Z\",\n      \"updated_at\": \"2020-01-11T11:59:22Z\"\n    }\n  ]\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/repos/{owner}/{repo}/actions/secrets"
+    },
+    "title":"List repository secrets"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/repos/octocat/hello-world/actions/secrets/public-key\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"actions",
+    "id":"get-a-repository-public-key",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"key_id\": \"012345678912345678\",\n  \"key\": \"2Sg8iYjAxxmI2LvUXpJjkYrMxURPc8r+dB7TJyvv1234\"\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/repos/{owner}/{repo}/actions/secrets/public-key"
+    },
+    "title":"Get a repository public key"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/repos/octocat/hello-world/actions/secrets/SECRET_NAME\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"actions",
+    "id":"get-a-repository-secret",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"secret_name ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"name\": \"GH_TOKEN\",\n  \"created_at\": \"2019-08-10T14:59:22Z\",\n  \"updated_at\": \"2020-01-10T14:59:22Z\"\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/repos/{owner}/{repo}/actions/secrets/{secret_name}"
+    },
+    "title":"Get a repository secret"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X PUT \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/repos/octocat/hello-world/actions/secrets/SECRET_NAME \\\n  -d '{\"encrypted_value\":\"encrypted_value\"}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"actions",
+    "id":"create-or-update-a-repository-secret",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"secret_name ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Value for your secret, encrypted with <a href=\"https://libsodium.gitbook.io/doc/bindings_for_other_languages\">LibSodium</a> using the public key retrieved from the <a href=\"https://developer.github.com/v3/actions/secrets/#get-a-repository-public-key\">Get a repository public key</a> endpoint.</p>",
+        "in":"body ",
+        "name":"encrypted_value ",
+        "type":"string "
+      },
+      {
+        "description":"<p>ID of the key you used to encrypt the secret.</p>",
+        "in":"body ",
+        "name":"key_id ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"201 Created"
+      },
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"put",
+      "path":"/repos/{owner}/{repo}/actions/secrets/{secret_name}"
+    },
+    "title":"Create or update a repository secret"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X DELETE \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/repos/octocat/hello-world/actions/secrets/SECRET_NAME\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"actions",
+    "id":"delete-a-repository-secret",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"secret_name ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"delete",
+      "path":"/repos/{owner}/{repo}/actions/secrets/{secret_name}"
+    },
+    "title":"Delete a repository secret"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG/actions/runners\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"actions",
+    "id":"list-self-hosted-runners-for-an-organization",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"total_count\": 2,\n  \"runners\": [\n    {\n      \"id\": 23,\n      \"name\": \"linux_runner\",\n      \"os\": \"linux\",\n      \"status\": \"online\",\n      \"busy\": true,\n      \"labels\": [\n        {\n          \"id\": 5,\n          \"name\": \"self-hosted\",\n          \"type\": \"read-only\"\n        },\n        {\n          \"id\": 7,\n          \"name\": \"X64\",\n          \"type\": \"read-only\"\n        },\n        {\n          \"id\": 11,\n          \"name\": \"Linux\",\n          \"type\": \"read-only\"\n        }\n      ]\n    },\n    {\n      \"id\": 24,\n      \"name\": \"mac_runner\",\n      \"os\": \"macos\",\n      \"status\": \"offline\",\n      \"busy\": false,\n      \"labels\": [\n        {\n          \"id\": 5,\n          \"name\": \"self-hosted\",\n          \"type\": \"read-only\"\n        },\n        {\n          \"id\": 7,\n          \"name\": \"X64\",\n          \"type\": \"read-only\"\n        },\n        {\n          \"id\": 20,\n          \"name\": \"macOS\",\n          \"type\": \"read-only\"\n        },\n        {\n          \"id\": 21,\n          \"name\": \"no-gpu\",\n          \"type\": \"custom\"\n        }\n      ]\n    }\n  ]\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/orgs/{org}/actions/runners"
+    },
+    "title":"List self-hosted runners for an organization"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG/actions/runners/downloads\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"actions",
+    "id":"list-runner-applications-for-an-organization",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"os\": \"osx\",\n    \"architecture\": \"x64\",\n    \"download_url\": \"https://github.com/actions/runner/releases/download/v2.164.0/actions-runner-osx-x64-2.164.0.tar.gz\",\n    \"filename\": \"actions-runner-osx-x64-2.164.0.tar.gz\"\n  },\n  {\n    \"os\": \"linux\",\n    \"architecture\": \"x64\",\n    \"download_url\": \"https://github.com/actions/runner/releases/download/v2.164.0/actions-runner-linux-x64-2.164.0.tar.gz\",\n    \"filename\": \"actions-runner-linux-x64-2.164.0.tar.gz\"\n  },\n  {\n    \"os\": \"linux\",\n    \"architecture\": \"arm\",\n    \"download_url\": \"https://github.com/actions/runner/releases/download/v2.164.0/actions-runner-linux-arm-2.164.0.tar.gz\",\n    \"filename\": \"actions-runner-linux-arm-2.164.0.tar.gz\"\n  },\n  {\n    \"os\": \"win\",\n    \"architecture\": \"x64\",\n    \"download_url\": \"https://github.com/actions/runner/releases/download/v2.164.0/actions-runner-win-x64-2.164.0.zip\",\n    \"filename\": \"actions-runner-win-x64-2.164.0.zip\"\n  },\n  {\n    \"os\": \"linux\",\n    \"architecture\": \"arm64\",\n    \"download_url\": \"https://github.com/actions/runner/releases/download/v2.164.0/actions-runner-linux-arm64-2.164.0.tar.gz\",\n    \"filename\": \"actions-runner-linux-arm64-2.164.0.tar.gz\"\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/orgs/{org}/actions/runners/downloads"
+    },
+    "title":"List runner applications for an organization"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X POST \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG/actions/runners/registration-token\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"actions",
+    "id":"create-a-registration-token-for-an-organization",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"201 Created",
+        "content":"{\n  \"token\": \"LLBF3JGZDX3P5PMEXLND6TS6FCWO6\",\n  \"expires_at\": \"2020-01-22T12:13:35.123-08:00\"\n}\n"
+      }
+    ],
+    "target":{
+      "method":"post",
+      "path":"/orgs/{org}/actions/runners/registration-token"
+    },
+    "title":"Create a registration token for an organization"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X POST \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG/actions/runners/remove-token\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"actions",
+    "id":"create-a-remove-token-for-an-organization",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"201 Created",
+        "content":"{\n  \"token\": \"AABF3JGZDX3P5PMEXLND6TS6FCWO6\",\n  \"expires_at\": \"2020-01-29T12:13:35.123-08:00\"\n}\n"
+      }
+    ],
+    "target":{
+      "method":"post",
+      "path":"/orgs/{org}/actions/runners/remove-token"
+    },
+    "title":"Create a remove token for an organization"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG/actions/runners/42\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"actions",
+    "id":"get-a-self-hosted-runner-for-an-organization",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Unique identifier of the self-hosted runner.</p>",
+        "in":"path ",
+        "name":"runner_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"id\": 23,\n  \"name\": \"mac_runner\",\n  \"os\": \"macos\",\n  \"status\": \"online\",\n  \"busy\": true,\n  \"labels\": [\n    {\n      \"id\": 5,\n      \"name\": \"self-hosted\",\n      \"type\": \"read-only\"\n    },\n    {\n      \"id\": 7,\n      \"name\": \"X64\",\n      \"type\": \"read-only\"\n    },\n    {\n      \"id\": 20,\n      \"name\": \"macOS\",\n      \"type\": \"read-only\"\n    },\n    {\n      \"id\": 21,\n      \"name\": \"no-gpu\",\n      \"type\": \"custom\"\n    }\n  ]\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/orgs/{org}/actions/runners/{runner_id}"
+    },
+    "title":"Get a self-hosted runner for an organization"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X DELETE \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG/actions/runners/42\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"actions",
+    "id":"delete-a-self-hosted-runner-from-an-organization",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Unique identifier of the self-hosted runner.</p>",
+        "in":"path ",
+        "name":"runner_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"delete",
+      "path":"/orgs/{org}/actions/runners/{runner_id}"
+    },
+    "title":"Delete a self-hosted runner from an organization"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/repos/octocat/hello-world/actions/runners\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"actions",
+    "id":"list-self-hosted-runners-for-a-repository",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"total_count\": 2,\n  \"runners\": [\n    {\n      \"id\": 23,\n      \"name\": \"linux_runner\",\n      \"os\": \"linux\",\n      \"status\": \"online\",\n      \"busy\": true,\n      \"labels\": [\n        {\n          \"id\": 5,\n          \"name\": \"self-hosted\",\n          \"type\": \"read-only\"\n        },\n        {\n          \"id\": 7,\n          \"name\": \"X64\",\n          \"type\": \"read-only\"\n        },\n        {\n          \"id\": 11,\n          \"name\": \"Linux\",\n          \"type\": \"read-only\"\n        }\n      ]\n    },\n    {\n      \"id\": 24,\n      \"name\": \"mac_runner\",\n      \"os\": \"macos\",\n      \"status\": \"offline\",\n      \"busy\": false,\n      \"labels\": [\n        {\n          \"id\": 5,\n          \"name\": \"self-hosted\",\n          \"type\": \"read-only\"\n        },\n        {\n          \"id\": 7,\n          \"name\": \"X64\",\n          \"type\": \"read-only\"\n        },\n        {\n          \"id\": 20,\n          \"name\": \"macOS\",\n          \"type\": \"read-only\"\n        },\n        {\n          \"id\": 21,\n          \"name\": \"no-gpu\",\n          \"type\": \"custom\"\n        }\n      ]\n    }\n  ]\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/repos/{owner}/{repo}/actions/runners"
+    },
+    "title":"List self-hosted runners for a repository"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/repos/octocat/hello-world/actions/runners/downloads\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"actions",
+    "id":"list-runner-applications-for-a-repository",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"os\": \"osx\",\n    \"architecture\": \"x64\",\n    \"download_url\": \"https://github.com/actions/runner/releases/download/v2.164.0/actions-runner-osx-x64-2.164.0.tar.gz\",\n    \"filename\": \"actions-runner-osx-x64-2.164.0.tar.gz\"\n  },\n  {\n    \"os\": \"linux\",\n    \"architecture\": \"x64\",\n    \"download_url\": \"https://github.com/actions/runner/releases/download/v2.164.0/actions-runner-linux-x64-2.164.0.tar.gz\",\n    \"filename\": \"actions-runner-linux-x64-2.164.0.tar.gz\"\n  },\n  {\n    \"os\": \"linux\",\n    \"architecture\": \"arm\",\n    \"download_url\": \"https://github.com/actions/runner/releases/download/v2.164.0/actions-runner-linux-arm-2.164.0.tar.gz\",\n    \"filename\": \"actions-runner-linux-arm-2.164.0.tar.gz\"\n  },\n  {\n    \"os\": \"win\",\n    \"architecture\": \"x64\",\n    \"download_url\": \"https://github.com/actions/runner/releases/download/v2.164.0/actions-runner-win-x64-2.164.0.zip\",\n    \"filename\": \"actions-runner-win-x64-2.164.0.zip\"\n  },\n  {\n    \"os\": \"linux\",\n    \"architecture\": \"arm64\",\n    \"download_url\": \"https://github.com/actions/runner/releases/download/v2.164.0/actions-runner-linux-arm64-2.164.0.tar.gz\",\n    \"filename\": \"actions-runner-linux-arm64-2.164.0.tar.gz\"\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/repos/{owner}/{repo}/actions/runners/downloads"
+    },
+    "title":"List runner applications for a repository"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X POST \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/repos/octocat/hello-world/actions/runners/registration-token\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"actions",
+    "id":"create-a-registration-token-for-a-repository",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"201 Created",
+        "content":"{\n  \"token\": \"LLBF3JGZDX3P5PMEXLND6TS6FCWO6\",\n  \"expires_at\": \"2020-01-22T12:13:35.123-08:00\"\n}\n"
+      }
+    ],
+    "target":{
+      "method":"post",
+      "path":"/repos/{owner}/{repo}/actions/runners/registration-token"
+    },
+    "title":"Create a registration token for a repository"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X POST \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/repos/octocat/hello-world/actions/runners/remove-token\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"actions",
+    "id":"create-a-remove-token-for-a-repository",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"201 Created",
+        "content":"{\n  \"token\": \"AABF3JGZDX3P5PMEXLND6TS6FCWO6\",\n  \"expires_at\": \"2020-01-29T12:13:35.123-08:00\"\n}\n"
+      }
+    ],
+    "target":{
+      "method":"post",
+      "path":"/repos/{owner}/{repo}/actions/runners/remove-token"
+    },
+    "title":"Create a remove token for a repository"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/repos/octocat/hello-world/actions/runners/42\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"actions",
+    "id":"get-a-self-hosted-runner-for-a-repository",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Unique identifier of the self-hosted runner.</p>",
+        "in":"path ",
+        "name":"runner_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"id\": 23,\n  \"name\": \"mac_runner\",\n  \"os\": \"macos\",\n  \"status\": \"online\",\n  \"busy\": true,\n  \"labels\": [\n    {\n      \"id\": 5,\n      \"name\": \"self-hosted\",\n      \"type\": \"read-only\"\n    },\n    {\n      \"id\": 7,\n      \"name\": \"X64\",\n      \"type\": \"read-only\"\n    },\n    {\n      \"id\": 20,\n      \"name\": \"macOS\",\n      \"type\": \"read-only\"\n    },\n    {\n      \"id\": 21,\n      \"name\": \"no-gpu\",\n      \"type\": \"custom\"\n    }\n  ]\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/repos/{owner}/{repo}/actions/runners/{runner_id}"
+    },
+    "title":"Get a self-hosted runner for a repository"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X DELETE \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/repos/octocat/hello-world/actions/runners/42\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"actions",
+    "id":"delete-a-self-hosted-runner-from-a-repository",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Unique identifier of the self-hosted runner.</p>",
+        "in":"path ",
+        "name":"runner_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"delete",
+      "path":"/repos/{owner}/{repo}/actions/runners/{runner_id}"
+    },
+    "title":"Delete a self-hosted runner from a repository"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG/actions/runner-groups\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"actions",
+    "id":"list-self-hosted-runner-groups-for-an-organization",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"total_count\": 3,\n  \"runner_groups\": [\n    {\n      \"id\": 1,\n      \"name\": \"Default\",\n      \"visibility\": \"all\",\n      \"default\": true,\n      \"runners_url\": \"https://api.github.com/orgs/octo-org/actions/runner_groups/1/runners\",\n      \"inherited\": false\n    },\n    {\n      \"id\": 2,\n      \"name\": \"octo-runner-group\",\n      \"visibility\": \"selected\",\n      \"default\": false,\n      \"selected_repositories_url\": \"https://api.github.com/orgs/octo-org/actions/runner_groups/2/repositories\",\n      \"runners_url\": \"https://api.github.com/orgs/octo-org/actions/runner_groups/2/runners\",\n      \"inherited\": true\n    },\n    {\n      \"id\": 3,\n      \"name\": \"expensive-hardware\",\n      \"visibility\": \"private\",\n      \"default\": false,\n      \"runners_url\": \"https://api.github.com/orgs/octo-org/actions/runner_groups/3/runners\",\n      \"inherited\": false\n    }\n  ]\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/orgs/{org}/actions/runner-groups"
+    },
+    "title":"List self-hosted runner groups for an organization"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X POST \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG/actions/runner-groups \\\n  -d '{\"name\":\"name\"}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"actions",
+    "id":"create-a-self-hosted-runner-group-for-an-organization",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "description":"<p><strong>Required</strong>. Name of the runner group.</p>",
+        "in":"body ",
+        "name":"name ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Visibility of a runner group. You can select all repositories, select individual repositories, or limit access to private repositories. Can be one of: <code>all</code>, <code>selected</code>, or <code>private</code>.</p> Default: <code>all</code>",
+        "in":"body ",
+        "name":"visibility ",
+        "type":"string "
+      },
+      {
+        "description":"<p>List of repository IDs that can access the runner group.</p>",
+        "in":"body ",
+        "name":"selected_repository_ids ",
+        "type":"array of integers "
+      },
+      {
+        "description":"<p>List of runner IDs to add to the runner group.</p>",
+        "in":"body ",
+        "name":"runners ",
+        "type":"array of integers "
+      }
+    ],
+    "responses":[
+      {
+        "code":"201 Created",
+        "content":"{\n  \"id\": 2,\n  \"name\": \"octo-runner-group\",\n  \"visibility\": \"selected\",\n  \"default\": false,\n  \"selected_repositories_url\": \"https://api.github.com/orgs/octo-org/actions/runner-groups/2/repositories\",\n  \"runners_url\": \"https://api.github.com/orgs/octo-org/actions/runner_groups/2/runners\",\n  \"inherited\": false\n}\n"
+      }
+    ],
+    "target":{
+      "method":"post",
+      "path":"/orgs/{org}/actions/runner-groups"
+    },
+    "title":"Create a self-hosted runner group for an organization"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG/actions/runner-groups/42\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"actions",
+    "id":"get-a-self-hosted-runner-group-for-an-organization",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Unique identifier of the self-hosted runner group.</p>",
+        "in":"path ",
+        "name":"runner_group_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"id\": 2,\n  \"name\": \"octo-runner-group\",\n  \"visibility\": \"selected\",\n  \"default\": false,\n  \"selected_repositories_url\": \"https://api.github.com/orgs/octo-org/actions/runner_groups/2/repositories\",\n  \"runners_url\": \"https://api.github.com/orgs/octo-org/actions/runner_groups/2/runners\",\n  \"inherited\": false\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/orgs/{org}/actions/runner-groups/{runner_group_id}"
+    },
+    "title":"Get a self-hosted runner group for an organization"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X PATCH \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG/actions/runner-groups/42 \\\n  -d '{\"name\":\"name\"}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"actions",
+    "id":"update-a-self-hosted-runner-group-for-an-organization",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Unique identifier of the self-hosted runner group.</p>",
+        "in":"path ",
+        "name":"runner_group_id ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Name of the runner group.</p>",
+        "in":"body ",
+        "name":"name ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Visibility of a runner group. You can select all repositories, select individual repositories, or all private repositories. Can be one of: <code>all</code>, <code>selected</code>, or <code>private</code>.</p>",
+        "in":"body ",
+        "name":"visibility ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"id\": 2,\n  \"name\": \"octo-runner-group\",\n  \"visibility\": \"selected\",\n  \"default\": false,\n  \"selected_repositories_url\": \"https://api.github.com/orgs/octo-org/actions/runner-groups/2/repositories\",\n  \"runners_url\": \"https://api.github.com/orgs/octo-org/actions/runner_groups/2/runners\",\n  \"inherited\": false\n}\n"
+      }
+    ],
+    "target":{
+      "method":"patch",
+      "path":"/orgs/{org}/actions/runner-groups/{runner_group_id}"
+    },
+    "title":"Update a self-hosted runner group for an organization"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X DELETE \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG/actions/runner-groups/42\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"actions",
+    "id":"delete-a-self-hosted-runner-group-from-an-organization",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Unique identifier of the self-hosted runner group.</p>",
+        "in":"path ",
+        "name":"runner_group_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"delete",
+      "path":"/orgs/{org}/actions/runner-groups/{runner_group_id}"
+    },
+    "title":"Delete a self-hosted runner group from an organization"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG/actions/runner-groups/42/runners\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"actions",
+    "id":"list-self-hosted-runners-in-a-group-for-an-organization",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Unique identifier of the self-hosted runner group.</p>",
+        "in":"path ",
+        "name":"runner_group_id ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"total_count\": 2,\n  \"runners\": [\n    {\n      \"id\": 23,\n      \"name\": \"linux_runner\",\n      \"os\": \"linux\",\n      \"status\": \"online\",\n      \"busy\": true,\n      \"labels\": [\n        {\n          \"id\": 5,\n          \"name\": \"self-hosted\",\n          \"type\": \"read-only\"\n        },\n        {\n          \"id\": 7,\n          \"name\": \"X64\",\n          \"type\": \"read-only\"\n        },\n        {\n          \"id\": 11,\n          \"name\": \"Linux\",\n          \"type\": \"read-only\"\n        }\n      ]\n    },\n    {\n      \"id\": 24,\n      \"name\": \"mac_runner\",\n      \"os\": \"macos\",\n      \"status\": \"offline\",\n      \"busy\": false,\n      \"labels\": [\n        {\n          \"id\": 5,\n          \"name\": \"self-hosted\",\n          \"type\": \"read-only\"\n        },\n        {\n          \"id\": 7,\n          \"name\": \"X64\",\n          \"type\": \"read-only\"\n        },\n        {\n          \"id\": 20,\n          \"name\": \"macOS\",\n          \"type\": \"read-only\"\n        },\n        {\n          \"id\": 21,\n          \"name\": \"no-gpu\",\n          \"type\": \"custom\"\n        }\n      ]\n    }\n  ]\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/orgs/{org}/actions/runner-groups/{runner_group_id}/runners"
+    },
+    "title":"List self-hosted runners in a group for an organization"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X PUT \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG/actions/runner-groups/42/runners \\\n  -d '{\"runners\":[42]}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"actions",
+    "id":"set-self-hosted-runners-in-a-group-for-an-organization",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Unique identifier of the self-hosted runner group.</p>",
+        "in":"path ",
+        "name":"runner_group_id ",
+        "type":"integer "
+      },
+      {
+        "description":"<p><strong>Required</strong>. List of runner IDs to add to the runner group.</p>",
+        "in":"body ",
+        "name":"runners ",
+        "type":"array of integers "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"put",
+      "path":"/orgs/{org}/actions/runner-groups/{runner_group_id}/runners"
+    },
+    "title":"Set self-hosted runners in a group for an organization"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X PUT \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG/actions/runner-groups/42/runners/42\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"actions",
+    "id":"add-a-self-hosted-runner-to-a-group-for-an-organization",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Unique identifier of the self-hosted runner group.</p>",
+        "in":"path ",
+        "name":"runner_group_id ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Unique identifier of the self-hosted runner.</p>",
+        "in":"path ",
+        "name":"runner_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"put",
+      "path":"/orgs/{org}/actions/runner-groups/{runner_group_id}/runners/{runner_id}"
+    },
+    "title":"Add a self-hosted runner to a group for an organization"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X DELETE \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG/actions/runner-groups/42/runners/42\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"actions",
+    "id":"remove-a-self-hosted-runner-from-a-group-for-an-organization",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Unique identifier of the self-hosted runner group.</p>",
+        "in":"path ",
+        "name":"runner_group_id ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Unique identifier of the self-hosted runner.</p>",
+        "in":"path ",
+        "name":"runner_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"delete",
+      "path":"/orgs/{org}/actions/runner-groups/{runner_group_id}/runners/{runner_id}"
+    },
+    "title":"Remove a self-hosted runner from a group for an organization"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG/actions/runner-groups/42/repositories\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"actions",
+    "id":"list-repository-access-to-a-self-hosted-runner-group-in-an-organization",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Unique identifier of the self-hosted runner group.</p>",
+        "in":"path ",
+        "name":"runner_group_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"total_count\": 1,\n  \"repositories\": [\n    {\n      \"id\": 1296269,\n      \"node_id\": \"MDEwOlJlcG9zaXRvcnkxMjk2MjY5\",\n      \"name\": \"Hello-World\",\n      \"full_name\": \"octocat/Hello-World\",\n      \"owner\": {\n        \"login\": \"octocat\",\n        \"id\": 1,\n        \"node_id\": \"MDQ6VXNlcjE=\",\n        \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n        \"gravatar_id\": \"\",\n        \"url\": \"https://api.github.com/users/octocat\",\n        \"html_url\": \"https://github.com/octocat\",\n        \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n        \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n        \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n        \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n        \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n        \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n        \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n        \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n        \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n        \"type\": \"User\",\n        \"site_admin\": false\n      },\n      \"private\": false,\n      \"html_url\": \"https://github.com/octocat/Hello-World\",\n      \"description\": \"This your first repo!\",\n      \"fork\": false,\n      \"url\": \"https://api.github.com/repos/octocat/Hello-World\",\n      \"archive_url\": \"http://api.github.com/repos/octocat/Hello-World/{archive_format}{/ref}\",\n      \"assignees_url\": \"http://api.github.com/repos/octocat/Hello-World/assignees{/user}\",\n      \"blobs_url\": \"http://api.github.com/repos/octocat/Hello-World/git/blobs{/sha}\",\n      \"branches_url\": \"http://api.github.com/repos/octocat/Hello-World/branches{/branch}\",\n      \"collaborators_url\": \"http://api.github.com/repos/octocat/Hello-World/collaborators{/collaborator}\",\n      \"comments_url\": \"http://api.github.com/repos/octocat/Hello-World/comments{/number}\",\n      \"commits_url\": \"http://api.github.com/repos/octocat/Hello-World/commits{/sha}\",\n      \"compare_url\": \"http://api.github.com/repos/octocat/Hello-World/compare/{base}...{head}\",\n      \"contents_url\": \"http://api.github.com/repos/octocat/Hello-World/contents/{+path}\",\n      \"contributors_url\": \"http://api.github.com/repos/octocat/Hello-World/contributors\",\n      \"deployments_url\": \"http://api.github.com/repos/octocat/Hello-World/deployments\",\n      \"downloads_url\": \"http://api.github.com/repos/octocat/Hello-World/downloads\",\n      \"events_url\": \"http://api.github.com/repos/octocat/Hello-World/events\",\n      \"forks_url\": \"http://api.github.com/repos/octocat/Hello-World/forks\",\n      \"git_commits_url\": \"http://api.github.com/repos/octocat/Hello-World/git/commits{/sha}\",\n      \"git_refs_url\": \"http://api.github.com/repos/octocat/Hello-World/git/refs{/sha}\",\n      \"git_tags_url\": \"http://api.github.com/repos/octocat/Hello-World/git/tags{/sha}\",\n      \"git_url\": \"git:github.com/octocat/Hello-World.git\",\n      \"issue_comment_url\": \"http://api.github.com/repos/octocat/Hello-World/issues/comments{/number}\",\n      \"issue_events_url\": \"http://api.github.com/repos/octocat/Hello-World/issues/events{/number}\",\n      \"issues_url\": \"http://api.github.com/repos/octocat/Hello-World/issues{/number}\",\n      \"keys_url\": \"http://api.github.com/repos/octocat/Hello-World/keys{/key_id}\",\n      \"labels_url\": \"http://api.github.com/repos/octocat/Hello-World/labels{/name}\",\n      \"languages_url\": \"http://api.github.com/repos/octocat/Hello-World/languages\",\n      \"merges_url\": \"http://api.github.com/repos/octocat/Hello-World/merges\",\n      \"milestones_url\": \"http://api.github.com/repos/octocat/Hello-World/milestones{/number}\",\n      \"notifications_url\": \"http://api.github.com/repos/octocat/Hello-World/notifications{?since,all,participating}\",\n      \"pulls_url\": \"http://api.github.com/repos/octocat/Hello-World/pulls{/number}\",\n      \"releases_url\": \"http://api.github.com/repos/octocat/Hello-World/releases{/id}\",\n      \"ssh_url\": \"git@github.com:octocat/Hello-World.git\",\n      \"stargazers_url\": \"http://api.github.com/repos/octocat/Hello-World/stargazers\",\n      \"statuses_url\": \"http://api.github.com/repos/octocat/Hello-World/statuses/{sha}\",\n      \"subscribers_url\": \"http://api.github.com/repos/octocat/Hello-World/subscribers\",\n      \"subscription_url\": \"http://api.github.com/repos/octocat/Hello-World/subscription\",\n      \"tags_url\": \"http://api.github.com/repos/octocat/Hello-World/tags\",\n      \"teams_url\": \"http://api.github.com/repos/octocat/Hello-World/teams\",\n      \"trees_url\": \"http://api.github.com/repos/octocat/Hello-World/git/trees{/sha}\",\n      \"clone_url\": \"https://github.com/octocat/Hello-World.git\",\n      \"mirror_url\": \"git:git.example.com/octocat/Hello-World\",\n      \"hooks_url\": \"http://api.github.com/repos/octocat/Hello-World/hooks\",\n      \"svn_url\": \"https://svn.github.com/octocat/Hello-World\",\n      \"homepage\": \"https://github.com\",\n      \"language\": null,\n      \"forks_count\": 9,\n      \"stargazers_count\": 80,\n      \"watchers_count\": 80,\n      \"size\": 108,\n      \"default_branch\": \"master\",\n      \"open_issues_count\": 0,\n      \"is_template\": true,\n      \"topics\": [\n        \"octocat\",\n        \"atom\",\n        \"electron\",\n        \"api\"\n      ],\n      \"has_issues\": true,\n      \"has_projects\": true,\n      \"has_wiki\": true,\n      \"has_pages\": false,\n      \"has_downloads\": true,\n      \"archived\": false,\n      \"disabled\": false,\n      \"visibility\": \"public\",\n      \"pushed_at\": \"2011-01-26T19:06:43Z\",\n      \"created_at\": \"2011-01-26T19:01:12Z\",\n      \"updated_at\": \"2011-01-26T19:14:43Z\",\n      \"permissions\": {\n        \"admin\": false,\n        \"push\": false,\n        \"pull\": true\n      },\n      \"allow_rebase_merge\": true,\n      \"template_repository\": null,\n      \"temp_clone_token\": \"ABTLWHOULUVAXGTRYU7OC2876QJ2O\",\n      \"allow_squash_merge\": true,\n      \"delete_branch_on_merge\": true,\n      \"allow_merge_commit\": true,\n      \"subscribers_count\": 42,\n      \"network_count\": 0\n    }\n  ]\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/orgs/{org}/actions/runner-groups/{runner_group_id}/repositories"
+    },
+    "title":"List repository access to a self-hosted runner group in an organization"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X PUT \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG/actions/runner-groups/42/repositories \\\n  -d '{\"selected_repository_ids\":[42]}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"actions",
+    "id":"set-repository-access-for-a-self-hosted-runner-group-in-an-organization",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Unique identifier of the self-hosted runner group.</p>",
+        "in":"path ",
+        "name":"runner_group_id ",
+        "type":"integer "
+      },
+      {
+        "description":"<p><strong>Required</strong>. List of repository IDs that can access the runner group.</p>",
+        "in":"body ",
+        "name":"selected_repository_ids ",
+        "type":"array of integers "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"put",
+      "path":"/orgs/{org}/actions/runner-groups/{runner_group_id}/repositories"
+    },
+    "title":"Set repository access for a self-hosted runner group in an organization"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X PUT \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG/actions/runner-groups/42/repositories/42\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"actions",
+    "id":"add-repository-access-to-a-self-hosted-runner-group-in-an-organization",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Unique identifier of the self-hosted runner group.</p>",
+        "in":"path ",
+        "name":"runner_group_id ",
+        "type":"integer "
+      },
+      {
+        "in":"path",
+        "name":"repository_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"put",
+      "path":"/orgs/{org}/actions/runner-groups/{runner_group_id}/repositories/{repository_id}"
+    },
+    "title":"Add repository access to a self-hosted runner group in an organization"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X DELETE \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG/actions/runner-groups/42/repositories/42\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"actions",
+    "id":"remove-repository-access-to-a-self-hosted-runner-group-in-an-organization",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Unique identifier of the self-hosted runner group.</p>",
+        "in":"path ",
+        "name":"runner_group_id ",
+        "type":"integer "
+      },
+      {
+        "in":"path",
+        "name":"repository_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"delete",
+      "path":"/orgs/{org}/actions/runner-groups/{runner_group_id}/repositories/{repository_id}"
+    },
+    "title":"Remove repository access to a self-hosted runner group in an organization"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/repos/octocat/hello-world/actions/workflows\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"actions",
+    "id":"list-repository-workflows",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"total_count\": 2,\n  \"workflows\": [\n    {\n      \"id\": 161335,\n      \"node_id\": \"MDg6V29ya2Zsb3cxNjEzMzU=\",\n      \"name\": \"CI\",\n      \"path\": \".github/workflows/blank.yml\",\n      \"state\": \"active\",\n      \"created_at\": \"2020-01-08T23:48:37.000-08:00\",\n      \"updated_at\": \"2020-01-08T23:50:21.000-08:00\",\n      \"url\": \"https://api.github.com/repos/octo-org/octo-repo/actions/workflows/161335\",\n      \"html_url\": \"https://github.com/octo-org/octo-repo/blob/master/.github/workflows/161335\",\n      \"badge_url\": \"https://github.com/octo-org/octo-repo/workflows/CI/badge.svg\"\n    },\n    {\n      \"id\": 269289,\n      \"node_id\": \"MDE4OldvcmtmbG93IFNlY29uZGFyeTI2OTI4OQ==\",\n      \"name\": \"Linter\",\n      \"path\": \".github/workflows/linter.yml\",\n      \"state\": \"active\",\n      \"created_at\": \"2020-01-08T23:48:37.000-08:00\",\n      \"updated_at\": \"2020-01-08T23:50:21.000-08:00\",\n      \"url\": \"https://api.github.com/repos/octo-org/octo-repo/actions/workflows/269289\",\n      \"html_url\": \"https://github.com/octo-org/octo-repo/blob/master/.github/workflows/269289\",\n      \"badge_url\": \"https://github.com/octo-org/octo-repo/workflows/Linter/badge.svg\"\n    }\n  ]\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/repos/{owner}/{repo}/actions/workflows"
+    },
+    "title":"List repository workflows"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/repos/octocat/hello-world/actions/workflows/42\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"actions",
+    "id":"get-a-workflow",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"workflow_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"id\": 161335,\n  \"node_id\": \"MDg6V29ya2Zsb3cxNjEzMzU=\",\n  \"name\": \"CI\",\n  \"path\": \".github/workflows/blank.yml\",\n  \"state\": \"active\",\n  \"created_at\": \"2020-01-08T23:48:37.000-08:00\",\n  \"updated_at\": \"2020-01-08T23:50:21.000-08:00\",\n  \"url\": \"https://api.github.com/repos/octo-org/octo-repo/actions/workflows/161335\",\n  \"html_url\": \"https://github.com/octo-org/octo-repo/blob/master/.github/workflows/161335\",\n  \"badge_url\": \"https://github.com/octo-org/octo-repo/workflows/CI/badge.svg\"\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/repos/{owner}/{repo}/actions/workflows/{workflow_id}"
+    },
+    "title":"Get a workflow"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X POST \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/repos/octocat/hello-world/actions/workflows/42/dispatches \\\n  -d '{\"ref\":\"ref\"}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"actions",
+    "id":"create-a-workflow-dispatch-event",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"workflow_id ",
+        "type":"integer "
+      },
+      {
+        "description":"<p><strong>Required</strong>. The reference of the workflow run. The reference can be a branch, tag, or a commit SHA.</p>",
+        "in":"body ",
+        "name":"ref ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Input keys and values configured in the workflow file. The maximum number of properties is 10.</p> Default: <code>Any default properties configured in the workflow file will be used when `inputs` are omitted.</code>",
+        "in":"body ",
+        "name":"inputs ",
+        "type":"object "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"post",
+      "path":"/repos/{owner}/{repo}/actions/workflows/{workflow_id}/dispatches"
+    },
+    "title":"Create a workflow dispatch event"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/repos/octocat/hello-world/actions/workflows/42/timing\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"actions",
+    "id":"get-workflow-usage",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"workflow_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"billable\": {\n    \"UBUNTU\": {\n      \"total_ms\": 180000\n    },\n    \"MACOS\": {\n      \"total_ms\": 240000\n    },\n    \"WINDOWS\": {\n      \"total_ms\": 300000\n    }\n  }\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/repos/{owner}/{repo}/actions/workflows/{workflow_id}/timing"
+    },
+    "title":"Get workflow usage"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/repos/octocat/hello-world/actions/jobs/42\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"actions",
+    "id":"get-a-job-for-a-workflow-run",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"job_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"202 Accepted",
+        "content":"{\n  \"id\": 399444496,\n  \"run_id\": 29679449,\n  \"run_url\": \"https://api.github.com/repos/octo-org/octo-repo/actions/runs/29679449\",\n  \"node_id\": \"MDEyOldvcmtmbG93IEpvYjM5OTQ0NDQ5Ng==\",\n  \"head_sha\": \"f83a356604ae3c5d03e1b46ef4d1ca77d64a90b0\",\n  \"url\": \"https://api.github.com/repos/octo-org/octo-repo/actions/jobs/399444496\",\n  \"html_url\": \"https://github.com/octo-org/octo-repo/runs/399444496\",\n  \"status\": \"completed\",\n  \"conclusion\": \"success\",\n  \"started_at\": \"2020-01-20T17:42:40Z\",\n  \"completed_at\": \"2020-01-20T17:44:39Z\",\n  \"name\": \"build\",\n  \"steps\": [\n    {\n      \"name\": \"Set up job\",\n      \"status\": \"completed\",\n      \"conclusion\": \"success\",\n      \"number\": 1,\n      \"started_at\": \"2020-01-20T09:42:40.000-08:00\",\n      \"completed_at\": \"2020-01-20T09:42:41.000-08:00\"\n    },\n    {\n      \"name\": \"Run actions/checkout@v2\",\n      \"status\": \"completed\",\n      \"conclusion\": \"success\",\n      \"number\": 2,\n      \"started_at\": \"2020-01-20T09:42:41.000-08:00\",\n      \"completed_at\": \"2020-01-20T09:42:45.000-08:00\"\n    },\n    {\n      \"name\": \"Set up Ruby\",\n      \"status\": \"completed\",\n      \"conclusion\": \"success\",\n      \"number\": 3,\n      \"started_at\": \"2020-01-20T09:42:45.000-08:00\",\n      \"completed_at\": \"2020-01-20T09:42:45.000-08:00\"\n    },\n    {\n      \"name\": \"Run actions/cache@v2\",\n      \"status\": \"completed\",\n      \"conclusion\": \"success\",\n      \"number\": 4,\n      \"started_at\": \"2020-01-20T09:42:45.000-08:00\",\n      \"completed_at\": \"2020-01-20T09:42:48.000-08:00\"\n    },\n    {\n      \"name\": \"Install Bundler\",\n      \"status\": \"completed\",\n      \"conclusion\": \"success\",\n      \"number\": 5,\n      \"started_at\": \"2020-01-20T09:42:48.000-08:00\",\n      \"completed_at\": \"2020-01-20T09:42:52.000-08:00\"\n    },\n    {\n      \"name\": \"Install Gems\",\n      \"status\": \"completed\",\n      \"conclusion\": \"success\",\n      \"number\": 6,\n      \"started_at\": \"2020-01-20T09:42:52.000-08:00\",\n      \"completed_at\": \"2020-01-20T09:42:53.000-08:00\"\n    },\n    {\n      \"name\": \"Run Tests\",\n      \"status\": \"completed\",\n      \"conclusion\": \"success\",\n      \"number\": 7,\n      \"started_at\": \"2020-01-20T09:42:53.000-08:00\",\n      \"completed_at\": \"2020-01-20T09:42:59.000-08:00\"\n    },\n    {\n      \"name\": \"Deploy to Heroku\",\n      \"status\": \"completed\",\n      \"conclusion\": \"success\",\n      \"number\": 8,\n      \"started_at\": \"2020-01-20T09:42:59.000-08:00\",\n      \"completed_at\": \"2020-01-20T09:44:39.000-08:00\"\n    },\n    {\n      \"name\": \"Post actions/cache@v2\",\n      \"status\": \"completed\",\n      \"conclusion\": \"success\",\n      \"number\": 16,\n      \"started_at\": \"2020-01-20T09:44:39.000-08:00\",\n      \"completed_at\": \"2020-01-20T09:44:39.000-08:00\"\n    },\n    {\n      \"name\": \"Complete job\",\n      \"status\": \"completed\",\n      \"conclusion\": \"success\",\n      \"number\": 17,\n      \"started_at\": \"2020-01-20T09:44:39.000-08:00\",\n      \"completed_at\": \"2020-01-20T09:44:39.000-08:00\"\n    }\n  ],\n  \"check_run_url\": \"https://api.github.com/repos/octo-org/octo-repo/check-runs/399444496\"\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/repos/{owner}/{repo}/actions/jobs/{job_id}"
+    },
+    "title":"Get a job for a workflow run"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/repos/octocat/hello-world/actions/jobs/42/logs\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"actions",
+    "id":"download-job-logs-for-a-workflow-run",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"job_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"302 Found"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/repos/{owner}/{repo}/actions/jobs/{job_id}/logs"
+    },
+    "title":"Download job logs for a workflow run"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/repos/octocat/hello-world/actions/runs/42/jobs\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"actions",
+    "id":"list-jobs-for-a-workflow-run",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"run_id ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Filters jobs by their <code>completed_at</code> timestamp. Can be one of:<br> * <code>latest</code>: Returns jobs from the most recent execution of the workflow run.<br> * <code>all</code>: Returns all jobs for a workflow run, including from old executions of the workflow run.</p>",
+        "in":"query ",
+        "name":"filter ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"total_count\": 1,\n  \"jobs\": [\n    {\n      \"id\": 399444496,\n      \"run_id\": 29679449,\n      \"run_url\": \"https://api.github.com/repos/octo-org/octo-repo/actions/runs/29679449\",\n      \"node_id\": \"MDEyOldvcmtmbG93IEpvYjM5OTQ0NDQ5Ng==\",\n      \"head_sha\": \"f83a356604ae3c5d03e1b46ef4d1ca77d64a90b0\",\n      \"url\": \"https://api.github.com/repos/octo-org/octo-repo/actions/jobs/399444496\",\n      \"html_url\": \"https://github.com/octo-org/octo-repo/runs/399444496\",\n      \"status\": \"completed\",\n      \"conclusion\": \"success\",\n      \"started_at\": \"2020-01-20T17:42:40Z\",\n      \"completed_at\": \"2020-01-20T17:44:39Z\",\n      \"name\": \"build\",\n      \"steps\": [\n        {\n          \"name\": \"Set up job\",\n          \"status\": \"completed\",\n          \"conclusion\": \"success\",\n          \"number\": 1,\n          \"started_at\": \"2020-01-20T09:42:40.000-08:00\",\n          \"completed_at\": \"2020-01-20T09:42:41.000-08:00\"\n        },\n        {\n          \"name\": \"Run actions/checkout@v2\",\n          \"status\": \"completed\",\n          \"conclusion\": \"success\",\n          \"number\": 2,\n          \"started_at\": \"2020-01-20T09:42:41.000-08:00\",\n          \"completed_at\": \"2020-01-20T09:42:45.000-08:00\"\n        },\n        {\n          \"name\": \"Set up Ruby\",\n          \"status\": \"completed\",\n          \"conclusion\": \"success\",\n          \"number\": 3,\n          \"started_at\": \"2020-01-20T09:42:45.000-08:00\",\n          \"completed_at\": \"2020-01-20T09:42:45.000-08:00\"\n        },\n        {\n          \"name\": \"Run actions/cache@v2\",\n          \"status\": \"completed\",\n          \"conclusion\": \"success\",\n          \"number\": 4,\n          \"started_at\": \"2020-01-20T09:42:45.000-08:00\",\n          \"completed_at\": \"2020-01-20T09:42:48.000-08:00\"\n        },\n        {\n          \"name\": \"Install Bundler\",\n          \"status\": \"completed\",\n          \"conclusion\": \"success\",\n          \"number\": 5,\n          \"started_at\": \"2020-01-20T09:42:48.000-08:00\",\n          \"completed_at\": \"2020-01-20T09:42:52.000-08:00\"\n        },\n        {\n          \"name\": \"Install Gems\",\n          \"status\": \"completed\",\n          \"conclusion\": \"success\",\n          \"number\": 6,\n          \"started_at\": \"2020-01-20T09:42:52.000-08:00\",\n          \"completed_at\": \"2020-01-20T09:42:53.000-08:00\"\n        },\n        {\n          \"name\": \"Run Tests\",\n          \"status\": \"completed\",\n          \"conclusion\": \"success\",\n          \"number\": 7,\n          \"started_at\": \"2020-01-20T09:42:53.000-08:00\",\n          \"completed_at\": \"2020-01-20T09:42:59.000-08:00\"\n        },\n        {\n          \"name\": \"Deploy to Heroku\",\n          \"status\": \"completed\",\n          \"conclusion\": \"success\",\n          \"number\": 8,\n          \"started_at\": \"2020-01-20T09:42:59.000-08:00\",\n          \"completed_at\": \"2020-01-20T09:44:39.000-08:00\"\n        },\n        {\n          \"name\": \"Post actions/cache@v2\",\n          \"status\": \"completed\",\n          \"conclusion\": \"success\",\n          \"number\": 16,\n          \"started_at\": \"2020-01-20T09:44:39.000-08:00\",\n          \"completed_at\": \"2020-01-20T09:44:39.000-08:00\"\n        },\n        {\n          \"name\": \"Complete job\",\n          \"status\": \"completed\",\n          \"conclusion\": \"success\",\n          \"number\": 17,\n          \"started_at\": \"2020-01-20T09:44:39.000-08:00\",\n          \"completed_at\": \"2020-01-20T09:44:39.000-08:00\"\n        }\n      ],\n      \"check_run_url\": \"https://api.github.com/repos/octo-org/octo-repo/check-runs/399444496\"\n    }\n  ]\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/repos/{owner}/{repo}/actions/runs/{run_id}/jobs"
+    },
+    "title":"List jobs for a workflow run"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/repos/octocat/hello-world/actions/runs\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"actions",
+    "id":"list-workflow-runs-for-a-repository",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Returns someone&apos;s workflow runs. Use the login for the user who created the <code>push</code> associated with the check suite or workflow run.</p>",
+        "in":"query ",
+        "name":"actor ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Returns workflow runs associated with a branch. Use the name of the branch of the <code>push</code>.</p>",
+        "in":"query ",
+        "name":"branch ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Returns workflow run triggered by the event you specify. For example, <code>push</code>, <code>pull_request</code> or <code>issue</code>. For more information, see &quot;<a href=\"https://docs.github.com/en/actions/automating-your-workflow-with-github-actions/events-that-trigger-workflows\">Events that trigger workflows</a>.&quot;</p>",
+        "in":"query ",
+        "name":"event ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Returns workflow runs associated with the check run <code>status</code> or <code>conclusion</code> you specify. For example, a conclusion can be <code>success</code> or a status can be <code>completed</code>. For more information, see the <code>status</code> and <code>conclusion</code> options available in &quot;<a href=\"https://developer.github.com/v3/checks/runs/#create-a-check-run\">Create a check run</a>.&quot;</p>",
+        "in":"query ",
+        "name":"status ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"total_count\": 1,\n  \"workflow_runs\": [\n    {\n      \"id\": 30433642,\n      \"node_id\": \"MDEyOldvcmtmbG93IFJ1bjI2OTI4OQ==\",\n      \"head_branch\": \"master\",\n      \"head_sha\": \"acb5820ced9479c074f688cc328bf03f341a511d\",\n      \"run_number\": 562,\n      \"event\": \"push\",\n      \"status\": \"queued\",\n      \"conclusion\": null,\n      \"workflow_id\": 159038,\n      \"url\": \"https://api.github.com/repos/octo-org/octo-repo/actions/runs/30433642\",\n      \"html_url\": \"https://github.com/octo-org/octo-repo/actions/runs/30433642\",\n      \"pull_requests\": [],\n      \"created_at\": \"2020-01-22T19:33:08Z\",\n      \"updated_at\": \"2020-01-22T19:33:08Z\",\n      \"jobs_url\": \"https://api.github.com/repos/octo-org/octo-repo/actions/runs/30433642/jobs\",\n      \"logs_url\": \"https://api.github.com/repos/octo-org/octo-repo/actions/runs/30433642/logs\",\n      \"check_suite_url\": \"https://api.github.com/repos/octo-org/octo-repo/check-suites/414944374\",\n      \"artifacts_url\": \"https://api.github.com/repos/octo-org/octo-repo/actions/runs/30433642/artifacts\",\n      \"cancel_url\": \"https://api.github.com/repos/octo-org/octo-repo/actions/runs/30433642/cancel\",\n      \"rerun_url\": \"https://api.github.com/repos/octo-org/octo-repo/actions/runs/30433642/rerun\",\n      \"workflow_url\": \"https://api.github.com/repos/octo-org/octo-repo/actions/workflows/159038\",\n      \"head_commit\": {\n        \"id\": \"acb5820ced9479c074f688cc328bf03f341a511d\",\n        \"tree_id\": \"d23f6eedb1e1b9610bbc754ddb5197bfe7271223\",\n        \"message\": \"Create linter.yml\",\n        \"timestamp\": \"2020-01-22T19:33:05Z\",\n        \"author\": {\n          \"name\": \"Octo Cat\",\n          \"email\": \"octocat@github.com\"\n        },\n        \"committer\": {\n          \"name\": \"GitHub\",\n          \"email\": \"noreply@github.com\"\n        }\n      },\n      \"repository\": {\n        \"id\": 1296269,\n        \"node_id\": \"MDEwOlJlcG9zaXRvcnkxMjk2MjY5\",\n        \"name\": \"Hello-World\",\n        \"full_name\": \"octocat/Hello-World\",\n        \"owner\": {\n          \"login\": \"octocat\",\n          \"id\": 1,\n          \"node_id\": \"MDQ6VXNlcjE=\",\n          \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n          \"gravatar_id\": \"\",\n          \"url\": \"https://api.github.com/users/octocat\",\n          \"html_url\": \"https://github.com/octocat\",\n          \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n          \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n          \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n          \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n          \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n          \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n          \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n          \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n          \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n          \"type\": \"User\",\n          \"site_admin\": false\n        },\n        \"private\": false,\n        \"html_url\": \"https://github.com/octocat/Hello-World\",\n        \"description\": \"This your first repo!\",\n        \"fork\": false,\n        \"url\": \"https://api.github.com/repos/octocat/Hello-World\",\n        \"archive_url\": \"http://api.github.com/repos/octocat/Hello-World/{archive_format}{/ref}\",\n        \"assignees_url\": \"http://api.github.com/repos/octocat/Hello-World/assignees{/user}\",\n        \"blobs_url\": \"http://api.github.com/repos/octocat/Hello-World/git/blobs{/sha}\",\n        \"branches_url\": \"http://api.github.com/repos/octocat/Hello-World/branches{/branch}\",\n        \"collaborators_url\": \"http://api.github.com/repos/octocat/Hello-World/collaborators{/collaborator}\",\n        \"comments_url\": \"http://api.github.com/repos/octocat/Hello-World/comments{/number}\",\n        \"commits_url\": \"http://api.github.com/repos/octocat/Hello-World/commits{/sha}\",\n        \"compare_url\": \"http://api.github.com/repos/octocat/Hello-World/compare/{base}...{head}\",\n        \"contents_url\": \"http://api.github.com/repos/octocat/Hello-World/contents/{+path}\",\n        \"contributors_url\": \"http://api.github.com/repos/octocat/Hello-World/contributors\",\n        \"deployments_url\": \"http://api.github.com/repos/octocat/Hello-World/deployments\",\n        \"downloads_url\": \"http://api.github.com/repos/octocat/Hello-World/downloads\",\n        \"events_url\": \"http://api.github.com/repos/octocat/Hello-World/events\",\n        \"forks_url\": \"http://api.github.com/repos/octocat/Hello-World/forks\",\n        \"git_commits_url\": \"http://api.github.com/repos/octocat/Hello-World/git/commits{/sha}\",\n        \"git_refs_url\": \"http://api.github.com/repos/octocat/Hello-World/git/refs{/sha}\",\n        \"git_tags_url\": \"http://api.github.com/repos/octocat/Hello-World/git/tags{/sha}\",\n        \"git_url\": \"git:github.com/octocat/Hello-World.git\",\n        \"issue_comment_url\": \"http://api.github.com/repos/octocat/Hello-World/issues/comments{/number}\",\n        \"issue_events_url\": \"http://api.github.com/repos/octocat/Hello-World/issues/events{/number}\",\n        \"issues_url\": \"http://api.github.com/repos/octocat/Hello-World/issues{/number}\",\n        \"keys_url\": \"http://api.github.com/repos/octocat/Hello-World/keys{/key_id}\",\n        \"labels_url\": \"http://api.github.com/repos/octocat/Hello-World/labels{/name}\",\n        \"languages_url\": \"http://api.github.com/repos/octocat/Hello-World/languages\",\n        \"merges_url\": \"http://api.github.com/repos/octocat/Hello-World/merges\",\n        \"milestones_url\": \"http://api.github.com/repos/octocat/Hello-World/milestones{/number}\",\n        \"notifications_url\": \"http://api.github.com/repos/octocat/Hello-World/notifications{?since,all,participating}\",\n        \"pulls_url\": \"http://api.github.com/repos/octocat/Hello-World/pulls{/number}\",\n        \"releases_url\": \"http://api.github.com/repos/octocat/Hello-World/releases{/id}\",\n        \"ssh_url\": \"git@github.com:octocat/Hello-World.git\",\n        \"stargazers_url\": \"http://api.github.com/repos/octocat/Hello-World/stargazers\",\n        \"statuses_url\": \"http://api.github.com/repos/octocat/Hello-World/statuses/{sha}\",\n        \"subscribers_url\": \"http://api.github.com/repos/octocat/Hello-World/subscribers\",\n        \"subscription_url\": \"http://api.github.com/repos/octocat/Hello-World/subscription\",\n        \"tags_url\": \"http://api.github.com/repos/octocat/Hello-World/tags\",\n        \"teams_url\": \"http://api.github.com/repos/octocat/Hello-World/teams\",\n        \"trees_url\": \"http://api.github.com/repos/octocat/Hello-World/git/trees{/sha}\"\n      },\n      \"head_repository\": {\n        \"id\": 217723378,\n        \"node_id\": \"MDEwOlJlcG9zaXRvcnkyMTc3MjMzNzg=\",\n        \"name\": \"octo-repo\",\n        \"full_name\": \"octo-org/octo-repo\",\n        \"private\": true,\n        \"owner\": {\n          \"login\": \"octocat\",\n          \"id\": 1,\n          \"node_id\": \"MDQ6VXNlcjE=\",\n          \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n          \"gravatar_id\": \"\",\n          \"url\": \"https://api.github.com/users/octocat\",\n          \"html_url\": \"https://github.com/octocat\",\n          \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n          \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n          \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n          \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n          \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n          \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n          \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n          \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n          \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n          \"type\": \"User\",\n          \"site_admin\": false\n        },\n        \"html_url\": \"https://github.com/octo-org/octo-repo\",\n        \"description\": null,\n        \"fork\": false,\n        \"url\": \"https://api.github.com/repos/octo-org/octo-repo\",\n        \"forks_url\": \"https://api.github.com/repos/octo-org/octo-repo/forks\",\n        \"keys_url\": \"https://api.github.com/repos/octo-org/octo-repo/keys{/key_id}\",\n        \"collaborators_url\": \"https://api.github.com/repos/octo-org/octo-repo/collaborators{/collaborator}\",\n        \"teams_url\": \"https://api.github.com/repos/octo-org/octo-repo/teams\",\n        \"hooks_url\": \"https://api.github.com/repos/octo-org/octo-repo/hooks\",\n        \"issue_events_url\": \"https://api.github.com/repos/octo-org/octo-repo/issues/events{/number}\",\n        \"events_url\": \"https://api.github.com/repos/octo-org/octo-repo/events\",\n        \"assignees_url\": \"https://api.github.com/repos/octo-org/octo-repo/assignees{/user}\",\n        \"branches_url\": \"https://api.github.com/repos/octo-org/octo-repo/branches{/branch}\",\n        \"tags_url\": \"https://api.github.com/repos/octo-org/octo-repo/tags\",\n        \"blobs_url\": \"https://api.github.com/repos/octo-org/octo-repo/git/blobs{/sha}\",\n        \"git_tags_url\": \"https://api.github.com/repos/octo-org/octo-repo/git/tags{/sha}\",\n        \"git_refs_url\": \"https://api.github.com/repos/octo-org/octo-repo/git/refs{/sha}\",\n        \"trees_url\": \"https://api.github.com/repos/octo-org/octo-repo/git/trees{/sha}\",\n        \"statuses_url\": \"https://api.github.com/repos/octo-org/octo-repo/statuses/{sha}\",\n        \"languages_url\": \"https://api.github.com/repos/octo-org/octo-repo/languages\",\n        \"stargazers_url\": \"https://api.github.com/repos/octo-org/octo-repo/stargazers\",\n        \"contributors_url\": \"https://api.github.com/repos/octo-org/octo-repo/contributors\",\n        \"subscribers_url\": \"https://api.github.com/repos/octo-org/octo-repo/subscribers\",\n        \"subscription_url\": \"https://api.github.com/repos/octo-org/octo-repo/subscription\",\n        \"commits_url\": \"https://api.github.com/repos/octo-org/octo-repo/commits{/sha}\",\n        \"git_commits_url\": \"https://api.github.com/repos/octo-org/octo-repo/git/commits{/sha}\",\n        \"comments_url\": \"https://api.github.com/repos/octo-org/octo-repo/comments{/number}\",\n        \"issue_comment_url\": \"https://api.github.com/repos/octo-org/octo-repo/issues/comments{/number}\",\n        \"contents_url\": \"https://api.github.com/repos/octo-org/octo-repo/contents/{+path}\",\n        \"compare_url\": \"https://api.github.com/repos/octo-org/octo-repo/compare/{base}...{head}\",\n        \"merges_url\": \"https://api.github.com/repos/octo-org/octo-repo/merges\",\n        \"archive_url\": \"https://api.github.com/repos/octo-org/octo-repo/{archive_format}{/ref}\",\n        \"downloads_url\": \"https://api.github.com/repos/octo-org/octo-repo/downloads\",\n        \"issues_url\": \"https://api.github.com/repos/octo-org/octo-repo/issues{/number}\",\n        \"pulls_url\": \"https://api.github.com/repos/octo-org/octo-repo/pulls{/number}\",\n        \"milestones_url\": \"https://api.github.com/repos/octo-org/octo-repo/milestones{/number}\",\n        \"notifications_url\": \"https://api.github.com/repos/octo-org/octo-repo/notifications{?since,all,participating}\",\n        \"labels_url\": \"https://api.github.com/repos/octo-org/octo-repo/labels{/name}\",\n        \"releases_url\": \"https://api.github.com/repos/octo-org/octo-repo/releases{/id}\",\n        \"deployments_url\": \"https://api.github.com/repos/octo-org/octo-repo/deployments\"\n      }\n    }\n  ]\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/repos/{owner}/{repo}/actions/runs"
+    },
+    "title":"List workflow runs for a repository"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/repos/octocat/hello-world/actions/runs/42\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"actions",
+    "id":"get-a-workflow-run",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"run_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"id\": 30433642,\n  \"node_id\": \"MDEyOldvcmtmbG93IFJ1bjI2OTI4OQ==\",\n  \"head_branch\": \"master\",\n  \"head_sha\": \"acb5820ced9479c074f688cc328bf03f341a511d\",\n  \"run_number\": 562,\n  \"event\": \"push\",\n  \"status\": \"queued\",\n  \"conclusion\": null,\n  \"workflow_id\": 159038,\n  \"url\": \"https://api.github.com/repos/octo-org/octo-repo/actions/runs/30433642\",\n  \"html_url\": \"https://github.com/octo-org/octo-repo/actions/runs/30433642\",\n  \"pull_requests\": [],\n  \"created_at\": \"2020-01-22T19:33:08Z\",\n  \"updated_at\": \"2020-01-22T19:33:08Z\",\n  \"jobs_url\": \"https://api.github.com/repos/octo-org/octo-repo/actions/runs/30433642/jobs\",\n  \"logs_url\": \"https://api.github.com/repos/octo-org/octo-repo/actions/runs/30433642/logs\",\n  \"check_suite_url\": \"https://api.github.com/repos/octo-org/octo-repo/check-suites/414944374\",\n  \"artifacts_url\": \"https://api.github.com/repos/octo-org/octo-repo/actions/runs/30433642/artifacts\",\n  \"cancel_url\": \"https://api.github.com/repos/octo-org/octo-repo/actions/runs/30433642/cancel\",\n  \"rerun_url\": \"https://api.github.com/repos/octo-org/octo-repo/actions/runs/30433642/rerun\",\n  \"workflow_url\": \"https://api.github.com/repos/octo-org/octo-repo/actions/workflows/159038\",\n  \"head_commit\": {\n    \"id\": \"acb5820ced9479c074f688cc328bf03f341a511d\",\n    \"tree_id\": \"d23f6eedb1e1b9610bbc754ddb5197bfe7271223\",\n    \"message\": \"Create linter.yml\",\n    \"timestamp\": \"2020-01-22T19:33:05Z\",\n    \"author\": {\n      \"name\": \"Octo Cat\",\n      \"email\": \"octocat@github.com\"\n    },\n    \"committer\": {\n      \"name\": \"GitHub\",\n      \"email\": \"noreply@github.com\"\n    }\n  },\n  \"repository\": {\n    \"id\": 1296269,\n    \"node_id\": \"MDEwOlJlcG9zaXRvcnkxMjk2MjY5\",\n    \"name\": \"Hello-World\",\n    \"full_name\": \"octocat/Hello-World\",\n    \"owner\": {\n      \"login\": \"octocat\",\n      \"id\": 1,\n      \"node_id\": \"MDQ6VXNlcjE=\",\n      \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n      \"gravatar_id\": \"\",\n      \"url\": \"https://api.github.com/users/octocat\",\n      \"html_url\": \"https://github.com/octocat\",\n      \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n      \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n      \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n      \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n      \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n      \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n      \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n      \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n      \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n      \"type\": \"User\",\n      \"site_admin\": false\n    },\n    \"private\": false,\n    \"html_url\": \"https://github.com/octocat/Hello-World\",\n    \"description\": \"This your first repo!\",\n    \"fork\": false,\n    \"url\": \"https://api.github.com/repos/octocat/Hello-World\",\n    \"archive_url\": \"http://api.github.com/repos/octocat/Hello-World/{archive_format}{/ref}\",\n    \"assignees_url\": \"http://api.github.com/repos/octocat/Hello-World/assignees{/user}\",\n    \"blobs_url\": \"http://api.github.com/repos/octocat/Hello-World/git/blobs{/sha}\",\n    \"branches_url\": \"http://api.github.com/repos/octocat/Hello-World/branches{/branch}\",\n    \"collaborators_url\": \"http://api.github.com/repos/octocat/Hello-World/collaborators{/collaborator}\",\n    \"comments_url\": \"http://api.github.com/repos/octocat/Hello-World/comments{/number}\",\n    \"commits_url\": \"http://api.github.com/repos/octocat/Hello-World/commits{/sha}\",\n    \"compare_url\": \"http://api.github.com/repos/octocat/Hello-World/compare/{base}...{head}\",\n    \"contents_url\": \"http://api.github.com/repos/octocat/Hello-World/contents/{+path}\",\n    \"contributors_url\": \"http://api.github.com/repos/octocat/Hello-World/contributors\",\n    \"deployments_url\": \"http://api.github.com/repos/octocat/Hello-World/deployments\",\n    \"downloads_url\": \"http://api.github.com/repos/octocat/Hello-World/downloads\",\n    \"events_url\": \"http://api.github.com/repos/octocat/Hello-World/events\",\n    \"forks_url\": \"http://api.github.com/repos/octocat/Hello-World/forks\",\n    \"git_commits_url\": \"http://api.github.com/repos/octocat/Hello-World/git/commits{/sha}\",\n    \"git_refs_url\": \"http://api.github.com/repos/octocat/Hello-World/git/refs{/sha}\",\n    \"git_tags_url\": \"http://api.github.com/repos/octocat/Hello-World/git/tags{/sha}\",\n    \"git_url\": \"git:github.com/octocat/Hello-World.git\",\n    \"issue_comment_url\": \"http://api.github.com/repos/octocat/Hello-World/issues/comments{/number}\",\n    \"issue_events_url\": \"http://api.github.com/repos/octocat/Hello-World/issues/events{/number}\",\n    \"issues_url\": \"http://api.github.com/repos/octocat/Hello-World/issues{/number}\",\n    \"keys_url\": \"http://api.github.com/repos/octocat/Hello-World/keys{/key_id}\",\n    \"labels_url\": \"http://api.github.com/repos/octocat/Hello-World/labels{/name}\",\n    \"languages_url\": \"http://api.github.com/repos/octocat/Hello-World/languages\",\n    \"merges_url\": \"http://api.github.com/repos/octocat/Hello-World/merges\",\n    \"milestones_url\": \"http://api.github.com/repos/octocat/Hello-World/milestones{/number}\",\n    \"notifications_url\": \"http://api.github.com/repos/octocat/Hello-World/notifications{?since,all,participating}\",\n    \"pulls_url\": \"http://api.github.com/repos/octocat/Hello-World/pulls{/number}\",\n    \"releases_url\": \"http://api.github.com/repos/octocat/Hello-World/releases{/id}\",\n    \"ssh_url\": \"git@github.com:octocat/Hello-World.git\",\n    \"stargazers_url\": \"http://api.github.com/repos/octocat/Hello-World/stargazers\",\n    \"statuses_url\": \"http://api.github.com/repos/octocat/Hello-World/statuses/{sha}\",\n    \"subscribers_url\": \"http://api.github.com/repos/octocat/Hello-World/subscribers\",\n    \"subscription_url\": \"http://api.github.com/repos/octocat/Hello-World/subscription\",\n    \"tags_url\": \"http://api.github.com/repos/octocat/Hello-World/tags\",\n    \"teams_url\": \"http://api.github.com/repos/octocat/Hello-World/teams\",\n    \"trees_url\": \"http://api.github.com/repos/octocat/Hello-World/git/trees{/sha}\"\n  },\n  \"head_repository\": {\n    \"id\": 217723378,\n    \"node_id\": \"MDEwOlJlcG9zaXRvcnkyMTc3MjMzNzg=\",\n    \"name\": \"octo-repo\",\n    \"full_name\": \"octo-org/octo-repo\",\n    \"private\": true,\n    \"owner\": {\n      \"login\": \"octocat\",\n      \"id\": 1,\n      \"node_id\": \"MDQ6VXNlcjE=\",\n      \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n      \"gravatar_id\": \"\",\n      \"url\": \"https://api.github.com/users/octocat\",\n      \"html_url\": \"https://github.com/octocat\",\n      \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n      \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n      \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n      \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n      \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n      \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n      \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n      \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n      \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n      \"type\": \"User\",\n      \"site_admin\": false\n    },\n    \"html_url\": \"https://github.com/octo-org/octo-repo\",\n    \"description\": null,\n    \"fork\": false,\n    \"url\": \"https://api.github.com/repos/octo-org/octo-repo\",\n    \"forks_url\": \"https://api.github.com/repos/octo-org/octo-repo/forks\",\n    \"keys_url\": \"https://api.github.com/repos/octo-org/octo-repo/keys{/key_id}\",\n    \"collaborators_url\": \"https://api.github.com/repos/octo-org/octo-repo/collaborators{/collaborator}\",\n    \"teams_url\": \"https://api.github.com/repos/octo-org/octo-repo/teams\",\n    \"hooks_url\": \"https://api.github.com/repos/octo-org/octo-repo/hooks\",\n    \"issue_events_url\": \"https://api.github.com/repos/octo-org/octo-repo/issues/events{/number}\",\n    \"events_url\": \"https://api.github.com/repos/octo-org/octo-repo/events\",\n    \"assignees_url\": \"https://api.github.com/repos/octo-org/octo-repo/assignees{/user}\",\n    \"branches_url\": \"https://api.github.com/repos/octo-org/octo-repo/branches{/branch}\",\n    \"tags_url\": \"https://api.github.com/repos/octo-org/octo-repo/tags\",\n    \"blobs_url\": \"https://api.github.com/repos/octo-org/octo-repo/git/blobs{/sha}\",\n    \"git_tags_url\": \"https://api.github.com/repos/octo-org/octo-repo/git/tags{/sha}\",\n    \"git_refs_url\": \"https://api.github.com/repos/octo-org/octo-repo/git/refs{/sha}\",\n    \"trees_url\": \"https://api.github.com/repos/octo-org/octo-repo/git/trees{/sha}\",\n    \"statuses_url\": \"https://api.github.com/repos/octo-org/octo-repo/statuses/{sha}\",\n    \"languages_url\": \"https://api.github.com/repos/octo-org/octo-repo/languages\",\n    \"stargazers_url\": \"https://api.github.com/repos/octo-org/octo-repo/stargazers\",\n    \"contributors_url\": \"https://api.github.com/repos/octo-org/octo-repo/contributors\",\n    \"subscribers_url\": \"https://api.github.com/repos/octo-org/octo-repo/subscribers\",\n    \"subscription_url\": \"https://api.github.com/repos/octo-org/octo-repo/subscription\",\n    \"commits_url\": \"https://api.github.com/repos/octo-org/octo-repo/commits{/sha}\",\n    \"git_commits_url\": \"https://api.github.com/repos/octo-org/octo-repo/git/commits{/sha}\",\n    \"comments_url\": \"https://api.github.com/repos/octo-org/octo-repo/comments{/number}\",\n    \"issue_comment_url\": \"https://api.github.com/repos/octo-org/octo-repo/issues/comments{/number}\",\n    \"contents_url\": \"https://api.github.com/repos/octo-org/octo-repo/contents/{+path}\",\n    \"compare_url\": \"https://api.github.com/repos/octo-org/octo-repo/compare/{base}...{head}\",\n    \"merges_url\": \"https://api.github.com/repos/octo-org/octo-repo/merges\",\n    \"archive_url\": \"https://api.github.com/repos/octo-org/octo-repo/{archive_format}{/ref}\",\n    \"downloads_url\": \"https://api.github.com/repos/octo-org/octo-repo/downloads\",\n    \"issues_url\": \"https://api.github.com/repos/octo-org/octo-repo/issues{/number}\",\n    \"pulls_url\": \"https://api.github.com/repos/octo-org/octo-repo/pulls{/number}\",\n    \"milestones_url\": \"https://api.github.com/repos/octo-org/octo-repo/milestones{/number}\",\n    \"notifications_url\": \"https://api.github.com/repos/octo-org/octo-repo/notifications{?since,all,participating}\",\n    \"labels_url\": \"https://api.github.com/repos/octo-org/octo-repo/labels{/name}\",\n    \"releases_url\": \"https://api.github.com/repos/octo-org/octo-repo/releases{/id}\",\n    \"deployments_url\": \"https://api.github.com/repos/octo-org/octo-repo/deployments\"\n  }\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/repos/{owner}/{repo}/actions/runs/{run_id}"
+    },
+    "title":"Get a workflow run"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X DELETE \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/repos/octocat/hello-world/actions/runs/42\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"actions",
+    "id":"delete-a-workflow-run",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"run_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"delete",
+      "path":"/repos/{owner}/{repo}/actions/runs/{run_id}"
+    },
+    "title":"Delete a workflow run"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X POST \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/repos/octocat/hello-world/actions/runs/42/cancel\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"actions",
+    "id":"cancel-a-workflow-run",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"run_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"202 Accepted"
+      }
+    ],
+    "target":{
+      "method":"post",
+      "path":"/repos/{owner}/{repo}/actions/runs/{run_id}/cancel"
+    },
+    "title":"Cancel a workflow run"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/repos/octocat/hello-world/actions/runs/42/logs\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"actions",
+    "id":"download-workflow-run-logs",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"run_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"302 Found"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/repos/{owner}/{repo}/actions/runs/{run_id}/logs"
+    },
+    "title":"Download workflow run logs"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X DELETE \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/repos/octocat/hello-world/actions/runs/42/logs\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"actions",
+    "id":"delete-workflow-run-logs",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"run_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"delete",
+      "path":"/repos/{owner}/{repo}/actions/runs/{run_id}/logs"
+    },
+    "title":"Delete workflow run logs"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X POST \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/repos/octocat/hello-world/actions/runs/42/rerun\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"actions",
+    "id":"re-run-a-workflow",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"run_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"201 Created"
+      }
+    ],
+    "target":{
+      "method":"post",
+      "path":"/repos/{owner}/{repo}/actions/runs/{run_id}/rerun"
+    },
+    "title":"Re-run a workflow"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/repos/octocat/hello-world/actions/runs/42/timing\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"actions",
+    "id":"get-workflow-run-usage",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"run_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"billable\": {\n    \"UBUNTU\": {\n      \"total_ms\": 180000,\n      \"jobs\": 1\n    },\n    \"MACOS\": {\n      \"total_ms\": 240000,\n      \"jobs\": 4\n    },\n    \"WINDOWS\": {\n      \"total_ms\": 300000,\n      \"jobs\": 2\n    }\n  },\n  \"run_duration_ms\": 500000\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/repos/{owner}/{repo}/actions/runs/{run_id}/timing"
+    },
+    "title":"Get workflow run usage"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/repos/octocat/hello-world/actions/workflows/42/runs\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"actions",
+    "id":"list-workflow-runs",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"workflow_id ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Returns someone&apos;s workflow runs. Use the login for the user who created the <code>push</code> associated with the check suite or workflow run.</p>",
+        "in":"query ",
+        "name":"actor ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Returns workflow runs associated with a branch. Use the name of the branch of the <code>push</code>.</p>",
+        "in":"query ",
+        "name":"branch ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Returns workflow run triggered by the event you specify. For example, <code>push</code>, <code>pull_request</code> or <code>issue</code>. For more information, see &quot;<a href=\"https://docs.github.com/en/actions/automating-your-workflow-with-github-actions/events-that-trigger-workflows\">Events that trigger workflows</a>.&quot;</p>",
+        "in":"query ",
+        "name":"event ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Returns workflow runs associated with the check run <code>status</code> or <code>conclusion</code> you specify. For example, a conclusion can be <code>success</code> or a status can be <code>completed</code>. For more information, see the <code>status</code> and <code>conclusion</code> options available in &quot;<a href=\"https://developer.github.com/v3/checks/runs/#create-a-check-run\">Create a check run</a>.&quot;</p>",
+        "in":"query ",
+        "name":"status ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"total_count\": 1,\n  \"workflow_runs\": [\n    {\n      \"id\": 30433642,\n      \"node_id\": \"MDEyOldvcmtmbG93IFJ1bjI2OTI4OQ==\",\n      \"head_branch\": \"master\",\n      \"head_sha\": \"acb5820ced9479c074f688cc328bf03f341a511d\",\n      \"run_number\": 562,\n      \"event\": \"push\",\n      \"status\": \"queued\",\n      \"conclusion\": null,\n      \"workflow_id\": 159038,\n      \"url\": \"https://api.github.com/repos/octo-org/octo-repo/actions/runs/30433642\",\n      \"html_url\": \"https://github.com/octo-org/octo-repo/actions/runs/30433642\",\n      \"pull_requests\": [],\n      \"created_at\": \"2020-01-22T19:33:08Z\",\n      \"updated_at\": \"2020-01-22T19:33:08Z\",\n      \"jobs_url\": \"https://api.github.com/repos/octo-org/octo-repo/actions/runs/30433642/jobs\",\n      \"logs_url\": \"https://api.github.com/repos/octo-org/octo-repo/actions/runs/30433642/logs\",\n      \"check_suite_url\": \"https://api.github.com/repos/octo-org/octo-repo/check-suites/414944374\",\n      \"artifacts_url\": \"https://api.github.com/repos/octo-org/octo-repo/actions/runs/30433642/artifacts\",\n      \"cancel_url\": \"https://api.github.com/repos/octo-org/octo-repo/actions/runs/30433642/cancel\",\n      \"rerun_url\": \"https://api.github.com/repos/octo-org/octo-repo/actions/runs/30433642/rerun\",\n      \"workflow_url\": \"https://api.github.com/repos/octo-org/octo-repo/actions/workflows/159038\",\n      \"head_commit\": {\n        \"id\": \"acb5820ced9479c074f688cc328bf03f341a511d\",\n        \"tree_id\": \"d23f6eedb1e1b9610bbc754ddb5197bfe7271223\",\n        \"message\": \"Create linter.yml\",\n        \"timestamp\": \"2020-01-22T19:33:05Z\",\n        \"author\": {\n          \"name\": \"Octo Cat\",\n          \"email\": \"octocat@github.com\"\n        },\n        \"committer\": {\n          \"name\": \"GitHub\",\n          \"email\": \"noreply@github.com\"\n        }\n      },\n      \"repository\": {\n        \"id\": 1296269,\n        \"node_id\": \"MDEwOlJlcG9zaXRvcnkxMjk2MjY5\",\n        \"name\": \"Hello-World\",\n        \"full_name\": \"octocat/Hello-World\",\n        \"owner\": {\n          \"login\": \"octocat\",\n          \"id\": 1,\n          \"node_id\": \"MDQ6VXNlcjE=\",\n          \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n          \"gravatar_id\": \"\",\n          \"url\": \"https://api.github.com/users/octocat\",\n          \"html_url\": \"https://github.com/octocat\",\n          \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n          \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n          \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n          \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n          \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n          \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n          \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n          \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n          \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n          \"type\": \"User\",\n          \"site_admin\": false\n        },\n        \"private\": false,\n        \"html_url\": \"https://github.com/octocat/Hello-World\",\n        \"description\": \"This your first repo!\",\n        \"fork\": false,\n        \"url\": \"https://api.github.com/repos/octocat/Hello-World\",\n        \"archive_url\": \"http://api.github.com/repos/octocat/Hello-World/{archive_format}{/ref}\",\n        \"assignees_url\": \"http://api.github.com/repos/octocat/Hello-World/assignees{/user}\",\n        \"blobs_url\": \"http://api.github.com/repos/octocat/Hello-World/git/blobs{/sha}\",\n        \"branches_url\": \"http://api.github.com/repos/octocat/Hello-World/branches{/branch}\",\n        \"collaborators_url\": \"http://api.github.com/repos/octocat/Hello-World/collaborators{/collaborator}\",\n        \"comments_url\": \"http://api.github.com/repos/octocat/Hello-World/comments{/number}\",\n        \"commits_url\": \"http://api.github.com/repos/octocat/Hello-World/commits{/sha}\",\n        \"compare_url\": \"http://api.github.com/repos/octocat/Hello-World/compare/{base}...{head}\",\n        \"contents_url\": \"http://api.github.com/repos/octocat/Hello-World/contents/{+path}\",\n        \"contributors_url\": \"http://api.github.com/repos/octocat/Hello-World/contributors\",\n        \"deployments_url\": \"http://api.github.com/repos/octocat/Hello-World/deployments\",\n        \"downloads_url\": \"http://api.github.com/repos/octocat/Hello-World/downloads\",\n        \"events_url\": \"http://api.github.com/repos/octocat/Hello-World/events\",\n        \"forks_url\": \"http://api.github.com/repos/octocat/Hello-World/forks\",\n        \"git_commits_url\": \"http://api.github.com/repos/octocat/Hello-World/git/commits{/sha}\",\n        \"git_refs_url\": \"http://api.github.com/repos/octocat/Hello-World/git/refs{/sha}\",\n        \"git_tags_url\": \"http://api.github.com/repos/octocat/Hello-World/git/tags{/sha}\",\n        \"git_url\": \"git:github.com/octocat/Hello-World.git\",\n        \"issue_comment_url\": \"http://api.github.com/repos/octocat/Hello-World/issues/comments{/number}\",\n        \"issue_events_url\": \"http://api.github.com/repos/octocat/Hello-World/issues/events{/number}\",\n        \"issues_url\": \"http://api.github.com/repos/octocat/Hello-World/issues{/number}\",\n        \"keys_url\": \"http://api.github.com/repos/octocat/Hello-World/keys{/key_id}\",\n        \"labels_url\": \"http://api.github.com/repos/octocat/Hello-World/labels{/name}\",\n        \"languages_url\": \"http://api.github.com/repos/octocat/Hello-World/languages\",\n        \"merges_url\": \"http://api.github.com/repos/octocat/Hello-World/merges\",\n        \"milestones_url\": \"http://api.github.com/repos/octocat/Hello-World/milestones{/number}\",\n        \"notifications_url\": \"http://api.github.com/repos/octocat/Hello-World/notifications{?since,all,participating}\",\n        \"pulls_url\": \"http://api.github.com/repos/octocat/Hello-World/pulls{/number}\",\n        \"releases_url\": \"http://api.github.com/repos/octocat/Hello-World/releases{/id}\",\n        \"ssh_url\": \"git@github.com:octocat/Hello-World.git\",\n        \"stargazers_url\": \"http://api.github.com/repos/octocat/Hello-World/stargazers\",\n        \"statuses_url\": \"http://api.github.com/repos/octocat/Hello-World/statuses/{sha}\",\n        \"subscribers_url\": \"http://api.github.com/repos/octocat/Hello-World/subscribers\",\n        \"subscription_url\": \"http://api.github.com/repos/octocat/Hello-World/subscription\",\n        \"tags_url\": \"http://api.github.com/repos/octocat/Hello-World/tags\",\n        \"teams_url\": \"http://api.github.com/repos/octocat/Hello-World/teams\",\n        \"trees_url\": \"http://api.github.com/repos/octocat/Hello-World/git/trees{/sha}\"\n      },\n      \"head_repository\": {\n        \"id\": 217723378,\n        \"node_id\": \"MDEwOlJlcG9zaXRvcnkyMTc3MjMzNzg=\",\n        \"name\": \"octo-repo\",\n        \"full_name\": \"octo-org/octo-repo\",\n        \"private\": true,\n        \"owner\": {\n          \"login\": \"octocat\",\n          \"id\": 1,\n          \"node_id\": \"MDQ6VXNlcjE=\",\n          \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n          \"gravatar_id\": \"\",\n          \"url\": \"https://api.github.com/users/octocat\",\n          \"html_url\": \"https://github.com/octocat\",\n          \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n          \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n          \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n          \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n          \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n          \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n          \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n          \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n          \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n          \"type\": \"User\",\n          \"site_admin\": false\n        },\n        \"html_url\": \"https://github.com/octo-org/octo-repo\",\n        \"description\": null,\n        \"fork\": false,\n        \"url\": \"https://api.github.com/repos/octo-org/octo-repo\",\n        \"forks_url\": \"https://api.github.com/repos/octo-org/octo-repo/forks\",\n        \"keys_url\": \"https://api.github.com/repos/octo-org/octo-repo/keys{/key_id}\",\n        \"collaborators_url\": \"https://api.github.com/repos/octo-org/octo-repo/collaborators{/collaborator}\",\n        \"teams_url\": \"https://api.github.com/repos/octo-org/octo-repo/teams\",\n        \"hooks_url\": \"https://api.github.com/repos/octo-org/octo-repo/hooks\",\n        \"issue_events_url\": \"https://api.github.com/repos/octo-org/octo-repo/issues/events{/number}\",\n        \"events_url\": \"https://api.github.com/repos/octo-org/octo-repo/events\",\n        \"assignees_url\": \"https://api.github.com/repos/octo-org/octo-repo/assignees{/user}\",\n        \"branches_url\": \"https://api.github.com/repos/octo-org/octo-repo/branches{/branch}\",\n        \"tags_url\": \"https://api.github.com/repos/octo-org/octo-repo/tags\",\n        \"blobs_url\": \"https://api.github.com/repos/octo-org/octo-repo/git/blobs{/sha}\",\n        \"git_tags_url\": \"https://api.github.com/repos/octo-org/octo-repo/git/tags{/sha}\",\n        \"git_refs_url\": \"https://api.github.com/repos/octo-org/octo-repo/git/refs{/sha}\",\n        \"trees_url\": \"https://api.github.com/repos/octo-org/octo-repo/git/trees{/sha}\",\n        \"statuses_url\": \"https://api.github.com/repos/octo-org/octo-repo/statuses/{sha}\",\n        \"languages_url\": \"https://api.github.com/repos/octo-org/octo-repo/languages\",\n        \"stargazers_url\": \"https://api.github.com/repos/octo-org/octo-repo/stargazers\",\n        \"contributors_url\": \"https://api.github.com/repos/octo-org/octo-repo/contributors\",\n        \"subscribers_url\": \"https://api.github.com/repos/octo-org/octo-repo/subscribers\",\n        \"subscription_url\": \"https://api.github.com/repos/octo-org/octo-repo/subscription\",\n        \"commits_url\": \"https://api.github.com/repos/octo-org/octo-repo/commits{/sha}\",\n        \"git_commits_url\": \"https://api.github.com/repos/octo-org/octo-repo/git/commits{/sha}\",\n        \"comments_url\": \"https://api.github.com/repos/octo-org/octo-repo/comments{/number}\",\n        \"issue_comment_url\": \"https://api.github.com/repos/octo-org/octo-repo/issues/comments{/number}\",\n        \"contents_url\": \"https://api.github.com/repos/octo-org/octo-repo/contents/{+path}\",\n        \"compare_url\": \"https://api.github.com/repos/octo-org/octo-repo/compare/{base}...{head}\",\n        \"merges_url\": \"https://api.github.com/repos/octo-org/octo-repo/merges\",\n        \"archive_url\": \"https://api.github.com/repos/octo-org/octo-repo/{archive_format}{/ref}\",\n        \"downloads_url\": \"https://api.github.com/repos/octo-org/octo-repo/downloads\",\n        \"issues_url\": \"https://api.github.com/repos/octo-org/octo-repo/issues{/number}\",\n        \"pulls_url\": \"https://api.github.com/repos/octo-org/octo-repo/pulls{/number}\",\n        \"milestones_url\": \"https://api.github.com/repos/octo-org/octo-repo/milestones{/number}\",\n        \"notifications_url\": \"https://api.github.com/repos/octo-org/octo-repo/notifications{?since,all,participating}\",\n        \"labels_url\": \"https://api.github.com/repos/octo-org/octo-repo/labels{/name}\",\n        \"releases_url\": \"https://api.github.com/repos/octo-org/octo-repo/releases{/id}\",\n        \"deployments_url\": \"https://api.github.com/repos/octo-org/octo-repo/deployments\"\n      }\n    }\n  ]\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/repos/{owner}/{repo}/actions/workflows/{workflow_id}/runs"
+    },
+    "title":"List workflow runs"
+  }
+]

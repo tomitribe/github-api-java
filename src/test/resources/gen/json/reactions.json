@@ -1,0 +1,1270 @@
+[
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.squirrel-girl-preview+json\" \\\n  https://api.github.com/orgs/ORG/teams/TEAM_SLUG/discussions/42/comments/42/reactions\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"reactions",
+    "id":"list-reactions-for-a-team-discussion-comment",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>This API is under preview and subject to change.</p> <a href=\"#list-reactions-for-a-team-discussion-comment-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"team_slug ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"discussion_number ",
+        "type":"integer "
+      },
+      {
+        "in":"path",
+        "name":"comment_number ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Returns a single <a href=\"https://developer.github.com/v3/reactions/#reaction-types\">reaction type</a>. Omit this parameter to list all reactions to a team discussion comment.</p>",
+        "in":"query ",
+        "name":"content ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"id\": 1,\n    \"node_id\": \"MDg6UmVhY3Rpb24x\",\n    \"user\": {\n      \"login\": \"octocat\",\n      \"id\": 1,\n      \"node_id\": \"MDQ6VXNlcjE=\",\n      \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n      \"gravatar_id\": \"\",\n      \"url\": \"https://api.github.com/users/octocat\",\n      \"html_url\": \"https://github.com/octocat\",\n      \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n      \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n      \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n      \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n      \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n      \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n      \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n      \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n      \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n      \"type\": \"User\",\n      \"site_admin\": false\n    },\n    \"content\": \"heart\",\n    \"created_at\": \"2016-05-20T20:09:31Z\"\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions"
+    },
+    "title":"List reactions for a team discussion comment"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X POST \\\n  -H \"Accept: application/vnd.github.squirrel-girl-preview+json\" \\\n  https://api.github.com/orgs/ORG/teams/TEAM_SLUG/discussions/42/comments/42/reactions \\\n  -d '{\"content\":\"content\"}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"reactions",
+    "id":"create-reaction-for-a-team-discussion-comment",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>This API is under preview and subject to change.</p> <a href=\"#create-reaction-for-a-team-discussion-comment-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"team_slug ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"discussion_number ",
+        "type":"integer "
+      },
+      {
+        "in":"path",
+        "name":"comment_number ",
+        "type":"integer "
+      },
+      {
+        "description":"<p><strong>Required</strong>. The <a href=\"https://developer.github.com/v3/reactions/#reaction-types\">reaction type</a> to add to the team discussion comment.</p>",
+        "in":"body ",
+        "name":"content ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"201 Created",
+        "content":"{\n  \"id\": 1,\n  \"node_id\": \"MDg6UmVhY3Rpb24x\",\n  \"user\": {\n    \"login\": \"octocat\",\n    \"id\": 1,\n    \"node_id\": \"MDQ6VXNlcjE=\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/users/octocat\",\n    \"html_url\": \"https://github.com/octocat\",\n    \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n    \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n    \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n    \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n    \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n    \"type\": \"User\",\n    \"site_admin\": false\n  },\n  \"content\": \"heart\",\n  \"created_at\": \"2016-05-20T20:09:31Z\"\n}\n"
+      }
+    ],
+    "target":{
+      "method":"post",
+      "path":"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions"
+    },
+    "title":"Create reaction for a team discussion comment"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X DELETE \\\n  -H \"Accept: application/vnd.github.squirrel-girl-preview+json\" \\\n  https://api.github.com/orgs/ORG/teams/TEAM_SLUG/discussions/42/comments/42/reactions/42\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"reactions",
+    "id":"delete-team-discussion-comment-reaction",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>This API is under preview and subject to change.</p> <a href=\"#delete-team-discussion-comment-reaction-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"team_slug ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"discussion_number ",
+        "type":"integer "
+      },
+      {
+        "in":"path",
+        "name":"comment_number ",
+        "type":"integer "
+      },
+      {
+        "in":"path",
+        "name":"reaction_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"delete",
+      "path":"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions/{reaction_id}"
+    },
+    "title":"Delete team discussion comment reaction"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.squirrel-girl-preview+json\" \\\n  https://api.github.com/orgs/ORG/teams/TEAM_SLUG/discussions/42/reactions\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"reactions",
+    "id":"list-reactions-for-a-team-discussion",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>This API is under preview and subject to change.</p> <a href=\"#list-reactions-for-a-team-discussion-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"team_slug ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"discussion_number ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Returns a single <a href=\"https://developer.github.com/v3/reactions/#reaction-types\">reaction type</a>. Omit this parameter to list all reactions to a team discussion.</p>",
+        "in":"query ",
+        "name":"content ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"id\": 1,\n    \"node_id\": \"MDg6UmVhY3Rpb24x\",\n    \"user\": {\n      \"login\": \"octocat\",\n      \"id\": 1,\n      \"node_id\": \"MDQ6VXNlcjE=\",\n      \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n      \"gravatar_id\": \"\",\n      \"url\": \"https://api.github.com/users/octocat\",\n      \"html_url\": \"https://github.com/octocat\",\n      \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n      \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n      \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n      \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n      \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n      \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n      \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n      \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n      \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n      \"type\": \"User\",\n      \"site_admin\": false\n    },\n    \"content\": \"heart\",\n    \"created_at\": \"2016-05-20T20:09:31Z\"\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions"
+    },
+    "title":"List reactions for a team discussion"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X POST \\\n  -H \"Accept: application/vnd.github.squirrel-girl-preview+json\" \\\n  https://api.github.com/orgs/ORG/teams/TEAM_SLUG/discussions/42/reactions \\\n  -d '{\"content\":\"content\"}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"reactions",
+    "id":"create-reaction-for-a-team-discussion",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>This API is under preview and subject to change.</p> <a href=\"#create-reaction-for-a-team-discussion-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"team_slug ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"discussion_number ",
+        "type":"integer "
+      },
+      {
+        "description":"<p><strong>Required</strong>. The <a href=\"https://developer.github.com/v3/reactions/#reaction-types\">reaction type</a> to add to the team discussion.</p>",
+        "in":"body ",
+        "name":"content ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"201 Created",
+        "content":"{\n  \"id\": 1,\n  \"node_id\": \"MDg6UmVhY3Rpb24x\",\n  \"user\": {\n    \"login\": \"octocat\",\n    \"id\": 1,\n    \"node_id\": \"MDQ6VXNlcjE=\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/users/octocat\",\n    \"html_url\": \"https://github.com/octocat\",\n    \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n    \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n    \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n    \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n    \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n    \"type\": \"User\",\n    \"site_admin\": false\n  },\n  \"content\": \"heart\",\n  \"created_at\": \"2016-05-20T20:09:31Z\"\n}\n"
+      }
+    ],
+    "target":{
+      "method":"post",
+      "path":"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions"
+    },
+    "title":"Create reaction for a team discussion"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X DELETE \\\n  -H \"Accept: application/vnd.github.squirrel-girl-preview+json\" \\\n  https://api.github.com/orgs/ORG/teams/TEAM_SLUG/discussions/42/reactions/42\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"reactions",
+    "id":"delete-team-discussion-reaction",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>This API is under preview and subject to change.</p> <a href=\"#delete-team-discussion-reaction-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"team_slug ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"discussion_number ",
+        "type":"integer "
+      },
+      {
+        "in":"path",
+        "name":"reaction_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"delete",
+      "path":"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions/{reaction_id}"
+    },
+    "title":"Delete team discussion reaction"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X DELETE \\\n  -H \"Accept: application/vnd.github.squirrel-girl-preview+json\" \\\n  https://api.github.com/reactions/42\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"reactions",
+    "id":"delete-a-reaction-legacy",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>This API is under preview and subject to change.</p> <a href=\"#delete-a-reaction-legacy-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"reaction_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"delete",
+      "path":"/reactions/{reaction_id}"
+    },
+    "title":"Delete a reaction (Legacy)"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.squirrel-girl-preview+json\" \\\n  https://api.github.com/repos/octocat/hello-world/comments/42/reactions\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"reactions",
+    "id":"list-reactions-for-a-commit-comment",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>This API is under preview and subject to change.</p> <a href=\"#list-reactions-for-a-commit-comment-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"comment_id ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Returns a single <a href=\"https://developer.github.com/v3/reactions/#reaction-types\">reaction type</a>. Omit this parameter to list all reactions to a commit comment.</p>",
+        "in":"query ",
+        "name":"content ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"id\": 1,\n    \"node_id\": \"MDg6UmVhY3Rpb24x\",\n    \"user\": {\n      \"login\": \"octocat\",\n      \"id\": 1,\n      \"node_id\": \"MDQ6VXNlcjE=\",\n      \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n      \"gravatar_id\": \"\",\n      \"url\": \"https://api.github.com/users/octocat\",\n      \"html_url\": \"https://github.com/octocat\",\n      \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n      \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n      \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n      \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n      \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n      \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n      \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n      \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n      \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n      \"type\": \"User\",\n      \"site_admin\": false\n    },\n    \"content\": \"heart\",\n    \"created_at\": \"2016-05-20T20:09:31Z\"\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/repos/{owner}/{repo}/comments/{comment_id}/reactions"
+    },
+    "title":"List reactions for a commit comment"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X POST \\\n  -H \"Accept: application/vnd.github.squirrel-girl-preview+json\" \\\n  https://api.github.com/repos/octocat/hello-world/comments/42/reactions \\\n  -d '{\"content\":\"content\"}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"reactions",
+    "id":"create-reaction-for-a-commit-comment",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>This API is under preview and subject to change.</p> <a href=\"#create-reaction-for-a-commit-comment-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"comment_id ",
+        "type":"integer "
+      },
+      {
+        "description":"<p><strong>Required</strong>. The <a href=\"https://developer.github.com/v3/reactions/#reaction-types\">reaction type</a> to add to the commit comment.</p>",
+        "in":"body ",
+        "name":"content ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"201 Created",
+        "content":"{\n  \"id\": 1,\n  \"node_id\": \"MDg6UmVhY3Rpb24x\",\n  \"user\": {\n    \"login\": \"octocat\",\n    \"id\": 1,\n    \"node_id\": \"MDQ6VXNlcjE=\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/users/octocat\",\n    \"html_url\": \"https://github.com/octocat\",\n    \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n    \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n    \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n    \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n    \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n    \"type\": \"User\",\n    \"site_admin\": false\n  },\n  \"content\": \"heart\",\n  \"created_at\": \"2016-05-20T20:09:31Z\"\n}\n"
+      }
+    ],
+    "target":{
+      "method":"post",
+      "path":"/repos/{owner}/{repo}/comments/{comment_id}/reactions"
+    },
+    "title":"Create reaction for a commit comment"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X DELETE \\\n  -H \"Accept: application/vnd.github.squirrel-girl-preview+json\" \\\n  https://api.github.com/repos/octocat/hello-world/comments/42/reactions/42\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"reactions",
+    "id":"delete-a-commit-comment-reaction",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>This API is under preview and subject to change.</p> <a href=\"#delete-a-commit-comment-reaction-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"comment_id ",
+        "type":"integer "
+      },
+      {
+        "in":"path",
+        "name":"reaction_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"delete",
+      "path":"/repos/{owner}/{repo}/comments/{comment_id}/reactions/{reaction_id}"
+    },
+    "title":"Delete a commit comment reaction"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.squirrel-girl-preview+json\" \\\n  https://api.github.com/repos/octocat/hello-world/issues/comments/42/reactions\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"reactions",
+    "id":"list-reactions-for-an-issue-comment",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>This API is under preview and subject to change.</p> <a href=\"#list-reactions-for-an-issue-comment-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"comment_id ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Returns a single <a href=\"https://developer.github.com/v3/reactions/#reaction-types\">reaction type</a>. Omit this parameter to list all reactions to an issue comment.</p>",
+        "in":"query ",
+        "name":"content ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"id\": 1,\n    \"node_id\": \"MDg6UmVhY3Rpb24x\",\n    \"user\": {\n      \"login\": \"octocat\",\n      \"id\": 1,\n      \"node_id\": \"MDQ6VXNlcjE=\",\n      \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n      \"gravatar_id\": \"\",\n      \"url\": \"https://api.github.com/users/octocat\",\n      \"html_url\": \"https://github.com/octocat\",\n      \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n      \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n      \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n      \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n      \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n      \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n      \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n      \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n      \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n      \"type\": \"User\",\n      \"site_admin\": false\n    },\n    \"content\": \"heart\",\n    \"created_at\": \"2016-05-20T20:09:31Z\"\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/repos/{owner}/{repo}/issues/comments/{comment_id}/reactions"
+    },
+    "title":"List reactions for an issue comment"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X POST \\\n  -H \"Accept: application/vnd.github.squirrel-girl-preview+json\" \\\n  https://api.github.com/repos/octocat/hello-world/issues/comments/42/reactions \\\n  -d '{\"content\":\"content\"}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"reactions",
+    "id":"create-reaction-for-an-issue-comment",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>This API is under preview and subject to change.</p> <a href=\"#create-reaction-for-an-issue-comment-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"comment_id ",
+        "type":"integer "
+      },
+      {
+        "description":"<p><strong>Required</strong>. The <a href=\"https://developer.github.com/v3/reactions/#reaction-types\">reaction type</a> to add to the issue comment.</p>",
+        "in":"body ",
+        "name":"content ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"201 Created",
+        "content":"{\n  \"id\": 1,\n  \"node_id\": \"MDg6UmVhY3Rpb24x\",\n  \"user\": {\n    \"login\": \"octocat\",\n    \"id\": 1,\n    \"node_id\": \"MDQ6VXNlcjE=\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/users/octocat\",\n    \"html_url\": \"https://github.com/octocat\",\n    \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n    \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n    \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n    \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n    \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n    \"type\": \"User\",\n    \"site_admin\": false\n  },\n  \"content\": \"heart\",\n  \"created_at\": \"2016-05-20T20:09:31Z\"\n}\n"
+      }
+    ],
+    "target":{
+      "method":"post",
+      "path":"/repos/{owner}/{repo}/issues/comments/{comment_id}/reactions"
+    },
+    "title":"Create reaction for an issue comment"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X DELETE \\\n  -H \"Accept: application/vnd.github.squirrel-girl-preview+json\" \\\n  https://api.github.com/repos/octocat/hello-world/issues/comments/42/reactions/42\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"reactions",
+    "id":"delete-an-issue-comment-reaction",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>This API is under preview and subject to change.</p> <a href=\"#delete-an-issue-comment-reaction-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"comment_id ",
+        "type":"integer "
+      },
+      {
+        "in":"path",
+        "name":"reaction_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"delete",
+      "path":"/repos/{owner}/{repo}/issues/comments/{comment_id}/reactions/{reaction_id}"
+    },
+    "title":"Delete an issue comment reaction"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.squirrel-girl-preview+json\" \\\n  https://api.github.com/repos/octocat/hello-world/issues/42/reactions\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"reactions",
+    "id":"list-reactions-for-an-issue",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>This API is under preview and subject to change.</p> <a href=\"#list-reactions-for-an-issue-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"issue_number ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Returns a single <a href=\"https://developer.github.com/v3/reactions/#reaction-types\">reaction type</a>. Omit this parameter to list all reactions to an issue.</p>",
+        "in":"query ",
+        "name":"content ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"id\": 1,\n    \"node_id\": \"MDg6UmVhY3Rpb24x\",\n    \"user\": {\n      \"login\": \"octocat\",\n      \"id\": 1,\n      \"node_id\": \"MDQ6VXNlcjE=\",\n      \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n      \"gravatar_id\": \"\",\n      \"url\": \"https://api.github.com/users/octocat\",\n      \"html_url\": \"https://github.com/octocat\",\n      \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n      \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n      \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n      \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n      \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n      \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n      \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n      \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n      \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n      \"type\": \"User\",\n      \"site_admin\": false\n    },\n    \"content\": \"heart\",\n    \"created_at\": \"2016-05-20T20:09:31Z\"\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/repos/{owner}/{repo}/issues/{issue_number}/reactions"
+    },
+    "title":"List reactions for an issue"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X POST \\\n  -H \"Accept: application/vnd.github.squirrel-girl-preview+json\" \\\n  https://api.github.com/repos/octocat/hello-world/issues/42/reactions \\\n  -d '{\"content\":\"content\"}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"reactions",
+    "id":"create-reaction-for-an-issue",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>This API is under preview and subject to change.</p> <a href=\"#create-reaction-for-an-issue-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"issue_number ",
+        "type":"integer "
+      },
+      {
+        "description":"<p><strong>Required</strong>. The <a href=\"https://developer.github.com/v3/reactions/#reaction-types\">reaction type</a> to add to the issue.</p>",
+        "in":"body ",
+        "name":"content ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"201 Created",
+        "content":"{\n  \"id\": 1,\n  \"node_id\": \"MDg6UmVhY3Rpb24x\",\n  \"user\": {\n    \"login\": \"octocat\",\n    \"id\": 1,\n    \"node_id\": \"MDQ6VXNlcjE=\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/users/octocat\",\n    \"html_url\": \"https://github.com/octocat\",\n    \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n    \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n    \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n    \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n    \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n    \"type\": \"User\",\n    \"site_admin\": false\n  },\n  \"content\": \"heart\",\n  \"created_at\": \"2016-05-20T20:09:31Z\"\n}\n"
+      }
+    ],
+    "target":{
+      "method":"post",
+      "path":"/repos/{owner}/{repo}/issues/{issue_number}/reactions"
+    },
+    "title":"Create reaction for an issue"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X DELETE \\\n  -H \"Accept: application/vnd.github.squirrel-girl-preview+json\" \\\n  https://api.github.com/repos/octocat/hello-world/issues/42/reactions/42\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"reactions",
+    "id":"delete-an-issue-reaction",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>This API is under preview and subject to change.</p> <a href=\"#delete-an-issue-reaction-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"issue_number ",
+        "type":"integer "
+      },
+      {
+        "in":"path",
+        "name":"reaction_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"delete",
+      "path":"/repos/{owner}/{repo}/issues/{issue_number}/reactions/{reaction_id}"
+    },
+    "title":"Delete an issue reaction"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.squirrel-girl-preview+json\" \\\n  https://api.github.com/repos/octocat/hello-world/pulls/comments/42/reactions\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"reactions",
+    "id":"list-reactions-for-a-pull-request-review-comment",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>This API is under preview and subject to change.</p> <a href=\"#list-reactions-for-a-pull-request-review-comment-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"comment_id ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Returns a single <a href=\"https://developer.github.com/v3/reactions/#reaction-types\">reaction type</a>. Omit this parameter to list all reactions to a pull request review comment.</p>",
+        "in":"query ",
+        "name":"content ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"id\": 1,\n    \"node_id\": \"MDg6UmVhY3Rpb24x\",\n    \"user\": {\n      \"login\": \"octocat\",\n      \"id\": 1,\n      \"node_id\": \"MDQ6VXNlcjE=\",\n      \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n      \"gravatar_id\": \"\",\n      \"url\": \"https://api.github.com/users/octocat\",\n      \"html_url\": \"https://github.com/octocat\",\n      \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n      \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n      \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n      \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n      \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n      \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n      \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n      \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n      \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n      \"type\": \"User\",\n      \"site_admin\": false\n    },\n    \"content\": \"heart\",\n    \"created_at\": \"2016-05-20T20:09:31Z\"\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions"
+    },
+    "title":"List reactions for a pull request review comment"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X POST \\\n  -H \"Accept: application/vnd.github.squirrel-girl-preview+json\" \\\n  https://api.github.com/repos/octocat/hello-world/pulls/comments/42/reactions \\\n  -d '{\"content\":\"content\"}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"reactions",
+    "id":"create-reaction-for-a-pull-request-review-comment",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>This API is under preview and subject to change.</p> <a href=\"#create-reaction-for-a-pull-request-review-comment-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"comment_id ",
+        "type":"integer "
+      },
+      {
+        "description":"<p><strong>Required</strong>. The <a href=\"https://developer.github.com/v3/reactions/#reaction-types\">reaction type</a> to add to the pull request review comment.</p>",
+        "in":"body ",
+        "name":"content ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"201 Created",
+        "content":"{\n  \"id\": 1,\n  \"node_id\": \"MDg6UmVhY3Rpb24x\",\n  \"user\": {\n    \"login\": \"octocat\",\n    \"id\": 1,\n    \"node_id\": \"MDQ6VXNlcjE=\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/users/octocat\",\n    \"html_url\": \"https://github.com/octocat\",\n    \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n    \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n    \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n    \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n    \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n    \"type\": \"User\",\n    \"site_admin\": false\n  },\n  \"content\": \"heart\",\n  \"created_at\": \"2016-05-20T20:09:31Z\"\n}\n"
+      }
+    ],
+    "target":{
+      "method":"post",
+      "path":"/repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions"
+    },
+    "title":"Create reaction for a pull request review comment"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X DELETE \\\n  -H \"Accept: application/vnd.github.squirrel-girl-preview+json\" \\\n  https://api.github.com/repos/octocat/hello-world/pulls/comments/42/reactions/42\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"reactions",
+    "id":"delete-a-pull-request-comment-reaction",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>This API is under preview and subject to change.</p> <a href=\"#delete-a-pull-request-comment-reaction-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"comment_id ",
+        "type":"integer "
+      },
+      {
+        "in":"path",
+        "name":"reaction_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"delete",
+      "path":"/repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions/{reaction_id}"
+    },
+    "title":"Delete a pull request comment reaction"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.squirrel-girl-preview+json\" \\\n  https://api.github.com/teams/42/discussions/42/comments/42/reactions\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"reactions",
+    "id":"list-reactions-for-a-team-discussion-comment-legacy",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>This API is under preview and subject to change.</p> <a href=\"#list-reactions-for-a-team-discussion-comment-legacy-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"team_id ",
+        "type":"integer "
+      },
+      {
+        "in":"path",
+        "name":"discussion_number ",
+        "type":"integer "
+      },
+      {
+        "in":"path",
+        "name":"comment_number ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Returns a single <a href=\"https://developer.github.com/v3/reactions/#reaction-types\">reaction type</a>. Omit this parameter to list all reactions to a team discussion comment.</p>",
+        "in":"query ",
+        "name":"content ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"id\": 1,\n    \"node_id\": \"MDg6UmVhY3Rpb24x\",\n    \"user\": {\n      \"login\": \"octocat\",\n      \"id\": 1,\n      \"node_id\": \"MDQ6VXNlcjE=\",\n      \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n      \"gravatar_id\": \"\",\n      \"url\": \"https://api.github.com/users/octocat\",\n      \"html_url\": \"https://github.com/octocat\",\n      \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n      \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n      \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n      \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n      \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n      \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n      \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n      \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n      \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n      \"type\": \"User\",\n      \"site_admin\": false\n    },\n    \"content\": \"heart\",\n    \"created_at\": \"2016-05-20T20:09:31Z\"\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions"
+    },
+    "title":"List reactions for a team discussion comment (Legacy)"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X POST \\\n  -H \"Accept: application/vnd.github.squirrel-girl-preview+json\" \\\n  https://api.github.com/teams/42/discussions/42/comments/42/reactions \\\n  -d '{\"content\":\"content\"}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"reactions",
+    "id":"create-reaction-for-a-team-discussion-comment-legacy",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>This API is under preview and subject to change.</p> <a href=\"#create-reaction-for-a-team-discussion-comment-legacy-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"team_id ",
+        "type":"integer "
+      },
+      {
+        "in":"path",
+        "name":"discussion_number ",
+        "type":"integer "
+      },
+      {
+        "in":"path",
+        "name":"comment_number ",
+        "type":"integer "
+      },
+      {
+        "description":"<p><strong>Required</strong>. The <a href=\"https://developer.github.com/v3/reactions/#reaction-types\">reaction type</a> to add to the team discussion comment.</p>",
+        "in":"body ",
+        "name":"content ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"201 Created",
+        "content":"{\n  \"id\": 1,\n  \"node_id\": \"MDg6UmVhY3Rpb24x\",\n  \"user\": {\n    \"login\": \"octocat\",\n    \"id\": 1,\n    \"node_id\": \"MDQ6VXNlcjE=\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/users/octocat\",\n    \"html_url\": \"https://github.com/octocat\",\n    \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n    \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n    \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n    \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n    \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n    \"type\": \"User\",\n    \"site_admin\": false\n  },\n  \"content\": \"heart\",\n  \"created_at\": \"2016-05-20T20:09:31Z\"\n}\n"
+      }
+    ],
+    "target":{
+      "method":"post",
+      "path":"/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions"
+    },
+    "title":"Create reaction for a team discussion comment (Legacy)"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.squirrel-girl-preview+json\" \\\n  https://api.github.com/teams/42/discussions/42/reactions\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"reactions",
+    "id":"list-reactions-for-a-team-discussion-legacy",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>This API is under preview and subject to change.</p> <a href=\"#list-reactions-for-a-team-discussion-legacy-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"team_id ",
+        "type":"integer "
+      },
+      {
+        "in":"path",
+        "name":"discussion_number ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Returns a single <a href=\"https://developer.github.com/v3/reactions/#reaction-types\">reaction type</a>. Omit this parameter to list all reactions to a team discussion.</p>",
+        "in":"query ",
+        "name":"content ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"id\": 1,\n    \"node_id\": \"MDg6UmVhY3Rpb24x\",\n    \"user\": {\n      \"login\": \"octocat\",\n      \"id\": 1,\n      \"node_id\": \"MDQ6VXNlcjE=\",\n      \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n      \"gravatar_id\": \"\",\n      \"url\": \"https://api.github.com/users/octocat\",\n      \"html_url\": \"https://github.com/octocat\",\n      \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n      \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n      \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n      \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n      \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n      \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n      \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n      \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n      \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n      \"type\": \"User\",\n      \"site_admin\": false\n    },\n    \"content\": \"heart\",\n    \"created_at\": \"2016-05-20T20:09:31Z\"\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/teams/{team_id}/discussions/{discussion_number}/reactions"
+    },
+    "title":"List reactions for a team discussion (Legacy)"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X POST \\\n  -H \"Accept: application/vnd.github.squirrel-girl-preview+json\" \\\n  https://api.github.com/teams/42/discussions/42/reactions \\\n  -d '{\"content\":\"content\"}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"reactions",
+    "id":"create-reaction-for-a-team-discussion-legacy",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>This API is under preview and subject to change.</p> <a href=\"#create-reaction-for-a-team-discussion-legacy-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"team_id ",
+        "type":"integer "
+      },
+      {
+        "in":"path",
+        "name":"discussion_number ",
+        "type":"integer "
+      },
+      {
+        "description":"<p><strong>Required</strong>. The <a href=\"https://developer.github.com/v3/reactions/#reaction-types\">reaction type</a> to add to the team discussion.</p>",
+        "in":"body ",
+        "name":"content ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"201 Created",
+        "content":"{\n  \"id\": 1,\n  \"node_id\": \"MDg6UmVhY3Rpb24x\",\n  \"user\": {\n    \"login\": \"octocat\",\n    \"id\": 1,\n    \"node_id\": \"MDQ6VXNlcjE=\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/users/octocat\",\n    \"html_url\": \"https://github.com/octocat\",\n    \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n    \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n    \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n    \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n    \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n    \"type\": \"User\",\n    \"site_admin\": false\n  },\n  \"content\": \"heart\",\n  \"created_at\": \"2016-05-20T20:09:31Z\"\n}\n"
+      }
+    ],
+    "target":{
+      "method":"post",
+      "path":"/teams/{team_id}/discussions/{discussion_number}/reactions"
+    },
+    "title":"Create reaction for a team discussion (Legacy)"
+  }
+]

@@ -1,0 +1,1252 @@
+[
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.inertia-preview+json\" \\\n  https://api.github.com/orgs/ORG/projects\n",
+        "type":"Shell"
+      },
+      {
+        "content":"application/vnd.github.inertia-preview+json\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"projects",
+    "id":"list-organization-projects",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>This API is under preview and subject to change.</p> <a href=\"#list-organization-projects-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Indicates the state of the projects to return. Can be either <code>open</code>, <code>closed</code>, or <code>all</code>.</p>",
+        "in":"query ",
+        "name":"state ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"owner_url\": \"https://api.github.com/orgs/octocat\",\n    \"url\": \"https://api.github.com/projects/1002605\",\n    \"html_url\": \"https://github.com/orgs/api-playground/projects/1\",\n    \"columns_url\": \"https://api.github.com/projects/1002605/columns\",\n    \"id\": 1002605,\n    \"node_id\": \"MDc6UHJvamVjdDEwMDI2MDU=\",\n    \"name\": \"Organization Roadmap\",\n    \"body\": \"High-level roadmap for the upcoming year.\",\n    \"number\": 1,\n    \"state\": \"open\",\n    \"creator\": {\n      \"login\": \"octocat\",\n      \"id\": 1,\n      \"node_id\": \"MDQ6VXNlcjE=\",\n      \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n      \"gravatar_id\": \"\",\n      \"url\": \"https://api.github.com/users/octocat\",\n      \"html_url\": \"https://github.com/octocat\",\n      \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n      \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n      \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n      \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n      \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n      \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n      \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n      \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n      \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n      \"type\": \"User\",\n      \"site_admin\": false\n    },\n    \"created_at\": \"2011-04-11T20:09:31Z\",\n    \"updated_at\": \"2014-03-04T18:58:10Z\"\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/orgs/{org}/projects"
+    },
+    "title":"List organization projects"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X POST \\\n  -H \"Accept: application/vnd.github.inertia-preview+json\" \\\n  https://api.github.com/orgs/ORG/projects \\\n  -d '{\"name\":\"name\"}'\n",
+        "type":"Shell"
+      },
+      {
+        "content":"application/vnd.github.inertia-preview+json\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"projects",
+    "id":"create-an-organization-project",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>This API is under preview and subject to change.</p> <a href=\"#create-an-organization-project-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "description":"<p><strong>Required</strong>. The name of the project.</p>",
+        "in":"body ",
+        "name":"name ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The description of the project.</p>",
+        "in":"body ",
+        "name":"body ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"201 Created",
+        "content":"{\n  \"owner_url\": \"https://api.github.com/orgs/octocat\",\n  \"url\": \"https://api.github.com/projects/1002605\",\n  \"html_url\": \"https://github.com/orgs/api-playground/projects/1\",\n  \"columns_url\": \"https://api.github.com/projects/1002605/columns\",\n  \"id\": 1002605,\n  \"node_id\": \"MDc6UHJvamVjdDEwMDI2MDU=\",\n  \"name\": \"Organization Roadmap\",\n  \"body\": \"High-level roadmap for the upcoming year.\",\n  \"number\": 1,\n  \"state\": \"open\",\n  \"creator\": {\n    \"login\": \"octocat\",\n    \"id\": 1,\n    \"node_id\": \"MDQ6VXNlcjE=\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/users/octocat\",\n    \"html_url\": \"https://github.com/octocat\",\n    \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n    \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n    \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n    \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n    \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n    \"type\": \"User\",\n    \"site_admin\": false\n  },\n  \"created_at\": \"2011-04-11T20:09:31Z\",\n  \"updated_at\": \"2014-03-04T18:58:10Z\"\n}\n"
+      }
+    ],
+    "target":{
+      "method":"post",
+      "path":"/orgs/{org}/projects"
+    },
+    "title":"Create an organization project"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.inertia-preview+json\" \\\n  https://api.github.com/projects/42\n",
+        "type":"Shell"
+      },
+      {
+        "content":"application/vnd.github.inertia-preview+json\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"projects",
+    "id":"get-a-project",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>This API is under preview and subject to change.</p> <a href=\"#get-a-project-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"project_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"owner_url\": \"https://api.github.com/repos/api-playground/projects-test\",\n  \"url\": \"https://api.github.com/projects/1002604\",\n  \"html_url\": \"https://github.com/api-playground/projects-test/projects/1\",\n  \"columns_url\": \"https://api.github.com/projects/1002604/columns\",\n  \"id\": 1002604,\n  \"node_id\": \"MDc6UHJvamVjdDEwMDI2MDQ=\",\n  \"name\": \"Projects Documentation\",\n  \"body\": \"Developer documentation project for the developer site.\",\n  \"number\": 1,\n  \"state\": \"open\",\n  \"creator\": {\n    \"login\": \"octocat\",\n    \"id\": 1,\n    \"node_id\": \"MDQ6VXNlcjE=\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/users/octocat\",\n    \"html_url\": \"https://github.com/octocat\",\n    \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n    \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n    \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n    \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n    \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n    \"type\": \"User\",\n    \"site_admin\": false\n  },\n  \"created_at\": \"2011-04-10T20:09:31Z\",\n  \"updated_at\": \"2014-03-03T18:58:10Z\"\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/projects/{project_id}"
+    },
+    "title":"Get a project"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X PATCH \\\n  -H \"Accept: application/vnd.github.inertia-preview+json\" \\\n  https://api.github.com/projects/42 \\\n  -d '{\"name\":\"name\"}'\n",
+        "type":"Shell"
+      },
+      {
+        "content":"application/vnd.github.inertia-preview+json\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"projects",
+    "id":"update-a-project",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>This API is under preview and subject to change.</p> <a href=\"#update-a-project-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"project_id ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>The name of the project.</p>",
+        "in":"body ",
+        "name":"name ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The description of the project.</p>",
+        "in":"body ",
+        "name":"body ",
+        "type":"string "
+      },
+      {
+        "description":"<p>State of the project. Either <code>open</code> or <code>closed</code>.</p>",
+        "in":"body ",
+        "name":"state ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The permission level that determines whether all members of the project&apos;s organization can see and/or make changes to the project. Setting <code>organization_permission</code> is only available for organization projects. If an organization member belongs to a team with a higher level of access or is a collaborator with a higher level of access, their permission level is not lowered by <code>organization_permission</code>. For information on changing access for a team or collaborator, see <a href=\"https://developer.github.com/v3/teams/#add-or-update-team-project-permissions\">Add or update team project permissions</a> or <a href=\"https://developer.github.com/v3/projects/collaborators/#add-project-collaborator\">Add project collaborator</a>. </p> <p><strong>Note:</strong> Updating a project&apos;s <code>organization_permission</code> requires <code>admin</code> access to the project. </p> <p>Can be one of:<br> * <code>read</code> - Organization members can read, but not write to or administer this project.<br> * <code>write</code> - Organization members can read and write, but not administer this project.<br> * <code>admin</code> - Organization members can read, write and administer this project.<br> * <code>none</code> - Organization members can only see this project if it is public.</p>",
+        "in":"body ",
+        "name":"organization_permission ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Sets the visibility of a project board. Setting <code>private</code> is only available for organization and user projects. <strong>Note:</strong> Updating a project&apos;s visibility requires <code>admin</code> access to the project. </p> <p>Can be one of:<br> * <code>false</code> - Anyone can see the project.<br> * <code>true</code> - Only the user can view a project board created on a user account. Organization members with the appropriate <code>organization_permission</code> can see project boards in an organization account.</p>",
+        "in":"body ",
+        "name":"private ",
+        "type":"boolean "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"owner_url\": \"https://api.github.com/repos/api-playground/projects-test\",\n  \"url\": \"https://api.github.com/projects/1002604\",\n  \"html_url\": \"https://github.com/api-playground/projects-test/projects/1\",\n  \"columns_url\": \"https://api.github.com/projects/1002604/columns\",\n  \"id\": 1002604,\n  \"node_id\": \"MDc6UHJvamVjdDEwMDI2MDQ=\",\n  \"name\": \"Projects Documentation\",\n  \"body\": \"Developer documentation project for the developer site.\",\n  \"number\": 1,\n  \"state\": \"open\",\n  \"creator\": {\n    \"login\": \"octocat\",\n    \"id\": 1,\n    \"node_id\": \"MDQ6VXNlcjE=\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/users/octocat\",\n    \"html_url\": \"https://github.com/octocat\",\n    \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n    \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n    \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n    \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n    \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n    \"type\": \"User\",\n    \"site_admin\": false\n  },\n  \"created_at\": \"2011-04-10T20:09:31Z\",\n  \"updated_at\": \"2014-03-03T18:58:10Z\"\n}\n"
+      },
+      {
+        "code":"404 Not Found"
+      }
+    ],
+    "target":{
+      "method":"patch",
+      "path":"/projects/{project_id}"
+    },
+    "title":"Update a project"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X DELETE \\\n  -H \"Accept: application/vnd.github.inertia-preview+json\" \\\n  https://api.github.com/projects/42\n",
+        "type":"Shell"
+      },
+      {
+        "content":"application/vnd.github.inertia-preview+json\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"projects",
+    "id":"delete-a-project",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>This API is under preview and subject to change.</p> <a href=\"#delete-a-project-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"project_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"418 I&apos;m A Teapot"
+      }
+    ],
+    "target":{
+      "method":"delete",
+      "path":"/projects/{project_id}"
+    },
+    "title":"Delete a project"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.inertia-preview+json\" \\\n  https://api.github.com/repos/octocat/hello-world/projects\n",
+        "type":"Shell"
+      },
+      {
+        "content":"application/vnd.github.inertia-preview+json\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"projects",
+    "id":"list-repository-projects",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>This API is under preview and subject to change.</p> <a href=\"#list-repository-projects-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Indicates the state of the projects to return. Can be either <code>open</code>, <code>closed</code>, or <code>all</code>.</p>",
+        "in":"query ",
+        "name":"state ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"owner_url\": \"https://api.github.com/repos/api-playground/projects-test\",\n    \"url\": \"https://api.github.com/projects/1002604\",\n    \"html_url\": \"https://github.com/api-playground/projects-test/projects/1\",\n    \"columns_url\": \"https://api.github.com/projects/1002604/columns\",\n    \"id\": 1002604,\n    \"node_id\": \"MDc6UHJvamVjdDEwMDI2MDQ=\",\n    \"name\": \"Projects Documentation\",\n    \"body\": \"Developer documentation project for the developer site.\",\n    \"number\": 1,\n    \"state\": \"open\",\n    \"creator\": {\n      \"login\": \"octocat\",\n      \"id\": 1,\n      \"node_id\": \"MDQ6VXNlcjE=\",\n      \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n      \"gravatar_id\": \"\",\n      \"url\": \"https://api.github.com/users/octocat\",\n      \"html_url\": \"https://github.com/octocat\",\n      \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n      \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n      \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n      \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n      \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n      \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n      \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n      \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n      \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n      \"type\": \"User\",\n      \"site_admin\": false\n    },\n    \"created_at\": \"2011-04-10T20:09:31Z\",\n    \"updated_at\": \"2014-03-03T18:58:10Z\"\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/repos/{owner}/{repo}/projects"
+    },
+    "title":"List repository projects"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X POST \\\n  -H \"Accept: application/vnd.github.inertia-preview+json\" \\\n  https://api.github.com/repos/octocat/hello-world/projects \\\n  -d '{\"name\":\"name\"}'\n",
+        "type":"Shell"
+      },
+      {
+        "content":"application/vnd.github.inertia-preview+json\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"projects",
+    "id":"create-a-repository-project",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>This API is under preview and subject to change.</p> <a href=\"#create-a-repository-project-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "description":"<p><strong>Required</strong>. The name of the project.</p>",
+        "in":"body ",
+        "name":"name ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The description of the project.</p>",
+        "in":"body ",
+        "name":"body ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"201 Created",
+        "content":"{\n  \"owner_url\": \"https://api.github.com/repos/api-playground/projects-test\",\n  \"url\": \"https://api.github.com/projects/1002604\",\n  \"html_url\": \"https://github.com/api-playground/projects-test/projects/1\",\n  \"columns_url\": \"https://api.github.com/projects/1002604/columns\",\n  \"id\": 1002604,\n  \"node_id\": \"MDc6UHJvamVjdDEwMDI2MDQ=\",\n  \"name\": \"Projects Documentation\",\n  \"body\": \"Developer documentation project for the developer site.\",\n  \"number\": 1,\n  \"state\": \"open\",\n  \"creator\": {\n    \"login\": \"octocat\",\n    \"id\": 1,\n    \"node_id\": \"MDQ6VXNlcjE=\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/users/octocat\",\n    \"html_url\": \"https://github.com/octocat\",\n    \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n    \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n    \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n    \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n    \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n    \"type\": \"User\",\n    \"site_admin\": false\n  },\n  \"created_at\": \"2011-04-10T20:09:31Z\",\n  \"updated_at\": \"2014-03-03T18:58:10Z\"\n}\n"
+      }
+    ],
+    "target":{
+      "method":"post",
+      "path":"/repos/{owner}/{repo}/projects"
+    },
+    "title":"Create a repository project"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X POST \\\n  -H \"Accept: application/vnd.github.inertia-preview+json\" \\\n  https://api.github.com/user/projects \\\n  -d '{\"name\":\"name\"}'\n",
+        "type":"Shell"
+      },
+      {
+        "content":"application/vnd.github.inertia-preview+json\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"projects",
+    "id":"create-a-user-project",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>This API is under preview and subject to change.</p> <a href=\"#create-a-user-project-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "description":"<p><strong>Required</strong>. The name of the project.</p>",
+        "in":"body ",
+        "name":"name ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The description of the project.</p>",
+        "in":"body ",
+        "name":"body ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"201 Created",
+        "content":"{\n  \"owner_url\": \"https://api.github.com/users/octocat\",\n  \"url\": \"https://api.github.com/projects/1002603\",\n  \"html_url\": \"https://github.com/users/octocat/projects/1\",\n  \"columns_url\": \"https://api.github.com/projects/1002603/columns\",\n  \"id\": 1002603,\n  \"node_id\": \"MDc6UHJvamVjdDEwMDI2MDM=\",\n  \"name\": \"My Projects\",\n  \"body\": \"A board to manage my personal projects.\",\n  \"number\": 1,\n  \"state\": \"open\",\n  \"creator\": {\n    \"login\": \"octocat\",\n    \"id\": 1,\n    \"node_id\": \"MDQ6VXNlcjE=\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/users/octocat\",\n    \"html_url\": \"https://github.com/octocat\",\n    \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n    \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n    \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n    \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n    \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n    \"type\": \"User\",\n    \"site_admin\": false\n  },\n  \"created_at\": \"2011-04-10T20:09:31Z\",\n  \"updated_at\": \"2014-03-03T18:58:10Z\"\n}\n"
+      }
+    ],
+    "target":{
+      "method":"post",
+      "path":"/user/projects"
+    },
+    "title":"Create a user project"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.inertia-preview+json\" \\\n  https://api.github.com/users/USERNAME/projects\n",
+        "type":"Shell"
+      },
+      {
+        "content":"application/vnd.github.inertia-preview+json\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"projects",
+    "id":"list-user-projects",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>This API is under preview and subject to change.</p> <a href=\"#list-user-projects-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"username ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Indicates the state of the projects to return. Can be either <code>open</code>, <code>closed</code>, or <code>all</code>.</p>",
+        "in":"query ",
+        "name":"state ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"owner_url\": \"https://api.github.com/users/octocat\",\n    \"url\": \"https://api.github.com/projects/1002603\",\n    \"html_url\": \"https://github.com/users/octocat/projects/1\",\n    \"columns_url\": \"https://api.github.com/projects/1002603/columns\",\n    \"id\": 1002603,\n    \"node_id\": \"MDc6UHJvamVjdDEwMDI2MDM=\",\n    \"name\": \"My Projects\",\n    \"body\": \"A board to manage my personal projects.\",\n    \"number\": 1,\n    \"state\": \"open\",\n    \"creator\": {\n      \"login\": \"octocat\",\n      \"id\": 1,\n      \"node_id\": \"MDQ6VXNlcjE=\",\n      \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n      \"gravatar_id\": \"\",\n      \"url\": \"https://api.github.com/users/octocat\",\n      \"html_url\": \"https://github.com/octocat\",\n      \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n      \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n      \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n      \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n      \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n      \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n      \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n      \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n      \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n      \"type\": \"User\",\n      \"site_admin\": false\n    },\n    \"created_at\": \"2011-04-10T20:09:31Z\",\n    \"updated_at\": \"2014-03-03T18:58:10Z\"\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/users/{username}/projects"
+    },
+    "title":"List user projects"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.inertia-preview+json\" \\\n  https://api.github.com/projects/columns/cards/42\n",
+        "type":"Shell"
+      },
+      {
+        "content":"application/vnd.github.inertia-preview+json\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"projects",
+    "id":"get-a-project-card",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>This API is under preview and subject to change.</p> <a href=\"#get-a-project-card-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"card_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"url\": \"https://api.github.com/projects/columns/cards/1478\",\n  \"id\": 1478,\n  \"node_id\": \"MDExOlByb2plY3RDYXJkMTQ3OA==\",\n  \"note\": \"Add payload for delete Project column\",\n  \"creator\": {\n    \"login\": \"octocat\",\n    \"id\": 1,\n    \"node_id\": \"MDQ6VXNlcjE=\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/users/octocat\",\n    \"html_url\": \"https://github.com/octocat\",\n    \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n    \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n    \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n    \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n    \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n    \"type\": \"User\",\n    \"site_admin\": false\n  },\n  \"created_at\": \"2016-09-05T14:21:06Z\",\n  \"updated_at\": \"2016-09-05T14:20:22Z\",\n  \"archived\": false,\n  \"column_url\": \"https://api.github.com/projects/columns/367\",\n  \"content_url\": \"https://api.github.com/repos/api-playground/projects-test/issues/3\",\n  \"project_url\": \"https://api.github.com/projects/120\"\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/projects/columns/cards/{card_id}"
+    },
+    "title":"Get a project card"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X PATCH \\\n  -H \"Accept: application/vnd.github.inertia-preview+json\" \\\n  https://api.github.com/projects/columns/cards/42 \\\n  -d '{\"note\":\"note\"}'\n",
+        "type":"Shell"
+      },
+      {
+        "content":"application/vnd.github.inertia-preview+json\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"projects",
+    "id":"update-a-project-card",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>This API is under preview and subject to change.</p> <a href=\"#update-a-project-card-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"card_id ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>The card&apos;s note content. Only valid for cards without another type of content, so this cannot be specified if the card already has a <code>content_id</code> and <code>content_type</code>.</p>",
+        "in":"body ",
+        "name":"note ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Use <code>true</code> to archive a project card. Specify <code>false</code> if you need to restore a previously archived project card.</p>",
+        "in":"body ",
+        "name":"archived ",
+        "type":"boolean "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"url\": \"https://api.github.com/projects/columns/cards/1478\",\n  \"id\": 1478,\n  \"node_id\": \"MDExOlByb2plY3RDYXJkMTQ3OA==\",\n  \"note\": \"Add payload for delete Project column\",\n  \"creator\": {\n    \"login\": \"octocat\",\n    \"id\": 1,\n    \"node_id\": \"MDQ6VXNlcjE=\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/users/octocat\",\n    \"html_url\": \"https://github.com/octocat\",\n    \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n    \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n    \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n    \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n    \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n    \"type\": \"User\",\n    \"site_admin\": false\n  },\n  \"created_at\": \"2016-09-05T14:21:06Z\",\n  \"updated_at\": \"2016-09-05T14:20:22Z\",\n  \"archived\": false,\n  \"column_url\": \"https://api.github.com/projects/columns/367\",\n  \"content_url\": \"https://api.github.com/repos/api-playground/projects-test/issues/3\",\n  \"project_url\": \"https://api.github.com/projects/120\"\n}\n"
+      }
+    ],
+    "target":{
+      "method":"patch",
+      "path":"/projects/columns/cards/{card_id}"
+    },
+    "title":"Update a project card"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X DELETE \\\n  -H \"Accept: application/vnd.github.inertia-preview+json\" \\\n  https://api.github.com/projects/columns/cards/42\n",
+        "type":"Shell"
+      },
+      {
+        "content":"application/vnd.github.inertia-preview+json\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"projects",
+    "id":"delete-a-project-card",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>This API is under preview and subject to change.</p> <a href=\"#delete-a-project-card-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"card_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"delete",
+      "path":"/projects/columns/cards/{card_id}"
+    },
+    "title":"Delete a project card"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X POST \\\n  -H \"Accept: application/vnd.github.inertia-preview+json\" \\\n  https://api.github.com/projects/columns/cards/42/moves \\\n  -d '{\"position\":\"position\"}'\n",
+        "type":"Shell"
+      },
+      {
+        "content":"application/vnd.github.inertia-preview+json\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"projects",
+    "id":"move-a-project-card",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>This API is under preview and subject to change.</p> <a href=\"#move-a-project-card-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"card_id ",
+        "type":"integer "
+      },
+      {
+        "description":"<p><strong>Required</strong>. Can be one of <code>top</code>, <code>bottom</code>, or <code>after:&lt;card_id&gt;</code>, where <code>&lt;card_id&gt;</code> is the <code>id</code> value of a card in the same column, or in the new column specified by <code>column_id</code>.</p>",
+        "in":"body ",
+        "name":"position ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The <code>id</code> value of a column in the same project.</p>",
+        "in":"body ",
+        "name":"column_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"201 Created"
+      }
+    ],
+    "target":{
+      "method":"post",
+      "path":"/projects/columns/cards/{card_id}/moves"
+    },
+    "title":"Move a project card"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.inertia-preview+json\" \\\n  https://api.github.com/projects/columns/42/cards\n",
+        "type":"Shell"
+      },
+      {
+        "content":"application/vnd.github.inertia-preview+json\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"projects",
+    "id":"list-project-cards",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>This API is under preview and subject to change.</p> <a href=\"#list-project-cards-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"column_id ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Filters the project cards that are returned by the card&apos;s state. Can be one of <code>all</code>,<code>archived</code>, or <code>not_archived</code>.</p>",
+        "in":"query ",
+        "name":"archived_state ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"url\": \"https://api.github.com/projects/columns/cards/1478\",\n    \"id\": 1478,\n    \"node_id\": \"MDExOlByb2plY3RDYXJkMTQ3OA==\",\n    \"note\": \"Add payload for delete Project column\",\n    \"creator\": {\n      \"login\": \"octocat\",\n      \"id\": 1,\n      \"node_id\": \"MDQ6VXNlcjE=\",\n      \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n      \"gravatar_id\": \"\",\n      \"url\": \"https://api.github.com/users/octocat\",\n      \"html_url\": \"https://github.com/octocat\",\n      \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n      \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n      \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n      \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n      \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n      \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n      \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n      \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n      \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n      \"type\": \"User\",\n      \"site_admin\": false\n    },\n    \"created_at\": \"2016-09-05T14:21:06Z\",\n    \"updated_at\": \"2016-09-05T14:20:22Z\",\n    \"archived\": false,\n    \"column_url\": \"https://api.github.com/projects/columns/367\",\n    \"content_url\": \"https://api.github.com/repos/api-playground/projects-test/issues/3\",\n    \"project_url\": \"https://api.github.com/projects/120\"\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/projects/columns/{column_id}/cards"
+    },
+    "title":"List project cards"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X POST \\\n  -H \"Accept: application/vnd.github.inertia-preview+json\" \\\n  https://api.github.com/projects/columns/42/cards \\\n  -d '{\"note\":\"note\"}'\n",
+        "type":"Shell"
+      },
+      {
+        "content":"application/vnd.github.inertia-preview+json\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"projects",
+    "id":"create-a-project-card",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>This API is under preview and subject to change.</p> <a href=\"#create-a-project-card-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"column_id ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>The card&apos;s note content. Only valid for cards without another type of content, so you must omit when&#xA0;specifying <code>content_id</code>&#xA0;and&#xA0;<code>content_type</code>.</p>",
+        "in":"body ",
+        "name":"note ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The issue or pull request id you want to associate with this card. You can use the <a href=\"https://developer.github.com/v3/issues/#list-repository-issues\">List repository issues</a> and <a href=\"https://developer.github.com/v3/pulls/#list-pull-requests\">List pull requests</a> endpoints to find this id.<br> <strong>Note:</strong> Depending on whether you use the issue id or pull request id, you will need to specify <code>Issue</code> or <code>PullRequest</code> as the <code>content_type</code>.</p>",
+        "in":"body ",
+        "name":"content_id ",
+        "type":"integer "
+      },
+      {
+        "description":"<p><strong>Required if you provide&#xA0;<code>content_id</code></strong>. The type of content you want to associate with this card. Use <code>Issue</code> when <code>content_id</code> is an issue id and use <code>PullRequest</code> when <code>content_id</code> is a pull request id.</p>",
+        "in":"body ",
+        "name":"content_type ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"201 Created",
+        "content":"{\n  \"url\": \"https://api.github.com/projects/columns/cards/1478\",\n  \"id\": 1478,\n  \"node_id\": \"MDExOlByb2plY3RDYXJkMTQ3OA==\",\n  \"note\": \"Add payload for delete Project column\",\n  \"creator\": {\n    \"login\": \"octocat\",\n    \"id\": 1,\n    \"node_id\": \"MDQ6VXNlcjE=\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/users/octocat\",\n    \"html_url\": \"https://github.com/octocat\",\n    \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n    \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n    \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n    \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n    \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n    \"type\": \"User\",\n    \"site_admin\": false\n  },\n  \"created_at\": \"2016-09-05T14:21:06Z\",\n  \"updated_at\": \"2016-09-05T14:20:22Z\",\n  \"archived\": false,\n  \"column_url\": \"https://api.github.com/projects/columns/367\",\n  \"content_url\": \"https://api.github.com/repos/api-playground/projects-test/issues/3\",\n  \"project_url\": \"https://api.github.com/projects/120\"\n}\n"
+      }
+    ],
+    "target":{
+      "method":"post",
+      "path":"/projects/columns/{column_id}/cards"
+    },
+    "title":"Create a project card"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.inertia-preview+json\" \\\n  https://api.github.com/projects/42/collaborators\n",
+        "type":"Shell"
+      },
+      {
+        "content":"application/vnd.github.inertia-preview+json\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"projects",
+    "id":"list-project-collaborators",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>This API is under preview and subject to change.</p> <a href=\"#list-project-collaborators-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"project_id ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Filters the collaborators by their affiliation. Can be one of:<br> * <code>outside</code>: Outside collaborators of a project that are not a member of the project&apos;s organization.<br> * <code>direct</code>: Collaborators with permissions to a project, regardless of organization membership status.<br> * <code>all</code>: All collaborators the authenticated user can see.</p>",
+        "in":"query ",
+        "name":"affiliation ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"login\": \"octocat\",\n    \"id\": 1,\n    \"node_id\": \"MDQ6VXNlcjE=\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/users/octocat\",\n    \"html_url\": \"https://github.com/octocat\",\n    \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n    \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n    \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n    \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n    \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n    \"type\": \"User\",\n    \"site_admin\": false\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/projects/{project_id}/collaborators"
+    },
+    "title":"List project collaborators"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X PUT \\\n  -H \"Accept: application/vnd.github.inertia-preview+json\" \\\n  https://api.github.com/projects/42/collaborators/USERNAME \\\n  -d '{\"permission\":\"permission\"}'\n",
+        "type":"Shell"
+      },
+      {
+        "content":"application/vnd.github.inertia-preview+json\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"projects",
+    "id":"add-project-collaborator",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>This API is under preview and subject to change.</p> <a href=\"#add-project-collaborator-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"project_id ",
+        "type":"integer "
+      },
+      {
+        "in":"path",
+        "name":"username ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The permission to grant the collaborator. Note that, if you choose not to pass any parameters, you&apos;ll need to set <code>Content-Length</code> to zero when calling out to this endpoint. For more information, see &quot;<a href=\"https://developer.github.com/v3/#http-verbs\">HTTP verbs</a>.&quot; Can be one of:<br> * <code>read</code> - can read, but not write to or administer this project.<br> * <code>write</code> - can read and write, but not administer this project.<br> * <code>admin</code> - can read, write and administer this project.</p> Default: <code>write</code>",
+        "in":"body ",
+        "name":"permission ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"put",
+      "path":"/projects/{project_id}/collaborators/{username}"
+    },
+    "title":"Add project collaborator"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X DELETE \\\n  -H \"Accept: application/vnd.github.inertia-preview+json\" \\\n  https://api.github.com/projects/42/collaborators/USERNAME\n",
+        "type":"Shell"
+      },
+      {
+        "content":"application/vnd.github.inertia-preview+json\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"projects",
+    "id":"remove-project-collaborator",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>This API is under preview and subject to change.</p> <a href=\"#remove-project-collaborator-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"project_id ",
+        "type":"integer "
+      },
+      {
+        "in":"path",
+        "name":"username ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"delete",
+      "path":"/projects/{project_id}/collaborators/{username}"
+    },
+    "title":"Remove project collaborator"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.inertia-preview+json\" \\\n  https://api.github.com/projects/42/collaborators/USERNAME/permission\n",
+        "type":"Shell"
+      },
+      {
+        "content":"application/vnd.github.inertia-preview+json\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"projects",
+    "id":"get-project-permission-for-a-user",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>This API is under preview and subject to change.</p> <a href=\"#get-project-permission-for-a-user-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"project_id ",
+        "type":"integer "
+      },
+      {
+        "in":"path",
+        "name":"username ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"permission\": \"admin\",\n  \"user\": {\n    \"login\": \"octocat\",\n    \"id\": 1,\n    \"node_id\": \"MDQ6VXNlcjE=\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/users/octocat\",\n    \"html_url\": \"https://github.com/octocat\",\n    \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n    \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n    \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n    \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n    \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n    \"type\": \"User\",\n    \"site_admin\": false\n  }\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/projects/{project_id}/collaborators/{username}/permission"
+    },
+    "title":"Get project permission for a user"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.inertia-preview+json\" \\\n  https://api.github.com/projects/columns/42\n",
+        "type":"Shell"
+      },
+      {
+        "content":"application/vnd.github.inertia-preview+json\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"projects",
+    "id":"get-a-project-column",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>This API is under preview and subject to change.</p> <a href=\"#get-a-project-column-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"column_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"url\": \"https://api.github.com/projects/columns/367\",\n  \"project_url\": \"https://api.github.com/projects/120\",\n  \"cards_url\": \"https://api.github.com/projects/columns/367/cards\",\n  \"id\": 367,\n  \"node_id\": \"MDEzOlByb2plY3RDb2x1bW4zNjc=\",\n  \"name\": \"To Do\",\n  \"created_at\": \"2016-09-05T14:18:44Z\",\n  \"updated_at\": \"2016-09-05T14:22:28Z\"\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/projects/columns/{column_id}"
+    },
+    "title":"Get a project column"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X PATCH \\\n  -H \"Accept: application/vnd.github.inertia-preview+json\" \\\n  https://api.github.com/projects/columns/42 \\\n  -d '{\"name\":\"name\"}'\n",
+        "type":"Shell"
+      },
+      {
+        "content":"application/vnd.github.inertia-preview+json\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"projects",
+    "id":"update-a-project-column",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>This API is under preview and subject to change.</p> <a href=\"#update-a-project-column-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"column_id ",
+        "type":"integer "
+      },
+      {
+        "description":"<p><strong>Required</strong>. The new name of the column.</p>",
+        "in":"body ",
+        "name":"name ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"url\": \"https://api.github.com/projects/columns/367\",\n  \"project_url\": \"https://api.github.com/projects/120\",\n  \"cards_url\": \"https://api.github.com/projects/columns/367/cards\",\n  \"id\": 367,\n  \"node_id\": \"MDEzOlByb2plY3RDb2x1bW4zNjc=\",\n  \"name\": \"To Do\",\n  \"created_at\": \"2016-09-05T14:18:44Z\",\n  \"updated_at\": \"2016-09-05T14:22:28Z\"\n}\n"
+      }
+    ],
+    "target":{
+      "method":"patch",
+      "path":"/projects/columns/{column_id}"
+    },
+    "title":"Update a project column"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X DELETE \\\n  -H \"Accept: application/vnd.github.inertia-preview+json\" \\\n  https://api.github.com/projects/columns/42\n",
+        "type":"Shell"
+      },
+      {
+        "content":"application/vnd.github.inertia-preview+json\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"projects",
+    "id":"delete-a-project-column",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>This API is under preview and subject to change.</p> <a href=\"#delete-a-project-column-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"column_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"delete",
+      "path":"/projects/columns/{column_id}"
+    },
+    "title":"Delete a project column"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X POST \\\n  -H \"Accept: application/vnd.github.inertia-preview+json\" \\\n  https://api.github.com/projects/columns/42/moves \\\n  -d '{\"position\":\"position\"}'\n",
+        "type":"Shell"
+      },
+      {
+        "content":"application/vnd.github.inertia-preview+json\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"projects",
+    "id":"move-a-project-column",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>This API is under preview and subject to change.</p> <a href=\"#move-a-project-column-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"column_id ",
+        "type":"integer "
+      },
+      {
+        "description":"<p><strong>Required</strong>. Can be one of <code>first</code>, <code>last</code>, or <code>after:&lt;column_id&gt;</code>, where <code>&lt;column_id&gt;</code> is the <code>id</code> value of a column in the same project.</p>",
+        "in":"body ",
+        "name":"position ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"201 Created"
+      }
+    ],
+    "target":{
+      "method":"post",
+      "path":"/projects/columns/{column_id}/moves"
+    },
+    "title":"Move a project column"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.inertia-preview+json\" \\\n  https://api.github.com/projects/42/columns\n",
+        "type":"Shell"
+      },
+      {
+        "content":"application/vnd.github.inertia-preview+json\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"projects",
+    "id":"list-project-columns",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>This API is under preview and subject to change.</p> <a href=\"#list-project-columns-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"project_id ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"url\": \"https://api.github.com/projects/columns/367\",\n    \"project_url\": \"https://api.github.com/projects/120\",\n    \"cards_url\": \"https://api.github.com/projects/columns/367/cards\",\n    \"id\": 367,\n    \"node_id\": \"MDEzOlByb2plY3RDb2x1bW4zNjc=\",\n    \"name\": \"To Do\",\n    \"created_at\": \"2016-09-05T14:18:44Z\",\n    \"updated_at\": \"2016-09-05T14:22:28Z\"\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/projects/{project_id}/columns"
+    },
+    "title":"List project columns"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X POST \\\n  -H \"Accept: application/vnd.github.inertia-preview+json\" \\\n  https://api.github.com/projects/42/columns \\\n  -d '{\"name\":\"name\"}'\n",
+        "type":"Shell"
+      },
+      {
+        "content":"application/vnd.github.inertia-preview+json\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"projects",
+    "id":"create-a-project-column",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>This API is under preview and subject to change.</p> <a href=\"#create-a-project-column-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"project_id ",
+        "type":"integer "
+      },
+      {
+        "description":"<p><strong>Required</strong>. The name of the column.</p>",
+        "in":"body ",
+        "name":"name ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"url\": \"https://api.github.com/projects/columns/367\",\n  \"project_url\": \"https://api.github.com/projects/120\",\n  \"cards_url\": \"https://api.github.com/projects/columns/367/cards\",\n  \"id\": 367,\n  \"node_id\": \"MDEzOlByb2plY3RDb2x1bW4zNjc=\",\n  \"name\": \"To Do\",\n  \"created_at\": \"2016-09-05T14:18:44Z\",\n  \"updated_at\": \"2016-09-05T14:22:28Z\"\n}\n"
+      }
+    ],
+    "target":{
+      "method":"post",
+      "path":"/projects/{project_id}/columns"
+    },
+    "title":"Create a project column"
+  }
+]

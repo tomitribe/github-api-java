@@ -1,0 +1,104 @@
+[
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/repos/octocat/hello-world/code-scanning/alerts\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"code-scanning",
+    "id":"list-code-scanning-alerts-for-a-repository",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Set to <code>closed</code> to list only closed code scanning alerts.</p>",
+        "in":"query ",
+        "name":"state ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Returns a list of code scanning alerts for a specific brach reference. The <code>ref</code> must be formatted as <code>heads/&lt;branch name&gt;</code>.</p>",
+        "in":"query ",
+        "name":"ref ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"rule_id\": \"js/trivial-conditional\",\n    \"rule_severity\": \"warning\",\n    \"rule_description\": \"Useless conditional\",\n    \"tool\": \"CodeQL\",\n    \"created_at\": \"2020-05-06T12:00:00Z\",\n    \"open\": true,\n    \"closed_by\": null,\n    \"closed_at\": null,\n    \"url\": \"https://api.github.com/repos/Octo-org/octo-repo/code-scanning/alerts/25\",\n    \"html_url\": \"https://github.com/Octo-org/octo-repo/security/code-scanning/25\"\n  },\n  {\n    \"rule_id\": \"js/useless-expression\",\n    \"rule_severity\": \"warning\",\n    \"rule_description\": \"Expression has no effect\",\n    \"tool\": \"CodeQL\",\n    \"created_at\": \"2020-05-06T12:00:00Z\",\n    \"open\": true,\n    \"closed_by\": null,\n    \"closed_at\": null,\n    \"url\": \"https://api.github.com/repos/Octo-org/octo-repo/code-scanning/alerts/88\",\n    \"html_url\": \"https://github.com/Octo-org/octo-repo/security/code-scanning/88\"\n  }\n]\n"
+      },
+      {
+        "code":"404 Not Found"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/repos/{owner}/{repo}/code-scanning/alerts"
+    },
+    "title":"List code scanning alerts for a repository"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/repos/octocat/hello-world/code-scanning/alerts/42\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"code-scanning",
+    "id":"get-a-code-scanning-alert",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"alert_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"rule_id\": \"js/useless-expression\",\n  \"rule_severity\": \"warning\",\n  \"rule_description\": \"Expression has no effect\",\n  \"tool\": \"CodeQL\",\n  \"created_at\": \"2020-05-06T12:00:00Z\",\n  \"open\": true,\n  \"closed_by\": null,\n  \"closed_at\": null,\n  \"url\": \"https://api.github.com/repos/Octo-org/octo-repo/code-scanning/alerts/88\",\n  \"html_url\": \"https://github.com/Octo-org/octo-repo/security/code-scanning/88\"\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/repos/{owner}/{repo}/code-scanning/alerts/{alert_id}"
+    },
+    "title":"Get a code scanning alert"
+  }
+]

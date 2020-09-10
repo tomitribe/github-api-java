@@ -24,6 +24,8 @@ import javax.json.bind.JsonbConfig;
 import java.io.IOException;
 import java.net.URL;
 
+import static org.tomitribe.github.JsonAsserts.assertJson;
+
 public class PayloadAsserts {
 
     private PayloadAsserts() {
@@ -42,6 +44,6 @@ public class PayloadAsserts {
         final Object object = jsonb.fromJson(expected, eventClass);
         final String actual = jsonb.toJson(object);
 
-        JsonAsserts.assertJson(expected, actual);
+        assertJson(expected, actual);
     }
 }

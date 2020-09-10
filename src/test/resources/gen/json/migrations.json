@@ -1,0 +1,1063 @@
+[
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.wyandotte-preview+json\" \\\n  https://api.github.com/orgs/ORG/migrations\n",
+        "type":"Shell"
+      },
+      {
+        "content":"application/vnd.github.wyandotte-preview+json\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"migrations",
+    "id":"list-organization-migrations",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>This API is under preview and subject to change.</p> <a href=\"#list-organization-migrations-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"id\": 79,\n    \"owner\": {\n      \"login\": \"github\",\n      \"id\": 1,\n      \"node_id\": \"MDEyOk9yZ2FuaXphdGlvbjE=\",\n      \"url\": \"https://api.github.com/orgs/github\",\n      \"repos_url\": \"https://api.github.com/orgs/github/repos\",\n      \"events_url\": \"https://api.github.com/orgs/github/events\",\n      \"hooks_url\": \"https://api.github.com/orgs/github/hooks\",\n      \"issues_url\": \"https://api.github.com/orgs/github/issues\",\n      \"members_url\": \"https://api.github.com/orgs/github/members{/member}\",\n      \"public_members_url\": \"https://api.github.com/orgs/github/public_members{/member}\",\n      \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n      \"description\": \"A great organization\"\n    },\n    \"guid\": \"0b989ba4-242f-11e5-81e1-c7b6966d2516\",\n    \"state\": \"pending\",\n    \"lock_repositories\": true,\n    \"exclude_attachments\": false,\n    \"repositories\": [\n      {\n        \"id\": 1296269,\n        \"node_id\": \"MDEwOlJlcG9zaXRvcnkxMjk2MjY5\",\n        \"name\": \"Hello-World\",\n        \"full_name\": \"octocat/Hello-World\",\n        \"owner\": {\n          \"login\": \"octocat\",\n          \"id\": 1,\n          \"node_id\": \"MDQ6VXNlcjE=\",\n          \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n          \"gravatar_id\": \"\",\n          \"url\": \"https://api.github.com/users/octocat\",\n          \"html_url\": \"https://github.com/octocat\",\n          \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n          \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n          \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n          \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n          \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n          \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n          \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n          \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n          \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n          \"type\": \"User\",\n          \"site_admin\": false\n        },\n        \"private\": false,\n        \"html_url\": \"https://github.com/octocat/Hello-World\",\n        \"description\": \"This your first repo!\",\n        \"fork\": false,\n        \"url\": \"https://api.github.com/repos/octocat/Hello-World\",\n        \"archive_url\": \"http://api.github.com/repos/octocat/Hello-World/{archive_format}{/ref}\",\n        \"assignees_url\": \"http://api.github.com/repos/octocat/Hello-World/assignees{/user}\",\n        \"blobs_url\": \"http://api.github.com/repos/octocat/Hello-World/git/blobs{/sha}\",\n        \"branches_url\": \"http://api.github.com/repos/octocat/Hello-World/branches{/branch}\",\n        \"collaborators_url\": \"http://api.github.com/repos/octocat/Hello-World/collaborators{/collaborator}\",\n        \"comments_url\": \"http://api.github.com/repos/octocat/Hello-World/comments{/number}\",\n        \"commits_url\": \"http://api.github.com/repos/octocat/Hello-World/commits{/sha}\",\n        \"compare_url\": \"http://api.github.com/repos/octocat/Hello-World/compare/{base}...{head}\",\n        \"contents_url\": \"http://api.github.com/repos/octocat/Hello-World/contents/{+path}\",\n        \"contributors_url\": \"http://api.github.com/repos/octocat/Hello-World/contributors\",\n        \"deployments_url\": \"http://api.github.com/repos/octocat/Hello-World/deployments\",\n        \"downloads_url\": \"http://api.github.com/repos/octocat/Hello-World/downloads\",\n        \"events_url\": \"http://api.github.com/repos/octocat/Hello-World/events\",\n        \"forks_url\": \"http://api.github.com/repos/octocat/Hello-World/forks\",\n        \"git_commits_url\": \"http://api.github.com/repos/octocat/Hello-World/git/commits{/sha}\",\n        \"git_refs_url\": \"http://api.github.com/repos/octocat/Hello-World/git/refs{/sha}\",\n        \"git_tags_url\": \"http://api.github.com/repos/octocat/Hello-World/git/tags{/sha}\",\n        \"git_url\": \"git:github.com/octocat/Hello-World.git\",\n        \"issue_comment_url\": \"http://api.github.com/repos/octocat/Hello-World/issues/comments{/number}\",\n        \"issue_events_url\": \"http://api.github.com/repos/octocat/Hello-World/issues/events{/number}\",\n        \"issues_url\": \"http://api.github.com/repos/octocat/Hello-World/issues{/number}\",\n        \"keys_url\": \"http://api.github.com/repos/octocat/Hello-World/keys{/key_id}\",\n        \"labels_url\": \"http://api.github.com/repos/octocat/Hello-World/labels{/name}\",\n        \"languages_url\": \"http://api.github.com/repos/octocat/Hello-World/languages\",\n        \"merges_url\": \"http://api.github.com/repos/octocat/Hello-World/merges\",\n        \"milestones_url\": \"http://api.github.com/repos/octocat/Hello-World/milestones{/number}\",\n        \"notifications_url\": \"http://api.github.com/repos/octocat/Hello-World/notifications{?since,all,participating}\",\n        \"pulls_url\": \"http://api.github.com/repos/octocat/Hello-World/pulls{/number}\",\n        \"releases_url\": \"http://api.github.com/repos/octocat/Hello-World/releases{/id}\",\n        \"ssh_url\": \"git@github.com:octocat/Hello-World.git\",\n        \"stargazers_url\": \"http://api.github.com/repos/octocat/Hello-World/stargazers\",\n        \"statuses_url\": \"http://api.github.com/repos/octocat/Hello-World/statuses/{sha}\",\n        \"subscribers_url\": \"http://api.github.com/repos/octocat/Hello-World/subscribers\",\n        \"subscription_url\": \"http://api.github.com/repos/octocat/Hello-World/subscription\",\n        \"tags_url\": \"http://api.github.com/repos/octocat/Hello-World/tags\",\n        \"teams_url\": \"http://api.github.com/repos/octocat/Hello-World/teams\",\n        \"trees_url\": \"http://api.github.com/repos/octocat/Hello-World/git/trees{/sha}\",\n        \"clone_url\": \"https://github.com/octocat/Hello-World.git\",\n        \"mirror_url\": \"git:git.example.com/octocat/Hello-World\",\n        \"hooks_url\": \"http://api.github.com/repos/octocat/Hello-World/hooks\",\n        \"svn_url\": \"https://svn.github.com/octocat/Hello-World\",\n        \"homepage\": \"https://github.com\",\n        \"language\": null,\n        \"forks_count\": 9,\n        \"stargazers_count\": 80,\n        \"watchers_count\": 80,\n        \"size\": 108,\n        \"default_branch\": \"master\",\n        \"open_issues_count\": 0,\n        \"is_template\": true,\n        \"topics\": [\n          \"octocat\",\n          \"atom\",\n          \"electron\",\n          \"api\"\n        ],\n        \"has_issues\": true,\n        \"has_projects\": true,\n        \"has_wiki\": true,\n        \"has_pages\": false,\n        \"has_downloads\": true,\n        \"archived\": false,\n        \"disabled\": false,\n        \"visibility\": \"public\",\n        \"pushed_at\": \"2011-01-26T19:06:43Z\",\n        \"created_at\": \"2011-01-26T19:01:12Z\",\n        \"updated_at\": \"2011-01-26T19:14:43Z\",\n        \"permissions\": {\n          \"admin\": false,\n          \"push\": false,\n          \"pull\": true\n        },\n        \"allow_rebase_merge\": true,\n        \"template_repository\": null,\n        \"temp_clone_token\": \"ABTLWHOULUVAXGTRYU7OC2876QJ2O\",\n        \"allow_squash_merge\": true,\n        \"delete_branch_on_merge\": true,\n        \"allow_merge_commit\": true,\n        \"subscribers_count\": 42,\n        \"network_count\": 0\n      }\n    ],\n    \"url\": \"https://api.github.com/orgs/octo-org/migrations/79\",\n    \"created_at\": \"2015-07-06T15:33:38-07:00\",\n    \"updated_at\": \"2015-07-06T15:33:38-07:00\"\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/orgs/{org}/migrations"
+    },
+    "title":"List organization migrations"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X POST \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG/migrations \\\n  -d '{\"repositories\":[\"repositories\"]}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"migrations",
+    "id":"start-an-organization-migration",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "description":"<p><strong>Required</strong>. A list of arrays indicating which repositories should be migrated.</p>",
+        "in":"body ",
+        "name":"repositories ",
+        "type":"array of strings "
+      },
+      {
+        "description":"<p>Indicates whether repositories should be locked (to prevent manipulation) while migrating data.</p>",
+        "in":"body ",
+        "name":"lock_repositories ",
+        "type":"boolean "
+      },
+      {
+        "description":"<p>Indicates whether attachments should be excluded from the migration (to reduce migration archive file size).</p>",
+        "in":"body ",
+        "name":"exclude_attachments ",
+        "type":"boolean "
+      }
+    ],
+    "responses":[
+      {
+        "code":"201 Created",
+        "content":"{\n  \"id\": 79,\n  \"owner\": {\n    \"login\": \"github\",\n    \"id\": 1,\n    \"node_id\": \"MDEyOk9yZ2FuaXphdGlvbjE=\",\n    \"url\": \"https://api.github.com/orgs/github\",\n    \"repos_url\": \"https://api.github.com/orgs/github/repos\",\n    \"events_url\": \"https://api.github.com/orgs/github/events\",\n    \"hooks_url\": \"https://api.github.com/orgs/github/hooks\",\n    \"issues_url\": \"https://api.github.com/orgs/github/issues\",\n    \"members_url\": \"https://api.github.com/orgs/github/members{/member}\",\n    \"public_members_url\": \"https://api.github.com/orgs/github/public_members{/member}\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"description\": \"A great organization\"\n  },\n  \"guid\": \"0b989ba4-242f-11e5-81e1-c7b6966d2516\",\n  \"state\": \"pending\",\n  \"lock_repositories\": true,\n  \"exclude_attachments\": false,\n  \"repositories\": [\n    {\n      \"id\": 1296269,\n      \"node_id\": \"MDEwOlJlcG9zaXRvcnkxMjk2MjY5\",\n      \"name\": \"Hello-World\",\n      \"full_name\": \"octocat/Hello-World\",\n      \"owner\": {\n        \"login\": \"octocat\",\n        \"id\": 1,\n        \"node_id\": \"MDQ6VXNlcjE=\",\n        \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n        \"gravatar_id\": \"\",\n        \"url\": \"https://api.github.com/users/octocat\",\n        \"html_url\": \"https://github.com/octocat\",\n        \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n        \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n        \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n        \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n        \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n        \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n        \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n        \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n        \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n        \"type\": \"User\",\n        \"site_admin\": false\n      },\n      \"private\": false,\n      \"html_url\": \"https://github.com/octocat/Hello-World\",\n      \"description\": \"This your first repo!\",\n      \"fork\": false,\n      \"url\": \"https://api.github.com/repos/octocat/Hello-World\",\n      \"archive_url\": \"http://api.github.com/repos/octocat/Hello-World/{archive_format}{/ref}\",\n      \"assignees_url\": \"http://api.github.com/repos/octocat/Hello-World/assignees{/user}\",\n      \"blobs_url\": \"http://api.github.com/repos/octocat/Hello-World/git/blobs{/sha}\",\n      \"branches_url\": \"http://api.github.com/repos/octocat/Hello-World/branches{/branch}\",\n      \"collaborators_url\": \"http://api.github.com/repos/octocat/Hello-World/collaborators{/collaborator}\",\n      \"comments_url\": \"http://api.github.com/repos/octocat/Hello-World/comments{/number}\",\n      \"commits_url\": \"http://api.github.com/repos/octocat/Hello-World/commits{/sha}\",\n      \"compare_url\": \"http://api.github.com/repos/octocat/Hello-World/compare/{base}...{head}\",\n      \"contents_url\": \"http://api.github.com/repos/octocat/Hello-World/contents/{+path}\",\n      \"contributors_url\": \"http://api.github.com/repos/octocat/Hello-World/contributors\",\n      \"deployments_url\": \"http://api.github.com/repos/octocat/Hello-World/deployments\",\n      \"downloads_url\": \"http://api.github.com/repos/octocat/Hello-World/downloads\",\n      \"events_url\": \"http://api.github.com/repos/octocat/Hello-World/events\",\n      \"forks_url\": \"http://api.github.com/repos/octocat/Hello-World/forks\",\n      \"git_commits_url\": \"http://api.github.com/repos/octocat/Hello-World/git/commits{/sha}\",\n      \"git_refs_url\": \"http://api.github.com/repos/octocat/Hello-World/git/refs{/sha}\",\n      \"git_tags_url\": \"http://api.github.com/repos/octocat/Hello-World/git/tags{/sha}\",\n      \"git_url\": \"git:github.com/octocat/Hello-World.git\",\n      \"issue_comment_url\": \"http://api.github.com/repos/octocat/Hello-World/issues/comments{/number}\",\n      \"issue_events_url\": \"http://api.github.com/repos/octocat/Hello-World/issues/events{/number}\",\n      \"issues_url\": \"http://api.github.com/repos/octocat/Hello-World/issues{/number}\",\n      \"keys_url\": \"http://api.github.com/repos/octocat/Hello-World/keys{/key_id}\",\n      \"labels_url\": \"http://api.github.com/repos/octocat/Hello-World/labels{/name}\",\n      \"languages_url\": \"http://api.github.com/repos/octocat/Hello-World/languages\",\n      \"merges_url\": \"http://api.github.com/repos/octocat/Hello-World/merges\",\n      \"milestones_url\": \"http://api.github.com/repos/octocat/Hello-World/milestones{/number}\",\n      \"notifications_url\": \"http://api.github.com/repos/octocat/Hello-World/notifications{?since,all,participating}\",\n      \"pulls_url\": \"http://api.github.com/repos/octocat/Hello-World/pulls{/number}\",\n      \"releases_url\": \"http://api.github.com/repos/octocat/Hello-World/releases{/id}\",\n      \"ssh_url\": \"git@github.com:octocat/Hello-World.git\",\n      \"stargazers_url\": \"http://api.github.com/repos/octocat/Hello-World/stargazers\",\n      \"statuses_url\": \"http://api.github.com/repos/octocat/Hello-World/statuses/{sha}\",\n      \"subscribers_url\": \"http://api.github.com/repos/octocat/Hello-World/subscribers\",\n      \"subscription_url\": \"http://api.github.com/repos/octocat/Hello-World/subscription\",\n      \"tags_url\": \"http://api.github.com/repos/octocat/Hello-World/tags\",\n      \"teams_url\": \"http://api.github.com/repos/octocat/Hello-World/teams\",\n      \"trees_url\": \"http://api.github.com/repos/octocat/Hello-World/git/trees{/sha}\",\n      \"clone_url\": \"https://github.com/octocat/Hello-World.git\",\n      \"mirror_url\": \"git:git.example.com/octocat/Hello-World\",\n      \"hooks_url\": \"http://api.github.com/repos/octocat/Hello-World/hooks\",\n      \"svn_url\": \"https://svn.github.com/octocat/Hello-World\",\n      \"homepage\": \"https://github.com\",\n      \"language\": null,\n      \"forks_count\": 9,\n      \"stargazers_count\": 80,\n      \"watchers_count\": 80,\n      \"size\": 108,\n      \"default_branch\": \"master\",\n      \"open_issues_count\": 0,\n      \"is_template\": true,\n      \"topics\": [\n        \"octocat\",\n        \"atom\",\n        \"electron\",\n        \"api\"\n      ],\n      \"has_issues\": true,\n      \"has_projects\": true,\n      \"has_wiki\": true,\n      \"has_pages\": false,\n      \"has_downloads\": true,\n      \"archived\": false,\n      \"disabled\": false,\n      \"visibility\": \"public\",\n      \"pushed_at\": \"2011-01-26T19:06:43Z\",\n      \"created_at\": \"2011-01-26T19:01:12Z\",\n      \"updated_at\": \"2011-01-26T19:14:43Z\",\n      \"permissions\": {\n        \"admin\": false,\n        \"push\": false,\n        \"pull\": true\n      },\n      \"allow_rebase_merge\": true,\n      \"template_repository\": null,\n      \"temp_clone_token\": \"ABTLWHOULUVAXGTRYU7OC2876QJ2O\",\n      \"allow_squash_merge\": true,\n      \"delete_branch_on_merge\": true,\n      \"allow_merge_commit\": true,\n      \"subscribers_count\": 42,\n      \"network_count\": 0\n    }\n  ],\n  \"url\": \"https://api.github.com/orgs/octo-org/migrations/79\",\n  \"created_at\": \"2015-07-06T15:33:38-07:00\",\n  \"updated_at\": \"2015-07-06T15:33:38-07:00\"\n}\n"
+      }
+    ],
+    "target":{
+      "method":"post",
+      "path":"/orgs/{org}/migrations"
+    },
+    "title":"Start an organization migration"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.wyandotte-preview+json\" \\\n  https://api.github.com/orgs/ORG/migrations/42\n",
+        "type":"Shell"
+      },
+      {
+        "content":"application/vnd.github.wyandotte-preview+json\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"migrations",
+    "id":"get-an-organization-migration-status",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>This API is under preview and subject to change.</p> <a href=\"#get-an-organization-migration-status-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"migration_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"id\": 79,\n  \"owner\": {\n    \"login\": \"github\",\n    \"id\": 1,\n    \"node_id\": \"MDEyOk9yZ2FuaXphdGlvbjE=\",\n    \"url\": \"https://api.github.com/orgs/github\",\n    \"repos_url\": \"https://api.github.com/orgs/github/repos\",\n    \"events_url\": \"https://api.github.com/orgs/github/events\",\n    \"hooks_url\": \"https://api.github.com/orgs/github/hooks\",\n    \"issues_url\": \"https://api.github.com/orgs/github/issues\",\n    \"members_url\": \"https://api.github.com/orgs/github/members{/member}\",\n    \"public_members_url\": \"https://api.github.com/orgs/github/public_members{/member}\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"description\": \"A great organization\"\n  },\n  \"guid\": \"0b989ba4-242f-11e5-81e1-c7b6966d2516\",\n  \"state\": \"exported\",\n  \"lock_repositories\": true,\n  \"exclude_attachments\": false,\n  \"repositories\": [\n    {\n      \"id\": 1296269,\n      \"node_id\": \"MDEwOlJlcG9zaXRvcnkxMjk2MjY5\",\n      \"name\": \"Hello-World\",\n      \"full_name\": \"octocat/Hello-World\",\n      \"owner\": {\n        \"login\": \"octocat\",\n        \"id\": 1,\n        \"node_id\": \"MDQ6VXNlcjE=\",\n        \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n        \"gravatar_id\": \"\",\n        \"url\": \"https://api.github.com/users/octocat\",\n        \"html_url\": \"https://github.com/octocat\",\n        \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n        \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n        \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n        \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n        \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n        \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n        \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n        \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n        \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n        \"type\": \"User\",\n        \"site_admin\": false\n      },\n      \"private\": false,\n      \"html_url\": \"https://github.com/octocat/Hello-World\",\n      \"description\": \"This your first repo!\",\n      \"fork\": false,\n      \"url\": \"https://api.github.com/repos/octocat/Hello-World\",\n      \"archive_url\": \"http://api.github.com/repos/octocat/Hello-World/{archive_format}{/ref}\",\n      \"assignees_url\": \"http://api.github.com/repos/octocat/Hello-World/assignees{/user}\",\n      \"blobs_url\": \"http://api.github.com/repos/octocat/Hello-World/git/blobs{/sha}\",\n      \"branches_url\": \"http://api.github.com/repos/octocat/Hello-World/branches{/branch}\",\n      \"collaborators_url\": \"http://api.github.com/repos/octocat/Hello-World/collaborators{/collaborator}\",\n      \"comments_url\": \"http://api.github.com/repos/octocat/Hello-World/comments{/number}\",\n      \"commits_url\": \"http://api.github.com/repos/octocat/Hello-World/commits{/sha}\",\n      \"compare_url\": \"http://api.github.com/repos/octocat/Hello-World/compare/{base}...{head}\",\n      \"contents_url\": \"http://api.github.com/repos/octocat/Hello-World/contents/{+path}\",\n      \"contributors_url\": \"http://api.github.com/repos/octocat/Hello-World/contributors\",\n      \"deployments_url\": \"http://api.github.com/repos/octocat/Hello-World/deployments\",\n      \"downloads_url\": \"http://api.github.com/repos/octocat/Hello-World/downloads\",\n      \"events_url\": \"http://api.github.com/repos/octocat/Hello-World/events\",\n      \"forks_url\": \"http://api.github.com/repos/octocat/Hello-World/forks\",\n      \"git_commits_url\": \"http://api.github.com/repos/octocat/Hello-World/git/commits{/sha}\",\n      \"git_refs_url\": \"http://api.github.com/repos/octocat/Hello-World/git/refs{/sha}\",\n      \"git_tags_url\": \"http://api.github.com/repos/octocat/Hello-World/git/tags{/sha}\",\n      \"git_url\": \"git:github.com/octocat/Hello-World.git\",\n      \"issue_comment_url\": \"http://api.github.com/repos/octocat/Hello-World/issues/comments{/number}\",\n      \"issue_events_url\": \"http://api.github.com/repos/octocat/Hello-World/issues/events{/number}\",\n      \"issues_url\": \"http://api.github.com/repos/octocat/Hello-World/issues{/number}\",\n      \"keys_url\": \"http://api.github.com/repos/octocat/Hello-World/keys{/key_id}\",\n      \"labels_url\": \"http://api.github.com/repos/octocat/Hello-World/labels{/name}\",\n      \"languages_url\": \"http://api.github.com/repos/octocat/Hello-World/languages\",\n      \"merges_url\": \"http://api.github.com/repos/octocat/Hello-World/merges\",\n      \"milestones_url\": \"http://api.github.com/repos/octocat/Hello-World/milestones{/number}\",\n      \"notifications_url\": \"http://api.github.com/repos/octocat/Hello-World/notifications{?since,all,participating}\",\n      \"pulls_url\": \"http://api.github.com/repos/octocat/Hello-World/pulls{/number}\",\n      \"releases_url\": \"http://api.github.com/repos/octocat/Hello-World/releases{/id}\",\n      \"ssh_url\": \"git@github.com:octocat/Hello-World.git\",\n      \"stargazers_url\": \"http://api.github.com/repos/octocat/Hello-World/stargazers\",\n      \"statuses_url\": \"http://api.github.com/repos/octocat/Hello-World/statuses/{sha}\",\n      \"subscribers_url\": \"http://api.github.com/repos/octocat/Hello-World/subscribers\",\n      \"subscription_url\": \"http://api.github.com/repos/octocat/Hello-World/subscription\",\n      \"tags_url\": \"http://api.github.com/repos/octocat/Hello-World/tags\",\n      \"teams_url\": \"http://api.github.com/repos/octocat/Hello-World/teams\",\n      \"trees_url\": \"http://api.github.com/repos/octocat/Hello-World/git/trees{/sha}\",\n      \"clone_url\": \"https://github.com/octocat/Hello-World.git\",\n      \"mirror_url\": \"git:git.example.com/octocat/Hello-World\",\n      \"hooks_url\": \"http://api.github.com/repos/octocat/Hello-World/hooks\",\n      \"svn_url\": \"https://svn.github.com/octocat/Hello-World\",\n      \"homepage\": \"https://github.com\",\n      \"language\": null,\n      \"forks_count\": 9,\n      \"stargazers_count\": 80,\n      \"watchers_count\": 80,\n      \"size\": 108,\n      \"default_branch\": \"master\",\n      \"open_issues_count\": 0,\n      \"is_template\": true,\n      \"topics\": [\n        \"octocat\",\n        \"atom\",\n        \"electron\",\n        \"api\"\n      ],\n      \"has_issues\": true,\n      \"has_projects\": true,\n      \"has_wiki\": true,\n      \"has_pages\": false,\n      \"has_downloads\": true,\n      \"archived\": false,\n      \"disabled\": false,\n      \"visibility\": \"public\",\n      \"pushed_at\": \"2011-01-26T19:06:43Z\",\n      \"created_at\": \"2011-01-26T19:01:12Z\",\n      \"updated_at\": \"2011-01-26T19:14:43Z\",\n      \"permissions\": {\n        \"admin\": false,\n        \"push\": false,\n        \"pull\": true\n      },\n      \"allow_rebase_merge\": true,\n      \"template_repository\": null,\n      \"temp_clone_token\": \"ABTLWHOULUVAXGTRYU7OC2876QJ2O\",\n      \"allow_squash_merge\": true,\n      \"delete_branch_on_merge\": true,\n      \"allow_merge_commit\": true,\n      \"subscribers_count\": 42,\n      \"network_count\": 0\n    }\n  ],\n  \"url\": \"https://api.github.com/orgs/octo-org/migrations/79\",\n  \"created_at\": \"2015-07-06T15:33:38-07:00\",\n  \"updated_at\": \"2015-07-06T15:33:38-07:00\"\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/orgs/{org}/migrations/{migration_id}"
+    },
+    "title":"Get an organization migration status"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.wyandotte-preview+json\" \\\n  https://api.github.com/orgs/ORG/migrations/42/archive\n",
+        "type":"Shell"
+      },
+      {
+        "content":"application/vnd.github.wyandotte-preview+json\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"migrations",
+    "id":"download-an-organization-migration-archive",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>This API is under preview and subject to change.</p> <a href=\"#download-an-organization-migration-archive-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"migration_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"302 Found"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/orgs/{org}/migrations/{migration_id}/archive"
+    },
+    "title":"Download an organization migration archive"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X DELETE \\\n  -H \"Accept: application/vnd.github.wyandotte-preview+json\" \\\n  https://api.github.com/orgs/ORG/migrations/42/archive\n",
+        "type":"Shell"
+      },
+      {
+        "content":"application/vnd.github.wyandotte-preview+json\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"migrations",
+    "id":"delete-an-organization-migration-archive",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>This API is under preview and subject to change.</p> <a href=\"#delete-an-organization-migration-archive-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"migration_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"delete",
+      "path":"/orgs/{org}/migrations/{migration_id}/archive"
+    },
+    "title":"Delete an organization migration archive"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X DELETE \\\n  -H \"Accept: application/vnd.github.wyandotte-preview+json\" \\\n  https://api.github.com/orgs/ORG/migrations/42/repos/REPO_NAME/lock\n",
+        "type":"Shell"
+      },
+      {
+        "content":"application/vnd.github.wyandotte-preview+json\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"migrations",
+    "id":"unlock-an-organization-repository",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>This API is under preview and subject to change.</p> <a href=\"#unlock-an-organization-repository-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"migration_id ",
+        "type":"integer "
+      },
+      {
+        "in":"path",
+        "name":"repo_name ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"delete",
+      "path":"/orgs/{org}/migrations/{migration_id}/repos/{repo_name}/lock"
+    },
+    "title":"Unlock an organization repository"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.wyandotte-preview+json\" \\\n  https://api.github.com/orgs/ORG/migrations/42/repositories\n",
+        "type":"Shell"
+      },
+      {
+        "content":"application/vnd.github.wyandotte-preview+json\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"migrations",
+    "id":"list-repositories-in-an-organization-migration",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>This API is under preview and subject to change.</p> <a href=\"#list-repositories-in-an-organization-migration-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"migration_id ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"id\": 1296269,\n    \"node_id\": \"MDEwOlJlcG9zaXRvcnkxMjk2MjY5\",\n    \"name\": \"Hello-World\",\n    \"full_name\": \"octocat/Hello-World\",\n    \"owner\": {\n      \"login\": \"octocat\",\n      \"id\": 1,\n      \"node_id\": \"MDQ6VXNlcjE=\",\n      \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n      \"gravatar_id\": \"\",\n      \"url\": \"https://api.github.com/users/octocat\",\n      \"html_url\": \"https://github.com/octocat\",\n      \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n      \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n      \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n      \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n      \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n      \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n      \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n      \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n      \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n      \"type\": \"User\",\n      \"site_admin\": false\n    },\n    \"private\": false,\n    \"html_url\": \"https://github.com/octocat/Hello-World\",\n    \"description\": \"This your first repo!\",\n    \"fork\": false,\n    \"url\": \"https://api.github.com/repos/octocat/Hello-World\",\n    \"archive_url\": \"http://api.github.com/repos/octocat/Hello-World/{archive_format}{/ref}\",\n    \"assignees_url\": \"http://api.github.com/repos/octocat/Hello-World/assignees{/user}\",\n    \"blobs_url\": \"http://api.github.com/repos/octocat/Hello-World/git/blobs{/sha}\",\n    \"branches_url\": \"http://api.github.com/repos/octocat/Hello-World/branches{/branch}\",\n    \"collaborators_url\": \"http://api.github.com/repos/octocat/Hello-World/collaborators{/collaborator}\",\n    \"comments_url\": \"http://api.github.com/repos/octocat/Hello-World/comments{/number}\",\n    \"commits_url\": \"http://api.github.com/repos/octocat/Hello-World/commits{/sha}\",\n    \"compare_url\": \"http://api.github.com/repos/octocat/Hello-World/compare/{base}...{head}\",\n    \"contents_url\": \"http://api.github.com/repos/octocat/Hello-World/contents/{+path}\",\n    \"contributors_url\": \"http://api.github.com/repos/octocat/Hello-World/contributors\",\n    \"deployments_url\": \"http://api.github.com/repos/octocat/Hello-World/deployments\",\n    \"downloads_url\": \"http://api.github.com/repos/octocat/Hello-World/downloads\",\n    \"events_url\": \"http://api.github.com/repos/octocat/Hello-World/events\",\n    \"forks_url\": \"http://api.github.com/repos/octocat/Hello-World/forks\",\n    \"git_commits_url\": \"http://api.github.com/repos/octocat/Hello-World/git/commits{/sha}\",\n    \"git_refs_url\": \"http://api.github.com/repos/octocat/Hello-World/git/refs{/sha}\",\n    \"git_tags_url\": \"http://api.github.com/repos/octocat/Hello-World/git/tags{/sha}\",\n    \"git_url\": \"git:github.com/octocat/Hello-World.git\",\n    \"issue_comment_url\": \"http://api.github.com/repos/octocat/Hello-World/issues/comments{/number}\",\n    \"issue_events_url\": \"http://api.github.com/repos/octocat/Hello-World/issues/events{/number}\",\n    \"issues_url\": \"http://api.github.com/repos/octocat/Hello-World/issues{/number}\",\n    \"keys_url\": \"http://api.github.com/repos/octocat/Hello-World/keys{/key_id}\",\n    \"labels_url\": \"http://api.github.com/repos/octocat/Hello-World/labels{/name}\",\n    \"languages_url\": \"http://api.github.com/repos/octocat/Hello-World/languages\",\n    \"merges_url\": \"http://api.github.com/repos/octocat/Hello-World/merges\",\n    \"milestones_url\": \"http://api.github.com/repos/octocat/Hello-World/milestones{/number}\",\n    \"notifications_url\": \"http://api.github.com/repos/octocat/Hello-World/notifications{?since,all,participating}\",\n    \"pulls_url\": \"http://api.github.com/repos/octocat/Hello-World/pulls{/number}\",\n    \"releases_url\": \"http://api.github.com/repos/octocat/Hello-World/releases{/id}\",\n    \"ssh_url\": \"git@github.com:octocat/Hello-World.git\",\n    \"stargazers_url\": \"http://api.github.com/repos/octocat/Hello-World/stargazers\",\n    \"statuses_url\": \"http://api.github.com/repos/octocat/Hello-World/statuses/{sha}\",\n    \"subscribers_url\": \"http://api.github.com/repos/octocat/Hello-World/subscribers\",\n    \"subscription_url\": \"http://api.github.com/repos/octocat/Hello-World/subscription\",\n    \"tags_url\": \"http://api.github.com/repos/octocat/Hello-World/tags\",\n    \"teams_url\": \"http://api.github.com/repos/octocat/Hello-World/teams\",\n    \"trees_url\": \"http://api.github.com/repos/octocat/Hello-World/git/trees{/sha}\",\n    \"clone_url\": \"https://github.com/octocat/Hello-World.git\",\n    \"mirror_url\": \"git:git.example.com/octocat/Hello-World\",\n    \"hooks_url\": \"http://api.github.com/repos/octocat/Hello-World/hooks\",\n    \"svn_url\": \"https://svn.github.com/octocat/Hello-World\",\n    \"homepage\": \"https://github.com\",\n    \"language\": null,\n    \"forks_count\": 9,\n    \"stargazers_count\": 80,\n    \"watchers_count\": 80,\n    \"size\": 108,\n    \"default_branch\": \"master\",\n    \"open_issues_count\": 0,\n    \"is_template\": true,\n    \"topics\": [\n      \"octocat\",\n      \"atom\",\n      \"electron\",\n      \"api\"\n    ],\n    \"has_issues\": true,\n    \"has_projects\": true,\n    \"has_wiki\": true,\n    \"has_pages\": false,\n    \"has_downloads\": true,\n    \"archived\": false,\n    \"disabled\": false,\n    \"visibility\": \"public\",\n    \"pushed_at\": \"2011-01-26T19:06:43Z\",\n    \"created_at\": \"2011-01-26T19:01:12Z\",\n    \"updated_at\": \"2011-01-26T19:14:43Z\",\n    \"permissions\": {\n      \"admin\": false,\n      \"push\": false,\n      \"pull\": true\n    },\n    \"template_repository\": null,\n    \"temp_clone_token\": \"ABTLWHOULUVAXGTRYU7OC2876QJ2O\",\n    \"delete_branch_on_merge\": true,\n    \"subscribers_count\": 42,\n    \"network_count\": 0,\n    \"license\": {\n      \"key\": \"mit\",\n      \"name\": \"MIT License\",\n      \"spdx_id\": \"MIT\",\n      \"url\": \"https://api.github.com/licenses/mit\",\n      \"node_id\": \"MDc6TGljZW5zZW1pdA==\"\n    }\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/orgs/{org}/migrations/{migration_id}/repositories"
+    },
+    "title":"List repositories in an organization migration"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/repos/octocat/hello-world/import\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"migrations",
+    "id":"get-an-import-status",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"vcs\": \"subversion\",\n  \"use_lfs\": \"opt_in\",\n  \"vcs_url\": \"http://svn.mycompany.com/svn/myproject\",\n  \"status\": \"complete\",\n  \"status_text\": \"Done\",\n  \"has_large_files\": true,\n  \"large_files_size\": 132331036,\n  \"large_files_count\": 1,\n  \"authors_count\": 4,\n  \"url\": \"https://api.github.com/repos/octocat/socm/import\",\n  \"html_url\": \"https://import.github.com/octocat/socm/import\",\n  \"authors_url\": \"https://api.github.com/repos/octocat/socm/import/authors\",\n  \"repository_url\": \"https://api.github.com/repos/octocat/socm\"\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/repos/{owner}/{repo}/import"
+    },
+    "title":"Get an import status"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X PUT \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/repos/octocat/hello-world/import \\\n  -d '{\"vcs_url\":\"vcs_url\"}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"migrations",
+    "id":"start-an-import",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "description":"<p><strong>Required</strong>. The URL of the originating repository.</p>",
+        "in":"body ",
+        "name":"vcs_url ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The originating VCS type. Can be one of <code>subversion</code>, <code>git</code>, <code>mercurial</code>, or <code>tfvc</code>. Please be aware that without this parameter, the import job will take additional time to detect the VCS type before beginning the import. This detection step will be reflected in the response.</p>",
+        "in":"body ",
+        "name":"vcs ",
+        "type":"string "
+      },
+      {
+        "description":"<p>If authentication is required, the username to provide to <code>vcs_url</code>.</p>",
+        "in":"body ",
+        "name":"vcs_username ",
+        "type":"string "
+      },
+      {
+        "description":"<p>If authentication is required, the password to provide to <code>vcs_url</code>.</p>",
+        "in":"body ",
+        "name":"vcs_password ",
+        "type":"string "
+      },
+      {
+        "description":"<p>For a tfvc import, the name of the project that is being imported.</p>",
+        "in":"body ",
+        "name":"tfvc_project ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"201 Created",
+        "content":"{\n  \"vcs\": \"subversion\",\n  \"use_lfs\": \"undecided\",\n  \"vcs_url\": \"http://svn.mycompany.com/svn/myproject\",\n  \"status\": \"importing\",\n  \"status_text\": \"Importing...\",\n  \"has_large_files\": false,\n  \"large_files_size\": 0,\n  \"large_files_count\": 0,\n  \"authors_count\": 0,\n  \"percent\": 42,\n  \"commit_count\": 1042,\n  \"url\": \"https://api.github.com/repos/octocat/socm/import\",\n  \"html_url\": \"https://import.github.com/octocat/socm/import\",\n  \"authors_url\": \"https://api.github.com/repos/octocat/socm/import/authors\",\n  \"repository_url\": \"https://api.github.com/repos/octocat/socm\"\n}\n"
+      }
+    ],
+    "target":{
+      "method":"put",
+      "path":"/repos/{owner}/{repo}/import"
+    },
+    "title":"Start an import"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X PATCH \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/repos/octocat/hello-world/import \\\n  -d '{\"vcs_username\":\"vcs_username\"}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"migrations",
+    "id":"update-an-import",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The username to provide to the originating repository.</p>",
+        "in":"body ",
+        "name":"vcs_username ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The password to provide to the originating repository.</p>",
+        "in":"body ",
+        "name":"vcs_password ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"vcs\": \"subversion\",\n  \"use_lfs\": \"undecided\",\n  \"vcs_url\": \"http://svn.mycompany.com/svn/myproject\",\n  \"status\": \"detecting\",\n  \"url\": \"https://api.github.com/repos/octocat/socm/import\",\n  \"html_url\": \"https://import.github.com/octocat/socm/import\",\n  \"authors_url\": \"https://api.github.com/repos/octocat/socm/import/authors\",\n  \"repository_url\": \"https://api.github.com/repos/octocat/socm\"\n}\n"
+      },
+      {
+        "code":"200 OK",
+        "content":"{\n  \"vcs\": \"tfvc\",\n  \"use_lfs\": \"undecided\",\n  \"vcs_url\": \"http://tfs.mycompany.com/tfs/myproject\",\n  \"tfvc_project\": \"project1\",\n  \"status\": \"importing\",\n  \"status_text\": \"Importing...\",\n  \"has_large_files\": false,\n  \"large_files_size\": 0,\n  \"large_files_count\": 0,\n  \"authors_count\": 0,\n  \"percent\": 42,\n  \"commit_count\": 1042,\n  \"url\": \"https://api.github.com/repos/octocat/socm/import\",\n  \"html_url\": \"https://import.github.com/octocat/socm/import\",\n  \"authors_url\": \"https://api.github.com/repos/octocat/socm/import/authors\",\n  \"repository_url\": \"https://api.github.com/repos/octocat/socm\"\n}\n"
+      },
+      {
+        "code":"200 OK",
+        "content":"{\n  \"vcs\": \"subversion\",\n  \"use_lfs\": \"undecided\",\n  \"vcs_url\": \"http://svn.mycompany.com/svn/myproject\",\n  \"status\": \"importing\",\n  \"status_text\": \"Importing...\",\n  \"has_large_files\": false,\n  \"large_files_size\": 0,\n  \"large_files_count\": 0,\n  \"authors_count\": 0,\n  \"percent\": 42,\n  \"commit_count\": 1042,\n  \"url\": \"https://api.github.com/repos/octocat/socm/import\",\n  \"html_url\": \"https://import.github.com/octocat/socm/import\",\n  \"authors_url\": \"https://api.github.com/repos/octocat/socm/import/authors\",\n  \"repository_url\": \"https://api.github.com/repos/octocat/socm\"\n}\n"
+      }
+    ],
+    "target":{
+      "method":"patch",
+      "path":"/repos/{owner}/{repo}/import"
+    },
+    "title":"Update an import"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X DELETE \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/repos/octocat/hello-world/import\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"migrations",
+    "id":"cancel-an-import",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"delete",
+      "path":"/repos/{owner}/{repo}/import"
+    },
+    "title":"Cancel an import"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/repos/octocat/hello-world/import/authors\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"migrations",
+    "id":"get-commit-authors",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Only authors found after this id are returned. Provide the highest author ID you&apos;ve seen so far. New authors may be added to the list at any point while the importer is performing the <code>raw</code> step.</p>",
+        "in":"query ",
+        "name":"since ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"id\": 2268557,\n    \"remote_id\": \"nobody@fc7da526-431c-80fe-3c8c-c148ff18d7ef\",\n    \"remote_name\": \"nobody\",\n    \"email\": \"hubot@github.com\",\n    \"name\": \"Hubot\",\n    \"url\": \"https://api.github.com/repos/octocat/socm/import/authors/2268557\",\n    \"import_url\": \"https://api.github.com/repos/octocat/socm/import\"\n  },\n  {\n    \"id\": 2268558,\n    \"remote_id\": \"svner@fc7da526-431c-80fe-3c8c-c148ff18d7ef\",\n    \"remote_name\": \"svner\",\n    \"email\": \"svner@fc7da526-431c-80fe-3c8c-c148ff18d7ef\",\n    \"name\": \"svner\",\n    \"url\": \"https://api.github.com/repos/octocat/socm/import/authors/2268558\",\n    \"import_url\": \"https://api.github.com/repos/octocat/socm/import\"\n  },\n  {\n    \"id\": 2268559,\n    \"remote_id\": \"svner@example.com@fc7da526-431c-80fe-3c8c-c148ff18d7ef\",\n    \"remote_name\": \"svner@example.com\",\n    \"email\": \"svner@example.com@fc7da526-431c-80fe-3c8c-c148ff18d7ef\",\n    \"name\": \"svner@example.com\",\n    \"url\": \"https://api.github.com/repos/octocat/socm/import/authors/2268559\",\n    \"import_url\": \"https://api.github.com/repos/octocat/socm/import\"\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/repos/{owner}/{repo}/import/authors"
+    },
+    "title":"Get commit authors"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X PATCH \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/repos/octocat/hello-world/import/authors/42 \\\n  -d '{\"email\":\"octocat@github.com\"}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"migrations",
+    "id":"map-a-commit-author",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"author_id ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>The new Git author email.</p>",
+        "in":"body ",
+        "name":"email ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The new Git author name.</p>",
+        "in":"body ",
+        "name":"name ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"id\": 2268557,\n  \"remote_id\": \"nobody@fc7da526-431c-80fe-3c8c-c148ff18d7ef\",\n  \"remote_name\": \"nobody\",\n  \"email\": \"hubot@github.com\",\n  \"name\": \"Hubot\",\n  \"url\": \"https://api.github.com/repos/octocat/socm/import/authors/2268557\",\n  \"import_url\": \"https://api.github.com/repos/octocat/socm/import\"\n}\n"
+      }
+    ],
+    "target":{
+      "method":"patch",
+      "path":"/repos/{owner}/{repo}/import/authors/{author_id}"
+    },
+    "title":"Map a commit author"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/repos/octocat/hello-world/import/large_files\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"migrations",
+    "id":"get-large-files",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"ref_name\": \"refs/heads/master\",\n    \"path\": \"foo/bar/1\",\n    \"oid\": \"d3d9446802a44259755d38e6d163e820\",\n    \"size\": 10485760\n  },\n  {\n    \"ref_name\": \"refs/heads/master\",\n    \"path\": \"foo/bar/2\",\n    \"oid\": \"6512bd43d9caa6e02c990b0a82652dca\",\n    \"size\": 11534336\n  },\n  {\n    \"ref_name\": \"refs/heads/master\",\n    \"path\": \"foo/bar/3\",\n    \"oid\": \"c20ad4d76fe97759aa27a0c99bff6710\",\n    \"size\": 12582912\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/repos/{owner}/{repo}/import/large_files"
+    },
+    "title":"Get large files"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X PATCH \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/repos/octocat/hello-world/import/lfs \\\n  -d '{\"use_lfs\":\"use_lfs\"}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"migrations",
+    "id":"update-git-lfs-preference",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "description":"<p><strong>Required</strong>. Can be one of <code>opt_in</code> (large files will be stored using Git LFS) or <code>opt_out</code> (large files will be removed during the import).</p>",
+        "in":"body ",
+        "name":"use_lfs ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"vcs\": \"subversion\",\n  \"use_lfs\": \"opt_in\",\n  \"vcs_url\": \"http://svn.mycompany.com/svn/myproject\",\n  \"status\": \"complete\",\n  \"status_text\": \"Done\",\n  \"has_large_files\": true,\n  \"large_files_size\": 132331036,\n  \"large_files_count\": 1,\n  \"authors_count\": 4,\n  \"url\": \"https://api.github.com/repos/octocat/socm/import\",\n  \"html_url\": \"https://import.github.com/octocat/socm/import\",\n  \"authors_url\": \"https://api.github.com/repos/octocat/socm/import/authors\",\n  \"repository_url\": \"https://api.github.com/repos/octocat/socm\"\n}\n"
+      }
+    ],
+    "target":{
+      "method":"patch",
+      "path":"/repos/{owner}/{repo}/import/lfs"
+    },
+    "title":"Update Git LFS preference"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.wyandotte-preview+json\" \\\n  https://api.github.com/user/migrations\n",
+        "type":"Shell"
+      },
+      {
+        "content":"application/vnd.github.wyandotte-preview+json\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"migrations",
+    "id":"list-user-migrations",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>This API is under preview and subject to change.</p> <a href=\"#list-user-migrations-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"id\": 79,\n    \"owner\": {\n      \"login\": \"octocat\",\n      \"id\": 1,\n      \"node_id\": \"MDQ6VXNlcjE=\",\n      \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n      \"gravatar_id\": \"\",\n      \"url\": \"https://api.github.com/users/octocat\",\n      \"html_url\": \"https://github.com/octocat\",\n      \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n      \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n      \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n      \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n      \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n      \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n      \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n      \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n      \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n      \"type\": \"User\",\n      \"site_admin\": false\n    },\n    \"guid\": \"0b989ba4-242f-11e5-81e1-c7b6966d2516\",\n    \"state\": \"pending\",\n    \"lock_repositories\": true,\n    \"exclude_attachments\": false,\n    \"repositories\": [\n      {\n        \"id\": 1296269,\n        \"node_id\": \"MDEwOlJlcG9zaXRvcnkxMjk2MjY5\",\n        \"name\": \"Hello-World\",\n        \"full_name\": \"octocat/Hello-World\",\n        \"owner\": {\n          \"login\": \"octocat\",\n          \"id\": 1,\n          \"node_id\": \"MDQ6VXNlcjE=\",\n          \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n          \"gravatar_id\": \"\",\n          \"url\": \"https://api.github.com/users/octocat\",\n          \"html_url\": \"https://github.com/octocat\",\n          \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n          \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n          \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n          \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n          \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n          \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n          \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n          \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n          \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n          \"type\": \"User\",\n          \"site_admin\": false\n        },\n        \"private\": false,\n        \"html_url\": \"https://github.com/octocat/Hello-World\",\n        \"description\": \"This your first repo!\",\n        \"fork\": false,\n        \"url\": \"https://api.github.com/repos/octocat/Hello-World\",\n        \"archive_url\": \"http://api.github.com/repos/octocat/Hello-World/{archive_format}{/ref}\",\n        \"assignees_url\": \"http://api.github.com/repos/octocat/Hello-World/assignees{/user}\",\n        \"blobs_url\": \"http://api.github.com/repos/octocat/Hello-World/git/blobs{/sha}\",\n        \"branches_url\": \"http://api.github.com/repos/octocat/Hello-World/branches{/branch}\",\n        \"collaborators_url\": \"http://api.github.com/repos/octocat/Hello-World/collaborators{/collaborator}\",\n        \"comments_url\": \"http://api.github.com/repos/octocat/Hello-World/comments{/number}\",\n        \"commits_url\": \"http://api.github.com/repos/octocat/Hello-World/commits{/sha}\",\n        \"compare_url\": \"http://api.github.com/repos/octocat/Hello-World/compare/{base}...{head}\",\n        \"contents_url\": \"http://api.github.com/repos/octocat/Hello-World/contents/{+path}\",\n        \"contributors_url\": \"http://api.github.com/repos/octocat/Hello-World/contributors\",\n        \"deployments_url\": \"http://api.github.com/repos/octocat/Hello-World/deployments\",\n        \"downloads_url\": \"http://api.github.com/repos/octocat/Hello-World/downloads\",\n        \"events_url\": \"http://api.github.com/repos/octocat/Hello-World/events\",\n        \"forks_url\": \"http://api.github.com/repos/octocat/Hello-World/forks\",\n        \"git_commits_url\": \"http://api.github.com/repos/octocat/Hello-World/git/commits{/sha}\",\n        \"git_refs_url\": \"http://api.github.com/repos/octocat/Hello-World/git/refs{/sha}\",\n        \"git_tags_url\": \"http://api.github.com/repos/octocat/Hello-World/git/tags{/sha}\",\n        \"git_url\": \"git:github.com/octocat/Hello-World.git\",\n        \"issue_comment_url\": \"http://api.github.com/repos/octocat/Hello-World/issues/comments{/number}\",\n        \"issue_events_url\": \"http://api.github.com/repos/octocat/Hello-World/issues/events{/number}\",\n        \"issues_url\": \"http://api.github.com/repos/octocat/Hello-World/issues{/number}\",\n        \"keys_url\": \"http://api.github.com/repos/octocat/Hello-World/keys{/key_id}\",\n        \"labels_url\": \"http://api.github.com/repos/octocat/Hello-World/labels{/name}\",\n        \"languages_url\": \"http://api.github.com/repos/octocat/Hello-World/languages\",\n        \"merges_url\": \"http://api.github.com/repos/octocat/Hello-World/merges\",\n        \"milestones_url\": \"http://api.github.com/repos/octocat/Hello-World/milestones{/number}\",\n        \"notifications_url\": \"http://api.github.com/repos/octocat/Hello-World/notifications{?since,all,participating}\",\n        \"pulls_url\": \"http://api.github.com/repos/octocat/Hello-World/pulls{/number}\",\n        \"releases_url\": \"http://api.github.com/repos/octocat/Hello-World/releases{/id}\",\n        \"ssh_url\": \"git@github.com:octocat/Hello-World.git\",\n        \"stargazers_url\": \"http://api.github.com/repos/octocat/Hello-World/stargazers\",\n        \"statuses_url\": \"http://api.github.com/repos/octocat/Hello-World/statuses/{sha}\",\n        \"subscribers_url\": \"http://api.github.com/repos/octocat/Hello-World/subscribers\",\n        \"subscription_url\": \"http://api.github.com/repos/octocat/Hello-World/subscription\",\n        \"tags_url\": \"http://api.github.com/repos/octocat/Hello-World/tags\",\n        \"teams_url\": \"http://api.github.com/repos/octocat/Hello-World/teams\",\n        \"trees_url\": \"http://api.github.com/repos/octocat/Hello-World/git/trees{/sha}\",\n        \"clone_url\": \"https://github.com/octocat/Hello-World.git\",\n        \"mirror_url\": \"git:git.example.com/octocat/Hello-World\",\n        \"hooks_url\": \"http://api.github.com/repos/octocat/Hello-World/hooks\",\n        \"svn_url\": \"https://svn.github.com/octocat/Hello-World\",\n        \"homepage\": \"https://github.com\",\n        \"language\": null,\n        \"forks_count\": 9,\n        \"stargazers_count\": 80,\n        \"watchers_count\": 80,\n        \"size\": 108,\n        \"default_branch\": \"master\",\n        \"open_issues_count\": 0,\n        \"is_template\": true,\n        \"topics\": [\n          \"octocat\",\n          \"atom\",\n          \"electron\",\n          \"api\"\n        ],\n        \"has_issues\": true,\n        \"has_projects\": true,\n        \"has_wiki\": true,\n        \"has_pages\": false,\n        \"has_downloads\": true,\n        \"archived\": false,\n        \"disabled\": false,\n        \"visibility\": \"public\",\n        \"pushed_at\": \"2011-01-26T19:06:43Z\",\n        \"created_at\": \"2011-01-26T19:01:12Z\",\n        \"updated_at\": \"2011-01-26T19:14:43Z\",\n        \"permissions\": {\n          \"admin\": false,\n          \"push\": false,\n          \"pull\": true\n        },\n        \"allow_rebase_merge\": true,\n        \"template_repository\": null,\n        \"temp_clone_token\": \"ABTLWHOULUVAXGTRYU7OC2876QJ2O\",\n        \"allow_squash_merge\": true,\n        \"delete_branch_on_merge\": true,\n        \"allow_merge_commit\": true,\n        \"subscribers_count\": 42,\n        \"network_count\": 0\n      }\n    ],\n    \"url\": \"https://api.github.com/orgs/octo-org/migrations/79\",\n    \"created_at\": \"2015-07-06T15:33:38-07:00\",\n    \"updated_at\": \"2015-07-06T15:33:38-07:00\"\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/user/migrations"
+    },
+    "title":"List user migrations"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X POST \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/user/migrations \\\n  -d '{\"repositories\":[\"repositories\"]}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"migrations",
+    "id":"start-a-user-migration",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "description":"<p><strong>Required</strong>. An array of repositories to include in the migration.</p>",
+        "in":"body ",
+        "name":"repositories ",
+        "type":"array of strings "
+      },
+      {
+        "description":"<p>Locks the <code>repositories</code> to prevent changes during the migration when set to <code>true</code>.</p>",
+        "in":"body ",
+        "name":"lock_repositories ",
+        "type":"boolean "
+      },
+      {
+        "description":"<p>Does not include attachments uploaded to GitHub.com in the migration data when set to <code>true</code>. Excluding attachments will reduce the migration archive file size.</p>",
+        "in":"body ",
+        "name":"exclude_attachments ",
+        "type":"boolean "
+      }
+    ],
+    "responses":[
+      {
+        "code":"201 Created",
+        "content":"{\n  \"id\": 79,\n  \"owner\": {\n    \"login\": \"octocat\",\n    \"id\": 1,\n    \"node_id\": \"MDQ6VXNlcjE=\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/users/octocat\",\n    \"html_url\": \"https://github.com/octocat\",\n    \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n    \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n    \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n    \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n    \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n    \"type\": \"User\",\n    \"site_admin\": false\n  },\n  \"guid\": \"0b989ba4-242f-11e5-81e1-c7b6966d2516\",\n  \"state\": \"pending\",\n  \"lock_repositories\": true,\n  \"exclude_attachments\": false,\n  \"repositories\": [\n    {\n      \"id\": 1296269,\n      \"node_id\": \"MDEwOlJlcG9zaXRvcnkxMjk2MjY5\",\n      \"name\": \"Hello-World\",\n      \"full_name\": \"octocat/Hello-World\",\n      \"owner\": {\n        \"login\": \"octocat\",\n        \"id\": 1,\n        \"node_id\": \"MDQ6VXNlcjE=\",\n        \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n        \"gravatar_id\": \"\",\n        \"url\": \"https://api.github.com/users/octocat\",\n        \"html_url\": \"https://github.com/octocat\",\n        \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n        \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n        \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n        \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n        \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n        \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n        \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n        \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n        \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n        \"type\": \"User\",\n        \"site_admin\": false\n      },\n      \"private\": false,\n      \"html_url\": \"https://github.com/octocat/Hello-World\",\n      \"description\": \"This your first repo!\",\n      \"fork\": false,\n      \"url\": \"https://api.github.com/repos/octocat/Hello-World\",\n      \"archive_url\": \"http://api.github.com/repos/octocat/Hello-World/{archive_format}{/ref}\",\n      \"assignees_url\": \"http://api.github.com/repos/octocat/Hello-World/assignees{/user}\",\n      \"blobs_url\": \"http://api.github.com/repos/octocat/Hello-World/git/blobs{/sha}\",\n      \"branches_url\": \"http://api.github.com/repos/octocat/Hello-World/branches{/branch}\",\n      \"collaborators_url\": \"http://api.github.com/repos/octocat/Hello-World/collaborators{/collaborator}\",\n      \"comments_url\": \"http://api.github.com/repos/octocat/Hello-World/comments{/number}\",\n      \"commits_url\": \"http://api.github.com/repos/octocat/Hello-World/commits{/sha}\",\n      \"compare_url\": \"http://api.github.com/repos/octocat/Hello-World/compare/{base}...{head}\",\n      \"contents_url\": \"http://api.github.com/repos/octocat/Hello-World/contents/{+path}\",\n      \"contributors_url\": \"http://api.github.com/repos/octocat/Hello-World/contributors\",\n      \"deployments_url\": \"http://api.github.com/repos/octocat/Hello-World/deployments\",\n      \"downloads_url\": \"http://api.github.com/repos/octocat/Hello-World/downloads\",\n      \"events_url\": \"http://api.github.com/repos/octocat/Hello-World/events\",\n      \"forks_url\": \"http://api.github.com/repos/octocat/Hello-World/forks\",\n      \"git_commits_url\": \"http://api.github.com/repos/octocat/Hello-World/git/commits{/sha}\",\n      \"git_refs_url\": \"http://api.github.com/repos/octocat/Hello-World/git/refs{/sha}\",\n      \"git_tags_url\": \"http://api.github.com/repos/octocat/Hello-World/git/tags{/sha}\",\n      \"git_url\": \"git:github.com/octocat/Hello-World.git\",\n      \"issue_comment_url\": \"http://api.github.com/repos/octocat/Hello-World/issues/comments{/number}\",\n      \"issue_events_url\": \"http://api.github.com/repos/octocat/Hello-World/issues/events{/number}\",\n      \"issues_url\": \"http://api.github.com/repos/octocat/Hello-World/issues{/number}\",\n      \"keys_url\": \"http://api.github.com/repos/octocat/Hello-World/keys{/key_id}\",\n      \"labels_url\": \"http://api.github.com/repos/octocat/Hello-World/labels{/name}\",\n      \"languages_url\": \"http://api.github.com/repos/octocat/Hello-World/languages\",\n      \"merges_url\": \"http://api.github.com/repos/octocat/Hello-World/merges\",\n      \"milestones_url\": \"http://api.github.com/repos/octocat/Hello-World/milestones{/number}\",\n      \"notifications_url\": \"http://api.github.com/repos/octocat/Hello-World/notifications{?since,all,participating}\",\n      \"pulls_url\": \"http://api.github.com/repos/octocat/Hello-World/pulls{/number}\",\n      \"releases_url\": \"http://api.github.com/repos/octocat/Hello-World/releases{/id}\",\n      \"ssh_url\": \"git@github.com:octocat/Hello-World.git\",\n      \"stargazers_url\": \"http://api.github.com/repos/octocat/Hello-World/stargazers\",\n      \"statuses_url\": \"http://api.github.com/repos/octocat/Hello-World/statuses/{sha}\",\n      \"subscribers_url\": \"http://api.github.com/repos/octocat/Hello-World/subscribers\",\n      \"subscription_url\": \"http://api.github.com/repos/octocat/Hello-World/subscription\",\n      \"tags_url\": \"http://api.github.com/repos/octocat/Hello-World/tags\",\n      \"teams_url\": \"http://api.github.com/repos/octocat/Hello-World/teams\",\n      \"trees_url\": \"http://api.github.com/repos/octocat/Hello-World/git/trees{/sha}\",\n      \"clone_url\": \"https://github.com/octocat/Hello-World.git\",\n      \"mirror_url\": \"git:git.example.com/octocat/Hello-World\",\n      \"hooks_url\": \"http://api.github.com/repos/octocat/Hello-World/hooks\",\n      \"svn_url\": \"https://svn.github.com/octocat/Hello-World\",\n      \"homepage\": \"https://github.com\",\n      \"language\": null,\n      \"forks_count\": 9,\n      \"stargazers_count\": 80,\n      \"watchers_count\": 80,\n      \"size\": 108,\n      \"default_branch\": \"master\",\n      \"open_issues_count\": 0,\n      \"is_template\": true,\n      \"topics\": [\n        \"octocat\",\n        \"atom\",\n        \"electron\",\n        \"api\"\n      ],\n      \"has_issues\": true,\n      \"has_projects\": true,\n      \"has_wiki\": true,\n      \"has_pages\": false,\n      \"has_downloads\": true,\n      \"archived\": false,\n      \"disabled\": false,\n      \"visibility\": \"public\",\n      \"pushed_at\": \"2011-01-26T19:06:43Z\",\n      \"created_at\": \"2011-01-26T19:01:12Z\",\n      \"updated_at\": \"2011-01-26T19:14:43Z\",\n      \"permissions\": {\n        \"admin\": false,\n        \"push\": false,\n        \"pull\": true\n      },\n      \"allow_rebase_merge\": true,\n      \"template_repository\": null,\n      \"temp_clone_token\": \"ABTLWHOULUVAXGTRYU7OC2876QJ2O\",\n      \"allow_squash_merge\": true,\n      \"delete_branch_on_merge\": true,\n      \"allow_merge_commit\": true,\n      \"subscribers_count\": 42,\n      \"network_count\": 0\n    }\n  ],\n  \"url\": \"https://api.github.com/orgs/octo-org/migrations/79\",\n  \"created_at\": \"2015-07-06T15:33:38-07:00\",\n  \"updated_at\": \"2015-07-06T15:33:38-07:00\"\n}\n"
+      }
+    ],
+    "target":{
+      "method":"post",
+      "path":"/user/migrations"
+    },
+    "title":"Start a user migration"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.wyandotte-preview+json\" \\\n  https://api.github.com/user/migrations/42\n",
+        "type":"Shell"
+      },
+      {
+        "content":"application/vnd.github.wyandotte-preview+json\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"migrations",
+    "id":"get-a-user-migration-status",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>This API is under preview and subject to change.</p> <a href=\"#get-a-user-migration-status-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"migration_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"id\": 79,\n  \"owner\": {\n    \"login\": \"octocat\",\n    \"id\": 1,\n    \"node_id\": \"MDQ6VXNlcjE=\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/users/octocat\",\n    \"html_url\": \"https://github.com/octocat\",\n    \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n    \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n    \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n    \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n    \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n    \"type\": \"User\",\n    \"site_admin\": false\n  },\n  \"guid\": \"0b989ba4-242f-11e5-81e1-c7b6966d2516\",\n  \"state\": \"exported\",\n  \"lock_repositories\": true,\n  \"exclude_attachments\": false,\n  \"repositories\": [\n    {\n      \"id\": 1296269,\n      \"node_id\": \"MDEwOlJlcG9zaXRvcnkxMjk2MjY5\",\n      \"name\": \"Hello-World\",\n      \"full_name\": \"octocat/Hello-World\",\n      \"owner\": {\n        \"login\": \"octocat\",\n        \"id\": 1,\n        \"node_id\": \"MDQ6VXNlcjE=\",\n        \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n        \"gravatar_id\": \"\",\n        \"url\": \"https://api.github.com/users/octocat\",\n        \"html_url\": \"https://github.com/octocat\",\n        \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n        \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n        \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n        \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n        \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n        \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n        \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n        \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n        \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n        \"type\": \"User\",\n        \"site_admin\": false\n      },\n      \"private\": false,\n      \"html_url\": \"https://github.com/octocat/Hello-World\",\n      \"description\": \"This your first repo!\",\n      \"fork\": false,\n      \"url\": \"https://api.github.com/repos/octocat/Hello-World\",\n      \"archive_url\": \"http://api.github.com/repos/octocat/Hello-World/{archive_format}{/ref}\",\n      \"assignees_url\": \"http://api.github.com/repos/octocat/Hello-World/assignees{/user}\",\n      \"blobs_url\": \"http://api.github.com/repos/octocat/Hello-World/git/blobs{/sha}\",\n      \"branches_url\": \"http://api.github.com/repos/octocat/Hello-World/branches{/branch}\",\n      \"collaborators_url\": \"http://api.github.com/repos/octocat/Hello-World/collaborators{/collaborator}\",\n      \"comments_url\": \"http://api.github.com/repos/octocat/Hello-World/comments{/number}\",\n      \"commits_url\": \"http://api.github.com/repos/octocat/Hello-World/commits{/sha}\",\n      \"compare_url\": \"http://api.github.com/repos/octocat/Hello-World/compare/{base}...{head}\",\n      \"contents_url\": \"http://api.github.com/repos/octocat/Hello-World/contents/{+path}\",\n      \"contributors_url\": \"http://api.github.com/repos/octocat/Hello-World/contributors\",\n      \"deployments_url\": \"http://api.github.com/repos/octocat/Hello-World/deployments\",\n      \"downloads_url\": \"http://api.github.com/repos/octocat/Hello-World/downloads\",\n      \"events_url\": \"http://api.github.com/repos/octocat/Hello-World/events\",\n      \"forks_url\": \"http://api.github.com/repos/octocat/Hello-World/forks\",\n      \"git_commits_url\": \"http://api.github.com/repos/octocat/Hello-World/git/commits{/sha}\",\n      \"git_refs_url\": \"http://api.github.com/repos/octocat/Hello-World/git/refs{/sha}\",\n      \"git_tags_url\": \"http://api.github.com/repos/octocat/Hello-World/git/tags{/sha}\",\n      \"git_url\": \"git:github.com/octocat/Hello-World.git\",\n      \"issue_comment_url\": \"http://api.github.com/repos/octocat/Hello-World/issues/comments{/number}\",\n      \"issue_events_url\": \"http://api.github.com/repos/octocat/Hello-World/issues/events{/number}\",\n      \"issues_url\": \"http://api.github.com/repos/octocat/Hello-World/issues{/number}\",\n      \"keys_url\": \"http://api.github.com/repos/octocat/Hello-World/keys{/key_id}\",\n      \"labels_url\": \"http://api.github.com/repos/octocat/Hello-World/labels{/name}\",\n      \"languages_url\": \"http://api.github.com/repos/octocat/Hello-World/languages\",\n      \"merges_url\": \"http://api.github.com/repos/octocat/Hello-World/merges\",\n      \"milestones_url\": \"http://api.github.com/repos/octocat/Hello-World/milestones{/number}\",\n      \"notifications_url\": \"http://api.github.com/repos/octocat/Hello-World/notifications{?since,all,participating}\",\n      \"pulls_url\": \"http://api.github.com/repos/octocat/Hello-World/pulls{/number}\",\n      \"releases_url\": \"http://api.github.com/repos/octocat/Hello-World/releases{/id}\",\n      \"ssh_url\": \"git@github.com:octocat/Hello-World.git\",\n      \"stargazers_url\": \"http://api.github.com/repos/octocat/Hello-World/stargazers\",\n      \"statuses_url\": \"http://api.github.com/repos/octocat/Hello-World/statuses/{sha}\",\n      \"subscribers_url\": \"http://api.github.com/repos/octocat/Hello-World/subscribers\",\n      \"subscription_url\": \"http://api.github.com/repos/octocat/Hello-World/subscription\",\n      \"tags_url\": \"http://api.github.com/repos/octocat/Hello-World/tags\",\n      \"teams_url\": \"http://api.github.com/repos/octocat/Hello-World/teams\",\n      \"trees_url\": \"http://api.github.com/repos/octocat/Hello-World/git/trees{/sha}\",\n      \"clone_url\": \"https://github.com/octocat/Hello-World.git\",\n      \"mirror_url\": \"git:git.example.com/octocat/Hello-World\",\n      \"hooks_url\": \"http://api.github.com/repos/octocat/Hello-World/hooks\",\n      \"svn_url\": \"https://svn.github.com/octocat/Hello-World\",\n      \"homepage\": \"https://github.com\",\n      \"language\": null,\n      \"forks_count\": 9,\n      \"stargazers_count\": 80,\n      \"watchers_count\": 80,\n      \"size\": 108,\n      \"default_branch\": \"master\",\n      \"open_issues_count\": 0,\n      \"is_template\": true,\n      \"topics\": [\n        \"octocat\",\n        \"atom\",\n        \"electron\",\n        \"api\"\n      ],\n      \"has_issues\": true,\n      \"has_projects\": true,\n      \"has_wiki\": true,\n      \"has_pages\": false,\n      \"has_downloads\": true,\n      \"archived\": false,\n      \"disabled\": false,\n      \"visibility\": \"public\",\n      \"pushed_at\": \"2011-01-26T19:06:43Z\",\n      \"created_at\": \"2011-01-26T19:01:12Z\",\n      \"updated_at\": \"2011-01-26T19:14:43Z\",\n      \"permissions\": {\n        \"admin\": false,\n        \"push\": false,\n        \"pull\": true\n      },\n      \"allow_rebase_merge\": true,\n      \"template_repository\": null,\n      \"temp_clone_token\": \"ABTLWHOULUVAXGTRYU7OC2876QJ2O\",\n      \"allow_squash_merge\": true,\n      \"delete_branch_on_merge\": true,\n      \"allow_merge_commit\": true,\n      \"subscribers_count\": 42,\n      \"network_count\": 0\n    }\n  ],\n  \"url\": \"https://api.github.com/orgs/octo-org/migrations/79\",\n  \"created_at\": \"2015-07-06T15:33:38-07:00\",\n  \"updated_at\": \"2015-07-06T15:33:38-07:00\"\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/user/migrations/{migration_id}"
+    },
+    "title":"Get a user migration status"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.wyandotte-preview+json\" \\\n  https://api.github.com/user/migrations/42/archive\n",
+        "type":"Shell"
+      },
+      {
+        "content":"application/vnd.github.wyandotte-preview+json\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"migrations",
+    "id":"download-a-user-migration-archive",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>This API is under preview and subject to change.</p> <a href=\"#download-a-user-migration-archive-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"migration_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"302 Found"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/user/migrations/{migration_id}/archive"
+    },
+    "title":"Download a user migration archive"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X DELETE \\\n  -H \"Accept: application/vnd.github.wyandotte-preview+json\" \\\n  https://api.github.com/user/migrations/42/archive\n",
+        "type":"Shell"
+      },
+      {
+        "content":"application/vnd.github.wyandotte-preview+json\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"migrations",
+    "id":"delete-a-user-migration-archive",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>This API is under preview and subject to change.</p> <a href=\"#delete-a-user-migration-archive-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"migration_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"delete",
+      "path":"/user/migrations/{migration_id}/archive"
+    },
+    "title":"Delete a user migration archive"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.wyandotte-preview+json\" \\\n  https://api.github.com/user/migrations/42/repositories\n",
+        "type":"Shell"
+      },
+      {
+        "content":"application/vnd.github.wyandotte-preview+json\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"migrations",
+    "id":"list-repositories-for-a-user-migration",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>This API is under preview and subject to change.</p> <a href=\"#list-repositories-for-a-user-migration-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"migration_id ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"id\": 1296269,\n    \"node_id\": \"MDEwOlJlcG9zaXRvcnkxMjk2MjY5\",\n    \"name\": \"Hello-World\",\n    \"full_name\": \"octocat/Hello-World\",\n    \"owner\": {\n      \"login\": \"octocat\",\n      \"id\": 1,\n      \"node_id\": \"MDQ6VXNlcjE=\",\n      \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n      \"gravatar_id\": \"\",\n      \"url\": \"https://api.github.com/users/octocat\",\n      \"html_url\": \"https://github.com/octocat\",\n      \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n      \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n      \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n      \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n      \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n      \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n      \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n      \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n      \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n      \"type\": \"User\",\n      \"site_admin\": false\n    },\n    \"private\": false,\n    \"html_url\": \"https://github.com/octocat/Hello-World\",\n    \"description\": \"This your first repo!\",\n    \"fork\": false,\n    \"url\": \"https://api.github.com/repos/octocat/Hello-World\",\n    \"archive_url\": \"http://api.github.com/repos/octocat/Hello-World/{archive_format}{/ref}\",\n    \"assignees_url\": \"http://api.github.com/repos/octocat/Hello-World/assignees{/user}\",\n    \"blobs_url\": \"http://api.github.com/repos/octocat/Hello-World/git/blobs{/sha}\",\n    \"branches_url\": \"http://api.github.com/repos/octocat/Hello-World/branches{/branch}\",\n    \"collaborators_url\": \"http://api.github.com/repos/octocat/Hello-World/collaborators{/collaborator}\",\n    \"comments_url\": \"http://api.github.com/repos/octocat/Hello-World/comments{/number}\",\n    \"commits_url\": \"http://api.github.com/repos/octocat/Hello-World/commits{/sha}\",\n    \"compare_url\": \"http://api.github.com/repos/octocat/Hello-World/compare/{base}...{head}\",\n    \"contents_url\": \"http://api.github.com/repos/octocat/Hello-World/contents/{+path}\",\n    \"contributors_url\": \"http://api.github.com/repos/octocat/Hello-World/contributors\",\n    \"deployments_url\": \"http://api.github.com/repos/octocat/Hello-World/deployments\",\n    \"downloads_url\": \"http://api.github.com/repos/octocat/Hello-World/downloads\",\n    \"events_url\": \"http://api.github.com/repos/octocat/Hello-World/events\",\n    \"forks_url\": \"http://api.github.com/repos/octocat/Hello-World/forks\",\n    \"git_commits_url\": \"http://api.github.com/repos/octocat/Hello-World/git/commits{/sha}\",\n    \"git_refs_url\": \"http://api.github.com/repos/octocat/Hello-World/git/refs{/sha}\",\n    \"git_tags_url\": \"http://api.github.com/repos/octocat/Hello-World/git/tags{/sha}\",\n    \"git_url\": \"git:github.com/octocat/Hello-World.git\",\n    \"issue_comment_url\": \"http://api.github.com/repos/octocat/Hello-World/issues/comments{/number}\",\n    \"issue_events_url\": \"http://api.github.com/repos/octocat/Hello-World/issues/events{/number}\",\n    \"issues_url\": \"http://api.github.com/repos/octocat/Hello-World/issues{/number}\",\n    \"keys_url\": \"http://api.github.com/repos/octocat/Hello-World/keys{/key_id}\",\n    \"labels_url\": \"http://api.github.com/repos/octocat/Hello-World/labels{/name}\",\n    \"languages_url\": \"http://api.github.com/repos/octocat/Hello-World/languages\",\n    \"merges_url\": \"http://api.github.com/repos/octocat/Hello-World/merges\",\n    \"milestones_url\": \"http://api.github.com/repos/octocat/Hello-World/milestones{/number}\",\n    \"notifications_url\": \"http://api.github.com/repos/octocat/Hello-World/notifications{?since,all,participating}\",\n    \"pulls_url\": \"http://api.github.com/repos/octocat/Hello-World/pulls{/number}\",\n    \"releases_url\": \"http://api.github.com/repos/octocat/Hello-World/releases{/id}\",\n    \"ssh_url\": \"git@github.com:octocat/Hello-World.git\",\n    \"stargazers_url\": \"http://api.github.com/repos/octocat/Hello-World/stargazers\",\n    \"statuses_url\": \"http://api.github.com/repos/octocat/Hello-World/statuses/{sha}\",\n    \"subscribers_url\": \"http://api.github.com/repos/octocat/Hello-World/subscribers\",\n    \"subscription_url\": \"http://api.github.com/repos/octocat/Hello-World/subscription\",\n    \"tags_url\": \"http://api.github.com/repos/octocat/Hello-World/tags\",\n    \"teams_url\": \"http://api.github.com/repos/octocat/Hello-World/teams\",\n    \"trees_url\": \"http://api.github.com/repos/octocat/Hello-World/git/trees{/sha}\",\n    \"clone_url\": \"https://github.com/octocat/Hello-World.git\",\n    \"mirror_url\": \"git:git.example.com/octocat/Hello-World\",\n    \"hooks_url\": \"http://api.github.com/repos/octocat/Hello-World/hooks\",\n    \"svn_url\": \"https://svn.github.com/octocat/Hello-World\",\n    \"homepage\": \"https://github.com\",\n    \"language\": null,\n    \"forks_count\": 9,\n    \"stargazers_count\": 80,\n    \"watchers_count\": 80,\n    \"size\": 108,\n    \"default_branch\": \"master\",\n    \"open_issues_count\": 0,\n    \"is_template\": true,\n    \"topics\": [\n      \"octocat\",\n      \"atom\",\n      \"electron\",\n      \"api\"\n    ],\n    \"has_issues\": true,\n    \"has_projects\": true,\n    \"has_wiki\": true,\n    \"has_pages\": false,\n    \"has_downloads\": true,\n    \"archived\": false,\n    \"disabled\": false,\n    \"visibility\": \"public\",\n    \"pushed_at\": \"2011-01-26T19:06:43Z\",\n    \"created_at\": \"2011-01-26T19:01:12Z\",\n    \"updated_at\": \"2011-01-26T19:14:43Z\",\n    \"permissions\": {\n      \"admin\": false,\n      \"push\": false,\n      \"pull\": true\n    },\n    \"template_repository\": null,\n    \"temp_clone_token\": \"ABTLWHOULUVAXGTRYU7OC2876QJ2O\",\n    \"delete_branch_on_merge\": true,\n    \"subscribers_count\": 42,\n    \"network_count\": 0,\n    \"license\": {\n      \"key\": \"mit\",\n      \"name\": \"MIT License\",\n      \"spdx_id\": \"MIT\",\n      \"url\": \"https://api.github.com/licenses/mit\",\n      \"node_id\": \"MDc6TGljZW5zZW1pdA==\"\n    }\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/user/migrations/{migration_id}/repositories"
+    },
+    "title":"List repositories for a user migration"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X DELETE \\\n  -H \"Accept: application/vnd.github.wyandotte-preview+json\" \\\n  https://api.github.com/user/migrations/42/repos/REPO_NAME/lock\n",
+        "type":"Shell"
+      },
+      {
+        "content":"application/vnd.github.wyandotte-preview+json\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"migrations",
+    "id":"unlock-a-user-repository",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>This API is under preview and subject to change.</p> <a href=\"#unlock-a-user-repository-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"migration_id ",
+        "type":"integer "
+      },
+      {
+        "in":"path",
+        "name":"repo_name ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"delete",
+      "path":"/user/migrations/{migration_id}/repos/{repo_name}/lock"
+    },
+    "title":"Unlock a user repository"
+  }
+]

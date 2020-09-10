@@ -1,0 +1,379 @@
+[
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/scim/v2/organizations/ORG/Users\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"scim",
+    "id":"list-scim-provisioned-identities",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Used for pagination: the index of the first result to return.</p>",
+        "in":"query ",
+        "name":"startIndex ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Used for pagination: the number of results to return.</p>",
+        "in":"query ",
+        "name":"count ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Filters results using the equals query parameter operator (<code>eq</code>). You can filter results that are equal to <code>id</code>, <code>userName</code>, <code>emails</code>, and <code>external_id</code>. For example, to search for an identity with the <code>userName</code> Octocat, you would use this query:</p> <p><code>?filter=userName%20eq%20\\&quot;Octocat\\&quot;</code>.</p> <p>To filter results for for the identity with the email <code>octocat@github.com</code>, you would use this query:</p> <p><code>?filter=emails%20eq%20\\&quot;octocat@github.com\\&quot;</code>.</p>",
+        "in":"query ",
+        "name":"filter ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"schemas\": [\n    \"urn:ietf:params:scim:api:messages:2.0:ListResponse\"\n  ],\n  \"totalResults\": 1,\n  \"itemsPerPage\": 1,\n  \"startIndex\": 1,\n  \"Resources\": [\n    {\n      \"schemas\": [\n        \"urn:ietf:params:scim:schemas:core:2.0:User\"\n      ],\n      \"id\": \"5fc0c238-1112-11e8-8e45-920c87bdbd75\",\n      \"externalId\": \"00u1dhhb1fkIGP7RL1d8\",\n      \"userName\": \"octocat@github.com\",\n      \"name\": {\n        \"givenName\": \"Mona\",\n        \"familyName\": \"Octocat\"\n      },\n      \"emails\": [\n        {\n          \"value\": \"octocat@github.com\",\n          \"primary\": true,\n          \"type\": \"work\"\n        }\n      ],\n      \"active\": true,\n      \"meta\": {\n        \"resourceType\": \"User\",\n        \"created\": \"2018-02-13T15:05:24.000-08:00\",\n        \"lastModified\": \"2018-02-13T15:05:55.000-08:00\",\n        \"location\": \"https://api.github.com/scim/v2/organizations/octo-org/Users/5fc0c238-1112-11e8-8e45-920c87bdbd75\"\n      }\n    }\n  ]\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/scim/v2/organizations/{org}/Users"
+    },
+    "title":"List SCIM provisioned identities"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X POST \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/scim/v2/organizations/ORG/Users \\\n  -d '{\"schemas\":[\"schemas\"],\"userName\":\"userName\",\"name\":{\"givenName\":\"givenName\",\"familyName\":\"familyName\"},\"emails\":[\"octocat@github.com\"]}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"scim",
+    "id":"provision-and-invite-a-scim-user",
+    "parameterProperties":[
+      {
+        "description":"<strong>Required</strong>. The first name of the user.",
+        "name":"givenName",
+        "of":"name",
+        "type":"string"
+      },
+      {
+        "description":"<strong>Required</strong>. The last name of the user.",
+        "name":"familyName",
+        "of":"name",
+        "type":"string"
+      },
+      {
+        "description":"<strong>Required</strong>. The email address.",
+        "name":"value",
+        "of":"emails",
+        "type":"string"
+      },
+      {
+        "description":"<strong>Required</strong>. The type of email address.",
+        "name":"type",
+        "of":"emails",
+        "type":"string"
+      },
+      {
+        "description":"<strong>Required</strong>. Whether this email address is the primary address.",
+        "name":"primary",
+        "of":"emails",
+        "type":"boolean"
+      }
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "description":"<p><strong>Required</strong>. The SCIM schema URIs.</p>",
+        "in":"body ",
+        "name":"schemas ",
+        "type":"array of strings "
+      },
+      {
+        "description":"<p><strong>Required</strong>. The username for the user.</p>",
+        "in":"body ",
+        "name":"userName ",
+        "type":"string "
+      },
+      {
+        "description":"<p><strong>Required</strong>. undefined</p>",
+        "in":"body ",
+        "name":"name ",
+        "type":"object "
+      },
+      {
+        "description":"<p><strong>Required</strong>. List of user emails.</p>",
+        "in":"body ",
+        "name":"emails ",
+        "type":"array of objects "
+      }
+    ],
+    "responses":[
+      {
+        "code":"201 Created",
+        "content":"{\n  \"schemas\": [\n    \"urn:ietf:params:scim:schemas:core:2.0:User\"\n  ],\n  \"id\": \"edefdfedf-050c-11e7-8d32\",\n  \"externalId\": \"a7d0f98382\",\n  \"userName\": \"mona.octocat@okta.example.com\",\n  \"name\": {\n    \"givenName\": \"Mona\",\n    \"familyName\": \"Octocat\"\n  },\n  \"emails\": [\n    {\n      \"value\": \"mona.octocat@okta.example.com\",\n      \"type\": \"work\",\n      \"primary\": true\n    }\n  ],\n  \"active\": true,\n  \"meta\": {\n    \"resourceType\": \"User\",\n    \"created\": \"2017-03-09T16:11:13-05:00\",\n    \"lastModified\": \"2017-03-09T16:11:13-05:00\",\n    \"location\": \"https://api.github.com/scim/v2/organizations/octo-org/Users/edefdfedf-050c-11e7-8d32\"\n  }\n}\n"
+      }
+    ],
+    "target":{
+      "method":"post",
+      "path":"/scim/v2/organizations/{org}/Users"
+    },
+    "title":"Provision and invite a SCIM user"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/scim/v2/organizations/ORG/Users/SCIM_USER_ID\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"scim",
+    "id":"get-scim-provisioning-information-for-a-user",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Identifier generated by the GitHub SCIM endpoint.</p>",
+        "in":"path ",
+        "name":"scim_user_id ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"schemas\": [\n    \"urn:ietf:params:scim:schemas:core:2.0:User\"\n  ],\n  \"id\": \"edefdfedf-050c-11e7-8d32\",\n  \"externalId\": \"a7d0f98382\",\n  \"userName\": \"mona.octocat@okta.example.com\",\n  \"name\": {\n    \"givenName\": \"Mona\",\n    \"familyName\": \"Octocat\"\n  },\n  \"emails\": [\n    {\n      \"value\": \"mona.octocat@okta.example.com\",\n      \"type\": \"work\",\n      \"primary\": true\n    }\n  ],\n  \"active\": true,\n  \"meta\": {\n    \"resourceType\": \"User\",\n    \"created\": \"2017-03-09T16:11:13-05:00\",\n    \"lastModified\": \"2017-03-09T16:11:13-05:00\",\n    \"location\": \"https://api.github.com/scim/v2/organizations/octo-org/Users/edefdfedf-050c-11e7-8d32\"\n  }\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/scim/v2/organizations/{org}/Users/{scim_user_id}"
+    },
+    "title":"Get SCIM provisioning information for a user"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X PUT \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/scim/v2/organizations/ORG/Users/SCIM_USER_ID \\\n  -d '{\"schemas\":[\"schemas\"],\"userName\":\"userName\",\"name\":{\"givenName\":\"givenName\",\"familyName\":\"familyName\"},\"emails\":[\"octocat@github.com\"]}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"scim",
+    "id":"set-scim-information-for-a-provisioned-user",
+    "parameterProperties":[
+      {
+        "description":"<strong>Required</strong>. The first name of the user.",
+        "name":"givenName",
+        "of":"name",
+        "type":"string"
+      },
+      {
+        "description":"<strong>Required</strong>. The last name of the user.",
+        "name":"familyName",
+        "of":"name",
+        "type":"string"
+      },
+      {
+        "description":"<strong>Required</strong>. The email address.",
+        "name":"value",
+        "of":"emails",
+        "type":"string"
+      },
+      {
+        "description":"<strong>Required</strong>. The type of email address.",
+        "name":"type",
+        "of":"emails",
+        "type":"string"
+      },
+      {
+        "description":"<strong>Required</strong>. Whether this email address is the primary address.",
+        "name":"primary",
+        "of":"emails",
+        "type":"boolean"
+      }
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Identifier generated by the GitHub SCIM endpoint.</p>",
+        "in":"path ",
+        "name":"scim_user_id ",
+        "type":"string "
+      },
+      {
+        "description":"<p><strong>Required</strong>. The SCIM schema URIs.</p>",
+        "in":"body ",
+        "name":"schemas ",
+        "type":"array of strings "
+      },
+      {
+        "description":"<p><strong>Required</strong>. The username for the user.</p>",
+        "in":"body ",
+        "name":"userName ",
+        "type":"string "
+      },
+      {
+        "description":"<p><strong>Required</strong>. undefined</p>",
+        "in":"body ",
+        "name":"name ",
+        "type":"object "
+      },
+      {
+        "description":"<p><strong>Required</strong>. List of user emails.</p>",
+        "in":"body ",
+        "name":"emails ",
+        "type":"array of objects "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"schemas\": [\n    \"urn:ietf:params:scim:schemas:core:2.0:User\"\n  ],\n  \"id\": \"edefdfedf-050c-11e7-8d32\",\n  \"externalId\": \"a7d0f98382\",\n  \"userName\": \"mona.octocat@okta.example.com\",\n  \"name\": {\n    \"givenName\": \"Mona\",\n    \"familyName\": \"Octocat\"\n  },\n  \"emails\": [\n    {\n      \"value\": \"mona.octocat@okta.example.com\",\n      \"type\": \"work\",\n      \"primary\": true\n    }\n  ],\n  \"active\": true,\n  \"meta\": {\n    \"resourceType\": \"User\",\n    \"created\": \"2017-03-09T16:11:13-05:00\",\n    \"lastModified\": \"2017-03-09T16:11:13-05:00\",\n    \"location\": \"https://api.github.com/scim/v2/organizations/octo-org/Users/edefdfedf-050c-11e7-8d32\"\n  }\n}\n"
+      }
+    ],
+    "target":{
+      "method":"put",
+      "path":"/scim/v2/organizations/{org}/Users/{scim_user_id}"
+    },
+    "title":"Set SCIM information for a provisioned user"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X PATCH \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/scim/v2/organizations/ORG/Users/SCIM_USER_ID \\\n  -d '{\"schemas\":[\"schemas\"],\"Operations\":[{}]}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"scim",
+    "id":"update-an-attribute-for-a-scim-user",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Identifier generated by the GitHub SCIM endpoint.</p>",
+        "in":"path ",
+        "name":"scim_user_id ",
+        "type":"string "
+      },
+      {
+        "description":"<p><strong>Required</strong>. The SCIM schema URIs.</p>",
+        "in":"body ",
+        "name":"schemas ",
+        "type":"array of strings "
+      },
+      {
+        "description":"<p><strong>Required</strong>. Array of <a href=\"https://tools.ietf.org/html/rfc7644#section-3.5.2\">SCIM operations</a>.</p>",
+        "in":"body ",
+        "name":"Operations ",
+        "type":"array of objects "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"schemas\": [\n    \"urn:ietf:params:scim:schemas:core:2.0:User\"\n  ],\n  \"id\": \"edefdfedf-050c-11e7-8d32\",\n  \"externalId\": \"a7d0f98382\",\n  \"userName\": \"mona.octocat@okta.example.com\",\n  \"name\": {\n    \"givenName\": \"Monalisa\",\n    \"familyName\": \"Octocat\"\n  },\n  \"emails\": [\n    {\n      \"value\": \"mona.octocat@okta.example.com\",\n      \"type\": \"work\",\n      \"primary\": true\n    },\n    {\n      \"value\": \"monalisa@octocat.github.com\",\n      \"type\": \"home\"\n    }\n  ],\n  \"active\": true,\n  \"meta\": {\n    \"resourceType\": \"User\",\n    \"created\": \"2017-03-09T16:11:13-05:00\",\n    \"lastModified\": \"2017-03-09T16:11:13-05:00\",\n    \"location\": \"https://api.github.com/scim/v2/organizations/octo-org/Users/edefdfedf-050c-11e7-8d32\"\n  }\n}\n"
+      }
+    ],
+    "target":{
+      "method":"patch",
+      "path":"/scim/v2/organizations/{org}/Users/{scim_user_id}"
+    },
+    "title":"Update an attribute for a SCIM user"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X DELETE \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/scim/v2/organizations/ORG/Users/SCIM_USER_ID\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"scim",
+    "id":"delete-a-scim-user-from-an-organization",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Identifier generated by the GitHub SCIM endpoint.</p>",
+        "in":"path ",
+        "name":"scim_user_id ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"delete",
+      "path":"/scim/v2/organizations/{org}/Users/{scim_user_id}"
+    },
+    "title":"Delete a SCIM user from an organization"
+  }
+]

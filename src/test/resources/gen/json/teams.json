@@ -1,0 +1,3329 @@
+[
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG/teams\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"teams",
+    "id":"list-teams",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"id\": 1,\n    \"node_id\": \"MDQ6VGVhbTE=\",\n    \"url\": \"https://api.github.com/teams/1\",\n    \"html_url\": \"https://api.github.com/teams/justice-league\",\n    \"name\": \"Justice League\",\n    \"slug\": \"justice-league\",\n    \"description\": \"A great team.\",\n    \"privacy\": \"closed\",\n    \"permission\": \"admin\",\n    \"members_url\": \"https://api.github.com/teams/1/members{/member}\",\n    \"repositories_url\": \"https://api.github.com/teams/1/repos\",\n    \"parent\": null\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/orgs/{org}/teams"
+    },
+    "title":"List teams"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X POST \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG/teams \\\n  -d '{\"name\":\"name\"}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"teams",
+    "id":"create-a-team",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "description":"<p><strong>Required</strong>. The name of the team.</p>",
+        "in":"body ",
+        "name":"name ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The description of the team.</p>",
+        "in":"body ",
+        "name":"description ",
+        "type":"string "
+      },
+      {
+        "description":"<p>List GitHub IDs for organization members who will become team maintainers.</p>",
+        "in":"body ",
+        "name":"maintainers ",
+        "type":"array of strings "
+      },
+      {
+        "description":"<p>The full name (e.g., &quot;organization-name/repository-name&quot;) of repositories to add the team to.</p>",
+        "in":"body ",
+        "name":"repo_names ",
+        "type":"array of strings "
+      },
+      {
+        "description":"<p>The level of privacy this team should have. The options are:<br> <strong>For a non-nested team:</strong><br> * <code>secret</code> - only visible to organization owners and members of this team.<br> * <code>closed</code> - visible to all members of this organization.<br> Default: <code>secret</code><br> <strong>For a parent or child team:</strong><br> * <code>closed</code> - visible to all members of this organization.<br> Default for child team: <code>closed</code></p>",
+        "in":"body ",
+        "name":"privacy ",
+        "type":"string "
+      },
+      {
+        "description":"<p><strong>Deprecated</strong>. The permission that new repositories will be added to the team with when none is specified. Can be one of:<br> * <code>pull</code> - team members can pull, but not push to or administer newly-added repositories.<br> * <code>push</code> - team members can pull and push, but not administer newly-added repositories.<br> * <code>admin</code> - team members can pull, push and administer newly-added repositories.</p> Default: <code>pull</code>",
+        "in":"body ",
+        "name":"permission ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The ID of a team to set as the parent team.</p>",
+        "in":"body ",
+        "name":"parent_team_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"201 Created",
+        "content":"{\n  \"id\": 1,\n  \"node_id\": \"MDQ6VGVhbTE=\",\n  \"url\": \"https://api.github.com/teams/1\",\n  \"html_url\": \"https://api.github.com/teams/justice-league\",\n  \"name\": \"Justice League\",\n  \"slug\": \"justice-league\",\n  \"description\": \"A great team.\",\n  \"privacy\": \"closed\",\n  \"permission\": \"admin\",\n  \"members_url\": \"https://api.github.com/teams/1/members{/member}\",\n  \"repositories_url\": \"https://api.github.com/teams/1/repos\",\n  \"parent\": null,\n  \"members_count\": 3,\n  \"repos_count\": 10,\n  \"created_at\": \"2017-07-14T16:53:42Z\",\n  \"updated_at\": \"2017-08-17T12:37:15Z\",\n  \"organization\": {\n    \"login\": \"github\",\n    \"id\": 1,\n    \"node_id\": \"MDEyOk9yZ2FuaXphdGlvbjE=\",\n    \"url\": \"https://api.github.com/orgs/github\",\n    \"repos_url\": \"https://api.github.com/orgs/github/repos\",\n    \"events_url\": \"https://api.github.com/orgs/github/events\",\n    \"hooks_url\": \"https://api.github.com/orgs/github/hooks\",\n    \"issues_url\": \"https://api.github.com/orgs/github/issues\",\n    \"members_url\": \"https://api.github.com/orgs/github/members{/member}\",\n    \"public_members_url\": \"https://api.github.com/orgs/github/public_members{/member}\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"description\": \"A great organization\",\n    \"name\": \"github\",\n    \"company\": \"GitHub\",\n    \"blog\": \"https://github.com/blog\",\n    \"location\": \"San Francisco\",\n    \"email\": \"octocat@github.com\",\n    \"twitter_username\": \"github\",\n    \"is_verified\": true,\n    \"has_organization_projects\": true,\n    \"has_repository_projects\": true,\n    \"public_repos\": 2,\n    \"public_gists\": 1,\n    \"followers\": 20,\n    \"following\": 0,\n    \"html_url\": \"https://github.com/octocat\",\n    \"created_at\": \"2008-01-14T04:33:35Z\",\n    \"type\": \"Organization\"\n  }\n}\n"
+      }
+    ],
+    "target":{
+      "method":"post",
+      "path":"/orgs/{org}/teams"
+    },
+    "title":"Create a team"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG/teams/TEAM_SLUG\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"teams",
+    "id":"get-a-team-by-name",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"team_slug ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"id\": 1,\n  \"node_id\": \"MDQ6VGVhbTE=\",\n  \"url\": \"https://api.github.com/teams/1\",\n  \"html_url\": \"https://api.github.com/teams/justice-league\",\n  \"name\": \"Justice League\",\n  \"slug\": \"justice-league\",\n  \"description\": \"A great team.\",\n  \"privacy\": \"closed\",\n  \"permission\": \"admin\",\n  \"members_url\": \"https://api.github.com/teams/1/members{/member}\",\n  \"repositories_url\": \"https://api.github.com/teams/1/repos\",\n  \"parent\": null,\n  \"members_count\": 3,\n  \"repos_count\": 10,\n  \"created_at\": \"2017-07-14T16:53:42Z\",\n  \"updated_at\": \"2017-08-17T12:37:15Z\",\n  \"organization\": {\n    \"login\": \"github\",\n    \"id\": 1,\n    \"node_id\": \"MDEyOk9yZ2FuaXphdGlvbjE=\",\n    \"url\": \"https://api.github.com/orgs/github\",\n    \"repos_url\": \"https://api.github.com/orgs/github/repos\",\n    \"events_url\": \"https://api.github.com/orgs/github/events\",\n    \"hooks_url\": \"https://api.github.com/orgs/github/hooks\",\n    \"issues_url\": \"https://api.github.com/orgs/github/issues\",\n    \"members_url\": \"https://api.github.com/orgs/github/members{/member}\",\n    \"public_members_url\": \"https://api.github.com/orgs/github/public_members{/member}\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"description\": \"A great organization\",\n    \"name\": \"github\",\n    \"company\": \"GitHub\",\n    \"blog\": \"https://github.com/blog\",\n    \"location\": \"San Francisco\",\n    \"email\": \"octocat@github.com\",\n    \"twitter_username\": \"github\",\n    \"is_verified\": true,\n    \"has_organization_projects\": true,\n    \"has_repository_projects\": true,\n    \"public_repos\": 2,\n    \"public_gists\": 1,\n    \"followers\": 20,\n    \"following\": 0,\n    \"html_url\": \"https://github.com/octocat\",\n    \"created_at\": \"2008-01-14T04:33:35Z\",\n    \"type\": \"Organization\"\n  }\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/orgs/{org}/teams/{team_slug}"
+    },
+    "title":"Get a team by name"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X PATCH \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG/teams/TEAM_SLUG \\\n  -d '{\"name\":\"name\"}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"teams",
+    "id":"update-a-team",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"team_slug ",
+        "type":"string "
+      },
+      {
+        "description":"<p><strong>Required</strong>. The name of the team.</p>",
+        "in":"body ",
+        "name":"name ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The description of the team.</p>",
+        "in":"body ",
+        "name":"description ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The level of privacy this team should have. Editing teams without specifying this parameter leaves <code>privacy</code> intact. When a team is nested, the <code>privacy</code> for parent teams cannot be <code>secret</code>. The options are:<br> <strong>For a non-nested team:</strong><br> * <code>secret</code> - only visible to organization owners and members of this team.<br> * <code>closed</code> - visible to all members of this organization.<br> <strong>For a parent or child team:</strong><br> * <code>closed</code> - visible to all members of this organization.</p>",
+        "in":"body ",
+        "name":"privacy ",
+        "type":"string "
+      },
+      {
+        "description":"<p><strong>Deprecated</strong>. The permission that new repositories will be added to the team with when none is specified. Can be one of:<br> * <code>pull</code> - team members can pull, but not push to or administer newly-added repositories.<br> * <code>push</code> - team members can pull and push, but not administer newly-added repositories.<br> * <code>admin</code> - team members can pull, push and administer newly-added repositories.</p> Default: <code>pull</code>",
+        "in":"body ",
+        "name":"permission ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The ID of a team to set as the parent team.</p>",
+        "in":"body ",
+        "name":"parent_team_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"201 Created",
+        "content":"{\n  \"id\": 1,\n  \"node_id\": \"MDQ6VGVhbTE=\",\n  \"url\": \"https://api.github.com/teams/1\",\n  \"html_url\": \"https://api.github.com/teams/justice-league\",\n  \"name\": \"Justice League\",\n  \"slug\": \"justice-league\",\n  \"description\": \"A great team.\",\n  \"privacy\": \"closed\",\n  \"permission\": \"admin\",\n  \"members_url\": \"https://api.github.com/teams/1/members{/member}\",\n  \"repositories_url\": \"https://api.github.com/teams/1/repos\",\n  \"parent\": null,\n  \"members_count\": 3,\n  \"repos_count\": 10,\n  \"created_at\": \"2017-07-14T16:53:42Z\",\n  \"updated_at\": \"2017-08-17T12:37:15Z\",\n  \"organization\": {\n    \"login\": \"github\",\n    \"id\": 1,\n    \"node_id\": \"MDEyOk9yZ2FuaXphdGlvbjE=\",\n    \"url\": \"https://api.github.com/orgs/github\",\n    \"repos_url\": \"https://api.github.com/orgs/github/repos\",\n    \"events_url\": \"https://api.github.com/orgs/github/events\",\n    \"hooks_url\": \"https://api.github.com/orgs/github/hooks\",\n    \"issues_url\": \"https://api.github.com/orgs/github/issues\",\n    \"members_url\": \"https://api.github.com/orgs/github/members{/member}\",\n    \"public_members_url\": \"https://api.github.com/orgs/github/public_members{/member}\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"description\": \"A great organization\",\n    \"name\": \"github\",\n    \"company\": \"GitHub\",\n    \"blog\": \"https://github.com/blog\",\n    \"location\": \"San Francisco\",\n    \"email\": \"octocat@github.com\",\n    \"twitter_username\": \"github\",\n    \"is_verified\": true,\n    \"has_organization_projects\": true,\n    \"has_repository_projects\": true,\n    \"public_repos\": 2,\n    \"public_gists\": 1,\n    \"followers\": 20,\n    \"following\": 0,\n    \"html_url\": \"https://github.com/octocat\",\n    \"created_at\": \"2008-01-14T04:33:35Z\",\n    \"type\": \"Organization\"\n  }\n}\n"
+      }
+    ],
+    "target":{
+      "method":"patch",
+      "path":"/orgs/{org}/teams/{team_slug}"
+    },
+    "title":"Update a team"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X DELETE \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG/teams/TEAM_SLUG\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"teams",
+    "id":"delete-a-team",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"team_slug ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"delete",
+      "path":"/orgs/{org}/teams/{team_slug}"
+    },
+    "title":"Delete a team"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.inertia-preview+json\" \\\n  https://api.github.com/orgs/ORG/teams/TEAM_SLUG/projects\n",
+        "type":"Shell"
+      },
+      {
+        "content":"application/vnd.github.inertia-preview+json\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"teams",
+    "id":"list-team-projects",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>This API is under preview and subject to change.</p> <a href=\"#list-team-projects-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"team_slug ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"owner_url\": \"https://api.github.com/orgs/octocat\",\n    \"url\": \"https://api.github.com/projects/1002605\",\n    \"html_url\": \"https://github.com/orgs/api-playground/projects/1\",\n    \"columns_url\": \"https://api.github.com/projects/1002605/columns\",\n    \"id\": 1002605,\n    \"node_id\": \"MDc6UHJvamVjdDEwMDI2MDU=\",\n    \"name\": \"Organization Roadmap\",\n    \"body\": \"High-level roadmap for the upcoming year.\",\n    \"number\": 1,\n    \"state\": \"open\",\n    \"creator\": {\n      \"login\": \"octocat\",\n      \"id\": 1,\n      \"node_id\": \"MDQ6VXNlcjE=\",\n      \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n      \"gravatar_id\": \"\",\n      \"url\": \"https://api.github.com/users/octocat\",\n      \"html_url\": \"https://github.com/octocat\",\n      \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n      \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n      \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n      \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n      \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n      \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n      \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n      \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n      \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n      \"type\": \"User\",\n      \"site_admin\": false\n    },\n    \"created_at\": \"2011-04-11T20:09:31Z\",\n    \"updated_at\": \"2014-03-04T18:58:10Z\",\n    \"organization_permission\": \"write\",\n    \"private\": false,\n    \"permissions\": {\n      \"read\": true,\n      \"write\": true,\n      \"admin\": false\n    }\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/orgs/{org}/teams/{team_slug}/projects"
+    },
+    "title":"List team projects"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.inertia-preview+json\" \\\n  https://api.github.com/orgs/ORG/teams/TEAM_SLUG/projects/42\n",
+        "type":"Shell"
+      },
+      {
+        "content":"application/vnd.github.inertia-preview+json\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"teams",
+    "id":"check-team-permissions-for-a-project",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>This API is under preview and subject to change.</p> <a href=\"#check-team-permissions-for-a-project-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"team_slug ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"project_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"owner_url\": \"https://api.github.com/orgs/octocat\",\n  \"url\": \"https://api.github.com/projects/1002605\",\n  \"html_url\": \"https://github.com/orgs/api-playground/projects/1\",\n  \"columns_url\": \"https://api.github.com/projects/1002605/columns\",\n  \"id\": 1002605,\n  \"node_id\": \"MDc6UHJvamVjdDEwMDI2MDU=\",\n  \"name\": \"Organization Roadmap\",\n  \"body\": \"High-level roadmap for the upcoming year.\",\n  \"number\": 1,\n  \"state\": \"open\",\n  \"creator\": {\n    \"login\": \"octocat\",\n    \"id\": 1,\n    \"node_id\": \"MDQ6VXNlcjE=\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/users/octocat\",\n    \"html_url\": \"https://github.com/octocat\",\n    \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n    \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n    \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n    \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n    \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n    \"type\": \"User\",\n    \"site_admin\": false\n  },\n  \"created_at\": \"2011-04-11T20:09:31Z\",\n  \"updated_at\": \"2014-03-04T18:58:10Z\",\n  \"organization_permission\": \"write\",\n  \"private\": false,\n  \"permissions\": {\n    \"read\": true,\n    \"write\": true,\n    \"admin\": false\n  }\n}\n"
+      },
+      {
+        "code":"404 Not Found"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/orgs/{org}/teams/{team_slug}/projects/{project_id}"
+    },
+    "title":"Check team permissions for a project"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X PUT \\\n  -H \"Accept: application/vnd.github.inertia-preview+json\" \\\n  https://api.github.com/orgs/ORG/teams/TEAM_SLUG/projects/42 \\\n  -d '{\"permission\":\"permission\"}'\n",
+        "type":"Shell"
+      },
+      {
+        "content":"application/vnd.github.inertia-preview+json\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"teams",
+    "id":"add-or-update-team-project-permissions",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>This API is under preview and subject to change.</p> <a href=\"#add-or-update-team-project-permissions-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"team_slug ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"project_id ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>The permission to grant to the team for this project. Can be one of:<br> * <code>read</code> - team members can read, but not write to or administer this project.<br> * <code>write</code> - team members can read and write, but not administer this project.<br> * <code>admin</code> - team members can read, write and administer this project.<br> Default: the team&apos;s <code>permission</code> attribute will be used to determine what permission to grant the team on this project. Note that, if you choose not to pass any parameters, you&apos;ll need to set <code>Content-Length</code> to zero when calling out to this endpoint. For more information, see &quot;<a href=\"https://developer.github.com/v3/#http-verbs\">HTTP verbs</a>.&quot;</p>",
+        "in":"body ",
+        "name":"permission ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      },
+      {
+        "code":"403 Forbidden",
+        "content":"{\n  \"message\": \"Must have admin rights to Repository.\",\n  \"documentation_url\": \"https://developer.github.com/v3/teams/#add-or-update-team-project-permissions\"\n}\n"
+      }
+    ],
+    "target":{
+      "method":"put",
+      "path":"/orgs/{org}/teams/{team_slug}/projects/{project_id}"
+    },
+    "title":"Add or update team project permissions"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X DELETE \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG/teams/TEAM_SLUG/projects/42\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"teams",
+    "id":"remove-a-project-from-a-team",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"team_slug ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"project_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"delete",
+      "path":"/orgs/{org}/teams/{team_slug}/projects/{project_id}"
+    },
+    "title":"Remove a project from a team"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG/teams/TEAM_SLUG/repos\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"teams",
+    "id":"list-team-repositories",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"team_slug ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"id\": 1296269,\n    \"node_id\": \"MDEwOlJlcG9zaXRvcnkxMjk2MjY5\",\n    \"name\": \"Hello-World\",\n    \"full_name\": \"octocat/Hello-World\",\n    \"owner\": {\n      \"login\": \"octocat\",\n      \"id\": 1,\n      \"node_id\": \"MDQ6VXNlcjE=\",\n      \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n      \"gravatar_id\": \"\",\n      \"url\": \"https://api.github.com/users/octocat\",\n      \"html_url\": \"https://github.com/octocat\",\n      \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n      \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n      \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n      \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n      \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n      \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n      \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n      \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n      \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n      \"type\": \"User\",\n      \"site_admin\": false\n    },\n    \"private\": false,\n    \"html_url\": \"https://github.com/octocat/Hello-World\",\n    \"description\": \"This your first repo!\",\n    \"fork\": false,\n    \"url\": \"https://api.github.com/repos/octocat/Hello-World\",\n    \"archive_url\": \"http://api.github.com/repos/octocat/Hello-World/{archive_format}{/ref}\",\n    \"assignees_url\": \"http://api.github.com/repos/octocat/Hello-World/assignees{/user}\",\n    \"blobs_url\": \"http://api.github.com/repos/octocat/Hello-World/git/blobs{/sha}\",\n    \"branches_url\": \"http://api.github.com/repos/octocat/Hello-World/branches{/branch}\",\n    \"collaborators_url\": \"http://api.github.com/repos/octocat/Hello-World/collaborators{/collaborator}\",\n    \"comments_url\": \"http://api.github.com/repos/octocat/Hello-World/comments{/number}\",\n    \"commits_url\": \"http://api.github.com/repos/octocat/Hello-World/commits{/sha}\",\n    \"compare_url\": \"http://api.github.com/repos/octocat/Hello-World/compare/{base}...{head}\",\n    \"contents_url\": \"http://api.github.com/repos/octocat/Hello-World/contents/{+path}\",\n    \"contributors_url\": \"http://api.github.com/repos/octocat/Hello-World/contributors\",\n    \"deployments_url\": \"http://api.github.com/repos/octocat/Hello-World/deployments\",\n    \"downloads_url\": \"http://api.github.com/repos/octocat/Hello-World/downloads\",\n    \"events_url\": \"http://api.github.com/repos/octocat/Hello-World/events\",\n    \"forks_url\": \"http://api.github.com/repos/octocat/Hello-World/forks\",\n    \"git_commits_url\": \"http://api.github.com/repos/octocat/Hello-World/git/commits{/sha}\",\n    \"git_refs_url\": \"http://api.github.com/repos/octocat/Hello-World/git/refs{/sha}\",\n    \"git_tags_url\": \"http://api.github.com/repos/octocat/Hello-World/git/tags{/sha}\",\n    \"git_url\": \"git:github.com/octocat/Hello-World.git\",\n    \"issue_comment_url\": \"http://api.github.com/repos/octocat/Hello-World/issues/comments{/number}\",\n    \"issue_events_url\": \"http://api.github.com/repos/octocat/Hello-World/issues/events{/number}\",\n    \"issues_url\": \"http://api.github.com/repos/octocat/Hello-World/issues{/number}\",\n    \"keys_url\": \"http://api.github.com/repos/octocat/Hello-World/keys{/key_id}\",\n    \"labels_url\": \"http://api.github.com/repos/octocat/Hello-World/labels{/name}\",\n    \"languages_url\": \"http://api.github.com/repos/octocat/Hello-World/languages\",\n    \"merges_url\": \"http://api.github.com/repos/octocat/Hello-World/merges\",\n    \"milestones_url\": \"http://api.github.com/repos/octocat/Hello-World/milestones{/number}\",\n    \"notifications_url\": \"http://api.github.com/repos/octocat/Hello-World/notifications{?since,all,participating}\",\n    \"pulls_url\": \"http://api.github.com/repos/octocat/Hello-World/pulls{/number}\",\n    \"releases_url\": \"http://api.github.com/repos/octocat/Hello-World/releases{/id}\",\n    \"ssh_url\": \"git@github.com:octocat/Hello-World.git\",\n    \"stargazers_url\": \"http://api.github.com/repos/octocat/Hello-World/stargazers\",\n    \"statuses_url\": \"http://api.github.com/repos/octocat/Hello-World/statuses/{sha}\",\n    \"subscribers_url\": \"http://api.github.com/repos/octocat/Hello-World/subscribers\",\n    \"subscription_url\": \"http://api.github.com/repos/octocat/Hello-World/subscription\",\n    \"tags_url\": \"http://api.github.com/repos/octocat/Hello-World/tags\",\n    \"teams_url\": \"http://api.github.com/repos/octocat/Hello-World/teams\",\n    \"trees_url\": \"http://api.github.com/repos/octocat/Hello-World/git/trees{/sha}\",\n    \"clone_url\": \"https://github.com/octocat/Hello-World.git\",\n    \"mirror_url\": \"git:git.example.com/octocat/Hello-World\",\n    \"hooks_url\": \"http://api.github.com/repos/octocat/Hello-World/hooks\",\n    \"svn_url\": \"https://svn.github.com/octocat/Hello-World\",\n    \"homepage\": \"https://github.com\",\n    \"language\": null,\n    \"forks_count\": 9,\n    \"stargazers_count\": 80,\n    \"watchers_count\": 80,\n    \"size\": 108,\n    \"default_branch\": \"master\",\n    \"open_issues_count\": 0,\n    \"is_template\": true,\n    \"topics\": [\n      \"octocat\",\n      \"atom\",\n      \"electron\",\n      \"api\"\n    ],\n    \"has_issues\": true,\n    \"has_projects\": true,\n    \"has_wiki\": true,\n    \"has_pages\": false,\n    \"has_downloads\": true,\n    \"archived\": false,\n    \"disabled\": false,\n    \"visibility\": \"public\",\n    \"pushed_at\": \"2011-01-26T19:06:43Z\",\n    \"created_at\": \"2011-01-26T19:01:12Z\",\n    \"updated_at\": \"2011-01-26T19:14:43Z\",\n    \"permissions\": {\n      \"admin\": false,\n      \"push\": false,\n      \"pull\": true\n    },\n    \"template_repository\": null,\n    \"temp_clone_token\": \"ABTLWHOULUVAXGTRYU7OC2876QJ2O\",\n    \"delete_branch_on_merge\": true,\n    \"subscribers_count\": 42,\n    \"network_count\": 0,\n    \"license\": {\n      \"key\": \"mit\",\n      \"name\": \"MIT License\",\n      \"spdx_id\": \"MIT\",\n      \"url\": \"https://api.github.com/licenses/mit\",\n      \"node_id\": \"MDc6TGljZW5zZW1pdA==\"\n    }\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/orgs/{org}/teams/{team_slug}/repos"
+    },
+    "title":"List team repositories"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG/teams/TEAM_SLUG/repos/octocat/hello-world\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"teams",
+    "id":"check-team-permissions-for-a-repository",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"team_slug ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"organization\": {\n    \"login\": \"octocat\",\n    \"id\": 1,\n    \"node_id\": \"MDQ6VXNlcjE=\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/users/octocat\",\n    \"html_url\": \"https://github.com/octocat\",\n    \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n    \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n    \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n    \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n    \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n    \"type\": \"Organization\",\n    \"site_admin\": false\n  },\n  \"parent\": {\n    \"id\": 1296269,\n    \"node_id\": \"MDEwOlJlcG9zaXRvcnkxMjk2MjY5\",\n    \"name\": \"Hello-World\",\n    \"full_name\": \"octocat/Hello-World\",\n    \"owner\": {\n      \"login\": \"octocat\",\n      \"id\": 1,\n      \"node_id\": \"MDQ6VXNlcjE=\",\n      \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n      \"gravatar_id\": \"\",\n      \"url\": \"https://api.github.com/users/octocat\",\n      \"html_url\": \"https://github.com/octocat\",\n      \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n      \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n      \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n      \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n      \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n      \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n      \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n      \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n      \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n      \"type\": \"User\",\n      \"site_admin\": false\n    },\n    \"private\": false,\n    \"html_url\": \"https://github.com/octocat/Hello-World\",\n    \"description\": \"This your first repo!\",\n    \"fork\": false,\n    \"url\": \"https://api.github.com/repos/octocat/Hello-World\",\n    \"archive_url\": \"http://api.github.com/repos/octocat/Hello-World/{archive_format}{/ref}\",\n    \"assignees_url\": \"http://api.github.com/repos/octocat/Hello-World/assignees{/user}\",\n    \"blobs_url\": \"http://api.github.com/repos/octocat/Hello-World/git/blobs{/sha}\",\n    \"branches_url\": \"http://api.github.com/repos/octocat/Hello-World/branches{/branch}\",\n    \"collaborators_url\": \"http://api.github.com/repos/octocat/Hello-World/collaborators{/collaborator}\",\n    \"comments_url\": \"http://api.github.com/repos/octocat/Hello-World/comments{/number}\",\n    \"commits_url\": \"http://api.github.com/repos/octocat/Hello-World/commits{/sha}\",\n    \"compare_url\": \"http://api.github.com/repos/octocat/Hello-World/compare/{base}...{head}\",\n    \"contents_url\": \"http://api.github.com/repos/octocat/Hello-World/contents/{+path}\",\n    \"contributors_url\": \"http://api.github.com/repos/octocat/Hello-World/contributors\",\n    \"deployments_url\": \"http://api.github.com/repos/octocat/Hello-World/deployments\",\n    \"downloads_url\": \"http://api.github.com/repos/octocat/Hello-World/downloads\",\n    \"events_url\": \"http://api.github.com/repos/octocat/Hello-World/events\",\n    \"forks_url\": \"http://api.github.com/repos/octocat/Hello-World/forks\",\n    \"git_commits_url\": \"http://api.github.com/repos/octocat/Hello-World/git/commits{/sha}\",\n    \"git_refs_url\": \"http://api.github.com/repos/octocat/Hello-World/git/refs{/sha}\",\n    \"git_tags_url\": \"http://api.github.com/repos/octocat/Hello-World/git/tags{/sha}\",\n    \"git_url\": \"git:github.com/octocat/Hello-World.git\",\n    \"issue_comment_url\": \"http://api.github.com/repos/octocat/Hello-World/issues/comments{/number}\",\n    \"issue_events_url\": \"http://api.github.com/repos/octocat/Hello-World/issues/events{/number}\",\n    \"issues_url\": \"http://api.github.com/repos/octocat/Hello-World/issues{/number}\",\n    \"keys_url\": \"http://api.github.com/repos/octocat/Hello-World/keys{/key_id}\",\n    \"labels_url\": \"http://api.github.com/repos/octocat/Hello-World/labels{/name}\",\n    \"languages_url\": \"http://api.github.com/repos/octocat/Hello-World/languages\",\n    \"merges_url\": \"http://api.github.com/repos/octocat/Hello-World/merges\",\n    \"milestones_url\": \"http://api.github.com/repos/octocat/Hello-World/milestones{/number}\",\n    \"notifications_url\": \"http://api.github.com/repos/octocat/Hello-World/notifications{?since,all,participating}\",\n    \"pulls_url\": \"http://api.github.com/repos/octocat/Hello-World/pulls{/number}\",\n    \"releases_url\": \"http://api.github.com/repos/octocat/Hello-World/releases{/id}\",\n    \"ssh_url\": \"git@github.com:octocat/Hello-World.git\",\n    \"stargazers_url\": \"http://api.github.com/repos/octocat/Hello-World/stargazers\",\n    \"statuses_url\": \"http://api.github.com/repos/octocat/Hello-World/statuses/{sha}\",\n    \"subscribers_url\": \"http://api.github.com/repos/octocat/Hello-World/subscribers\",\n    \"subscription_url\": \"http://api.github.com/repos/octocat/Hello-World/subscription\",\n    \"tags_url\": \"http://api.github.com/repos/octocat/Hello-World/tags\",\n    \"teams_url\": \"http://api.github.com/repos/octocat/Hello-World/teams\",\n    \"trees_url\": \"http://api.github.com/repos/octocat/Hello-World/git/trees{/sha}\",\n    \"clone_url\": \"https://github.com/octocat/Hello-World.git\",\n    \"mirror_url\": \"git:git.example.com/octocat/Hello-World\",\n    \"hooks_url\": \"http://api.github.com/repos/octocat/Hello-World/hooks\",\n    \"svn_url\": \"https://svn.github.com/octocat/Hello-World\",\n    \"homepage\": \"https://github.com\",\n    \"language\": null,\n    \"forks_count\": 9,\n    \"stargazers_count\": 80,\n    \"watchers_count\": 80,\n    \"size\": 108,\n    \"default_branch\": \"master\",\n    \"open_issues_count\": 0,\n    \"is_template\": true,\n    \"topics\": [\n      \"octocat\",\n      \"atom\",\n      \"electron\",\n      \"api\"\n    ],\n    \"has_issues\": true,\n    \"has_projects\": true,\n    \"has_wiki\": true,\n    \"has_pages\": false,\n    \"has_downloads\": true,\n    \"archived\": false,\n    \"disabled\": false,\n    \"visibility\": \"public\",\n    \"pushed_at\": \"2011-01-26T19:06:43Z\",\n    \"created_at\": \"2011-01-26T19:01:12Z\",\n    \"updated_at\": \"2011-01-26T19:14:43Z\",\n    \"permissions\": {\n      \"admin\": false,\n      \"push\": false,\n      \"pull\": true\n    },\n    \"allow_rebase_merge\": true,\n    \"template_repository\": null,\n    \"temp_clone_token\": \"ABTLWHOULUVAXGTRYU7OC2876QJ2O\",\n    \"allow_squash_merge\": true,\n    \"delete_branch_on_merge\": true,\n    \"allow_merge_commit\": true,\n    \"subscribers_count\": 42,\n    \"network_count\": 0\n  },\n  \"source\": {\n    \"id\": 1296269,\n    \"node_id\": \"MDEwOlJlcG9zaXRvcnkxMjk2MjY5\",\n    \"name\": \"Hello-World\",\n    \"full_name\": \"octocat/Hello-World\",\n    \"owner\": {\n      \"login\": \"octocat\",\n      \"id\": 1,\n      \"node_id\": \"MDQ6VXNlcjE=\",\n      \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n      \"gravatar_id\": \"\",\n      \"url\": \"https://api.github.com/users/octocat\",\n      \"html_url\": \"https://github.com/octocat\",\n      \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n      \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n      \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n      \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n      \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n      \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n      \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n      \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n      \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n      \"type\": \"User\",\n      \"site_admin\": false\n    },\n    \"private\": false,\n    \"html_url\": \"https://github.com/octocat/Hello-World\",\n    \"description\": \"This your first repo!\",\n    \"fork\": false,\n    \"url\": \"https://api.github.com/repos/octocat/Hello-World\",\n    \"archive_url\": \"http://api.github.com/repos/octocat/Hello-World/{archive_format}{/ref}\",\n    \"assignees_url\": \"http://api.github.com/repos/octocat/Hello-World/assignees{/user}\",\n    \"blobs_url\": \"http://api.github.com/repos/octocat/Hello-World/git/blobs{/sha}\",\n    \"branches_url\": \"http://api.github.com/repos/octocat/Hello-World/branches{/branch}\",\n    \"collaborators_url\": \"http://api.github.com/repos/octocat/Hello-World/collaborators{/collaborator}\",\n    \"comments_url\": \"http://api.github.com/repos/octocat/Hello-World/comments{/number}\",\n    \"commits_url\": \"http://api.github.com/repos/octocat/Hello-World/commits{/sha}\",\n    \"compare_url\": \"http://api.github.com/repos/octocat/Hello-World/compare/{base}...{head}\",\n    \"contents_url\": \"http://api.github.com/repos/octocat/Hello-World/contents/{+path}\",\n    \"contributors_url\": \"http://api.github.com/repos/octocat/Hello-World/contributors\",\n    \"deployments_url\": \"http://api.github.com/repos/octocat/Hello-World/deployments\",\n    \"downloads_url\": \"http://api.github.com/repos/octocat/Hello-World/downloads\",\n    \"events_url\": \"http://api.github.com/repos/octocat/Hello-World/events\",\n    \"forks_url\": \"http://api.github.com/repos/octocat/Hello-World/forks\",\n    \"git_commits_url\": \"http://api.github.com/repos/octocat/Hello-World/git/commits{/sha}\",\n    \"git_refs_url\": \"http://api.github.com/repos/octocat/Hello-World/git/refs{/sha}\",\n    \"git_tags_url\": \"http://api.github.com/repos/octocat/Hello-World/git/tags{/sha}\",\n    \"git_url\": \"git:github.com/octocat/Hello-World.git\",\n    \"issue_comment_url\": \"http://api.github.com/repos/octocat/Hello-World/issues/comments{/number}\",\n    \"issue_events_url\": \"http://api.github.com/repos/octocat/Hello-World/issues/events{/number}\",\n    \"issues_url\": \"http://api.github.com/repos/octocat/Hello-World/issues{/number}\",\n    \"keys_url\": \"http://api.github.com/repos/octocat/Hello-World/keys{/key_id}\",\n    \"labels_url\": \"http://api.github.com/repos/octocat/Hello-World/labels{/name}\",\n    \"languages_url\": \"http://api.github.com/repos/octocat/Hello-World/languages\",\n    \"merges_url\": \"http://api.github.com/repos/octocat/Hello-World/merges\",\n    \"milestones_url\": \"http://api.github.com/repos/octocat/Hello-World/milestones{/number}\",\n    \"notifications_url\": \"http://api.github.com/repos/octocat/Hello-World/notifications{?since,all,participating}\",\n    \"pulls_url\": \"http://api.github.com/repos/octocat/Hello-World/pulls{/number}\",\n    \"releases_url\": \"http://api.github.com/repos/octocat/Hello-World/releases{/id}\",\n    \"ssh_url\": \"git@github.com:octocat/Hello-World.git\",\n    \"stargazers_url\": \"http://api.github.com/repos/octocat/Hello-World/stargazers\",\n    \"statuses_url\": \"http://api.github.com/repos/octocat/Hello-World/statuses/{sha}\",\n    \"subscribers_url\": \"http://api.github.com/repos/octocat/Hello-World/subscribers\",\n    \"subscription_url\": \"http://api.github.com/repos/octocat/Hello-World/subscription\",\n    \"tags_url\": \"http://api.github.com/repos/octocat/Hello-World/tags\",\n    \"teams_url\": \"http://api.github.com/repos/octocat/Hello-World/teams\",\n    \"trees_url\": \"http://api.github.com/repos/octocat/Hello-World/git/trees{/sha}\",\n    \"clone_url\": \"https://github.com/octocat/Hello-World.git\",\n    \"mirror_url\": \"git:git.example.com/octocat/Hello-World\",\n    \"hooks_url\": \"http://api.github.com/repos/octocat/Hello-World/hooks\",\n    \"svn_url\": \"https://svn.github.com/octocat/Hello-World\",\n    \"homepage\": \"https://github.com\",\n    \"language\": null,\n    \"forks_count\": 9,\n    \"stargazers_count\": 80,\n    \"watchers_count\": 80,\n    \"size\": 108,\n    \"default_branch\": \"master\",\n    \"open_issues_count\": 0,\n    \"is_template\": true,\n    \"topics\": [\n      \"octocat\",\n      \"atom\",\n      \"electron\",\n      \"api\"\n    ],\n    \"has_issues\": true,\n    \"has_projects\": true,\n    \"has_wiki\": true,\n    \"has_pages\": false,\n    \"has_downloads\": true,\n    \"archived\": false,\n    \"disabled\": false,\n    \"visibility\": \"public\",\n    \"pushed_at\": \"2011-01-26T19:06:43Z\",\n    \"created_at\": \"2011-01-26T19:01:12Z\",\n    \"updated_at\": \"2011-01-26T19:14:43Z\",\n    \"permissions\": {\n      \"admin\": false,\n      \"push\": false,\n      \"pull\": true\n    },\n    \"allow_rebase_merge\": true,\n    \"template_repository\": null,\n    \"temp_clone_token\": \"ABTLWHOULUVAXGTRYU7OC2876QJ2O\",\n    \"allow_squash_merge\": true,\n    \"delete_branch_on_merge\": true,\n    \"allow_merge_commit\": true,\n    \"subscribers_count\": 42,\n    \"network_count\": 0\n  },\n  \"permissions\": {\n    \"pull\": true,\n    \"triage\": true,\n    \"push\": false,\n    \"maintain\": false,\n    \"admin\": false\n  }\n}\n"
+      },
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}"
+    },
+    "title":"Check team permissions for a repository"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X PUT \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG/teams/TEAM_SLUG/repos/octocat/hello-world \\\n  -d '{\"permission\":\"permission\"}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"teams",
+    "id":"add-or-update-team-repository-permissions",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"team_slug ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The permission to grant the team on this repository. Can be one of:<br> * <code>pull</code> - team members can pull, but not push to or administer this repository.<br> * <code>push</code> - team members can pull and push, but not administer this repository.<br> * <code>admin</code> - team members can pull, push and administer this repository.<br> * <code>maintain</code> - team members can manage the repository without access to sensitive or destructive actions. Recommended for project managers. Only applies to repositories owned by organizations.<br> * <code>triage</code> - team members can proactively manage issues and pull requests without write access. Recommended for contributors who triage a repository. Only applies to repositories owned by organizations. </p> <p>If no permission is specified, the team&apos;s <code>permission</code> attribute will be used to determine what permission to grant the team on this repository.</p>",
+        "in":"body ",
+        "name":"permission ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"put",
+      "path":"/orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}"
+    },
+    "title":"Add or update team repository permissions"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X DELETE \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG/teams/TEAM_SLUG/repos/octocat/hello-world\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"teams",
+    "id":"remove-a-repository-from-a-team",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"team_slug ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"delete",
+      "path":"/orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}"
+    },
+    "title":"Remove a repository from a team"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG/teams/TEAM_SLUG/teams\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"teams",
+    "id":"list-child-teams",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"team_slug ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"id\": 2,\n    \"node_id\": \"MDQ6VGVhbTI=\",\n    \"url\": \"https://api.github.com/teams/2\",\n    \"name\": \"Original Roster\",\n    \"slug\": \"original-roster\",\n    \"description\": \"Started it all.\",\n    \"privacy\": \"closed\",\n    \"permission\": \"admin\",\n    \"members_url\": \"https://api.github.com/teams/2/members{/member}\",\n    \"repositories_url\": \"https://api.github.com/teams/2/repos\",\n    \"parent\": {\n      \"id\": 1,\n      \"node_id\": \"MDQ6VGVhbTE=\",\n      \"url\": \"https://api.github.com/teams/1\",\n      \"html_url\": \"https://api.github.com/teams/justice-league\",\n      \"name\": \"Justice League\",\n      \"slug\": \"justice-league\",\n      \"description\": \"A great team.\",\n      \"privacy\": \"closed\",\n      \"permission\": \"admin\",\n      \"members_url\": \"https://api.github.com/teams/1/members{/member}\",\n      \"repositories_url\": \"https://api.github.com/teams/1/repos\"\n    }\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/orgs/{org}/teams/{team_slug}/teams"
+    },
+    "title":"List child teams"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/teams/42\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"teams",
+    "id":"get-a-team-legacy",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"team_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"id\": 1,\n  \"node_id\": \"MDQ6VGVhbTE=\",\n  \"url\": \"https://api.github.com/teams/1\",\n  \"html_url\": \"https://api.github.com/teams/justice-league\",\n  \"name\": \"Justice League\",\n  \"slug\": \"justice-league\",\n  \"description\": \"A great team.\",\n  \"privacy\": \"closed\",\n  \"permission\": \"admin\",\n  \"members_url\": \"https://api.github.com/teams/1/members{/member}\",\n  \"repositories_url\": \"https://api.github.com/teams/1/repos\",\n  \"parent\": null,\n  \"members_count\": 3,\n  \"repos_count\": 10,\n  \"created_at\": \"2017-07-14T16:53:42Z\",\n  \"updated_at\": \"2017-08-17T12:37:15Z\",\n  \"organization\": {\n    \"login\": \"github\",\n    \"id\": 1,\n    \"node_id\": \"MDEyOk9yZ2FuaXphdGlvbjE=\",\n    \"url\": \"https://api.github.com/orgs/github\",\n    \"repos_url\": \"https://api.github.com/orgs/github/repos\",\n    \"events_url\": \"https://api.github.com/orgs/github/events\",\n    \"hooks_url\": \"https://api.github.com/orgs/github/hooks\",\n    \"issues_url\": \"https://api.github.com/orgs/github/issues\",\n    \"members_url\": \"https://api.github.com/orgs/github/members{/member}\",\n    \"public_members_url\": \"https://api.github.com/orgs/github/public_members{/member}\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"description\": \"A great organization\",\n    \"name\": \"github\",\n    \"company\": \"GitHub\",\n    \"blog\": \"https://github.com/blog\",\n    \"location\": \"San Francisco\",\n    \"email\": \"octocat@github.com\",\n    \"twitter_username\": \"github\",\n    \"is_verified\": true,\n    \"has_organization_projects\": true,\n    \"has_repository_projects\": true,\n    \"public_repos\": 2,\n    \"public_gists\": 1,\n    \"followers\": 20,\n    \"following\": 0,\n    \"html_url\": \"https://github.com/octocat\",\n    \"created_at\": \"2008-01-14T04:33:35Z\",\n    \"type\": \"Organization\"\n  }\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/teams/{team_id}"
+    },
+    "title":"Get a team (Legacy)"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X PATCH \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/teams/42 \\\n  -d '{\"name\":\"name\"}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"teams",
+    "id":"update-a-team-legacy",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"team_id ",
+        "type":"integer "
+      },
+      {
+        "description":"<p><strong>Required</strong>. The name of the team.</p>",
+        "in":"body ",
+        "name":"name ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The description of the team.</p>",
+        "in":"body ",
+        "name":"description ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The level of privacy this team should have. Editing teams without specifying this parameter leaves <code>privacy</code> intact. The options are:<br> <strong>For a non-nested team:</strong><br> * <code>secret</code> - only visible to organization owners and members of this team.<br> * <code>closed</code> - visible to all members of this organization.<br> <strong>For a parent or child team:</strong><br> * <code>closed</code> - visible to all members of this organization.</p>",
+        "in":"body ",
+        "name":"privacy ",
+        "type":"string "
+      },
+      {
+        "description":"<p><strong>Deprecated</strong>. The permission that new repositories will be added to the team with when none is specified. Can be one of:<br> * <code>pull</code> - team members can pull, but not push to or administer newly-added repositories.<br> * <code>push</code> - team members can pull and push, but not administer newly-added repositories.<br> * <code>admin</code> - team members can pull, push and administer newly-added repositories.</p> Default: <code>pull</code>",
+        "in":"body ",
+        "name":"permission ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The ID of a team to set as the parent team.</p>",
+        "in":"body ",
+        "name":"parent_team_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"201 Created",
+        "content":"{\n  \"id\": 1,\n  \"node_id\": \"MDQ6VGVhbTE=\",\n  \"url\": \"https://api.github.com/teams/1\",\n  \"html_url\": \"https://api.github.com/teams/justice-league\",\n  \"name\": \"Justice League\",\n  \"slug\": \"justice-league\",\n  \"description\": \"A great team.\",\n  \"privacy\": \"closed\",\n  \"permission\": \"admin\",\n  \"members_url\": \"https://api.github.com/teams/1/members{/member}\",\n  \"repositories_url\": \"https://api.github.com/teams/1/repos\",\n  \"parent\": null,\n  \"members_count\": 3,\n  \"repos_count\": 10,\n  \"created_at\": \"2017-07-14T16:53:42Z\",\n  \"updated_at\": \"2017-08-17T12:37:15Z\",\n  \"organization\": {\n    \"login\": \"github\",\n    \"id\": 1,\n    \"node_id\": \"MDEyOk9yZ2FuaXphdGlvbjE=\",\n    \"url\": \"https://api.github.com/orgs/github\",\n    \"repos_url\": \"https://api.github.com/orgs/github/repos\",\n    \"events_url\": \"https://api.github.com/orgs/github/events\",\n    \"hooks_url\": \"https://api.github.com/orgs/github/hooks\",\n    \"issues_url\": \"https://api.github.com/orgs/github/issues\",\n    \"members_url\": \"https://api.github.com/orgs/github/members{/member}\",\n    \"public_members_url\": \"https://api.github.com/orgs/github/public_members{/member}\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"description\": \"A great organization\",\n    \"name\": \"github\",\n    \"company\": \"GitHub\",\n    \"blog\": \"https://github.com/blog\",\n    \"location\": \"San Francisco\",\n    \"email\": \"octocat@github.com\",\n    \"twitter_username\": \"github\",\n    \"is_verified\": true,\n    \"has_organization_projects\": true,\n    \"has_repository_projects\": true,\n    \"public_repos\": 2,\n    \"public_gists\": 1,\n    \"followers\": 20,\n    \"following\": 0,\n    \"html_url\": \"https://github.com/octocat\",\n    \"created_at\": \"2008-01-14T04:33:35Z\",\n    \"type\": \"Organization\"\n  }\n}\n"
+      }
+    ],
+    "target":{
+      "method":"patch",
+      "path":"/teams/{team_id}"
+    },
+    "title":"Update a team (Legacy)"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X DELETE \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/teams/42\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"teams",
+    "id":"delete-a-team-legacy",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"team_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"delete",
+      "path":"/teams/{team_id}"
+    },
+    "title":"Delete a team (Legacy)"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.inertia-preview+json\" \\\n  https://api.github.com/teams/42/projects\n",
+        "type":"Shell"
+      },
+      {
+        "content":"application/vnd.github.inertia-preview+json\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"teams",
+    "id":"list-team-projects-legacy",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>This API is under preview and subject to change.</p> <a href=\"#list-team-projects-legacy-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"team_id ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"owner_url\": \"https://api.github.com/orgs/octocat\",\n    \"url\": \"https://api.github.com/projects/1002605\",\n    \"html_url\": \"https://github.com/orgs/api-playground/projects/1\",\n    \"columns_url\": \"https://api.github.com/projects/1002605/columns\",\n    \"id\": 1002605,\n    \"node_id\": \"MDc6UHJvamVjdDEwMDI2MDU=\",\n    \"name\": \"Organization Roadmap\",\n    \"body\": \"High-level roadmap for the upcoming year.\",\n    \"number\": 1,\n    \"state\": \"open\",\n    \"creator\": {\n      \"login\": \"octocat\",\n      \"id\": 1,\n      \"node_id\": \"MDQ6VXNlcjE=\",\n      \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n      \"gravatar_id\": \"\",\n      \"url\": \"https://api.github.com/users/octocat\",\n      \"html_url\": \"https://github.com/octocat\",\n      \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n      \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n      \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n      \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n      \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n      \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n      \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n      \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n      \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n      \"type\": \"User\",\n      \"site_admin\": false\n    },\n    \"created_at\": \"2011-04-11T20:09:31Z\",\n    \"updated_at\": \"2014-03-04T18:58:10Z\",\n    \"organization_permission\": \"write\",\n    \"private\": false,\n    \"permissions\": {\n      \"read\": true,\n      \"write\": true,\n      \"admin\": false\n    }\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/teams/{team_id}/projects"
+    },
+    "title":"List team projects (Legacy)"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.inertia-preview+json\" \\\n  https://api.github.com/teams/42/projects/42\n",
+        "type":"Shell"
+      },
+      {
+        "content":"application/vnd.github.inertia-preview+json\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"teams",
+    "id":"check-team-permissions-for-a-project-legacy",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>This API is under preview and subject to change.</p> <a href=\"#check-team-permissions-for-a-project-legacy-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"team_id ",
+        "type":"integer "
+      },
+      {
+        "in":"path",
+        "name":"project_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"owner_url\": \"https://api.github.com/orgs/octocat\",\n  \"url\": \"https://api.github.com/projects/1002605\",\n  \"html_url\": \"https://github.com/orgs/api-playground/projects/1\",\n  \"columns_url\": \"https://api.github.com/projects/1002605/columns\",\n  \"id\": 1002605,\n  \"node_id\": \"MDc6UHJvamVjdDEwMDI2MDU=\",\n  \"name\": \"Organization Roadmap\",\n  \"body\": \"High-level roadmap for the upcoming year.\",\n  \"number\": 1,\n  \"state\": \"open\",\n  \"creator\": {\n    \"login\": \"octocat\",\n    \"id\": 1,\n    \"node_id\": \"MDQ6VXNlcjE=\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/users/octocat\",\n    \"html_url\": \"https://github.com/octocat\",\n    \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n    \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n    \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n    \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n    \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n    \"type\": \"User\",\n    \"site_admin\": false\n  },\n  \"created_at\": \"2011-04-11T20:09:31Z\",\n  \"updated_at\": \"2014-03-04T18:58:10Z\",\n  \"organization_permission\": \"write\",\n  \"private\": false,\n  \"permissions\": {\n    \"read\": true,\n    \"write\": true,\n    \"admin\": false\n  }\n}\n"
+      },
+      {
+        "code":"404 Not Found"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/teams/{team_id}/projects/{project_id}"
+    },
+    "title":"Check team permissions for a project (Legacy)"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X PUT \\\n  -H \"Accept: application/vnd.github.inertia-preview+json\" \\\n  https://api.github.com/teams/42/projects/42 \\\n  -d '{\"permission\":\"permission\"}'\n",
+        "type":"Shell"
+      },
+      {
+        "content":"application/vnd.github.inertia-preview+json\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"teams",
+    "id":"add-or-update-team-project-permissions-legacy",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>This API is under preview and subject to change.</p> <a href=\"#add-or-update-team-project-permissions-legacy-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"team_id ",
+        "type":"integer "
+      },
+      {
+        "in":"path",
+        "name":"project_id ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>The permission to grant to the team for this project. Can be one of:<br> * <code>read</code> - team members can read, but not write to or administer this project.<br> * <code>write</code> - team members can read and write, but not administer this project.<br> * <code>admin</code> - team members can read, write and administer this project.<br> Default: the team&apos;s <code>permission</code> attribute will be used to determine what permission to grant the team on this project. Note that, if you choose not to pass any parameters, you&apos;ll need to set <code>Content-Length</code> to zero when calling out to this endpoint. For more information, see &quot;<a href=\"https://developer.github.com/v3/#http-verbs\">HTTP verbs</a>.&quot;</p>",
+        "in":"body ",
+        "name":"permission ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      },
+      {
+        "code":"403 Forbidden",
+        "content":"{\n  \"message\": \"Must have admin rights to Repository.\",\n  \"documentation_url\": \"https://developer.github.com/v3/teams/#add-or-update-team-project-permissions\"\n}\n"
+      }
+    ],
+    "target":{
+      "method":"put",
+      "path":"/teams/{team_id}/projects/{project_id}"
+    },
+    "title":"Add or update team project permissions (Legacy)"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X DELETE \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/teams/42/projects/42\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"teams",
+    "id":"remove-a-project-from-a-team-legacy",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"team_id ",
+        "type":"integer "
+      },
+      {
+        "in":"path",
+        "name":"project_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"delete",
+      "path":"/teams/{team_id}/projects/{project_id}"
+    },
+    "title":"Remove a project from a team (Legacy)"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/teams/42/repos\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"teams",
+    "id":"list-team-repositories-legacy",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"team_id ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"id\": 1296269,\n    \"node_id\": \"MDEwOlJlcG9zaXRvcnkxMjk2MjY5\",\n    \"name\": \"Hello-World\",\n    \"full_name\": \"octocat/Hello-World\",\n    \"owner\": {\n      \"login\": \"octocat\",\n      \"id\": 1,\n      \"node_id\": \"MDQ6VXNlcjE=\",\n      \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n      \"gravatar_id\": \"\",\n      \"url\": \"https://api.github.com/users/octocat\",\n      \"html_url\": \"https://github.com/octocat\",\n      \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n      \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n      \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n      \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n      \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n      \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n      \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n      \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n      \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n      \"type\": \"User\",\n      \"site_admin\": false\n    },\n    \"private\": false,\n    \"html_url\": \"https://github.com/octocat/Hello-World\",\n    \"description\": \"This your first repo!\",\n    \"fork\": false,\n    \"url\": \"https://api.github.com/repos/octocat/Hello-World\",\n    \"archive_url\": \"http://api.github.com/repos/octocat/Hello-World/{archive_format}{/ref}\",\n    \"assignees_url\": \"http://api.github.com/repos/octocat/Hello-World/assignees{/user}\",\n    \"blobs_url\": \"http://api.github.com/repos/octocat/Hello-World/git/blobs{/sha}\",\n    \"branches_url\": \"http://api.github.com/repos/octocat/Hello-World/branches{/branch}\",\n    \"collaborators_url\": \"http://api.github.com/repos/octocat/Hello-World/collaborators{/collaborator}\",\n    \"comments_url\": \"http://api.github.com/repos/octocat/Hello-World/comments{/number}\",\n    \"commits_url\": \"http://api.github.com/repos/octocat/Hello-World/commits{/sha}\",\n    \"compare_url\": \"http://api.github.com/repos/octocat/Hello-World/compare/{base}...{head}\",\n    \"contents_url\": \"http://api.github.com/repos/octocat/Hello-World/contents/{+path}\",\n    \"contributors_url\": \"http://api.github.com/repos/octocat/Hello-World/contributors\",\n    \"deployments_url\": \"http://api.github.com/repos/octocat/Hello-World/deployments\",\n    \"downloads_url\": \"http://api.github.com/repos/octocat/Hello-World/downloads\",\n    \"events_url\": \"http://api.github.com/repos/octocat/Hello-World/events\",\n    \"forks_url\": \"http://api.github.com/repos/octocat/Hello-World/forks\",\n    \"git_commits_url\": \"http://api.github.com/repos/octocat/Hello-World/git/commits{/sha}\",\n    \"git_refs_url\": \"http://api.github.com/repos/octocat/Hello-World/git/refs{/sha}\",\n    \"git_tags_url\": \"http://api.github.com/repos/octocat/Hello-World/git/tags{/sha}\",\n    \"git_url\": \"git:github.com/octocat/Hello-World.git\",\n    \"issue_comment_url\": \"http://api.github.com/repos/octocat/Hello-World/issues/comments{/number}\",\n    \"issue_events_url\": \"http://api.github.com/repos/octocat/Hello-World/issues/events{/number}\",\n    \"issues_url\": \"http://api.github.com/repos/octocat/Hello-World/issues{/number}\",\n    \"keys_url\": \"http://api.github.com/repos/octocat/Hello-World/keys{/key_id}\",\n    \"labels_url\": \"http://api.github.com/repos/octocat/Hello-World/labels{/name}\",\n    \"languages_url\": \"http://api.github.com/repos/octocat/Hello-World/languages\",\n    \"merges_url\": \"http://api.github.com/repos/octocat/Hello-World/merges\",\n    \"milestones_url\": \"http://api.github.com/repos/octocat/Hello-World/milestones{/number}\",\n    \"notifications_url\": \"http://api.github.com/repos/octocat/Hello-World/notifications{?since,all,participating}\",\n    \"pulls_url\": \"http://api.github.com/repos/octocat/Hello-World/pulls{/number}\",\n    \"releases_url\": \"http://api.github.com/repos/octocat/Hello-World/releases{/id}\",\n    \"ssh_url\": \"git@github.com:octocat/Hello-World.git\",\n    \"stargazers_url\": \"http://api.github.com/repos/octocat/Hello-World/stargazers\",\n    \"statuses_url\": \"http://api.github.com/repos/octocat/Hello-World/statuses/{sha}\",\n    \"subscribers_url\": \"http://api.github.com/repos/octocat/Hello-World/subscribers\",\n    \"subscription_url\": \"http://api.github.com/repos/octocat/Hello-World/subscription\",\n    \"tags_url\": \"http://api.github.com/repos/octocat/Hello-World/tags\",\n    \"teams_url\": \"http://api.github.com/repos/octocat/Hello-World/teams\",\n    \"trees_url\": \"http://api.github.com/repos/octocat/Hello-World/git/trees{/sha}\",\n    \"clone_url\": \"https://github.com/octocat/Hello-World.git\",\n    \"mirror_url\": \"git:git.example.com/octocat/Hello-World\",\n    \"hooks_url\": \"http://api.github.com/repos/octocat/Hello-World/hooks\",\n    \"svn_url\": \"https://svn.github.com/octocat/Hello-World\",\n    \"homepage\": \"https://github.com\",\n    \"language\": null,\n    \"forks_count\": 9,\n    \"stargazers_count\": 80,\n    \"watchers_count\": 80,\n    \"size\": 108,\n    \"default_branch\": \"master\",\n    \"open_issues_count\": 0,\n    \"is_template\": true,\n    \"topics\": [\n      \"octocat\",\n      \"atom\",\n      \"electron\",\n      \"api\"\n    ],\n    \"has_issues\": true,\n    \"has_projects\": true,\n    \"has_wiki\": true,\n    \"has_pages\": false,\n    \"has_downloads\": true,\n    \"archived\": false,\n    \"disabled\": false,\n    \"visibility\": \"public\",\n    \"pushed_at\": \"2011-01-26T19:06:43Z\",\n    \"created_at\": \"2011-01-26T19:01:12Z\",\n    \"updated_at\": \"2011-01-26T19:14:43Z\",\n    \"permissions\": {\n      \"admin\": false,\n      \"push\": false,\n      \"pull\": true\n    },\n    \"template_repository\": null,\n    \"temp_clone_token\": \"ABTLWHOULUVAXGTRYU7OC2876QJ2O\",\n    \"delete_branch_on_merge\": true,\n    \"subscribers_count\": 42,\n    \"network_count\": 0,\n    \"license\": {\n      \"key\": \"mit\",\n      \"name\": \"MIT License\",\n      \"spdx_id\": \"MIT\",\n      \"url\": \"https://api.github.com/licenses/mit\",\n      \"node_id\": \"MDc6TGljZW5zZW1pdA==\"\n    }\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/teams/{team_id}/repos"
+    },
+    "title":"List team repositories (Legacy)"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/teams/42/repos/octocat/hello-world\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"teams",
+    "id":"check-team-permissions-for-a-repository-legacy",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"team_id ",
+        "type":"integer "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"organization\": {\n    \"login\": \"octocat\",\n    \"id\": 1,\n    \"node_id\": \"MDQ6VXNlcjE=\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/users/octocat\",\n    \"html_url\": \"https://github.com/octocat\",\n    \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n    \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n    \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n    \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n    \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n    \"type\": \"Organization\",\n    \"site_admin\": false\n  },\n  \"parent\": {\n    \"id\": 1296269,\n    \"node_id\": \"MDEwOlJlcG9zaXRvcnkxMjk2MjY5\",\n    \"name\": \"Hello-World\",\n    \"full_name\": \"octocat/Hello-World\",\n    \"owner\": {\n      \"login\": \"octocat\",\n      \"id\": 1,\n      \"node_id\": \"MDQ6VXNlcjE=\",\n      \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n      \"gravatar_id\": \"\",\n      \"url\": \"https://api.github.com/users/octocat\",\n      \"html_url\": \"https://github.com/octocat\",\n      \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n      \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n      \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n      \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n      \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n      \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n      \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n      \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n      \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n      \"type\": \"User\",\n      \"site_admin\": false\n    },\n    \"private\": false,\n    \"html_url\": \"https://github.com/octocat/Hello-World\",\n    \"description\": \"This your first repo!\",\n    \"fork\": false,\n    \"url\": \"https://api.github.com/repos/octocat/Hello-World\",\n    \"archive_url\": \"http://api.github.com/repos/octocat/Hello-World/{archive_format}{/ref}\",\n    \"assignees_url\": \"http://api.github.com/repos/octocat/Hello-World/assignees{/user}\",\n    \"blobs_url\": \"http://api.github.com/repos/octocat/Hello-World/git/blobs{/sha}\",\n    \"branches_url\": \"http://api.github.com/repos/octocat/Hello-World/branches{/branch}\",\n    \"collaborators_url\": \"http://api.github.com/repos/octocat/Hello-World/collaborators{/collaborator}\",\n    \"comments_url\": \"http://api.github.com/repos/octocat/Hello-World/comments{/number}\",\n    \"commits_url\": \"http://api.github.com/repos/octocat/Hello-World/commits{/sha}\",\n    \"compare_url\": \"http://api.github.com/repos/octocat/Hello-World/compare/{base}...{head}\",\n    \"contents_url\": \"http://api.github.com/repos/octocat/Hello-World/contents/{+path}\",\n    \"contributors_url\": \"http://api.github.com/repos/octocat/Hello-World/contributors\",\n    \"deployments_url\": \"http://api.github.com/repos/octocat/Hello-World/deployments\",\n    \"downloads_url\": \"http://api.github.com/repos/octocat/Hello-World/downloads\",\n    \"events_url\": \"http://api.github.com/repos/octocat/Hello-World/events\",\n    \"forks_url\": \"http://api.github.com/repos/octocat/Hello-World/forks\",\n    \"git_commits_url\": \"http://api.github.com/repos/octocat/Hello-World/git/commits{/sha}\",\n    \"git_refs_url\": \"http://api.github.com/repos/octocat/Hello-World/git/refs{/sha}\",\n    \"git_tags_url\": \"http://api.github.com/repos/octocat/Hello-World/git/tags{/sha}\",\n    \"git_url\": \"git:github.com/octocat/Hello-World.git\",\n    \"issue_comment_url\": \"http://api.github.com/repos/octocat/Hello-World/issues/comments{/number}\",\n    \"issue_events_url\": \"http://api.github.com/repos/octocat/Hello-World/issues/events{/number}\",\n    \"issues_url\": \"http://api.github.com/repos/octocat/Hello-World/issues{/number}\",\n    \"keys_url\": \"http://api.github.com/repos/octocat/Hello-World/keys{/key_id}\",\n    \"labels_url\": \"http://api.github.com/repos/octocat/Hello-World/labels{/name}\",\n    \"languages_url\": \"http://api.github.com/repos/octocat/Hello-World/languages\",\n    \"merges_url\": \"http://api.github.com/repos/octocat/Hello-World/merges\",\n    \"milestones_url\": \"http://api.github.com/repos/octocat/Hello-World/milestones{/number}\",\n    \"notifications_url\": \"http://api.github.com/repos/octocat/Hello-World/notifications{?since,all,participating}\",\n    \"pulls_url\": \"http://api.github.com/repos/octocat/Hello-World/pulls{/number}\",\n    \"releases_url\": \"http://api.github.com/repos/octocat/Hello-World/releases{/id}\",\n    \"ssh_url\": \"git@github.com:octocat/Hello-World.git\",\n    \"stargazers_url\": \"http://api.github.com/repos/octocat/Hello-World/stargazers\",\n    \"statuses_url\": \"http://api.github.com/repos/octocat/Hello-World/statuses/{sha}\",\n    \"subscribers_url\": \"http://api.github.com/repos/octocat/Hello-World/subscribers\",\n    \"subscription_url\": \"http://api.github.com/repos/octocat/Hello-World/subscription\",\n    \"tags_url\": \"http://api.github.com/repos/octocat/Hello-World/tags\",\n    \"teams_url\": \"http://api.github.com/repos/octocat/Hello-World/teams\",\n    \"trees_url\": \"http://api.github.com/repos/octocat/Hello-World/git/trees{/sha}\",\n    \"clone_url\": \"https://github.com/octocat/Hello-World.git\",\n    \"mirror_url\": \"git:git.example.com/octocat/Hello-World\",\n    \"hooks_url\": \"http://api.github.com/repos/octocat/Hello-World/hooks\",\n    \"svn_url\": \"https://svn.github.com/octocat/Hello-World\",\n    \"homepage\": \"https://github.com\",\n    \"language\": null,\n    \"forks_count\": 9,\n    \"stargazers_count\": 80,\n    \"watchers_count\": 80,\n    \"size\": 108,\n    \"default_branch\": \"master\",\n    \"open_issues_count\": 0,\n    \"is_template\": true,\n    \"topics\": [\n      \"octocat\",\n      \"atom\",\n      \"electron\",\n      \"api\"\n    ],\n    \"has_issues\": true,\n    \"has_projects\": true,\n    \"has_wiki\": true,\n    \"has_pages\": false,\n    \"has_downloads\": true,\n    \"archived\": false,\n    \"disabled\": false,\n    \"visibility\": \"public\",\n    \"pushed_at\": \"2011-01-26T19:06:43Z\",\n    \"created_at\": \"2011-01-26T19:01:12Z\",\n    \"updated_at\": \"2011-01-26T19:14:43Z\",\n    \"permissions\": {\n      \"admin\": false,\n      \"push\": false,\n      \"pull\": true\n    },\n    \"allow_rebase_merge\": true,\n    \"template_repository\": null,\n    \"temp_clone_token\": \"ABTLWHOULUVAXGTRYU7OC2876QJ2O\",\n    \"allow_squash_merge\": true,\n    \"delete_branch_on_merge\": true,\n    \"allow_merge_commit\": true,\n    \"subscribers_count\": 42,\n    \"network_count\": 0\n  },\n  \"source\": {\n    \"id\": 1296269,\n    \"node_id\": \"MDEwOlJlcG9zaXRvcnkxMjk2MjY5\",\n    \"name\": \"Hello-World\",\n    \"full_name\": \"octocat/Hello-World\",\n    \"owner\": {\n      \"login\": \"octocat\",\n      \"id\": 1,\n      \"node_id\": \"MDQ6VXNlcjE=\",\n      \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n      \"gravatar_id\": \"\",\n      \"url\": \"https://api.github.com/users/octocat\",\n      \"html_url\": \"https://github.com/octocat\",\n      \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n      \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n      \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n      \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n      \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n      \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n      \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n      \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n      \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n      \"type\": \"User\",\n      \"site_admin\": false\n    },\n    \"private\": false,\n    \"html_url\": \"https://github.com/octocat/Hello-World\",\n    \"description\": \"This your first repo!\",\n    \"fork\": false,\n    \"url\": \"https://api.github.com/repos/octocat/Hello-World\",\n    \"archive_url\": \"http://api.github.com/repos/octocat/Hello-World/{archive_format}{/ref}\",\n    \"assignees_url\": \"http://api.github.com/repos/octocat/Hello-World/assignees{/user}\",\n    \"blobs_url\": \"http://api.github.com/repos/octocat/Hello-World/git/blobs{/sha}\",\n    \"branches_url\": \"http://api.github.com/repos/octocat/Hello-World/branches{/branch}\",\n    \"collaborators_url\": \"http://api.github.com/repos/octocat/Hello-World/collaborators{/collaborator}\",\n    \"comments_url\": \"http://api.github.com/repos/octocat/Hello-World/comments{/number}\",\n    \"commits_url\": \"http://api.github.com/repos/octocat/Hello-World/commits{/sha}\",\n    \"compare_url\": \"http://api.github.com/repos/octocat/Hello-World/compare/{base}...{head}\",\n    \"contents_url\": \"http://api.github.com/repos/octocat/Hello-World/contents/{+path}\",\n    \"contributors_url\": \"http://api.github.com/repos/octocat/Hello-World/contributors\",\n    \"deployments_url\": \"http://api.github.com/repos/octocat/Hello-World/deployments\",\n    \"downloads_url\": \"http://api.github.com/repos/octocat/Hello-World/downloads\",\n    \"events_url\": \"http://api.github.com/repos/octocat/Hello-World/events\",\n    \"forks_url\": \"http://api.github.com/repos/octocat/Hello-World/forks\",\n    \"git_commits_url\": \"http://api.github.com/repos/octocat/Hello-World/git/commits{/sha}\",\n    \"git_refs_url\": \"http://api.github.com/repos/octocat/Hello-World/git/refs{/sha}\",\n    \"git_tags_url\": \"http://api.github.com/repos/octocat/Hello-World/git/tags{/sha}\",\n    \"git_url\": \"git:github.com/octocat/Hello-World.git\",\n    \"issue_comment_url\": \"http://api.github.com/repos/octocat/Hello-World/issues/comments{/number}\",\n    \"issue_events_url\": \"http://api.github.com/repos/octocat/Hello-World/issues/events{/number}\",\n    \"issues_url\": \"http://api.github.com/repos/octocat/Hello-World/issues{/number}\",\n    \"keys_url\": \"http://api.github.com/repos/octocat/Hello-World/keys{/key_id}\",\n    \"labels_url\": \"http://api.github.com/repos/octocat/Hello-World/labels{/name}\",\n    \"languages_url\": \"http://api.github.com/repos/octocat/Hello-World/languages\",\n    \"merges_url\": \"http://api.github.com/repos/octocat/Hello-World/merges\",\n    \"milestones_url\": \"http://api.github.com/repos/octocat/Hello-World/milestones{/number}\",\n    \"notifications_url\": \"http://api.github.com/repos/octocat/Hello-World/notifications{?since,all,participating}\",\n    \"pulls_url\": \"http://api.github.com/repos/octocat/Hello-World/pulls{/number}\",\n    \"releases_url\": \"http://api.github.com/repos/octocat/Hello-World/releases{/id}\",\n    \"ssh_url\": \"git@github.com:octocat/Hello-World.git\",\n    \"stargazers_url\": \"http://api.github.com/repos/octocat/Hello-World/stargazers\",\n    \"statuses_url\": \"http://api.github.com/repos/octocat/Hello-World/statuses/{sha}\",\n    \"subscribers_url\": \"http://api.github.com/repos/octocat/Hello-World/subscribers\",\n    \"subscription_url\": \"http://api.github.com/repos/octocat/Hello-World/subscription\",\n    \"tags_url\": \"http://api.github.com/repos/octocat/Hello-World/tags\",\n    \"teams_url\": \"http://api.github.com/repos/octocat/Hello-World/teams\",\n    \"trees_url\": \"http://api.github.com/repos/octocat/Hello-World/git/trees{/sha}\",\n    \"clone_url\": \"https://github.com/octocat/Hello-World.git\",\n    \"mirror_url\": \"git:git.example.com/octocat/Hello-World\",\n    \"hooks_url\": \"http://api.github.com/repos/octocat/Hello-World/hooks\",\n    \"svn_url\": \"https://svn.github.com/octocat/Hello-World\",\n    \"homepage\": \"https://github.com\",\n    \"language\": null,\n    \"forks_count\": 9,\n    \"stargazers_count\": 80,\n    \"watchers_count\": 80,\n    \"size\": 108,\n    \"default_branch\": \"master\",\n    \"open_issues_count\": 0,\n    \"is_template\": true,\n    \"topics\": [\n      \"octocat\",\n      \"atom\",\n      \"electron\",\n      \"api\"\n    ],\n    \"has_issues\": true,\n    \"has_projects\": true,\n    \"has_wiki\": true,\n    \"has_pages\": false,\n    \"has_downloads\": true,\n    \"archived\": false,\n    \"disabled\": false,\n    \"visibility\": \"public\",\n    \"pushed_at\": \"2011-01-26T19:06:43Z\",\n    \"created_at\": \"2011-01-26T19:01:12Z\",\n    \"updated_at\": \"2011-01-26T19:14:43Z\",\n    \"permissions\": {\n      \"admin\": false,\n      \"push\": false,\n      \"pull\": true\n    },\n    \"allow_rebase_merge\": true,\n    \"template_repository\": null,\n    \"temp_clone_token\": \"ABTLWHOULUVAXGTRYU7OC2876QJ2O\",\n    \"allow_squash_merge\": true,\n    \"delete_branch_on_merge\": true,\n    \"allow_merge_commit\": true,\n    \"subscribers_count\": 42,\n    \"network_count\": 0\n  },\n  \"permissions\": {\n    \"pull\": true,\n    \"triage\": true,\n    \"push\": false,\n    \"maintain\": false,\n    \"admin\": false\n  }\n}\n"
+      },
+      {
+        "code":"204 No Content"
+      },
+      {
+        "code":"404 Not Found"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/teams/{team_id}/repos/{owner}/{repo}"
+    },
+    "title":"Check team permissions for a repository (Legacy)"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X PUT \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/teams/42/repos/octocat/hello-world \\\n  -d '{\"permission\":\"permission\"}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"teams",
+    "id":"add-or-update-team-repository-permissions-legacy",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"team_id ",
+        "type":"integer "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The permission to grant the team on this repository. Can be one of:<br> * <code>pull</code> - team members can pull, but not push to or administer this repository.<br> * <code>push</code> - team members can pull and push, but not administer this repository.<br> * <code>admin</code> - team members can pull, push and administer this repository. </p> <p>If no permission is specified, the team&apos;s <code>permission</code> attribute will be used to determine what permission to grant the team on this repository.</p>",
+        "in":"body ",
+        "name":"permission ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"put",
+      "path":"/teams/{team_id}/repos/{owner}/{repo}"
+    },
+    "title":"Add or update team repository permissions (Legacy)"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X DELETE \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/teams/42/repos/octocat/hello-world\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"teams",
+    "id":"remove-a-repository-from-a-team-legacy",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"team_id ",
+        "type":"integer "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"delete",
+      "path":"/teams/{team_id}/repos/{owner}/{repo}"
+    },
+    "title":"Remove a repository from a team (Legacy)"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/teams/42/teams\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"teams",
+    "id":"list-child-teams-legacy",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"team_id ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"id\": 2,\n    \"node_id\": \"MDQ6VGVhbTI=\",\n    \"url\": \"https://api.github.com/teams/2\",\n    \"name\": \"Original Roster\",\n    \"slug\": \"original-roster\",\n    \"description\": \"Started it all.\",\n    \"privacy\": \"closed\",\n    \"permission\": \"admin\",\n    \"members_url\": \"https://api.github.com/teams/2/members{/member}\",\n    \"repositories_url\": \"https://api.github.com/teams/2/repos\",\n    \"parent\": {\n      \"id\": 1,\n      \"node_id\": \"MDQ6VGVhbTE=\",\n      \"url\": \"https://api.github.com/teams/1\",\n      \"html_url\": \"https://api.github.com/teams/justice-league\",\n      \"name\": \"Justice League\",\n      \"slug\": \"justice-league\",\n      \"description\": \"A great team.\",\n      \"privacy\": \"closed\",\n      \"permission\": \"admin\",\n      \"members_url\": \"https://api.github.com/teams/1/members{/member}\",\n      \"repositories_url\": \"https://api.github.com/teams/1/repos\"\n    }\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/teams/{team_id}/teams"
+    },
+    "title":"List child teams (Legacy)"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/user/teams\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"teams",
+    "id":"list-teams-for-the-authenticated-user",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"id\": 1,\n    \"node_id\": \"MDQ6VGVhbTE=\",\n    \"url\": \"https://api.github.com/teams/1\",\n    \"html_url\": \"https://api.github.com/teams/justice-league\",\n    \"name\": \"Justice League\",\n    \"slug\": \"justice-league\",\n    \"description\": \"A great team.\",\n    \"privacy\": \"closed\",\n    \"permission\": \"admin\",\n    \"members_url\": \"https://api.github.com/teams/1/members{/member}\",\n    \"repositories_url\": \"https://api.github.com/teams/1/repos\",\n    \"parent\": null,\n    \"members_count\": 3,\n    \"repos_count\": 10,\n    \"created_at\": \"2017-07-14T16:53:42Z\",\n    \"updated_at\": \"2017-08-17T12:37:15Z\",\n    \"organization\": {\n      \"login\": \"github\",\n      \"id\": 1,\n      \"node_id\": \"MDEyOk9yZ2FuaXphdGlvbjE=\",\n      \"url\": \"https://api.github.com/orgs/github\",\n      \"repos_url\": \"https://api.github.com/orgs/github/repos\",\n      \"events_url\": \"https://api.github.com/orgs/github/events\",\n      \"hooks_url\": \"https://api.github.com/orgs/github/hooks\",\n      \"issues_url\": \"https://api.github.com/orgs/github/issues\",\n      \"members_url\": \"https://api.github.com/orgs/github/members{/member}\",\n      \"public_members_url\": \"https://api.github.com/orgs/github/public_members{/member}\",\n      \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n      \"description\": \"A great organization\",\n      \"name\": \"github\",\n      \"company\": \"GitHub\",\n      \"blog\": \"https://github.com/blog\",\n      \"location\": \"San Francisco\",\n      \"email\": \"octocat@github.com\",\n      \"twitter_username\": \"github\",\n      \"is_verified\": true,\n      \"has_organization_projects\": true,\n      \"has_repository_projects\": true,\n      \"public_repos\": 2,\n      \"public_gists\": 1,\n      \"followers\": 20,\n      \"following\": 0,\n      \"html_url\": \"https://github.com/octocat\",\n      \"created_at\": \"2008-01-14T04:33:35Z\",\n      \"type\": \"Organization\"\n    }\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/user/teams"
+    },
+    "title":"List teams for the authenticated user"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG/teams/TEAM_SLUG/discussions\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"teams",
+    "id":"list-discussions",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p> <a href=\"#list-discussions-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"team_slug ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Sorts the discussion comments by the date they were created. To return the oldest comments first, set to <code>asc</code>. Can be one of <code>asc</code> or <code>desc</code>.</p>",
+        "in":"query ",
+        "name":"direction ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"author\": {\n      \"login\": \"octocat\",\n      \"id\": 1,\n      \"node_id\": \"MDQ6VXNlcjE=\",\n      \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n      \"gravatar_id\": \"\",\n      \"url\": \"https://api.github.com/users/octocat\",\n      \"html_url\": \"https://github.com/octocat\",\n      \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n      \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n      \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n      \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n      \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n      \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n      \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n      \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n      \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n      \"type\": \"User\",\n      \"site_admin\": false\n    },\n    \"body\": \"Hi! This is an area for us to collaborate as a team.\",\n    \"body_html\": \"<p>Hi! This is an area for us to collaborate as a team</p>\",\n    \"body_version\": \"0d495416a700fb06133c612575d92bfb\",\n    \"comments_count\": 0,\n    \"comments_url\": \"https://api.github.com/teams/2343027/discussions/1/comments\",\n    \"created_at\": \"2018-01-25T18:56:31Z\",\n    \"last_edited_at\": null,\n    \"html_url\": \"https://github.com/orgs/github/teams/justice-league/discussions/1\",\n    \"node_id\": \"MDE0OlRlYW1EaXNjdXNzaW9uMQ==\",\n    \"number\": 1,\n    \"pinned\": false,\n    \"private\": false,\n    \"team_url\": \"https://api.github.com/teams/2343027\",\n    \"title\": \"Our first team post\",\n    \"updated_at\": \"2018-01-25T18:56:31Z\",\n    \"url\": \"https://api.github.com/teams/2343027/discussions/1\",\n    \"reactions\": {\n      \"url\": \"https://api.github.com/teams/2343027/discussions/1/reactions\",\n      \"total_count\": 5,\n      \"+1\": 3,\n      \"-1\": 1,\n      \"laugh\": 0,\n      \"confused\": 0,\n      \"heart\": 1,\n      \"hooray\": 0\n    }\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/orgs/{org}/teams/{team_slug}/discussions"
+    },
+    "title":"List discussions"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X POST \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG/teams/TEAM_SLUG/discussions \\\n  -d '{\"title\":\"title\",\"body\":\"body\"}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"teams",
+    "id":"create-a-discussion",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p> <a href=\"#create-a-discussion-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"team_slug ",
+        "type":"string "
+      },
+      {
+        "description":"<p><strong>Required</strong>. The discussion post&apos;s title.</p>",
+        "in":"body ",
+        "name":"title ",
+        "type":"string "
+      },
+      {
+        "description":"<p><strong>Required</strong>. The discussion post&apos;s body text.</p>",
+        "in":"body ",
+        "name":"body ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Private posts are only visible to team members, organization owners, and team maintainers. Public posts are visible to all members of the organization. Set to <code>true</code> to create a private post.</p>",
+        "in":"body ",
+        "name":"private ",
+        "type":"boolean "
+      }
+    ],
+    "responses":[
+      {
+        "code":"201 Created",
+        "content":"{\n  \"author\": {\n    \"login\": \"octocat\",\n    \"id\": 1,\n    \"node_id\": \"MDQ6VXNlcjE=\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/users/octocat\",\n    \"html_url\": \"https://github.com/octocat\",\n    \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n    \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n    \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n    \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n    \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n    \"type\": \"User\",\n    \"site_admin\": false\n  },\n  \"body\": \"Hi! This is an area for us to collaborate as a team.\",\n  \"body_html\": \"<p>Hi! This is an area for us to collaborate as a team</p>\",\n  \"body_version\": \"0d495416a700fb06133c612575d92bfb\",\n  \"comments_count\": 0,\n  \"comments_url\": \"https://api.github.com/teams/2343027/discussions/1/comments\",\n  \"created_at\": \"2018-01-25T18:56:31Z\",\n  \"last_edited_at\": null,\n  \"html_url\": \"https://github.com/orgs/github/teams/justice-league/discussions/1\",\n  \"node_id\": \"MDE0OlRlYW1EaXNjdXNzaW9uMQ==\",\n  \"number\": 1,\n  \"pinned\": false,\n  \"private\": false,\n  \"team_url\": \"https://api.github.com/teams/2343027\",\n  \"title\": \"Our first team post\",\n  \"updated_at\": \"2018-01-25T18:56:31Z\",\n  \"url\": \"https://api.github.com/teams/2343027/discussions/1\",\n  \"reactions\": {\n    \"url\": \"https://api.github.com/teams/2343027/discussions/1/reactions\",\n    \"total_count\": 5,\n    \"+1\": 3,\n    \"-1\": 1,\n    \"laugh\": 0,\n    \"confused\": 0,\n    \"heart\": 1,\n    \"hooray\": 0\n  }\n}\n"
+      }
+    ],
+    "target":{
+      "method":"post",
+      "path":"/orgs/{org}/teams/{team_slug}/discussions"
+    },
+    "title":"Create a discussion"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG/teams/TEAM_SLUG/discussions/42\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"teams",
+    "id":"get-a-discussion",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p> <a href=\"#get-a-discussion-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"team_slug ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"discussion_number ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"author\": {\n    \"login\": \"octocat\",\n    \"id\": 1,\n    \"node_id\": \"MDQ6VXNlcjE=\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/users/octocat\",\n    \"html_url\": \"https://github.com/octocat\",\n    \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n    \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n    \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n    \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n    \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n    \"type\": \"User\",\n    \"site_admin\": false\n  },\n  \"body\": \"Hi! This is an area for us to collaborate as a team.\",\n  \"body_html\": \"<p>Hi! This is an area for us to collaborate as a team</p>\",\n  \"body_version\": \"0d495416a700fb06133c612575d92bfb\",\n  \"comments_count\": 0,\n  \"comments_url\": \"https://api.github.com/teams/2343027/discussions/1/comments\",\n  \"created_at\": \"2018-01-25T18:56:31Z\",\n  \"last_edited_at\": null,\n  \"html_url\": \"https://github.com/orgs/github/teams/justice-league/discussions/1\",\n  \"node_id\": \"MDE0OlRlYW1EaXNjdXNzaW9uMQ==\",\n  \"number\": 1,\n  \"pinned\": false,\n  \"private\": false,\n  \"team_url\": \"https://api.github.com/teams/2343027\",\n  \"title\": \"Our first team post\",\n  \"updated_at\": \"2018-01-25T18:56:31Z\",\n  \"url\": \"https://api.github.com/teams/2343027/discussions/1\",\n  \"reactions\": {\n    \"url\": \"https://api.github.com/teams/2343027/discussions/1/reactions\",\n    \"total_count\": 5,\n    \"+1\": 3,\n    \"-1\": 1,\n    \"laugh\": 0,\n    \"confused\": 0,\n    \"heart\": 1,\n    \"hooray\": 0\n  }\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}"
+    },
+    "title":"Get a discussion"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X PATCH \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG/teams/TEAM_SLUG/discussions/42 \\\n  -d '{\"title\":\"title\"}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"teams",
+    "id":"update-a-discussion",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p> <a href=\"#update-a-discussion-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"team_slug ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"discussion_number ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>The discussion post&apos;s title.</p>",
+        "in":"body ",
+        "name":"title ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The discussion post&apos;s body text.</p>",
+        "in":"body ",
+        "name":"body ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"author\": {\n    \"login\": \"octocat\",\n    \"id\": 1,\n    \"node_id\": \"MDQ6VXNlcjE=\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/users/octocat\",\n    \"html_url\": \"https://github.com/octocat\",\n    \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n    \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n    \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n    \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n    \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n    \"type\": \"User\",\n    \"site_admin\": false\n  },\n  \"body\": \"Hi! This is an area for us to collaborate as a team.\",\n  \"body_html\": \"<p>Hi! This is an area for us to collaborate as a team</p>\",\n  \"body_version\": \"0d495416a700fb06133c612575d92bfb\",\n  \"comments_count\": 1,\n  \"comments_url\": \"https://api.github.com/teams/2343027/discussions/1/comments\",\n  \"created_at\": \"2018-01-25T18:56:31Z\",\n  \"last_edited_at\": \"2018-01-26T18:22:20Z\",\n  \"html_url\": \"https://github.com/orgs/github/teams/justice-league/discussions/1\",\n  \"node_id\": \"MDE0OlRlYW1EaXNjdXNzaW9uMQ==\",\n  \"number\": 1,\n  \"pinned\": false,\n  \"private\": false,\n  \"team_url\": \"https://api.github.com/teams/2343027\",\n  \"title\": \"Welcome to our first team post\",\n  \"updated_at\": \"2018-01-26T18:22:20Z\",\n  \"url\": \"https://api.github.com/teams/2343027/discussions/1\",\n  \"reactions\": {\n    \"url\": \"https://api.github.com/teams/2343027/discussions/1/reactions\",\n    \"total_count\": 5,\n    \"+1\": 3,\n    \"-1\": 1,\n    \"laugh\": 0,\n    \"confused\": 0,\n    \"heart\": 1,\n    \"hooray\": 0\n  }\n}\n"
+      }
+    ],
+    "target":{
+      "method":"patch",
+      "path":"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}"
+    },
+    "title":"Update a discussion"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X DELETE \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG/teams/TEAM_SLUG/discussions/42\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"teams",
+    "id":"delete-a-discussion",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"team_slug ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"discussion_number ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"delete",
+      "path":"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}"
+    },
+    "title":"Delete a discussion"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/teams/42/discussions\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"teams",
+    "id":"list-discussions-legacy",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p> <a href=\"#list-discussions-legacy-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"team_id ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Sorts the discussion comments by the date they were created. To return the oldest comments first, set to <code>asc</code>. Can be one of <code>asc</code> or <code>desc</code>.</p>",
+        "in":"query ",
+        "name":"direction ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"author\": {\n      \"login\": \"octocat\",\n      \"id\": 1,\n      \"node_id\": \"MDQ6VXNlcjE=\",\n      \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n      \"gravatar_id\": \"\",\n      \"url\": \"https://api.github.com/users/octocat\",\n      \"html_url\": \"https://github.com/octocat\",\n      \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n      \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n      \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n      \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n      \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n      \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n      \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n      \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n      \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n      \"type\": \"User\",\n      \"site_admin\": false\n    },\n    \"body\": \"Hi! This is an area for us to collaborate as a team.\",\n    \"body_html\": \"<p>Hi! This is an area for us to collaborate as a team</p>\",\n    \"body_version\": \"0d495416a700fb06133c612575d92bfb\",\n    \"comments_count\": 0,\n    \"comments_url\": \"https://api.github.com/teams/2343027/discussions/1/comments\",\n    \"created_at\": \"2018-01-25T18:56:31Z\",\n    \"last_edited_at\": null,\n    \"html_url\": \"https://github.com/orgs/github/teams/justice-league/discussions/1\",\n    \"node_id\": \"MDE0OlRlYW1EaXNjdXNzaW9uMQ==\",\n    \"number\": 1,\n    \"pinned\": false,\n    \"private\": false,\n    \"team_url\": \"https://api.github.com/teams/2343027\",\n    \"title\": \"Our first team post\",\n    \"updated_at\": \"2018-01-25T18:56:31Z\",\n    \"url\": \"https://api.github.com/teams/2343027/discussions/1\",\n    \"reactions\": {\n      \"url\": \"https://api.github.com/teams/2343027/discussions/1/reactions\",\n      \"total_count\": 5,\n      \"+1\": 3,\n      \"-1\": 1,\n      \"laugh\": 0,\n      \"confused\": 0,\n      \"heart\": 1,\n      \"hooray\": 0\n    }\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/teams/{team_id}/discussions"
+    },
+    "title":"List discussions (Legacy)"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X POST \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/teams/42/discussions \\\n  -d '{\"title\":\"title\",\"body\":\"body\"}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"teams",
+    "id":"create-a-discussion-legacy",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p> <a href=\"#create-a-discussion-legacy-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"team_id ",
+        "type":"integer "
+      },
+      {
+        "description":"<p><strong>Required</strong>. The discussion post&apos;s title.</p>",
+        "in":"body ",
+        "name":"title ",
+        "type":"string "
+      },
+      {
+        "description":"<p><strong>Required</strong>. The discussion post&apos;s body text.</p>",
+        "in":"body ",
+        "name":"body ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Private posts are only visible to team members, organization owners, and team maintainers. Public posts are visible to all members of the organization. Set to <code>true</code> to create a private post.</p>",
+        "in":"body ",
+        "name":"private ",
+        "type":"boolean "
+      }
+    ],
+    "responses":[
+      {
+        "code":"201 Created",
+        "content":"{\n  \"author\": {\n    \"login\": \"octocat\",\n    \"id\": 1,\n    \"node_id\": \"MDQ6VXNlcjE=\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/users/octocat\",\n    \"html_url\": \"https://github.com/octocat\",\n    \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n    \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n    \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n    \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n    \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n    \"type\": \"User\",\n    \"site_admin\": false\n  },\n  \"body\": \"Hi! This is an area for us to collaborate as a team.\",\n  \"body_html\": \"<p>Hi! This is an area for us to collaborate as a team</p>\",\n  \"body_version\": \"0d495416a700fb06133c612575d92bfb\",\n  \"comments_count\": 0,\n  \"comments_url\": \"https://api.github.com/teams/2343027/discussions/1/comments\",\n  \"created_at\": \"2018-01-25T18:56:31Z\",\n  \"last_edited_at\": null,\n  \"html_url\": \"https://github.com/orgs/github/teams/justice-league/discussions/1\",\n  \"node_id\": \"MDE0OlRlYW1EaXNjdXNzaW9uMQ==\",\n  \"number\": 1,\n  \"pinned\": false,\n  \"private\": false,\n  \"team_url\": \"https://api.github.com/teams/2343027\",\n  \"title\": \"Our first team post\",\n  \"updated_at\": \"2018-01-25T18:56:31Z\",\n  \"url\": \"https://api.github.com/teams/2343027/discussions/1\",\n  \"reactions\": {\n    \"url\": \"https://api.github.com/teams/2343027/discussions/1/reactions\",\n    \"total_count\": 5,\n    \"+1\": 3,\n    \"-1\": 1,\n    \"laugh\": 0,\n    \"confused\": 0,\n    \"heart\": 1,\n    \"hooray\": 0\n  }\n}\n"
+      }
+    ],
+    "target":{
+      "method":"post",
+      "path":"/teams/{team_id}/discussions"
+    },
+    "title":"Create a discussion (Legacy)"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/teams/42/discussions/42\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"teams",
+    "id":"get-a-discussion-legacy",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p> <a href=\"#get-a-discussion-legacy-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"team_id ",
+        "type":"integer "
+      },
+      {
+        "in":"path",
+        "name":"discussion_number ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"author\": {\n    \"login\": \"octocat\",\n    \"id\": 1,\n    \"node_id\": \"MDQ6VXNlcjE=\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/users/octocat\",\n    \"html_url\": \"https://github.com/octocat\",\n    \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n    \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n    \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n    \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n    \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n    \"type\": \"User\",\n    \"site_admin\": false\n  },\n  \"body\": \"Hi! This is an area for us to collaborate as a team.\",\n  \"body_html\": \"<p>Hi! This is an area for us to collaborate as a team</p>\",\n  \"body_version\": \"0d495416a700fb06133c612575d92bfb\",\n  \"comments_count\": 0,\n  \"comments_url\": \"https://api.github.com/teams/2343027/discussions/1/comments\",\n  \"created_at\": \"2018-01-25T18:56:31Z\",\n  \"last_edited_at\": null,\n  \"html_url\": \"https://github.com/orgs/github/teams/justice-league/discussions/1\",\n  \"node_id\": \"MDE0OlRlYW1EaXNjdXNzaW9uMQ==\",\n  \"number\": 1,\n  \"pinned\": false,\n  \"private\": false,\n  \"team_url\": \"https://api.github.com/teams/2343027\",\n  \"title\": \"Our first team post\",\n  \"updated_at\": \"2018-01-25T18:56:31Z\",\n  \"url\": \"https://api.github.com/teams/2343027/discussions/1\",\n  \"reactions\": {\n    \"url\": \"https://api.github.com/teams/2343027/discussions/1/reactions\",\n    \"total_count\": 5,\n    \"+1\": 3,\n    \"-1\": 1,\n    \"laugh\": 0,\n    \"confused\": 0,\n    \"heart\": 1,\n    \"hooray\": 0\n  }\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/teams/{team_id}/discussions/{discussion_number}"
+    },
+    "title":"Get a discussion (Legacy)"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X PATCH \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/teams/42/discussions/42 \\\n  -d '{\"title\":\"title\"}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"teams",
+    "id":"update-a-discussion-legacy",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p> <a href=\"#update-a-discussion-legacy-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"team_id ",
+        "type":"integer "
+      },
+      {
+        "in":"path",
+        "name":"discussion_number ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>The discussion post&apos;s title.</p>",
+        "in":"body ",
+        "name":"title ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The discussion post&apos;s body text.</p>",
+        "in":"body ",
+        "name":"body ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"author\": {\n    \"login\": \"octocat\",\n    \"id\": 1,\n    \"node_id\": \"MDQ6VXNlcjE=\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/users/octocat\",\n    \"html_url\": \"https://github.com/octocat\",\n    \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n    \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n    \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n    \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n    \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n    \"type\": \"User\",\n    \"site_admin\": false\n  },\n  \"body\": \"Hi! This is an area for us to collaborate as a team.\",\n  \"body_html\": \"<p>Hi! This is an area for us to collaborate as a team</p>\",\n  \"body_version\": \"0d495416a700fb06133c612575d92bfb\",\n  \"comments_count\": 1,\n  \"comments_url\": \"https://api.github.com/teams/2343027/discussions/1/comments\",\n  \"created_at\": \"2018-01-25T18:56:31Z\",\n  \"last_edited_at\": \"2018-01-26T18:22:20Z\",\n  \"html_url\": \"https://github.com/orgs/github/teams/justice-league/discussions/1\",\n  \"node_id\": \"MDE0OlRlYW1EaXNjdXNzaW9uMQ==\",\n  \"number\": 1,\n  \"pinned\": false,\n  \"private\": false,\n  \"team_url\": \"https://api.github.com/teams/2343027\",\n  \"title\": \"Welcome to our first team post\",\n  \"updated_at\": \"2018-01-26T18:22:20Z\",\n  \"url\": \"https://api.github.com/teams/2343027/discussions/1\",\n  \"reactions\": {\n    \"url\": \"https://api.github.com/teams/2343027/discussions/1/reactions\",\n    \"total_count\": 5,\n    \"+1\": 3,\n    \"-1\": 1,\n    \"laugh\": 0,\n    \"confused\": 0,\n    \"heart\": 1,\n    \"hooray\": 0\n  }\n}\n"
+      }
+    ],
+    "target":{
+      "method":"patch",
+      "path":"/teams/{team_id}/discussions/{discussion_number}"
+    },
+    "title":"Update a discussion (Legacy)"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X DELETE \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/teams/42/discussions/42\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"teams",
+    "id":"delete-a-discussion-legacy",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"team_id ",
+        "type":"integer "
+      },
+      {
+        "in":"path",
+        "name":"discussion_number ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"delete",
+      "path":"/teams/{team_id}/discussions/{discussion_number}"
+    },
+    "title":"Delete a discussion (Legacy)"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG/teams/TEAM_SLUG/discussions/42/comments\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"teams",
+    "id":"list-discussion-comments",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p> <a href=\"#list-discussion-comments-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"team_slug ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"discussion_number ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Sorts the discussion comments by the date they were created. To return the oldest comments first, set to <code>asc</code>. Can be one of <code>asc</code> or <code>desc</code>.</p>",
+        "in":"query ",
+        "name":"direction ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"author\": {\n      \"login\": \"octocat\",\n      \"id\": 1,\n      \"node_id\": \"MDQ6VXNlcjE=\",\n      \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n      \"gravatar_id\": \"\",\n      \"url\": \"https://api.github.com/users/octocat\",\n      \"html_url\": \"https://github.com/octocat\",\n      \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n      \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n      \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n      \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n      \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n      \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n      \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n      \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n      \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n      \"type\": \"User\",\n      \"site_admin\": false\n    },\n    \"body\": \"Do you like apples?\",\n    \"body_html\": \"<p>Do you like apples?</p>\",\n    \"body_version\": \"5eb32b219cdc6a5a9b29ba5d6caa9c51\",\n    \"created_at\": \"2018-01-15T23:53:58Z\",\n    \"last_edited_at\": null,\n    \"discussion_url\": \"https://api.github.com/teams/2403582/discussions/1\",\n    \"html_url\": \"https://github.com/orgs/github/teams/justice-league/discussions/1/comments/1\",\n    \"node_id\": \"MDIxOlRlYW1EaXNjdXNzaW9uQ29tbWVudDE=\",\n    \"number\": 1,\n    \"updated_at\": \"2018-01-15T23:53:58Z\",\n    \"url\": \"https://api.github.com/teams/2403582/discussions/1/comments/1\",\n    \"reactions\": {\n      \"url\": \"https://api.github.com/teams/2403582/discussions/1/reactions\",\n      \"total_count\": 5,\n      \"+1\": 3,\n      \"-1\": 1,\n      \"laugh\": 0,\n      \"confused\": 0,\n      \"heart\": 1,\n      \"hooray\": 0\n    }\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments"
+    },
+    "title":"List discussion comments"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X POST \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG/teams/TEAM_SLUG/discussions/42/comments \\\n  -d '{\"body\":\"body\"}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"teams",
+    "id":"create-a-discussion-comment",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p> <a href=\"#create-a-discussion-comment-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"team_slug ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"discussion_number ",
+        "type":"integer "
+      },
+      {
+        "description":"<p><strong>Required</strong>. The discussion comment&apos;s body text.</p>",
+        "in":"body ",
+        "name":"body ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"201 Created",
+        "content":"{\n  \"author\": {\n    \"login\": \"octocat\",\n    \"id\": 1,\n    \"node_id\": \"MDQ6VXNlcjE=\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/users/octocat\",\n    \"html_url\": \"https://github.com/octocat\",\n    \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n    \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n    \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n    \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n    \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n    \"type\": \"User\",\n    \"site_admin\": false\n  },\n  \"body\": \"Do you like apples?\",\n  \"body_html\": \"<p>Do you like apples?</p>\",\n  \"body_version\": \"5eb32b219cdc6a5a9b29ba5d6caa9c51\",\n  \"created_at\": \"2018-01-15T23:53:58Z\",\n  \"last_edited_at\": null,\n  \"discussion_url\": \"https://api.github.com/teams/2403582/discussions/1\",\n  \"html_url\": \"https://github.com/orgs/github/teams/justice-league/discussions/1/comments/1\",\n  \"node_id\": \"MDIxOlRlYW1EaXNjdXNzaW9uQ29tbWVudDE=\",\n  \"number\": 1,\n  \"updated_at\": \"2018-01-15T23:53:58Z\",\n  \"url\": \"https://api.github.com/teams/2403582/discussions/1/comments/1\",\n  \"reactions\": {\n    \"url\": \"https://api.github.com/teams/2403582/discussions/1/reactions\",\n    \"total_count\": 5,\n    \"+1\": 3,\n    \"-1\": 1,\n    \"laugh\": 0,\n    \"confused\": 0,\n    \"heart\": 1,\n    \"hooray\": 0\n  }\n}\n"
+      }
+    ],
+    "target":{
+      "method":"post",
+      "path":"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments"
+    },
+    "title":"Create a discussion comment"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG/teams/TEAM_SLUG/discussions/42/comments/42\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"teams",
+    "id":"get-a-discussion-comment",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p> <a href=\"#get-a-discussion-comment-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"team_slug ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"discussion_number ",
+        "type":"integer "
+      },
+      {
+        "in":"path",
+        "name":"comment_number ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"author\": {\n    \"login\": \"octocat\",\n    \"id\": 1,\n    \"node_id\": \"MDQ6VXNlcjE=\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/users/octocat\",\n    \"html_url\": \"https://github.com/octocat\",\n    \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n    \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n    \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n    \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n    \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n    \"type\": \"User\",\n    \"site_admin\": false\n  },\n  \"body\": \"Do you like apples?\",\n  \"body_html\": \"<p>Do you like apples?</p>\",\n  \"body_version\": \"5eb32b219cdc6a5a9b29ba5d6caa9c51\",\n  \"created_at\": \"2018-01-15T23:53:58Z\",\n  \"last_edited_at\": null,\n  \"discussion_url\": \"https://api.github.com/teams/2403582/discussions/1\",\n  \"html_url\": \"https://github.com/orgs/github/teams/justice-league/discussions/1/comments/1\",\n  \"node_id\": \"MDIxOlRlYW1EaXNjdXNzaW9uQ29tbWVudDE=\",\n  \"number\": 1,\n  \"updated_at\": \"2018-01-15T23:53:58Z\",\n  \"url\": \"https://api.github.com/teams/2403582/discussions/1/comments/1\",\n  \"reactions\": {\n    \"url\": \"https://api.github.com/teams/2403582/discussions/1/reactions\",\n    \"total_count\": 5,\n    \"+1\": 3,\n    \"-1\": 1,\n    \"laugh\": 0,\n    \"confused\": 0,\n    \"heart\": 1,\n    \"hooray\": 0\n  }\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}"
+    },
+    "title":"Get a discussion comment"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X PATCH \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG/teams/TEAM_SLUG/discussions/42/comments/42 \\\n  -d '{\"body\":\"body\"}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"teams",
+    "id":"update-a-discussion-comment",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p> <a href=\"#update-a-discussion-comment-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"team_slug ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"discussion_number ",
+        "type":"integer "
+      },
+      {
+        "in":"path",
+        "name":"comment_number ",
+        "type":"integer "
+      },
+      {
+        "description":"<p><strong>Required</strong>. The discussion comment&apos;s body text.</p>",
+        "in":"body ",
+        "name":"body ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"author\": {\n    \"login\": \"octocat\",\n    \"id\": 1,\n    \"node_id\": \"MDQ6VXNlcjE=\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/users/octocat\",\n    \"html_url\": \"https://github.com/octocat\",\n    \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n    \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n    \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n    \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n    \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n    \"type\": \"User\",\n    \"site_admin\": false\n  },\n  \"body\": \"Do you like pineapples?\",\n  \"body_html\": \"<p>Do you like pineapples?</p>\",\n  \"body_version\": \"e6907b24d9c93cc0c5024a7af5888116\",\n  \"created_at\": \"2018-01-15T23:53:58Z\",\n  \"last_edited_at\": \"2018-01-26T18:22:20Z\",\n  \"discussion_url\": \"https://api.github.com/teams/2403582/discussions/1\",\n  \"html_url\": \"https://github.com/orgs/github/teams/justice-league/discussions/1/comments/1\",\n  \"node_id\": \"MDIxOlRlYW1EaXNjdXNzaW9uQ29tbWVudDE=\",\n  \"number\": 1,\n  \"updated_at\": \"2018-01-26T18:22:20Z\",\n  \"url\": \"https://api.github.com/teams/2403582/discussions/1/comments/1\",\n  \"reactions\": {\n    \"url\": \"https://api.github.com/teams/2403582/discussions/1/reactions\",\n    \"total_count\": 5,\n    \"+1\": 3,\n    \"-1\": 1,\n    \"laugh\": 0,\n    \"confused\": 0,\n    \"heart\": 1,\n    \"hooray\": 0\n  }\n}\n"
+      }
+    ],
+    "target":{
+      "method":"patch",
+      "path":"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}"
+    },
+    "title":"Update a discussion comment"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X DELETE \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG/teams/TEAM_SLUG/discussions/42/comments/42\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"teams",
+    "id":"delete-a-discussion-comment",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"team_slug ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"discussion_number ",
+        "type":"integer "
+      },
+      {
+        "in":"path",
+        "name":"comment_number ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"delete",
+      "path":"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}"
+    },
+    "title":"Delete a discussion comment"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/teams/42/discussions/42/comments\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"teams",
+    "id":"list-discussion-comments-legacy",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p> <a href=\"#list-discussion-comments-legacy-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"team_id ",
+        "type":"integer "
+      },
+      {
+        "in":"path",
+        "name":"discussion_number ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Sorts the discussion comments by the date they were created. To return the oldest comments first, set to <code>asc</code>. Can be one of <code>asc</code> or <code>desc</code>.</p>",
+        "in":"query ",
+        "name":"direction ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"author\": {\n      \"login\": \"octocat\",\n      \"id\": 1,\n      \"node_id\": \"MDQ6VXNlcjE=\",\n      \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n      \"gravatar_id\": \"\",\n      \"url\": \"https://api.github.com/users/octocat\",\n      \"html_url\": \"https://github.com/octocat\",\n      \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n      \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n      \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n      \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n      \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n      \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n      \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n      \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n      \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n      \"type\": \"User\",\n      \"site_admin\": false\n    },\n    \"body\": \"Do you like apples?\",\n    \"body_html\": \"<p>Do you like apples?</p>\",\n    \"body_version\": \"5eb32b219cdc6a5a9b29ba5d6caa9c51\",\n    \"created_at\": \"2018-01-15T23:53:58Z\",\n    \"last_edited_at\": null,\n    \"discussion_url\": \"https://api.github.com/teams/2403582/discussions/1\",\n    \"html_url\": \"https://github.com/orgs/github/teams/justice-league/discussions/1/comments/1\",\n    \"node_id\": \"MDIxOlRlYW1EaXNjdXNzaW9uQ29tbWVudDE=\",\n    \"number\": 1,\n    \"updated_at\": \"2018-01-15T23:53:58Z\",\n    \"url\": \"https://api.github.com/teams/2403582/discussions/1/comments/1\",\n    \"reactions\": {\n      \"url\": \"https://api.github.com/teams/2403582/discussions/1/reactions\",\n      \"total_count\": 5,\n      \"+1\": 3,\n      \"-1\": 1,\n      \"laugh\": 0,\n      \"confused\": 0,\n      \"heart\": 1,\n      \"hooray\": 0\n    }\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/teams/{team_id}/discussions/{discussion_number}/comments"
+    },
+    "title":"List discussion comments (Legacy)"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X POST \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/teams/42/discussions/42/comments \\\n  -d '{\"body\":\"body\"}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"teams",
+    "id":"create-a-discussion-comment-legacy",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p> <a href=\"#create-a-discussion-comment-legacy-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"team_id ",
+        "type":"integer "
+      },
+      {
+        "in":"path",
+        "name":"discussion_number ",
+        "type":"integer "
+      },
+      {
+        "description":"<p><strong>Required</strong>. The discussion comment&apos;s body text.</p>",
+        "in":"body ",
+        "name":"body ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"201 Created",
+        "content":"{\n  \"author\": {\n    \"login\": \"octocat\",\n    \"id\": 1,\n    \"node_id\": \"MDQ6VXNlcjE=\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/users/octocat\",\n    \"html_url\": \"https://github.com/octocat\",\n    \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n    \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n    \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n    \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n    \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n    \"type\": \"User\",\n    \"site_admin\": false\n  },\n  \"body\": \"Do you like apples?\",\n  \"body_html\": \"<p>Do you like apples?</p>\",\n  \"body_version\": \"5eb32b219cdc6a5a9b29ba5d6caa9c51\",\n  \"created_at\": \"2018-01-15T23:53:58Z\",\n  \"last_edited_at\": null,\n  \"discussion_url\": \"https://api.github.com/teams/2403582/discussions/1\",\n  \"html_url\": \"https://github.com/orgs/github/teams/justice-league/discussions/1/comments/1\",\n  \"node_id\": \"MDIxOlRlYW1EaXNjdXNzaW9uQ29tbWVudDE=\",\n  \"number\": 1,\n  \"updated_at\": \"2018-01-15T23:53:58Z\",\n  \"url\": \"https://api.github.com/teams/2403582/discussions/1/comments/1\",\n  \"reactions\": {\n    \"url\": \"https://api.github.com/teams/2403582/discussions/1/reactions\",\n    \"total_count\": 5,\n    \"+1\": 3,\n    \"-1\": 1,\n    \"laugh\": 0,\n    \"confused\": 0,\n    \"heart\": 1,\n    \"hooray\": 0\n  }\n}\n"
+      }
+    ],
+    "target":{
+      "method":"post",
+      "path":"/teams/{team_id}/discussions/{discussion_number}/comments"
+    },
+    "title":"Create a discussion comment (Legacy)"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/teams/42/discussions/42/comments/42\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"teams",
+    "id":"get-a-discussion-comment-legacy",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p> <a href=\"#get-a-discussion-comment-legacy-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"team_id ",
+        "type":"integer "
+      },
+      {
+        "in":"path",
+        "name":"discussion_number ",
+        "type":"integer "
+      },
+      {
+        "in":"path",
+        "name":"comment_number ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"author\": {\n    \"login\": \"octocat\",\n    \"id\": 1,\n    \"node_id\": \"MDQ6VXNlcjE=\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/users/octocat\",\n    \"html_url\": \"https://github.com/octocat\",\n    \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n    \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n    \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n    \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n    \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n    \"type\": \"User\",\n    \"site_admin\": false\n  },\n  \"body\": \"Do you like apples?\",\n  \"body_html\": \"<p>Do you like apples?</p>\",\n  \"body_version\": \"5eb32b219cdc6a5a9b29ba5d6caa9c51\",\n  \"created_at\": \"2018-01-15T23:53:58Z\",\n  \"last_edited_at\": null,\n  \"discussion_url\": \"https://api.github.com/teams/2403582/discussions/1\",\n  \"html_url\": \"https://github.com/orgs/github/teams/justice-league/discussions/1/comments/1\",\n  \"node_id\": \"MDIxOlRlYW1EaXNjdXNzaW9uQ29tbWVudDE=\",\n  \"number\": 1,\n  \"updated_at\": \"2018-01-15T23:53:58Z\",\n  \"url\": \"https://api.github.com/teams/2403582/discussions/1/comments/1\",\n  \"reactions\": {\n    \"url\": \"https://api.github.com/teams/2403582/discussions/1/reactions\",\n    \"total_count\": 5,\n    \"+1\": 3,\n    \"-1\": 1,\n    \"laugh\": 0,\n    \"confused\": 0,\n    \"heart\": 1,\n    \"hooray\": 0\n  }\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}"
+    },
+    "title":"Get a discussion comment (Legacy)"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X PATCH \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/teams/42/discussions/42/comments/42 \\\n  -d '{\"body\":\"body\"}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"teams",
+    "id":"update-a-discussion-comment-legacy",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p> <a href=\"#update-a-discussion-comment-legacy-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"team_id ",
+        "type":"integer "
+      },
+      {
+        "in":"path",
+        "name":"discussion_number ",
+        "type":"integer "
+      },
+      {
+        "in":"path",
+        "name":"comment_number ",
+        "type":"integer "
+      },
+      {
+        "description":"<p><strong>Required</strong>. The discussion comment&apos;s body text.</p>",
+        "in":"body ",
+        "name":"body ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"author\": {\n    \"login\": \"octocat\",\n    \"id\": 1,\n    \"node_id\": \"MDQ6VXNlcjE=\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/users/octocat\",\n    \"html_url\": \"https://github.com/octocat\",\n    \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n    \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n    \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n    \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n    \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n    \"type\": \"User\",\n    \"site_admin\": false\n  },\n  \"body\": \"Do you like pineapples?\",\n  \"body_html\": \"<p>Do you like pineapples?</p>\",\n  \"body_version\": \"e6907b24d9c93cc0c5024a7af5888116\",\n  \"created_at\": \"2018-01-15T23:53:58Z\",\n  \"last_edited_at\": \"2018-01-26T18:22:20Z\",\n  \"discussion_url\": \"https://api.github.com/teams/2403582/discussions/1\",\n  \"html_url\": \"https://github.com/orgs/github/teams/justice-league/discussions/1/comments/1\",\n  \"node_id\": \"MDIxOlRlYW1EaXNjdXNzaW9uQ29tbWVudDE=\",\n  \"number\": 1,\n  \"updated_at\": \"2018-01-26T18:22:20Z\",\n  \"url\": \"https://api.github.com/teams/2403582/discussions/1/comments/1\",\n  \"reactions\": {\n    \"url\": \"https://api.github.com/teams/2403582/discussions/1/reactions\",\n    \"total_count\": 5,\n    \"+1\": 3,\n    \"-1\": 1,\n    \"laugh\": 0,\n    \"confused\": 0,\n    \"heart\": 1,\n    \"hooray\": 0\n  }\n}\n"
+      }
+    ],
+    "target":{
+      "method":"patch",
+      "path":"/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}"
+    },
+    "title":"Update a discussion comment (Legacy)"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X DELETE \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/teams/42/discussions/42/comments/42\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"teams",
+    "id":"delete-a-discussion-comment-legacy",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"team_id ",
+        "type":"integer "
+      },
+      {
+        "in":"path",
+        "name":"discussion_number ",
+        "type":"integer "
+      },
+      {
+        "in":"path",
+        "name":"comment_number ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"delete",
+      "path":"/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}"
+    },
+    "title":"Delete a discussion comment (Legacy)"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG/teams/TEAM_SLUG/invitations\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"teams",
+    "id":"list-pending-team-invitations",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"team_slug ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"id\": 1,\n    \"login\": \"monalisa\",\n    \"email\": \"octocat@github.com\",\n    \"role\": \"direct_member\",\n    \"created_at\": \"2016-11-30T06:46:10-08:00\",\n    \"inviter\": {\n      \"login\": \"other_user\",\n      \"id\": 1,\n      \"node_id\": \"MDQ6VXNlcjE=\",\n      \"avatar_url\": \"https://github.com/images/error/other_user_happy.gif\",\n      \"gravatar_id\": \"\",\n      \"url\": \"https://api.github.com/users/other_user\",\n      \"html_url\": \"https://github.com/other_user\",\n      \"followers_url\": \"https://api.github.com/users/other_user/followers\",\n      \"following_url\": \"https://api.github.com/users/other_user/following{/other_user}\",\n      \"gists_url\": \"https://api.github.com/users/other_user/gists{/gist_id}\",\n      \"starred_url\": \"https://api.github.com/users/other_user/starred{/owner}{/repo}\",\n      \"subscriptions_url\": \"https://api.github.com/users/other_user/subscriptions\",\n      \"organizations_url\": \"https://api.github.com/users/other_user/orgs\",\n      \"repos_url\": \"https://api.github.com/users/other_user/repos\",\n      \"events_url\": \"https://api.github.com/users/other_user/events{/privacy}\",\n      \"received_events_url\": \"https://api.github.com/users/other_user/received_events\",\n      \"type\": \"User\",\n      \"site_admin\": false\n    },\n    \"team_count\": 2,\n    \"invitation_team_url\": \"https://api.github.com/organizations/2/invitations/1/teams\"\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/orgs/{org}/teams/{team_slug}/invitations"
+    },
+    "title":"List pending team invitations"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG/teams/TEAM_SLUG/members\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"teams",
+    "id":"list-team-members",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"team_slug ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Filters members returned by their role in the team. Can be one of:<br> * <code>member</code> - normal members of the team.<br> * <code>maintainer</code> - team maintainers.<br> * <code>all</code> - all members of the team.</p>",
+        "in":"query ",
+        "name":"role ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"login\": \"octocat\",\n    \"id\": 1,\n    \"node_id\": \"MDQ6VXNlcjE=\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/users/octocat\",\n    \"html_url\": \"https://github.com/octocat\",\n    \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n    \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n    \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n    \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n    \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n    \"type\": \"User\",\n    \"site_admin\": false\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/orgs/{org}/teams/{team_slug}/members"
+    },
+    "title":"List team members"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG/teams/TEAM_SLUG/memberships/USERNAME\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"teams",
+    "id":"get-team-membership-for-a-user",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"team_slug ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"username ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"url\": \"https://api.github.com/teams/1/memberships/octocat\",\n  \"role\": \"member\",\n  \"state\": \"active\"\n}\n"
+      },
+      {
+        "code":"200 OK",
+        "content":"{\n  \"url\": \"https://api.github.com/teams/1/memberships/octocat\",\n  \"role\": \"maintainer\",\n  \"state\": \"active\"\n}\n"
+      },
+      {
+        "code":"200 OK",
+        "content":"{\n  \"url\": \"https://api.github.com/teams/1/memberships/octocat\",\n  \"role\": \"member\",\n  \"state\": \"pending\"\n}\n"
+      },
+      {
+        "code":"404 Not Found"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/orgs/{org}/teams/{team_slug}/memberships/{username}"
+    },
+    "title":"Get team membership for a user"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X PUT \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG/teams/TEAM_SLUG/memberships/USERNAME \\\n  -d '{\"role\":\"role\"}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"teams",
+    "id":"add-or-update-team-membership-for-a-user",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"team_slug ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"username ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The role that this user should have in the team. Can be one of:<br> * <code>member</code> - a normal member of the team.<br> * <code>maintainer</code> - a team maintainer. Able to add/remove other team members, promote other team members to team maintainer, and edit the team&apos;s name and description.</p> Default: <code>member</code>",
+        "in":"body ",
+        "name":"role ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"url\": \"https://api.github.com/teams/1/memberships/octocat\",\n  \"role\": \"member\",\n  \"state\": \"active\"\n}\n"
+      },
+      {
+        "code":"200 OK",
+        "content":"{\n  \"url\": \"https://api.github.com/teams/1/memberships/octocat\",\n  \"role\": \"member\",\n  \"state\": \"pending\"\n}\n"
+      },
+      {
+        "code":"403 Forbidden"
+      },
+      {
+        "code":"422 Unprocessable Entity",
+        "content":"{\n  \"message\": \"Cannot add an organization as a member.\",\n  \"errors\": [\n    {\n      \"code\": \"org\",\n      \"field\": \"user\",\n      \"resource\": \"TeamMember\"\n    }\n  ]\n}\n"
+      }
+    ],
+    "target":{
+      "method":"put",
+      "path":"/orgs/{org}/teams/{team_slug}/memberships/{username}"
+    },
+    "title":"Add or update team membership for a user"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X DELETE \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG/teams/TEAM_SLUG/memberships/USERNAME\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"teams",
+    "id":"remove-team-membership-for-a-user",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"team_slug ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"username ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      },
+      {
+        "code":"403 Forbidden"
+      }
+    ],
+    "target":{
+      "method":"delete",
+      "path":"/orgs/{org}/teams/{team_slug}/memberships/{username}"
+    },
+    "title":"Remove team membership for a user"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/teams/42/invitations\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"teams",
+    "id":"list-pending-team-invitations-legacy",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"team_id ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"id\": 1,\n    \"login\": \"monalisa\",\n    \"email\": \"octocat@github.com\",\n    \"role\": \"direct_member\",\n    \"created_at\": \"2016-11-30T06:46:10-08:00\",\n    \"inviter\": {\n      \"login\": \"other_user\",\n      \"id\": 1,\n      \"node_id\": \"MDQ6VXNlcjE=\",\n      \"avatar_url\": \"https://github.com/images/error/other_user_happy.gif\",\n      \"gravatar_id\": \"\",\n      \"url\": \"https://api.github.com/users/other_user\",\n      \"html_url\": \"https://github.com/other_user\",\n      \"followers_url\": \"https://api.github.com/users/other_user/followers\",\n      \"following_url\": \"https://api.github.com/users/other_user/following{/other_user}\",\n      \"gists_url\": \"https://api.github.com/users/other_user/gists{/gist_id}\",\n      \"starred_url\": \"https://api.github.com/users/other_user/starred{/owner}{/repo}\",\n      \"subscriptions_url\": \"https://api.github.com/users/other_user/subscriptions\",\n      \"organizations_url\": \"https://api.github.com/users/other_user/orgs\",\n      \"repos_url\": \"https://api.github.com/users/other_user/repos\",\n      \"events_url\": \"https://api.github.com/users/other_user/events{/privacy}\",\n      \"received_events_url\": \"https://api.github.com/users/other_user/received_events\",\n      \"type\": \"User\",\n      \"site_admin\": false\n    },\n    \"team_count\": 2,\n    \"invitation_team_url\": \"https://api.github.com/organizations/2/invitations/1/teams\"\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/teams/{team_id}/invitations"
+    },
+    "title":"List pending team invitations (Legacy)"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/teams/42/members\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"teams",
+    "id":"list-team-members-legacy",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"team_id ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Filters members returned by their role in the team. Can be one of:<br> * <code>member</code> - normal members of the team.<br> * <code>maintainer</code> - team maintainers.<br> * <code>all</code> - all members of the team.</p>",
+        "in":"query ",
+        "name":"role ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"login\": \"octocat\",\n    \"id\": 1,\n    \"node_id\": \"MDQ6VXNlcjE=\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/users/octocat\",\n    \"html_url\": \"https://github.com/octocat\",\n    \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n    \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n    \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n    \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n    \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n    \"type\": \"User\",\n    \"site_admin\": false\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/teams/{team_id}/members"
+    },
+    "title":"List team members (Legacy)"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/teams/42/members/USERNAME\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"teams",
+    "id":"get-team-member-legacy",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"team_id ",
+        "type":"integer "
+      },
+      {
+        "in":"path",
+        "name":"username ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      },
+      {
+        "code":"404 Not Found"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/teams/{team_id}/members/{username}"
+    },
+    "title":"Get team member (Legacy)"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X PUT \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/teams/42/members/USERNAME\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"teams",
+    "id":"add-team-member-legacy",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"team_id ",
+        "type":"integer "
+      },
+      {
+        "in":"path",
+        "name":"username ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      },
+      {
+        "code":"404 Not Found"
+      },
+      {
+        "code":"422 Unprocessable Entity",
+        "content":"{\n  \"message\": \"Cannot add an organization as a member.\",\n  \"errors\": [\n    {\n      \"code\": \"org\",\n      \"field\": \"user\",\n      \"resource\": \"TeamMember\"\n    }\n  ]\n}\n"
+      },
+      {
+        "code":"422 Unprocessable Entity",
+        "content":"{\n  \"message\": \"User isn't a member of this organization. Please invite them first.\",\n  \"errors\": [\n    {\n      \"code\": \"unaffiliated\",\n      \"field\": \"user\",\n      \"resource\": \"TeamMember\"\n    }\n  ]\n}\n"
+      }
+    ],
+    "target":{
+      "method":"put",
+      "path":"/teams/{team_id}/members/{username}"
+    },
+    "title":"Add team member (Legacy)"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X DELETE \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/teams/42/members/USERNAME\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"teams",
+    "id":"remove-team-member-legacy",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"team_id ",
+        "type":"integer "
+      },
+      {
+        "in":"path",
+        "name":"username ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      },
+      {
+        "code":"404 Not Found"
+      }
+    ],
+    "target":{
+      "method":"delete",
+      "path":"/teams/{team_id}/members/{username}"
+    },
+    "title":"Remove team member (Legacy)"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/teams/42/memberships/USERNAME\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"teams",
+    "id":"get-team-membership-for-a-user-legacy",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"team_id ",
+        "type":"integer "
+      },
+      {
+        "in":"path",
+        "name":"username ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"url\": \"https://api.github.com/teams/1/memberships/octocat\",\n  \"role\": \"member\",\n  \"state\": \"active\"\n}\n"
+      },
+      {
+        "code":"200 OK",
+        "content":"{\n  \"url\": \"https://api.github.com/teams/1/memberships/octocat\",\n  \"role\": \"maintainer\",\n  \"state\": \"active\"\n}\n"
+      },
+      {
+        "code":"200 OK",
+        "content":"{\n  \"url\": \"https://api.github.com/teams/1/memberships/octocat\",\n  \"role\": \"member\",\n  \"state\": \"pending\"\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/teams/{team_id}/memberships/{username}"
+    },
+    "title":"Get team membership for a user (Legacy)"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X PUT \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/teams/42/memberships/USERNAME \\\n  -d '{\"role\":\"role\"}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"teams",
+    "id":"add-or-update-team-membership-for-a-user-legacy",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"team_id ",
+        "type":"integer "
+      },
+      {
+        "in":"path",
+        "name":"username ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The role that this user should have in the team. Can be one of:<br> * <code>member</code> - a normal member of the team.<br> * <code>maintainer</code> - a team maintainer. Able to add/remove other team members, promote other team members to team maintainer, and edit the team&apos;s name and description.</p> Default: <code>member</code>",
+        "in":"body ",
+        "name":"role ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"url\": \"https://api.github.com/teams/1/memberships/octocat\",\n  \"role\": \"member\",\n  \"state\": \"active\"\n}\n"
+      },
+      {
+        "code":"200 OK",
+        "content":"{\n  \"url\": \"https://api.github.com/teams/1/memberships/octocat\",\n  \"role\": \"member\",\n  \"state\": \"pending\"\n}\n"
+      },
+      {
+        "code":"403 Forbidden"
+      },
+      {
+        "code":"422 Unprocessable Entity",
+        "content":"{\n  \"message\": \"Cannot add an organization as a member.\",\n  \"errors\": [\n    {\n      \"code\": \"org\",\n      \"field\": \"user\",\n      \"resource\": \"TeamMember\"\n    }\n  ]\n}\n"
+      }
+    ],
+    "target":{
+      "method":"put",
+      "path":"/teams/{team_id}/memberships/{username}"
+    },
+    "title":"Add or update team membership for a user (Legacy)"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X DELETE \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/teams/42/memberships/USERNAME\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"teams",
+    "id":"remove-team-membership-for-a-user-legacy",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"team_id ",
+        "type":"integer "
+      },
+      {
+        "in":"path",
+        "name":"username ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      },
+      {
+        "code":"403 Forbidden"
+      }
+    ],
+    "target":{
+      "method":"delete",
+      "path":"/teams/{team_id}/memberships/{username}"
+    },
+    "title":"Remove team membership for a user (Legacy)"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG/team-sync/groups\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"teams",
+    "id":"list-idp-groups-for-an-organization",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"groups\": [\n    {\n      \"group_id\": \"123\",\n      \"group_name\": \"Octocat admins\",\n      \"group_description\": \"The people who configure your octoworld.\"\n    },\n    {\n      \"group_id\": \"456\",\n      \"group_name\": \"Octocat docs members\",\n      \"group_description\": \"The people who make your octoworld come to life.\"\n    }\n  ]\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/orgs/{org}/team-sync/groups"
+    },
+    "title":"List IdP groups for an organization"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG/teams/TEAM_SLUG/team-sync/group-mappings\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"teams",
+    "id":"list-idp-groups-for-a-team",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"team_slug ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"groups\": [\n    {\n      \"group_id\": \"123\",\n      \"group_name\": \"Octocat admins\",\n      \"group_description\": \"The people who configure your octoworld.\"\n    },\n    {\n      \"group_id\": \"456\",\n      \"group_name\": \"Octocat docs members\",\n      \"group_description\": \"The people who make your octoworld come to life.\"\n    }\n  ]\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/orgs/{org}/teams/{team_slug}/team-sync/group-mappings"
+    },
+    "title":"List IdP groups for a team"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X PATCH \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG/teams/TEAM_SLUG/team-sync/group-mappings \\\n  -d '{\"groups\":[{\"group_id\":\"group_id\",\"group_name\":\"group_name\",\"group_description\":\"group_description\"}]}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"teams",
+    "id":"create-or-update-idp-group-connections",
+    "parameterProperties":[
+      {
+        "description":"<strong>Required</strong>. ID of the IdP group.",
+        "name":"group_id",
+        "of":"groups",
+        "type":"string"
+      },
+      {
+        "description":"<strong>Required</strong>. Name of the IdP group.",
+        "name":"group_name",
+        "of":"groups",
+        "type":"string"
+      },
+      {
+        "description":"<strong>Required</strong>. Description of the IdP group.",
+        "name":"group_description",
+        "of":"groups",
+        "type":"string"
+      }
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"team_slug ",
+        "type":"string "
+      },
+      {
+        "description":"<p><strong>Required</strong>. The IdP groups you want to connect to a GitHub team. When updating, the new <code>groups</code> object will replace the original one. You must include any existing groups that you don&apos;t want to remove.</p>",
+        "in":"body ",
+        "name":"groups ",
+        "type":"array of objects "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"groups\": {\n    \"group_id\": \"123\",\n    \"group_name\": \"Octocat admins\",\n    \"group_description\": \"The people who configure your octoworld.\"\n  }\n}\n"
+      }
+    ],
+    "target":{
+      "method":"patch",
+      "path":"/orgs/{org}/teams/{team_slug}/team-sync/group-mappings"
+    },
+    "title":"Create or update IdP group connections"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/teams/42/team-sync/group-mappings\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"teams",
+    "id":"list-idp-groups-for-a-team-legacy",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"team_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"groups\": [\n    {\n      \"group_id\": \"123\",\n      \"group_name\": \"Octocat admins\",\n      \"group_description\": \"The people who configure your octoworld.\"\n    },\n    {\n      \"group_id\": \"456\",\n      \"group_name\": \"Octocat docs members\",\n      \"group_description\": \"The people who make your octoworld come to life.\"\n    }\n  ]\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/teams/{team_id}/team-sync/group-mappings"
+    },
+    "title":"List IdP groups for a team (Legacy)"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X PATCH \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/teams/42/team-sync/group-mappings \\\n  -d '{\"groups\":[{\"group_id\":\"group_id\",\"group_name\":\"group_name\",\"group_description\":\"group_description\"}]}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"teams",
+    "id":"create-or-update-idp-group-connections-legacy",
+    "parameterProperties":[
+      {
+        "description":"<strong>Required</strong>. ID of the IdP group.",
+        "name":"group_id",
+        "of":"groups",
+        "type":"string"
+      },
+      {
+        "description":"<strong>Required</strong>. Name of the IdP group.",
+        "name":"group_name",
+        "of":"groups",
+        "type":"string"
+      },
+      {
+        "description":"<strong>Required</strong>. Description of the IdP group.",
+        "name":"group_description",
+        "of":"groups",
+        "type":"string"
+      }
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"team_id ",
+        "type":"integer "
+      },
+      {
+        "description":"<p><strong>Required</strong>. The IdP groups you want to connect to a GitHub team. When updating, the new <code>groups</code> object will replace the original one. You must include any existing groups that you don&apos;t want to remove.</p>",
+        "in":"body ",
+        "name":"groups ",
+        "type":"array of objects "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"groups\": [\n    {\n      \"group_id\": \"123\",\n      \"group_name\": \"Octocat admins\",\n      \"group_description\": \"The people who configure your octoworld.\"\n    }\n  ]\n}\n"
+      }
+    ],
+    "target":{
+      "method":"patch",
+      "path":"/teams/{team_id}/team-sync/group-mappings"
+    },
+    "title":"Create or update IdP group connections (Legacy)"
+  }
+]

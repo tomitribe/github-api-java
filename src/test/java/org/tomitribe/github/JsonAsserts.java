@@ -17,6 +17,7 @@
 package org.tomitribe.github;
 
 import org.junit.Assert;
+import org.tomitribe.github.core.JsonbInstances;
 import org.tomitribe.util.IO;
 import org.tomitribe.util.PrintString;
 
@@ -28,7 +29,6 @@ import javax.json.JsonObjectBuilder;
 import javax.json.JsonReader;
 import javax.json.JsonValue;
 import javax.json.bind.Jsonb;
-import javax.json.bind.JsonbBuilder;
 import javax.json.stream.JsonGenerator;
 import javax.json.stream.JsonGeneratorFactory;
 import java.util.HashMap;
@@ -99,14 +99,14 @@ public class JsonAsserts {
     }
 
     public static void assertJsonb(final String expectedJson, final Object actualObject) {
-        final Jsonb jsonb = JsonbBuilder.create();
+        final Jsonb jsonb = JsonbInstances.get();
         final String actualJson = jsonb.toJson(actualObject);
         assertJson(expectedJson, actualJson);
     }
 
     public static <Object> void assertJsonb(final String expectedJson, final Class<Object> aClass) {
         {
-            final Jsonb jsonb = JsonbBuilder.create();
+            final Jsonb jsonb = JsonbInstances.get();
             final Object object = jsonb.fromJson(expectedJson, aClass);
             final String actual = jsonb.toJson(object);
             assertJson(expectedJson, actual);
@@ -117,7 +117,7 @@ public class JsonAsserts {
         // Unmarshal, marshal and assert both json documents are the same
         // We should not gain or lose any data
         {
-            final Jsonb jsonb = JsonbBuilder.create();
+            final Jsonb jsonb = JsonbInstances.get();
             final Object object = jsonb.fromJson(json, aClass);
             final String actual = jsonb.toJson(object);
             assertJson(json, actual);
@@ -127,7 +127,7 @@ public class JsonAsserts {
         // We should not gain or lose any data
         for (final Consumer<Object> mutator : mutators) {
             try {
-                final Jsonb jsonb = JsonbBuilder.create();
+                final Jsonb jsonb = JsonbInstances.get();
                 final Object object = jsonb.fromJson(json, aClass);
 
                 mutator.accept(object);
@@ -143,7 +143,7 @@ public class JsonAsserts {
     }
 
     public static void assertJsonbReadWrite(final Object data, final String expectedJson) {
-        final Jsonb jsonb = JsonbBuilder.create();
+        final Jsonb jsonb = JsonbInstances.get();
 
         { // Assert write
             final String actualJson = jsonb.toJson(data);

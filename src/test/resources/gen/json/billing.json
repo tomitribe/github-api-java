@@ -1,0 +1,218 @@
+[
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG/settings/billing/actions\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"billing",
+    "id":"get-github-actions-billing-for-an-organization",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"total_minutes_used\": 305,\n  \"total_paid_minutes_used\": 0,\n  \"included_minutes\": 3000,\n  \"minutes_used_breakdown\": {\n    \"UBUNTU\": 205,\n    \"MACOS\": 10,\n    \"WINDOWS\": 90\n  }\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/orgs/{org}/settings/billing/actions"
+    },
+    "title":"Get GitHub Actions billing for an organization"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG/settings/billing/packages\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"billing",
+    "id":"get-github-packages-billing-for-an-organization",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"total_gigabytes_bandwidth_used\": 50,\n  \"total_paid_gigabytes_bandwidth_used\": 40,\n  \"included_gigabytes_bandwidth\": 10\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/orgs/{org}/settings/billing/packages"
+    },
+    "title":"Get GitHub Packages billing for an organization"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG/settings/billing/shared-storage\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"billing",
+    "id":"get-shared-storage-billing-for-an-organization",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"days_left_in_billing_cycle\": 20,\n  \"estimated_paid_storage_for_month\": 15,\n  \"estimated_storage_for_month\": 40\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/orgs/{org}/settings/billing/shared-storage"
+    },
+    "title":"Get shared storage billing for an organization"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/users/USERNAME/settings/billing/actions\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"billing",
+    "id":"get-github-actions-billing-for-a-user",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"username ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"total_minutes_used\": 305,\n  \"total_paid_minutes_used\": 0,\n  \"included_minutes\": 3000,\n  \"minutes_used_breakdown\": {\n    \"UBUNTU\": 205,\n    \"MACOS\": 10,\n    \"WINDOWS\": 90\n  }\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/users/{username}/settings/billing/actions"
+    },
+    "title":"Get GitHub Actions billing for a user"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/users/USERNAME/settings/billing/packages\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"billing",
+    "id":"get-github-packages-billing-for-a-user",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"username ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"total_gigabytes_bandwidth_used\": 50,\n  \"total_paid_gigabytes_bandwidth_used\": 40,\n  \"included_gigabytes_bandwidth\": 10\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/users/{username}/settings/billing/packages"
+    },
+    "title":"Get GitHub Packages billing for a user"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/users/USERNAME/settings/billing/shared-storage\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"billing",
+    "id":"get-shared-storage-billing-for-a-user",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"username ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"days_left_in_billing_cycle\": 20,\n  \"estimated_paid_storage_for_month\": 15,\n  \"estimated_storage_for_month\": 40\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/users/{username}/settings/billing/shared-storage"
+    },
+    "title":"Get shared storage billing for a user"
+  }
+]

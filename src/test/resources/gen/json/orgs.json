@@ -1,0 +1,1817 @@
+[
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/organizations\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"orgs",
+    "id":"list-organizations",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The integer ID of the last organization that you&apos;ve seen.</p>",
+        "in":"query ",
+        "name":"since ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"login\": \"github\",\n    \"id\": 1,\n    \"node_id\": \"MDEyOk9yZ2FuaXphdGlvbjE=\",\n    \"url\": \"https://api.github.com/orgs/github\",\n    \"repos_url\": \"https://api.github.com/orgs/github/repos\",\n    \"events_url\": \"https://api.github.com/orgs/github/events\",\n    \"hooks_url\": \"https://api.github.com/orgs/github/hooks\",\n    \"issues_url\": \"https://api.github.com/orgs/github/issues\",\n    \"members_url\": \"https://api.github.com/orgs/github/members{/member}\",\n    \"public_members_url\": \"https://api.github.com/orgs/github/public_members{/member}\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"description\": \"A great organization\"\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/organizations"
+    },
+    "title":"List organizations"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG\n",
+        "type":"Shell"
+      },
+      {
+        "content":"application/vnd.github.surtur-preview+json\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"orgs",
+    "id":"get-an-organization",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p> <a href=\"#get-an-organization-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"login\": \"github\",\n  \"id\": 1,\n  \"node_id\": \"MDEyOk9yZ2FuaXphdGlvbjE=\",\n  \"url\": \"https://api.github.com/orgs/github\",\n  \"repos_url\": \"https://api.github.com/orgs/github/repos\",\n  \"events_url\": \"https://api.github.com/orgs/github/events\",\n  \"hooks_url\": \"https://api.github.com/orgs/github/hooks\",\n  \"issues_url\": \"https://api.github.com/orgs/github/issues\",\n  \"members_url\": \"https://api.github.com/orgs/github/members{/member}\",\n  \"public_members_url\": \"https://api.github.com/orgs/github/public_members{/member}\",\n  \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n  \"description\": \"A great organization\",\n  \"name\": \"github\",\n  \"company\": \"GitHub\",\n  \"blog\": \"https://github.com/blog\",\n  \"location\": \"San Francisco\",\n  \"email\": \"octocat@github.com\",\n  \"twitter_username\": \"github\",\n  \"is_verified\": true,\n  \"has_organization_projects\": true,\n  \"has_repository_projects\": true,\n  \"public_repos\": 2,\n  \"public_gists\": 1,\n  \"followers\": 20,\n  \"following\": 0,\n  \"html_url\": \"https://github.com/octocat\",\n  \"created_at\": \"2008-01-14T04:33:35Z\",\n  \"type\": \"Organization\",\n  \"total_private_repos\": 100,\n  \"owned_private_repos\": 100,\n  \"private_gists\": 81,\n  \"disk_usage\": 10000,\n  \"collaborators\": 8,\n  \"billing_email\": \"support@github.com\",\n  \"plan\": {\n    \"name\": \"Medium\",\n    \"space\": 400,\n    \"private_repos\": 20\n  },\n  \"default_repository_permission\": \"read\",\n  \"members_can_create_repositories\": true,\n  \"two_factor_requirement_enabled\": true,\n  \"members_allowed_repository_creation_type\": \"all\",\n  \"members_can_create_public_repositories\": false,\n  \"members_can_create_private_repositories\": false,\n  \"members_can_create_internal_repositories\": false\n}\n"
+      },
+      {
+        "code":"200 OK",
+        "content":"{\n  \"login\": \"github\",\n  \"id\": 1,\n  \"node_id\": \"MDEyOk9yZ2FuaXphdGlvbjE=\",\n  \"url\": \"https://api.github.com/orgs/github\",\n  \"repos_url\": \"https://api.github.com/orgs/github/repos\",\n  \"events_url\": \"https://api.github.com/orgs/github/events\",\n  \"hooks_url\": \"https://api.github.com/orgs/github/hooks\",\n  \"issues_url\": \"https://api.github.com/orgs/github/issues\",\n  \"members_url\": \"https://api.github.com/orgs/github/members{/member}\",\n  \"public_members_url\": \"https://api.github.com/orgs/github/public_members{/member}\",\n  \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n  \"description\": \"A great organization\",\n  \"name\": \"github\",\n  \"company\": \"GitHub\",\n  \"blog\": \"https://github.com/blog\",\n  \"location\": \"San Francisco\",\n  \"email\": \"octocat@github.com\",\n  \"twitter_username\": \"github\",\n  \"is_verified\": true,\n  \"has_organization_projects\": true,\n  \"has_repository_projects\": true,\n  \"public_repos\": 2,\n  \"public_gists\": 1,\n  \"followers\": 20,\n  \"following\": 0,\n  \"html_url\": \"https://github.com/octocat\",\n  \"created_at\": \"2008-01-14T04:33:35Z\",\n  \"type\": \"Organization\",\n  \"plan\": {\n    \"name\": \"team\",\n    \"space\": 976562499,\n    \"private_repos\": 999999,\n    \"filled_seats\": 4,\n    \"seats\": 5\n  }\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/orgs/{org}"
+    },
+    "title":"Get an organization"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X PATCH \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG \\\n  -d '{\"billing_email\":\"billing_email\"}'\n",
+        "type":"Shell"
+      },
+      {
+        "content":"application/vnd.github.surtur-preview+json\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"orgs",
+    "id":"update-an-organization",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p> <a href=\"#update-an-organization-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Billing email address. This address is not publicized.</p>",
+        "in":"body ",
+        "name":"billing_email ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The company name.</p>",
+        "in":"body ",
+        "name":"company ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The publicly visible email address.</p>",
+        "in":"body ",
+        "name":"email ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The Twitter username of the company.</p>",
+        "in":"body ",
+        "name":"twitter_username ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The location.</p>",
+        "in":"body ",
+        "name":"location ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The shorthand name of the company.</p>",
+        "in":"body ",
+        "name":"name ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The description of the company.</p>",
+        "in":"body ",
+        "name":"description ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Toggles whether an organization can use organization projects.</p>",
+        "in":"body ",
+        "name":"has_organization_projects ",
+        "type":"boolean "
+      },
+      {
+        "description":"<p>Toggles whether repositories that belong to the organization can use repository projects.</p>",
+        "in":"body ",
+        "name":"has_repository_projects ",
+        "type":"boolean "
+      },
+      {
+        "description":"<p>Default permission level members have for organization repositories:<br> * <code>read</code> - can pull, but not push to or administer this repository.<br> * <code>write</code> - can pull and push, but not administer this repository.<br> * <code>admin</code> - can pull, push, and administer this repository.<br> * <code>none</code> - no permissions granted by default.</p> Default: <code>read</code>",
+        "in":"body ",
+        "name":"default_repository_permission ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Toggles the ability of non-admin organization members to create repositories. Can be one of:<br> * <code>true</code> - all organization members can create repositories.<br> * <code>false</code> - only organization owners can create repositories.<br> Default: <code>true</code><br> <strong>Note:</strong> A parameter can override this parameter. See <code>members_allowed_repository_creation_type</code> in this table for details. <strong>Note:</strong> A parameter can override this parameter. See <code>members_allowed_repository_creation_type</code> in this table for details.</p> Default: <code>true</code>",
+        "in":"body ",
+        "name":"members_can_create_repositories ",
+        "type":"boolean "
+      },
+      {
+        "description":"<p>Toggles whether organization members can create internal repositories, which are visible to all enterprise members. You can only allow members to create internal repositories if your organization is associated with an enterprise account using GitHub Enterprise Cloud or GitHub Enterprise Server 2.20+. Can be one of:<br> * <code>true</code> - all organization members can create internal repositories.<br> * <code>false</code> - only organization owners can create internal repositories.<br> Default: <code>true</code>. For more information, see &quot;<a href=\"https://docs.github.com/github/setting-up-and-managing-organizations-and-teams/restricting-repository-creation-in-your-organization\">Restricting repository creation in your organization</a>&quot;.</p>",
+        "in":"body ",
+        "name":"members_can_create_internal_repositories ",
+        "type":"boolean "
+      },
+      {
+        "description":"<p>Toggles whether organization members can create private repositories, which are visible to organization members with permission. Can be one of:<br> * <code>true</code> - all organization members can create private repositories.<br> * <code>false</code> - only organization owners can create private repositories.<br> Default: <code>true</code>. For more information, see &quot;<a href=\"https://docs.github.com/github/setting-up-and-managing-organizations-and-teams/restricting-repository-creation-in-your-organization\">Restricting repository creation in your organization</a>&quot;.</p>",
+        "in":"body ",
+        "name":"members_can_create_private_repositories ",
+        "type":"boolean "
+      },
+      {
+        "description":"<p>Toggles whether organization members can create public repositories, which are visible to anyone. Can be one of:<br> * <code>true</code> - all organization members can create public repositories.<br> * <code>false</code> - only organization owners can create public repositories.<br> Default: <code>true</code>. For more information, see &quot;<a href=\"https://docs.github.com/github/setting-up-and-managing-organizations-and-teams/restricting-repository-creation-in-your-organization\">Restricting repository creation in your organization</a>&quot;.</p>",
+        "in":"body ",
+        "name":"members_can_create_public_repositories ",
+        "type":"boolean "
+      },
+      {
+        "description":"<p>Specifies which types of repositories non-admin organization members can create. Can be one of:<br> * <code>all</code> - all organization members can create public and private repositories.<br> * <code>private</code> - members can create private repositories. This option is only available to repositories that are part of an organization on GitHub Enterprise Cloud.<br> * <code>none</code> - only admin members can create repositories.<br> <strong>Note:</strong> This parameter is deprecated and will be removed in the future. Its return value ignores internal repositories. Using this parameter overrides values set in <code>members_can_create_repositories</code>. See <a href=\"https://developer.github.com/v3/orgs/#members_can_create_repositories\">this note</a> for details.</p>",
+        "in":"body ",
+        "name":"members_allowed_repository_creation_type ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"login\": \"github\",\n  \"id\": 1,\n  \"node_id\": \"MDEyOk9yZ2FuaXphdGlvbjE=\",\n  \"url\": \"https://api.github.com/orgs/github\",\n  \"repos_url\": \"https://api.github.com/orgs/github/repos\",\n  \"events_url\": \"https://api.github.com/orgs/github/events\",\n  \"hooks_url\": \"https://api.github.com/orgs/github/hooks\",\n  \"issues_url\": \"https://api.github.com/orgs/github/issues\",\n  \"members_url\": \"https://api.github.com/orgs/github/members{/member}\",\n  \"public_members_url\": \"https://api.github.com/orgs/github/public_members{/member}\",\n  \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n  \"description\": \"A great organization\",\n  \"name\": \"github\",\n  \"company\": \"GitHub\",\n  \"blog\": \"https://github.com/blog\",\n  \"location\": \"San Francisco\",\n  \"email\": \"octocat@github.com\",\n  \"twitter_username\": \"github\",\n  \"is_verified\": true,\n  \"has_organization_projects\": true,\n  \"has_repository_projects\": true,\n  \"public_repos\": 2,\n  \"public_gists\": 1,\n  \"followers\": 20,\n  \"following\": 0,\n  \"html_url\": \"https://github.com/octocat\",\n  \"created_at\": \"2008-01-14T04:33:35Z\",\n  \"type\": \"Organization\",\n  \"total_private_repos\": 100,\n  \"owned_private_repos\": 100,\n  \"private_gists\": 81,\n  \"disk_usage\": 10000,\n  \"collaborators\": 8,\n  \"billing_email\": \"support@github.com\",\n  \"plan\": {\n    \"name\": \"Medium\",\n    \"space\": 400,\n    \"private_repos\": 20\n  },\n  \"default_repository_permission\": \"read\",\n  \"members_can_create_repositories\": true,\n  \"two_factor_requirement_enabled\": true,\n  \"members_allowed_repository_creation_type\": \"all\",\n  \"members_can_create_public_repositories\": false,\n  \"members_can_create_private_repositories\": false,\n  \"members_can_create_internal_repositories\": false\n}\n"
+      }
+    ],
+    "target":{
+      "method":"patch",
+      "path":"/orgs/{org}"
+    },
+    "title":"Update an organization"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG/credential-authorizations\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"orgs",
+    "id":"list-saml-sso-authorizations-for-an-organization",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"login\": \"octocat\",\n    \"credential_id\": \"161195\",\n    \"credential_type\": \"personal access token\",\n    \"token_last_eight\": \"71c3fc11\",\n    \"credential_authorized_at\": \"2011-01-26T19:06:43Z\",\n    \"scopes\": [\n      \"user\",\n      \"repo\"\n    ]\n  },\n  {\n    \"login\": \"hubot\",\n    \"credential_id\": \"161196\",\n    \"credential_type\": \"personal access token\",\n    \"token_last_eight\": \"12345678\",\n    \"credential_authorized_at\": \"2019-03-29T19:06:43Z\",\n    \"scopes\": [\n      \"repo\"\n    ]\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/orgs/{org}/credential-authorizations"
+    },
+    "title":"List SAML SSO authorizations for an organization"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X DELETE \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG/credential-authorizations/42\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"orgs",
+    "id":"remove-a-saml-sso-authorization-for-an-organization",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"credential_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"delete",
+      "path":"/orgs/{org}/credential-authorizations/{credential_id}"
+    },
+    "title":"Remove a SAML SSO authorization for an organization"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG/installations\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"orgs",
+    "id":"list-app-installations-for-an-organization",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"total_count\": 1,\n  \"installations\": [\n    {\n      \"id\": 25381,\n      \"account\": {\n        \"login\": \"octo-org\",\n        \"id\": 6811672,\n        \"node_id\": \"MDEyOk9yZ2FuaXphdGlvbjY4MTE2NzI=\",\n        \"avatar_url\": \"https://avatars3.githubusercontent.com/u/6811672?v=4\",\n        \"gravatar_id\": \"\",\n        \"url\": \"https://api.github.com/users/octo-org\",\n        \"html_url\": \"https://github.com/octo-org\",\n        \"followers_url\": \"https://api.github.com/users/octo-org/followers\",\n        \"following_url\": \"https://api.github.com/users/octo-org/following{/other_user}\",\n        \"gists_url\": \"https://api.github.com/users/octo-org/gists{/gist_id}\",\n        \"starred_url\": \"https://api.github.com/users/octo-org/starred{/owner}{/repo}\",\n        \"subscriptions_url\": \"https://api.github.com/users/octo-org/subscriptions\",\n        \"organizations_url\": \"https://api.github.com/users/octo-org/orgs\",\n        \"repos_url\": \"https://api.github.com/users/octo-org/repos\",\n        \"events_url\": \"https://api.github.com/users/octo-org/events{/privacy}\",\n        \"received_events_url\": \"https://api.github.com/users/octo-org/received_events\",\n        \"type\": \"Organization\",\n        \"site_admin\": false\n      },\n      \"repository_selection\": \"selected\",\n      \"access_tokens_url\": \"https://api.github.com/app/installations/25381/access_tokens\",\n      \"repositories_url\": \"https://api.github.com/installation/repositories\",\n      \"html_url\": \"https://github.com/organizations/octo-org/settings/installations/25381\",\n      \"app_id\": 2218,\n      \"target_id\": 6811672,\n      \"target_type\": \"Organization\",\n      \"permissions\": {\n        \"deployments\": \"write\",\n        \"metadata\": \"read\",\n        \"pull_requests\": \"read\",\n        \"statuses\": \"read\"\n      },\n      \"events\": [\n        \"deployment\",\n        \"deployment_status\"\n      ],\n      \"created_at\": \"2017-05-16T08:47:09.000-07:00\",\n      \"updated_at\": \"2017-06-06T11:23:23.000-07:00\",\n      \"single_file_name\": null\n    }\n  ]\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/orgs/{org}/installations"
+    },
+    "title":"List app installations for an organization"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/user/orgs\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"orgs",
+    "id":"list-organizations-for-the-authenticated-user",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"login\": \"github\",\n    \"id\": 1,\n    \"node_id\": \"MDEyOk9yZ2FuaXphdGlvbjE=\",\n    \"url\": \"https://api.github.com/orgs/github\",\n    \"repos_url\": \"https://api.github.com/orgs/github/repos\",\n    \"events_url\": \"https://api.github.com/orgs/github/events\",\n    \"hooks_url\": \"https://api.github.com/orgs/github/hooks\",\n    \"issues_url\": \"https://api.github.com/orgs/github/issues\",\n    \"members_url\": \"https://api.github.com/orgs/github/members{/member}\",\n    \"public_members_url\": \"https://api.github.com/orgs/github/public_members{/member}\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"description\": \"A great organization\"\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/user/orgs"
+    },
+    "title":"List organizations for the authenticated user"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/users/USERNAME/orgs\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"orgs",
+    "id":"list-organizations-for-a-user",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"username ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"login\": \"github\",\n    \"id\": 1,\n    \"node_id\": \"MDEyOk9yZ2FuaXphdGlvbjE=\",\n    \"url\": \"https://api.github.com/orgs/github\",\n    \"repos_url\": \"https://api.github.com/orgs/github/repos\",\n    \"events_url\": \"https://api.github.com/orgs/github/events\",\n    \"hooks_url\": \"https://api.github.com/orgs/github/hooks\",\n    \"issues_url\": \"https://api.github.com/orgs/github/issues\",\n    \"members_url\": \"https://api.github.com/orgs/github/members{/member}\",\n    \"public_members_url\": \"https://api.github.com/orgs/github/public_members{/member}\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"description\": \"A great organization\"\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/users/{username}/orgs"
+    },
+    "title":"List organizations for a user"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG/blocks\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"orgs",
+    "id":"list-users-blocked-by-an-organization",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"login\": \"octocat\",\n    \"id\": 1,\n    \"node_id\": \"MDQ6VXNlcjE=\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/users/octocat\",\n    \"html_url\": \"https://github.com/octocat\",\n    \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n    \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n    \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n    \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n    \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n    \"type\": \"User\",\n    \"site_admin\": false\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/orgs/{org}/blocks"
+    },
+    "title":"List users blocked by an organization"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG/blocks/USERNAME\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"orgs",
+    "id":"check-if-a-user-is-blocked-by-an-organization",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"username ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      },
+      {
+        "code":"404 Not Found"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/orgs/{org}/blocks/{username}"
+    },
+    "title":"Check if a user is blocked by an organization"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X PUT \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG/blocks/USERNAME\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"orgs",
+    "id":"block-a-user-from-an-organization",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"username ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"put",
+      "path":"/orgs/{org}/blocks/{username}"
+    },
+    "title":"Block a user from an organization"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X DELETE \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG/blocks/USERNAME\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"orgs",
+    "id":"unblock-a-user-from-an-organization",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"username ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"delete",
+      "path":"/orgs/{org}/blocks/{username}"
+    },
+    "title":"Unblock a user from an organization"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG/invitations\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"orgs",
+    "id":"list-pending-organization-invitations",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"id\": 1,\n    \"login\": \"monalisa\",\n    \"email\": \"octocat@github.com\",\n    \"role\": \"direct_member\",\n    \"created_at\": \"2016-11-30T06:46:10-08:00\",\n    \"inviter\": {\n      \"login\": \"other_user\",\n      \"id\": 1,\n      \"node_id\": \"MDQ6VXNlcjE=\",\n      \"avatar_url\": \"https://github.com/images/error/other_user_happy.gif\",\n      \"gravatar_id\": \"\",\n      \"url\": \"https://api.github.com/users/other_user\",\n      \"html_url\": \"https://github.com/other_user\",\n      \"followers_url\": \"https://api.github.com/users/other_user/followers\",\n      \"following_url\": \"https://api.github.com/users/other_user/following{/other_user}\",\n      \"gists_url\": \"https://api.github.com/users/other_user/gists{/gist_id}\",\n      \"starred_url\": \"https://api.github.com/users/other_user/starred{/owner}{/repo}\",\n      \"subscriptions_url\": \"https://api.github.com/users/other_user/subscriptions\",\n      \"organizations_url\": \"https://api.github.com/users/other_user/orgs\",\n      \"repos_url\": \"https://api.github.com/users/other_user/repos\",\n      \"events_url\": \"https://api.github.com/users/other_user/events{/privacy}\",\n      \"received_events_url\": \"https://api.github.com/users/other_user/received_events\",\n      \"type\": \"User\",\n      \"site_admin\": false\n    },\n    \"team_count\": 2,\n    \"invitation_team_url\": \"https://api.github.com/organizations/2/invitations/1/teams\"\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/orgs/{org}/invitations"
+    },
+    "title":"List pending organization invitations"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X POST \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG/invitations \\\n  -d '{\"invitee_id\":42}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"orgs",
+    "id":"create-an-organization-invitation",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "description":"<p><strong>Required unless you provide <code>email</code></strong>. GitHub user ID for the person you are inviting.</p>",
+        "in":"body ",
+        "name":"invitee_id ",
+        "type":"integer "
+      },
+      {
+        "description":"<p><strong>Required unless you provide <code>invitee_id</code></strong>. Email address of the person you are inviting, which can be an existing GitHub user.</p>",
+        "in":"body ",
+        "name":"email ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Specify role for new member. Can be one of:<br> * <code>admin</code> - Organization owners with full administrative rights to the organization and complete access to all repositories and teams.<br> * <code>direct_member</code> - Non-owner organization members with ability to see other members and join teams by invitation.<br> * <code>billing_manager</code> - Non-owner organization members with ability to manage the billing settings of your organization.</p> Default: <code>direct_member</code>",
+        "in":"body ",
+        "name":"role ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Specify IDs for the teams you want to invite new members to.</p>",
+        "in":"body ",
+        "name":"team_ids ",
+        "type":"array of integers "
+      }
+    ],
+    "responses":[
+      {
+        "code":"201 Created",
+        "content":"{\n  \"id\": 1,\n  \"login\": \"monalisa\",\n  \"email\": \"octocat@github.com\",\n  \"role\": \"direct_member\",\n  \"created_at\": \"2016-11-30T06:46:10-08:00\",\n  \"inviter\": {\n    \"login\": \"other_user\",\n    \"id\": 1,\n    \"node_id\": \"MDQ6VXNlcjE=\",\n    \"avatar_url\": \"https://github.com/images/error/other_user_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/users/other_user\",\n    \"html_url\": \"https://github.com/other_user\",\n    \"followers_url\": \"https://api.github.com/users/other_user/followers\",\n    \"following_url\": \"https://api.github.com/users/other_user/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/other_user/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/other_user/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/other_user/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/other_user/orgs\",\n    \"repos_url\": \"https://api.github.com/users/other_user/repos\",\n    \"events_url\": \"https://api.github.com/users/other_user/events{/privacy}\",\n    \"received_events_url\": \"https://api.github.com/users/other_user/received_events\",\n    \"type\": \"User\",\n    \"site_admin\": false\n  },\n  \"team_count\": 2,\n  \"invitation_team_url\": \"https://api.github.com/organizations/2/invitations/1/teams\"\n}\n"
+      }
+    ],
+    "target":{
+      "method":"post",
+      "path":"/orgs/{org}/invitations"
+    },
+    "title":"Create an organization invitation"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG/invitations/42/teams\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"orgs",
+    "id":"list-organization-invitation-teams",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"invitation_id ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"id\": 1,\n    \"node_id\": \"MDQ6VGVhbTE=\",\n    \"url\": \"https://api.github.com/teams/1\",\n    \"html_url\": \"https://api.github.com/teams/justice-league\",\n    \"name\": \"Justice League\",\n    \"slug\": \"justice-league\",\n    \"description\": \"A great team.\",\n    \"privacy\": \"closed\",\n    \"permission\": \"admin\",\n    \"members_url\": \"https://api.github.com/teams/1/members{/member}\",\n    \"repositories_url\": \"https://api.github.com/teams/1/repos\",\n    \"parent\": null\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/orgs/{org}/invitations/{invitation_id}/teams"
+    },
+    "title":"List organization invitation teams"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG/members\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"orgs",
+    "id":"list-organization-members",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Filter members returned in the list. Can be one of:<br> * <code>2fa_disabled</code> - Members without <a href=\"https://github.com/blog/1614-two-factor-authentication\">two-factor authentication</a> enabled. Available for organization owners.<br> * <code>all</code> - All members the authenticated user can see.</p>",
+        "in":"query ",
+        "name":"filter ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Filter members returned by their role. Can be one of:<br> * <code>all</code> - All members of the organization, regardless of role.<br> * <code>admin</code> - Organization owners.<br> * <code>member</code> - Non-owner organization members.</p>",
+        "in":"query ",
+        "name":"role ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"login\": \"octocat\",\n    \"id\": 1,\n    \"node_id\": \"MDQ6VXNlcjE=\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/users/octocat\",\n    \"html_url\": \"https://github.com/octocat\",\n    \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n    \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n    \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n    \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n    \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n    \"type\": \"User\",\n    \"site_admin\": false\n  }\n]\n"
+      },
+      {
+        "code":"302 Found"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/orgs/{org}/members"
+    },
+    "title":"List organization members"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG/members/USERNAME\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"orgs",
+    "id":"check-organization-membership-for-a-user",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"username ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      },
+      {
+        "code":"302 Found"
+      },
+      {
+        "code":"404 Not Found"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/orgs/{org}/members/{username}"
+    },
+    "title":"Check organization membership for a user"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X DELETE \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG/members/USERNAME\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"orgs",
+    "id":"remove-an-organization-member",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"username ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"delete",
+      "path":"/orgs/{org}/members/{username}"
+    },
+    "title":"Remove an organization member"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG/memberships/USERNAME\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"orgs",
+    "id":"get-organization-membership-for-a-user",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"username ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"url\": \"https://api.github.com/orgs/octocat/memberships/defunkt\",\n  \"state\": \"active\",\n  \"role\": \"admin\",\n  \"organization_url\": \"https://api.github.com/orgs/octocat\",\n  \"organization\": {\n    \"login\": \"github\",\n    \"id\": 1,\n    \"node_id\": \"MDEyOk9yZ2FuaXphdGlvbjE=\",\n    \"url\": \"https://api.github.com/orgs/github\",\n    \"repos_url\": \"https://api.github.com/orgs/github/repos\",\n    \"events_url\": \"https://api.github.com/orgs/github/events\",\n    \"hooks_url\": \"https://api.github.com/orgs/github/hooks\",\n    \"issues_url\": \"https://api.github.com/orgs/github/issues\",\n    \"members_url\": \"https://api.github.com/orgs/github/members{/member}\",\n    \"public_members_url\": \"https://api.github.com/orgs/github/public_members{/member}\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"description\": \"A great organization\"\n  },\n  \"user\": {\n    \"login\": \"octocat\",\n    \"id\": 1,\n    \"node_id\": \"MDQ6VXNlcjE=\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/users/octocat\",\n    \"html_url\": \"https://github.com/octocat\",\n    \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n    \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n    \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n    \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n    \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n    \"type\": \"User\",\n    \"site_admin\": false\n  }\n}\n"
+      },
+      {
+        "code":"200 OK",
+        "content":"{\n  \"url\": \"https://api.github.com/orgs/octocat/memberships/defunkt\",\n  \"state\": \"active\",\n  \"role\": \"member\",\n  \"organization_url\": \"https://api.github.com/orgs/octocat\",\n  \"organization\": {\n    \"login\": \"github\",\n    \"id\": 1,\n    \"node_id\": \"MDEyOk9yZ2FuaXphdGlvbjE=\",\n    \"url\": \"https://api.github.com/orgs/github\",\n    \"repos_url\": \"https://api.github.com/orgs/github/repos\",\n    \"events_url\": \"https://api.github.com/orgs/github/events\",\n    \"hooks_url\": \"https://api.github.com/orgs/github/hooks\",\n    \"issues_url\": \"https://api.github.com/orgs/github/issues\",\n    \"members_url\": \"https://api.github.com/orgs/github/members{/member}\",\n    \"public_members_url\": \"https://api.github.com/orgs/github/public_members{/member}\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"description\": \"A great organization\"\n  },\n  \"user\": {\n    \"login\": \"octocat\",\n    \"id\": 1,\n    \"node_id\": \"MDQ6VXNlcjE=\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/users/octocat\",\n    \"html_url\": \"https://github.com/octocat\",\n    \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n    \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n    \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n    \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n    \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n    \"type\": \"User\",\n    \"site_admin\": false\n  }\n}\n"
+      },
+      {
+        "code":"200 OK",
+        "content":"{\n  \"url\": \"https://api.github.com/orgs/invitocat/memberships/defunkt\",\n  \"state\": \"pending\",\n  \"role\": \"member\",\n  \"organization_url\": \"https://api.github.com/orgs/invitocat\",\n  \"organization\": {\n    \"login\": \"github\",\n    \"id\": 1,\n    \"node_id\": \"MDEyOk9yZ2FuaXphdGlvbjE=\",\n    \"url\": \"https://api.github.com/orgs/github\",\n    \"repos_url\": \"https://api.github.com/orgs/github/repos\",\n    \"events_url\": \"https://api.github.com/orgs/github/events\",\n    \"hooks_url\": \"https://api.github.com/orgs/github/hooks\",\n    \"issues_url\": \"https://api.github.com/orgs/github/issues\",\n    \"members_url\": \"https://api.github.com/orgs/github/members{/member}\",\n    \"public_members_url\": \"https://api.github.com/orgs/github/public_members{/member}\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"description\": \"A great organization\"\n  },\n  \"user\": {\n    \"login\": \"octocat\",\n    \"id\": 1,\n    \"node_id\": \"MDQ6VXNlcjE=\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/users/octocat\",\n    \"html_url\": \"https://github.com/octocat\",\n    \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n    \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n    \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n    \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n    \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n    \"type\": \"User\",\n    \"site_admin\": false\n  }\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/orgs/{org}/memberships/{username}"
+    },
+    "title":"Get organization membership for a user"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X PUT \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG/memberships/USERNAME \\\n  -d '{\"role\":\"role\"}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"orgs",
+    "id":"set-organization-membership-for-a-user",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"username ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The role to give the user in the organization. Can be one of:<br> * <code>admin</code> - The user will become an owner of the organization.<br> * <code>member</code> - The user will become a non-owner member of the organization.</p> Default: <code>member</code>",
+        "in":"body ",
+        "name":"role ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"url\": \"https://api.github.com/orgs/invitocat/memberships/defunkt\",\n  \"state\": \"pending\",\n  \"role\": \"admin\",\n  \"organization_url\": \"https://api.github.com/orgs/invitocat\",\n  \"organization\": {\n    \"login\": \"github\",\n    \"id\": 1,\n    \"node_id\": \"MDEyOk9yZ2FuaXphdGlvbjE=\",\n    \"url\": \"https://api.github.com/orgs/github\",\n    \"repos_url\": \"https://api.github.com/orgs/github/repos\",\n    \"events_url\": \"https://api.github.com/orgs/github/events\",\n    \"hooks_url\": \"https://api.github.com/orgs/github/hooks\",\n    \"issues_url\": \"https://api.github.com/orgs/github/issues\",\n    \"members_url\": \"https://api.github.com/orgs/github/members{/member}\",\n    \"public_members_url\": \"https://api.github.com/orgs/github/public_members{/member}\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"description\": \"A great organization\"\n  },\n  \"user\": {\n    \"login\": \"octocat\",\n    \"id\": 1,\n    \"node_id\": \"MDQ6VXNlcjE=\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/users/octocat\",\n    \"html_url\": \"https://github.com/octocat\",\n    \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n    \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n    \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n    \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n    \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n    \"type\": \"User\",\n    \"site_admin\": false\n  }\n}\n"
+      },
+      {
+        "code":"200 OK",
+        "content":"{\n  \"url\": \"https://api.github.com/orgs/octocat/memberships/defunkt\",\n  \"state\": \"active\",\n  \"role\": \"admin\",\n  \"organization_url\": \"https://api.github.com/orgs/octocat\",\n  \"organization\": {\n    \"login\": \"github\",\n    \"id\": 1,\n    \"node_id\": \"MDEyOk9yZ2FuaXphdGlvbjE=\",\n    \"url\": \"https://api.github.com/orgs/github\",\n    \"repos_url\": \"https://api.github.com/orgs/github/repos\",\n    \"events_url\": \"https://api.github.com/orgs/github/events\",\n    \"hooks_url\": \"https://api.github.com/orgs/github/hooks\",\n    \"issues_url\": \"https://api.github.com/orgs/github/issues\",\n    \"members_url\": \"https://api.github.com/orgs/github/members{/member}\",\n    \"public_members_url\": \"https://api.github.com/orgs/github/public_members{/member}\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"description\": \"A great organization\"\n  },\n  \"user\": {\n    \"login\": \"octocat\",\n    \"id\": 1,\n    \"node_id\": \"MDQ6VXNlcjE=\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/users/octocat\",\n    \"html_url\": \"https://github.com/octocat\",\n    \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n    \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n    \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n    \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n    \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n    \"type\": \"User\",\n    \"site_admin\": false\n  }\n}\n"
+      }
+    ],
+    "target":{
+      "method":"put",
+      "path":"/orgs/{org}/memberships/{username}"
+    },
+    "title":"Set organization membership for a user"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X DELETE \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG/memberships/USERNAME\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"orgs",
+    "id":"remove-organization-membership-for-a-user",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"username ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"delete",
+      "path":"/orgs/{org}/memberships/{username}"
+    },
+    "title":"Remove organization membership for a user"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG/public_members\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"orgs",
+    "id":"list-public-organization-members",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"login\": \"octocat\",\n    \"id\": 1,\n    \"node_id\": \"MDQ6VXNlcjE=\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/users/octocat\",\n    \"html_url\": \"https://github.com/octocat\",\n    \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n    \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n    \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n    \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n    \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n    \"type\": \"User\",\n    \"site_admin\": false\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/orgs/{org}/public_members"
+    },
+    "title":"List public organization members"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG/public_members/USERNAME\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"orgs",
+    "id":"check-public-organization-membership-for-a-user",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"username ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      },
+      {
+        "code":"404 Not Found"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/orgs/{org}/public_members/{username}"
+    },
+    "title":"Check public organization membership for a user"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X PUT \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG/public_members/USERNAME\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"orgs",
+    "id":"set-public-organization-membership-for-the-authenticated-user",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"username ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"put",
+      "path":"/orgs/{org}/public_members/{username}"
+    },
+    "title":"Set public organization membership for the authenticated user"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X DELETE \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG/public_members/USERNAME\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"orgs",
+    "id":"remove-public-organization-membership-for-the-authenticated-user",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"username ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"delete",
+      "path":"/orgs/{org}/public_members/{username}"
+    },
+    "title":"Remove public organization membership for the authenticated user"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/user/memberships/orgs\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"orgs",
+    "id":"list-organization-memberships-for-the-authenticated-user",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Indicates the state of the memberships to return. Can be either <code>active</code> or <code>pending</code>. If not specified, the API returns both active and pending memberships.</p>",
+        "in":"query ",
+        "name":"state ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"url\": \"https://api.github.com/orgs/octocat/memberships/defunkt\",\n    \"state\": \"active\",\n    \"role\": \"admin\",\n    \"organization_url\": \"https://api.github.com/orgs/octocat\",\n    \"organization\": {\n      \"login\": \"github\",\n      \"id\": 1,\n      \"node_id\": \"MDEyOk9yZ2FuaXphdGlvbjE=\",\n      \"url\": \"https://api.github.com/orgs/github\",\n      \"repos_url\": \"https://api.github.com/orgs/github/repos\",\n      \"events_url\": \"https://api.github.com/orgs/github/events\",\n      \"hooks_url\": \"https://api.github.com/orgs/github/hooks\",\n      \"issues_url\": \"https://api.github.com/orgs/github/issues\",\n      \"members_url\": \"https://api.github.com/orgs/github/members{/member}\",\n      \"public_members_url\": \"https://api.github.com/orgs/github/public_members{/member}\",\n      \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n      \"description\": \"A great organization\"\n    },\n    \"user\": {\n      \"login\": \"octocat\",\n      \"id\": 1,\n      \"node_id\": \"MDQ6VXNlcjE=\",\n      \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n      \"gravatar_id\": \"\",\n      \"url\": \"https://api.github.com/users/octocat\",\n      \"html_url\": \"https://github.com/octocat\",\n      \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n      \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n      \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n      \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n      \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n      \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n      \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n      \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n      \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n      \"type\": \"User\",\n      \"site_admin\": false\n    }\n  },\n  {\n    \"url\": \"https://api.github.com/orgs/invitocat/memberships/defunkt\",\n    \"state\": \"pending\",\n    \"role\": \"admin\",\n    \"organization_url\": \"https://api.github.com/orgs/invitocat\",\n    \"organization\": {\n      \"login\": \"github\",\n      \"id\": 1,\n      \"node_id\": \"MDEyOk9yZ2FuaXphdGlvbjE=\",\n      \"url\": \"https://api.github.com/orgs/github\",\n      \"repos_url\": \"https://api.github.com/orgs/github/repos\",\n      \"events_url\": \"https://api.github.com/orgs/github/events\",\n      \"hooks_url\": \"https://api.github.com/orgs/github/hooks\",\n      \"issues_url\": \"https://api.github.com/orgs/github/issues\",\n      \"members_url\": \"https://api.github.com/orgs/github/members{/member}\",\n      \"public_members_url\": \"https://api.github.com/orgs/github/public_members{/member}\",\n      \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n      \"description\": \"A great organization\"\n    },\n    \"user\": {\n      \"login\": \"octocat\",\n      \"id\": 1,\n      \"node_id\": \"MDQ6VXNlcjE=\",\n      \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n      \"gravatar_id\": \"\",\n      \"url\": \"https://api.github.com/users/octocat\",\n      \"html_url\": \"https://github.com/octocat\",\n      \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n      \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n      \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n      \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n      \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n      \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n      \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n      \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n      \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n      \"type\": \"User\",\n      \"site_admin\": false\n    }\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/user/memberships/orgs"
+    },
+    "title":"List organization memberships for the authenticated user"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/user/memberships/orgs/ORG\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"orgs",
+    "id":"get-an-organization-membership-for-the-authenticated-user",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"url\": \"https://api.github.com/orgs/invitocat/memberships/defunkt\",\n  \"state\": \"pending\",\n  \"role\": \"admin\",\n  \"organization_url\": \"https://api.github.com/orgs/invitocat\",\n  \"organization\": {\n    \"login\": \"github\",\n    \"id\": 1,\n    \"node_id\": \"MDEyOk9yZ2FuaXphdGlvbjE=\",\n    \"url\": \"https://api.github.com/orgs/github\",\n    \"repos_url\": \"https://api.github.com/orgs/github/repos\",\n    \"events_url\": \"https://api.github.com/orgs/github/events\",\n    \"hooks_url\": \"https://api.github.com/orgs/github/hooks\",\n    \"issues_url\": \"https://api.github.com/orgs/github/issues\",\n    \"members_url\": \"https://api.github.com/orgs/github/members{/member}\",\n    \"public_members_url\": \"https://api.github.com/orgs/github/public_members{/member}\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"description\": \"A great organization\"\n  },\n  \"user\": {\n    \"login\": \"octocat\",\n    \"id\": 1,\n    \"node_id\": \"MDQ6VXNlcjE=\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/users/octocat\",\n    \"html_url\": \"https://github.com/octocat\",\n    \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n    \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n    \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n    \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n    \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n    \"type\": \"User\",\n    \"site_admin\": false\n  }\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/user/memberships/orgs/{org}"
+    },
+    "title":"Get an organization membership for the authenticated user"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X PATCH \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/user/memberships/orgs/ORG \\\n  -d '{\"state\":\"state\"}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"orgs",
+    "id":"update-an-organization-membership-for-the-authenticated-user",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "description":"<p><strong>Required</strong>. The state that the membership should be in. Only <code>&quot;active&quot;</code> will be accepted.</p>",
+        "in":"body ",
+        "name":"state ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"url\": \"https://api.github.com/orgs/octocat/memberships/defunkt\",\n  \"state\": \"active\",\n  \"role\": \"admin\",\n  \"organization_url\": \"https://api.github.com/orgs/octocat\",\n  \"organization\": {\n    \"login\": \"github\",\n    \"id\": 1,\n    \"node_id\": \"MDEyOk9yZ2FuaXphdGlvbjE=\",\n    \"url\": \"https://api.github.com/orgs/github\",\n    \"repos_url\": \"https://api.github.com/orgs/github/repos\",\n    \"events_url\": \"https://api.github.com/orgs/github/events\",\n    \"hooks_url\": \"https://api.github.com/orgs/github/hooks\",\n    \"issues_url\": \"https://api.github.com/orgs/github/issues\",\n    \"members_url\": \"https://api.github.com/orgs/github/members{/member}\",\n    \"public_members_url\": \"https://api.github.com/orgs/github/public_members{/member}\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"description\": \"A great organization\"\n  },\n  \"user\": {\n    \"login\": \"octocat\",\n    \"id\": 1,\n    \"node_id\": \"MDQ6VXNlcjE=\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/users/octocat\",\n    \"html_url\": \"https://github.com/octocat\",\n    \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n    \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n    \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n    \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n    \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n    \"type\": \"User\",\n    \"site_admin\": false\n  }\n}\n"
+      }
+    ],
+    "target":{
+      "method":"patch",
+      "path":"/user/memberships/orgs/{org}"
+    },
+    "title":"Update an organization membership for the authenticated user"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG/outside_collaborators\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"orgs",
+    "id":"list-outside-collaborators-for-an-organization",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Filter the list of outside collaborators. Can be one of:<br> * <code>2fa_disabled</code>: Outside collaborators without <a href=\"https://github.com/blog/1614-two-factor-authentication\">two-factor authentication</a> enabled.<br> * <code>all</code>: All outside collaborators.</p>",
+        "in":"query ",
+        "name":"filter ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"login\": \"octocat\",\n    \"id\": 1,\n    \"node_id\": \"MDQ6VXNlcjE=\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/users/octocat\",\n    \"html_url\": \"https://github.com/octocat\",\n    \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n    \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n    \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n    \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n    \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n    \"type\": \"User\",\n    \"site_admin\": false\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/orgs/{org}/outside_collaborators"
+    },
+    "title":"List outside collaborators for an organization"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X PUT \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG/outside_collaborators/USERNAME\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"orgs",
+    "id":"convert-an-organization-member-to-outside-collaborator",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"username ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      },
+      {
+        "code":"403 Forbidden",
+        "content":"{\n  \"message\": \"Cannot convert the last owner to an outside collaborator\",\n  \"documentation_url\": \"https://developer.github.com/v3/orgs/outside_collaborators/#convert-member-to-outside-collaborator\"\n}\n"
+      },
+      {
+        "code":"403 Forbidden",
+        "content":"{\n  \"message\": \"<user> is not a member of the <organization> organization.\",\n  \"documentation_url\": \"https://developer.github.com/v3/orgs/outside_collaborators/#convert-member-to-outside-collaborator\"\n}\n"
+      }
+    ],
+    "target":{
+      "method":"put",
+      "path":"/orgs/{org}/outside_collaborators/{username}"
+    },
+    "title":"Convert an organization member to outside collaborator"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X DELETE \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG/outside_collaborators/USERNAME\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"orgs",
+    "id":"remove-outside-collaborator-from-an-organization",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"username ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      },
+      {
+        "code":"422 Unprocessable Entity",
+        "content":"{\n  \"message\": \"You cannot specify an organization member to remove as an outside collaborator.\",\n  \"documentation_url\": \"https://developer.github.com/v3/orgs/outside_collaborators/#remove-outside-collaborator\"\n}\n"
+      }
+    ],
+    "target":{
+      "method":"delete",
+      "path":"/orgs/{org}/outside_collaborators/{username}"
+    },
+    "title":"Remove outside collaborator from an organization"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG/hooks\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"orgs",
+    "id":"list-organization-webhooks",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"id\": 1,\n    \"url\": \"https://api.github.com/orgs/octocat/hooks/1\",\n    \"ping_url\": \"https://api.github.com/orgs/octocat/hooks/1/pings\",\n    \"name\": \"web\",\n    \"events\": [\n      \"push\",\n      \"pull_request\"\n    ],\n    \"active\": true,\n    \"config\": {\n      \"url\": \"http://example.com\",\n      \"content_type\": \"json\"\n    },\n    \"updated_at\": \"2011-09-06T20:39:23Z\",\n    \"created_at\": \"2011-09-06T17:26:27Z\"\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/orgs/{org}/hooks"
+    },
+    "title":"List organization webhooks"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X POST \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG/hooks \\\n  -d '{\"name\":\"name\",\"config\":{\"url\":\"url\",\"content_type\":\"content_type\",\"secret\":\"secret\",\"insecure_ssl\":\"insecure_ssl\"}}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"orgs",
+    "id":"create-an-organization-webhook",
+    "parameterProperties":[
+      {
+        "description":"<strong>Required</strong>. The URL to which the payloads will be delivered.",
+        "name":"url",
+        "of":"config",
+        "type":"string"
+      },
+      {
+        "description":"The media type used to serialize the payloads. Supported values include <code>json</code> and <code>form</code>. The default is <code>form</code>.",
+        "name":"content_type",
+        "of":"config",
+        "type":"string"
+      },
+      {
+        "description":"If provided, the <code>secret</code> will be used as the <code>key</code> to generate the HMAC hex digest value in the <a href=\"https://developer.github.com/webhooks/event-payloads/#delivery-headers\"><code>X-Hub-Signature</code></a> header.",
+        "name":"secret",
+        "of":"config",
+        "type":"string"
+      },
+      {
+        "description":"Determines whether the SSL certificate of the host for <code>url</code> will be verified when delivering payloads. Supported values include <code>0</code> (verification is performed) and <code>1</code> (verification is not performed). The default is <code>0</code>. <strong>We strongly recommend not setting this to <code>1</code> as you are subject to man-in-the-middle and other attacks.</strong>",
+        "name":"insecure_ssl",
+        "of":"config",
+        "type":"string"
+      }
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "description":"<p><strong>Required</strong>. Must be passed as &quot;web&quot;.</p>",
+        "in":"body ",
+        "name":"name ",
+        "type":"string "
+      },
+      {
+        "description":"<p><strong>Required</strong>. Key/value pairs to provide settings for this webhook. <a href=\"https://developer.github.com/v3/orgs/hooks/#create-hook-config-params\">These are defined below</a>.</p>",
+        "in":"body ",
+        "name":"config ",
+        "type":"object "
+      },
+      {
+        "description":"<p>Determines what <a href=\"https://developer.github.com/webhooks/event-payloads\">events</a> the hook is triggered for.</p> Default: <code>push</code>",
+        "in":"body ",
+        "name":"events ",
+        "type":"array of strings "
+      },
+      {
+        "description":"<p>Determines if notifications are sent when the webhook is triggered. Set to <code>true</code> to send notifications.</p> Default: <code>true</code>",
+        "in":"body ",
+        "name":"active ",
+        "type":"boolean "
+      }
+    ],
+    "responses":[
+      {
+        "code":"201 Created",
+        "content":"{\n  \"id\": 1,\n  \"url\": \"https://api.github.com/orgs/octocat/hooks/1\",\n  \"ping_url\": \"https://api.github.com/orgs/octocat/hooks/1/pings\",\n  \"name\": \"web\",\n  \"events\": [\n    \"push\",\n    \"pull_request\"\n  ],\n  \"active\": true,\n  \"config\": {\n    \"url\": \"http://example.com\",\n    \"content_type\": \"json\"\n  },\n  \"updated_at\": \"2011-09-06T20:39:23Z\",\n  \"created_at\": \"2011-09-06T17:26:27Z\"\n}\n"
+      }
+    ],
+    "target":{
+      "method":"post",
+      "path":"/orgs/{org}/hooks"
+    },
+    "title":"Create an organization webhook"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG/hooks/42\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"orgs",
+    "id":"get-an-organization-webhook",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"hook_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"id\": 1,\n  \"url\": \"https://api.github.com/orgs/octocat/hooks/1\",\n  \"ping_url\": \"https://api.github.com/orgs/octocat/hooks/1/pings\",\n  \"name\": \"web\",\n  \"events\": [\n    \"push\",\n    \"pull_request\"\n  ],\n  \"active\": true,\n  \"config\": {\n    \"url\": \"http://example.com\",\n    \"content_type\": \"json\"\n  },\n  \"updated_at\": \"2011-09-06T20:39:23Z\",\n  \"created_at\": \"2011-09-06T17:26:27Z\"\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/orgs/{org}/hooks/{hook_id}"
+    },
+    "title":"Get an organization webhook"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X PATCH \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG/hooks/42 \\\n  -d '{\"config\":{\"url\":\"url\",\"content_type\":\"content_type\",\"secret\":\"secret\",\"insecure_ssl\":\"insecure_ssl\"}}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"orgs",
+    "id":"update-an-organization-webhook",
+    "parameterProperties":[
+      {
+        "description":"<strong>Required</strong>. The URL to which the payloads will be delivered.",
+        "name":"url",
+        "of":"config",
+        "type":"string"
+      },
+      {
+        "description":"The media type used to serialize the payloads. Supported values include <code>json</code> and <code>form</code>. The default is <code>form</code>.",
+        "name":"content_type",
+        "of":"config",
+        "type":"string"
+      },
+      {
+        "description":"If provided, the <code>secret</code> will be used as the <code>key</code> to generate the HMAC hex digest value in the <a href=\"https://developer.github.com/webhooks/event-payloads/#delivery-headers\"><code>X-Hub-Signature</code></a> header.",
+        "name":"secret",
+        "of":"config",
+        "type":"string"
+      },
+      {
+        "description":"Determines whether the SSL certificate of the host for <code>url</code> will be verified when delivering payloads. Supported values include <code>0</code> (verification is performed) and <code>1</code> (verification is not performed). The default is <code>0</code>. <strong>We strongly recommend not setting this to <code>1</code> as you are subject to man-in-the-middle and other attacks.</strong>",
+        "name":"insecure_ssl",
+        "of":"config",
+        "type":"string"
+      }
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"hook_id ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Key/value pairs to provide settings for this webhook. <a href=\"https://developer.github.com/v3/orgs/hooks/#update-hook-config-params\">These are defined below</a>.</p>",
+        "in":"body ",
+        "name":"config ",
+        "type":"object "
+      },
+      {
+        "description":"<p>Determines what <a href=\"https://developer.github.com/webhooks/event-payloads\">events</a> the hook is triggered for.</p> Default: <code>push</code>",
+        "in":"body ",
+        "name":"events ",
+        "type":"array of strings "
+      },
+      {
+        "description":"<p>Determines if notifications are sent when the webhook is triggered. Set to <code>true</code> to send notifications.</p> Default: <code>true</code>",
+        "in":"body ",
+        "name":"active ",
+        "type":"boolean "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"id\": 1,\n  \"url\": \"https://api.github.com/orgs/octocat/hooks/1\",\n  \"ping_url\": \"https://api.github.com/orgs/octocat/hooks/1/pings\",\n  \"name\": \"web\",\n  \"events\": [\n    \"pull_request\"\n  ],\n  \"active\": true,\n  \"config\": {\n    \"url\": \"http://example.com\",\n    \"content_type\": \"json\"\n  },\n  \"updated_at\": \"2011-09-06T20:39:23Z\",\n  \"created_at\": \"2011-09-06T17:26:27Z\"\n}\n"
+      }
+    ],
+    "target":{
+      "method":"patch",
+      "path":"/orgs/{org}/hooks/{hook_id}"
+    },
+    "title":"Update an organization webhook"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X DELETE \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG/hooks/42\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"orgs",
+    "id":"delete-an-organization-webhook",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"hook_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"delete",
+      "path":"/orgs/{org}/hooks/{hook_id}"
+    },
+    "title":"Delete an organization webhook"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X POST \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG/hooks/42/pings\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"orgs",
+    "id":"ping-an-organization-webhook",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"hook_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"post",
+      "path":"/orgs/{org}/hooks/{hook_id}/pings"
+    },
+    "title":"Ping an organization webhook"
+  }
+]

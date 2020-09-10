@@ -1,0 +1,33 @@
+[
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/rate_limit\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"rate-limit",
+    "id":"get-rate-limit-status-for-the-authenticated-user",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"resources\": {\n    \"core\": {\n      \"limit\": 5000,\n      \"remaining\": 4999,\n      \"reset\": 1372700873\n    },\n    \"search\": {\n      \"limit\": 30,\n      \"remaining\": 18,\n      \"reset\": 1372697452\n    },\n    \"graphql\": {\n      \"limit\": 5000,\n      \"remaining\": 4993,\n      \"reset\": 1372700389\n    },\n    \"integration_manifest\": {\n      \"limit\": 5000,\n      \"remaining\": 4999,\n      \"reset\": 1551806725\n    }\n  },\n  \"rate\": {\n    \"limit\": 5000,\n    \"remaining\": 4999,\n    \"reset\": 1372700873\n  }\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/rate_limit"
+    },
+    "title":"Get rate limit status for the authenticated user"
+  }
+]

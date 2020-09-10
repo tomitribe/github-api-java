@@ -1,0 +1,86 @@
+[
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X POST \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/markdown \\\n  -d '{\"text\":\"text\"}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"markdown",
+    "id":"render-a-markdown-document",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "description":"<p><strong>Required</strong>. The Markdown text to render in HTML. Markdown content must be 400 KB or less.</p>",
+        "in":"body ",
+        "name":"text ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The rendering mode. Can be either:<br> * <code>markdown</code> to render a document in plain Markdown, just like README.md files are rendered.<br> * <code>gfm</code> to render a document in <a href=\"https://github.github.com/gfm/\">GitHub Flavored Markdown</a>, which creates links for user mentions as well as references to SHA-1 hashes, issues, and pull requests.</p> Default: <code>markdown</code>",
+        "in":"body ",
+        "name":"mode ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The repository context to use when creating references in <code>gfm</code> mode. Omit this parameter when using <code>markdown</code> mode.</p>",
+        "in":"body ",
+        "name":"context ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK"
+      }
+    ],
+    "target":{
+      "method":"post",
+      "path":"/markdown"
+    },
+    "title":"Render a Markdown document"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X POST \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/markdown/raw \\\n  -d '{\"data\":\"data\"}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"markdown",
+    "id":"render-a-markdown-document-in-raw-mode",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Setting content-type header is required for this endpoint</p>",
+        "in":"header ",
+        "name":"content-type ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK"
+      }
+    ],
+    "target":{
+      "method":"post",
+      "path":"/markdown/raw"
+    },
+    "title":"Render a Markdown document in raw mode"
+  }
+]

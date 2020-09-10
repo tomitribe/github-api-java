@@ -32,7 +32,9 @@ public class Endpoint {
     private String id;
     private String title;
     private Target target;
+    private String group;
     private List<Parameter> parameters = new ArrayList<>();
+    private List<ParameterProperty> parameterProperties = new ArrayList<>();
     private List<CodeSample> codeSamples = new ArrayList<>();
     private List<Response> responses = new ArrayList<>();
 

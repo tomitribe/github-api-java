@@ -1,0 +1,2308 @@
+[
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/issues\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"issues",
+    "id":"list-issues-assigned-to-the-authenticated-user",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p> <a href=\"#list-issues-assigned-to-the-authenticated-user-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Indicates which sorts of issues to return. Can be one of:<br> * <code>assigned</code>: Issues assigned to you<br> * <code>created</code>: Issues created by you<br> * <code>mentioned</code>: Issues mentioning you<br> * <code>subscribed</code>: Issues you&apos;re subscribed to updates for<br> * <code>all</code>: All issues the authenticated user can see, regardless of participation or creation</p>",
+        "in":"query ",
+        "name":"filter ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Indicates the state of the issues to return. Can be either <code>open</code>, <code>closed</code>, or <code>all</code>.</p>",
+        "in":"query ",
+        "name":"state ",
+        "type":"string "
+      },
+      {
+        "description":"<p>A list of comma separated label names. Example: <code>bug,ui,@high</code></p>",
+        "in":"query ",
+        "name":"labels ",
+        "type":"string "
+      },
+      {
+        "description":"<p>What to sort results by. Can be either <code>created</code>, <code>updated</code>, <code>comments</code>.</p>",
+        "in":"query ",
+        "name":"sort ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The direction of the sort. Can be either <code>asc</code> or <code>desc</code>.</p>",
+        "in":"query ",
+        "name":"direction ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Only issues updated at or after this time are returned. This is a timestamp in <a href=\"https://en.wikipedia.org/wiki/ISO_8601\">ISO 8601</a> format: <code>YYYY-MM-DDTHH:MM:SSZ</code>.</p>",
+        "in":"query ",
+        "name":"since ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"id\": 1,\n    \"node_id\": \"MDU6SXNzdWUx\",\n    \"url\": \"https://api.github.com/repos/octocat/Hello-World/issues/1347\",\n    \"repository_url\": \"https://api.github.com/repos/octocat/Hello-World\",\n    \"labels_url\": \"https://api.github.com/repos/octocat/Hello-World/issues/1347/labels{/name}\",\n    \"comments_url\": \"https://api.github.com/repos/octocat/Hello-World/issues/1347/comments\",\n    \"events_url\": \"https://api.github.com/repos/octocat/Hello-World/issues/1347/events\",\n    \"html_url\": \"https://github.com/octocat/Hello-World/issues/1347\",\n    \"number\": 1347,\n    \"state\": \"open\",\n    \"title\": \"Found a bug\",\n    \"body\": \"I'm having a problem with this.\",\n    \"user\": {\n      \"login\": \"octocat\",\n      \"id\": 1,\n      \"node_id\": \"MDQ6VXNlcjE=\",\n      \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n      \"gravatar_id\": \"\",\n      \"url\": \"https://api.github.com/users/octocat\",\n      \"html_url\": \"https://github.com/octocat\",\n      \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n      \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n      \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n      \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n      \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n      \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n      \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n      \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n      \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n      \"type\": \"User\",\n      \"site_admin\": false\n    },\n    \"labels\": [\n      {\n        \"id\": 208045946,\n        \"node_id\": \"MDU6TGFiZWwyMDgwNDU5NDY=\",\n        \"url\": \"https://api.github.com/repos/octocat/Hello-World/labels/bug\",\n        \"name\": \"bug\",\n        \"description\": \"Something isn't working\",\n        \"color\": \"f29513\",\n        \"default\": true\n      }\n    ],\n    \"assignee\": {\n      \"login\": \"octocat\",\n      \"id\": 1,\n      \"node_id\": \"MDQ6VXNlcjE=\",\n      \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n      \"gravatar_id\": \"\",\n      \"url\": \"https://api.github.com/users/octocat\",\n      \"html_url\": \"https://github.com/octocat\",\n      \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n      \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n      \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n      \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n      \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n      \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n      \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n      \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n      \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n      \"type\": \"User\",\n      \"site_admin\": false\n    },\n    \"assignees\": [\n      {\n        \"login\": \"octocat\",\n        \"id\": 1,\n        \"node_id\": \"MDQ6VXNlcjE=\",\n        \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n        \"gravatar_id\": \"\",\n        \"url\": \"https://api.github.com/users/octocat\",\n        \"html_url\": \"https://github.com/octocat\",\n        \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n        \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n        \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n        \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n        \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n        \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n        \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n        \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n        \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n        \"type\": \"User\",\n        \"site_admin\": false\n      }\n    ],\n    \"milestone\": {\n      \"url\": \"https://api.github.com/repos/octocat/Hello-World/milestones/1\",\n      \"html_url\": \"https://github.com/octocat/Hello-World/milestones/v1.0\",\n      \"labels_url\": \"https://api.github.com/repos/octocat/Hello-World/milestones/1/labels\",\n      \"id\": 1002604,\n      \"node_id\": \"MDk6TWlsZXN0b25lMTAwMjYwNA==\",\n      \"number\": 1,\n      \"state\": \"open\",\n      \"title\": \"v1.0\",\n      \"description\": \"Tracking milestone for version 1.0\",\n      \"creator\": {\n        \"login\": \"octocat\",\n        \"id\": 1,\n        \"node_id\": \"MDQ6VXNlcjE=\",\n        \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n        \"gravatar_id\": \"\",\n        \"url\": \"https://api.github.com/users/octocat\",\n        \"html_url\": \"https://github.com/octocat\",\n        \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n        \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n        \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n        \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n        \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n        \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n        \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n        \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n        \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n        \"type\": \"User\",\n        \"site_admin\": false\n      },\n      \"open_issues\": 4,\n      \"closed_issues\": 8,\n      \"created_at\": \"2011-04-10T20:09:31Z\",\n      \"updated_at\": \"2014-03-03T18:58:10Z\",\n      \"closed_at\": \"2013-02-12T13:22:01Z\",\n      \"due_on\": \"2012-10-09T23:39:01Z\"\n    },\n    \"locked\": true,\n    \"active_lock_reason\": \"too heated\",\n    \"comments\": 0,\n    \"pull_request\": {\n      \"url\": \"https://api.github.com/repos/octocat/Hello-World/pulls/1347\",\n      \"html_url\": \"https://github.com/octocat/Hello-World/pull/1347\",\n      \"diff_url\": \"https://github.com/octocat/Hello-World/pull/1347.diff\",\n      \"patch_url\": \"https://github.com/octocat/Hello-World/pull/1347.patch\"\n    },\n    \"closed_at\": null,\n    \"created_at\": \"2011-04-22T13:33:48Z\",\n    \"updated_at\": \"2011-04-22T13:33:48Z\",\n    \"repository\": {\n      \"id\": 1296269,\n      \"node_id\": \"MDEwOlJlcG9zaXRvcnkxMjk2MjY5\",\n      \"name\": \"Hello-World\",\n      \"full_name\": \"octocat/Hello-World\",\n      \"owner\": {\n        \"login\": \"octocat\",\n        \"id\": 1,\n        \"node_id\": \"MDQ6VXNlcjE=\",\n        \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n        \"gravatar_id\": \"\",\n        \"url\": \"https://api.github.com/users/octocat\",\n        \"html_url\": \"https://github.com/octocat\",\n        \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n        \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n        \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n        \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n        \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n        \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n        \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n        \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n        \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n        \"type\": \"User\",\n        \"site_admin\": false\n      },\n      \"private\": false,\n      \"html_url\": \"https://github.com/octocat/Hello-World\",\n      \"description\": \"This your first repo!\",\n      \"fork\": false,\n      \"url\": \"https://api.github.com/repos/octocat/Hello-World\",\n      \"archive_url\": \"http://api.github.com/repos/octocat/Hello-World/{archive_format}{/ref}\",\n      \"assignees_url\": \"http://api.github.com/repos/octocat/Hello-World/assignees{/user}\",\n      \"blobs_url\": \"http://api.github.com/repos/octocat/Hello-World/git/blobs{/sha}\",\n      \"branches_url\": \"http://api.github.com/repos/octocat/Hello-World/branches{/branch}\",\n      \"collaborators_url\": \"http://api.github.com/repos/octocat/Hello-World/collaborators{/collaborator}\",\n      \"comments_url\": \"http://api.github.com/repos/octocat/Hello-World/comments{/number}\",\n      \"commits_url\": \"http://api.github.com/repos/octocat/Hello-World/commits{/sha}\",\n      \"compare_url\": \"http://api.github.com/repos/octocat/Hello-World/compare/{base}...{head}\",\n      \"contents_url\": \"http://api.github.com/repos/octocat/Hello-World/contents/{+path}\",\n      \"contributors_url\": \"http://api.github.com/repos/octocat/Hello-World/contributors\",\n      \"deployments_url\": \"http://api.github.com/repos/octocat/Hello-World/deployments\",\n      \"downloads_url\": \"http://api.github.com/repos/octocat/Hello-World/downloads\",\n      \"events_url\": \"http://api.github.com/repos/octocat/Hello-World/events\",\n      \"forks_url\": \"http://api.github.com/repos/octocat/Hello-World/forks\",\n      \"git_commits_url\": \"http://api.github.com/repos/octocat/Hello-World/git/commits{/sha}\",\n      \"git_refs_url\": \"http://api.github.com/repos/octocat/Hello-World/git/refs{/sha}\",\n      \"git_tags_url\": \"http://api.github.com/repos/octocat/Hello-World/git/tags{/sha}\",\n      \"git_url\": \"git:github.com/octocat/Hello-World.git\",\n      \"issue_comment_url\": \"http://api.github.com/repos/octocat/Hello-World/issues/comments{/number}\",\n      \"issue_events_url\": \"http://api.github.com/repos/octocat/Hello-World/issues/events{/number}\",\n      \"issues_url\": \"http://api.github.com/repos/octocat/Hello-World/issues{/number}\",\n      \"keys_url\": \"http://api.github.com/repos/octocat/Hello-World/keys{/key_id}\",\n      \"labels_url\": \"http://api.github.com/repos/octocat/Hello-World/labels{/name}\",\n      \"languages_url\": \"http://api.github.com/repos/octocat/Hello-World/languages\",\n      \"merges_url\": \"http://api.github.com/repos/octocat/Hello-World/merges\",\n      \"milestones_url\": \"http://api.github.com/repos/octocat/Hello-World/milestones{/number}\",\n      \"notifications_url\": \"http://api.github.com/repos/octocat/Hello-World/notifications{?since,all,participating}\",\n      \"pulls_url\": \"http://api.github.com/repos/octocat/Hello-World/pulls{/number}\",\n      \"releases_url\": \"http://api.github.com/repos/octocat/Hello-World/releases{/id}\",\n      \"ssh_url\": \"git@github.com:octocat/Hello-World.git\",\n      \"stargazers_url\": \"http://api.github.com/repos/octocat/Hello-World/stargazers\",\n      \"statuses_url\": \"http://api.github.com/repos/octocat/Hello-World/statuses/{sha}\",\n      \"subscribers_url\": \"http://api.github.com/repos/octocat/Hello-World/subscribers\",\n      \"subscription_url\": \"http://api.github.com/repos/octocat/Hello-World/subscription\",\n      \"tags_url\": \"http://api.github.com/repos/octocat/Hello-World/tags\",\n      \"teams_url\": \"http://api.github.com/repos/octocat/Hello-World/teams\",\n      \"trees_url\": \"http://api.github.com/repos/octocat/Hello-World/git/trees{/sha}\",\n      \"clone_url\": \"https://github.com/octocat/Hello-World.git\",\n      \"mirror_url\": \"git:git.example.com/octocat/Hello-World\",\n      \"hooks_url\": \"http://api.github.com/repos/octocat/Hello-World/hooks\",\n      \"svn_url\": \"https://svn.github.com/octocat/Hello-World\",\n      \"homepage\": \"https://github.com\",\n      \"language\": null,\n      \"forks_count\": 9,\n      \"stargazers_count\": 80,\n      \"watchers_count\": 80,\n      \"size\": 108,\n      \"default_branch\": \"master\",\n      \"open_issues_count\": 0,\n      \"is_template\": true,\n      \"topics\": [\n        \"octocat\",\n        \"atom\",\n        \"electron\",\n        \"api\"\n      ],\n      \"has_issues\": true,\n      \"has_projects\": true,\n      \"has_wiki\": true,\n      \"has_pages\": false,\n      \"has_downloads\": true,\n      \"archived\": false,\n      \"disabled\": false,\n      \"visibility\": \"public\",\n      \"pushed_at\": \"2011-01-26T19:06:43Z\",\n      \"created_at\": \"2011-01-26T19:01:12Z\",\n      \"updated_at\": \"2011-01-26T19:14:43Z\",\n      \"permissions\": {\n        \"admin\": false,\n        \"push\": false,\n        \"pull\": true\n      },\n      \"allow_rebase_merge\": true,\n      \"template_repository\": null,\n      \"temp_clone_token\": \"ABTLWHOULUVAXGTRYU7OC2876QJ2O\",\n      \"allow_squash_merge\": true,\n      \"delete_branch_on_merge\": true,\n      \"allow_merge_commit\": true,\n      \"subscribers_count\": 42,\n      \"network_count\": 0\n    }\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/issues"
+    },
+    "title":"List issues assigned to the authenticated user"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG/issues\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"issues",
+    "id":"list-organization-issues-assigned-to-the-authenticated-user",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p> <a href=\"#list-organization-issues-assigned-to-the-authenticated-user-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Indicates which sorts of issues to return. Can be one of:<br> * <code>assigned</code>: Issues assigned to you<br> * <code>created</code>: Issues created by you<br> * <code>mentioned</code>: Issues mentioning you<br> * <code>subscribed</code>: Issues you&apos;re subscribed to updates for<br> * <code>all</code>: All issues the authenticated user can see, regardless of participation or creation</p>",
+        "in":"query ",
+        "name":"filter ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Indicates the state of the issues to return. Can be either <code>open</code>, <code>closed</code>, or <code>all</code>.</p>",
+        "in":"query ",
+        "name":"state ",
+        "type":"string "
+      },
+      {
+        "description":"<p>A list of comma separated label names. Example: <code>bug,ui,@high</code></p>",
+        "in":"query ",
+        "name":"labels ",
+        "type":"string "
+      },
+      {
+        "description":"<p>What to sort results by. Can be either <code>created</code>, <code>updated</code>, <code>comments</code>.</p>",
+        "in":"query ",
+        "name":"sort ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The direction of the sort. Can be either <code>asc</code> or <code>desc</code>.</p>",
+        "in":"query ",
+        "name":"direction ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Only issues updated at or after this time are returned. This is a timestamp in <a href=\"https://en.wikipedia.org/wiki/ISO_8601\">ISO 8601</a> format: <code>YYYY-MM-DDTHH:MM:SSZ</code>.</p>",
+        "in":"query ",
+        "name":"since ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"id\": 1,\n    \"node_id\": \"MDU6SXNzdWUx\",\n    \"url\": \"https://api.github.com/repos/octocat/Hello-World/issues/1347\",\n    \"repository_url\": \"https://api.github.com/repos/octocat/Hello-World\",\n    \"labels_url\": \"https://api.github.com/repos/octocat/Hello-World/issues/1347/labels{/name}\",\n    \"comments_url\": \"https://api.github.com/repos/octocat/Hello-World/issues/1347/comments\",\n    \"events_url\": \"https://api.github.com/repos/octocat/Hello-World/issues/1347/events\",\n    \"html_url\": \"https://github.com/octocat/Hello-World/issues/1347\",\n    \"number\": 1347,\n    \"state\": \"open\",\n    \"title\": \"Found a bug\",\n    \"body\": \"I'm having a problem with this.\",\n    \"user\": {\n      \"login\": \"octocat\",\n      \"id\": 1,\n      \"node_id\": \"MDQ6VXNlcjE=\",\n      \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n      \"gravatar_id\": \"\",\n      \"url\": \"https://api.github.com/users/octocat\",\n      \"html_url\": \"https://github.com/octocat\",\n      \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n      \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n      \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n      \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n      \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n      \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n      \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n      \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n      \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n      \"type\": \"User\",\n      \"site_admin\": false\n    },\n    \"labels\": [\n      {\n        \"id\": 208045946,\n        \"node_id\": \"MDU6TGFiZWwyMDgwNDU5NDY=\",\n        \"url\": \"https://api.github.com/repos/octocat/Hello-World/labels/bug\",\n        \"name\": \"bug\",\n        \"description\": \"Something isn't working\",\n        \"color\": \"f29513\",\n        \"default\": true\n      }\n    ],\n    \"assignee\": {\n      \"login\": \"octocat\",\n      \"id\": 1,\n      \"node_id\": \"MDQ6VXNlcjE=\",\n      \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n      \"gravatar_id\": \"\",\n      \"url\": \"https://api.github.com/users/octocat\",\n      \"html_url\": \"https://github.com/octocat\",\n      \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n      \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n      \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n      \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n      \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n      \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n      \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n      \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n      \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n      \"type\": \"User\",\n      \"site_admin\": false\n    },\n    \"assignees\": [\n      {\n        \"login\": \"octocat\",\n        \"id\": 1,\n        \"node_id\": \"MDQ6VXNlcjE=\",\n        \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n        \"gravatar_id\": \"\",\n        \"url\": \"https://api.github.com/users/octocat\",\n        \"html_url\": \"https://github.com/octocat\",\n        \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n        \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n        \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n        \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n        \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n        \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n        \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n        \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n        \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n        \"type\": \"User\",\n        \"site_admin\": false\n      }\n    ],\n    \"milestone\": {\n      \"url\": \"https://api.github.com/repos/octocat/Hello-World/milestones/1\",\n      \"html_url\": \"https://github.com/octocat/Hello-World/milestones/v1.0\",\n      \"labels_url\": \"https://api.github.com/repos/octocat/Hello-World/milestones/1/labels\",\n      \"id\": 1002604,\n      \"node_id\": \"MDk6TWlsZXN0b25lMTAwMjYwNA==\",\n      \"number\": 1,\n      \"state\": \"open\",\n      \"title\": \"v1.0\",\n      \"description\": \"Tracking milestone for version 1.0\",\n      \"creator\": {\n        \"login\": \"octocat\",\n        \"id\": 1,\n        \"node_id\": \"MDQ6VXNlcjE=\",\n        \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n        \"gravatar_id\": \"\",\n        \"url\": \"https://api.github.com/users/octocat\",\n        \"html_url\": \"https://github.com/octocat\",\n        \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n        \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n        \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n        \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n        \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n        \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n        \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n        \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n        \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n        \"type\": \"User\",\n        \"site_admin\": false\n      },\n      \"open_issues\": 4,\n      \"closed_issues\": 8,\n      \"created_at\": \"2011-04-10T20:09:31Z\",\n      \"updated_at\": \"2014-03-03T18:58:10Z\",\n      \"closed_at\": \"2013-02-12T13:22:01Z\",\n      \"due_on\": \"2012-10-09T23:39:01Z\"\n    },\n    \"locked\": true,\n    \"active_lock_reason\": \"too heated\",\n    \"comments\": 0,\n    \"pull_request\": {\n      \"url\": \"https://api.github.com/repos/octocat/Hello-World/pulls/1347\",\n      \"html_url\": \"https://github.com/octocat/Hello-World/pull/1347\",\n      \"diff_url\": \"https://github.com/octocat/Hello-World/pull/1347.diff\",\n      \"patch_url\": \"https://github.com/octocat/Hello-World/pull/1347.patch\"\n    },\n    \"closed_at\": null,\n    \"created_at\": \"2011-04-22T13:33:48Z\",\n    \"updated_at\": \"2011-04-22T13:33:48Z\",\n    \"repository\": {\n      \"id\": 1296269,\n      \"node_id\": \"MDEwOlJlcG9zaXRvcnkxMjk2MjY5\",\n      \"name\": \"Hello-World\",\n      \"full_name\": \"octocat/Hello-World\",\n      \"owner\": {\n        \"login\": \"octocat\",\n        \"id\": 1,\n        \"node_id\": \"MDQ6VXNlcjE=\",\n        \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n        \"gravatar_id\": \"\",\n        \"url\": \"https://api.github.com/users/octocat\",\n        \"html_url\": \"https://github.com/octocat\",\n        \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n        \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n        \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n        \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n        \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n        \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n        \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n        \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n        \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n        \"type\": \"User\",\n        \"site_admin\": false\n      },\n      \"private\": false,\n      \"html_url\": \"https://github.com/octocat/Hello-World\",\n      \"description\": \"This your first repo!\",\n      \"fork\": false,\n      \"url\": \"https://api.github.com/repos/octocat/Hello-World\",\n      \"archive_url\": \"http://api.github.com/repos/octocat/Hello-World/{archive_format}{/ref}\",\n      \"assignees_url\": \"http://api.github.com/repos/octocat/Hello-World/assignees{/user}\",\n      \"blobs_url\": \"http://api.github.com/repos/octocat/Hello-World/git/blobs{/sha}\",\n      \"branches_url\": \"http://api.github.com/repos/octocat/Hello-World/branches{/branch}\",\n      \"collaborators_url\": \"http://api.github.com/repos/octocat/Hello-World/collaborators{/collaborator}\",\n      \"comments_url\": \"http://api.github.com/repos/octocat/Hello-World/comments{/number}\",\n      \"commits_url\": \"http://api.github.com/repos/octocat/Hello-World/commits{/sha}\",\n      \"compare_url\": \"http://api.github.com/repos/octocat/Hello-World/compare/{base}...{head}\",\n      \"contents_url\": \"http://api.github.com/repos/octocat/Hello-World/contents/{+path}\",\n      \"contributors_url\": \"http://api.github.com/repos/octocat/Hello-World/contributors\",\n      \"deployments_url\": \"http://api.github.com/repos/octocat/Hello-World/deployments\",\n      \"downloads_url\": \"http://api.github.com/repos/octocat/Hello-World/downloads\",\n      \"events_url\": \"http://api.github.com/repos/octocat/Hello-World/events\",\n      \"forks_url\": \"http://api.github.com/repos/octocat/Hello-World/forks\",\n      \"git_commits_url\": \"http://api.github.com/repos/octocat/Hello-World/git/commits{/sha}\",\n      \"git_refs_url\": \"http://api.github.com/repos/octocat/Hello-World/git/refs{/sha}\",\n      \"git_tags_url\": \"http://api.github.com/repos/octocat/Hello-World/git/tags{/sha}\",\n      \"git_url\": \"git:github.com/octocat/Hello-World.git\",\n      \"issue_comment_url\": \"http://api.github.com/repos/octocat/Hello-World/issues/comments{/number}\",\n      \"issue_events_url\": \"http://api.github.com/repos/octocat/Hello-World/issues/events{/number}\",\n      \"issues_url\": \"http://api.github.com/repos/octocat/Hello-World/issues{/number}\",\n      \"keys_url\": \"http://api.github.com/repos/octocat/Hello-World/keys{/key_id}\",\n      \"labels_url\": \"http://api.github.com/repos/octocat/Hello-World/labels{/name}\",\n      \"languages_url\": \"http://api.github.com/repos/octocat/Hello-World/languages\",\n      \"merges_url\": \"http://api.github.com/repos/octocat/Hello-World/merges\",\n      \"milestones_url\": \"http://api.github.com/repos/octocat/Hello-World/milestones{/number}\",\n      \"notifications_url\": \"http://api.github.com/repos/octocat/Hello-World/notifications{?since,all,participating}\",\n      \"pulls_url\": \"http://api.github.com/repos/octocat/Hello-World/pulls{/number}\",\n      \"releases_url\": \"http://api.github.com/repos/octocat/Hello-World/releases{/id}\",\n      \"ssh_url\": \"git@github.com:octocat/Hello-World.git\",\n      \"stargazers_url\": \"http://api.github.com/repos/octocat/Hello-World/stargazers\",\n      \"statuses_url\": \"http://api.github.com/repos/octocat/Hello-World/statuses/{sha}\",\n      \"subscribers_url\": \"http://api.github.com/repos/octocat/Hello-World/subscribers\",\n      \"subscription_url\": \"http://api.github.com/repos/octocat/Hello-World/subscription\",\n      \"tags_url\": \"http://api.github.com/repos/octocat/Hello-World/tags\",\n      \"teams_url\": \"http://api.github.com/repos/octocat/Hello-World/teams\",\n      \"trees_url\": \"http://api.github.com/repos/octocat/Hello-World/git/trees{/sha}\",\n      \"clone_url\": \"https://github.com/octocat/Hello-World.git\",\n      \"mirror_url\": \"git:git.example.com/octocat/Hello-World\",\n      \"hooks_url\": \"http://api.github.com/repos/octocat/Hello-World/hooks\",\n      \"svn_url\": \"https://svn.github.com/octocat/Hello-World\",\n      \"homepage\": \"https://github.com\",\n      \"language\": null,\n      \"forks_count\": 9,\n      \"stargazers_count\": 80,\n      \"watchers_count\": 80,\n      \"size\": 108,\n      \"default_branch\": \"master\",\n      \"open_issues_count\": 0,\n      \"is_template\": true,\n      \"topics\": [\n        \"octocat\",\n        \"atom\",\n        \"electron\",\n        \"api\"\n      ],\n      \"has_issues\": true,\n      \"has_projects\": true,\n      \"has_wiki\": true,\n      \"has_pages\": false,\n      \"has_downloads\": true,\n      \"archived\": false,\n      \"disabled\": false,\n      \"visibility\": \"public\",\n      \"pushed_at\": \"2011-01-26T19:06:43Z\",\n      \"created_at\": \"2011-01-26T19:01:12Z\",\n      \"updated_at\": \"2011-01-26T19:14:43Z\",\n      \"permissions\": {\n        \"admin\": false,\n        \"push\": false,\n        \"pull\": true\n      },\n      \"allow_rebase_merge\": true,\n      \"template_repository\": null,\n      \"temp_clone_token\": \"ABTLWHOULUVAXGTRYU7OC2876QJ2O\",\n      \"allow_squash_merge\": true,\n      \"delete_branch_on_merge\": true,\n      \"allow_merge_commit\": true,\n      \"subscribers_count\": 42,\n      \"network_count\": 0\n    }\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/orgs/{org}/issues"
+    },
+    "title":"List organization issues assigned to the authenticated user"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/repos/octocat/hello-world/issues\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"issues",
+    "id":"list-repository-issues",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p> <a href=\"#list-repository-issues-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "description":"<p>If an <code>integer</code> is passed, it should refer to a milestone by its <code>number</code> field. If the string <code>*</code> is passed, issues with any milestone are accepted. If the string <code>none</code> is passed, issues without milestones are returned.</p>",
+        "in":"query ",
+        "name":"milestone ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Indicates the state of the issues to return. Can be either <code>open</code>, <code>closed</code>, or <code>all</code>.</p>",
+        "in":"query ",
+        "name":"state ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Can be the name of a user. Pass in <code>none</code> for issues with no assigned user, and <code>*</code> for issues assigned to any user.</p>",
+        "in":"query ",
+        "name":"assignee ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The user that created the issue.</p>",
+        "in":"query ",
+        "name":"creator ",
+        "type":"string "
+      },
+      {
+        "description":"<p>A user that&apos;s mentioned in the issue.</p>",
+        "in":"query ",
+        "name":"mentioned ",
+        "type":"string "
+      },
+      {
+        "description":"<p>A list of comma separated label names. Example: <code>bug,ui,@high</code></p>",
+        "in":"query ",
+        "name":"labels ",
+        "type":"string "
+      },
+      {
+        "description":"<p>What to sort results by. Can be either <code>created</code>, <code>updated</code>, <code>comments</code>.</p>",
+        "in":"query ",
+        "name":"sort ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The direction of the sort. Can be either <code>asc</code> or <code>desc</code>.</p>",
+        "in":"query ",
+        "name":"direction ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Only issues updated at or after this time are returned. This is a timestamp in <a href=\"https://en.wikipedia.org/wiki/ISO_8601\">ISO 8601</a> format: <code>YYYY-MM-DDTHH:MM:SSZ</code>.</p>",
+        "in":"query ",
+        "name":"since ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"id\": 1,\n    \"node_id\": \"MDU6SXNzdWUx\",\n    \"url\": \"https://api.github.com/repos/octocat/Hello-World/issues/1347\",\n    \"repository_url\": \"https://api.github.com/repos/octocat/Hello-World\",\n    \"labels_url\": \"https://api.github.com/repos/octocat/Hello-World/issues/1347/labels{/name}\",\n    \"comments_url\": \"https://api.github.com/repos/octocat/Hello-World/issues/1347/comments\",\n    \"events_url\": \"https://api.github.com/repos/octocat/Hello-World/issues/1347/events\",\n    \"html_url\": \"https://github.com/octocat/Hello-World/issues/1347\",\n    \"number\": 1347,\n    \"state\": \"open\",\n    \"title\": \"Found a bug\",\n    \"body\": \"I'm having a problem with this.\",\n    \"user\": {\n      \"login\": \"octocat\",\n      \"id\": 1,\n      \"node_id\": \"MDQ6VXNlcjE=\",\n      \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n      \"gravatar_id\": \"\",\n      \"url\": \"https://api.github.com/users/octocat\",\n      \"html_url\": \"https://github.com/octocat\",\n      \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n      \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n      \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n      \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n      \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n      \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n      \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n      \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n      \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n      \"type\": \"User\",\n      \"site_admin\": false\n    },\n    \"labels\": [\n      {\n        \"id\": 208045946,\n        \"node_id\": \"MDU6TGFiZWwyMDgwNDU5NDY=\",\n        \"url\": \"https://api.github.com/repos/octocat/Hello-World/labels/bug\",\n        \"name\": \"bug\",\n        \"description\": \"Something isn't working\",\n        \"color\": \"f29513\",\n        \"default\": true\n      }\n    ],\n    \"assignee\": {\n      \"login\": \"octocat\",\n      \"id\": 1,\n      \"node_id\": \"MDQ6VXNlcjE=\",\n      \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n      \"gravatar_id\": \"\",\n      \"url\": \"https://api.github.com/users/octocat\",\n      \"html_url\": \"https://github.com/octocat\",\n      \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n      \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n      \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n      \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n      \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n      \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n      \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n      \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n      \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n      \"type\": \"User\",\n      \"site_admin\": false\n    },\n    \"assignees\": [\n      {\n        \"login\": \"octocat\",\n        \"id\": 1,\n        \"node_id\": \"MDQ6VXNlcjE=\",\n        \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n        \"gravatar_id\": \"\",\n        \"url\": \"https://api.github.com/users/octocat\",\n        \"html_url\": \"https://github.com/octocat\",\n        \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n        \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n        \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n        \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n        \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n        \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n        \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n        \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n        \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n        \"type\": \"User\",\n        \"site_admin\": false\n      }\n    ],\n    \"milestone\": {\n      \"url\": \"https://api.github.com/repos/octocat/Hello-World/milestones/1\",\n      \"html_url\": \"https://github.com/octocat/Hello-World/milestones/v1.0\",\n      \"labels_url\": \"https://api.github.com/repos/octocat/Hello-World/milestones/1/labels\",\n      \"id\": 1002604,\n      \"node_id\": \"MDk6TWlsZXN0b25lMTAwMjYwNA==\",\n      \"number\": 1,\n      \"state\": \"open\",\n      \"title\": \"v1.0\",\n      \"description\": \"Tracking milestone for version 1.0\",\n      \"creator\": {\n        \"login\": \"octocat\",\n        \"id\": 1,\n        \"node_id\": \"MDQ6VXNlcjE=\",\n        \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n        \"gravatar_id\": \"\",\n        \"url\": \"https://api.github.com/users/octocat\",\n        \"html_url\": \"https://github.com/octocat\",\n        \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n        \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n        \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n        \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n        \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n        \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n        \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n        \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n        \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n        \"type\": \"User\",\n        \"site_admin\": false\n      },\n      \"open_issues\": 4,\n      \"closed_issues\": 8,\n      \"created_at\": \"2011-04-10T20:09:31Z\",\n      \"updated_at\": \"2014-03-03T18:58:10Z\",\n      \"closed_at\": \"2013-02-12T13:22:01Z\",\n      \"due_on\": \"2012-10-09T23:39:01Z\"\n    },\n    \"locked\": true,\n    \"active_lock_reason\": \"too heated\",\n    \"comments\": 0,\n    \"pull_request\": {\n      \"url\": \"https://api.github.com/repos/octocat/Hello-World/pulls/1347\",\n      \"html_url\": \"https://github.com/octocat/Hello-World/pull/1347\",\n      \"diff_url\": \"https://github.com/octocat/Hello-World/pull/1347.diff\",\n      \"patch_url\": \"https://github.com/octocat/Hello-World/pull/1347.patch\"\n    },\n    \"closed_at\": null,\n    \"created_at\": \"2011-04-22T13:33:48Z\",\n    \"updated_at\": \"2011-04-22T13:33:48Z\"\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/repos/{owner}/{repo}/issues"
+    },
+    "title":"List repository issues"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X POST \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/repos/octocat/hello-world/issues \\\n  -d '{\"title\":\"title\"}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"issues",
+    "id":"create-an-issue",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "description":"<p><strong>Required</strong>. The title of the issue.</p>",
+        "in":"body ",
+        "name":"title ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The contents of the issue.</p>",
+        "in":"body ",
+        "name":"body ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Login for the user that this issue should be assigned to. <em>NOTE: Only users with push access can set the assignee for new issues. The assignee is silently dropped otherwise. <strong>This field is deprecated.</strong></em></p>",
+        "in":"body ",
+        "name":"assignee ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The <code>number</code> of the milestone to associate this issue with. <em>NOTE: Only users with push access can set the milestone for new issues. The milestone is silently dropped otherwise.</em></p>",
+        "in":"body ",
+        "name":"milestone ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Labels to associate with this issue. <em>NOTE: Only users with push access can set labels for new issues. Labels are silently dropped otherwise.</em></p>",
+        "in":"body ",
+        "name":"labels ",
+        "type":"array of strings "
+      },
+      {
+        "description":"<p>Logins for Users to assign to this issue. <em>NOTE: Only users with push access can set assignees for new issues. Assignees are silently dropped otherwise.</em></p>",
+        "in":"body ",
+        "name":"assignees ",
+        "type":"array of strings "
+      }
+    ],
+    "responses":[
+      {
+        "code":"201 Created",
+        "content":"{\n  \"id\": 1,\n  \"node_id\": \"MDU6SXNzdWUx\",\n  \"url\": \"https://api.github.com/repos/octocat/Hello-World/issues/1347\",\n  \"repository_url\": \"https://api.github.com/repos/octocat/Hello-World\",\n  \"labels_url\": \"https://api.github.com/repos/octocat/Hello-World/issues/1347/labels{/name}\",\n  \"comments_url\": \"https://api.github.com/repos/octocat/Hello-World/issues/1347/comments\",\n  \"events_url\": \"https://api.github.com/repos/octocat/Hello-World/issues/1347/events\",\n  \"html_url\": \"https://github.com/octocat/Hello-World/issues/1347\",\n  \"number\": 1347,\n  \"state\": \"open\",\n  \"title\": \"Found a bug\",\n  \"body\": \"I'm having a problem with this.\",\n  \"user\": {\n    \"login\": \"octocat\",\n    \"id\": 1,\n    \"node_id\": \"MDQ6VXNlcjE=\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/users/octocat\",\n    \"html_url\": \"https://github.com/octocat\",\n    \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n    \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n    \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n    \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n    \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n    \"type\": \"User\",\n    \"site_admin\": false\n  },\n  \"labels\": [\n    {\n      \"id\": 208045946,\n      \"node_id\": \"MDU6TGFiZWwyMDgwNDU5NDY=\",\n      \"url\": \"https://api.github.com/repos/octocat/Hello-World/labels/bug\",\n      \"name\": \"bug\",\n      \"description\": \"Something isn't working\",\n      \"color\": \"f29513\",\n      \"default\": true\n    }\n  ],\n  \"assignee\": {\n    \"login\": \"octocat\",\n    \"id\": 1,\n    \"node_id\": \"MDQ6VXNlcjE=\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/users/octocat\",\n    \"html_url\": \"https://github.com/octocat\",\n    \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n    \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n    \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n    \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n    \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n    \"type\": \"User\",\n    \"site_admin\": false\n  },\n  \"assignees\": [\n    {\n      \"login\": \"octocat\",\n      \"id\": 1,\n      \"node_id\": \"MDQ6VXNlcjE=\",\n      \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n      \"gravatar_id\": \"\",\n      \"url\": \"https://api.github.com/users/octocat\",\n      \"html_url\": \"https://github.com/octocat\",\n      \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n      \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n      \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n      \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n      \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n      \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n      \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n      \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n      \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n      \"type\": \"User\",\n      \"site_admin\": false\n    }\n  ],\n  \"milestone\": {\n    \"url\": \"https://api.github.com/repos/octocat/Hello-World/milestones/1\",\n    \"html_url\": \"https://github.com/octocat/Hello-World/milestones/v1.0\",\n    \"labels_url\": \"https://api.github.com/repos/octocat/Hello-World/milestones/1/labels\",\n    \"id\": 1002604,\n    \"node_id\": \"MDk6TWlsZXN0b25lMTAwMjYwNA==\",\n    \"number\": 1,\n    \"state\": \"open\",\n    \"title\": \"v1.0\",\n    \"description\": \"Tracking milestone for version 1.0\",\n    \"creator\": {\n      \"login\": \"octocat\",\n      \"id\": 1,\n      \"node_id\": \"MDQ6VXNlcjE=\",\n      \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n      \"gravatar_id\": \"\",\n      \"url\": \"https://api.github.com/users/octocat\",\n      \"html_url\": \"https://github.com/octocat\",\n      \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n      \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n      \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n      \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n      \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n      \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n      \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n      \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n      \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n      \"type\": \"User\",\n      \"site_admin\": false\n    },\n    \"open_issues\": 4,\n    \"closed_issues\": 8,\n    \"created_at\": \"2011-04-10T20:09:31Z\",\n    \"updated_at\": \"2014-03-03T18:58:10Z\",\n    \"closed_at\": \"2013-02-12T13:22:01Z\",\n    \"due_on\": \"2012-10-09T23:39:01Z\"\n  },\n  \"locked\": true,\n  \"active_lock_reason\": \"too heated\",\n  \"comments\": 0,\n  \"pull_request\": {\n    \"url\": \"https://api.github.com/repos/octocat/Hello-World/pulls/1347\",\n    \"html_url\": \"https://github.com/octocat/Hello-World/pull/1347\",\n    \"diff_url\": \"https://github.com/octocat/Hello-World/pull/1347.diff\",\n    \"patch_url\": \"https://github.com/octocat/Hello-World/pull/1347.patch\"\n  },\n  \"closed_at\": null,\n  \"created_at\": \"2011-04-22T13:33:48Z\",\n  \"updated_at\": \"2011-04-22T13:33:48Z\",\n  \"closed_by\": {\n    \"login\": \"octocat\",\n    \"id\": 1,\n    \"node_id\": \"MDQ6VXNlcjE=\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/users/octocat\",\n    \"html_url\": \"https://github.com/octocat\",\n    \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n    \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n    \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n    \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n    \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n    \"type\": \"User\",\n    \"site_admin\": false\n  }\n}\n"
+      }
+    ],
+    "target":{
+      "method":"post",
+      "path":"/repos/{owner}/{repo}/issues"
+    },
+    "title":"Create an issue"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/repos/octocat/hello-world/issues/42\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"issues",
+    "id":"get-an-issue",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p> <a href=\"#get-an-issue-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"issue_number ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"id\": 1,\n  \"node_id\": \"MDU6SXNzdWUx\",\n  \"url\": \"https://api.github.com/repos/octocat/Hello-World/issues/1347\",\n  \"repository_url\": \"https://api.github.com/repos/octocat/Hello-World\",\n  \"labels_url\": \"https://api.github.com/repos/octocat/Hello-World/issues/1347/labels{/name}\",\n  \"comments_url\": \"https://api.github.com/repos/octocat/Hello-World/issues/1347/comments\",\n  \"events_url\": \"https://api.github.com/repos/octocat/Hello-World/issues/1347/events\",\n  \"html_url\": \"https://github.com/octocat/Hello-World/issues/1347\",\n  \"number\": 1347,\n  \"state\": \"open\",\n  \"title\": \"Found a bug\",\n  \"body\": \"I'm having a problem with this.\",\n  \"user\": {\n    \"login\": \"octocat\",\n    \"id\": 1,\n    \"node_id\": \"MDQ6VXNlcjE=\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/users/octocat\",\n    \"html_url\": \"https://github.com/octocat\",\n    \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n    \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n    \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n    \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n    \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n    \"type\": \"User\",\n    \"site_admin\": false\n  },\n  \"labels\": [\n    {\n      \"id\": 208045946,\n      \"node_id\": \"MDU6TGFiZWwyMDgwNDU5NDY=\",\n      \"url\": \"https://api.github.com/repos/octocat/Hello-World/labels/bug\",\n      \"name\": \"bug\",\n      \"description\": \"Something isn't working\",\n      \"color\": \"f29513\",\n      \"default\": true\n    }\n  ],\n  \"assignee\": {\n    \"login\": \"octocat\",\n    \"id\": 1,\n    \"node_id\": \"MDQ6VXNlcjE=\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/users/octocat\",\n    \"html_url\": \"https://github.com/octocat\",\n    \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n    \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n    \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n    \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n    \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n    \"type\": \"User\",\n    \"site_admin\": false\n  },\n  \"assignees\": [\n    {\n      \"login\": \"octocat\",\n      \"id\": 1,\n      \"node_id\": \"MDQ6VXNlcjE=\",\n      \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n      \"gravatar_id\": \"\",\n      \"url\": \"https://api.github.com/users/octocat\",\n      \"html_url\": \"https://github.com/octocat\",\n      \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n      \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n      \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n      \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n      \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n      \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n      \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n      \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n      \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n      \"type\": \"User\",\n      \"site_admin\": false\n    }\n  ],\n  \"milestone\": {\n    \"url\": \"https://api.github.com/repos/octocat/Hello-World/milestones/1\",\n    \"html_url\": \"https://github.com/octocat/Hello-World/milestones/v1.0\",\n    \"labels_url\": \"https://api.github.com/repos/octocat/Hello-World/milestones/1/labels\",\n    \"id\": 1002604,\n    \"node_id\": \"MDk6TWlsZXN0b25lMTAwMjYwNA==\",\n    \"number\": 1,\n    \"state\": \"open\",\n    \"title\": \"v1.0\",\n    \"description\": \"Tracking milestone for version 1.0\",\n    \"creator\": {\n      \"login\": \"octocat\",\n      \"id\": 1,\n      \"node_id\": \"MDQ6VXNlcjE=\",\n      \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n      \"gravatar_id\": \"\",\n      \"url\": \"https://api.github.com/users/octocat\",\n      \"html_url\": \"https://github.com/octocat\",\n      \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n      \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n      \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n      \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n      \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n      \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n      \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n      \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n      \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n      \"type\": \"User\",\n      \"site_admin\": false\n    },\n    \"open_issues\": 4,\n    \"closed_issues\": 8,\n    \"created_at\": \"2011-04-10T20:09:31Z\",\n    \"updated_at\": \"2014-03-03T18:58:10Z\",\n    \"closed_at\": \"2013-02-12T13:22:01Z\",\n    \"due_on\": \"2012-10-09T23:39:01Z\"\n  },\n  \"locked\": true,\n  \"active_lock_reason\": \"too heated\",\n  \"comments\": 0,\n  \"pull_request\": {\n    \"url\": \"https://api.github.com/repos/octocat/Hello-World/pulls/1347\",\n    \"html_url\": \"https://github.com/octocat/Hello-World/pull/1347\",\n    \"diff_url\": \"https://github.com/octocat/Hello-World/pull/1347.diff\",\n    \"patch_url\": \"https://github.com/octocat/Hello-World/pull/1347.patch\"\n  },\n  \"closed_at\": null,\n  \"created_at\": \"2011-04-22T13:33:48Z\",\n  \"updated_at\": \"2011-04-22T13:33:48Z\",\n  \"closed_by\": {\n    \"login\": \"octocat\",\n    \"id\": 1,\n    \"node_id\": \"MDQ6VXNlcjE=\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/users/octocat\",\n    \"html_url\": \"https://github.com/octocat\",\n    \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n    \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n    \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n    \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n    \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n    \"type\": \"User\",\n    \"site_admin\": false\n  }\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/repos/{owner}/{repo}/issues/{issue_number}"
+    },
+    "title":"Get an issue"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X PATCH \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/repos/octocat/hello-world/issues/42 \\\n  -d '{\"title\":\"title\"}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"issues",
+    "id":"update-an-issue",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"issue_number ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>The title of the issue.</p>",
+        "in":"body ",
+        "name":"title ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The contents of the issue.</p>",
+        "in":"body ",
+        "name":"body ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Login for the user that this issue should be assigned to. <strong>This field is deprecated.</strong></p>",
+        "in":"body ",
+        "name":"assignee ",
+        "type":"string "
+      },
+      {
+        "description":"<p>State of the issue. Either <code>open</code> or <code>closed</code>.</p>",
+        "in":"body ",
+        "name":"state ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The <code>number</code> of the milestone to associate this issue with or <code>null</code> to remove current. <em>NOTE: Only users with push access can set the milestone for issues. The milestone is silently dropped otherwise.</em></p>",
+        "in":"body ",
+        "name":"milestone ",
+        "type":"integer or null "
+      },
+      {
+        "description":"<p>Labels to associate with this issue. Pass one or more Labels to <em>replace</em> the set of Labels on this Issue. Send an empty array (<code>[]</code>) to clear all Labels from the Issue. <em>NOTE: Only users with push access can set labels for issues. Labels are silently dropped otherwise.</em></p>",
+        "in":"body ",
+        "name":"labels ",
+        "type":"array of strings "
+      },
+      {
+        "description":"<p>Logins for Users to assign to this issue. Pass one or more user logins to <em>replace</em> the set of assignees on this Issue. Send an empty array (<code>[]</code>) to clear all assignees from the Issue. <em>NOTE: Only users with push access can set assignees for new issues. Assignees are silently dropped otherwise.</em></p>",
+        "in":"body ",
+        "name":"assignees ",
+        "type":"array of strings "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"id\": 1,\n  \"node_id\": \"MDU6SXNzdWUx\",\n  \"url\": \"https://api.github.com/repos/octocat/Hello-World/issues/1347\",\n  \"repository_url\": \"https://api.github.com/repos/octocat/Hello-World\",\n  \"labels_url\": \"https://api.github.com/repos/octocat/Hello-World/issues/1347/labels{/name}\",\n  \"comments_url\": \"https://api.github.com/repos/octocat/Hello-World/issues/1347/comments\",\n  \"events_url\": \"https://api.github.com/repos/octocat/Hello-World/issues/1347/events\",\n  \"html_url\": \"https://github.com/octocat/Hello-World/issues/1347\",\n  \"number\": 1347,\n  \"state\": \"open\",\n  \"title\": \"Found a bug\",\n  \"body\": \"I'm having a problem with this.\",\n  \"user\": {\n    \"login\": \"octocat\",\n    \"id\": 1,\n    \"node_id\": \"MDQ6VXNlcjE=\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/users/octocat\",\n    \"html_url\": \"https://github.com/octocat\",\n    \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n    \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n    \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n    \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n    \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n    \"type\": \"User\",\n    \"site_admin\": false\n  },\n  \"labels\": [\n    {\n      \"id\": 208045946,\n      \"node_id\": \"MDU6TGFiZWwyMDgwNDU5NDY=\",\n      \"url\": \"https://api.github.com/repos/octocat/Hello-World/labels/bug\",\n      \"name\": \"bug\",\n      \"description\": \"Something isn't working\",\n      \"color\": \"f29513\",\n      \"default\": true\n    }\n  ],\n  \"assignee\": {\n    \"login\": \"octocat\",\n    \"id\": 1,\n    \"node_id\": \"MDQ6VXNlcjE=\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/users/octocat\",\n    \"html_url\": \"https://github.com/octocat\",\n    \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n    \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n    \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n    \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n    \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n    \"type\": \"User\",\n    \"site_admin\": false\n  },\n  \"assignees\": [\n    {\n      \"login\": \"octocat\",\n      \"id\": 1,\n      \"node_id\": \"MDQ6VXNlcjE=\",\n      \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n      \"gravatar_id\": \"\",\n      \"url\": \"https://api.github.com/users/octocat\",\n      \"html_url\": \"https://github.com/octocat\",\n      \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n      \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n      \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n      \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n      \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n      \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n      \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n      \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n      \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n      \"type\": \"User\",\n      \"site_admin\": false\n    }\n  ],\n  \"milestone\": {\n    \"url\": \"https://api.github.com/repos/octocat/Hello-World/milestones/1\",\n    \"html_url\": \"https://github.com/octocat/Hello-World/milestones/v1.0\",\n    \"labels_url\": \"https://api.github.com/repos/octocat/Hello-World/milestones/1/labels\",\n    \"id\": 1002604,\n    \"node_id\": \"MDk6TWlsZXN0b25lMTAwMjYwNA==\",\n    \"number\": 1,\n    \"state\": \"open\",\n    \"title\": \"v1.0\",\n    \"description\": \"Tracking milestone for version 1.0\",\n    \"creator\": {\n      \"login\": \"octocat\",\n      \"id\": 1,\n      \"node_id\": \"MDQ6VXNlcjE=\",\n      \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n      \"gravatar_id\": \"\",\n      \"url\": \"https://api.github.com/users/octocat\",\n      \"html_url\": \"https://github.com/octocat\",\n      \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n      \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n      \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n      \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n      \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n      \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n      \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n      \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n      \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n      \"type\": \"User\",\n      \"site_admin\": false\n    },\n    \"open_issues\": 4,\n    \"closed_issues\": 8,\n    \"created_at\": \"2011-04-10T20:09:31Z\",\n    \"updated_at\": \"2014-03-03T18:58:10Z\",\n    \"closed_at\": \"2013-02-12T13:22:01Z\",\n    \"due_on\": \"2012-10-09T23:39:01Z\"\n  },\n  \"locked\": true,\n  \"active_lock_reason\": \"too heated\",\n  \"comments\": 0,\n  \"pull_request\": {\n    \"url\": \"https://api.github.com/repos/octocat/Hello-World/pulls/1347\",\n    \"html_url\": \"https://github.com/octocat/Hello-World/pull/1347\",\n    \"diff_url\": \"https://github.com/octocat/Hello-World/pull/1347.diff\",\n    \"patch_url\": \"https://github.com/octocat/Hello-World/pull/1347.patch\"\n  },\n  \"closed_at\": null,\n  \"created_at\": \"2011-04-22T13:33:48Z\",\n  \"updated_at\": \"2011-04-22T13:33:48Z\",\n  \"closed_by\": {\n    \"login\": \"octocat\",\n    \"id\": 1,\n    \"node_id\": \"MDQ6VXNlcjE=\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/users/octocat\",\n    \"html_url\": \"https://github.com/octocat\",\n    \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n    \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n    \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n    \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n    \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n    \"type\": \"User\",\n    \"site_admin\": false\n  }\n}\n"
+      }
+    ],
+    "target":{
+      "method":"patch",
+      "path":"/repos/{owner}/{repo}/issues/{issue_number}"
+    },
+    "title":"Update an issue"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X PUT \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/repos/octocat/hello-world/issues/42/lock \\\n  -d '{\"lock_reason\":\"lock_reason\"}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"issues",
+    "id":"lock-an-issue",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"issue_number ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>The reason for locking the issue or pull request conversation. Lock will fail if you don&apos;t use one of these reasons:<br> * <code>off-topic</code><br> * <code>too heated</code><br> * <code>resolved</code><br> * <code>spam</code></p>",
+        "in":"body ",
+        "name":"lock_reason ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"put",
+      "path":"/repos/{owner}/{repo}/issues/{issue_number}/lock"
+    },
+    "title":"Lock an issue"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X DELETE \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/repos/octocat/hello-world/issues/42/lock\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"issues",
+    "id":"unlock-an-issue",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"issue_number ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"delete",
+      "path":"/repos/{owner}/{repo}/issues/{issue_number}/lock"
+    },
+    "title":"Unlock an issue"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/user/issues\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"issues",
+    "id":"list-user-account-issues-assigned-to-the-authenticated-user",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p> <a href=\"#list-user-account-issues-assigned-to-the-authenticated-user-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Indicates which sorts of issues to return. Can be one of:<br> * <code>assigned</code>: Issues assigned to you<br> * <code>created</code>: Issues created by you<br> * <code>mentioned</code>: Issues mentioning you<br> * <code>subscribed</code>: Issues you&apos;re subscribed to updates for<br> * <code>all</code>: All issues the authenticated user can see, regardless of participation or creation</p>",
+        "in":"query ",
+        "name":"filter ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Indicates the state of the issues to return. Can be either <code>open</code>, <code>closed</code>, or <code>all</code>.</p>",
+        "in":"query ",
+        "name":"state ",
+        "type":"string "
+      },
+      {
+        "description":"<p>A list of comma separated label names. Example: <code>bug,ui,@high</code></p>",
+        "in":"query ",
+        "name":"labels ",
+        "type":"string "
+      },
+      {
+        "description":"<p>What to sort results by. Can be either <code>created</code>, <code>updated</code>, <code>comments</code>.</p>",
+        "in":"query ",
+        "name":"sort ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The direction of the sort. Can be either <code>asc</code> or <code>desc</code>.</p>",
+        "in":"query ",
+        "name":"direction ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Only issues updated at or after this time are returned. This is a timestamp in <a href=\"https://en.wikipedia.org/wiki/ISO_8601\">ISO 8601</a> format: <code>YYYY-MM-DDTHH:MM:SSZ</code>.</p>",
+        "in":"query ",
+        "name":"since ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"id\": 1,\n    \"node_id\": \"MDU6SXNzdWUx\",\n    \"url\": \"https://api.github.com/repos/octocat/Hello-World/issues/1347\",\n    \"repository_url\": \"https://api.github.com/repos/octocat/Hello-World\",\n    \"labels_url\": \"https://api.github.com/repos/octocat/Hello-World/issues/1347/labels{/name}\",\n    \"comments_url\": \"https://api.github.com/repos/octocat/Hello-World/issues/1347/comments\",\n    \"events_url\": \"https://api.github.com/repos/octocat/Hello-World/issues/1347/events\",\n    \"html_url\": \"https://github.com/octocat/Hello-World/issues/1347\",\n    \"number\": 1347,\n    \"state\": \"open\",\n    \"title\": \"Found a bug\",\n    \"body\": \"I'm having a problem with this.\",\n    \"user\": {\n      \"login\": \"octocat\",\n      \"id\": 1,\n      \"node_id\": \"MDQ6VXNlcjE=\",\n      \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n      \"gravatar_id\": \"\",\n      \"url\": \"https://api.github.com/users/octocat\",\n      \"html_url\": \"https://github.com/octocat\",\n      \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n      \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n      \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n      \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n      \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n      \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n      \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n      \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n      \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n      \"type\": \"User\",\n      \"site_admin\": false\n    },\n    \"labels\": [\n      {\n        \"id\": 208045946,\n        \"node_id\": \"MDU6TGFiZWwyMDgwNDU5NDY=\",\n        \"url\": \"https://api.github.com/repos/octocat/Hello-World/labels/bug\",\n        \"name\": \"bug\",\n        \"description\": \"Something isn't working\",\n        \"color\": \"f29513\",\n        \"default\": true\n      }\n    ],\n    \"assignee\": {\n      \"login\": \"octocat\",\n      \"id\": 1,\n      \"node_id\": \"MDQ6VXNlcjE=\",\n      \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n      \"gravatar_id\": \"\",\n      \"url\": \"https://api.github.com/users/octocat\",\n      \"html_url\": \"https://github.com/octocat\",\n      \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n      \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n      \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n      \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n      \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n      \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n      \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n      \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n      \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n      \"type\": \"User\",\n      \"site_admin\": false\n    },\n    \"assignees\": [\n      {\n        \"login\": \"octocat\",\n        \"id\": 1,\n        \"node_id\": \"MDQ6VXNlcjE=\",\n        \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n        \"gravatar_id\": \"\",\n        \"url\": \"https://api.github.com/users/octocat\",\n        \"html_url\": \"https://github.com/octocat\",\n        \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n        \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n        \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n        \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n        \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n        \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n        \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n        \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n        \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n        \"type\": \"User\",\n        \"site_admin\": false\n      }\n    ],\n    \"milestone\": {\n      \"url\": \"https://api.github.com/repos/octocat/Hello-World/milestones/1\",\n      \"html_url\": \"https://github.com/octocat/Hello-World/milestones/v1.0\",\n      \"labels_url\": \"https://api.github.com/repos/octocat/Hello-World/milestones/1/labels\",\n      \"id\": 1002604,\n      \"node_id\": \"MDk6TWlsZXN0b25lMTAwMjYwNA==\",\n      \"number\": 1,\n      \"state\": \"open\",\n      \"title\": \"v1.0\",\n      \"description\": \"Tracking milestone for version 1.0\",\n      \"creator\": {\n        \"login\": \"octocat\",\n        \"id\": 1,\n        \"node_id\": \"MDQ6VXNlcjE=\",\n        \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n        \"gravatar_id\": \"\",\n        \"url\": \"https://api.github.com/users/octocat\",\n        \"html_url\": \"https://github.com/octocat\",\n        \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n        \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n        \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n        \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n        \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n        \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n        \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n        \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n        \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n        \"type\": \"User\",\n        \"site_admin\": false\n      },\n      \"open_issues\": 4,\n      \"closed_issues\": 8,\n      \"created_at\": \"2011-04-10T20:09:31Z\",\n      \"updated_at\": \"2014-03-03T18:58:10Z\",\n      \"closed_at\": \"2013-02-12T13:22:01Z\",\n      \"due_on\": \"2012-10-09T23:39:01Z\"\n    },\n    \"locked\": true,\n    \"active_lock_reason\": \"too heated\",\n    \"comments\": 0,\n    \"pull_request\": {\n      \"url\": \"https://api.github.com/repos/octocat/Hello-World/pulls/1347\",\n      \"html_url\": \"https://github.com/octocat/Hello-World/pull/1347\",\n      \"diff_url\": \"https://github.com/octocat/Hello-World/pull/1347.diff\",\n      \"patch_url\": \"https://github.com/octocat/Hello-World/pull/1347.patch\"\n    },\n    \"closed_at\": null,\n    \"created_at\": \"2011-04-22T13:33:48Z\",\n    \"updated_at\": \"2011-04-22T13:33:48Z\",\n    \"repository\": {\n      \"id\": 1296269,\n      \"node_id\": \"MDEwOlJlcG9zaXRvcnkxMjk2MjY5\",\n      \"name\": \"Hello-World\",\n      \"full_name\": \"octocat/Hello-World\",\n      \"owner\": {\n        \"login\": \"octocat\",\n        \"id\": 1,\n        \"node_id\": \"MDQ6VXNlcjE=\",\n        \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n        \"gravatar_id\": \"\",\n        \"url\": \"https://api.github.com/users/octocat\",\n        \"html_url\": \"https://github.com/octocat\",\n        \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n        \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n        \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n        \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n        \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n        \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n        \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n        \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n        \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n        \"type\": \"User\",\n        \"site_admin\": false\n      },\n      \"private\": false,\n      \"html_url\": \"https://github.com/octocat/Hello-World\",\n      \"description\": \"This your first repo!\",\n      \"fork\": false,\n      \"url\": \"https://api.github.com/repos/octocat/Hello-World\",\n      \"archive_url\": \"http://api.github.com/repos/octocat/Hello-World/{archive_format}{/ref}\",\n      \"assignees_url\": \"http://api.github.com/repos/octocat/Hello-World/assignees{/user}\",\n      \"blobs_url\": \"http://api.github.com/repos/octocat/Hello-World/git/blobs{/sha}\",\n      \"branches_url\": \"http://api.github.com/repos/octocat/Hello-World/branches{/branch}\",\n      \"collaborators_url\": \"http://api.github.com/repos/octocat/Hello-World/collaborators{/collaborator}\",\n      \"comments_url\": \"http://api.github.com/repos/octocat/Hello-World/comments{/number}\",\n      \"commits_url\": \"http://api.github.com/repos/octocat/Hello-World/commits{/sha}\",\n      \"compare_url\": \"http://api.github.com/repos/octocat/Hello-World/compare/{base}...{head}\",\n      \"contents_url\": \"http://api.github.com/repos/octocat/Hello-World/contents/{+path}\",\n      \"contributors_url\": \"http://api.github.com/repos/octocat/Hello-World/contributors\",\n      \"deployments_url\": \"http://api.github.com/repos/octocat/Hello-World/deployments\",\n      \"downloads_url\": \"http://api.github.com/repos/octocat/Hello-World/downloads\",\n      \"events_url\": \"http://api.github.com/repos/octocat/Hello-World/events\",\n      \"forks_url\": \"http://api.github.com/repos/octocat/Hello-World/forks\",\n      \"git_commits_url\": \"http://api.github.com/repos/octocat/Hello-World/git/commits{/sha}\",\n      \"git_refs_url\": \"http://api.github.com/repos/octocat/Hello-World/git/refs{/sha}\",\n      \"git_tags_url\": \"http://api.github.com/repos/octocat/Hello-World/git/tags{/sha}\",\n      \"git_url\": \"git:github.com/octocat/Hello-World.git\",\n      \"issue_comment_url\": \"http://api.github.com/repos/octocat/Hello-World/issues/comments{/number}\",\n      \"issue_events_url\": \"http://api.github.com/repos/octocat/Hello-World/issues/events{/number}\",\n      \"issues_url\": \"http://api.github.com/repos/octocat/Hello-World/issues{/number}\",\n      \"keys_url\": \"http://api.github.com/repos/octocat/Hello-World/keys{/key_id}\",\n      \"labels_url\": \"http://api.github.com/repos/octocat/Hello-World/labels{/name}\",\n      \"languages_url\": \"http://api.github.com/repos/octocat/Hello-World/languages\",\n      \"merges_url\": \"http://api.github.com/repos/octocat/Hello-World/merges\",\n      \"milestones_url\": \"http://api.github.com/repos/octocat/Hello-World/milestones{/number}\",\n      \"notifications_url\": \"http://api.github.com/repos/octocat/Hello-World/notifications{?since,all,participating}\",\n      \"pulls_url\": \"http://api.github.com/repos/octocat/Hello-World/pulls{/number}\",\n      \"releases_url\": \"http://api.github.com/repos/octocat/Hello-World/releases{/id}\",\n      \"ssh_url\": \"git@github.com:octocat/Hello-World.git\",\n      \"stargazers_url\": \"http://api.github.com/repos/octocat/Hello-World/stargazers\",\n      \"statuses_url\": \"http://api.github.com/repos/octocat/Hello-World/statuses/{sha}\",\n      \"subscribers_url\": \"http://api.github.com/repos/octocat/Hello-World/subscribers\",\n      \"subscription_url\": \"http://api.github.com/repos/octocat/Hello-World/subscription\",\n      \"tags_url\": \"http://api.github.com/repos/octocat/Hello-World/tags\",\n      \"teams_url\": \"http://api.github.com/repos/octocat/Hello-World/teams\",\n      \"trees_url\": \"http://api.github.com/repos/octocat/Hello-World/git/trees{/sha}\",\n      \"clone_url\": \"https://github.com/octocat/Hello-World.git\",\n      \"mirror_url\": \"git:git.example.com/octocat/Hello-World\",\n      \"hooks_url\": \"http://api.github.com/repos/octocat/Hello-World/hooks\",\n      \"svn_url\": \"https://svn.github.com/octocat/Hello-World\",\n      \"homepage\": \"https://github.com\",\n      \"language\": null,\n      \"forks_count\": 9,\n      \"stargazers_count\": 80,\n      \"watchers_count\": 80,\n      \"size\": 108,\n      \"default_branch\": \"master\",\n      \"open_issues_count\": 0,\n      \"is_template\": true,\n      \"topics\": [\n        \"octocat\",\n        \"atom\",\n        \"electron\",\n        \"api\"\n      ],\n      \"has_issues\": true,\n      \"has_projects\": true,\n      \"has_wiki\": true,\n      \"has_pages\": false,\n      \"has_downloads\": true,\n      \"archived\": false,\n      \"disabled\": false,\n      \"visibility\": \"public\",\n      \"pushed_at\": \"2011-01-26T19:06:43Z\",\n      \"created_at\": \"2011-01-26T19:01:12Z\",\n      \"updated_at\": \"2011-01-26T19:14:43Z\",\n      \"permissions\": {\n        \"admin\": false,\n        \"push\": false,\n        \"pull\": true\n      },\n      \"allow_rebase_merge\": true,\n      \"template_repository\": null,\n      \"temp_clone_token\": \"ABTLWHOULUVAXGTRYU7OC2876QJ2O\",\n      \"allow_squash_merge\": true,\n      \"delete_branch_on_merge\": true,\n      \"allow_merge_commit\": true,\n      \"subscribers_count\": 42,\n      \"network_count\": 0\n    }\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/user/issues"
+    },
+    "title":"List user account issues assigned to the authenticated user"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/repos/octocat/hello-world/assignees\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"issues",
+    "id":"list-assignees",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"login\": \"octocat\",\n    \"id\": 1,\n    \"node_id\": \"MDQ6VXNlcjE=\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/users/octocat\",\n    \"html_url\": \"https://github.com/octocat\",\n    \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n    \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n    \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n    \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n    \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n    \"type\": \"User\",\n    \"site_admin\": false\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/repos/{owner}/{repo}/assignees"
+    },
+    "title":"List assignees"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/repos/octocat/hello-world/assignees/ASSIGNEE\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"issues",
+    "id":"check-if-a-user-can-be-assigned",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"assignee ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      },
+      {
+        "code":"404 Not Found"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/repos/{owner}/{repo}/assignees/{assignee}"
+    },
+    "title":"Check if a user can be assigned"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X POST \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/repos/octocat/hello-world/issues/42/assignees \\\n  -d '{\"assignees\":[\"assignees\"]}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"issues",
+    "id":"add-assignees-to-an-issue",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"issue_number ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Usernames of people to assign this issue to. <em>NOTE: Only users with push access can add assignees to an issue. Assignees are silently ignored otherwise.</em></p>",
+        "in":"body ",
+        "name":"assignees ",
+        "type":"array of strings "
+      }
+    ],
+    "responses":[
+      {
+        "code":"201 Created",
+        "content":"{\n  \"id\": 1,\n  \"node_id\": \"MDU6SXNzdWUx\",\n  \"url\": \"https://api.github.com/repos/octocat/Hello-World/issues/1347\",\n  \"repository_url\": \"https://api.github.com/repos/octocat/Hello-World\",\n  \"labels_url\": \"https://api.github.com/repos/octocat/Hello-World/issues/1347/labels{/name}\",\n  \"comments_url\": \"https://api.github.com/repos/octocat/Hello-World/issues/1347/comments\",\n  \"events_url\": \"https://api.github.com/repos/octocat/Hello-World/issues/1347/events\",\n  \"html_url\": \"https://github.com/octocat/Hello-World/issues/1347\",\n  \"number\": 1347,\n  \"state\": \"open\",\n  \"title\": \"Found a bug\",\n  \"body\": \"I'm having a problem with this.\",\n  \"user\": {\n    \"login\": \"octocat\",\n    \"id\": 1,\n    \"node_id\": \"MDQ6VXNlcjE=\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/users/octocat\",\n    \"html_url\": \"https://github.com/octocat\",\n    \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n    \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n    \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n    \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n    \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n    \"type\": \"User\",\n    \"site_admin\": false\n  },\n  \"labels\": [\n    {\n      \"id\": 208045946,\n      \"node_id\": \"MDU6TGFiZWwyMDgwNDU5NDY=\",\n      \"url\": \"https://api.github.com/repos/octocat/Hello-World/labels/bug\",\n      \"name\": \"bug\",\n      \"description\": \"Something isn't working\",\n      \"color\": \"f29513\",\n      \"default\": true\n    }\n  ],\n  \"assignee\": {\n    \"login\": \"octocat\",\n    \"id\": 1,\n    \"node_id\": \"MDQ6VXNlcjE=\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/users/octocat\",\n    \"html_url\": \"https://github.com/octocat\",\n    \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n    \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n    \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n    \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n    \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n    \"type\": \"User\",\n    \"site_admin\": false\n  },\n  \"assignees\": [\n    {\n      \"login\": \"octocat\",\n      \"id\": 1,\n      \"node_id\": \"MDQ6VXNlcjE=\",\n      \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n      \"gravatar_id\": \"\",\n      \"url\": \"https://api.github.com/users/octocat\",\n      \"html_url\": \"https://github.com/octocat\",\n      \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n      \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n      \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n      \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n      \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n      \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n      \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n      \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n      \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n      \"type\": \"User\",\n      \"site_admin\": false\n    },\n    {\n      \"login\": \"hubot\",\n      \"id\": 1,\n      \"node_id\": \"MDQ6VXNlcjE=\",\n      \"avatar_url\": \"https://github.com/images/error/hubot_happy.gif\",\n      \"gravatar_id\": \"\",\n      \"url\": \"https://api.github.com/users/hubot\",\n      \"html_url\": \"https://github.com/hubot\",\n      \"followers_url\": \"https://api.github.com/users/hubot/followers\",\n      \"following_url\": \"https://api.github.com/users/hubot/following{/other_user}\",\n      \"gists_url\": \"https://api.github.com/users/hubot/gists{/gist_id}\",\n      \"starred_url\": \"https://api.github.com/users/hubot/starred{/owner}{/repo}\",\n      \"subscriptions_url\": \"https://api.github.com/users/hubot/subscriptions\",\n      \"organizations_url\": \"https://api.github.com/users/hubot/orgs\",\n      \"repos_url\": \"https://api.github.com/users/hubot/repos\",\n      \"events_url\": \"https://api.github.com/users/hubot/events{/privacy}\",\n      \"received_events_url\": \"https://api.github.com/users/hubot/received_events\",\n      \"type\": \"User\",\n      \"site_admin\": true\n    },\n    {\n      \"login\": \"other_user\",\n      \"id\": 1,\n      \"node_id\": \"MDQ6VXNlcjE=\",\n      \"avatar_url\": \"https://github.com/images/error/other_user_happy.gif\",\n      \"gravatar_id\": \"\",\n      \"url\": \"https://api.github.com/users/other_user\",\n      \"html_url\": \"https://github.com/other_user\",\n      \"followers_url\": \"https://api.github.com/users/other_user/followers\",\n      \"following_url\": \"https://api.github.com/users/other_user/following{/other_user}\",\n      \"gists_url\": \"https://api.github.com/users/other_user/gists{/gist_id}\",\n      \"starred_url\": \"https://api.github.com/users/other_user/starred{/owner}{/repo}\",\n      \"subscriptions_url\": \"https://api.github.com/users/other_user/subscriptions\",\n      \"organizations_url\": \"https://api.github.com/users/other_user/orgs\",\n      \"repos_url\": \"https://api.github.com/users/other_user/repos\",\n      \"events_url\": \"https://api.github.com/users/other_user/events{/privacy}\",\n      \"received_events_url\": \"https://api.github.com/users/other_user/received_events\",\n      \"type\": \"User\",\n      \"site_admin\": false\n    }\n  ],\n  \"milestone\": {\n    \"url\": \"https://api.github.com/repos/octocat/Hello-World/milestones/1\",\n    \"html_url\": \"https://github.com/octocat/Hello-World/milestones/v1.0\",\n    \"labels_url\": \"https://api.github.com/repos/octocat/Hello-World/milestones/1/labels\",\n    \"id\": 1002604,\n    \"node_id\": \"MDk6TWlsZXN0b25lMTAwMjYwNA==\",\n    \"number\": 1,\n    \"state\": \"open\",\n    \"title\": \"v1.0\",\n    \"description\": \"Tracking milestone for version 1.0\",\n    \"creator\": {\n      \"login\": \"octocat\",\n      \"id\": 1,\n      \"node_id\": \"MDQ6VXNlcjE=\",\n      \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n      \"gravatar_id\": \"\",\n      \"url\": \"https://api.github.com/users/octocat\",\n      \"html_url\": \"https://github.com/octocat\",\n      \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n      \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n      \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n      \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n      \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n      \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n      \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n      \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n      \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n      \"type\": \"User\",\n      \"site_admin\": false\n    },\n    \"open_issues\": 4,\n    \"closed_issues\": 8,\n    \"created_at\": \"2011-04-10T20:09:31Z\",\n    \"updated_at\": \"2014-03-03T18:58:10Z\",\n    \"closed_at\": \"2013-02-12T13:22:01Z\",\n    \"due_on\": \"2012-10-09T23:39:01Z\"\n  },\n  \"locked\": true,\n  \"active_lock_reason\": \"too heated\",\n  \"comments\": 0,\n  \"pull_request\": {\n    \"url\": \"https://api.github.com/repos/octocat/Hello-World/pulls/1347\",\n    \"html_url\": \"https://github.com/octocat/Hello-World/pull/1347\",\n    \"diff_url\": \"https://github.com/octocat/Hello-World/pull/1347.diff\",\n    \"patch_url\": \"https://github.com/octocat/Hello-World/pull/1347.patch\"\n  },\n  \"closed_at\": null,\n  \"created_at\": \"2011-04-22T13:33:48Z\",\n  \"updated_at\": \"2011-04-22T13:33:48Z\"\n}\n"
+      }
+    ],
+    "target":{
+      "method":"post",
+      "path":"/repos/{owner}/{repo}/issues/{issue_number}/assignees"
+    },
+    "title":"Add assignees to an issue"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X DELETE \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/repos/octocat/hello-world/issues/42/assignees \\\n  -d '{\"assignees\":[\"assignees\"]}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"issues",
+    "id":"remove-assignees-from-an-issue",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"issue_number ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Usernames of assignees to remove from an issue. <em>NOTE: Only users with push access can remove assignees from an issue. Assignees are silently ignored otherwise.</em></p>",
+        "in":"body ",
+        "name":"assignees ",
+        "type":"array of strings "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"id\": 1,\n  \"node_id\": \"MDU6SXNzdWUx\",\n  \"url\": \"https://api.github.com/repos/octocat/Hello-World/issues/1347\",\n  \"repository_url\": \"https://api.github.com/repos/octocat/Hello-World\",\n  \"labels_url\": \"https://api.github.com/repos/octocat/Hello-World/issues/1347/labels{/name}\",\n  \"comments_url\": \"https://api.github.com/repos/octocat/Hello-World/issues/1347/comments\",\n  \"events_url\": \"https://api.github.com/repos/octocat/Hello-World/issues/1347/events\",\n  \"html_url\": \"https://github.com/octocat/Hello-World/issues/1347\",\n  \"number\": 1347,\n  \"state\": \"open\",\n  \"title\": \"Found a bug\",\n  \"body\": \"I'm having a problem with this.\",\n  \"user\": {\n    \"login\": \"octocat\",\n    \"id\": 1,\n    \"node_id\": \"MDQ6VXNlcjE=\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/users/octocat\",\n    \"html_url\": \"https://github.com/octocat\",\n    \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n    \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n    \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n    \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n    \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n    \"type\": \"User\",\n    \"site_admin\": false\n  },\n  \"labels\": [\n    {\n      \"id\": 208045946,\n      \"node_id\": \"MDU6TGFiZWwyMDgwNDU5NDY=\",\n      \"url\": \"https://api.github.com/repos/octocat/Hello-World/labels/bug\",\n      \"name\": \"bug\",\n      \"description\": \"Something isn't working\",\n      \"color\": \"f29513\",\n      \"default\": true\n    }\n  ],\n  \"assignee\": {\n    \"login\": \"octocat\",\n    \"id\": 1,\n    \"node_id\": \"MDQ6VXNlcjE=\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/users/octocat\",\n    \"html_url\": \"https://github.com/octocat\",\n    \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n    \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n    \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n    \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n    \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n    \"type\": \"User\",\n    \"site_admin\": false\n  },\n  \"assignees\": [\n    {\n      \"login\": \"octocat\",\n      \"id\": 1,\n      \"node_id\": \"MDQ6VXNlcjE=\",\n      \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n      \"gravatar_id\": \"\",\n      \"url\": \"https://api.github.com/users/octocat\",\n      \"html_url\": \"https://github.com/octocat\",\n      \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n      \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n      \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n      \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n      \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n      \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n      \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n      \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n      \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n      \"type\": \"User\",\n      \"site_admin\": false\n    }\n  ],\n  \"milestone\": {\n    \"url\": \"https://api.github.com/repos/octocat/Hello-World/milestones/1\",\n    \"html_url\": \"https://github.com/octocat/Hello-World/milestones/v1.0\",\n    \"labels_url\": \"https://api.github.com/repos/octocat/Hello-World/milestones/1/labels\",\n    \"id\": 1002604,\n    \"node_id\": \"MDk6TWlsZXN0b25lMTAwMjYwNA==\",\n    \"number\": 1,\n    \"state\": \"open\",\n    \"title\": \"v1.0\",\n    \"description\": \"Tracking milestone for version 1.0\",\n    \"creator\": {\n      \"login\": \"octocat\",\n      \"id\": 1,\n      \"node_id\": \"MDQ6VXNlcjE=\",\n      \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n      \"gravatar_id\": \"\",\n      \"url\": \"https://api.github.com/users/octocat\",\n      \"html_url\": \"https://github.com/octocat\",\n      \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n      \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n      \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n      \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n      \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n      \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n      \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n      \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n      \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n      \"type\": \"User\",\n      \"site_admin\": false\n    },\n    \"open_issues\": 4,\n    \"closed_issues\": 8,\n    \"created_at\": \"2011-04-10T20:09:31Z\",\n    \"updated_at\": \"2014-03-03T18:58:10Z\",\n    \"closed_at\": \"2013-02-12T13:22:01Z\",\n    \"due_on\": \"2012-10-09T23:39:01Z\"\n  },\n  \"locked\": true,\n  \"active_lock_reason\": \"too heated\",\n  \"comments\": 0,\n  \"pull_request\": {\n    \"url\": \"https://api.github.com/repos/octocat/Hello-World/pulls/1347\",\n    \"html_url\": \"https://github.com/octocat/Hello-World/pull/1347\",\n    \"diff_url\": \"https://github.com/octocat/Hello-World/pull/1347.diff\",\n    \"patch_url\": \"https://github.com/octocat/Hello-World/pull/1347.patch\"\n  },\n  \"closed_at\": null,\n  \"created_at\": \"2011-04-22T13:33:48Z\",\n  \"updated_at\": \"2011-04-22T13:33:48Z\"\n}\n"
+      }
+    ],
+    "target":{
+      "method":"delete",
+      "path":"/repos/{owner}/{repo}/issues/{issue_number}/assignees"
+    },
+    "title":"Remove assignees from an issue"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/repos/octocat/hello-world/issues/comments\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"issues",
+    "id":"list-issue-comments-for-a-repository",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p> <a href=\"#list-issue-comments-for-a-repository-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Either <code>created</code> or <code>updated</code>.</p>",
+        "in":"query ",
+        "name":"sort ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Either <code>asc</code> or <code>desc</code>. Ignored without the <code>sort</code> parameter.</p>",
+        "in":"query ",
+        "name":"direction ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Only comments updated at or after this time are returned. This is a timestamp in <a href=\"https://en.wikipedia.org/wiki/ISO_8601\">ISO 8601</a> format: <code>YYYY-MM-DDTHH:MM:SSZ</code>.</p>",
+        "in":"query ",
+        "name":"since ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"id\": 1,\n    \"node_id\": \"MDEyOklzc3VlQ29tbWVudDE=\",\n    \"url\": \"https://api.github.com/repos/octocat/Hello-World/issues/comments/1\",\n    \"html_url\": \"https://github.com/octocat/Hello-World/issues/1347#issuecomment-1\",\n    \"body\": \"Me too\",\n    \"user\": {\n      \"login\": \"octocat\",\n      \"id\": 1,\n      \"node_id\": \"MDQ6VXNlcjE=\",\n      \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n      \"gravatar_id\": \"\",\n      \"url\": \"https://api.github.com/users/octocat\",\n      \"html_url\": \"https://github.com/octocat\",\n      \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n      \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n      \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n      \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n      \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n      \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n      \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n      \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n      \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n      \"type\": \"User\",\n      \"site_admin\": false\n    },\n    \"created_at\": \"2011-04-14T16:00:49Z\",\n    \"updated_at\": \"2011-04-14T16:00:49Z\"\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/repos/{owner}/{repo}/issues/comments"
+    },
+    "title":"List issue comments for a repository"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/repos/octocat/hello-world/issues/comments/42\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"issues",
+    "id":"get-an-issue-comment",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p> <a href=\"#get-an-issue-comment-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"comment_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"id\": 1,\n  \"node_id\": \"MDEyOklzc3VlQ29tbWVudDE=\",\n  \"url\": \"https://api.github.com/repos/octocat/Hello-World/issues/comments/1\",\n  \"html_url\": \"https://github.com/octocat/Hello-World/issues/1347#issuecomment-1\",\n  \"body\": \"Me too\",\n  \"user\": {\n    \"login\": \"octocat\",\n    \"id\": 1,\n    \"node_id\": \"MDQ6VXNlcjE=\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/users/octocat\",\n    \"html_url\": \"https://github.com/octocat\",\n    \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n    \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n    \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n    \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n    \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n    \"type\": \"User\",\n    \"site_admin\": false\n  },\n  \"created_at\": \"2011-04-14T16:00:49Z\",\n  \"updated_at\": \"2011-04-14T16:00:49Z\"\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/repos/{owner}/{repo}/issues/comments/{comment_id}"
+    },
+    "title":"Get an issue comment"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X PATCH \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/repos/octocat/hello-world/issues/comments/42 \\\n  -d '{\"body\":\"body\"}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"issues",
+    "id":"update-an-issue-comment",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"comment_id ",
+        "type":"integer "
+      },
+      {
+        "description":"<p><strong>Required</strong>. The contents of the comment.</p>",
+        "in":"body ",
+        "name":"body ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"id\": 1,\n  \"node_id\": \"MDEyOklzc3VlQ29tbWVudDE=\",\n  \"url\": \"https://api.github.com/repos/octocat/Hello-World/issues/comments/1\",\n  \"html_url\": \"https://github.com/octocat/Hello-World/issues/1347#issuecomment-1\",\n  \"body\": \"Me too\",\n  \"user\": {\n    \"login\": \"octocat\",\n    \"id\": 1,\n    \"node_id\": \"MDQ6VXNlcjE=\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/users/octocat\",\n    \"html_url\": \"https://github.com/octocat\",\n    \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n    \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n    \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n    \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n    \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n    \"type\": \"User\",\n    \"site_admin\": false\n  },\n  \"created_at\": \"2011-04-14T16:00:49Z\",\n  \"updated_at\": \"2011-04-14T16:00:49Z\"\n}\n"
+      }
+    ],
+    "target":{
+      "method":"patch",
+      "path":"/repos/{owner}/{repo}/issues/comments/{comment_id}"
+    },
+    "title":"Update an issue comment"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X DELETE \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/repos/octocat/hello-world/issues/comments/42\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"issues",
+    "id":"delete-an-issue-comment",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"comment_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"delete",
+      "path":"/repos/{owner}/{repo}/issues/comments/{comment_id}"
+    },
+    "title":"Delete an issue comment"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/repos/octocat/hello-world/issues/42/comments\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"issues",
+    "id":"list-issue-comments",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p> <a href=\"#list-issue-comments-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"issue_number ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Only comments updated at or after this time are returned. This is a timestamp in <a href=\"https://en.wikipedia.org/wiki/ISO_8601\">ISO 8601</a> format: <code>YYYY-MM-DDTHH:MM:SSZ</code>.</p>",
+        "in":"query ",
+        "name":"since ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"id\": 1,\n    \"node_id\": \"MDEyOklzc3VlQ29tbWVudDE=\",\n    \"url\": \"https://api.github.com/repos/octocat/Hello-World/issues/comments/1\",\n    \"html_url\": \"https://github.com/octocat/Hello-World/issues/1347#issuecomment-1\",\n    \"body\": \"Me too\",\n    \"user\": {\n      \"login\": \"octocat\",\n      \"id\": 1,\n      \"node_id\": \"MDQ6VXNlcjE=\",\n      \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n      \"gravatar_id\": \"\",\n      \"url\": \"https://api.github.com/users/octocat\",\n      \"html_url\": \"https://github.com/octocat\",\n      \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n      \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n      \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n      \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n      \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n      \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n      \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n      \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n      \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n      \"type\": \"User\",\n      \"site_admin\": false\n    },\n    \"created_at\": \"2011-04-14T16:00:49Z\",\n    \"updated_at\": \"2011-04-14T16:00:49Z\"\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/repos/{owner}/{repo}/issues/{issue_number}/comments"
+    },
+    "title":"List issue comments"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X POST \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/repos/octocat/hello-world/issues/42/comments \\\n  -d '{\"body\":\"body\"}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"issues",
+    "id":"create-an-issue-comment",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"issue_number ",
+        "type":"integer "
+      },
+      {
+        "description":"<p><strong>Required</strong>. The contents of the comment.</p>",
+        "in":"body ",
+        "name":"body ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"201 Created",
+        "content":"{\n  \"id\": 1,\n  \"node_id\": \"MDEyOklzc3VlQ29tbWVudDE=\",\n  \"url\": \"https://api.github.com/repos/octocat/Hello-World/issues/comments/1\",\n  \"html_url\": \"https://github.com/octocat/Hello-World/issues/1347#issuecomment-1\",\n  \"body\": \"Me too\",\n  \"user\": {\n    \"login\": \"octocat\",\n    \"id\": 1,\n    \"node_id\": \"MDQ6VXNlcjE=\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/users/octocat\",\n    \"html_url\": \"https://github.com/octocat\",\n    \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n    \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n    \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n    \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n    \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n    \"type\": \"User\",\n    \"site_admin\": false\n  },\n  \"created_at\": \"2011-04-14T16:00:49Z\",\n  \"updated_at\": \"2011-04-14T16:00:49Z\"\n}\n"
+      }
+    ],
+    "target":{
+      "method":"post",
+      "path":"/repos/{owner}/{repo}/issues/{issue_number}/comments"
+    },
+    "title":"Create an issue comment"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/repos/octocat/hello-world/issues/events\n",
+        "type":"Shell"
+      },
+      {
+        "content":"application/vnd.github.starfox-preview+json\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"issues",
+    "id":"list-issue-events-for-a-repository",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p> <a href=\"#list-issue-events-for-a-repository-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"id\": 1,\n    \"node_id\": \"MDEwOklzc3VlRXZlbnQx\",\n    \"url\": \"https://api.github.com/repos/octocat/Hello-World/issues/events/1\",\n    \"actor\": {\n      \"login\": \"octocat\",\n      \"id\": 1,\n      \"node_id\": \"MDQ6VXNlcjE=\",\n      \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n      \"gravatar_id\": \"\",\n      \"url\": \"https://api.github.com/users/octocat\",\n      \"html_url\": \"https://github.com/octocat\",\n      \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n      \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n      \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n      \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n      \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n      \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n      \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n      \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n      \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n      \"type\": \"User\",\n      \"site_admin\": false\n    },\n    \"event\": \"closed\",\n    \"commit_id\": \"6dcb09b5b57875f334f61aebed695e2e4193db5e\",\n    \"commit_url\": \"https://api.github.com/repos/octocat/Hello-World/commits/6dcb09b5b57875f334f61aebed695e2e4193db5e\",\n    \"created_at\": \"2011-04-14T16:00:49Z\",\n    \"issue\": {\n      \"id\": 1,\n      \"node_id\": \"MDU6SXNzdWUx\",\n      \"url\": \"https://api.github.com/repos/octocat/Hello-World/issues/1347\",\n      \"repository_url\": \"https://api.github.com/repos/octocat/Hello-World\",\n      \"labels_url\": \"https://api.github.com/repos/octocat/Hello-World/issues/1347/labels{/name}\",\n      \"comments_url\": \"https://api.github.com/repos/octocat/Hello-World/issues/1347/comments\",\n      \"events_url\": \"https://api.github.com/repos/octocat/Hello-World/issues/1347/events\",\n      \"html_url\": \"https://github.com/octocat/Hello-World/issues/1347\",\n      \"number\": 1347,\n      \"state\": \"open\",\n      \"title\": \"Found a bug\",\n      \"body\": \"I'm having a problem with this.\",\n      \"user\": {\n        \"login\": \"octocat\",\n        \"id\": 1,\n        \"node_id\": \"MDQ6VXNlcjE=\",\n        \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n        \"gravatar_id\": \"\",\n        \"url\": \"https://api.github.com/users/octocat\",\n        \"html_url\": \"https://github.com/octocat\",\n        \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n        \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n        \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n        \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n        \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n        \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n        \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n        \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n        \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n        \"type\": \"User\",\n        \"site_admin\": false\n      },\n      \"labels\": [\n        {\n          \"id\": 208045946,\n          \"node_id\": \"MDU6TGFiZWwyMDgwNDU5NDY=\",\n          \"url\": \"https://api.github.com/repos/octocat/Hello-World/labels/bug\",\n          \"name\": \"bug\",\n          \"description\": \"Something isn't working\",\n          \"color\": \"f29513\",\n          \"default\": true\n        }\n      ],\n      \"assignee\": {\n        \"login\": \"octocat\",\n        \"id\": 1,\n        \"node_id\": \"MDQ6VXNlcjE=\",\n        \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n        \"gravatar_id\": \"\",\n        \"url\": \"https://api.github.com/users/octocat\",\n        \"html_url\": \"https://github.com/octocat\",\n        \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n        \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n        \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n        \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n        \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n        \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n        \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n        \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n        \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n        \"type\": \"User\",\n        \"site_admin\": false\n      },\n      \"assignees\": [\n        {\n          \"login\": \"octocat\",\n          \"id\": 1,\n          \"node_id\": \"MDQ6VXNlcjE=\",\n          \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n          \"gravatar_id\": \"\",\n          \"url\": \"https://api.github.com/users/octocat\",\n          \"html_url\": \"https://github.com/octocat\",\n          \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n          \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n          \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n          \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n          \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n          \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n          \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n          \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n          \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n          \"type\": \"User\",\n          \"site_admin\": false\n        }\n      ],\n      \"milestone\": {\n        \"url\": \"https://api.github.com/repos/octocat/Hello-World/milestones/1\",\n        \"html_url\": \"https://github.com/octocat/Hello-World/milestones/v1.0\",\n        \"labels_url\": \"https://api.github.com/repos/octocat/Hello-World/milestones/1/labels\",\n        \"id\": 1002604,\n        \"node_id\": \"MDk6TWlsZXN0b25lMTAwMjYwNA==\",\n        \"number\": 1,\n        \"state\": \"open\",\n        \"title\": \"v1.0\",\n        \"description\": \"Tracking milestone for version 1.0\",\n        \"creator\": {\n          \"login\": \"octocat\",\n          \"id\": 1,\n          \"node_id\": \"MDQ6VXNlcjE=\",\n          \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n          \"gravatar_id\": \"\",\n          \"url\": \"https://api.github.com/users/octocat\",\n          \"html_url\": \"https://github.com/octocat\",\n          \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n          \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n          \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n          \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n          \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n          \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n          \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n          \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n          \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n          \"type\": \"User\",\n          \"site_admin\": false\n        },\n        \"open_issues\": 4,\n        \"closed_issues\": 8,\n        \"created_at\": \"2011-04-10T20:09:31Z\",\n        \"updated_at\": \"2014-03-03T18:58:10Z\",\n        \"closed_at\": \"2013-02-12T13:22:01Z\",\n        \"due_on\": \"2012-10-09T23:39:01Z\"\n      },\n      \"locked\": true,\n      \"active_lock_reason\": \"too heated\",\n      \"comments\": 0,\n      \"pull_request\": {\n        \"url\": \"https://api.github.com/repos/octocat/Hello-World/pulls/1347\",\n        \"html_url\": \"https://github.com/octocat/Hello-World/pull/1347\",\n        \"diff_url\": \"https://github.com/octocat/Hello-World/pull/1347.diff\",\n        \"patch_url\": \"https://github.com/octocat/Hello-World/pull/1347.patch\"\n      },\n      \"closed_at\": null,\n      \"created_at\": \"2011-04-22T13:33:48Z\",\n      \"updated_at\": \"2011-04-22T13:33:48Z\"\n    }\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/repos/{owner}/{repo}/issues/events"
+    },
+    "title":"List issue events for a repository"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/repos/octocat/hello-world/issues/events/42\n",
+        "type":"Shell"
+      },
+      {
+        "content":"application/vnd.github.starfox-preview+json\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"issues",
+    "id":"get-an-issue-event",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p> <a href=\"#get-an-issue-event-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"event_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"id\": 1,\n  \"node_id\": \"MDEwOklzc3VlRXZlbnQx\",\n  \"url\": \"https://api.github.com/repos/octocat/Hello-World/issues/events/1\",\n  \"actor\": {\n    \"login\": \"octocat\",\n    \"id\": 1,\n    \"node_id\": \"MDQ6VXNlcjE=\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/users/octocat\",\n    \"html_url\": \"https://github.com/octocat\",\n    \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n    \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n    \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n    \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n    \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n    \"type\": \"User\",\n    \"site_admin\": false\n  },\n  \"event\": \"closed\",\n  \"commit_id\": \"6dcb09b5b57875f334f61aebed695e2e4193db5e\",\n  \"commit_url\": \"https://api.github.com/repos/octocat/Hello-World/commits/6dcb09b5b57875f334f61aebed695e2e4193db5e\",\n  \"created_at\": \"2011-04-14T16:00:49Z\",\n  \"issue\": {\n    \"id\": 1,\n    \"node_id\": \"MDU6SXNzdWUx\",\n    \"url\": \"https://api.github.com/repos/octocat/Hello-World/issues/1347\",\n    \"repository_url\": \"https://api.github.com/repos/octocat/Hello-World\",\n    \"labels_url\": \"https://api.github.com/repos/octocat/Hello-World/issues/1347/labels{/name}\",\n    \"comments_url\": \"https://api.github.com/repos/octocat/Hello-World/issues/1347/comments\",\n    \"events_url\": \"https://api.github.com/repos/octocat/Hello-World/issues/1347/events\",\n    \"html_url\": \"https://github.com/octocat/Hello-World/issues/1347\",\n    \"number\": 1347,\n    \"state\": \"open\",\n    \"title\": \"Found a bug\",\n    \"body\": \"I'm having a problem with this.\",\n    \"user\": {\n      \"login\": \"octocat\",\n      \"id\": 1,\n      \"node_id\": \"MDQ6VXNlcjE=\",\n      \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n      \"gravatar_id\": \"\",\n      \"url\": \"https://api.github.com/users/octocat\",\n      \"html_url\": \"https://github.com/octocat\",\n      \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n      \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n      \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n      \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n      \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n      \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n      \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n      \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n      \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n      \"type\": \"User\",\n      \"site_admin\": false\n    },\n    \"labels\": [\n      {\n        \"id\": 208045946,\n        \"node_id\": \"MDU6TGFiZWwyMDgwNDU5NDY=\",\n        \"url\": \"https://api.github.com/repos/octocat/Hello-World/labels/bug\",\n        \"name\": \"bug\",\n        \"description\": \"Something isn't working\",\n        \"color\": \"f29513\",\n        \"default\": true\n      }\n    ],\n    \"assignee\": {\n      \"login\": \"octocat\",\n      \"id\": 1,\n      \"node_id\": \"MDQ6VXNlcjE=\",\n      \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n      \"gravatar_id\": \"\",\n      \"url\": \"https://api.github.com/users/octocat\",\n      \"html_url\": \"https://github.com/octocat\",\n      \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n      \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n      \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n      \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n      \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n      \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n      \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n      \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n      \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n      \"type\": \"User\",\n      \"site_admin\": false\n    },\n    \"assignees\": [\n      {\n        \"login\": \"octocat\",\n        \"id\": 1,\n        \"node_id\": \"MDQ6VXNlcjE=\",\n        \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n        \"gravatar_id\": \"\",\n        \"url\": \"https://api.github.com/users/octocat\",\n        \"html_url\": \"https://github.com/octocat\",\n        \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n        \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n        \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n        \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n        \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n        \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n        \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n        \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n        \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n        \"type\": \"User\",\n        \"site_admin\": false\n      }\n    ],\n    \"milestone\": {\n      \"url\": \"https://api.github.com/repos/octocat/Hello-World/milestones/1\",\n      \"html_url\": \"https://github.com/octocat/Hello-World/milestones/v1.0\",\n      \"labels_url\": \"https://api.github.com/repos/octocat/Hello-World/milestones/1/labels\",\n      \"id\": 1002604,\n      \"node_id\": \"MDk6TWlsZXN0b25lMTAwMjYwNA==\",\n      \"number\": 1,\n      \"state\": \"open\",\n      \"title\": \"v1.0\",\n      \"description\": \"Tracking milestone for version 1.0\",\n      \"creator\": {\n        \"login\": \"octocat\",\n        \"id\": 1,\n        \"node_id\": \"MDQ6VXNlcjE=\",\n        \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n        \"gravatar_id\": \"\",\n        \"url\": \"https://api.github.com/users/octocat\",\n        \"html_url\": \"https://github.com/octocat\",\n        \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n        \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n        \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n        \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n        \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n        \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n        \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n        \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n        \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n        \"type\": \"User\",\n        \"site_admin\": false\n      },\n      \"open_issues\": 4,\n      \"closed_issues\": 8,\n      \"created_at\": \"2011-04-10T20:09:31Z\",\n      \"updated_at\": \"2014-03-03T18:58:10Z\",\n      \"closed_at\": \"2013-02-12T13:22:01Z\",\n      \"due_on\": \"2012-10-09T23:39:01Z\"\n    },\n    \"locked\": true,\n    \"active_lock_reason\": \"too heated\",\n    \"comments\": 0,\n    \"pull_request\": {\n      \"url\": \"https://api.github.com/repos/octocat/Hello-World/pulls/1347\",\n      \"html_url\": \"https://github.com/octocat/Hello-World/pull/1347\",\n      \"diff_url\": \"https://github.com/octocat/Hello-World/pull/1347.diff\",\n      \"patch_url\": \"https://github.com/octocat/Hello-World/pull/1347.patch\"\n    },\n    \"closed_at\": null,\n    \"created_at\": \"2011-04-22T13:33:48Z\",\n    \"updated_at\": \"2011-04-22T13:33:48Z\"\n  }\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/repos/{owner}/{repo}/issues/events/{event_id}"
+    },
+    "title":"Get an issue event"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/repos/octocat/hello-world/issues/42/events\n",
+        "type":"Shell"
+      },
+      {
+        "content":"application/vnd.github.starfox-preview+json\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"issues",
+    "id":"list-issue-events",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p> <a href=\"#list-issue-events-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"issue_number ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"id\": 1,\n    \"node_id\": \"MDEwOklzc3VlRXZlbnQx\",\n    \"url\": \"https://api.github.com/repos/octocat/Hello-World/issues/events/1\",\n    \"actor\": {\n      \"login\": \"octocat\",\n      \"id\": 1,\n      \"node_id\": \"MDQ6VXNlcjE=\",\n      \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n      \"gravatar_id\": \"\",\n      \"url\": \"https://api.github.com/users/octocat\",\n      \"html_url\": \"https://github.com/octocat\",\n      \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n      \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n      \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n      \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n      \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n      \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n      \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n      \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n      \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n      \"type\": \"User\",\n      \"site_admin\": false\n    },\n    \"event\": \"closed\",\n    \"commit_id\": \"6dcb09b5b57875f334f61aebed695e2e4193db5e\",\n    \"commit_url\": \"https://api.github.com/repos/octocat/Hello-World/commits/6dcb09b5b57875f334f61aebed695e2e4193db5e\",\n    \"created_at\": \"2011-04-14T16:00:49Z\"\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/repos/{owner}/{repo}/issues/{issue_number}/events"
+    },
+    "title":"List issue events"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/repos/octocat/hello-world/issues/42/labels\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"issues",
+    "id":"list-labels-for-an-issue",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"issue_number ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"id\": 208045946,\n    \"node_id\": \"MDU6TGFiZWwyMDgwNDU5NDY=\",\n    \"url\": \"https://api.github.com/repos/octocat/Hello-World/labels/bug\",\n    \"name\": \"bug\",\n    \"description\": \"Something isn't working\",\n    \"color\": \"f29513\",\n    \"default\": true\n  },\n  {\n    \"id\": 208045947,\n    \"node_id\": \"MDU6TGFiZWwyMDgwNDU5NDc=\",\n    \"url\": \"https://api.github.com/repos/octocat/Hello-World/labels/enhancement\",\n    \"name\": \"enhancement\",\n    \"description\": \"New feature or request\",\n    \"color\": \"a2eeef\",\n    \"default\": false\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/repos/{owner}/{repo}/issues/{issue_number}/labels"
+    },
+    "title":"List labels for an issue"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X POST \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/repos/octocat/hello-world/issues/42/labels \\\n  -d '{\"labels\":[\"labels\"]}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"issues",
+    "id":"add-labels-to-an-issue",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"issue_number ",
+        "type":"integer "
+      },
+      {
+        "description":"<p><strong>Required</strong>. The name of the label to add to the issue. Must contain at least one label. <strong>Note:</strong> Alternatively, you can pass a single label as a <code>string</code> or an <code>array</code> of labels directly, but GitHub recommends passing an object with the <code>labels</code> key.</p>",
+        "in":"body ",
+        "name":"labels ",
+        "type":"array of strings "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"id\": 208045946,\n    \"node_id\": \"MDU6TGFiZWwyMDgwNDU5NDY=\",\n    \"url\": \"https://api.github.com/repos/octocat/Hello-World/labels/bug\",\n    \"name\": \"bug\",\n    \"description\": \"Something isn't working\",\n    \"color\": \"f29513\",\n    \"default\": true\n  },\n  {\n    \"id\": 208045947,\n    \"node_id\": \"MDU6TGFiZWwyMDgwNDU5NDc=\",\n    \"url\": \"https://api.github.com/repos/octocat/Hello-World/labels/enhancement\",\n    \"name\": \"enhancement\",\n    \"description\": \"New feature or request\",\n    \"color\": \"a2eeef\",\n    \"default\": false\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"post",
+      "path":"/repos/{owner}/{repo}/issues/{issue_number}/labels"
+    },
+    "title":"Add labels to an issue"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X PUT \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/repos/octocat/hello-world/issues/42/labels \\\n  -d '{\"labels\":[\"labels\"]}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"issues",
+    "id":"set-labels-for-an-issue",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"issue_number ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>The names of the labels to add to the issue. You can pass an empty array to remove all labels. <strong>Note:</strong> Alternatively, you can pass a single label as a <code>string</code> or an <code>array</code> of labels directly, but GitHub recommends passing an object with the <code>labels</code> key.</p>",
+        "in":"body ",
+        "name":"labels ",
+        "type":"array of strings "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"id\": 208045946,\n    \"node_id\": \"MDU6TGFiZWwyMDgwNDU5NDY=\",\n    \"url\": \"https://api.github.com/repos/octocat/Hello-World/labels/bug\",\n    \"name\": \"bug\",\n    \"description\": \"Something isn't working\",\n    \"color\": \"f29513\",\n    \"default\": true\n  },\n  {\n    \"id\": 208045947,\n    \"node_id\": \"MDU6TGFiZWwyMDgwNDU5NDc=\",\n    \"url\": \"https://api.github.com/repos/octocat/Hello-World/labels/enhancement\",\n    \"name\": \"enhancement\",\n    \"description\": \"New feature or request\",\n    \"color\": \"a2eeef\",\n    \"default\": false\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"put",
+      "path":"/repos/{owner}/{repo}/issues/{issue_number}/labels"
+    },
+    "title":"Set labels for an issue"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X DELETE \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/repos/octocat/hello-world/issues/42/labels\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"issues",
+    "id":"remove-all-labels-from-an-issue",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"issue_number ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"delete",
+      "path":"/repos/{owner}/{repo}/issues/{issue_number}/labels"
+    },
+    "title":"Remove all labels from an issue"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X DELETE \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/repos/octocat/hello-world/issues/42/labels/NAME\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"issues",
+    "id":"remove-a-label-from-an-issue",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"issue_number ",
+        "type":"integer "
+      },
+      {
+        "in":"path",
+        "name":"name ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"id\": 208045946,\n    \"node_id\": \"MDU6TGFiZWwyMDgwNDU5NDY=\",\n    \"url\": \"https://api.github.com/repos/octocat/Hello-World/labels/bug\",\n    \"name\": \"bug\",\n    \"description\": \"Something isn't working\",\n    \"color\": \"f29513\",\n    \"default\": true\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"delete",
+      "path":"/repos/{owner}/{repo}/issues/{issue_number}/labels/{name}"
+    },
+    "title":"Remove a label from an issue"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/repos/octocat/hello-world/labels\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"issues",
+    "id":"list-labels-for-a-repository",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"id\": 208045946,\n    \"node_id\": \"MDU6TGFiZWwyMDgwNDU5NDY=\",\n    \"url\": \"https://api.github.com/repos/octocat/Hello-World/labels/bug\",\n    \"name\": \"bug\",\n    \"description\": \"Something isn't working\",\n    \"color\": \"f29513\",\n    \"default\": true\n  },\n  {\n    \"id\": 208045947,\n    \"node_id\": \"MDU6TGFiZWwyMDgwNDU5NDc=\",\n    \"url\": \"https://api.github.com/repos/octocat/Hello-World/labels/enhancement\",\n    \"name\": \"enhancement\",\n    \"description\": \"New feature or request\",\n    \"color\": \"a2eeef\",\n    \"default\": false\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/repos/{owner}/{repo}/labels"
+    },
+    "title":"List labels for a repository"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X POST \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/repos/octocat/hello-world/labels \\\n  -d '{\"name\":\"name\",\"color\":\"color\"}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"issues",
+    "id":"create-a-label",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "description":"<p><strong>Required</strong>. The name of the label. Emoji can be added to label names, using either native emoji or colon-style markup. For example, typing <code>:strawberry:</code> will render the emoji <img src=\"https://github.githubassets.com/images/icons/emoji/unicode/1f353.png\" alt=\":strawberry:\" title=\":strawberry:\">. For a full list of available emoji and codes, see <a href=\"http://emoji-cheat-sheet.com/\">emoji-cheat-sheet.com</a>.</p>",
+        "in":"body ",
+        "name":"name ",
+        "type":"string "
+      },
+      {
+        "description":"<p><strong>Required</strong>. The <a href=\"http://www.color-hex.com/\">hexadecimal color code</a> for the label, without the leading <code>#</code>.</p>",
+        "in":"body ",
+        "name":"color ",
+        "type":"string "
+      },
+      {
+        "description":"<p>A short description of the label.</p>",
+        "in":"body ",
+        "name":"description ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"201 Created",
+        "content":"{\n  \"id\": 208045946,\n  \"node_id\": \"MDU6TGFiZWwyMDgwNDU5NDY=\",\n  \"url\": \"https://api.github.com/repos/octocat/Hello-World/labels/bug\",\n  \"name\": \"bug\",\n  \"description\": \"Something isn't working\",\n  \"color\": \"f29513\",\n  \"default\": true\n}\n"
+      }
+    ],
+    "target":{
+      "method":"post",
+      "path":"/repos/{owner}/{repo}/labels"
+    },
+    "title":"Create a label"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/repos/octocat/hello-world/labels/NAME\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"issues",
+    "id":"get-a-label",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"name ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"id\": 208045946,\n  \"node_id\": \"MDU6TGFiZWwyMDgwNDU5NDY=\",\n  \"url\": \"https://api.github.com/repos/octocat/Hello-World/labels/bug\",\n  \"name\": \"bug\",\n  \"description\": \"Something isn't working\",\n  \"color\": \"f29513\",\n  \"default\": true\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/repos/{owner}/{repo}/labels/{name}"
+    },
+    "title":"Get a label"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X PATCH \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/repos/octocat/hello-world/labels/NAME \\\n  -d '{\"new_name\":\"new_name\"}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"issues",
+    "id":"update-a-label",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"name ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The new name of the label. Emoji can be added to label names, using either native emoji or colon-style markup. For example, typing <code>:strawberry:</code> will render the emoji <img src=\"https://github.githubassets.com/images/icons/emoji/unicode/1f353.png\" alt=\":strawberry:\" title=\":strawberry:\">. For a full list of available emoji and codes, see <a href=\"http://emoji-cheat-sheet.com/\">emoji-cheat-sheet.com</a>.</p>",
+        "in":"body ",
+        "name":"new_name ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The <a href=\"http://www.color-hex.com/\">hexadecimal color code</a> for the label, without the leading <code>#</code>.</p>",
+        "in":"body ",
+        "name":"color ",
+        "type":"string "
+      },
+      {
+        "description":"<p>A short description of the label.</p>",
+        "in":"body ",
+        "name":"description ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"id\": 208045946,\n  \"node_id\": \"MDU6TGFiZWwyMDgwNDU5NDY=\",\n  \"url\": \"https://api.github.com/repos/octocat/Hello-World/labels/bug%20:bug:\",\n  \"name\": \"bug :bug:\",\n  \"description\": \"Small bug fix required\",\n  \"color\": \"b01f26\",\n  \"default\": true\n}\n"
+      }
+    ],
+    "target":{
+      "method":"patch",
+      "path":"/repos/{owner}/{repo}/labels/{name}"
+    },
+    "title":"Update a label"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X DELETE \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/repos/octocat/hello-world/labels/NAME\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"issues",
+    "id":"delete-a-label",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"name ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"delete",
+      "path":"/repos/{owner}/{repo}/labels/{name}"
+    },
+    "title":"Delete a label"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/repos/octocat/hello-world/milestones/42/labels\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"issues",
+    "id":"list-labels-for-issues-in-a-milestone",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"milestone_number ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"id\": 208045946,\n    \"node_id\": \"MDU6TGFiZWwyMDgwNDU5NDY=\",\n    \"url\": \"https://api.github.com/repos/octocat/Hello-World/labels/bug\",\n    \"name\": \"bug\",\n    \"description\": \"Something isn't working\",\n    \"color\": \"f29513\",\n    \"default\": true\n  },\n  {\n    \"id\": 208045947,\n    \"node_id\": \"MDU6TGFiZWwyMDgwNDU5NDc=\",\n    \"url\": \"https://api.github.com/repos/octocat/Hello-World/labels/enhancement\",\n    \"name\": \"enhancement\",\n    \"description\": \"New feature or request\",\n    \"color\": \"a2eeef\",\n    \"default\": false\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/repos/{owner}/{repo}/milestones/{milestone_number}/labels"
+    },
+    "title":"List labels for issues in a milestone"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/repos/octocat/hello-world/milestones\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"issues",
+    "id":"list-milestones",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The state of the milestone. Either <code>open</code>, <code>closed</code>, or <code>all</code>.</p>",
+        "in":"query ",
+        "name":"state ",
+        "type":"string "
+      },
+      {
+        "description":"<p>What to sort results by. Either <code>due_on</code> or <code>completeness</code>.</p>",
+        "in":"query ",
+        "name":"sort ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The direction of the sort. Either <code>asc</code> or <code>desc</code>.</p>",
+        "in":"query ",
+        "name":"direction ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"url\": \"https://api.github.com/repos/octocat/Hello-World/milestones/1\",\n    \"html_url\": \"https://github.com/octocat/Hello-World/milestones/v1.0\",\n    \"labels_url\": \"https://api.github.com/repos/octocat/Hello-World/milestones/1/labels\",\n    \"id\": 1002604,\n    \"node_id\": \"MDk6TWlsZXN0b25lMTAwMjYwNA==\",\n    \"number\": 1,\n    \"state\": \"open\",\n    \"title\": \"v1.0\",\n    \"description\": \"Tracking milestone for version 1.0\",\n    \"creator\": {\n      \"login\": \"octocat\",\n      \"id\": 1,\n      \"node_id\": \"MDQ6VXNlcjE=\",\n      \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n      \"gravatar_id\": \"\",\n      \"url\": \"https://api.github.com/users/octocat\",\n      \"html_url\": \"https://github.com/octocat\",\n      \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n      \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n      \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n      \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n      \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n      \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n      \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n      \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n      \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n      \"type\": \"User\",\n      \"site_admin\": false\n    },\n    \"open_issues\": 4,\n    \"closed_issues\": 8,\n    \"created_at\": \"2011-04-10T20:09:31Z\",\n    \"updated_at\": \"2014-03-03T18:58:10Z\",\n    \"closed_at\": \"2013-02-12T13:22:01Z\",\n    \"due_on\": \"2012-10-09T23:39:01Z\"\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/repos/{owner}/{repo}/milestones"
+    },
+    "title":"List milestones"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X POST \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/repos/octocat/hello-world/milestones \\\n  -d '{\"title\":\"title\"}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"issues",
+    "id":"create-a-milestone",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "description":"<p><strong>Required</strong>. The title of the milestone.</p>",
+        "in":"body ",
+        "name":"title ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The state of the milestone. Either <code>open</code> or <code>closed</code>.</p> Default: <code>open</code>",
+        "in":"body ",
+        "name":"state ",
+        "type":"string "
+      },
+      {
+        "description":"<p>A description of the milestone.</p>",
+        "in":"body ",
+        "name":"description ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The milestone due date. This is a timestamp in <a href=\"https://en.wikipedia.org/wiki/ISO_8601\">ISO 8601</a> format: <code>YYYY-MM-DDTHH:MM:SSZ</code>.</p>",
+        "in":"body ",
+        "name":"due_on ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"201 Created",
+        "content":"{\n  \"url\": \"https://api.github.com/repos/octocat/Hello-World/milestones/1\",\n  \"html_url\": \"https://github.com/octocat/Hello-World/milestones/v1.0\",\n  \"labels_url\": \"https://api.github.com/repos/octocat/Hello-World/milestones/1/labels\",\n  \"id\": 1002604,\n  \"node_id\": \"MDk6TWlsZXN0b25lMTAwMjYwNA==\",\n  \"number\": 1,\n  \"state\": \"open\",\n  \"title\": \"v1.0\",\n  \"description\": \"Tracking milestone for version 1.0\",\n  \"creator\": {\n    \"login\": \"octocat\",\n    \"id\": 1,\n    \"node_id\": \"MDQ6VXNlcjE=\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/users/octocat\",\n    \"html_url\": \"https://github.com/octocat\",\n    \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n    \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n    \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n    \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n    \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n    \"type\": \"User\",\n    \"site_admin\": false\n  },\n  \"open_issues\": 4,\n  \"closed_issues\": 8,\n  \"created_at\": \"2011-04-10T20:09:31Z\",\n  \"updated_at\": \"2014-03-03T18:58:10Z\",\n  \"closed_at\": \"2013-02-12T13:22:01Z\",\n  \"due_on\": \"2012-10-09T23:39:01Z\"\n}\n"
+      }
+    ],
+    "target":{
+      "method":"post",
+      "path":"/repos/{owner}/{repo}/milestones"
+    },
+    "title":"Create a milestone"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/repos/octocat/hello-world/milestones/42\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"issues",
+    "id":"get-a-milestone",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"milestone_number ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"url\": \"https://api.github.com/repos/octocat/Hello-World/milestones/1\",\n  \"html_url\": \"https://github.com/octocat/Hello-World/milestones/v1.0\",\n  \"labels_url\": \"https://api.github.com/repos/octocat/Hello-World/milestones/1/labels\",\n  \"id\": 1002604,\n  \"node_id\": \"MDk6TWlsZXN0b25lMTAwMjYwNA==\",\n  \"number\": 1,\n  \"state\": \"open\",\n  \"title\": \"v1.0\",\n  \"description\": \"Tracking milestone for version 1.0\",\n  \"creator\": {\n    \"login\": \"octocat\",\n    \"id\": 1,\n    \"node_id\": \"MDQ6VXNlcjE=\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/users/octocat\",\n    \"html_url\": \"https://github.com/octocat\",\n    \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n    \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n    \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n    \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n    \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n    \"type\": \"User\",\n    \"site_admin\": false\n  },\n  \"open_issues\": 4,\n  \"closed_issues\": 8,\n  \"created_at\": \"2011-04-10T20:09:31Z\",\n  \"updated_at\": \"2014-03-03T18:58:10Z\",\n  \"closed_at\": \"2013-02-12T13:22:01Z\",\n  \"due_on\": \"2012-10-09T23:39:01Z\"\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/repos/{owner}/{repo}/milestones/{milestone_number}"
+    },
+    "title":"Get a milestone"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X PATCH \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/repos/octocat/hello-world/milestones/42 \\\n  -d '{\"title\":\"title\"}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"issues",
+    "id":"update-a-milestone",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"milestone_number ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>The title of the milestone.</p>",
+        "in":"body ",
+        "name":"title ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The state of the milestone. Either <code>open</code> or <code>closed</code>.</p> Default: <code>open</code>",
+        "in":"body ",
+        "name":"state ",
+        "type":"string "
+      },
+      {
+        "description":"<p>A description of the milestone.</p>",
+        "in":"body ",
+        "name":"description ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The milestone due date. This is a timestamp in <a href=\"https://en.wikipedia.org/wiki/ISO_8601\">ISO 8601</a> format: <code>YYYY-MM-DDTHH:MM:SSZ</code>.</p>",
+        "in":"body ",
+        "name":"due_on ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"url\": \"https://api.github.com/repos/octocat/Hello-World/milestones/1\",\n  \"html_url\": \"https://github.com/octocat/Hello-World/milestones/v1.0\",\n  \"labels_url\": \"https://api.github.com/repos/octocat/Hello-World/milestones/1/labels\",\n  \"id\": 1002604,\n  \"node_id\": \"MDk6TWlsZXN0b25lMTAwMjYwNA==\",\n  \"number\": 1,\n  \"state\": \"open\",\n  \"title\": \"v1.0\",\n  \"description\": \"Tracking milestone for version 1.0\",\n  \"creator\": {\n    \"login\": \"octocat\",\n    \"id\": 1,\n    \"node_id\": \"MDQ6VXNlcjE=\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/users/octocat\",\n    \"html_url\": \"https://github.com/octocat\",\n    \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n    \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n    \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n    \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n    \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n    \"type\": \"User\",\n    \"site_admin\": false\n  },\n  \"open_issues\": 4,\n  \"closed_issues\": 8,\n  \"created_at\": \"2011-04-10T20:09:31Z\",\n  \"updated_at\": \"2014-03-03T18:58:10Z\",\n  \"closed_at\": \"2013-02-12T13:22:01Z\",\n  \"due_on\": \"2012-10-09T23:39:01Z\"\n}\n"
+      }
+    ],
+    "target":{
+      "method":"patch",
+      "path":"/repos/{owner}/{repo}/milestones/{milestone_number}"
+    },
+    "title":"Update a milestone"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X DELETE \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/repos/octocat/hello-world/milestones/42\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"issues",
+    "id":"delete-a-milestone",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"milestone_number ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"delete",
+      "path":"/repos/{owner}/{repo}/milestones/{milestone_number}"
+    },
+    "title":"Delete a milestone"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.mockingbird-preview+json\" \\\n  https://api.github.com/repos/octocat/hello-world/issues/42/timeline\n",
+        "type":"Shell"
+      },
+      {
+        "content":"application/vnd.github.mockingbird-preview\n",
+        "type":"Shell"
+      },
+      {
+        "content":"application/vnd.github.starfox-preview+json\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"issues",
+    "id":"list-timeline-events-for-an-issue",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>This API is under preview and subject to change.</p> <a href=\"#list-timeline-events-for-an-issue-preview-notices\"> See preview notices. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"issue_number ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"id\": 1,\n    \"node_id\": \"MDEwOklzc3VlRXZlbnQx\",\n    \"url\": \"https://api.github.com/repos/octocat/Hello-World/issues/events/1\",\n    \"actor\": {\n      \"login\": \"octocat\",\n      \"id\": 1,\n      \"node_id\": \"MDQ6VXNlcjE=\",\n      \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n      \"gravatar_id\": \"\",\n      \"url\": \"https://api.github.com/users/octocat\",\n      \"html_url\": \"https://github.com/octocat\",\n      \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n      \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n      \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n      \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n      \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n      \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n      \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n      \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n      \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n      \"type\": \"User\",\n      \"site_admin\": false\n    },\n    \"event\": \"closed\",\n    \"commit_id\": \"6dcb09b5b57875f334f61aebed695e2e4193db5e\",\n    \"commit_url\": \"https://api.github.com/repos/octocat/Hello-World/commits/6dcb09b5b57875f334f61aebed695e2e4193db5e\",\n    \"created_at\": \"2011-04-14T16:00:49Z\"\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/repos/{owner}/{repo}/issues/{issue_number}/timeline"
+    },
+    "title":"List timeline events for an issue"
+  }
+]

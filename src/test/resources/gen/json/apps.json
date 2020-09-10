@@ -1,0 +1,1452 @@
+[
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/app\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"apps",
+    "id":"get-the-authenticated-app",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"id\": 1,\n  \"slug\": \"octoapp\",\n  \"node_id\": \"MDExOkludGVncmF0aW9uMQ==\",\n  \"owner\": {\n    \"login\": \"github\",\n    \"id\": 1,\n    \"node_id\": \"MDEyOk9yZ2FuaXphdGlvbjE=\",\n    \"url\": \"https://api.github.com/orgs/github\",\n    \"repos_url\": \"https://api.github.com/orgs/github/repos\",\n    \"events_url\": \"https://api.github.com/orgs/github/events\",\n    \"hooks_url\": \"https://api.github.com/orgs/github/hooks\",\n    \"issues_url\": \"https://api.github.com/orgs/github/issues\",\n    \"members_url\": \"https://api.github.com/orgs/github/members{/member}\",\n    \"public_members_url\": \"https://api.github.com/orgs/github/public_members{/member}\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"description\": \"A great organization\"\n  },\n  \"name\": \"Octocat App\",\n  \"description\": \"\",\n  \"external_url\": \"https://example.com\",\n  \"html_url\": \"https://github.com/apps/octoapp\",\n  \"created_at\": \"2017-07-08T16:18:44-04:00\",\n  \"updated_at\": \"2017-07-08T16:18:44-04:00\",\n  \"permissions\": {\n    \"metadata\": \"read\",\n    \"contents\": \"read\",\n    \"issues\": \"write\",\n    \"single_file\": \"write\"\n  },\n  \"events\": [\n    \"push\",\n    \"pull_request\"\n  ],\n  \"installations_count\": 3\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/app"
+    },
+    "title":"Get the authenticated app"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X POST \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/app-manifests/CODE/conversions\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"apps",
+    "id":"create-a-github-app-from-a-manifest",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"code ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"id\": 1,\n  \"node_id\": \"MDM6QXBwNTk=\",\n  \"owner\": {\n    \"login\": \"octocat\",\n    \"id\": 1,\n    \"node_id\": \"MDQ6VXNlcjE=\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/users/octocat\",\n    \"html_url\": \"https://github.com/octocat\",\n    \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n    \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n    \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n    \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n    \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n    \"type\": \"User\",\n    \"site_admin\": false\n  },\n  \"name\": \"octoapp\",\n  \"description\": null,\n  \"external_url\": \"https://www.example.com\",\n  \"html_url\": \"https://github.com/apps/octoapp\",\n  \"created_at\": \"2018-09-13T12:28:37Z\",\n  \"updated_at\": \"2018-09-13T12:28:37Z\",\n  \"client_id\": \"Iv1.8a61f9b3a7aba766\",\n  \"client_secret\": \"1726be1638095a19edd134c77bde3aa2ece1e5d8\",\n  \"webhook_secret\": \"e340154128314309424b7c8e90325147d99fdafa\",\n  \"pem\": \"-----BEGIN RSA PRIVATE KEY-----\\nMIIEowIBAAKCAQEAuEPzOUE+kiEH1WLiMeBytTEF856j0hOVcSUSUkZxKvqczkWM\\n9vo1gDyC7ZXhdH9fKh32aapba3RSsp4ke+giSmYTk2mGR538ShSDxh0OgpJmjiKP\\nX0Bj4j5sFqfXuCtl9SkH4iueivv4R53ktqM+n6hk98l6hRwC39GVIblAh2lEM4L/\\n6WvYwuQXPMM5OG2Ryh2tDZ1WS5RKfgq+9ksNJ5Q9UtqtqHkO+E63N5OK9sbzpUUm\\noNaOl3udTlZD3A8iqwMPVxH4SxgATBPAc+bmjk6BMJ0qIzDcVGTrqrzUiywCTLma\\nszdk8GjzXtPDmuBgNn+o6s02qVGpyydgEuqmTQIDAQABAoIBACL6AvkjQVVLn8kJ\\ndBYznJJ4M8ECo+YEgaFwgAHODT0zRQCCgzd+Vxl4YwHmKV2Lr+y2s0drZt8GvYva\\nKOK8NYYZyi15IlwFyRXmvvykF1UBpSXluYFDH7KaVroWMgRreHcIys5LqVSIb6Bo\\ngDmK0yBLPp8qR29s2b7ScZRtLaqGJiX+j55rNzrZwxHkxFHyG9OG+u9IsBElcKCP\\nkYCVE8ZdYexfnKOZbgn2kZB9qu0T/Mdvki8yk3I2bI6xYO24oQmhnT36qnqWoCBX\\nNuCNsBQgpYZeZET8mEAUmo9d+ABmIHIvSs005agK8xRaP4+6jYgy6WwoejJRF5yd\\nNBuF7aECgYEA50nZ4FiZYV0vcJDxFYeY3kYOvVuKn8OyW+2rg7JIQTremIjv8FkE\\nZnwuF9ZRxgqLxUIfKKfzp/5l5LrycNoj2YKfHKnRejxRWXqG+ZETfxxlmlRns0QG\\nJ4+BYL0CoanDSeA4fuyn4Bv7cy/03TDhfg/Uq0Aeg+hhcPE/vx3ebPsCgYEAy/Pv\\neDLssOSdeyIxf0Brtocg6aPXIVaLdus+bXmLg77rJIFytAZmTTW8SkkSczWtucI3\\nFI1I6sei/8FdPzAl62/JDdlf7Wd9K7JIotY4TzT7Tm7QU7xpfLLYIP1bOFjN81rk\\n77oOD4LsXcosB/U6s1blPJMZ6AlO2EKs10UuR1cCgYBipzuJ2ADEaOz9RLWwi0AH\\nPza2Sj+c2epQD9ZivD7Zo/Sid3ZwvGeGF13JyR7kLEdmAkgsHUdu1rI7mAolXMaB\\n1pdrsHureeLxGbRM6za3tzMXWv1Il7FQWoPC8ZwXvMOR1VQDv4nzq7vbbA8z8c+c\\n57+8tALQHOTDOgQIzwK61QKBgERGVc0EJy4Uag+VY8J4m1ZQKBluqo7TfP6DQ7O8\\nM5MX73maB/7yAX8pVO39RjrhJlYACRZNMbK+v/ckEQYdJSSKmGCVe0JrGYDuPtic\\nI9+IGfSorf7KHPoMmMN6bPYQ7Gjh7a++tgRFTMEc8956Hnt4xGahy9NcglNtBpVN\\n6G8jAoGBAMCh028pdzJa/xeBHLLaVB2sc0Fe7993WlsPmnVE779dAz7qMscOtXJK\\nfgtriltLSSD6rTA9hUAsL/X62rY0wdXuNdijjBb/qvrx7CAV6i37NK1CjABNjsfG\\nZM372Ac6zc1EqSrid2IjET1YqyIW2KGLI1R2xbQc98UGlt48OdWu\\n-----END RSA PRIVATE KEY-----\\n\"\n}\n"
+      }
+    ],
+    "target":{
+      "method":"post",
+      "path":"/app-manifests/{code}/conversions"
+    },
+    "title":"Create a GitHub App from a manifest"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/app/installations\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"apps",
+    "id":"list-installations-for-the-authenticated-app",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"id\": 1,\n    \"account\": {\n      \"login\": \"github\",\n      \"id\": 1,\n      \"node_id\": \"MDEyOk9yZ2FuaXphdGlvbjE=\",\n      \"url\": \"https://api.github.com/orgs/github\",\n      \"repos_url\": \"https://api.github.com/orgs/github/repos\",\n      \"events_url\": \"https://api.github.com/orgs/github/events\",\n      \"hooks_url\": \"https://api.github.com/orgs/github/hooks\",\n      \"issues_url\": \"https://api.github.com/orgs/github/issues\",\n      \"members_url\": \"https://api.github.com/orgs/github/members{/member}\",\n      \"public_members_url\": \"https://api.github.com/orgs/github/public_members{/member}\",\n      \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n      \"description\": \"A great organization\"\n    },\n    \"access_tokens_url\": \"https://api.github.com/installations/1/access_tokens\",\n    \"repositories_url\": \"https://api.github.com/installation/repositories\",\n    \"html_url\": \"https://github.com/organizations/github/settings/installations/1\",\n    \"app_id\": 1,\n    \"target_id\": 1,\n    \"target_type\": \"Organization\",\n    \"permissions\": {\n      \"checks\": \"write\",\n      \"metadata\": \"read\",\n      \"contents\": \"read\"\n    },\n    \"events\": [\n      \"push\",\n      \"pull_request\"\n    ],\n    \"single_file_name\": \"config.yml\",\n    \"repository_selection\": \"selected\"\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/app/installations"
+    },
+    "title":"List installations for the authenticated app"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/app/installations/42\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"apps",
+    "id":"get-an-installation-for-the-authenticated-app",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"installation_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"id\": 1,\n  \"account\": {\n    \"login\": \"github\",\n    \"id\": 1,\n    \"node_id\": \"MDEyOk9yZ2FuaXphdGlvbjE=\",\n    \"url\": \"https://api.github.com/orgs/github\",\n    \"repos_url\": \"https://api.github.com/orgs/github/repos\",\n    \"events_url\": \"https://api.github.com/orgs/github/events\",\n    \"hooks_url\": \"https://api.github.com/orgs/github/hooks\",\n    \"issues_url\": \"https://api.github.com/orgs/github/issues\",\n    \"members_url\": \"https://api.github.com/orgs/github/members{/member}\",\n    \"public_members_url\": \"https://api.github.com/orgs/github/public_members{/member}\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"description\": \"A great organization\"\n  },\n  \"access_tokens_url\": \"https://api.github.com/installations/1/access_tokens\",\n  \"repositories_url\": \"https://api.github.com/installation/repositories\",\n  \"html_url\": \"https://github.com/organizations/github/settings/installations/1\",\n  \"app_id\": 1,\n  \"target_id\": 1,\n  \"target_type\": \"Organization\",\n  \"permissions\": {\n    \"checks\": \"write\",\n    \"metadata\": \"read\",\n    \"contents\": \"read\"\n  },\n  \"events\": [\n    \"push\",\n    \"pull_request\"\n  ],\n  \"single_file_name\": \"config.yml\",\n  \"repository_selection\": \"selected\"\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/app/installations/{installation_id}"
+    },
+    "title":"Get an installation for the authenticated app"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X DELETE \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/app/installations/42\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"apps",
+    "id":"delete-an-installation-for-the-authenticated-app",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"installation_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"delete",
+      "path":"/app/installations/{installation_id}"
+    },
+    "title":"Delete an installation for the authenticated app"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X POST \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/app/installations/42/access_tokens \\\n  -d '{\"repository_ids\":[42]}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"apps",
+    "id":"create-an-installation-access-token-for-an-app",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"installation_id ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>The <code>id</code>s of the repositories that the installation token can access. Providing repository <code>id</code>s restricts the access of an installation token to specific repositories. You can use the &quot;<a href=\"https://developer.github.com/v3/apps/installations/#list-repositories-accessible-to-the-app-installation\">List repositories accessible to the app installation</a>&quot; endpoint to get the <code>id</code> of all repositories that an installation can access. For example, you can select specific repositories when creating an installation token to restrict the number of repositories that can be cloned using the token.</p>",
+        "in":"body ",
+        "name":"repository_ids ",
+        "type":"array of integers "
+      },
+      {
+        "description":"<p>The permissions granted to the access token. The permissions object includes the permission names and their access type. For a complete list of permissions and allowable values, see &quot;<a href=\"https://developer.github.com/apps/building-github-apps/creating-github-apps-using-url-parameters/#github-app-permissions\">GitHub App permissions</a>.&quot;</p>",
+        "in":"body ",
+        "name":"permissions ",
+        "type":"object "
+      }
+    ],
+    "responses":[
+      {
+        "code":"201 Created",
+        "content":"{\n  \"token\": \"v1.1f699f1069f60xxx\",\n  \"expires_at\": \"2016-07-11T22:14:10Z\",\n  \"permissions\": {\n    \"issues\": \"write\",\n    \"contents\": \"read\"\n  },\n  \"repository_selection\": \"selected\",\n  \"repositories\": [\n    {\n      \"id\": 1296269,\n      \"node_id\": \"MDEwOlJlcG9zaXRvcnkxMjk2MjY5\",\n      \"name\": \"Hello-World\",\n      \"full_name\": \"octocat/Hello-World\",\n      \"owner\": {\n        \"login\": \"octocat\",\n        \"id\": 1,\n        \"node_id\": \"MDQ6VXNlcjE=\",\n        \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n        \"gravatar_id\": \"\",\n        \"url\": \"https://api.github.com/users/octocat\",\n        \"html_url\": \"https://github.com/octocat\",\n        \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n        \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n        \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n        \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n        \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n        \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n        \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n        \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n        \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n        \"type\": \"User\",\n        \"site_admin\": false\n      },\n      \"private\": false,\n      \"html_url\": \"https://github.com/octocat/Hello-World\",\n      \"description\": \"This your first repo!\",\n      \"fork\": false,\n      \"url\": \"https://api.github.com/repos/octocat/Hello-World\",\n      \"archive_url\": \"http://api.github.com/repos/octocat/Hello-World/{archive_format}{/ref}\",\n      \"assignees_url\": \"http://api.github.com/repos/octocat/Hello-World/assignees{/user}\",\n      \"blobs_url\": \"http://api.github.com/repos/octocat/Hello-World/git/blobs{/sha}\",\n      \"branches_url\": \"http://api.github.com/repos/octocat/Hello-World/branches{/branch}\",\n      \"collaborators_url\": \"http://api.github.com/repos/octocat/Hello-World/collaborators{/collaborator}\",\n      \"comments_url\": \"http://api.github.com/repos/octocat/Hello-World/comments{/number}\",\n      \"commits_url\": \"http://api.github.com/repos/octocat/Hello-World/commits{/sha}\",\n      \"compare_url\": \"http://api.github.com/repos/octocat/Hello-World/compare/{base}...{head}\",\n      \"contents_url\": \"http://api.github.com/repos/octocat/Hello-World/contents/{+path}\",\n      \"contributors_url\": \"http://api.github.com/repos/octocat/Hello-World/contributors\",\n      \"deployments_url\": \"http://api.github.com/repos/octocat/Hello-World/deployments\",\n      \"downloads_url\": \"http://api.github.com/repos/octocat/Hello-World/downloads\",\n      \"events_url\": \"http://api.github.com/repos/octocat/Hello-World/events\",\n      \"forks_url\": \"http://api.github.com/repos/octocat/Hello-World/forks\",\n      \"git_commits_url\": \"http://api.github.com/repos/octocat/Hello-World/git/commits{/sha}\",\n      \"git_refs_url\": \"http://api.github.com/repos/octocat/Hello-World/git/refs{/sha}\",\n      \"git_tags_url\": \"http://api.github.com/repos/octocat/Hello-World/git/tags{/sha}\",\n      \"git_url\": \"git:github.com/octocat/Hello-World.git\",\n      \"issue_comment_url\": \"http://api.github.com/repos/octocat/Hello-World/issues/comments{/number}\",\n      \"issue_events_url\": \"http://api.github.com/repos/octocat/Hello-World/issues/events{/number}\",\n      \"issues_url\": \"http://api.github.com/repos/octocat/Hello-World/issues{/number}\",\n      \"keys_url\": \"http://api.github.com/repos/octocat/Hello-World/keys{/key_id}\",\n      \"labels_url\": \"http://api.github.com/repos/octocat/Hello-World/labels{/name}\",\n      \"languages_url\": \"http://api.github.com/repos/octocat/Hello-World/languages\",\n      \"merges_url\": \"http://api.github.com/repos/octocat/Hello-World/merges\",\n      \"milestones_url\": \"http://api.github.com/repos/octocat/Hello-World/milestones{/number}\",\n      \"notifications_url\": \"http://api.github.com/repos/octocat/Hello-World/notifications{?since,all,participating}\",\n      \"pulls_url\": \"http://api.github.com/repos/octocat/Hello-World/pulls{/number}\",\n      \"releases_url\": \"http://api.github.com/repos/octocat/Hello-World/releases{/id}\",\n      \"ssh_url\": \"git@github.com:octocat/Hello-World.git\",\n      \"stargazers_url\": \"http://api.github.com/repos/octocat/Hello-World/stargazers\",\n      \"statuses_url\": \"http://api.github.com/repos/octocat/Hello-World/statuses/{sha}\",\n      \"subscribers_url\": \"http://api.github.com/repos/octocat/Hello-World/subscribers\",\n      \"subscription_url\": \"http://api.github.com/repos/octocat/Hello-World/subscription\",\n      \"tags_url\": \"http://api.github.com/repos/octocat/Hello-World/tags\",\n      \"teams_url\": \"http://api.github.com/repos/octocat/Hello-World/teams\",\n      \"trees_url\": \"http://api.github.com/repos/octocat/Hello-World/git/trees{/sha}\",\n      \"clone_url\": \"https://github.com/octocat/Hello-World.git\",\n      \"mirror_url\": \"git:git.example.com/octocat/Hello-World\",\n      \"hooks_url\": \"http://api.github.com/repos/octocat/Hello-World/hooks\",\n      \"svn_url\": \"https://svn.github.com/octocat/Hello-World\",\n      \"homepage\": \"https://github.com\",\n      \"language\": null,\n      \"forks_count\": 9,\n      \"stargazers_count\": 80,\n      \"watchers_count\": 80,\n      \"size\": 108,\n      \"default_branch\": \"master\",\n      \"open_issues_count\": 0,\n      \"is_template\": true,\n      \"topics\": [\n        \"octocat\",\n        \"atom\",\n        \"electron\",\n        \"api\"\n      ],\n      \"has_issues\": true,\n      \"has_projects\": true,\n      \"has_wiki\": true,\n      \"has_pages\": false,\n      \"has_downloads\": true,\n      \"archived\": false,\n      \"disabled\": false,\n      \"visibility\": \"public\",\n      \"pushed_at\": \"2011-01-26T19:06:43Z\",\n      \"created_at\": \"2011-01-26T19:01:12Z\",\n      \"updated_at\": \"2011-01-26T19:14:43Z\",\n      \"permissions\": {\n        \"admin\": false,\n        \"push\": false,\n        \"pull\": true\n      },\n      \"allow_rebase_merge\": true,\n      \"template_repository\": null,\n      \"temp_clone_token\": \"ABTLWHOULUVAXGTRYU7OC2876QJ2O\",\n      \"allow_squash_merge\": true,\n      \"delete_branch_on_merge\": true,\n      \"allow_merge_commit\": true,\n      \"subscribers_count\": 42,\n      \"network_count\": 0\n    }\n  ]\n}\n"
+      }
+    ],
+    "target":{
+      "method":"post",
+      "path":"/app/installations/{installation_id}/access_tokens"
+    },
+    "title":"Create an installation access token for an app"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X PUT \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/app/installations/42/suspended\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"apps",
+    "id":"suspend-an-app-installation",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"installation_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"put",
+      "path":"/app/installations/{installation_id}/suspended"
+    },
+    "title":"Suspend an app installation"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X DELETE \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/app/installations/42/suspended\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"apps",
+    "id":"unsuspend-an-app-installation",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"installation_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"delete",
+      "path":"/app/installations/{installation_id}/suspended"
+    },
+    "title":"Unsuspend an app installation"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/apps/APP_SLUG\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"apps",
+    "id":"get-an-app",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"app_slug ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"id\": 1,\n  \"slug\": \"octoapp\",\n  \"node_id\": \"MDExOkludGVncmF0aW9uMQ==\",\n  \"owner\": {\n    \"login\": \"github\",\n    \"id\": 1,\n    \"node_id\": \"MDEyOk9yZ2FuaXphdGlvbjE=\",\n    \"url\": \"https://api.github.com/orgs/github\",\n    \"repos_url\": \"https://api.github.com/orgs/github/repos\",\n    \"events_url\": \"https://api.github.com/orgs/github/events\",\n    \"hooks_url\": \"https://api.github.com/orgs/github/hooks\",\n    \"issues_url\": \"https://api.github.com/orgs/github/issues\",\n    \"members_url\": \"https://api.github.com/orgs/github/members{/member}\",\n    \"public_members_url\": \"https://api.github.com/orgs/github/public_members{/member}\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"description\": \"A great organization\"\n  },\n  \"name\": \"Octocat App\",\n  \"description\": \"\",\n  \"external_url\": \"https://example.com\",\n  \"html_url\": \"https://github.com/apps/octoapp\",\n  \"created_at\": \"2017-07-08T16:18:44-04:00\",\n  \"updated_at\": \"2017-07-08T16:18:44-04:00\",\n  \"permissions\": {\n    \"metadata\": \"read\",\n    \"contents\": \"read\",\n    \"issues\": \"write\",\n    \"single_file\": \"write\"\n  },\n  \"events\": [\n    \"push\",\n    \"pull_request\"\n  ]\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/apps/{app_slug}"
+    },
+    "title":"Get an app"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/orgs/ORG/installation\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"apps",
+    "id":"get-an-organization-installation-for-the-authenticated-app",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"org ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"id\": 1,\n  \"account\": {\n    \"login\": \"github\",\n    \"id\": 1,\n    \"node_id\": \"MDEyOk9yZ2FuaXphdGlvbjE=\",\n    \"avatar_url\": \"https://github.com/images/error/hubot_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/orgs/github\",\n    \"html_url\": \"https://github.com/github\",\n    \"followers_url\": \"https://api.github.com/users/github/followers\",\n    \"following_url\": \"https://api.github.com/users/github/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/github/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/github/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/github/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/github/orgs\",\n    \"repos_url\": \"https://api.github.com/orgs/github/repos\",\n    \"events_url\": \"https://api.github.com/orgs/github/events\",\n    \"received_events_url\": \"https://api.github.com/users/github/received_events\",\n    \"type\": \"Organization\",\n    \"site_admin\": false\n  },\n  \"repository_selection\": \"all\",\n  \"access_tokens_url\": \"https://api.github.com/installations/1/access_tokens\",\n  \"repositories_url\": \"https://api.github.com/installation/repositories\",\n  \"html_url\": \"https://github.com/organizations/github/settings/installations/1\",\n  \"app_id\": 1,\n  \"target_id\": 1,\n  \"target_type\": \"Organization\",\n  \"permissions\": {\n    \"checks\": \"write\",\n    \"metadata\": \"read\",\n    \"contents\": \"read\"\n  },\n  \"events\": [\n    \"push\",\n    \"pull_request\"\n  ],\n  \"created_at\": \"2018-02-09T20:51:14Z\",\n  \"updated_at\": \"2018-02-09T20:51:14Z\",\n  \"single_file_name\": null\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/orgs/{org}/installation"
+    },
+    "title":"Get an organization installation for the authenticated app"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/repos/octocat/hello-world/installation\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"apps",
+    "id":"get-a-repository-installation-for-the-authenticated-app",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"owner ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"repo ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"id\": 1,\n  \"account\": {\n    \"login\": \"github\",\n    \"id\": 1,\n    \"node_id\": \"MDEyOk9yZ2FuaXphdGlvbjE=\",\n    \"avatar_url\": \"https://github.com/images/error/hubot_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/orgs/github\",\n    \"html_url\": \"https://github.com/github\",\n    \"followers_url\": \"https://api.github.com/users/github/followers\",\n    \"following_url\": \"https://api.github.com/users/github/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/github/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/github/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/github/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/github/orgs\",\n    \"repos_url\": \"https://api.github.com/orgs/github/repos\",\n    \"events_url\": \"https://api.github.com/orgs/github/events\",\n    \"received_events_url\": \"https://api.github.com/users/github/received_events\",\n    \"type\": \"Organization\",\n    \"site_admin\": false\n  },\n  \"repository_selection\": \"all\",\n  \"access_tokens_url\": \"https://api.github.com/installations/1/access_tokens\",\n  \"repositories_url\": \"https://api.github.com/installation/repositories\",\n  \"html_url\": \"https://github.com/organizations/github/settings/installations/1\",\n  \"app_id\": 1,\n  \"target_id\": 1,\n  \"target_type\": \"Organization\",\n  \"permissions\": {\n    \"checks\": \"write\",\n    \"metadata\": \"read\",\n    \"contents\": \"read\"\n  },\n  \"events\": [\n    \"push\",\n    \"pull_request\"\n  ],\n  \"created_at\": \"2018-02-09T20:51:14Z\",\n  \"updated_at\": \"2018-02-09T20:51:14Z\",\n  \"single_file_name\": null\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/repos/{owner}/{repo}/installation"
+    },
+    "title":"Get a repository installation for the authenticated app"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/users/USERNAME/installation\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"apps",
+    "id":"get-a-user-installation-for-the-authenticated-app",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"username ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"id\": 3,\n  \"account\": {\n    \"login\": \"octocat\",\n    \"id\": 1,\n    \"node_id\": \"MDQ6VXNlcjE=\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/users/octocat\",\n    \"html_url\": \"https://github.com/octocat\",\n    \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n    \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n    \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n    \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n    \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n    \"type\": \"User\",\n    \"site_admin\": false\n  },\n  \"repository_selection\": \"selected\",\n  \"access_tokens_url\": \"https://api.github.com/installations/3/access_tokens\",\n  \"repositories_url\": \"https://api.github.com/installation/repositories\",\n  \"html_url\": \"https://github.com/organizations/github/settings/installations/3\",\n  \"app_id\": 2,\n  \"target_id\": 1,\n  \"target_type\": \"User\",\n  \"permissions\": {\n    \"checks\": \"write\",\n    \"metadata\": \"read\",\n    \"contents\": \"read\"\n  },\n  \"events\": [\n    \"label\"\n  ],\n  \"created_at\": \"2018-02-22T20:51:14Z\",\n  \"updated_at\": \"2018-02-22T20:51:14Z\",\n  \"single_file_name\": null\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/users/{username}/installation"
+    },
+    "title":"Get a user installation for the authenticated app"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X DELETE \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/applications/CLIENT_ID/grant \\\n  -d '{\"access_token\":\"access_token\"}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"apps",
+    "id":"delete-an-app-authorization",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"client_id ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The OAuth access token used to authenticate to the GitHub API.</p>",
+        "in":"body ",
+        "name":"access_token ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"delete",
+      "path":"/applications/{client_id}/grant"
+    },
+    "title":"Delete an app authorization"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X DELETE \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/applications/CLIENT_ID/grants/ACCESS_TOKEN\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"apps",
+    "id":"revoke-a-grant-for-an-application",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"client_id ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"access_token ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"delete",
+      "path":"/applications/{client_id}/grants/{access_token}"
+    },
+    "title":"Revoke a grant for an application"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X POST \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/applications/CLIENT_ID/token \\\n  -d '{\"access_token\":\"access_token\"}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"apps",
+    "id":"check-a-token",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"client_id ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The OAuth access token used to authenticate to the GitHub API.</p>",
+        "in":"body ",
+        "name":"access_token ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"id\": 1,\n  \"url\": \"https://api.github.com/authorizations/1\",\n  \"scopes\": [\n    \"public_repo\"\n  ],\n  \"token\": \"abcdefgh12345678\",\n  \"token_last_eight\": \"12345678\",\n  \"hashed_token\": \"25f94a2a5c7fbaf499c665bc73d67c1c87e496da8985131633ee0a95819db2e8\",\n  \"app\": {\n    \"url\": \"http://my-github-app.com\",\n    \"name\": \"my github app\",\n    \"client_id\": \"abcde12345fghij67890\"\n  },\n  \"note\": \"optional note\",\n  \"note_url\": \"http://optional/note/url\",\n  \"updated_at\": \"2011-09-06T20:39:23Z\",\n  \"created_at\": \"2011-09-06T17:26:27Z\",\n  \"fingerprint\": \"jklmnop12345678\",\n  \"user\": {\n    \"login\": \"octocat\",\n    \"id\": 1,\n    \"node_id\": \"MDQ6VXNlcjE=\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/users/octocat\",\n    \"html_url\": \"https://github.com/octocat\",\n    \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n    \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n    \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n    \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n    \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n    \"type\": \"User\",\n    \"site_admin\": false\n  }\n}\n"
+      }
+    ],
+    "target":{
+      "method":"post",
+      "path":"/applications/{client_id}/token"
+    },
+    "title":"Check a token"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X PATCH \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/applications/CLIENT_ID/token \\\n  -d '{\"access_token\":\"access_token\"}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"apps",
+    "id":"reset-a-token",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"client_id ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The OAuth access token used to authenticate to the GitHub API.</p>",
+        "in":"body ",
+        "name":"access_token ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"id\": 1,\n  \"url\": \"https://api.github.com/authorizations/1\",\n  \"scopes\": [\n    \"public_repo\"\n  ],\n  \"token\": \"abcdefgh12345678\",\n  \"token_last_eight\": \"12345678\",\n  \"hashed_token\": \"25f94a2a5c7fbaf499c665bc73d67c1c87e496da8985131633ee0a95819db2e8\",\n  \"app\": {\n    \"url\": \"http://my-github-app.com\",\n    \"name\": \"my github app\",\n    \"client_id\": \"abcde12345fghij67890\"\n  },\n  \"note\": \"optional note\",\n  \"note_url\": \"http://optional/note/url\",\n  \"updated_at\": \"2011-09-06T20:39:23Z\",\n  \"created_at\": \"2011-09-06T17:26:27Z\",\n  \"fingerprint\": \"jklmnop12345678\",\n  \"user\": {\n    \"login\": \"octocat\",\n    \"id\": 1,\n    \"node_id\": \"MDQ6VXNlcjE=\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/users/octocat\",\n    \"html_url\": \"https://github.com/octocat\",\n    \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n    \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n    \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n    \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n    \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n    \"type\": \"User\",\n    \"site_admin\": false\n  }\n}\n"
+      }
+    ],
+    "target":{
+      "method":"patch",
+      "path":"/applications/{client_id}/token"
+    },
+    "title":"Reset a token"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X DELETE \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/applications/CLIENT_ID/token \\\n  -d '{\"access_token\":\"access_token\"}'\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"apps",
+    "id":"delete-an-app-token",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"client_id ",
+        "type":"string "
+      },
+      {
+        "description":"<p>The OAuth access token used to authenticate to the GitHub API.</p>",
+        "in":"body ",
+        "name":"access_token ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"delete",
+      "path":"/applications/{client_id}/token"
+    },
+    "title":"Delete an app token"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/applications/CLIENT_ID/tokens/ACCESS_TOKEN\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"apps",
+    "id":"check-an-authorization",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"client_id ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"access_token ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"id\": 1,\n  \"url\": \"https://api.github.com/authorizations/1\",\n  \"scopes\": [\n    \"public_repo\"\n  ],\n  \"token\": \"abcdefgh12345678\",\n  \"token_last_eight\": \"12345678\",\n  \"hashed_token\": \"25f94a2a5c7fbaf499c665bc73d67c1c87e496da8985131633ee0a95819db2e8\",\n  \"app\": {\n    \"url\": \"http://my-github-app.com\",\n    \"name\": \"my github app\",\n    \"client_id\": \"abcde12345fghij67890\"\n  },\n  \"note\": \"optional note\",\n  \"note_url\": \"http://optional/note/url\",\n  \"updated_at\": \"2011-09-06T20:39:23Z\",\n  \"created_at\": \"2011-09-06T17:26:27Z\",\n  \"fingerprint\": \"jklmnop12345678\",\n  \"user\": {\n    \"login\": \"octocat\",\n    \"id\": 1,\n    \"node_id\": \"MDQ6VXNlcjE=\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/users/octocat\",\n    \"html_url\": \"https://github.com/octocat\",\n    \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n    \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n    \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n    \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n    \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n    \"type\": \"User\",\n    \"site_admin\": false\n  }\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/applications/{client_id}/tokens/{access_token}"
+    },
+    "title":"Check an authorization"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X POST \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/applications/CLIENT_ID/tokens/ACCESS_TOKEN\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"apps",
+    "id":"reset-an-authorization",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"client_id ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"access_token ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"id\": 1,\n  \"url\": \"https://api.github.com/authorizations/1\",\n  \"scopes\": [\n    \"public_repo\"\n  ],\n  \"token\": \"abcdefgh12345678\",\n  \"token_last_eight\": \"12345678\",\n  \"hashed_token\": \"25f94a2a5c7fbaf499c665bc73d67c1c87e496da8985131633ee0a95819db2e8\",\n  \"app\": {\n    \"url\": \"http://my-github-app.com\",\n    \"name\": \"my github app\",\n    \"client_id\": \"abcde12345fghij67890\"\n  },\n  \"note\": \"optional note\",\n  \"note_url\": \"http://optional/note/url\",\n  \"updated_at\": \"2011-09-06T20:39:23Z\",\n  \"created_at\": \"2011-09-06T17:26:27Z\",\n  \"fingerprint\": \"jklmnop12345678\",\n  \"user\": {\n    \"login\": \"octocat\",\n    \"id\": 1,\n    \"node_id\": \"MDQ6VXNlcjE=\",\n    \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n    \"gravatar_id\": \"\",\n    \"url\": \"https://api.github.com/users/octocat\",\n    \"html_url\": \"https://github.com/octocat\",\n    \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n    \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n    \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n    \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n    \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n    \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n    \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n    \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n    \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n    \"type\": \"User\",\n    \"site_admin\": false\n  }\n}\n"
+      }
+    ],
+    "target":{
+      "method":"post",
+      "path":"/applications/{client_id}/tokens/{access_token}"
+    },
+    "title":"Reset an authorization"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X DELETE \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/applications/CLIENT_ID/tokens/ACCESS_TOKEN\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"apps",
+    "id":"revoke-an-authorization-for-an-application",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"client_id ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"access_token ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"delete",
+      "path":"/applications/{client_id}/tokens/{access_token}"
+    },
+    "title":"Revoke an authorization for an application"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X POST \\\n  -H \"Accept: application/vnd.github.corsair-preview+json\" \\\n  https://api.github.com/content_references/42/attachments \\\n  -d '{\"title\":\"title\",\"body\":\"body\"}'\n",
+        "type":"Shell"
+      },
+      {
+        "content":"application/vnd.github.corsair-preview+json\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"apps",
+    "id":"create-a-content-attachment",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>This API is under preview and subject to change.</p> <a href=\"#create-a-content-attachment-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"content_reference_id ",
+        "type":"integer "
+      },
+      {
+        "description":"<p><strong>Required</strong>. The title of the content attachment displayed in the body or comment of an issue or pull request.</p>",
+        "in":"body ",
+        "name":"title ",
+        "type":"string "
+      },
+      {
+        "description":"<p><strong>Required</strong>. The body text of the content attachment displayed in the body or comment of an issue or pull request. This parameter supports markdown.</p>",
+        "in":"body ",
+        "name":"body ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"id\": 101,\n  \"title\": \"[A-1234] Error found in core/models.py file'\",\n  \"body\": \"You have used an email that already exists for the user_email_uniq field.\\n ## DETAILS:\\n\\nThe (email)=(Octocat@github.com) already exists.\\n\\n The error was found in core/models.py in get_or_create_user at line 62.\\n\\n self.save()\"\n}\n"
+      }
+    ],
+    "target":{
+      "method":"post",
+      "path":"/content_references/{content_reference_id}/attachments"
+    },
+    "title":"Create a content attachment"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/installation/repositories\n",
+        "type":"Shell"
+      },
+      {
+        "content":"application/vnd.github.mercy-preview+json\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"apps",
+    "id":"list-repositories-accessible-to-the-app-installation",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p> <a href=\"#list-repositories-accessible-to-the-app-installation-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"total_count\": 1,\n  \"repositories\": [\n    {\n      \"id\": 1296269,\n      \"node_id\": \"MDEwOlJlcG9zaXRvcnkxMjk2MjY5\",\n      \"name\": \"Hello-World\",\n      \"full_name\": \"octocat/Hello-World\",\n      \"owner\": {\n        \"login\": \"octocat\",\n        \"id\": 1,\n        \"node_id\": \"MDQ6VXNlcjE=\",\n        \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n        \"gravatar_id\": \"\",\n        \"url\": \"https://api.github.com/users/octocat\",\n        \"html_url\": \"https://github.com/octocat\",\n        \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n        \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n        \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n        \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n        \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n        \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n        \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n        \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n        \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n        \"type\": \"User\",\n        \"site_admin\": false\n      },\n      \"private\": false,\n      \"html_url\": \"https://github.com/octocat/Hello-World\",\n      \"description\": \"This your first repo!\",\n      \"fork\": false,\n      \"url\": \"https://api.github.com/repos/octocat/Hello-World\",\n      \"archive_url\": \"http://api.github.com/repos/octocat/Hello-World/{archive_format}{/ref}\",\n      \"assignees_url\": \"http://api.github.com/repos/octocat/Hello-World/assignees{/user}\",\n      \"blobs_url\": \"http://api.github.com/repos/octocat/Hello-World/git/blobs{/sha}\",\n      \"branches_url\": \"http://api.github.com/repos/octocat/Hello-World/branches{/branch}\",\n      \"collaborators_url\": \"http://api.github.com/repos/octocat/Hello-World/collaborators{/collaborator}\",\n      \"comments_url\": \"http://api.github.com/repos/octocat/Hello-World/comments{/number}\",\n      \"commits_url\": \"http://api.github.com/repos/octocat/Hello-World/commits{/sha}\",\n      \"compare_url\": \"http://api.github.com/repos/octocat/Hello-World/compare/{base}...{head}\",\n      \"contents_url\": \"http://api.github.com/repos/octocat/Hello-World/contents/{+path}\",\n      \"contributors_url\": \"http://api.github.com/repos/octocat/Hello-World/contributors\",\n      \"deployments_url\": \"http://api.github.com/repos/octocat/Hello-World/deployments\",\n      \"downloads_url\": \"http://api.github.com/repos/octocat/Hello-World/downloads\",\n      \"events_url\": \"http://api.github.com/repos/octocat/Hello-World/events\",\n      \"forks_url\": \"http://api.github.com/repos/octocat/Hello-World/forks\",\n      \"git_commits_url\": \"http://api.github.com/repos/octocat/Hello-World/git/commits{/sha}\",\n      \"git_refs_url\": \"http://api.github.com/repos/octocat/Hello-World/git/refs{/sha}\",\n      \"git_tags_url\": \"http://api.github.com/repos/octocat/Hello-World/git/tags{/sha}\",\n      \"git_url\": \"git:github.com/octocat/Hello-World.git\",\n      \"issue_comment_url\": \"http://api.github.com/repos/octocat/Hello-World/issues/comments{/number}\",\n      \"issue_events_url\": \"http://api.github.com/repos/octocat/Hello-World/issues/events{/number}\",\n      \"issues_url\": \"http://api.github.com/repos/octocat/Hello-World/issues{/number}\",\n      \"keys_url\": \"http://api.github.com/repos/octocat/Hello-World/keys{/key_id}\",\n      \"labels_url\": \"http://api.github.com/repos/octocat/Hello-World/labels{/name}\",\n      \"languages_url\": \"http://api.github.com/repos/octocat/Hello-World/languages\",\n      \"merges_url\": \"http://api.github.com/repos/octocat/Hello-World/merges\",\n      \"milestones_url\": \"http://api.github.com/repos/octocat/Hello-World/milestones{/number}\",\n      \"notifications_url\": \"http://api.github.com/repos/octocat/Hello-World/notifications{?since,all,participating}\",\n      \"pulls_url\": \"http://api.github.com/repos/octocat/Hello-World/pulls{/number}\",\n      \"releases_url\": \"http://api.github.com/repos/octocat/Hello-World/releases{/id}\",\n      \"ssh_url\": \"git@github.com:octocat/Hello-World.git\",\n      \"stargazers_url\": \"http://api.github.com/repos/octocat/Hello-World/stargazers\",\n      \"statuses_url\": \"http://api.github.com/repos/octocat/Hello-World/statuses/{sha}\",\n      \"subscribers_url\": \"http://api.github.com/repos/octocat/Hello-World/subscribers\",\n      \"subscription_url\": \"http://api.github.com/repos/octocat/Hello-World/subscription\",\n      \"tags_url\": \"http://api.github.com/repos/octocat/Hello-World/tags\",\n      \"teams_url\": \"http://api.github.com/repos/octocat/Hello-World/teams\",\n      \"trees_url\": \"http://api.github.com/repos/octocat/Hello-World/git/trees{/sha}\",\n      \"clone_url\": \"https://github.com/octocat/Hello-World.git\",\n      \"mirror_url\": \"git:git.example.com/octocat/Hello-World\",\n      \"hooks_url\": \"http://api.github.com/repos/octocat/Hello-World/hooks\",\n      \"svn_url\": \"https://svn.github.com/octocat/Hello-World\",\n      \"homepage\": \"https://github.com\",\n      \"language\": null,\n      \"forks_count\": 9,\n      \"stargazers_count\": 80,\n      \"watchers_count\": 80,\n      \"size\": 108,\n      \"default_branch\": \"master\",\n      \"open_issues_count\": 0,\n      \"is_template\": true,\n      \"topics\": [\n        \"octocat\",\n        \"atom\",\n        \"electron\",\n        \"api\"\n      ],\n      \"has_issues\": true,\n      \"has_projects\": true,\n      \"has_wiki\": true,\n      \"has_pages\": false,\n      \"has_downloads\": true,\n      \"archived\": false,\n      \"disabled\": false,\n      \"visibility\": \"public\",\n      \"pushed_at\": \"2011-01-26T19:06:43Z\",\n      \"created_at\": \"2011-01-26T19:01:12Z\",\n      \"updated_at\": \"2011-01-26T19:14:43Z\",\n      \"allow_rebase_merge\": true,\n      \"template_repository\": null,\n      \"temp_clone_token\": \"ABTLWHOULUVAXGTRYU7OC2876QJ2O\",\n      \"allow_squash_merge\": true,\n      \"delete_branch_on_merge\": true,\n      \"allow_merge_commit\": true,\n      \"subscribers_count\": 42,\n      \"network_count\": 0\n    }\n  ]\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/installation/repositories"
+    },
+    "title":"List repositories accessible to the app installation"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X DELETE \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/installation/token\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"apps",
+    "id":"revoke-an-installation-access-token",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"delete",
+      "path":"/installation/token"
+    },
+    "title":"Revoke an installation access token"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/user/installations\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"apps",
+    "id":"list-app-installations-accessible-to-the-user-access-token",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"total_count\": 2,\n  \"installations\": [\n    {\n      \"id\": 1,\n      \"account\": {\n        \"login\": \"github\",\n        \"id\": 1,\n        \"node_id\": \"MDEyOk9yZ2FuaXphdGlvbjE=\",\n        \"url\": \"https://api.github.com/orgs/github\",\n        \"repos_url\": \"https://api.github.com/orgs/github/repos\",\n        \"events_url\": \"https://api.github.com/orgs/github/events\",\n        \"hooks_url\": \"https://api.github.com/orgs/github/hooks\",\n        \"issues_url\": \"https://api.github.com/orgs/github/issues\",\n        \"members_url\": \"https://api.github.com/orgs/github/members{/member}\",\n        \"public_members_url\": \"https://api.github.com/orgs/github/public_members{/member}\",\n        \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n        \"description\": \"A great organization\"\n      },\n      \"access_tokens_url\": \"https://api.github.com/installations/1/access_tokens\",\n      \"repositories_url\": \"https://api.github.com/installation/repositories\",\n      \"html_url\": \"https://github.com/organizations/github/settings/installations/1\",\n      \"app_id\": 1,\n      \"target_id\": 1,\n      \"target_type\": \"Organization\",\n      \"permissions\": {\n        \"checks\": \"write\",\n        \"metadata\": \"read\",\n        \"contents\": \"read\"\n      },\n      \"events\": [\n        \"push\",\n        \"pull_request\"\n      ],\n      \"single_file_name\": \"config.yml\"\n    },\n    {\n      \"id\": 3,\n      \"account\": {\n        \"login\": \"octocat\",\n        \"id\": 2,\n        \"node_id\": \"MDQ6VXNlcjE=\",\n        \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n        \"gravatar_id\": \"\",\n        \"url\": \"https://api.github.com/users/octocat\",\n        \"html_url\": \"https://github.com/octocat\",\n        \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n        \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n        \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n        \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n        \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n        \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n        \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n        \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n        \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n        \"type\": \"User\",\n        \"site_admin\": false\n      },\n      \"access_tokens_url\": \"https://api.github.com/installations/1/access_tokens\",\n      \"repositories_url\": \"https://api.github.com/installation/repositories\",\n      \"html_url\": \"https://github.com/organizations/github/settings/installations/1\",\n      \"app_id\": 1,\n      \"target_id\": 1,\n      \"target_type\": \"Organization\",\n      \"permissions\": {\n        \"checks\": \"write\",\n        \"metadata\": \"read\",\n        \"contents\": \"read\"\n      },\n      \"events\": [\n        \"push\",\n        \"pull_request\"\n      ],\n      \"single_file_name\": \"config.yml\"\n    }\n  ]\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/user/installations"
+    },
+    "title":"List app installations accessible to the user access token"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/user/installations/42/repositories\n",
+        "type":"Shell"
+      },
+      {
+        "content":"application/vnd.github.mercy-preview+json\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"apps",
+    "id":"list-repositories-accessible-to-the-user-access-token",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p> <a href=\"#list-repositories-accessible-to-the-user-access-token-preview-notices\"> See preview notice. </a>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"installation_id ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"total_count\": 1,\n  \"repositories\": [\n    {\n      \"id\": 1296269,\n      \"node_id\": \"MDEwOlJlcG9zaXRvcnkxMjk2MjY5\",\n      \"name\": \"Hello-World\",\n      \"full_name\": \"octocat/Hello-World\",\n      \"owner\": {\n        \"login\": \"octocat\",\n        \"id\": 1,\n        \"node_id\": \"MDQ6VXNlcjE=\",\n        \"avatar_url\": \"https://github.com/images/error/octocat_happy.gif\",\n        \"gravatar_id\": \"\",\n        \"url\": \"https://api.github.com/users/octocat\",\n        \"html_url\": \"https://github.com/octocat\",\n        \"followers_url\": \"https://api.github.com/users/octocat/followers\",\n        \"following_url\": \"https://api.github.com/users/octocat/following{/other_user}\",\n        \"gists_url\": \"https://api.github.com/users/octocat/gists{/gist_id}\",\n        \"starred_url\": \"https://api.github.com/users/octocat/starred{/owner}{/repo}\",\n        \"subscriptions_url\": \"https://api.github.com/users/octocat/subscriptions\",\n        \"organizations_url\": \"https://api.github.com/users/octocat/orgs\",\n        \"repos_url\": \"https://api.github.com/users/octocat/repos\",\n        \"events_url\": \"https://api.github.com/users/octocat/events{/privacy}\",\n        \"received_events_url\": \"https://api.github.com/users/octocat/received_events\",\n        \"type\": \"User\",\n        \"site_admin\": false\n      },\n      \"private\": false,\n      \"html_url\": \"https://github.com/octocat/Hello-World\",\n      \"description\": \"This your first repo!\",\n      \"fork\": false,\n      \"url\": \"https://api.github.com/repos/octocat/Hello-World\",\n      \"archive_url\": \"http://api.github.com/repos/octocat/Hello-World/{archive_format}{/ref}\",\n      \"assignees_url\": \"http://api.github.com/repos/octocat/Hello-World/assignees{/user}\",\n      \"blobs_url\": \"http://api.github.com/repos/octocat/Hello-World/git/blobs{/sha}\",\n      \"branches_url\": \"http://api.github.com/repos/octocat/Hello-World/branches{/branch}\",\n      \"collaborators_url\": \"http://api.github.com/repos/octocat/Hello-World/collaborators{/collaborator}\",\n      \"comments_url\": \"http://api.github.com/repos/octocat/Hello-World/comments{/number}\",\n      \"commits_url\": \"http://api.github.com/repos/octocat/Hello-World/commits{/sha}\",\n      \"compare_url\": \"http://api.github.com/repos/octocat/Hello-World/compare/{base}...{head}\",\n      \"contents_url\": \"http://api.github.com/repos/octocat/Hello-World/contents/{+path}\",\n      \"contributors_url\": \"http://api.github.com/repos/octocat/Hello-World/contributors\",\n      \"deployments_url\": \"http://api.github.com/repos/octocat/Hello-World/deployments\",\n      \"downloads_url\": \"http://api.github.com/repos/octocat/Hello-World/downloads\",\n      \"events_url\": \"http://api.github.com/repos/octocat/Hello-World/events\",\n      \"forks_url\": \"http://api.github.com/repos/octocat/Hello-World/forks\",\n      \"git_commits_url\": \"http://api.github.com/repos/octocat/Hello-World/git/commits{/sha}\",\n      \"git_refs_url\": \"http://api.github.com/repos/octocat/Hello-World/git/refs{/sha}\",\n      \"git_tags_url\": \"http://api.github.com/repos/octocat/Hello-World/git/tags{/sha}\",\n      \"git_url\": \"git:github.com/octocat/Hello-World.git\",\n      \"issue_comment_url\": \"http://api.github.com/repos/octocat/Hello-World/issues/comments{/number}\",\n      \"issue_events_url\": \"http://api.github.com/repos/octocat/Hello-World/issues/events{/number}\",\n      \"issues_url\": \"http://api.github.com/repos/octocat/Hello-World/issues{/number}\",\n      \"keys_url\": \"http://api.github.com/repos/octocat/Hello-World/keys{/key_id}\",\n      \"labels_url\": \"http://api.github.com/repos/octocat/Hello-World/labels{/name}\",\n      \"languages_url\": \"http://api.github.com/repos/octocat/Hello-World/languages\",\n      \"merges_url\": \"http://api.github.com/repos/octocat/Hello-World/merges\",\n      \"milestones_url\": \"http://api.github.com/repos/octocat/Hello-World/milestones{/number}\",\n      \"notifications_url\": \"http://api.github.com/repos/octocat/Hello-World/notifications{?since,all,participating}\",\n      \"pulls_url\": \"http://api.github.com/repos/octocat/Hello-World/pulls{/number}\",\n      \"releases_url\": \"http://api.github.com/repos/octocat/Hello-World/releases{/id}\",\n      \"ssh_url\": \"git@github.com:octocat/Hello-World.git\",\n      \"stargazers_url\": \"http://api.github.com/repos/octocat/Hello-World/stargazers\",\n      \"statuses_url\": \"http://api.github.com/repos/octocat/Hello-World/statuses/{sha}\",\n      \"subscribers_url\": \"http://api.github.com/repos/octocat/Hello-World/subscribers\",\n      \"subscription_url\": \"http://api.github.com/repos/octocat/Hello-World/subscription\",\n      \"tags_url\": \"http://api.github.com/repos/octocat/Hello-World/tags\",\n      \"teams_url\": \"http://api.github.com/repos/octocat/Hello-World/teams\",\n      \"trees_url\": \"http://api.github.com/repos/octocat/Hello-World/git/trees{/sha}\",\n      \"clone_url\": \"https://github.com/octocat/Hello-World.git\",\n      \"mirror_url\": \"git:git.example.com/octocat/Hello-World\",\n      \"hooks_url\": \"http://api.github.com/repos/octocat/Hello-World/hooks\",\n      \"svn_url\": \"https://svn.github.com/octocat/Hello-World\",\n      \"homepage\": \"https://github.com\",\n      \"language\": null,\n      \"forks_count\": 9,\n      \"stargazers_count\": 80,\n      \"watchers_count\": 80,\n      \"size\": 108,\n      \"default_branch\": \"master\",\n      \"open_issues_count\": 0,\n      \"is_template\": true,\n      \"topics\": [\n        \"octocat\",\n        \"atom\",\n        \"electron\",\n        \"api\"\n      ],\n      \"has_issues\": true,\n      \"has_projects\": true,\n      \"has_wiki\": true,\n      \"has_pages\": false,\n      \"has_downloads\": true,\n      \"archived\": false,\n      \"disabled\": false,\n      \"visibility\": \"public\",\n      \"pushed_at\": \"2011-01-26T19:06:43Z\",\n      \"created_at\": \"2011-01-26T19:01:12Z\",\n      \"updated_at\": \"2011-01-26T19:14:43Z\",\n      \"permissions\": {\n        \"admin\": false,\n        \"push\": false,\n        \"pull\": true\n      },\n      \"allow_rebase_merge\": true,\n      \"template_repository\": null,\n      \"temp_clone_token\": \"ABTLWHOULUVAXGTRYU7OC2876QJ2O\",\n      \"allow_squash_merge\": true,\n      \"delete_branch_on_merge\": true,\n      \"allow_merge_commit\": true,\n      \"subscribers_count\": 42,\n      \"network_count\": 0\n    }\n  ]\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/user/installations/{installation_id}/repositories"
+    },
+    "title":"List repositories accessible to the user access token"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X PUT \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/user/installations/42/repositories/42\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"apps",
+    "id":"add-a-repository-to-an-app-installation",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"installation_id ",
+        "type":"integer "
+      },
+      {
+        "in":"path",
+        "name":"repository_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"put",
+      "path":"/user/installations/{installation_id}/repositories/{repository_id}"
+    },
+    "title":"Add a repository to an app installation"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -X DELETE \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/user/installations/42/repositories/42\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"apps",
+    "id":"remove-a-repository-from-an-app-installation",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"installation_id ",
+        "type":"integer "
+      },
+      {
+        "in":"path",
+        "name":"repository_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"204 No Content"
+      }
+    ],
+    "target":{
+      "method":"delete",
+      "path":"/user/installations/{installation_id}/repositories/{repository_id}"
+    },
+    "title":"Remove a repository from an app installation"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/marketplace_listing/accounts/42\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"apps",
+    "id":"get-a-subscription-plan-for-an-account",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"account_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"url\": \"https://api.github.com/orgs/github\",\n  \"type\": \"Organization\",\n  \"id\": 4,\n  \"login\": \"github\",\n  \"email\": null,\n  \"organization_billing_email\": \"billing@github.com\",\n  \"marketplace_pending_change\": {\n    \"effective_date\": \"2017-11-11T00:00:00Z\",\n    \"unit_count\": null,\n    \"id\": 77,\n    \"plan\": {\n      \"url\": \"https://api.github.com/marketplace_listing/plans/1111\",\n      \"accounts_url\": \"https://api.github.com/marketplace_listing/plans/1111/accounts\",\n      \"id\": 1111,\n      \"number\": 2,\n      \"name\": \"Startup\",\n      \"description\": \"A professional-grade CI solution\",\n      \"monthly_price_in_cents\": 699,\n      \"yearly_price_in_cents\": 7870,\n      \"price_model\": \"flat-rate\",\n      \"has_free_trial\": true,\n      \"state\": \"published\",\n      \"unit_name\": null,\n      \"bullets\": [\n        \"Up to 10 private repositories\",\n        \"3 concurrent builds\"\n      ]\n    }\n  },\n  \"marketplace_purchase\": {\n    \"billing_cycle\": \"monthly\",\n    \"next_billing_date\": \"2017-11-11T00:00:00Z\",\n    \"unit_count\": null,\n    \"on_free_trial\": true,\n    \"free_trial_ends_on\": \"2017-11-11T00:00:00Z\",\n    \"updated_at\": \"2017-11-02T01:12:12Z\",\n    \"plan\": {\n      \"url\": \"https://api.github.com/marketplace_listing/plans/1313\",\n      \"accounts_url\": \"https://api.github.com/marketplace_listing/plans/1313/accounts\",\n      \"id\": 1313,\n      \"number\": 3,\n      \"name\": \"Pro\",\n      \"description\": \"A professional-grade CI solution\",\n      \"monthly_price_in_cents\": 1099,\n      \"yearly_price_in_cents\": 11870,\n      \"price_model\": \"flat-rate\",\n      \"has_free_trial\": true,\n      \"unit_name\": null,\n      \"state\": \"published\",\n      \"bullets\": [\n        \"Up to 25 private repositories\",\n        \"11 concurrent builds\"\n      ]\n    }\n  }\n}\n"
+      },
+      {
+        "code":"404 Not Found"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/marketplace_listing/accounts/{account_id}"
+    },
+    "title":"Get a subscription plan for an account"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/marketplace_listing/plans\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"apps",
+    "id":"list-plans",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"url\": \"https://api.github.com/marketplace_listing/plans/1313\",\n    \"accounts_url\": \"https://api.github.com/marketplace_listing/plans/1313/accounts\",\n    \"id\": 1313,\n    \"number\": 3,\n    \"name\": \"Pro\",\n    \"description\": \"A professional-grade CI solution\",\n    \"monthly_price_in_cents\": 1099,\n    \"yearly_price_in_cents\": 11870,\n    \"price_model\": \"flat-rate\",\n    \"has_free_trial\": true,\n    \"unit_name\": null,\n    \"state\": \"published\",\n    \"bullets\": [\n      \"Up to 25 private repositories\",\n      \"11 concurrent builds\"\n    ]\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/marketplace_listing/plans"
+    },
+    "title":"List plans"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/marketplace_listing/plans/42/accounts\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"apps",
+    "id":"list-accounts-for-a-plan",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"plan_id ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Sorts the GitHub accounts by the date they were created or last updated. Can be one of <code>created</code> or <code>updated</code>.</p>",
+        "in":"query ",
+        "name":"sort ",
+        "type":"string "
+      },
+      {
+        "description":"<p>To return the oldest accounts first, set to <code>asc</code>. Can be one of <code>asc</code> or <code>desc</code>. Ignored without the <code>sort</code> parameter.</p>",
+        "in":"query ",
+        "name":"direction ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"url\": \"https://api.github.com/orgs/github\",\n    \"type\": \"Organization\",\n    \"id\": 4,\n    \"login\": \"github\",\n    \"email\": null,\n    \"organization_billing_email\": \"billing@github.com\",\n    \"marketplace_pending_change\": {\n      \"effective_date\": \"2017-11-11T00:00:00Z\",\n      \"unit_count\": null,\n      \"id\": 77,\n      \"plan\": {\n        \"url\": \"https://api.github.com/marketplace_listing/plans/1111\",\n        \"accounts_url\": \"https://api.github.com/marketplace_listing/plans/1111/accounts\",\n        \"id\": 1111,\n        \"number\": 2,\n        \"name\": \"Startup\",\n        \"description\": \"A professional-grade CI solution\",\n        \"monthly_price_in_cents\": 699,\n        \"yearly_price_in_cents\": 7870,\n        \"price_model\": \"flat-rate\",\n        \"has_free_trial\": true,\n        \"state\": \"published\",\n        \"unit_name\": null,\n        \"bullets\": [\n          \"Up to 10 private repositories\",\n          \"3 concurrent builds\"\n        ]\n      }\n    },\n    \"marketplace_purchase\": {\n      \"billing_cycle\": \"monthly\",\n      \"next_billing_date\": \"2017-11-11T00:00:00Z\",\n      \"unit_count\": null,\n      \"on_free_trial\": true,\n      \"free_trial_ends_on\": \"2017-11-11T00:00:00Z\",\n      \"updated_at\": \"2017-11-02T01:12:12Z\",\n      \"plan\": {\n        \"url\": \"https://api.github.com/marketplace_listing/plans/1313\",\n        \"accounts_url\": \"https://api.github.com/marketplace_listing/plans/1313/accounts\",\n        \"id\": 1313,\n        \"number\": 3,\n        \"name\": \"Pro\",\n        \"description\": \"A professional-grade CI solution\",\n        \"monthly_price_in_cents\": 1099,\n        \"yearly_price_in_cents\": 11870,\n        \"price_model\": \"flat-rate\",\n        \"has_free_trial\": true,\n        \"unit_name\": null,\n        \"state\": \"published\",\n        \"bullets\": [\n          \"Up to 25 private repositories\",\n          \"11 concurrent builds\"\n        ]\n      }\n    }\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/marketplace_listing/plans/{plan_id}/accounts"
+    },
+    "title":"List accounts for a plan"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/marketplace_listing/stubbed/accounts/42\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"apps",
+    "id":"get-a-subscription-plan-for-an-account-stubbed",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"account_id ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"url\": \"https://api.github.com/orgs/github\",\n  \"type\": \"Organization\",\n  \"id\": 4,\n  \"login\": \"github\",\n  \"email\": null,\n  \"organization_billing_email\": \"billing@github.com\",\n  \"marketplace_pending_change\": {\n    \"effective_date\": \"2017-11-11T00:00:00Z\",\n    \"unit_count\": null,\n    \"id\": 77,\n    \"plan\": {\n      \"url\": \"https://api.github.com/marketplace_listing/plans/1111\",\n      \"accounts_url\": \"https://api.github.com/marketplace_listing/plans/1111/accounts\",\n      \"id\": 1111,\n      \"number\": 2,\n      \"name\": \"Startup\",\n      \"description\": \"A professional-grade CI solution\",\n      \"monthly_price_in_cents\": 699,\n      \"yearly_price_in_cents\": 7870,\n      \"price_model\": \"flat-rate\",\n      \"has_free_trial\": true,\n      \"state\": \"published\",\n      \"unit_name\": null,\n      \"bullets\": [\n        \"Up to 10 private repositories\",\n        \"3 concurrent builds\"\n      ]\n    }\n  },\n  \"marketplace_purchase\": {\n    \"billing_cycle\": \"monthly\",\n    \"next_billing_date\": \"2017-11-11T00:00:00Z\",\n    \"unit_count\": null,\n    \"on_free_trial\": true,\n    \"free_trial_ends_on\": \"2017-11-11T00:00:00Z\",\n    \"updated_at\": \"2017-11-02T01:12:12Z\",\n    \"plan\": {\n      \"url\": \"https://api.github.com/marketplace_listing/plans/1313\",\n      \"accounts_url\": \"https://api.github.com/marketplace_listing/plans/1313/accounts\",\n      \"id\": 1313,\n      \"number\": 3,\n      \"name\": \"Pro\",\n      \"description\": \"A professional-grade CI solution\",\n      \"monthly_price_in_cents\": 1099,\n      \"yearly_price_in_cents\": 11870,\n      \"price_model\": \"flat-rate\",\n      \"has_free_trial\": true,\n      \"unit_name\": null,\n      \"state\": \"published\",\n      \"bullets\": [\n        \"Up to 25 private repositories\",\n        \"11 concurrent builds\"\n      ]\n    }\n  }\n}\n"
+      },
+      {
+        "code":"404 Not Found"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/marketplace_listing/stubbed/accounts/{account_id}"
+    },
+    "title":"Get a subscription plan for an account (stubbed)"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/marketplace_listing/stubbed/plans\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"apps",
+    "id":"list-plans-stubbed",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"url\": \"https://api.github.com/marketplace_listing/plans/1313\",\n    \"accounts_url\": \"https://api.github.com/marketplace_listing/plans/1313/accounts\",\n    \"id\": 1313,\n    \"number\": 3,\n    \"name\": \"Pro\",\n    \"description\": \"A professional-grade CI solution\",\n    \"monthly_price_in_cents\": 1099,\n    \"yearly_price_in_cents\": 11870,\n    \"price_model\": \"flat-rate\",\n    \"has_free_trial\": true,\n    \"unit_name\": null,\n    \"state\": \"published\",\n    \"bullets\": [\n      \"Up to 25 private repositories\",\n      \"11 concurrent builds\"\n    ]\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/marketplace_listing/stubbed/plans"
+    },
+    "title":"List plans (stubbed)"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/marketplace_listing/stubbed/plans/42/accounts\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"apps",
+    "id":"list-accounts-for-a-plan-stubbed",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"plan_id ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Sorts the GitHub accounts by the date they were created or last updated. Can be one of <code>created</code> or <code>updated</code>.</p>",
+        "in":"query ",
+        "name":"sort ",
+        "type":"string "
+      },
+      {
+        "description":"<p>To return the oldest accounts first, set to <code>asc</code>. Can be one of <code>asc</code> or <code>desc</code>. Ignored without the <code>sort</code> parameter.</p>",
+        "in":"query ",
+        "name":"direction ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"url\": \"https://api.github.com/orgs/github\",\n    \"type\": \"Organization\",\n    \"id\": 4,\n    \"login\": \"github\",\n    \"email\": null,\n    \"organization_billing_email\": \"billing@github.com\",\n    \"marketplace_pending_change\": {\n      \"effective_date\": \"2017-11-11T00:00:00Z\",\n      \"unit_count\": null,\n      \"id\": 77,\n      \"plan\": {\n        \"url\": \"https://api.github.com/marketplace_listing/plans/1111\",\n        \"accounts_url\": \"https://api.github.com/marketplace_listing/plans/1111/accounts\",\n        \"id\": 1111,\n        \"number\": 2,\n        \"name\": \"Startup\",\n        \"description\": \"A professional-grade CI solution\",\n        \"monthly_price_in_cents\": 699,\n        \"yearly_price_in_cents\": 7870,\n        \"price_model\": \"flat-rate\",\n        \"has_free_trial\": true,\n        \"state\": \"published\",\n        \"unit_name\": null,\n        \"bullets\": [\n          \"Up to 10 private repositories\",\n          \"3 concurrent builds\"\n        ]\n      }\n    },\n    \"marketplace_purchase\": {\n      \"billing_cycle\": \"monthly\",\n      \"next_billing_date\": \"2017-11-11T00:00:00Z\",\n      \"unit_count\": null,\n      \"on_free_trial\": true,\n      \"free_trial_ends_on\": \"2017-11-11T00:00:00Z\",\n      \"updated_at\": \"2017-11-02T01:12:12Z\",\n      \"plan\": {\n        \"url\": \"https://api.github.com/marketplace_listing/plans/1313\",\n        \"accounts_url\": \"https://api.github.com/marketplace_listing/plans/1313/accounts\",\n        \"id\": 1313,\n        \"number\": 3,\n        \"name\": \"Pro\",\n        \"description\": \"A professional-grade CI solution\",\n        \"monthly_price_in_cents\": 1099,\n        \"yearly_price_in_cents\": 11870,\n        \"price_model\": \"flat-rate\",\n        \"has_free_trial\": true,\n        \"unit_name\": null,\n        \"state\": \"published\",\n        \"bullets\": [\n          \"Up to 25 private repositories\",\n          \"11 concurrent builds\"\n        ]\n      }\n    }\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/marketplace_listing/stubbed/plans/{plan_id}/accounts"
+    },
+    "title":"List accounts for a plan (stubbed)"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/user/marketplace_purchases\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"apps",
+    "id":"list-subscriptions-for-the-authenticated-user",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"billing_cycle\": \"monthly\",\n    \"next_billing_date\": \"2017-11-11T00:00:00Z\",\n    \"unit_count\": null,\n    \"on_free_trial\": true,\n    \"free_trial_ends_on\": \"2017-11-11T00:00:00Z\",\n    \"updated_at\": \"2017-11-02T01:12:12Z\",\n    \"account\": {\n      \"login\": \"github\",\n      \"id\": 4,\n      \"url\": \"https://api.github.com/orgs/github\",\n      \"email\": null,\n      \"organization_billing_email\": \"billing@github.com\",\n      \"type\": \"Organization\"\n    },\n    \"plan\": {\n      \"url\": \"https://api.github.com/marketplace_listing/plans/1313\",\n      \"accounts_url\": \"https://api.github.com/marketplace_listing/plans/1313/accounts\",\n      \"id\": 1313,\n      \"number\": 3,\n      \"name\": \"Pro\",\n      \"description\": \"A professional-grade CI solution\",\n      \"monthly_price_in_cents\": 1099,\n      \"yearly_price_in_cents\": 11870,\n      \"price_model\": \"flat-rate\",\n      \"has_free_trial\": true,\n      \"unit_name\": null,\n      \"state\": \"published\",\n      \"bullets\": [\n        \"Up to 25 private repositories\",\n        \"11 concurrent builds\"\n      ]\n    }\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/user/marketplace_purchases"
+    },
+    "title":"List subscriptions for the authenticated user"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/user/marketplace_purchases/stubbed\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"apps",
+    "id":"list-subscriptions-for-the-authenticated-user-stubbed",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "description":"<p>Results per page (max 100)</p>",
+        "in":"query ",
+        "name":"per_page ",
+        "type":"integer "
+      },
+      {
+        "description":"<p>Page number of the results to fetch.</p>",
+        "in":"query ",
+        "name":"page ",
+        "type":"integer "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  {\n    \"billing_cycle\": \"monthly\",\n    \"next_billing_date\": \"2017-11-11T00:00:00Z\",\n    \"unit_count\": null,\n    \"on_free_trial\": true,\n    \"free_trial_ends_on\": \"2017-11-11T00:00:00Z\",\n    \"updated_at\": \"2017-11-02T01:12:12Z\",\n    \"account\": {\n      \"login\": \"github\",\n      \"id\": 4,\n      \"url\": \"https://api.github.com/orgs/github\",\n      \"email\": null,\n      \"organization_billing_email\": \"billing@github.com\",\n      \"type\": \"Organization\"\n    },\n    \"plan\": {\n      \"url\": \"https://api.github.com/marketplace_listing/plans/1313\",\n      \"accounts_url\": \"https://api.github.com/marketplace_listing/plans/1313/accounts\",\n      \"id\": 1313,\n      \"number\": 3,\n      \"name\": \"Pro\",\n      \"description\": \"A professional-grade CI solution\",\n      \"monthly_price_in_cents\": 1099,\n      \"yearly_price_in_cents\": 11870,\n      \"price_model\": \"flat-rate\",\n      \"has_free_trial\": true,\n      \"unit_name\": null,\n      \"state\": \"published\",\n      \"bullets\": [\n        \"Up to 25 private repositories\",\n        \"11 concurrent builds\"\n      ]\n    }\n  }\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/user/marketplace_purchases/stubbed"
+    },
+    "title":"List subscriptions for the authenticated user (stubbed)"
+  }
+]

@@ -25,10 +25,9 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Parameter {
+public class ParameterProperty {
+    private String of;
     private String name;
     private String type;
-    private String in;
     private String description;
-
 }

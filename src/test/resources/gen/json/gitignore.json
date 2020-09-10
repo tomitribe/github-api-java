@@ -1,0 +1,69 @@
+[
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/gitignore/templates\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"gitignore",
+    "id":"get-all-gitignore-templates",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"[\n  \"Actionscript\",\n  \"Android\",\n  \"AppceleratorTitanium\",\n  \"Autotools\",\n  \"Bancha\",\n  \"C\",\n  \"C++\"\n]\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/gitignore/templates"
+    },
+    "title":"Get all gitignore templates"
+  },
+  {
+    "codeSamples":[
+      {
+        "content":"curl \\\n  -H \"Accept: application/vnd.github.v3+json\" \\\n  https://api.github.com/gitignore/templates/NAME\n",
+        "type":"Shell"
+      }
+    ],
+    "group":"gitignore",
+    "id":"get-a-gitignore-template",
+    "parameterProperties":[
+    ],
+    "parameters":[
+      {
+        "description":"<p>Setting to <code>application/vnd.github.v3+json</code> is recommended</p>",
+        "in":"header ",
+        "name":"accept ",
+        "type":"string "
+      },
+      {
+        "in":"path",
+        "name":"name ",
+        "type":"string "
+      }
+    ],
+    "responses":[
+      {
+        "code":"200 OK",
+        "content":"{\n  \"name\": \"C\",\n  \"source\": \"# Object files\\n*.o\\n\\n# Libraries\\n*.lib\\n*.a\\n\\n# Shared objects (inc. Windows DLLs)\\n*.dll\\n*.so\\n*.so.*\\n*.dylib\\n\\n# Executables\\n*.exe\\n*.out\\n*.app\\n\"\n}\n"
+      }
+    ],
+    "target":{
+      "method":"get",
+      "path":"/gitignore/templates/{name}"
+    },
+    "title":"Get a gitignore template"
+  }
+]

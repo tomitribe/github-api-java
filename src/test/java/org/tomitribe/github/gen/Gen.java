@@ -23,5 +23,8 @@ public interface Gen extends Dir {
     Html html();
 
     @Mkdirs
+    Dir json();
+
+    @Mkdirs
     Parsed parsed();
 }
