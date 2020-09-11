@@ -39,7 +39,7 @@ public class OpenApiTest {
     public void pathNames() throws Exception {
         final OpenApi openApi = OpenApi.parse(getOpenApiJson());
 
-        for (final Map.Entry<String, OpenApi.Path> entry : openApi.getPaths().entrySet()) {
+        for (final Map.Entry<String, Path> entry : openApi.getPaths().entrySet()) {
             assertEquals(entry.getKey(), entry.getValue().getName());
         }
     }
