@@ -21,17 +21,33 @@ import org.tomitribe.github.JsonAsserts;
 import org.tomitribe.github.model.PayloadAsserts;
 import org.tomitribe.util.IO;
 
+import java.io.IOException;
 import java.net.URL;
+import java.util.Map;
+
+import static org.junit.Assert.assertEquals;
 
 public class OpenApiTest {
 
     @Test
     public void test() throws Exception {
+        final String expected = getOpenApiJson();
+        JsonAsserts.assertJsonb(expected, OpenApi.class);
+    }
+
+    @Test
+    public void pathNames() throws Exception {
+        final OpenApi openApi = OpenApi.parse(getOpenApiJson());
+
+        for (final Map.Entry<String, OpenApi.Path> entry : openApi.getPaths().entrySet()) {
+            assertEquals(entry.getKey(), entry.getValue().getName());
+        }
+    }
+
+    public String getOpenApiJson() throws IOException {
         final ClassLoader loader = PayloadAsserts.class.getClassLoader();
         final URL resource = loader.getResource("gen/api.github.com.json");
-        final String expected = IO.slurp(resource);
-
-        JsonAsserts.assertJsonb(expected, OpenApi.class);
+        return IO.slurp(resource);
     }
 
 }
