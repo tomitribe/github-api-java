@@ -24,6 +24,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.json.bind.annotation.JsonbProperty;
+import javax.json.bind.annotation.JsonbTransient;
 import java.util.List;
 import java.util.Map;
 
@@ -61,11 +62,9 @@ public class OpenApi {
     @Builder
     @EqualsAndHashCode(onlyExplicitlyIncluded = true)
     public static class Components {
+
         @JsonbProperty("schemas")
         private Map<String, Schema> schemas;
-
-        @JsonbProperty("name")
-        private Map<String, String> name;
 
         @JsonbProperty("examples")
         private Map<String, Example> examples;
@@ -105,22 +104,22 @@ public class OpenApi {
         private Method get;
 
         @JsonbProperty("put")
-        private Object put;
+        private Method put;
 
         @JsonbProperty("post")
-        private Object post;
+        private Method post;
 
         @JsonbProperty("delete")
-        private Object delete;
+        private Method delete;
 
         @JsonbProperty("trace")
-        private Object trace;
+        private Method trace;
 
         @JsonbProperty("options")
-        private Object options;
+        private Method options;
 
         @JsonbProperty("patch")
-        private Object patch;
+        private Method patch;
     }
 
 
@@ -156,6 +155,13 @@ public class OpenApi {
 
         @JsonbProperty("deprecated")
         private Boolean deprecated;
+
+        @JsonbProperty("requestBody")
+        private RequestBody requestBody;
+
+        @JsonbProperty("servers")
+        private List<Server> servers;
+
     }
 
 
@@ -285,6 +291,16 @@ public class OpenApi {
 
         @JsonbProperty("minItems")
         private Long minItems;
+
+        @JsonbProperty("pattern")
+        private String pattern;
+
+        @JsonbProperty("maxProperties")
+        private Long maxProperties;
+
+        @JsonbProperty("readOnly")
+        private Boolean readOnly;
+
     }
 
 
@@ -329,6 +345,12 @@ public class OpenApi {
 
         @JsonbProperty("subcategory")
         private String subcategory;
+
+        @JsonbProperty("requestBodyParameterName")
+        private String requestBodyParameterName;
+
+        @JsonbProperty("triggersNotification")
+        private Boolean triggersNotification;
 
     }
 
@@ -387,7 +409,20 @@ public class OpenApi {
         private Map<String, Object> examples;
 
         @JsonbProperty("example")
-        private List<String> example;
+        private Object example;
+
+    }
+
+
+    @Data
+    @NoArgsConstructor
+    @AllArgsConstructor
+    @Builder
+    @EqualsAndHashCode(onlyExplicitlyIncluded = true)
+    public static class RequestBody {
+
+        @JsonbProperty("content")
+        private Map<String, Content> content;
 
     }
 
@@ -414,6 +449,10 @@ public class OpenApi {
     public static class Server {
         @JsonbProperty("url")
         private String url;
+
+        @JsonbProperty("variables")
+        private Map<String, Object> variables;
+
     }
 
 
