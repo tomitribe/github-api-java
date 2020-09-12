@@ -1,0 +1,18 @@
+[
+  {
+    "email":"octocat@octocat.org",
+    "primary":false,
+    "verified":false,
+    "visibility":"public"
+  },
+  {
+    "email":"octocat@github.com",
+    "primary":false,
+    "verified":false
+  },
+  {
+    "email":"mona@github.com",
+    "primary":false,
+    "verified":false
+  }
+]
