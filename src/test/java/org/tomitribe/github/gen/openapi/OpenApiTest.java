@@ -26,10 +26,8 @@ import org.tomitribe.util.IO;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Comparator;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 import static java.util.Collections.EMPTY_LIST;
 import static org.junit.Assert.assertEquals;
@@ -41,24 +39,6 @@ public class OpenApiTest {
         final String expected = getOpenApiJson();
         JsonAsserts.assertJsonb(expected, OpenApi.class);
     }
-
-    @Test
-    public void methodsCount() throws Exception {
-    }
-
-    public Map<String, Content> getContent(final Endpoint endpoint) {
-        final Map<String, Content> content = endpoint.getResponse().getContent();
-//        if (content == null) {
-//            if (responseTypes.containsKey(endpoint.getTarget().toString())) {
-//                return Collections.EMPTY_MAP;
-//            }
-//            if (endpoint.getResponse().getName().equals("205")) {
-//                return Collections.EMPTY_MAP;
-//            }
-//        }
-        return content;
-    }
-
 
     @Data
     public static class Endpoint {

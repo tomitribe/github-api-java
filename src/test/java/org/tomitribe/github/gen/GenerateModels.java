@@ -170,12 +170,11 @@ public class GenerateModels {
     }
 
     private void applyProperty(final Clazz clazz, final String name, final Schema value) {
-        final String javaName = Strings.lcfirst(Strings.camelCase(name));
 
         if (value.getAnyOf() != null) throw new UnsupportedOperationException("Schema anyOf not supported: " + value);
         if (value.getOneOf() != null) throw new UnsupportedOperationException("Schema oneOf not supported: " + value);
         if (value.getAdditionalProperties() != null) throw new UnsupportedOperationException("Schema additionalProperties not supported: " + value);
-        System.out.println(javaName);
+
         /*
          * Does the schema refer to another top-level component?
          */
@@ -187,7 +186,7 @@ public class GenerateModels {
             final Clazz target = refs.get(ref);
             if (target == null) throw new IllegalStateException("Reference not found: " + ref);
 
-            clazz.getFields().add(new Field(javaName, name, target.getName(), false));
+            clazz.add(Field.field(name, target.getName()).build());
             return;
         }
 
@@ -196,12 +195,12 @@ public class GenerateModels {
         final String type = value.getType();
 
         if ("string".equals(type)) {
-            clazz.getFields().add(new Field(javaName, name, "String", false));
+            clazz.add(Field.field(name, "String").build());
             return;
         }
 
         if ("integer".equals(type)) {
-            clazz.getFields().add(new Field(javaName, name, "Integer", false));
+            clazz.add(Field.field(name, "Integer").build());
             return;
         }
 
@@ -219,7 +218,7 @@ public class GenerateModels {
             System.out.println(itemSchema.getType());
 
             final String nes = name.replaceAll("s$", "");
-            clazz.getFields().add(new Field(javaName, name, "Integer", true));
+            clazz.add(Field.field(name, "Integer").collection(true).build());
             return;
         }
 

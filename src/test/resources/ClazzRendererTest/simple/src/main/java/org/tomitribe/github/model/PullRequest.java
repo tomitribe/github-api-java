@@ -14,29 +14,44 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package org.tomitribe.github.gen;
 
-import org.apache.openejb.loader.Files;
+package org.tomitribe.github.model;
 
-import java.io.File;
+import javax.json.bind.annotation.JsonbProperty;
 
-public interface Java extends Dir {
+import lombok.Data;
+import lombok.Builder;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import java.util.List;
 
-    default Package packageName(final String name) {
-        final File file = file(name.replace(".", "/"));
-        Files.mkdirs(file);
-        return org.tomitribe.util.dir.Dir.of(Package.class, file);
-    }
+/**
+ */
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+public class PullRequest {
 
-    default Package client() {
-        return packageName("org/tomitribe/github/client");
-    }
+    @JsonbProperty("repository_url")
+    private String repository_url;
 
-    default Package model() {
-        return packageName("org/tomitribe/github/model");
-    }
+    @JsonbProperty("pull_request_url")
+    private String pull_request_url;
 
-    default Package core() {
-        return packageName("org/tomitribe/github/core");
-    }
+    @JsonbProperty("pull_request_number")
+    private Integer pull_request_number;
+
+    @JsonbProperty("labels")
+    private String labels;
+
+    @JsonbProperty("owner")
+    private String owner;
+
+    @JsonbProperty("repo")
+    private String repo;
+
+    @JsonbProperty("state")
+    private State state;
+
 }

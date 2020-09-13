@@ -14,29 +14,18 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package org.tomitribe.github.gen;
+package org.tomitribe.github.model;
 
-import org.apache.openejb.loader.Files;
+import org.junit.Test;
 
-import java.io.File;
+import java.io.IOException;
 
-public interface Java extends Dir {
+import static org.tomitribe.github.app.events.PayloadAsserts.assertPayload;
 
-    default Package packageName(final String name) {
-        final File file = file(name.replace(".", "/"));
-        Files.mkdirs(file);
-        return org.tomitribe.util.dir.Dir.of(Package.class, file);
-    }
+public class PullRequestTest {
 
-    default Package client() {
-        return packageName("org/tomitribe/github/client");
-    }
-
-    default Package model() {
-        return packageName("org/tomitribe/github/model");
-    }
-
-    default Package core() {
-        return packageName("org/tomitribe/github/core");
+    @Test
+    public void parse() throws IOException {
+        assertPayload(PullRequest.class);
     }
 }

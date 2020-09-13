@@ -17,24 +17,23 @@
 package org.tomitribe.github.gen.code.model;
 
 import org.apache.commons.lang3.text.WordUtils;
-import org.tomitribe.util.IO;
+import org.tomitribe.github.gen.Package;
+import org.tomitribe.github.gen.Project;
 import org.tomitribe.util.Join;
 import org.tomitribe.util.PrintString;
 import org.tomitribe.util.Strings;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class ClazzRenderer {
 
-    private final File packageDir;
+    private final Project project;
     private final String packageName;
 
-    public ClazzRenderer(final File packageDir, final String packageName) {
-        this.packageDir = packageDir;
+    public ClazzRenderer(final Project project, final String packageName) {
+        this.project = project;
         this.packageName = packageName;
     }
 
@@ -88,12 +87,8 @@ public class ClazzRenderer {
 
         out.print("}\n");
 
-        final File file = new File(packageDir, className + ".java");
-        try {
-            IO.copy(out.toByteArray(), file);
-        } catch (IOException e) {
-            throw new IllegalStateException("Cannot write class file: " + file.getAbsolutePath(), e);
-        }
+        final Package aPackage = project.src().main().java().packageName(packageName);
+        aPackage.write(className + ".java", new String(out.toByteArray()));
 
         renderTestCase(clazz);
     }
@@ -132,14 +127,8 @@ public class ClazzRenderer {
                 "    }\n" +
                 "}\n", clazz.getName(), clazz.getName());
 
-        final File dir = new File(this.packageDir.getAbsolutePath().replace("src/main/java", "src/test/java"));
-        final File file = new File(dir, clazz.getName() + "Test.java");
-        try {
-            IO.copy(out.toByteArray(), file);
-        } catch (IOException e) {
-            throw new IllegalStateException("Cannot write class file: " + file.getAbsolutePath(), e);
-        }
-
+        final Package aPackage = project.src().test().java().packageName(packageName);
+        aPackage.write(clazz.getName() + "Test.java", new String(out.toByteArray()));
     }
 
     private static String formatComment(final String s) {

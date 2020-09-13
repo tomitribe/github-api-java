@@ -32,4 +32,14 @@ public class Clazz {
     private String componentId;
     private final List<Field> fields = new ArrayList<>();
     private final List<Clazz> innerClasses = new ArrayList<>();
+
+    public Clazz add(final Field field) {
+        fields.add(field);
+        return this;
+    }
+
+    public Clazz add(final Clazz innerClass) {
+        innerClasses.add(innerClass);
+        return this;
+    }
 }

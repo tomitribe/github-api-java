@@ -20,6 +20,7 @@ import org.tomitribe.util.JarLocation;
 import org.tomitribe.util.dir.Name;
 
 import java.io.File;
+import java.util.stream.Stream;
 
 public interface Project extends Dir {
     Src src();
@@ -33,6 +34,17 @@ public interface Project extends Dir {
         final File testClasses = JarLocation.jarLocation(Project.class);
         final File target = testClasses.getParentFile();
         final File project = target.getParentFile();
+        return from(project);
+    }
+
+    default Stream<String> paths() {
+        return files()
+                .map(File::getAbsolutePath)
+                .map(s -> s.substring(get().getAbsolutePath().length() + 1))
+                .sorted();
+    }
+
+    static Project from(final File project) {
         return org.tomitribe.util.dir.Dir.of(Project.class, project);
     }
 }

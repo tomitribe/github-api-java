@@ -19,6 +19,7 @@ package org.tomitribe.github.gen.code.model;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import org.tomitribe.util.Strings;
 
 @Data
 @AllArgsConstructor
@@ -27,5 +28,15 @@ public class Field {
     private String name;
     private String jsonName;
     private String type;
+    private In in = In.BODY;
     private boolean collection;
+
+    public enum In {
+        QUERY, HEADER, BODY, PATH;
+    }
+
+    public static Field.Builder field(final String jsonName, final String type) {
+        final String name = Strings.lcfirst(Strings.camelCase(jsonName));
+        return new Field.Builder().jsonName(jsonName).type(type).name(name);
+    }
 }
