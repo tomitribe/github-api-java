@@ -34,6 +34,8 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@ComponentId("#/components/schemas/pull-request-minimal")
+@ComponentId("#/components/schemas/pull-request")
 public class PullRequest {
 
     @JsonbProperty("repository_url")

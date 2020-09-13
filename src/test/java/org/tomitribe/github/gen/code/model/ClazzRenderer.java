@@ -24,7 +24,6 @@ import org.tomitribe.util.PrintString;
 import org.tomitribe.util.Strings;
 
 import java.util.List;
-import java.util.function.BinaryOperator;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -50,7 +49,11 @@ public class ClazzRenderer {
                 .distinct()
                 .map(s -> String.format("import %s;%n", s))
                 .reduce((s, s2) -> s + s2).orElse("");
-        
+
+        final String componentIds = clazz.getComponentIds().stream()
+                .map(s -> String.format("@ComponentId(\"%s\")%n", s))
+                .reduce((s, s2) -> s + s2).orElse("");
+
         out.print("/*\n" +
                 " * Licensed to the Apache Software Foundation (ASF) under one or more\n" +
                 " * contributor license agreements.  See the NOTICE file distributed with\n" +
@@ -85,6 +88,7 @@ public class ClazzRenderer {
                 "@Builder\n" +
                 (clazz.getFields().size() > 0 ? "@AllArgsConstructor\n" : "") +
                 "@NoArgsConstructor\n" +
+                componentIds +
                 "" +
                 "public class " + className + " {\n\n");
 

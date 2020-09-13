@@ -114,7 +114,7 @@ public class GenerateModels {
     }
 
     private void add(final Clazz clazz) {
-        refs.put(clazz.getComponentId(), clazz);
+        clazz.getComponentIds().forEach(s -> refs.put(s, clazz));
         classes.put(clazz.getName(), clazz);
     }
 
@@ -186,7 +186,7 @@ public class GenerateModels {
             final Clazz target = refs.get(ref);
             if (target == null) throw new IllegalStateException("Reference not found: " + ref);
 
-            clazz.add(Field.field(name, target.getName()).build());
+            clazz.addField(Field.field(name, target.getName()).build());
             return;
         }
 
@@ -195,12 +195,12 @@ public class GenerateModels {
         final String type = value.getType();
 
         if ("string".equals(type)) {
-            clazz.add(Field.field(name, "String").build());
+            clazz.addField(Field.field(name, "String").build());
             return;
         }
 
         if ("integer".equals(type)) {
-            clazz.add(Field.field(name, "Integer").build());
+            clazz.addField(Field.field(name, "Integer").build());
             return;
         }
 
@@ -218,7 +218,7 @@ public class GenerateModels {
             System.out.println(itemSchema.getType());
 
             final String nes = name.replaceAll("s$", "");
-            clazz.add(Field.field(name, "Integer").collection(true).build());
+            clazz.addField(Field.field(name, "Integer").collection(true).build());
             return;
         }
 

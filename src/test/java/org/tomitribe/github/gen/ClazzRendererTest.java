@@ -44,14 +44,15 @@ public class ClazzRendererTest {
         final Clazz clazz = Clazz.builder()
                 .name("PullRequest")
                 .componentId("#/components/schemas/pull-request-minimal")
-                .build()
-                .add(Field.field("repository_url", "String").build())
-                .add(Field.field("pull_request_url", "String").build())
-                .add(Field.field("pull_request_number", "Integer").build())
-                .add(Field.field("labels", "String").collection(true).build())
-                .add(Field.field("owner", "String").in(PATH).build())
-                .add(Field.field("repo", "String").in(PATH).build())
-                .add(Field.field("state", "State").in(QUERY).build());
+                .componentId("#/components/schemas/pull-request")
+                .field(Field.field("repository_url", "String").build())
+                .field(Field.field("pull_request_url", "String").build())
+                .field(Field.field("pull_request_number", "Integer").build())
+                .field(Field.field("labels", "String").collection(true).build())
+                .field(Field.field("owner", "String").in(PATH).build())
+                .field(Field.field("repo", "String").in(PATH).build())
+                .field(Field.field("state", "State").in(QUERY).build())
+                .build();
 
         final File tmpdir = Files.tmpdir();
         final Project actual = Project.from(tmpdir);

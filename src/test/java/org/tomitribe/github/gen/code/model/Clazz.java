@@ -29,17 +29,63 @@ import java.util.List;
 public class Clazz {
     private String name;
     private Clazz parent;
-    private String componentId;
+    private final List<String> componentIds = new ArrayList<>();
     private final List<Field> fields = new ArrayList<>();
     private final List<Clazz> innerClasses = new ArrayList<>();
 
-    public Clazz add(final Field field) {
+    public Clazz addComponentId(final String componentId) {
+        componentIds.add(componentId);
+        return this;
+    }
+
+    public Clazz addField(final Field field) {
         fields.add(field);
         return this;
     }
 
-    public Clazz add(final Clazz innerClass) {
+    public Clazz addInnerClass(final Clazz innerClass) {
         innerClasses.add(innerClass);
         return this;
+    }
+
+    public static class Builder {
+        private String name;
+        private Clazz parent;
+        private final List<String> componentIds = new ArrayList<>();
+        private final List<Field> fields = new ArrayList<>();
+        private final List<Clazz> innerClasses = new ArrayList<>();
+
+        public Builder field(final Field field) {
+            fields.add(field);
+            return this;
+        }
+
+        public Builder innerClass(final Clazz innerClass) {
+            innerClasses.add(innerClass);
+            return this;
+        }
+
+        public Builder componentId(final String componentId) {
+            componentIds.add(componentId);
+            return this;
+        }
+
+        public Builder name(String name) {
+            this.name = name;
+            return this;
+        }
+
+        public Builder parent(Clazz parent) {
+            this.parent = parent;
+            return this;
+        }
+
+        public Clazz build() {
+            final Clazz clazz = new Clazz(name, parent);
+            componentIds.forEach(clazz::addComponentId);
+            fields.forEach(clazz::addField);
+            innerClasses.forEach(clazz::addInnerClass);
+            return clazz;
+        }
     }
 }
