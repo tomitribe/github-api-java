@@ -14,7 +14,6 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-
 package org.tomitribe.github.model;
 
 import lombok.AllArgsConstructor;
@@ -22,7 +21,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-
 import javax.json.bind.annotation.JsonbProperty;
 
 /**
@@ -35,7 +33,7 @@ import javax.json.bind.annotation.JsonbProperty;
  *
  * </div>
  * Used by:
- * - 
+ * -
  */
 @Data
 @Builder
@@ -44,6 +42,9 @@ import javax.json.bind.annotation.JsonbProperty;
 @GithubEvent("delete")
 @EqualsAndHashCode(callSuper = true)
 public class DeleteEvent extends Event {
+
+    @JsonbProperty("pusher_type")
+    private String pusherType;
 
     /**
      * The <a href="/v3/git/refs/"><code>git ref</code></a>.
@@ -57,13 +58,9 @@ public class DeleteEvent extends Event {
     @JsonbProperty("ref_type")
     private String refType;
 
-    @JsonbProperty("pusher_type")
-    private String pusherType;
-
     @JsonbProperty("repository")
     private Repository repository;
 
     @JsonbProperty("sender")
     private Sender sender;
-
 }

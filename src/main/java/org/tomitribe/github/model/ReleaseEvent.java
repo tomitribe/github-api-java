@@ -14,7 +14,6 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-
 package org.tomitribe.github.model;
 
 import lombok.AllArgsConstructor;
@@ -22,7 +21,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-
 import javax.json.bind.annotation.JsonbProperty;
 
 /**
@@ -30,7 +28,7 @@ import javax.json.bind.annotation.JsonbProperty;
  * <code>published</code>, <code>unpublished</code>, <code>created</code>, <code>edited</code>,
  * <code>deleted</code>, or <code>prereleased</code>.</p>
  * Used by:
- * - 
+ * -
  */
 @Data
 @Builder
@@ -58,5 +56,4 @@ public class ReleaseEvent extends Event {
 
     @JsonbProperty("sender")
     private Sender sender;
-
 }

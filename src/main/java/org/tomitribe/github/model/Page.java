@@ -14,14 +14,12 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-
 package org.tomitribe.github.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import javax.json.bind.annotation.JsonbProperty;
 
 /**
@@ -34,22 +32,21 @@ import javax.json.bind.annotation.JsonbProperty;
 @NoArgsConstructor
 public class Page {
 
-    @JsonbProperty("page_name")
-    private String pageName;
-
-    @JsonbProperty("title")
-    private String title;
-
-    @JsonbProperty("summary")
-    private String summary;
-
     @JsonbProperty("action")
     private String action;
-
-    @JsonbProperty("sha")
-    private String sha;
 
     @JsonbProperty("html_url")
     private String htmlUrl;
 
+    @JsonbProperty("page_name")
+    private String pageName;
+
+    @JsonbProperty("sha")
+    private String sha;
+
+    @JsonbProperty("summary")
+    private String summary;
+
+    @JsonbProperty("title")
+    private String title;
 }

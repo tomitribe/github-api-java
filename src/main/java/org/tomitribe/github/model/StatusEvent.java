@@ -14,7 +14,6 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-
 package org.tomitribe.github.model;
 
 import lombok.AllArgsConstructor;
@@ -22,7 +21,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-
 import javax.json.bind.annotation.JsonbProperty;
 import java.util.List;
 
@@ -32,7 +30,7 @@ import java.util.List;
  * <p>Events of this type are not visible in timelines. These events are only used to trigger
  * hooks.</p>
  * Used by:
- * - 
+ * -
  */
 @Data
 @Builder
@@ -43,28 +41,41 @@ import java.util.List;
 public class StatusEvent extends Event {
 
     /**
-     * The Commit SHA.
+     * An array of branch objects containing the status' SHA. Each branch contains the given SHA, but the
+     * SHA may or may not be the head of the branch. The array includes a maximum of 10 branches.
      */
-    @JsonbProperty("sha")
-    private String sha;
+    @JsonbProperty("branches")
+    private List<Branch> branches;
 
-    @JsonbProperty("name")
-    private String name;
-
-    /**
-     * The optional link added to the status.
-     */
-    @JsonbProperty("target_url")
-    private String targetUrl;
+    @JsonbProperty("commit")
+    private Commit commit;
 
     @JsonbProperty("context")
     private String context;
+
+    @JsonbProperty("created_at")
+    private String createdAt;
 
     /**
      * The optional human-readable description added to the status.
      */
     @JsonbProperty("description")
     private String description;
+
+    @JsonbProperty("name")
+    private String name;
+
+    @JsonbProperty("repository")
+    private Repository repository;
+
+    @JsonbProperty("sender")
+    private Sender sender;
+
+    /**
+     * The Commit SHA.
+     */
+    @JsonbProperty("sha")
+    private String sha;
 
     /**
      * The new state. Can be <code>pending</code>, <code>success</code>, <code>failure</code>, or
@@ -73,26 +84,12 @@ public class StatusEvent extends Event {
     @JsonbProperty("state")
     private String state;
 
-    @JsonbProperty("commit")
-    private Commit commit;
-
     /**
-     * An array of branch objects containing the status' SHA. Each branch contains the given SHA, but the
-     * SHA may or may not be the head of the branch. The array includes a maximum of 10 branches.
+     * The optional link added to the status.
      */
-    @JsonbProperty("branches")
-    private List<Branch> branches;
-
-    @JsonbProperty("created_at")
-    private String createdAt;
+    @JsonbProperty("target_url")
+    private String targetUrl;
 
     @JsonbProperty("updated_at")
     private String updatedAt;
-
-    @JsonbProperty("repository")
-    private Repository repository;
-
-    @JsonbProperty("sender")
-    private Sender sender;
-
 }

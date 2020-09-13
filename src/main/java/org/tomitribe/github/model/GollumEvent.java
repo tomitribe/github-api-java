@@ -14,7 +14,6 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-
 package org.tomitribe.github.model;
 
 import lombok.AllArgsConstructor;
@@ -22,14 +21,13 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-
 import javax.json.bind.annotation.JsonbProperty;
 import java.util.List;
 
 /**
  * <p>Triggered when a Wiki page is created or updated.</p>
  * Used by:
- * - 
+ * -
  */
 @Data
 @Builder
@@ -50,5 +48,4 @@ public class GollumEvent extends Event {
 
     @JsonbProperty("sender")
     private Sender sender;
-
 }

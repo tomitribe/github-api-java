@@ -20,7 +20,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import javax.json.bind.annotation.JsonbProperty;
 import java.util.List;
 
@@ -30,13 +29,12 @@ import java.util.List;
 @NoArgsConstructor
 public class RepositoriesPage {
 
-    @JsonbProperty("total_count")
-    private Long totalCount;
-
     @JsonbProperty("incomplete_results")
     private Boolean incompleteResults;
 
     @JsonbProperty("items")
     private List<Repository> items;
 
+    @JsonbProperty("total_count")
+    private Long totalCount;
 }

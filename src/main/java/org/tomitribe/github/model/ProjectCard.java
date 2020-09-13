@@ -14,14 +14,12 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-
 package org.tomitribe.github.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import javax.json.bind.annotation.JsonbProperty;
 
 /**
@@ -34,17 +32,20 @@ import javax.json.bind.annotation.JsonbProperty;
 @NoArgsConstructor
 public class ProjectCard {
 
-    @JsonbProperty("url")
-    private String url;
+    @JsonbProperty("archived")
+    private Boolean archived;
 
-    @JsonbProperty("project_url")
-    private String projectUrl;
+    @JsonbProperty("column_id")
+    private Long columnId;
 
     @JsonbProperty("column_url")
     private String columnUrl;
 
-    @JsonbProperty("column_id")
-    private Long columnId;
+    @JsonbProperty("created_at")
+    private String createdAt;
+
+    @JsonbProperty("creator")
+    private Creator creator;
 
     @JsonbProperty("id")
     private Long id;
@@ -55,16 +56,12 @@ public class ProjectCard {
     @JsonbProperty("note")
     private String note;
 
-    @JsonbProperty("archived")
-    private Boolean archived;
-
-    @JsonbProperty("creator")
-    private Creator creator;
-
-    @JsonbProperty("created_at")
-    private String createdAt;
+    @JsonbProperty("project_url")
+    private String projectUrl;
 
     @JsonbProperty("updated_at")
     private String updatedAt;
 
+    @JsonbProperty("url")
+    private String url;
 }

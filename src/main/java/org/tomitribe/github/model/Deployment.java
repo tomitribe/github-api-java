@@ -14,14 +14,12 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-
 package org.tomitribe.github.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import javax.json.bind.annotation.JsonbProperty;
 
 /**
@@ -35,8 +33,17 @@ import javax.json.bind.annotation.JsonbProperty;
 @NoArgsConstructor
 public class Deployment {
 
-    @JsonbProperty("url")
-    private String url;
+    @JsonbProperty("created_at")
+    private String createdAt;
+
+    @JsonbProperty("creator")
+    private Creator creator;
+
+    @JsonbProperty("description")
+    private String description;
+
+    @JsonbProperty("environment")
+    private String environment;
 
     @JsonbProperty("id")
     private Long id;
@@ -44,40 +51,30 @@ public class Deployment {
     @JsonbProperty("node_id")
     private String nodeId;
 
-    @JsonbProperty("sha")
-    private String sha;
-
-    @JsonbProperty("ref")
-    private String ref;
-
-    @JsonbProperty("task")
-    private String task;
+    @JsonbProperty("original_environment")
+    private String originalEnvironment;
 
     @JsonbProperty("payload")
     private Payload payload;
 
-    @JsonbProperty("original_environment")
-    private String originalEnvironment;
-
-    @JsonbProperty("environment")
-    private String environment;
-
-    @JsonbProperty("description")
-    private String description;
-
-    @JsonbProperty("creator")
-    private Creator creator;
-
-    @JsonbProperty("created_at")
-    private String createdAt;
-
-    @JsonbProperty("updated_at")
-    private String updatedAt;
-
-    @JsonbProperty("statuses_url")
-    private String statusesUrl;
+    @JsonbProperty("ref")
+    private String ref;
 
     @JsonbProperty("repository_url")
     private String repositoryUrl;
 
+    @JsonbProperty("sha")
+    private String sha;
+
+    @JsonbProperty("statuses_url")
+    private String statusesUrl;
+
+    @JsonbProperty("task")
+    private String task;
+
+    @JsonbProperty("updated_at")
+    private String updatedAt;
+
+    @JsonbProperty("url")
+    private String url;
 }

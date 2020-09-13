@@ -14,7 +14,6 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-
 package org.tomitribe.github.model;
 
 import lombok.AllArgsConstructor;
@@ -22,7 +21,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-
 import javax.json.bind.annotation.JsonbProperty;
 
 /**
@@ -31,7 +29,7 @@ import javax.json.bind.annotation.JsonbProperty;
  * <p>Events of this type are not visible in timelines. These events are only used to trigger
  * hooks.</p>
  * Used by:
- * - 
+ * -
  */
 @Data
 @Builder
@@ -42,17 +40,17 @@ import javax.json.bind.annotation.JsonbProperty;
 public class DeploymentStatusEvent extends Event {
 
     /**
-     * The <a href="/v3/repos/deployments/#list-deployment-statuses">deployment status</a>.
-     */
-    @JsonbProperty("deployment_status")
-    private DeploymentStatus deploymentStatus;
-
-    /**
      * The <a href="/v3/repos/deployments/#list-deployments">deployment</a> that this status is associated
      * with.
      */
     @JsonbProperty("deployment")
     private Deployment deployment;
+
+    /**
+     * The <a href="/v3/repos/deployments/#list-deployment-statuses">deployment status</a>.
+     */
+    @JsonbProperty("deployment_status")
+    private DeploymentStatus deploymentStatus;
 
     /**
      * The <a href="/v3/repos/">repository</a> for this deployment.
@@ -62,5 +60,4 @@ public class DeploymentStatusEvent extends Event {
 
     @JsonbProperty("sender")
     private Sender sender;
-
 }

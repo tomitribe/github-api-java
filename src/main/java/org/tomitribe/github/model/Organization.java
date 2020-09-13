@@ -14,14 +14,12 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-
 package org.tomitribe.github.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import javax.json.bind.annotation.JsonbProperty;
 
 /**
@@ -39,20 +37,11 @@ import javax.json.bind.annotation.JsonbProperty;
 @NoArgsConstructor
 public class Organization {
 
-    @JsonbProperty("login")
-    private String login;
+    @JsonbProperty("avatar_url")
+    private String avatarUrl;
 
-    @JsonbProperty("id")
-    private Long id;
-
-    @JsonbProperty("node_id")
-    private String nodeId;
-
-    @JsonbProperty("url")
-    private String url;
-
-    @JsonbProperty("repos_url")
-    private String reposUrl;
+    @JsonbProperty("description")
+    private String description;
 
     @JsonbProperty("events_url")
     private String eventsUrl;
@@ -60,19 +49,27 @@ public class Organization {
     @JsonbProperty("hooks_url")
     private String hooksUrl;
 
+    @JsonbProperty("id")
+    private Long id;
+
     @JsonbProperty("issues_url")
     private String issuesUrl;
+
+    @JsonbProperty("login")
+    private String login;
 
     @JsonbProperty("members_url")
     private String membersUrl;
 
+    @JsonbProperty("node_id")
+    private String nodeId;
+
     @JsonbProperty("public_members_url")
     private String publicMembersUrl;
 
-    @JsonbProperty("avatar_url")
-    private String avatarUrl;
+    @JsonbProperty("repos_url")
+    private String reposUrl;
 
-    @JsonbProperty("description")
-    private String description;
-
+    @JsonbProperty("url")
+    private String url;
 }

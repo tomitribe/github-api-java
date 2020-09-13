@@ -14,14 +14,12 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-
 package org.tomitribe.github.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import javax.json.bind.annotation.JsonbProperty;
 
 /**
@@ -34,37 +32,36 @@ import javax.json.bind.annotation.JsonbProperty;
 @NoArgsConstructor
 public class PackageFile {
 
+    @JsonbProperty("content_type")
+    private String contentType;
+
+    @JsonbProperty("created_at")
+    private String createdAt;
+
     @JsonbProperty("download_url")
     private String downloadUrl;
 
     @JsonbProperty("id")
     private Long id;
 
+    @JsonbProperty("md5")
+    private String md5;
+
     @JsonbProperty("name")
     private String name;
-
-    @JsonbProperty("sha256")
-    private String sha256;
 
     @JsonbProperty("sha1")
     private String sha1;
 
-    @JsonbProperty("md5")
-    private String md5;
-
-    @JsonbProperty("content_type")
-    private String contentType;
-
-    @JsonbProperty("state")
-    private String state;
+    @JsonbProperty("sha256")
+    private String sha256;
 
     @JsonbProperty("size")
     private Long size;
 
-    @JsonbProperty("created_at")
-    private String createdAt;
+    @JsonbProperty("state")
+    private String state;
 
     @JsonbProperty("updated_at")
     private String updatedAt;
-
 }

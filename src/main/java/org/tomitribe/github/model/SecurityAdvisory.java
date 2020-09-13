@@ -14,14 +14,12 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-
 package org.tomitribe.github.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import javax.json.bind.annotation.JsonbProperty;
 import java.util.List;
 
@@ -35,34 +33,33 @@ import java.util.List;
 @NoArgsConstructor
 public class SecurityAdvisory {
 
-    @JsonbProperty("ghsa_id")
-    private String ghsaId;
-
-    @JsonbProperty("summary")
-    private String summary;
-
     @JsonbProperty("description")
     private String description;
 
-    @JsonbProperty("severity")
-    private String severity;
+    @JsonbProperty("ghsa_id")
+    private String ghsaId;
 
     @JsonbProperty("identifiers")
     private List<Identifier> identifiers;
 
+    @JsonbProperty("published_at")
+    private String publishedAt;
+
     @JsonbProperty("references")
     private List<Reference> references;
 
-    @JsonbProperty("published_at")
-    private String publishedAt;
+    @JsonbProperty("severity")
+    private String severity;
+
+    @JsonbProperty("summary")
+    private String summary;
 
     @JsonbProperty("updated_at")
     private String updatedAt;
 
-    @JsonbProperty("withdrawn_at")
-    private String withdrawnAt;
-
     @JsonbProperty("vulnerabilities")
     private List<Vulnerability> vulnerabilities;
 
+    @JsonbProperty("withdrawn_at")
+    private String withdrawnAt;
 }

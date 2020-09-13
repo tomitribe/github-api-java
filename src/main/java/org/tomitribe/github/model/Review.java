@@ -14,14 +14,12 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-
 package org.tomitribe.github.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import javax.json.bind.annotation.JsonbProperty;
 
 /**
@@ -34,14 +32,8 @@ import javax.json.bind.annotation.JsonbProperty;
 @NoArgsConstructor
 public class Review {
 
-    @JsonbProperty("id")
-    private Long id;
-
-    @JsonbProperty("node_id")
-    private String nodeId;
-
-    @JsonbProperty("user")
-    private User user;
+    @JsonbProperty("author_association")
+    private String authorAssociation;
 
     @JsonbProperty("body")
     private String body;
@@ -49,22 +41,27 @@ public class Review {
     @JsonbProperty("commit_id")
     private String commitId;
 
-    @JsonbProperty("submitted_at")
-    private String submittedAt;
-
-    @JsonbProperty("state")
-    private String state;
-
     @JsonbProperty("html_url")
     private String htmlUrl;
 
-    @JsonbProperty("pull_request_url")
-    private String pullRequestUrl;
-
-    @JsonbProperty("author_association")
-    private String authorAssociation;
+    @JsonbProperty("id")
+    private Long id;
 
     @JsonbProperty("_links")
     private Links links;
 
+    @JsonbProperty("node_id")
+    private String nodeId;
+
+    @JsonbProperty("pull_request_url")
+    private String pullRequestUrl;
+
+    @JsonbProperty("state")
+    private String state;
+
+    @JsonbProperty("submitted_at")
+    private String submittedAt;
+
+    @JsonbProperty("user")
+    private User user;
 }

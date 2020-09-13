@@ -14,14 +14,12 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-
 package org.tomitribe.github.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import javax.json.bind.annotation.JsonbProperty;
 
 /**
@@ -34,11 +32,14 @@ import javax.json.bind.annotation.JsonbProperty;
 @NoArgsConstructor
 public class HeadCommit {
 
+    @JsonbProperty("author")
+    private Author author;
+
+    @JsonbProperty("committer")
+    private Committer committer;
+
     @JsonbProperty("id")
     private String id;
-
-    @JsonbProperty("tree_id")
-    private String treeId;
 
     @JsonbProperty("message")
     private String message;
@@ -46,10 +47,6 @@ public class HeadCommit {
     @JsonbProperty("timestamp")
     private String timestamp;
 
-    @JsonbProperty("author")
-    private Author author;
-
-    @JsonbProperty("committer")
-    private Committer committer;
-
+    @JsonbProperty("tree_id")
+    private String treeId;
 }

@@ -14,14 +14,12 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-
 package org.tomitribe.github.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import javax.json.bind.annotation.JsonbProperty;
 import java.util.List;
 
@@ -39,68 +37,11 @@ import java.util.List;
 @NoArgsConstructor
 public class Issue {
 
-    @JsonbProperty("url")
-    private String url;
-
-    @JsonbProperty("repository_url")
-    private String repositoryUrl;
-
-    @JsonbProperty("labels_url")
-    private String labelsUrl;
-
-    @JsonbProperty("comments_url")
-    private String commentsUrl;
-
-    @JsonbProperty("events_url")
-    private String eventsUrl;
-
-    @JsonbProperty("html_url")
-    private String htmlUrl;
-
-    @JsonbProperty("id")
-    private Long id;
-
-    @JsonbProperty("node_id")
-    private String nodeId;
-
-    @JsonbProperty("number")
-    private Long number;
-
-    @JsonbProperty("title")
-    private String title;
-
-    @JsonbProperty("user")
-    private User user;
-
-    @JsonbProperty("labels")
-    private List<Label> labels;
-
-    @JsonbProperty("state")
-    private String state;
-
-    @JsonbProperty("locked")
-    private Boolean locked;
-
     @JsonbProperty("assignee")
     private Assignee assignee;
 
     @JsonbProperty("assignees")
     private List<Assignee> assignees;
-
-    @JsonbProperty("milestone")
-    private Milestone milestone;
-
-    @JsonbProperty("comments")
-    private Long comments;
-
-    @JsonbProperty("created_at")
-    private String createdAt;
-
-    @JsonbProperty("updated_at")
-    private String updatedAt;
-
-    @JsonbProperty("closed_at")
-    private String closedAt;
 
     @JsonbProperty("author_association")
     private String authorAssociation;
@@ -108,7 +49,63 @@ public class Issue {
     @JsonbProperty("body")
     private String body;
 
+    @JsonbProperty("closed_at")
+    private String closedAt;
+
+    @JsonbProperty("comments")
+    private Long comments;
+
+    @JsonbProperty("comments_url")
+    private String commentsUrl;
+
+    @JsonbProperty("created_at")
+    private String createdAt;
+
+    @JsonbProperty("events_url")
+    private String eventsUrl;
+
     @JsonbProperty("href")
     private String href;
 
+    @JsonbProperty("html_url")
+    private String htmlUrl;
+
+    @JsonbProperty("id")
+    private Long id;
+
+    @JsonbProperty("labels")
+    private List<Label> labels;
+
+    @JsonbProperty("labels_url")
+    private String labelsUrl;
+
+    @JsonbProperty("locked")
+    private Boolean locked;
+
+    @JsonbProperty("milestone")
+    private Milestone milestone;
+
+    @JsonbProperty("node_id")
+    private String nodeId;
+
+    @JsonbProperty("number")
+    private Long number;
+
+    @JsonbProperty("repository_url")
+    private String repositoryUrl;
+
+    @JsonbProperty("state")
+    private String state;
+
+    @JsonbProperty("title")
+    private String title;
+
+    @JsonbProperty("updated_at")
+    private String updatedAt;
+
+    @JsonbProperty("url")
+    private String url;
+
+    @JsonbProperty("user")
+    private User user;
 }

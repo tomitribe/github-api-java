@@ -20,7 +20,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import javax.json.bind.annotation.JsonbProperty;
 import java.util.List;
 
@@ -49,14 +48,8 @@ import java.util.List;
 @NoArgsConstructor
 public class AccessTokenResponse {
 
-    @JsonbProperty("token")
-    private String token;
-
     @JsonbProperty("expires_at")
     private String expiresAt;
-
-    @JsonbProperty("repository_selection")
-    private String repositorySelection;
 
     @JsonbProperty("permissions")
     private Permissions permissions;
@@ -64,7 +57,12 @@ public class AccessTokenResponse {
     @JsonbProperty("repositories")
     private List<Repository> repositories;
 
+    @JsonbProperty("repository_selection")
+    private String repositorySelection;
+
     @JsonbProperty("sender")
     private Sender sender;
 
+    @JsonbProperty("token")
+    private String token;
 }

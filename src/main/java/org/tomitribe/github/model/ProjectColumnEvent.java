@@ -14,7 +14,6 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-
 package org.tomitribe.github.model;
 
 import lombok.AllArgsConstructor;
@@ -22,14 +21,13 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-
 import javax.json.bind.annotation.JsonbProperty;
 
 /**
  * <p>Triggered when a <a href="/v3/projects/columns">project column</a> is <code>created</code>,
  * <code>updated</code>, <code>moved</code>, or <code>deleted</code>.</p>
  * Used by:
- * - 
+ * -
  */
 @Data
 @Builder
@@ -57,5 +55,4 @@ public class ProjectColumnEvent extends Event {
 
     @JsonbProperty("sender")
     private Sender sender;
-
 }

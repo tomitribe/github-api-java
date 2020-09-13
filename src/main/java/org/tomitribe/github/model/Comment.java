@@ -14,14 +14,12 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-
 package org.tomitribe.github.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import javax.json.bind.annotation.JsonbProperty;
 
 /**
@@ -36,29 +34,11 @@ import javax.json.bind.annotation.JsonbProperty;
 @NoArgsConstructor
 public class Comment {
 
-    @JsonbProperty("url")
-    private String url;
+    @JsonbProperty("author_association")
+    private String authorAssociation;
 
-    @JsonbProperty("html_url")
-    private String htmlUrl;
-
-    @JsonbProperty("id")
-    private Long id;
-
-    @JsonbProperty("node_id")
-    private String nodeId;
-
-    @JsonbProperty("user")
-    private User user;
-
-    @JsonbProperty("position")
-    private String position;
-
-    @JsonbProperty("line")
-    private String line;
-
-    @JsonbProperty("path")
-    private String path;
+    @JsonbProperty("body")
+    private String body;
 
     @JsonbProperty("commit_id")
     private String commitId;
@@ -66,34 +46,51 @@ public class Comment {
     @JsonbProperty("created_at")
     private String createdAt;
 
-    @JsonbProperty("updated_at")
-    private String updatedAt;
+    @JsonbProperty("diff_hunk")
+    private String diffHunk;
 
-    @JsonbProperty("author_association")
-    private String authorAssociation;
+    @JsonbProperty("html_url")
+    private String htmlUrl;
 
-    @JsonbProperty("body")
-    private String body;
+    @JsonbProperty("id")
+    private Long id;
 
     @JsonbProperty("issue_url")
     private String issueUrl;
 
-    @JsonbProperty("pull_request_review_id")
-    private Long pullRequestReviewId;
-
-    @JsonbProperty("diff_hunk")
-    private String diffHunk;
-
-    @JsonbProperty("original_position")
-    private Long originalPosition;
-
-    @JsonbProperty("original_commit_id")
-    private String originalCommitId;
-
-    @JsonbProperty("pull_request_url")
-    private String pullRequestUrl;
+    @JsonbProperty("line")
+    private String line;
 
     @JsonbProperty("_links")
     private Links links;
 
+    @JsonbProperty("node_id")
+    private String nodeId;
+
+    @JsonbProperty("original_commit_id")
+    private String originalCommitId;
+
+    @JsonbProperty("original_position")
+    private Long originalPosition;
+
+    @JsonbProperty("path")
+    private String path;
+
+    @JsonbProperty("position")
+    private String position;
+
+    @JsonbProperty("pull_request_review_id")
+    private Long pullRequestReviewId;
+
+    @JsonbProperty("pull_request_url")
+    private String pullRequestUrl;
+
+    @JsonbProperty("updated_at")
+    private String updatedAt;
+
+    @JsonbProperty("url")
+    private String url;
+
+    @JsonbProperty("user")
+    private User user;
 }

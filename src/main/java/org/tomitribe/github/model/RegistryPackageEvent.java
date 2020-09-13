@@ -14,7 +14,6 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-
 package org.tomitribe.github.model;
 
 import lombok.AllArgsConstructor;
@@ -22,7 +21,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-
 import javax.json.bind.annotation.JsonbProperty;
 
 /**
@@ -40,7 +38,7 @@ import javax.json.bind.annotation.JsonbProperty;
  * packages with GitHub Package Registry</a>" in the GitHub Help documentation to learn more about
  * GitHub Package Registry.</p>
  * Used by:
- * - 
+ * -
  */
 @Data
 @Builder
@@ -73,5 +71,4 @@ public class RegistryPackageEvent extends Event {
      */
     @JsonbProperty("sender")
     private Sender sender;
-
 }

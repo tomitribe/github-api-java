@@ -14,7 +14,6 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-
 package org.tomitribe.github.model;
 
 import lombok.AllArgsConstructor;
@@ -22,7 +21,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-
 import javax.json.bind.annotation.JsonbProperty;
 
 /**
@@ -32,7 +30,7 @@ import javax.json.bind.annotation.JsonbProperty;
  * <code>labeled</code>, <code>unlabeled</code>, <code>locked</code>, <code>unlocked</code>,
  * <code>milestoned</code>, or <code>demilestoned</code>.</p>
  * Used by:
- * - 
+ * -
  */
 @Data
 @Builder
@@ -53,21 +51,20 @@ public class IssuesEvent extends Event {
     private String action;
 
     /**
-     * The <a href="/v3/issues">issue</a> itself.
-     */
-    @JsonbProperty("issue")
-    private Issue issue;
-
-    /**
      * The changes to the issue if the action was <code>edited</code>.
      */
     @JsonbProperty("changes")
     private Changes changes;
+
+    /**
+     * The <a href="/v3/issues">issue</a> itself.
+     */
+    @JsonbProperty("issue")
+    private Issue issue;
 
     @JsonbProperty("repository")
     private Repository repository;
 
     @JsonbProperty("sender")
     private Sender sender;
-
 }

@@ -14,14 +14,12 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-
 package org.tomitribe.github.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import javax.json.bind.annotation.JsonbProperty;
 
 /**
@@ -34,8 +32,8 @@ import javax.json.bind.annotation.JsonbProperty;
 @NoArgsConstructor
 public class Verification {
 
-    @JsonbProperty("verified")
-    private Boolean verified;
+    @JsonbProperty("payload")
+    private String payload;
 
     @JsonbProperty("reason")
     private String reason;
@@ -43,7 +41,6 @@ public class Verification {
     @JsonbProperty("signature")
     private String signature;
 
-    @JsonbProperty("payload")
-    private String payload;
-
+    @JsonbProperty("verified")
+    private Boolean verified;
 }

@@ -14,14 +14,12 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-
 package org.tomitribe.github.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import javax.json.bind.annotation.JsonbProperty;
 
 /**
@@ -36,29 +34,41 @@ import javax.json.bind.annotation.JsonbProperty;
 @NoArgsConstructor
 public class Installation {
 
+    @JsonbProperty("access_tokens_url")
+    private String accessTokensUrl;
+
+    @JsonbProperty("account")
+    private Account account;
+
+    @JsonbProperty("app_id")
+    private Long appId;
+
+    @JsonbProperty("created_at")
+    private Long createdAt;
+
+    @JsonbProperty("events")
+    private String[] events;
+
+    @JsonbProperty("html_url")
+    private String htmlUrl;
+
     @JsonbProperty("id")
     private Long id;
 
     @JsonbProperty("node_id")
     private String nodeId;
 
-    @JsonbProperty("account")
-    private Account account;
-
-    @JsonbProperty("repository_selection")
-    private String repositorySelection;
-
-    @JsonbProperty("access_tokens_url")
-    private String accessTokensUrl;
+    @JsonbProperty("permissions")
+    private Permissions permissions;
 
     @JsonbProperty("repositories_url")
     private String repositoriesUrl;
 
-    @JsonbProperty("html_url")
-    private String htmlUrl;
+    @JsonbProperty("repository_selection")
+    private String repositorySelection;
 
-    @JsonbProperty("app_id")
-    private Long appId;
+    @JsonbProperty("single_file_name")
+    private String singleFileName;
 
     @JsonbProperty("target_id")
     private Long targetId;
@@ -66,19 +76,6 @@ public class Installation {
     @JsonbProperty("target_type")
     private String targetType;
 
-    @JsonbProperty("permissions")
-    private Permissions permissions;
-
-    @JsonbProperty("events")
-    private String[] events;
-
-    @JsonbProperty("created_at")
-    private Long createdAt;
-
     @JsonbProperty("updated_at")
     private Long updatedAt;
-
-    @JsonbProperty("single_file_name")
-    private String singleFileName;
-
 }

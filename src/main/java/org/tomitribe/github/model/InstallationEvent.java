@@ -14,7 +14,6 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-
 package org.tomitribe.github.model;
 
 import lombok.AllArgsConstructor;
@@ -22,7 +21,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-
 import javax.json.bind.annotation.JsonbProperty;
 import java.util.List;
 
@@ -32,7 +30,7 @@ import java.util.List;
  * owner requests new permissions, the person who installed the GitHub App must accept the new
  * permissions request.</p>
  * Used by:
- * - 
+ * -
  */
 @Data
 @Builder
@@ -60,5 +58,4 @@ public class InstallationEvent extends Event {
 
     @JsonbProperty("sender")
     private Sender sender;
-
 }

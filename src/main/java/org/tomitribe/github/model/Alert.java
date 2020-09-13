@@ -14,14 +14,12 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-
 package org.tomitribe.github.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import javax.json.bind.annotation.JsonbProperty;
 
 /**
@@ -34,22 +32,21 @@ import javax.json.bind.annotation.JsonbProperty;
 @NoArgsConstructor
 public class Alert {
 
-    @JsonbProperty("id")
-    private Long id;
+    @JsonbProperty("affected_package_name")
+    private String affectedPackageName;
 
     @JsonbProperty("affected_range")
     private String affectedRange;
 
-    @JsonbProperty("affected_package_name")
-    private String affectedPackageName;
+    @JsonbProperty("external_identifier")
+    private String externalIdentifier;
 
     @JsonbProperty("external_reference")
     private String externalReference;
 
-    @JsonbProperty("external_identifier")
-    private String externalIdentifier;
-
     @JsonbProperty("fixed_in")
     private String fixedIn;
 
+    @JsonbProperty("id")
+    private Long id;
 }

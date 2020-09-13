@@ -14,7 +14,6 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-
 package org.tomitribe.github.model;
 
 import lombok.AllArgsConstructor;
@@ -22,14 +21,13 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-
 import javax.json.bind.annotation.JsonbProperty;
 
 /**
  * <p>Triggered when a <a href="/v3/pulls/comments">comment on a pull request's unified diff</a> is
  * <code>created</code>, <code>edited</code>, or <code>deleted</code> (in the Files Changed tab).</p>
  * Used by:
- * - 
+ * -
  */
 @Data
 @Builder
@@ -63,5 +61,4 @@ public class PullRequestReviewCommentEvent extends Event {
 
     @JsonbProperty("sender")
     private Sender sender;
-
 }

@@ -14,14 +14,12 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-
 package org.tomitribe.github.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import javax.json.bind.annotation.JsonbProperty;
 import java.util.List;
 
@@ -35,52 +33,51 @@ import java.util.List;
 @NoArgsConstructor
 public class CheckRun {
 
-    @JsonbProperty("id")
-    private Long id;
-
-    @JsonbProperty("node_id")
-    private String nodeId;
-
-    @JsonbProperty("head_sha")
-    private String headSha;
-
-    @JsonbProperty("external_id")
-    private String externalId;
-
-    @JsonbProperty("url")
-    private String url;
-
-    @JsonbProperty("html_url")
-    private String htmlUrl;
-
-    @JsonbProperty("details_url")
-    private String detailsUrl;
-
-    @JsonbProperty("status")
-    private String status;
-
-    @JsonbProperty("conclusion")
-    private String conclusion;
-
-    @JsonbProperty("started_at")
-    private String startedAt;
-
-    @JsonbProperty("completed_at")
-    private String completedAt;
-
-    @JsonbProperty("output")
-    private Output output;
-
-    @JsonbProperty("name")
-    private String name;
+    @JsonbProperty("app")
+    private App app;
 
     @JsonbProperty("check_suite")
     private CheckSuite checkSuite;
 
-    @JsonbProperty("app")
-    private App app;
+    @JsonbProperty("completed_at")
+    private String completedAt;
+
+    @JsonbProperty("conclusion")
+    private String conclusion;
+
+    @JsonbProperty("details_url")
+    private String detailsUrl;
+
+    @JsonbProperty("external_id")
+    private String externalId;
+
+    @JsonbProperty("head_sha")
+    private String headSha;
+
+    @JsonbProperty("html_url")
+    private String htmlUrl;
+
+    @JsonbProperty("id")
+    private Long id;
+
+    @JsonbProperty("name")
+    private String name;
+
+    @JsonbProperty("node_id")
+    private String nodeId;
+
+    @JsonbProperty("output")
+    private Output output;
 
     @JsonbProperty("pull_requests")
     private List<PullRequest> pullRequests;
 
+    @JsonbProperty("started_at")
+    private String startedAt;
+
+    @JsonbProperty("status")
+    private String status;
+
+    @JsonbProperty("url")
+    private String url;
 }

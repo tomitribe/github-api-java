@@ -14,14 +14,12 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-
 package org.tomitribe.github.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import javax.json.bind.annotation.JsonbProperty;
 import java.util.List;
 
@@ -36,52 +34,51 @@ import java.util.List;
 @NoArgsConstructor
 public class CheckSuite {
 
-    @JsonbProperty("id")
-    private Long id;
-
-    @JsonbProperty("node_id")
-    private String nodeId;
-
-    @JsonbProperty("head_branch")
-    private String headBranch;
-
-    @JsonbProperty("head_sha")
-    private String headSha;
-
-    @JsonbProperty("status")
-    private String status;
-
-    @JsonbProperty("conclusion")
-    private String conclusion;
-
-    @JsonbProperty("url")
-    private String url;
-
-    @JsonbProperty("before")
-    private String before;
-
     @JsonbProperty("after")
     private String after;
-
-    @JsonbProperty("pull_requests")
-    private List<PullRequest> pullRequests;
 
     @JsonbProperty("app")
     private App app;
 
-    @JsonbProperty("created_at")
-    private String createdAt;
-
-    @JsonbProperty("updated_at")
-    private String updatedAt;
-
-    @JsonbProperty("latest_check_runs_count")
-    private Long latestCheckRunsCount;
+    @JsonbProperty("before")
+    private String before;
 
     @JsonbProperty("check_runs_url")
     private String checkRunsUrl;
 
+    @JsonbProperty("conclusion")
+    private String conclusion;
+
+    @JsonbProperty("created_at")
+    private String createdAt;
+
+    @JsonbProperty("head_branch")
+    private String headBranch;
+
     @JsonbProperty("head_commit")
     private HeadCommit headCommit;
 
+    @JsonbProperty("head_sha")
+    private String headSha;
+
+    @JsonbProperty("id")
+    private Long id;
+
+    @JsonbProperty("latest_check_runs_count")
+    private Long latestCheckRunsCount;
+
+    @JsonbProperty("node_id")
+    private String nodeId;
+
+    @JsonbProperty("pull_requests")
+    private List<PullRequest> pullRequests;
+
+    @JsonbProperty("status")
+    private String status;
+
+    @JsonbProperty("updated_at")
+    private String updatedAt;
+
+    @JsonbProperty("url")
+    private String url;
 }

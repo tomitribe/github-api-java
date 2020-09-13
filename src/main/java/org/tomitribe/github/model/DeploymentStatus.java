@@ -14,14 +14,12 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-
 package org.tomitribe.github.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import javax.json.bind.annotation.JsonbProperty;
 
 /**
@@ -34,20 +32,14 @@ import javax.json.bind.annotation.JsonbProperty;
 @NoArgsConstructor
 public class DeploymentStatus {
 
-    @JsonbProperty("url")
-    private String url;
-
-    @JsonbProperty("id")
-    private Long id;
-
-    @JsonbProperty("node_id")
-    private String nodeId;
-
-    @JsonbProperty("state")
-    private String state;
+    @JsonbProperty("created_at")
+    private String createdAt;
 
     @JsonbProperty("creator")
     private Creator creator;
+
+    @JsonbProperty("deployment_url")
+    private String deploymentUrl;
 
     @JsonbProperty("description")
     private String description;
@@ -55,19 +47,24 @@ public class DeploymentStatus {
     @JsonbProperty("environment")
     private String environment;
 
-    @JsonbProperty("target_url")
-    private String targetUrl;
+    @JsonbProperty("id")
+    private Long id;
 
-    @JsonbProperty("created_at")
-    private String createdAt;
-
-    @JsonbProperty("updated_at")
-    private String updatedAt;
-
-    @JsonbProperty("deployment_url")
-    private String deploymentUrl;
+    @JsonbProperty("node_id")
+    private String nodeId;
 
     @JsonbProperty("repository_url")
     private String repositoryUrl;
 
+    @JsonbProperty("state")
+    private String state;
+
+    @JsonbProperty("target_url")
+    private String targetUrl;
+
+    @JsonbProperty("updated_at")
+    private String updatedAt;
+
+    @JsonbProperty("url")
+    private String url;
 }

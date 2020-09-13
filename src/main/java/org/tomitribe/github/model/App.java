@@ -14,14 +14,12 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-
 package org.tomitribe.github.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import javax.json.bind.annotation.JsonbProperty;
 
 /**
@@ -35,20 +33,14 @@ import javax.json.bind.annotation.JsonbProperty;
 @NoArgsConstructor
 public class App {
 
-    @JsonbProperty("id")
-    private Long id;
-
-    @JsonbProperty("node_id")
-    private String nodeId;
-
-    @JsonbProperty("owner")
-    private Owner owner;
-
-    @JsonbProperty("name")
-    private String name;
+    @JsonbProperty("created_at")
+    private String createdAt;
 
     @JsonbProperty("description")
     private String description;
+
+    @JsonbProperty("events")
+    private String[] events;
 
     @JsonbProperty("external_url")
     private String externalUrl;
@@ -56,16 +48,21 @@ public class App {
     @JsonbProperty("html_url")
     private String htmlUrl;
 
-    @JsonbProperty("created_at")
-    private String createdAt;
+    @JsonbProperty("id")
+    private Long id;
 
-    @JsonbProperty("updated_at")
-    private String updatedAt;
+    @JsonbProperty("name")
+    private String name;
+
+    @JsonbProperty("node_id")
+    private String nodeId;
+
+    @JsonbProperty("owner")
+    private Owner owner;
 
     @JsonbProperty("permissions")
     private Permissions permissions;
 
-    @JsonbProperty("events")
-    private String[] events;
-
+    @JsonbProperty("updated_at")
+    private String updatedAt;
 }

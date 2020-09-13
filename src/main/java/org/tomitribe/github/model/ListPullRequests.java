@@ -20,7 +20,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import javax.ws.rs.PathParam;
 import javax.ws.rs.QueryParam;
 
@@ -30,38 +29,19 @@ import javax.ws.rs.QueryParam;
 @NoArgsConstructor
 public class ListPullRequests {
 
-    @PathParam("owner")
-    private String owner;
-
-    @PathParam("repo")
-    private String repo;
-
-    @QueryParam("state")
-    private State state;
-
-    @QueryParam("head")
-    private String head;
-
-    @QueryParam("base")
-    private String base;
-
-    @QueryParam("sort")
-    private Sort sort;
-
-    @QueryParam("direction")
-    private Direction direction;
-
     public enum State {
-        open,
-        closed,
-        all;
+
+                        open,
+                        closed,
+                        all
     }
 
     public enum Sort {
-        created("created"),
-        updated("updated"),
-        popularity("popularity"),
-        long_running("long-running");
+
+                        created("created"),
+                        updated("updated"),
+                        popularity("popularity"),
+                        long_running("long-running");
 
         private final String name;
 
@@ -76,7 +56,29 @@ public class ListPullRequests {
     }
 
     public enum Direction {
-        asc,
-        desc
+
+                            asc,
+                            desc
     }
+
+    @QueryParam("base")
+    private String base;
+
+    @QueryParam("direction")
+    private Direction direction;
+
+    @QueryParam("head")
+    private String head;
+
+    @PathParam("owner")
+    private String owner;
+
+    @PathParam("repo")
+    private String repo;
+
+    @QueryParam("sort")
+    private Sort sort;
+
+    @QueryParam("state")
+    private State state;
 }

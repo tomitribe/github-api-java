@@ -14,7 +14,6 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-
 package org.tomitribe.github.model;
 
 import lombok.AllArgsConstructor;
@@ -22,7 +21,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-
 import javax.json.bind.annotation.JsonbProperty;
 
 /**
@@ -40,7 +38,7 @@ import javax.json.bind.annotation.JsonbProperty;
  * href="/apps/building-github-apps/identifying-and-authorizing-users-for-github-apps/">Identifying and
  * authorizing users for GitHub Apps</a>."</p>
  * Used by:
- * - 
+ * -
  */
 @Data
 @Builder
@@ -55,5 +53,4 @@ public class GitHubAppAuthorizationEvent extends Event {
 
     @JsonbProperty("sender")
     private Sender sender;
-
 }

@@ -14,14 +14,12 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-
 package org.tomitribe.github.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import javax.json.bind.annotation.JsonbProperty;
 
 /**
@@ -34,43 +32,42 @@ import javax.json.bind.annotation.JsonbProperty;
 @NoArgsConstructor
 public class Project {
 
-    @JsonbProperty("owner_url")
-    private String ownerUrl;
-
-    @JsonbProperty("url")
-    private String url;
-
-    @JsonbProperty("html_url")
-    private String htmlUrl;
+    @JsonbProperty("body")
+    private String body;
 
     @JsonbProperty("columns_url")
     private String columnsUrl;
 
-    @JsonbProperty("id")
-    private Long id;
-
-    @JsonbProperty("node_id")
-    private String nodeId;
-
-    @JsonbProperty("name")
-    private String name;
-
-    @JsonbProperty("body")
-    private String body;
-
-    @JsonbProperty("number")
-    private Long number;
-
-    @JsonbProperty("state")
-    private String state;
+    @JsonbProperty("created_at")
+    private String createdAt;
 
     @JsonbProperty("creator")
     private Creator creator;
 
-    @JsonbProperty("created_at")
-    private String createdAt;
+    @JsonbProperty("html_url")
+    private String htmlUrl;
+
+    @JsonbProperty("id")
+    private Long id;
+
+    @JsonbProperty("name")
+    private String name;
+
+    @JsonbProperty("node_id")
+    private String nodeId;
+
+    @JsonbProperty("number")
+    private Long number;
+
+    @JsonbProperty("owner_url")
+    private String ownerUrl;
+
+    @JsonbProperty("state")
+    private String state;
 
     @JsonbProperty("updated_at")
     private String updatedAt;
 
+    @JsonbProperty("url")
+    private String url;
 }

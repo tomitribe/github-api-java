@@ -14,14 +14,12 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-
 package org.tomitribe.github.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import javax.json.bind.annotation.JsonbProperty;
 
 /**
@@ -35,8 +33,23 @@ import javax.json.bind.annotation.JsonbProperty;
 @NoArgsConstructor
 public class Release {
 
-    @JsonbProperty("url")
-    private String url;
+    @JsonbProperty("assets")
+    private String[] assets;
+
+    @JsonbProperty("assets_url")
+    private String assetsUrl;
+
+    @JsonbProperty("author")
+    private Author author;
+
+    @JsonbProperty("body")
+    private String body;
+
+    @JsonbProperty("created_at")
+    private String createdAt;
+
+    @JsonbProperty("draft")
+    private Boolean draft;
 
     @JsonbProperty("html_url")
     private String htmlUrl;
@@ -44,49 +57,33 @@ public class Release {
     @JsonbProperty("id")
     private Long id;
 
-    @JsonbProperty("tag_name")
-    private String tagName;
-
-    @JsonbProperty("target_commitish")
-    private String targetCommitish;
-
     @JsonbProperty("name")
     private String name;
-
-    @JsonbProperty("draft")
-    private Boolean draft;
-
-    @JsonbProperty("author")
-    private Author author;
-
-    @JsonbProperty("prerelease")
-    private Boolean prerelease;
-
-    @JsonbProperty("created_at")
-    private String createdAt;
-
-    @JsonbProperty("published_at")
-    private String publishedAt;
-
-    @JsonbProperty("assets_url")
-    private String assetsUrl;
-
-    @JsonbProperty("upload_url")
-    private String uploadUrl;
 
     @JsonbProperty("node_id")
     private String nodeId;
 
-    @JsonbProperty("assets")
-    private String[] assets;
+    @JsonbProperty("prerelease")
+    private Boolean prerelease;
+
+    @JsonbProperty("published_at")
+    private String publishedAt;
+
+    @JsonbProperty("tag_name")
+    private String tagName;
 
     @JsonbProperty("tarball_url")
     private String tarballUrl;
 
+    @JsonbProperty("target_commitish")
+    private String targetCommitish;
+
+    @JsonbProperty("upload_url")
+    private String uploadUrl;
+
+    @JsonbProperty("url")
+    private String url;
+
     @JsonbProperty("zipball_url")
     private String zipballUrl;
-
-    @JsonbProperty("body")
-    private String body;
-
 }

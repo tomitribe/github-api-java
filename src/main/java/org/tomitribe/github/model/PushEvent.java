@@ -14,7 +14,6 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-
 package org.tomitribe.github.model;
 
 import lombok.AllArgsConstructor;
@@ -22,7 +21,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-
 import javax.json.bind.annotation.JsonbProperty;
 
 /**
@@ -45,7 +43,7 @@ import javax.json.bind.annotation.JsonbProperty;
  *
  * </div>
  * Used by:
- * - 
+ * -
  */
 @Data
 @Builder
@@ -55,36 +53,17 @@ import javax.json.bind.annotation.JsonbProperty;
 @EqualsAndHashCode(callSuper = true)
 public class PushEvent extends Event {
 
-    /**
-     * The full <a href="/v3/git/refs/"><code>git ref</code></a> that was pushed. Example:
-     * <code>refs/heads/master</code>.
-     */
-    @JsonbProperty("ref")
-    private String ref;
+    @JsonbProperty("after")
+    private String after;
+
+    @JsonbProperty("base_ref")
+    private String baseRef;
 
     /**
      * The SHA of the most recent commit on <code>ref</code> before the push.
      */
     @JsonbProperty("before")
     private String before;
-
-    @JsonbProperty("after")
-    private String after;
-
-    @JsonbProperty("created")
-    private Boolean created;
-
-    @JsonbProperty("deleted")
-    private Boolean deleted;
-
-    @JsonbProperty("forced")
-    private Boolean forced;
-
-    @JsonbProperty("base_ref")
-    private String baseRef;
-
-    @JsonbProperty("compare")
-    private String compare;
 
     /**
      * An array of commit objects describing the pushed commits. (The array includes a maximum of 20
@@ -95,16 +74,34 @@ public class PushEvent extends Event {
     @JsonbProperty("commits")
     private String[] commits;
 
+    @JsonbProperty("compare")
+    private String compare;
+
+    @JsonbProperty("created")
+    private Boolean created;
+
+    @JsonbProperty("deleted")
+    private Boolean deleted;
+
+    @JsonbProperty("forced")
+    private Boolean forced;
+
     @JsonbProperty("head_commit")
     private String headCommit;
-
-    @JsonbProperty("repository")
-    private Repository repository;
 
     @JsonbProperty("pusher")
     private Pusher pusher;
 
+    /**
+     * The full <a href="/v3/git/refs/"><code>git ref</code></a> that was pushed. Example:
+     * <code>refs/heads/master</code>.
+     */
+    @JsonbProperty("ref")
+    private String ref;
+
+    @JsonbProperty("repository")
+    private Repository repository;
+
     @JsonbProperty("sender")
     private Sender sender;
-
 }

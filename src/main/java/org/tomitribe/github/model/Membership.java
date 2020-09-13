@@ -14,14 +14,12 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-
 package org.tomitribe.github.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import javax.json.bind.annotation.JsonbProperty;
 
 /**
@@ -34,19 +32,18 @@ import javax.json.bind.annotation.JsonbProperty;
 @NoArgsConstructor
 public class Membership {
 
-    @JsonbProperty("url")
-    private String url;
-
-    @JsonbProperty("state")
-    private String state;
+    @JsonbProperty("organization_url")
+    private String organizationUrl;
 
     @JsonbProperty("role")
     private String role;
 
-    @JsonbProperty("organization_url")
-    private String organizationUrl;
+    @JsonbProperty("state")
+    private String state;
+
+    @JsonbProperty("url")
+    private String url;
 
     @JsonbProperty("user")
     private User user;
-
 }

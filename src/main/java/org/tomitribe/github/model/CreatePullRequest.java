@@ -20,7 +20,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import javax.json.bind.annotation.JsonbProperty;
 import javax.json.bind.annotation.JsonbTransient;
 import javax.ws.rs.PathParam;
@@ -41,28 +40,6 @@ import javax.ws.rs.PathParam;
 @NoArgsConstructor
 public class CreatePullRequest {
 
-    @JsonbTransient
-    @PathParam("owner")
-    private String owner;
-
-    @JsonbTransient
-    @PathParam("repo")
-    private String repo;
-
-    /**
-     * Required. The title of the new pull request.
-     */
-    @JsonbProperty("title")
-    private String title;
-
-    /**
-     * Required. The name of the branch where your changes are implemented.
-     * For cross-repository pull requests in the same network, namespace
-     * head with a user like this: username:branch
-     */
-    @JsonbProperty("head")
-    private String head;
-
     /**
      * Required. The name of the branch you want the changes pulled into.
      * This should be an existing branch on the current repository. You
@@ -79,14 +56,6 @@ public class CreatePullRequest {
     private String body;
 
     /**
-     * Indicates whether maintainers can modify the pull request.
-     *
-     * https://help.github.com/articles/allowing-changes-to-a-pull-request-branch-created-from-a-fork/
-     */
-    @JsonbProperty("maintainer_can_modify")
-    private Boolean maintainerCanModify;
-
-    /**
      * Indicates whether the pull request is a draft. See "Draft Pull Requests"
      * in the GitHub Help documentation to learn more.
      *
@@ -95,4 +64,33 @@ public class CreatePullRequest {
     @JsonbProperty("draft")
     private Boolean draft;
 
+    /**
+     * Required. The name of the branch where your changes are implemented.
+     * For cross-repository pull requests in the same network, namespace
+     * head with a user like this: username:branch
+     */
+    @JsonbProperty("head")
+    private String head;
+
+    /**
+     * Indicates whether maintainers can modify the pull request.
+     *
+     * https://help.github.com/articles/allowing-changes-to-a-pull-request-branch-created-from-a-fork/
+     */
+    @JsonbProperty("maintainer_can_modify")
+    private Boolean maintainerCanModify;
+
+    @JsonbTransient
+    @PathParam("owner")
+    private String owner;
+
+    @JsonbTransient
+    @PathParam("repo")
+    private String repo;
+
+    /**
+     * Required. The title of the new pull request.
+     */
+    @JsonbProperty("title")
+    private String title;
 }

@@ -14,14 +14,12 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-
 package org.tomitribe.github.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import javax.json.bind.annotation.JsonbProperty;
 
 /**
@@ -34,16 +32,15 @@ import javax.json.bind.annotation.JsonbProperty;
 @NoArgsConstructor
 public class RepositoryRef {
 
+    @JsonbProperty("private")
+    private Boolean _private;
+
+    @JsonbProperty("full_name")
+    private String fullName;
+
     @JsonbProperty("id")
     private Long id;
 
     @JsonbProperty("name")
     private String name;
-
-    @JsonbProperty("full_name")
-    private String fullName;
-
-    @JsonbProperty("private")
-    private Boolean _private;
-
 }

@@ -21,7 +21,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-
 import javax.json.bind.annotation.JsonbProperty;
 
 @Data
@@ -31,24 +30,17 @@ import javax.json.bind.annotation.JsonbProperty;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Code {
 
-    @JsonbProperty("name")
-    private String name;
-
-    @JsonbProperty("path")
-    private String path;
-
-    @JsonbProperty("sha")
-    @EqualsAndHashCode.Include
-    private String sha;
-
-    @JsonbProperty("url")
-    private String url;
-
     @JsonbProperty("git_url")
     private String gitlUrl;
 
     @JsonbProperty("html_url")
     private String htmlUrl;
+
+    @JsonbProperty("name")
+    private String name;
+
+    @JsonbProperty("path")
+    private String path;
 
     @JsonbProperty("repository")
     private Repository repository;
@@ -56,4 +48,10 @@ public class Code {
     @JsonbProperty("score")
     private Double score;
 
+    @JsonbProperty("sha")
+    @EqualsAndHashCode.Include
+    private String sha;
+
+    @JsonbProperty("url")
+    private String url;
 }

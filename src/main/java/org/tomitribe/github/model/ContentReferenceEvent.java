@@ -14,7 +14,6 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-
 package org.tomitribe.github.model;
 
 import lombok.AllArgsConstructor;
@@ -22,7 +21,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-
 import javax.json.bind.annotation.JsonbProperty;
 
 /**
@@ -40,7 +38,7 @@ import javax.json.bind.annotation.JsonbProperty;
  * href="/v3/apps/installations/#create-a-content-attachment">Create a content attachment</a>" to
  * create a new content attachment.</p>
  * Used by:
- * - 
+ * -
  */
 @Data
 @Builder
@@ -56,13 +54,12 @@ public class ContentReferenceEvent extends Event {
     @JsonbProperty("content_reference")
     private ContentReference contentReference;
 
+    @JsonbProperty("installation")
+    private Installation installation;
+
     @JsonbProperty("repository")
     private Repository repository;
 
     @JsonbProperty("sender")
     private Sender sender;
-
-    @JsonbProperty("installation")
-    private Installation installation;
-
 }

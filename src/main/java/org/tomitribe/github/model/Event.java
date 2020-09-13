@@ -21,27 +21,12 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-
 import javax.json.bind.annotation.JsonbProperty;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class Event {
-    @JsonbProperty("id")
-    private Long id;
-
-    @JsonbProperty("type")
-    private String type;
-
-    @JsonbProperty("actor")
-    private Actor actor;
-
-    @JsonbProperty("repo")
-    private Repo repo;
-
-    @JsonbProperty("payload")
-    private String payload;
 
     @Data
     @NoArgsConstructor
@@ -49,6 +34,7 @@ public class Event {
     @Builder
     @EqualsAndHashCode(onlyExplicitlyIncluded = true)
     public static class Actor {
+
         @JsonbProperty("id")
         private String id;
 
@@ -74,6 +60,7 @@ public class Event {
     @Builder
     @EqualsAndHashCode(onlyExplicitlyIncluded = true)
     public static class Repo {
+
         @JsonbProperty("id")
         private String id;
 
@@ -83,4 +70,19 @@ public class Event {
         @JsonbProperty("url")
         private String url;
     }
+
+    @JsonbProperty("actor")
+    private Actor actor;
+
+    @JsonbProperty("id")
+    private Long id;
+
+    @JsonbProperty("payload")
+    private String payload;
+
+    @JsonbProperty("repo")
+    private Repo repo;
+
+    @JsonbProperty("type")
+    private String type;
 }

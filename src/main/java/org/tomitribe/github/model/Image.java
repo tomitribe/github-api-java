@@ -20,7 +20,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import javax.json.bind.annotation.JsonbProperty;
 
 @Data
@@ -35,13 +34,12 @@ public class Image {
     @JsonbProperty("alt")
     private String alt;
 
+    @JsonbProperty("caption")
+    private String caption;
+
     /**
      * Required. The full URL of the image.
      */
     @JsonbProperty("image_url")
     private String image_url;
-
-    @JsonbProperty("caption")
-    private String caption;
-
 }

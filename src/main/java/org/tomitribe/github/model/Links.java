@@ -14,14 +14,12 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-
 package org.tomitribe.github.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import javax.json.bind.annotation.JsonbProperty;
 
 /**
@@ -36,8 +34,11 @@ import javax.json.bind.annotation.JsonbProperty;
 @NoArgsConstructor
 public class Links {
 
-    @JsonbProperty("self")
-    private Self self;
+    @JsonbProperty("comments")
+    private Comments comments;
+
+    @JsonbProperty("commits")
+    private Commits commits;
 
     @JsonbProperty("html")
     private Html html;
@@ -45,22 +46,18 @@ public class Links {
     @JsonbProperty("issue")
     private Issue issue;
 
-    @JsonbProperty("comments")
-    private Comments comments;
-
-    @JsonbProperty("review_comments")
-    private ReviewComments reviewComments;
+    @JsonbProperty("pull_request")
+    private PullRequest pullRequest;
 
     @JsonbProperty("review_comment")
     private ReviewComment reviewComment;
 
-    @JsonbProperty("commits")
-    private Commits commits;
+    @JsonbProperty("review_comments")
+    private ReviewComments reviewComments;
+
+    @JsonbProperty("self")
+    private Self self;
 
     @JsonbProperty("statuses")
     private Statuses statuses;
-
-    @JsonbProperty("pull_request")
-    private PullRequest pullRequest;
-
 }

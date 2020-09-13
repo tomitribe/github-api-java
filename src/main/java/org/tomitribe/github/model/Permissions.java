@@ -14,14 +14,12 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-
 package org.tomitribe.github.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import javax.json.bind.annotation.JsonbProperty;
 
 /**
@@ -37,6 +35,9 @@ import javax.json.bind.annotation.JsonbProperty;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Permissions {
+
+    @JsonbProperty("admin")
+    private Boolean admin;
 
     @JsonbProperty("administration")
     private String administration;
@@ -77,8 +78,14 @@ public class Permissions {
     @JsonbProperty("pages")
     private String pages;
 
+    @JsonbProperty("pull")
+    private Boolean pull;
+
     @JsonbProperty("pull_requests")
     private String pullRequests;
+
+    @JsonbProperty("push")
+    private Boolean push;
 
     @JsonbProperty("repository_hooks")
     private String repositoryHooks;
@@ -94,14 +101,4 @@ public class Permissions {
 
     @JsonbProperty("vulnerability_alerts")
     private String vulnerabilityAlerts;
-
-    @JsonbProperty("pull")
-    private Boolean pull;
-
-    @JsonbProperty("push")
-    private Boolean push;
-
-    @JsonbProperty("admin")
-    private Boolean admin;
-
 }

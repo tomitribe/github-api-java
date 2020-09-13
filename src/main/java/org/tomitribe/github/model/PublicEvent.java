@@ -14,7 +14,6 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-
 package org.tomitribe.github.model;
 
 import lombok.AllArgsConstructor;
@@ -22,14 +21,13 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-
 import javax.json.bind.annotation.JsonbProperty;
 
 /**
  * <p>Triggered when a private repository is made <a href="/v3/repos/#edit">public</a>.  Without a
  * doubt: the best GitHub event.</p>
  * Used by:
- * - 
+ * -
  */
 @Data
 @Builder
@@ -44,5 +42,4 @@ public class PublicEvent extends Event {
 
     @JsonbProperty("sender")
     private Sender sender;
-
 }

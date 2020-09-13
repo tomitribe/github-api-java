@@ -14,7 +14,6 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-
 package org.tomitribe.github.model;
 
 import lombok.AllArgsConstructor;
@@ -22,13 +21,12 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-
 import javax.json.bind.annotation.JsonbProperty;
 
 /**
  * <p>Triggered when a star is added or removed from a repository.</p>
  * Used by:
- * - 
+ * -
  */
 @Data
 @Builder
@@ -44,6 +42,12 @@ public class StarEvent extends Event {
     @JsonbProperty("action")
     private String action;
 
+    @JsonbProperty("repository")
+    private Repository repository;
+
+    @JsonbProperty("sender")
+    private Sender sender;
+
     /**
      * The time the star was created. This is a timestamp in <a
      * href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> format:
@@ -51,11 +55,4 @@ public class StarEvent extends Event {
      */
     @JsonbProperty("starred_at")
     private String starredAt;
-
-    @JsonbProperty("repository")
-    private Repository repository;
-
-    @JsonbProperty("sender")
-    private Sender sender;
-
 }

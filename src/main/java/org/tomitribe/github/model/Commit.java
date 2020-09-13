@@ -14,14 +14,12 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-
 package org.tomitribe.github.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import javax.json.bind.annotation.JsonbProperty;
 
 /**
@@ -34,23 +32,35 @@ import javax.json.bind.annotation.JsonbProperty;
 @NoArgsConstructor
 public class Commit {
 
-    @JsonbProperty("sha")
-    private String sha;
+    @JsonbProperty("author")
+    private Author author;
 
-    @JsonbProperty("node_id")
-    private String nodeId;
+    @JsonbProperty("comment_count")
+    private Long commentCount;
+
+    @JsonbProperty("comments_url")
+    private String commentsUrl;
 
     @JsonbProperty("commit")
     private Commit commit;
 
-    @JsonbProperty("author")
-    private Author author;
-
     @JsonbProperty("committer")
     private Committer committer;
 
+    @JsonbProperty("html_url")
+    private String htmlUrl;
+
     @JsonbProperty("message")
     private String message;
+
+    @JsonbProperty("node_id")
+    private String nodeId;
+
+    @JsonbProperty("parents")
+    private String[] parents;
+
+    @JsonbProperty("sha")
+    private String sha;
 
     @JsonbProperty("tree")
     private Tree tree;
@@ -58,19 +68,6 @@ public class Commit {
     @JsonbProperty("url")
     private String url;
 
-    @JsonbProperty("comment_count")
-    private Long commentCount;
-
     @JsonbProperty("verification")
     private Verification verification;
-
-    @JsonbProperty("html_url")
-    private String htmlUrl;
-
-    @JsonbProperty("comments_url")
-    private String commentsUrl;
-
-    @JsonbProperty("parents")
-    private String[] parents;
-
 }

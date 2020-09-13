@@ -14,7 +14,6 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-
 package org.tomitribe.github.model;
 
 import lombok.AllArgsConstructor;
@@ -22,7 +21,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-
 import javax.json.bind.annotation.JsonbProperty;
 
 /**
@@ -32,7 +30,7 @@ import javax.json.bind.annotation.JsonbProperty;
  * href="https://help.github.com/articles/importing-a-repository-with-github-importer/">GitHub
  * Importer</a> or the <a href="/v3/migrations/source_imports/">Source imports API</a>.</p>
  * Used by:
- * - 
+ * -
  */
 @Data
 @Builder
@@ -43,11 +41,10 @@ import javax.json.bind.annotation.JsonbProperty;
 public class RepositoryImportEvent extends Event {
 
     /**
-     * The final state of the import. This can be one of <code>success</code>, <code>cancelled</code>, or
-     * <code>failure</code>.
+     * The information about the organization where the imported repository will live.
      */
-    @JsonbProperty("status")
-    private String status;
+    @JsonbProperty("organization")
+    private Organization organization;
 
     /**
      * The <a href="/v3/repos/">repository</a> you are importing.
@@ -56,15 +53,15 @@ public class RepositoryImportEvent extends Event {
     private Repository repository;
 
     /**
-     * The information about the organization where the imported repository will live.
-     */
-    @JsonbProperty("organization")
-    private Organization organization;
-
-    /**
      * The GitHub user who is importing the repository.
      */
     @JsonbProperty("sender")
     private Sender sender;
 
+    /**
+     * The final state of the import. This can be one of <code>success</code>, <code>cancelled</code>, or
+     * <code>failure</code>.
+     */
+    @JsonbProperty("status")
+    private String status;
 }

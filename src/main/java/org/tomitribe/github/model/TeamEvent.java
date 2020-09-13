@@ -14,7 +14,6 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-
 package org.tomitribe.github.model;
 
 import lombok.AllArgsConstructor;
@@ -22,7 +21,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-
 import javax.json.bind.annotation.JsonbProperty;
 
 /**
@@ -32,7 +30,7 @@ import javax.json.bind.annotation.JsonbProperty;
  * <p>Events of this type are not visible in timelines. These events are only used to trigger
  * organization hooks.</p>
  * Used by:
- * - 
+ * -
  */
 @Data
 @Builder
@@ -49,11 +47,8 @@ public class TeamEvent extends Event {
     @JsonbProperty("action")
     private String action;
 
-    /**
-     * The team itself.
-     */
-    @JsonbProperty("team")
-    private Team team;
+    @JsonbProperty("organization")
+    private Organization organization;
 
     /**
      * The repository that was added or removed from to the team's purview if the action was
@@ -64,10 +59,12 @@ public class TeamEvent extends Event {
     @JsonbProperty("repository")
     private Repository repository;
 
-    @JsonbProperty("organization")
-    private Organization organization;
-
     @JsonbProperty("sender")
     private Sender sender;
 
+    /**
+     * The team itself.
+     */
+    @JsonbProperty("team")
+    private Team team;
 }

@@ -14,14 +14,12 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-
 package org.tomitribe.github.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import javax.json.bind.annotation.JsonbProperty;
 import java.util.List;
 
@@ -35,14 +33,8 @@ import java.util.List;
 @NoArgsConstructor
 public class PackageVersion {
 
-    @JsonbProperty("id")
-    private Long id;
-
-    @JsonbProperty("version")
-    private String version;
-
-    @JsonbProperty("summary")
-    private String summary;
+    @JsonbProperty("author")
+    private Author author;
 
     @JsonbProperty("body")
     private String body;
@@ -50,14 +42,38 @@ public class PackageVersion {
     @JsonbProperty("body_html")
     private String bodyHtml;
 
-    @JsonbProperty("release")
-    private Release release;
+    @JsonbProperty("created_at")
+    private String createdAt;
+
+    @JsonbProperty("draft")
+    private Boolean draft;
+
+    @JsonbProperty("html_url")
+    private String htmlUrl;
+
+    @JsonbProperty("id")
+    private Long id;
+
+    @JsonbProperty("installation_command")
+    private String installationCommand;
 
     @JsonbProperty("manifest")
     private String manifest;
 
-    @JsonbProperty("html_url")
-    private String htmlUrl;
+    @JsonbProperty("metadata")
+    private String[] metadata;
+
+    @JsonbProperty("package_files")
+    private List<PackageFile> packageFiles;
+
+    @JsonbProperty("prerelease")
+    private Boolean prerelease;
+
+    @JsonbProperty("release")
+    private Release release;
+
+    @JsonbProperty("summary")
+    private String summary;
 
     @JsonbProperty("tag_name")
     private String tagName;
@@ -68,28 +84,9 @@ public class PackageVersion {
     @JsonbProperty("target_oid")
     private String targetOid;
 
-    @JsonbProperty("draft")
-    private Boolean draft;
-
-    @JsonbProperty("prerelease")
-    private Boolean prerelease;
-
-    @JsonbProperty("created_at")
-    private String createdAt;
-
     @JsonbProperty("updated_at")
     private String updatedAt;
 
-    @JsonbProperty("metadata")
-    private String[] metadata;
-
-    @JsonbProperty("package_files")
-    private List<PackageFile> packageFiles;
-
-    @JsonbProperty("author")
-    private Author author;
-
-    @JsonbProperty("installation_command")
-    private String installationCommand;
-
+    @JsonbProperty("version")
+    private String version;
 }

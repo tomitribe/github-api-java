@@ -20,7 +20,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import javax.json.bind.annotation.JsonbProperty;
 
 @Data
@@ -29,13 +28,12 @@ import javax.json.bind.annotation.JsonbProperty;
 @NoArgsConstructor
 public class Action {
 
-    @JsonbProperty("label")
-    private String label;
-
     @JsonbProperty("description")
     private String description;
 
     @JsonbProperty("identifier")
     private String identifier;
 
+    @JsonbProperty("label")
+    private String label;
 }

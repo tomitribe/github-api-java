@@ -14,14 +14,12 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-
 package org.tomitribe.github.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import javax.json.bind.annotation.JsonbProperty;
 
 /**
@@ -36,17 +34,32 @@ import javax.json.bind.annotation.JsonbProperty;
 @NoArgsConstructor
 public class Milestone {
 
-    @JsonbProperty("url")
-    private String url;
+    @JsonbProperty("closed_at")
+    private String closedAt;
+
+    @JsonbProperty("closed_issues")
+    private Long closedIssues;
+
+    @JsonbProperty("created_at")
+    private String createdAt;
+
+    @JsonbProperty("creator")
+    private Creator creator;
+
+    @JsonbProperty("description")
+    private String description;
+
+    @JsonbProperty("due_on")
+    private String dueOn;
 
     @JsonbProperty("html_url")
     private String htmlUrl;
 
-    @JsonbProperty("labels_url")
-    private String labelsUrl;
-
     @JsonbProperty("id")
     private Long id;
+
+    @JsonbProperty("labels_url")
+    private String labelsUrl;
 
     @JsonbProperty("node_id")
     private String nodeId;
@@ -54,34 +67,18 @@ public class Milestone {
     @JsonbProperty("number")
     private Long number;
 
-    @JsonbProperty("title")
-    private String title;
-
-    @JsonbProperty("description")
-    private String description;
-
-    @JsonbProperty("creator")
-    private Creator creator;
-
     @JsonbProperty("open_issues")
     private Long openIssues;
-
-    @JsonbProperty("closed_issues")
-    private Long closedIssues;
 
     @JsonbProperty("state")
     private String state;
 
-    @JsonbProperty("created_at")
-    private String createdAt;
+    @JsonbProperty("title")
+    private String title;
 
     @JsonbProperty("updated_at")
     private String updatedAt;
 
-    @JsonbProperty("due_on")
-    private String dueOn;
-
-    @JsonbProperty("closed_at")
-    private String closedAt;
-
+    @JsonbProperty("url")
+    private String url;
 }

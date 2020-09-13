@@ -14,14 +14,12 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-
 package org.tomitribe.github.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import javax.json.bind.annotation.JsonbProperty;
 
 /**
@@ -34,8 +32,11 @@ import javax.json.bind.annotation.JsonbProperty;
 @NoArgsConstructor
 public class Output {
 
-    @JsonbProperty("title")
-    private String title;
+    @JsonbProperty("annotations_count")
+    private Long annotationsCount;
+
+    @JsonbProperty("annotations_url")
+    private String annotationsUrl;
 
     @JsonbProperty("summary")
     private String summary;
@@ -43,10 +44,6 @@ public class Output {
     @JsonbProperty("text")
     private String text;
 
-    @JsonbProperty("annotations_count")
-    private Long annotationsCount;
-
-    @JsonbProperty("annotations_url")
-    private String annotationsUrl;
-
+    @JsonbProperty("title")
+    private String title;
 }

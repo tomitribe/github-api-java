@@ -14,14 +14,12 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-
 package org.tomitribe.github.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import javax.json.bind.annotation.JsonbProperty;
 
 /**
@@ -40,26 +38,11 @@ import javax.json.bind.annotation.JsonbProperty;
 @NoArgsConstructor
 public class Creator {
 
-    @JsonbProperty("login")
-    private String login;
-
-    @JsonbProperty("id")
-    private Long id;
-
-    @JsonbProperty("node_id")
-    private String nodeId;
-
     @JsonbProperty("avatar_url")
     private String avatarUrl;
 
-    @JsonbProperty("gravatar_id")
-    private String gravatarId;
-
-    @JsonbProperty("url")
-    private String url;
-
-    @JsonbProperty("html_url")
-    private String htmlUrl;
+    @JsonbProperty("events_url")
+    private String eventsUrl;
 
     @JsonbProperty("followers_url")
     private String followersUrl;
@@ -70,28 +53,42 @@ public class Creator {
     @JsonbProperty("gists_url")
     private String gistsUrl;
 
+    @JsonbProperty("gravatar_id")
+    private String gravatarId;
+
+    @JsonbProperty("html_url")
+    private String htmlUrl;
+
+    @JsonbProperty("id")
+    private Long id;
+
+    @JsonbProperty("login")
+    private String login;
+
+    @JsonbProperty("node_id")
+    private String nodeId;
+
+    @JsonbProperty("organizations_url")
+    private String organizationsUrl;
+
+    @JsonbProperty("received_events_url")
+    private String receivedEventsUrl;
+
+    @JsonbProperty("repos_url")
+    private String reposUrl;
+
+    @JsonbProperty("site_admin")
+    private Boolean siteAdmin;
+
     @JsonbProperty("starred_url")
     private String starredUrl;
 
     @JsonbProperty("subscriptions_url")
     private String subscriptionsUrl;
 
-    @JsonbProperty("organizations_url")
-    private String organizationsUrl;
-
-    @JsonbProperty("repos_url")
-    private String reposUrl;
-
-    @JsonbProperty("events_url")
-    private String eventsUrl;
-
-    @JsonbProperty("received_events_url")
-    private String receivedEventsUrl;
-
     @JsonbProperty("type")
     private String type;
 
-    @JsonbProperty("site_admin")
-    private Boolean siteAdmin;
-
+    @JsonbProperty("url")
+    private String url;
 }

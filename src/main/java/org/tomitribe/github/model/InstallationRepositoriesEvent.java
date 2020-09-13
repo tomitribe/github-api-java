@@ -14,7 +14,6 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-
 package org.tomitribe.github.model;
 
 import lombok.AllArgsConstructor;
@@ -22,7 +21,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-
 import javax.json.bind.annotation.JsonbProperty;
 import java.util.List;
 
@@ -30,7 +28,7 @@ import java.util.List;
  * <p>Triggered when a repository is <code>added</code> or <code>removed</code> from an
  * installation.</p>
  * Used by:
- * - 
+ * -
  */
 @Data
 @Builder
@@ -53,13 +51,6 @@ public class InstallationRepositoriesEvent extends Event {
     private Installation installation;
 
     /**
-     * The choice of repositories the installation is on. Can be either <code>selected</code> or
-     * <code>all</code>.
-     */
-    @JsonbProperty("repository_selection")
-    private String repositorySelection;
-
-    /**
      * An array of repository objects, which were added to the installation.
      */
     @JsonbProperty("repositories_added")
@@ -71,7 +62,13 @@ public class InstallationRepositoriesEvent extends Event {
     @JsonbProperty("repositories_removed")
     private String[] repositoriesRemoved;
 
+    /**
+     * The choice of repositories the installation is on. Can be either <code>selected</code> or
+     * <code>all</code>.
+     */
+    @JsonbProperty("repository_selection")
+    private String repositorySelection;
+
     @JsonbProperty("sender")
     private Sender sender;
-
 }

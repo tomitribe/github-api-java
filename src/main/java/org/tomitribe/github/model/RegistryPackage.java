@@ -14,14 +14,12 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-
 package org.tomitribe.github.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import javax.json.bind.annotation.JsonbProperty;
 
 /**
@@ -34,26 +32,23 @@ import javax.json.bind.annotation.JsonbProperty;
 @NoArgsConstructor
 public class RegistryPackage {
 
+    @JsonbProperty("created_at")
+    private String createdAt;
+
+    @JsonbProperty("html_url")
+    private String htmlUrl;
+
     @JsonbProperty("id")
     private Long id;
 
     @JsonbProperty("name")
     private String name;
 
-    @JsonbProperty("package_type")
-    private String packageType;
-
-    @JsonbProperty("html_url")
-    private String htmlUrl;
-
-    @JsonbProperty("created_at")
-    private String createdAt;
-
-    @JsonbProperty("updated_at")
-    private String updatedAt;
-
     @JsonbProperty("owner")
     private Owner owner;
+
+    @JsonbProperty("package_type")
+    private String packageType;
 
     @JsonbProperty("package_version")
     private PackageVersion packageVersion;
@@ -61,4 +56,6 @@ public class RegistryPackage {
     @JsonbProperty("registry")
     private Registry registry;
 
+    @JsonbProperty("updated_at")
+    private String updatedAt;
 }

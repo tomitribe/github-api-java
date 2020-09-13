@@ -14,7 +14,6 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-
 package org.tomitribe.github.model;
 
 import lombok.AllArgsConstructor;
@@ -22,7 +21,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-
 import javax.json.bind.annotation.JsonbProperty;
 
 /**
@@ -33,7 +31,7 @@ import javax.json.bind.annotation.JsonbProperty;
  * <p>The event’s actor is the <a href="/v3/users/">user</a> who starred a repository, and the
  * event’s repository is the <a href="/v3/repos/">repository</a> that was starred.</p>
  * Used by:
- * - 
+ * -
  */
 @Data
 @Builder
@@ -54,5 +52,4 @@ public class WatchEvent extends Event {
 
     @JsonbProperty("sender")
     private Sender sender;
-
 }

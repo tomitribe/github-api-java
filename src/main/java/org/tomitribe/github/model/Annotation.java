@@ -20,7 +20,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import javax.json.bind.annotation.JsonbProperty;
 
 @Data
@@ -30,30 +29,16 @@ import javax.json.bind.annotation.JsonbProperty;
 public class Annotation {
 
     /**
-     * Required. The path of the file to add an annotation to. For example, assets/css/main.css.
+     * Required. The level of the annotation. Can be one of notice, warning, or failure.
      */
-    @JsonbProperty("path")
-    private String path;
-
-    /**
-     * Required. The start line of the annotation.
-     */
-    @JsonbProperty("start_line")
-    private Integer startLine;
+    @JsonbProperty("annotation_level")
+    private String annotationLevel;
 
     /**
      * Required. The end line of the annotation.
      */
     @JsonbProperty("end_line")
     private Integer endLine;
-
-    /**
-     * The start column of the annotation. Annotations only support start_column and
-     * end_column on the same line. Omit this parameter if start_line and end_line
-     * have different values.
-     */
-    @JsonbProperty("start_column")
-    private Integer startColumn;
 
     /**
      * The end column of the annotation. Annotations only support start_column and
@@ -64,12 +49,6 @@ public class Annotation {
     private Integer end_column;
 
     /**
-     * Required. The level of the annotation. Can be one of notice, warning, or failure.
-     */
-    @JsonbProperty("annotation_level")
-    private String annotationLevel;
-
-    /**
      * Required. A short description of the feedback for these lines of code. The maximum
      * size is 64 KB.
      */
@@ -77,14 +56,34 @@ public class Annotation {
     private String message;
 
     /**
-     * The title that represents the annotation. The maximum size is 255 characters.
+     * Required. The path of the file to add an annotation to. For example, assets/css/main.css.
      */
-    @JsonbProperty("title")
-    private String title;
+    @JsonbProperty("path")
+    private String path;
 
     /**
      * Details about this annotation. The maximum size is 64 KB.
      */
     @JsonbProperty("raw_details")
     private String rawDetails;
+
+    /**
+     * The start column of the annotation. Annotations only support start_column and
+     * end_column on the same line. Omit this parameter if start_line and end_line
+     * have different values.
+     */
+    @JsonbProperty("start_column")
+    private Integer startColumn;
+
+    /**
+     * Required. The start line of the annotation.
+     */
+    @JsonbProperty("start_line")
+    private Integer startLine;
+
+    /**
+     * The title that represents the annotation. The maximum size is 255 characters.
+     */
+    @JsonbProperty("title")
+    private String title;
 }

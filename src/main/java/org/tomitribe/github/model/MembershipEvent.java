@@ -14,7 +14,6 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-
 package org.tomitribe.github.model;
 
 import lombok.AllArgsConstructor;
@@ -22,7 +21,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-
 import javax.json.bind.annotation.JsonbProperty;
 
 /**
@@ -31,7 +29,7 @@ import javax.json.bind.annotation.JsonbProperty;
  * <p>Events of this type are not visible in timelines. These events are only used to trigger
  * organization hooks.</p>
  * Used by:
- * - 
+ * -
  */
 @Data
 @Builder
@@ -48,16 +46,19 @@ public class MembershipEvent extends Event {
     private String action;
 
     /**
-     * The scope of the membership. Currently, can only be <code>team</code>.
-     */
-    @JsonbProperty("scope")
-    private String scope;
-
-    /**
      * The <a href="/v3/users/">user</a> that was added or removed.
      */
     @JsonbProperty("member")
     private Member member;
+
+    @JsonbProperty("organization")
+    private Organization organization;
+
+    /**
+     * The scope of the membership. Currently, can only be <code>team</code>.
+     */
+    @JsonbProperty("scope")
+    private String scope;
 
     @JsonbProperty("sender")
     private Sender sender;
@@ -67,8 +68,4 @@ public class MembershipEvent extends Event {
      */
     @JsonbProperty("team")
     private Team team;
-
-    @JsonbProperty("organization")
-    private Organization organization;
-
 }
