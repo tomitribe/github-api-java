@@ -36,7 +36,10 @@ public class Field {
     }
 
     public static Field.Builder field(final String jsonName, final String type) {
-        final String name = Strings.lcfirst(Strings.camelCase(jsonName));
+        final String name = Strings.lcfirst(Strings.camelCase(jsonName
+                .replace("_", "-")
+                .replace(" ", "-")
+        ));
         return new Field.Builder().jsonName(jsonName).type(type).name(name);
     }
 }

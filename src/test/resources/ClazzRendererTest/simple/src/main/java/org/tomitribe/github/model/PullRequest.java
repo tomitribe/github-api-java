@@ -34,13 +34,13 @@ import java.util.List;
 public class PullRequest {
 
     @JsonbProperty("repository_url")
-    private String repository_url;
+    private String repositoryUrl;
 
     @JsonbProperty("pull_request_url")
-    private String pull_request_url;
+    private String pullRequestUrl;
 
     @JsonbProperty("pull_request_number")
-    private Integer pull_request_number;
+    private Integer pullRequestNumber;
 
     @JsonbProperty("labels")
     private String labels;
