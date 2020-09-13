@@ -39,7 +39,33 @@ public class ClazzRendererTest {
     private final Dir resources = Project.root().src().test().resources().dir(ClazzRendererTest.class.getSimpleName());
 
     @Test
-    public void test() throws IOException {
+    public void simple() throws IOException {
+
+        final Clazz clazz = Clazz.builder()
+                .name("PullRequest")
+                .componentId("#/components/schemas/pull-request-minimal")
+                .componentId("#/components/schemas/pull-request")
+                .field(Field.field("repository_url", "String").build())
+                .field(Field.field("pull_request_url", "String").build())
+                .field(Field.field("pull_request_number", "Integer").build())
+                .field(Field.field("labels", "String").collection(true).build())
+                .field(Field.field("owner", "String").in(PATH).build())
+                .field(Field.field("repo", "String").in(PATH).build())
+                .field(Field.field("state", "State").in(QUERY).build())
+                .build();
+
+        final File tmpdir = Files.tmpdir();
+        final Project actual = Project.from(tmpdir);
+        final ClazzRenderer renderer = new ClazzRenderer(actual, "org.tomitribe.github.model");
+        renderer.render(clazz);
+
+        final Project expected = Project.from(resources.file("simple"));
+
+        assertProject(expected, actual);
+    }
+
+    @Test
+    public void update() throws IOException {
 
         final Clazz clazz = Clazz.builder()
                 .name("PullRequest")

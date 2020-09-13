@@ -16,6 +16,7 @@
  */
 package org.tomitribe.github.gen;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.tomitribe.github.Resources;
 import org.tomitribe.github.core.JsonMarshalling;
@@ -31,6 +32,7 @@ import java.util.Objects;
 public class GenerateModelTest {
 
     @Test
+    @Ignore
     public void test() throws Exception {
         final String content = Resources.read(GenerateModelTest.class, "pull-request-minimal.json");
 
