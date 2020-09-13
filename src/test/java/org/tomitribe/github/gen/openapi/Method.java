@@ -34,6 +34,9 @@ import java.util.Map;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Method {
     @JsonbTransient
+    private Path path;
+
+    @JsonbTransient
     private String name;
 
     @JsonbProperty("summary")

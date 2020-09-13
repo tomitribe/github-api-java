@@ -14,17 +14,22 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package org.tomitribe.github.gen;
+package org.tomitribe.github.gen.code.model;
 
-import org.tomitribe.util.dir.Mkdir;
-import org.tomitribe.util.dir.Name;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
 
-public interface Resources extends Dir {
-    Payloads payloads();
+import java.util.ArrayList;
+import java.util.List;
 
-    @Mkdir
-    @Name("ExamplesOpenApiTest")
-    Dir examplesOpenapi();
-    
-    Gen gen();
+@Data
+@AllArgsConstructor
+@Builder(builderClassName = "Builder", toBuilder = true)
+public class Clazz {
+    private String name;
+    private Clazz parent;
+    private String componentId;
+    private final List<Field> fields = new ArrayList<>();
+    private final List<Clazz> innerClasses = new ArrayList<>();
 }

@@ -23,6 +23,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.json.bind.annotation.JsonbProperty;
+import javax.json.bind.annotation.JsonbTransient;
 import java.util.List;
 import java.util.Map;
 
@@ -32,6 +33,10 @@ import java.util.Map;
 @Builder
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Schema {
+
+    @JsonbTransient
+    private String name;
+    
     @JsonbProperty("type")
     private String type;
 

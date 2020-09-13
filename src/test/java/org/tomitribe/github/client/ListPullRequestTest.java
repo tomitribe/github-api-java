@@ -21,7 +21,7 @@ import org.junit.Test;
 import org.tomitribe.github.MockService;
 import org.tomitribe.github.Resources;
 import org.tomitribe.github.TestLinks;
-import org.tomitribe.github.model.Link;
+import org.tomitribe.github.core.Link;
 import org.tomitribe.github.model.PullRequest;
 import org.tomitribe.util.Join;
 

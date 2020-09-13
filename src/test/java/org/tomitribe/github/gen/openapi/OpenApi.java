@@ -25,10 +25,14 @@ import lombok.NoArgsConstructor;
 import org.tomitribe.github.core.JsonMarshalling;
 
 import javax.json.bind.annotation.JsonbProperty;
+import javax.json.bind.annotation.JsonbTransient;
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Data
 @NoArgsConstructor
@@ -76,6 +80,11 @@ public class OpenApi {
             if (path.getPatch() != null) path.getPatch().setName("patch");
         }
 
+        // Link every Method path to its owning Path
+        for (final Path path : openApi.paths.values()) {
+            path.getMethods().forEach(method -> method.setPath(path));
+        }
+
         // Tell every Response instance what its name is in the map
         openApi.paths.values().stream()
                 .flatMap(Path::getMethods)
@@ -112,7 +121,109 @@ public class OpenApi {
                     }
                 });
 
+        // Tell every Schema in componets what its name is in the map
+        final Map<String, Schema> schemas = openApi.getComponents().getSchemas();
+        for (final Map.Entry<String, Schema> entry : schemas.entrySet()) {
+            entry.getValue().setName(entry.getKey());
+        }
+
         return openApi;
+    }
+
+    @JsonbTransient
+    public Stream<Content> getContents() {
+        final Stream<Content> responseContent = this.getPaths().values().stream()
+                .flatMap(Path::getMethods)
+                .map(Method::getResponses)
+                .filter(Objects::nonNull)
+                .map(Map::values)
+                .flatMap(Collection::stream)
+                .map(Response::getContent)
+                .filter(Objects::nonNull)
+                .map(Map::values)
+                .flatMap(Collection::stream);
+
+        final Stream<Content> requestContent = this.getPaths().values().stream()
+                .flatMap(Path::getMethods)
+                .map(Method::getRequestBody)
+                .filter(Objects::nonNull)
+                .map(RequestBody::getContent)
+                .filter(Objects::nonNull)
+                .map(Map::values)
+                .flatMap(Collection::stream);
+
+        return Stream.concat(responseContent, requestContent);
+    }
+
+    @JsonbTransient
+    public Stream<ExampleReference> getExampleReferences() {
+        return getContents()
+                .flatMap(this::getExampleReferences)
+                .distinct()
+                .sorted(Comparator.comparing(ExampleReference::getComponent));
+    }
+
+    @JsonbTransient
+    private Stream<ExampleReference> getExampleReferences(final Content content) {
+        final Schema schema = content.getSchema();
+        if (schema == null) return Stream.of();
+
+        final Map<String, Object> examples = content.getExamples();
+        if (examples == null) return Stream.of();
+
+        final List<String> exampleNames = examples.values().stream()
+                .map(Map.class::cast)
+                .map(map -> map.get("$ref"))
+                .filter(Objects::nonNull)
+                .map(String.class::cast)
+                .map(OpenApi::getRefName)
+                .collect(Collectors.toList());
+
+        if ("array".equals(schema.getType())) {
+            final Schema items = schema.getItems();
+            if (items == null) throw new IllegalStateException("Array type missing items");
+
+            final String componentRef = items.getRef();
+            if (componentRef == null) return Stream.of();
+
+            final String component = getRefName(componentRef);
+            return exampleNames.stream()
+                    .map(s -> new ExampleReference(component, null, s, true));
+        }
+
+        if (schema.getRef() != null) {
+            final String componentRef = schema.getRef();
+            if (componentRef == null) return Stream.of();
+
+            final String component = getRefName(componentRef);
+            return exampleNames.stream()
+                    .map(s -> new ExampleReference(component, null, s, false));
+        }
+
+        if ("object".equals(schema.getType()) &&
+                exampleNames.stream().anyMatch(s -> s.contains("paginated"))) {
+            final Schema array = schema.getProperties().values().stream()
+                    .filter(property -> "array".equals(property.getType()))
+                    .findFirst().orElseThrow(() -> new IllegalStateException("Missing items array"));
+
+            final Schema items = array.getItems();
+            if (items==null) throw new IllegalStateException("Missing array type");
+            
+            final String ref = items.getRef();
+            if (ref == null) throw new IllegalStateException("Missing items ref");
+
+            final String item = getRefName(ref);
+            final String page = item + "-page";
+            return exampleNames.stream()
+                    .map(s -> new ExampleReference(page, item, s, false));
+
+        }
+
+        return Stream.of();
+    }
+
+    public static String getRefName(final String ref) {
+        return ref.replaceAll(".*/", "");
     }
 
 }

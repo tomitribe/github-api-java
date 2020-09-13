@@ -17,6 +17,9 @@
 package org.tomitribe.github.gen;
 
 import org.tomitribe.util.dir.Mkdirs;
+import org.tomitribe.util.dir.Name;
+
+import java.io.File;
 
 public interface Gen extends Dir {
     @Mkdirs
@@ -27,4 +30,8 @@ public interface Gen extends Dir {
 
     @Mkdirs
     Parsed parsed();
+
+    @Name("api.github.com.json")
+    File getGithubOpenApiJson();
+
 }

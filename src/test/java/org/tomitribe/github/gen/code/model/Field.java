@@ -14,17 +14,18 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package org.tomitribe.github.gen;
+package org.tomitribe.github.gen.code.model;
 
-import org.tomitribe.util.dir.Mkdir;
-import org.tomitribe.util.dir.Name;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
 
-public interface Resources extends Dir {
-    Payloads payloads();
-
-    @Mkdir
-    @Name("ExamplesOpenApiTest")
-    Dir examplesOpenapi();
-    
-    Gen gen();
+@Data
+@AllArgsConstructor
+@Builder(builderClassName = "Builder", toBuilder = true)
+public class Field {
+    private String name;
+    private String jsonName;
+    private String type;
+    private boolean collection;
 }

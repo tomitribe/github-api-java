@@ -28,4 +28,9 @@ import lombok.NoArgsConstructor;
 public class Target {
     private String method;
     private String path;
+
+    @Override
+    public String toString() {
+        return method + " " + path;
+    }
 }

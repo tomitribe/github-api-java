@@ -16,15 +16,22 @@
  */
 package org.tomitribe.github.gen.openapi;
 
+import lombok.Data;
 import org.junit.Test;
 import org.tomitribe.github.JsonAsserts;
+import org.tomitribe.github.gen.html.Target;
 import org.tomitribe.github.model.PayloadAsserts;
 import org.tomitribe.util.IO;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
+import static java.util.Collections.EMPTY_LIST;
 import static org.junit.Assert.assertEquals;
 
 public class OpenApiTest {
@@ -33,6 +40,65 @@ public class OpenApiTest {
     public void test() throws Exception {
         final String expected = getOpenApiJson();
         JsonAsserts.assertJsonb(expected, OpenApi.class);
+    }
+
+    @Test
+    public void methodsCount() throws Exception {
+    }
+
+    public Map<String, Content> getContent(final Endpoint endpoint) {
+        final Map<String, Content> content = endpoint.getResponse().getContent();
+//        if (content == null) {
+//            if (responseTypes.containsKey(endpoint.getTarget().toString())) {
+//                return Collections.EMPTY_MAP;
+//            }
+//            if (endpoint.getResponse().getName().equals("205")) {
+//                return Collections.EMPTY_MAP;
+//            }
+//        }
+        return content;
+    }
+
+
+    @Data
+    public static class Endpoint {
+        private final Github github;
+        private final List<Preview> previews;
+        private Method method;
+        private Response response;
+        private Target target;
+
+        public Endpoint(final Method method) {
+            this.method = method;
+            this.github = method.getGithub();
+            this.previews = github.getPreviews() == null ? EMPTY_LIST : github.getPreviews();
+
+            this.response = method.getResponses().values().stream()
+                    .filter(r -> r.getName().startsWith("2"))
+                    .min(Comparator.comparing(Response::getName))
+                    .orElse(null);
+            this.target = new Target(method.getName(), method.getPath().getName());
+        }
+
+        public String getCategory() {
+            return github.getCategory();
+        }
+
+        public String getSubcategory() {
+            return github.getSubcategory();
+        }
+
+        public List<Preview> getPreviews() {
+            return previews;
+        }
+
+        @Override
+        public String toString() {
+            return "Resource{" +
+                    "target='" + target +
+                    "', response=" + response +
+                    '}';
+        }
     }
 
     @Test

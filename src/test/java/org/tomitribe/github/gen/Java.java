@@ -20,14 +20,14 @@ public interface Java extends Dir {
     Package packagee(final String name);
 
     default Package client() {
-        return packagee("org.tomitribe.github.client");
+        return packagee("org/tomitribe/github/client");
     }
 
     default Package model() {
-        return packagee("org.tomitribe.github.model");
+        return packagee("org/tomitribe/github/model");
     }
 
     default Package core() {
-        return packagee("org.tomitribe.github.core");
+        return packagee("org/tomitribe/github/core");
     }
 }
