@@ -16,7 +16,6 @@
  */
 package org.tomitribe.github.model;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -53,7 +52,9 @@ public class ListPullRequests {
     private Direction direction;
 
     public enum State {
-        open, closed, all;
+        open,
+        closed,
+        all;
     }
 
     public enum Sort {
@@ -75,6 +76,7 @@ public class ListPullRequests {
     }
 
     public enum Direction {
-        asc, desc
+        asc,
+        desc
     }
 }

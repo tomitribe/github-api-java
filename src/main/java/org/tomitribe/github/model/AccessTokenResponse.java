@@ -67,5 +67,4 @@ public class AccessTokenResponse {
     @JsonbProperty("sender")
     private Sender sender;
 
-
 }
