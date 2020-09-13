@@ -24,6 +24,7 @@ import org.tomitribe.util.PrintString;
 import org.tomitribe.util.Strings;
 
 import java.util.List;
+import java.util.function.BinaryOperator;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -42,6 +43,14 @@ public class ClazzRenderer {
 
         final String className = clazz.getName();
 
+        final String imports = clazz.getFields().stream()
+                .map(Field::getIn)
+                .flatMap(this::imports)
+                .sorted()
+                .distinct()
+                .map(s -> String.format("import %s;%n", s))
+                .reduce((s, s2) -> s + s2).orElse("");
+        
         out.print("/*\n" +
                 " * Licensed to the Apache Software Foundation (ASF) under one or more\n" +
                 " * contributor license agreements.  See the NOTICE file distributed with\n" +
@@ -61,7 +70,7 @@ public class ClazzRenderer {
                 "\n" +
                 "package " + packageName + ";\n" +
                 "\n" +
-                "import javax.json.bind.annotation.JsonbProperty;\n" +
+                imports +
                 "\n" +
                 "import lombok.Data;\n" +
                 "import lombok.Builder;\n" +
@@ -80,9 +89,37 @@ public class ClazzRenderer {
                 "public class " + className + " {\n\n");
 
         for (final Field field : clazz.getFields()) {
-            out.printf("" +
-                    "    @JsonbProperty(\"%s\")%n" +
-                    "    private %s %s;%n%n", field.getJsonName(), field.getType(), field.getName());
+            switch (field.getIn()) {
+                case BODY: {
+                    out.printf("" +
+                            "    @JsonbProperty(\"%s\")%n" +
+                            "    private %s %s;%n%n", field.getJsonName(), field.getType(), field.getName());
+                    break;
+                }
+                case PATH: {
+                    out.printf("" +
+                            "    @JsonbTransient%n" +
+                            "    @PathParam(\"%s\")%n" +
+                            "    private %s %s;%n%n", field.getJsonName(), field.getType(), field.getName());
+                    break;
+                }
+                case QUERY: {
+                    out.printf("" +
+                            "    @JsonbTransient%n" +
+                            "    @QueryParam(\"%s\")%n" +
+                            "    private %s %s;%n%n", field.getJsonName(), field.getType(), field.getName());
+                    break;
+                }
+                case HEADER: {
+                    out.printf("" +
+                            "    @JsonbTransient%n" +
+                            "    @HeaderParam(\"%s\")%n" +
+                            "    private %s %s;%n%n", field.getJsonName(), field.getType(), field.getName());
+                    break;
+                }
+                default:
+                    throw new UnsupportedOperationException(field.getIn().name());
+            }
         }
 
         out.print("}\n");
@@ -91,6 +128,25 @@ public class ClazzRenderer {
         aPackage.write(className + ".java", new String(out.toByteArray()));
 
         renderTestCase(clazz);
+    }
+
+    private Stream<String> imports(final Field.In in) {
+        switch (in) {
+            case BODY: {
+                return Stream.of("javax.json.bind.annotation.JsonbProperty");
+            }
+            case PATH: {
+                return Stream.of("javax.json.bind.annotation.JsonbTransient", "javax.ws.rs.PathParam");
+            }
+            case QUERY: {
+                return Stream.of("javax.json.bind.annotation.JsonbTransient", "javax.ws.rs.QueryParam");
+            }
+            case HEADER: {
+                return Stream.of("javax.json.bind.annotation.JsonbTransient", "javax.ws.rs.HeaderParam");
+            }
+            default:
+                throw new UnsupportedOperationException(in.name());
+        }
     }
 
     private void renderTestCase(final Clazz clazz) {

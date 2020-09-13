@@ -18,6 +18,9 @@
 package org.tomitribe.github.model;
 
 import javax.json.bind.annotation.JsonbProperty;
+import javax.json.bind.annotation.JsonbTransient;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.QueryParam;
 
 import lombok.Data;
 import lombok.Builder;
@@ -45,13 +48,16 @@ public class PullRequest {
     @JsonbProperty("labels")
     private String labels;
 
-    @JsonbProperty("owner")
+    @JsonbTransient
+    @PathParam("owner")
     private String owner;
 
-    @JsonbProperty("repo")
+    @JsonbTransient
+    @PathParam("repo")
     private String repo;
 
-    @JsonbProperty("state")
+    @JsonbTransient
+    @QueryParam("state")
     private State state;
 
 }

@@ -28,6 +28,7 @@ public class Field {
     private String name;
     private String jsonName;
     private String type;
+    @lombok.Builder.Default
     private In in = In.BODY;
     private boolean collection;
 
