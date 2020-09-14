@@ -16,14 +16,23 @@
  */
 package org.tomitribe.github.gen.code.model;
 
+import com.github.javaparser.ast.Modifier;
+import com.github.javaparser.ast.body.FieldDeclaration;
+import com.github.javaparser.ast.body.VariableDeclarator;
 import org.apache.commons.lang3.text.WordUtils;
+import org.tomitribe.github.gen.ClassDefinition;
 import org.tomitribe.github.gen.Package;
 import org.tomitribe.github.gen.Project;
+import org.tomitribe.util.IO;
 import org.tomitribe.util.Join;
 import org.tomitribe.util.PrintString;
 import org.tomitribe.util.Strings;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.UncheckedIOException;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -38,87 +47,70 @@ public class ClazzRenderer {
     }
 
     public void render(final Clazz clazz) {
-        final PrintString out = new PrintString();
-
         final String className = clazz.getName();
+        final Package aPackage = project.src().main().java().packageName(packageName);
+        final File sourceFile = aPackage.file(className + ".java");
 
-        final String imports = clazz.getFields().stream()
+        final String content;
+        if (sourceFile.exists()) {
+            try {
+                content = IO.slurp(sourceFile);
+            } catch (IOException e) {
+                throw new UncheckedIOException(e);
+            }
+        } else {
+            content = template(className, packageName);
+        }
+
+        final ClassDefinition definition = ClassDefinition.parse(content);
+        if (definition.getClazz() == null) throw new IllegalStateException("Parsed clazz is null");
+
+        clazz.getFields().stream()
                 .map(Field::getIn)
                 .flatMap(this::imports)
                 .sorted()
                 .distinct()
-                .map(s -> String.format("import %s;%n", s))
-                .reduce((s, s2) -> s + s2).orElse("");
+                .forEach(definition::addImport);
 
-        final String componentIds = clazz.getComponentIds().stream()
-                .map(s -> String.format("@ComponentId(\"%s\")%n", s))
-                .reduce((s, s2) -> s + s2).orElse("");
+        clazz.getComponentIds().stream()
+                .map(s -> String.format("@ComponentId(\"%s\")", s))
+                .forEach(definition::addRepeatableAnnotation);
 
-        out.print("/*\n" +
-                " * Licensed to the Apache Software Foundation (ASF) under one or more\n" +
-                " * contributor license agreements.  See the NOTICE file distributed with\n" +
-                " * this work for additional information regarding copyright ownership.\n" +
-                " * The ASF licenses this file to You under the Apache License, Version 2.0\n" +
-                " * (the \"License\"); you may not use this file except in compliance with\n" +
-                " * the License.  You may obtain a copy of the License at\n" +
-                " *\n" +
-                " *     http://www.apache.org/licenses/LICENSE-2.0\n" +
-                " *\n" +
-                " *  Unless required by applicable law or agreed to in writing, software\n" +
-                " *  distributed under the License is distributed on an \"AS IS\" BASIS,\n" +
-                " *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n" +
-                " *  See the License for the specific language governing permissions and\n" +
-                " *  limitations under the License.\n" +
-                " */\n" +
-                "\n" +
-                "package " + packageName + ";\n" +
-                "\n" +
-                imports +
-                "\n" +
-                "import lombok.Data;\n" +
-                "import lombok.Builder;\n" +
-                "import lombok.AllArgsConstructor;\n" +
-                "import lombok.NoArgsConstructor;\n" +
-                "import java.util.List;\n" +
-                "\n" +
-                "/**\n" +
-                "" +
-                " */\n" +
-                "@Data\n" +
-                "@Builder\n" +
-                (clazz.getFields().size() > 0 ? "@AllArgsConstructor\n" : "") +
-                "@NoArgsConstructor\n" +
-                componentIds +
-                "" +
-                "public class " + className + " {\n\n");
-
+        final Map<String, FieldDeclaration> fields = definition.mapFields();
         for (final Field field : clazz.getFields()) {
+
+            final FieldDeclaration fieldDeclaration;
+            if (fields.containsKey(field.getName())) {
+                fieldDeclaration = fields.get(field.getName());
+            } else {
+                fieldDeclaration = definition.getClazz().addField(field.getType(), field.getName(), Modifier.Keyword.PRIVATE);
+            }
+
+            final VariableDeclarator variable = fieldDeclaration.getVariable(0);
+            if (field.isCollection()){
+                variable.setType(String.format("List<%s>", field.getType()));
+            } else {
+                variable.setType(field.getType());
+            }
+
             switch (field.getIn()) {
                 case BODY: {
-                    out.printf("" +
-                            "    @JsonbProperty(\"%s\")%n" +
-                            "    private %s %s;%n%n", field.getJsonName(), field.getType(), field.getName());
+                    definition.addAnnotation(fieldDeclaration, String.format("@JsonbProperty(\"%s\")", field.getJsonName()));
                     break;
                 }
                 case PATH: {
-                    out.printf("" +
-                            "    @JsonbTransient%n" +
-                            "    @PathParam(\"%s\")%n" +
-                            "    private %s %s;%n%n", field.getJsonName(), field.getType(), field.getName());
+                    definition.addAnnotation(fieldDeclaration, "@JsonbTransient");
+                    definition.addAnnotation(fieldDeclaration, String.format("@PathParam(\"%s\")", field.getJsonName()));
                     break;
                 }
                 case QUERY: {
-                    out.printf("" +
-                            "    @JsonbTransient%n" +
-                            "    @QueryParam(\"%s\")%n" +
-                            "    private %s %s;%n%n", field.getJsonName(), field.getType(), field.getName());
+                    definition.addAnnotation(fieldDeclaration, "@JsonbTransient");
+                    definition.addAnnotation(fieldDeclaration, String.format("@QueryParam(\"%s\")", field.getJsonName()));
                     break;
                 }
                 case HEADER: {
-                    out.printf("" +
-                            "    @JsonbTransient%n" +
-                            "    @HeaderParam(\"%s\")%n" +
-                            "    private %s %s;%n%n", field.getJsonName(), field.getType(), field.getName());
+                    definition.addAnnotation(fieldDeclaration, "@JsonbTransient");
+                    definition.addAnnotation(fieldDeclaration, String.format("@HeaderParam(\"%s\")", field.getJsonName()));
                     break;
                 }
                 default:
@@ -126,12 +118,22 @@ public class ClazzRenderer {
             }
         }
 
-        out.print("}\n");
-
-        final Package aPackage = project.src().main().java().packageName(packageName);
-        aPackage.write(className + ".java", new String(out.toByteArray()));
+        aPackage.write(className + ".java", definition.clean().toString());
 
         renderTestCase(clazz);
+    }
+
+    private String template(final String className, final String packageName) {
+        final ClassLoader loader = this.getClass().getClassLoader();
+        final String content;
+        try {
+            content = IO.slurp(loader.getResource("gen/templates/Model.java"));
+        } catch (IOException e) {
+            throw new UncheckedIOException(e);
+        }
+
+        return content.replace("the_package", packageName)
+                .replace("Model", className);
     }
 
     private Stream<String> imports(final Field.In in) {

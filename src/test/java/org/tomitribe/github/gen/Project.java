@@ -25,7 +25,7 @@ import java.util.stream.Stream;
 public interface Project extends Dir {
     Src src();
 
-    File target();
+    Dir target();
 
     @Name("pom.xml")
     File pomXml();

@@ -22,6 +22,7 @@ import org.tomitribe.github.gen.code.model.ClazzRenderer;
 import org.tomitribe.github.gen.code.model.Field;
 import org.tomitribe.util.Files;
 import org.tomitribe.util.IO;
+import org.tomitribe.util.JarLocation;
 import org.tomitribe.util.Join;
 import org.tomitribe.util.dir.Dir;
 
@@ -36,7 +37,7 @@ import static org.tomitribe.github.gen.code.model.Field.In.QUERY;
 
 public class ClazzRendererTest {
 
-    private final Dir resources = Project.root().src().test().resources().dir(ClazzRendererTest.class.getSimpleName());
+    private final Dir resources = getResources();
 
     @Test
     public void simple() throws IOException {
@@ -80,12 +81,14 @@ public class ClazzRendererTest {
                 .field(Field.field("state", "State").in(QUERY).build())
                 .build();
 
-        final File tmpdir = Files.tmpdir();
-        final Project actual = Project.from(tmpdir);
+        final Project actual = Project.from(Files.tmpdir());
+
+        IO.copyDirectory(resources.file("update/before"), actual.get());
+
         final ClazzRenderer renderer = new ClazzRenderer(actual, "org.tomitribe.github.model");
         renderer.render(clazz);
 
-        final Project expected = Project.from(resources.file("simple"));
+        final Project expected = Project.from(resources.file("update/after"));
 
         assertProject(expected, actual);
     }
@@ -102,5 +105,12 @@ public class ClazzRendererTest {
             final String actualContent = IO.slurp(actual.file(path));
             assertEquals(path, expectedContent, actualContent);
         }
+    }
+
+    public static Dir getResources() {
+        final Class<ClazzRendererTest> clazz = ClazzRendererTest.class;
+        final File testClasses = JarLocation.jarLocation(clazz);
+        final File testResources = new File(testClasses, clazz.getSimpleName());
+        return Dir.of(Dir.class, testResources);
     }
 }

@@ -16,17 +16,12 @@
  */
 package org.tomitribe.github.gen;
 
-import com.github.javaparser.JavaParser;
-import com.github.javaparser.ParseResult;
-import com.github.javaparser.ast.CompilationUnit;
 import com.github.javaparser.ast.body.ClassOrInterfaceDeclaration;
 import com.github.javaparser.ast.body.FieldDeclaration;
 import com.github.javaparser.ast.body.VariableDeclarator;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static org.tomitribe.github.gen.Utils.getClazz;
 
 /**
  * Ensures the order of annotations on the Resource methods
@@ -35,20 +30,20 @@ import static org.tomitribe.github.gen.Utils.getClazz;
 public class SortFields {
 
     public static String apply(final String source) {
-        final JavaParser javaParser = new JavaParser();
-        final ParseResult<CompilationUnit> parse = javaParser.parse(source);
-        final CompilationUnit unit = parse.getResult().get();
-        final ClassOrInterfaceDeclaration clazz = getClazz(unit);
+        final ClassDefinition definition = ClassDefinition.parse(source);
+        final ClassOrInterfaceDeclaration clazz = definition.getClazz();
+
         if (clazz == null) return source;
+
         final List<FieldDeclaration> fields = new ArrayList<>(clazz.getFields());
         fields.sort((o1, o2) -> {
             final VariableDeclarator a = o1.getVariables().get(0);
             final VariableDeclarator b = o2.getVariables().get(0);
             return a.getNameAsString().compareTo(b.getNameAsString());
         });
-        fields.forEach(fieldDeclaration -> clazz.remove(fieldDeclaration));
-        fields.forEach(fieldDeclaration -> clazz.addMember(fieldDeclaration));
-        return unit.toString();
+        fields.forEach(clazz::remove);
+        fields.forEach(clazz::addMember);
+        return definition.toString();
     }
 
 }
