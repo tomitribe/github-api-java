@@ -16,39 +16,56 @@
  */
 package org.tomitribe.github.model;
 
+import javax.json.bind.annotation.JsonbProperty;
+import javax.json.bind.annotation.JsonbTransient;
+import javax.json.bind.annotation.JsonbTypeAdapter;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.QueryParam;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.tomitribe.github.core.EnumAdapter;
 
-import javax.json.bind.annotation.JsonbTypeAdapter;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.QueryParam;
-
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class ListPullRequests {
+@ComponentId("#/components/schemas/pull-request-minimal")
+@ComponentId("#/components/schemas/pull-request")
+public class PullRequest {
+
+    @JsonbProperty("labels")
+    private List<String> labels;
+
+    @JsonbTransient
+    @PathParam("owner")
+    private String owner;
+
+    @JsonbProperty("pull_request_number")
+    private Integer pullRequestNumber;
+
+    @JsonbProperty("pull_request_url")
+    private String pullRequestUrl;
+
+    @JsonbTransient
+    @PathParam("repo")
+    private String repo;
+
+    @JsonbProperty("repository_url")
+    private String repositoryUrl;
+
+    @JsonbTransient
+    @QueryParam("state")
+    private State state;
 
     public enum State {
 
-        open,
-        closed,
-        all
-    }
-
-    public enum Sort {
-
-        created("created"),
-        updated("updated"),
-        popularity("popularity"),
-        long_running("long-running");
+        UPDATED("updated"), POPULARITY("popularity");
 
         private final String name;
 
-        Sort(final String name) {
+        State(final String name) {
             this.name = name;
         }
 
@@ -62,37 +79,4 @@ public class ListPullRequests {
         }
     }
 
-    public enum Direction {
-
-        asc,
-        desc
-    }
-
-    @QueryParam("base")
-    private String base;
-
-    @QueryParam("direction")
-    private Direction direction;
-
-    @QueryParam("head")
-    private String head;
-
-    @PathParam("owner")
-    private String owner;
-
-    @PathParam("repo")
-    private String repo;
-
-    @JsonbTypeAdapter(SortAdapter.class)
-    @QueryParam("sort")
-    private Sort sort;
-
-    @QueryParam("state")
-    private State state;
-
-    public static class SortAdapter extends EnumAdapter<Sort> {
-        public SortAdapter() {
-            super(Sort.class);
-        }
-    }
 }

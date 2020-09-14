@@ -16,9 +16,11 @@
  */
 package org.tomitribe.github.gen;
 
+import com.github.javaparser.ast.CompilationUnit;
 import org.junit.Test;
 import org.tomitribe.github.gen.code.model.Clazz;
 import org.tomitribe.github.gen.code.model.ClazzRenderer;
+import org.tomitribe.github.gen.code.model.EnumClazz;
 import org.tomitribe.github.gen.code.model.Field;
 import org.tomitribe.util.Files;
 import org.tomitribe.util.IO;
@@ -89,6 +91,62 @@ public class ClazzRendererTest {
         renderer.render(clazz);
 
         final Project expected = Project.from(resources.file("update/after"));
+
+        assertProject(expected, actual);
+    }
+
+    @Test
+    public void enums() throws Exception {
+        final Clazz clazz = Clazz.builder()
+                .name("PullRequest")
+                .componentId("#/components/schemas/pull-request-minimal")
+                .componentId("#/components/schemas/pull-request")
+                .field(Field.field("repository_url", "String").build())
+                .field(Field.field("pull_request_url", "String").build())
+                .field(Field.field("pull_request_number", "Integer").build())
+                .field(Field.field("labels", "String").collection(true).build())
+                .field(Field.field("owner", "String").in(PATH).build())
+                .field(Field.field("repo", "String").in(PATH).build())
+                .field(Field.field("state", "State").in(QUERY).build())
+                .innerClass(EnumClazz.of("State", "created", "updated", "popularity", "long-running"))
+                .build();
+
+        final File tmpdir = Files.tmpdir();
+        final Project actual = Project.from(tmpdir);
+        final ClazzRenderer renderer = new ClazzRenderer(actual, "org.tomitribe.github.model");
+        renderer.render(clazz);
+
+        final Project expected = Project.from(resources.file("enums"));
+
+        assertProject(expected, actual);
+    }
+
+
+    @Test
+    public void updateEnums() throws IOException {
+
+        final Clazz clazz = Clazz.builder()
+                .name("PullRequest")
+                .componentId("#/components/schemas/pull-request-minimal")
+                .componentId("#/components/schemas/pull-request")
+                .field(Field.field("repository_url", "String").build())
+                .field(Field.field("pull_request_url", "String").build())
+                .field(Field.field("pull_request_number", "Integer").build())
+                .field(Field.field("labels", "String").collection(true).build())
+                .field(Field.field("owner", "String").in(PATH).build())
+                .field(Field.field("repo", "String").in(PATH).build())
+                .field(Field.field("state", "State").in(QUERY).build())
+                .innerClass(EnumClazz.of("State", "created", "updated", "popularity", "long-running"))
+                .build();
+
+        final Project actual = Project.from(Files.tmpdir());
+
+        IO.copyDirectory(resources.file("updateEnums/before"), actual.get());
+
+        final ClazzRenderer renderer = new ClazzRenderer(actual, "org.tomitribe.github.model");
+        renderer.render(clazz);
+
+        final Project expected = Project.from(resources.file("updateEnums/after"));
 
         assertProject(expected, actual);
     }

@@ -22,19 +22,29 @@ import com.github.javaparser.ParseResult;
 import com.github.javaparser.ast.CompilationUnit;
 import com.github.javaparser.ast.ImportDeclaration;
 import com.github.javaparser.ast.NodeList;
+import com.github.javaparser.ast.body.BodyDeclaration;
 import com.github.javaparser.ast.body.ClassOrInterfaceDeclaration;
+import com.github.javaparser.ast.body.ConstructorDeclaration;
+import com.github.javaparser.ast.body.EnumDeclaration;
 import com.github.javaparser.ast.body.FieldDeclaration;
+import com.github.javaparser.ast.body.MethodDeclaration;
 import com.github.javaparser.ast.body.VariableDeclarator;
 import com.github.javaparser.ast.expr.AnnotationExpr;
 import com.github.javaparser.ast.nodeTypes.NodeWithAnnotations;
+import com.github.javaparser.ast.nodeTypes.NodeWithSimpleName;
 import lombok.Data;
+import org.tomitribe.util.IO;
 
-import java.util.ArrayList;
+import java.io.File;
+import java.io.IOException;
+import java.io.UncheckedIOException;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Data
 public class ClassDefinition {
@@ -45,6 +55,28 @@ public class ClassDefinition {
     public String toString() {
         return unit.toString();
     }
+
+    public Optional<EnumDeclaration> selectEnum(final String name) {
+        return selectEnums()
+                .filter(enumDeclaration -> enumDeclaration.getNameAsString().equals(name))
+                .findAny();
+    }
+
+    public Stream<EnumDeclaration> selectEnums() {
+        return clazz.getMembers().stream()
+                .filter(bodyDeclaration -> bodyDeclaration instanceof EnumDeclaration)
+                .map(EnumDeclaration.class::cast);
+    }
+
+    public Optional<ClassDefinition> selectInnerClass(final String name) {
+        return clazz.getMembers().stream()
+                .filter(bodyDeclaration -> bodyDeclaration instanceof ClassOrInterfaceDeclaration)
+                .map(ClassOrInterfaceDeclaration.class::cast)
+                .filter(enumDeclaration -> enumDeclaration.getNameAsString().equals(name))
+                .map(classOrInterfaceDeclaration -> new ClassDefinition(unit, classOrInterfaceDeclaration))
+                .findAny();
+    }
+
 
     public void addImport(final String className) {
         final boolean exists = unit.getImports().stream()
@@ -70,9 +102,7 @@ public class ClassDefinition {
     }
 
     public void addAnnotation(final NodeWithAnnotations<?> node, final String annotationSource) {
-        final ParseResult<AnnotationExpr> result = javaParser.parseAnnotation(annotationSource);
-        if (!result.isSuccessful()) throw new ParseProblemException(result.getProblems());
-        final AnnotationExpr annotationExpr = result.getResult().get();
+        final AnnotationExpr annotationExpr = get(javaParser.parseAnnotation(annotationSource));
 
         final String annotationName = annotationExpr.getNameAsString();
 
@@ -88,10 +118,13 @@ public class ClassDefinition {
         }
     }
 
-    public void addRepeatableAnnotation(final NodeWithAnnotations<?> node, final String annotationSource) {
-        final ParseResult<AnnotationExpr> result = javaParser.parseAnnotation(annotationSource);
+    public static <T> T get(final ParseResult<T> result) {
         if (!result.isSuccessful()) throw new ParseProblemException(result.getProblems());
-        final AnnotationExpr annotationExpr = result.getResult().get();
+        return result.getResult().get();
+    }
+
+    public void addRepeatableAnnotation(final NodeWithAnnotations<?> node, final String annotationSource) {
+        final AnnotationExpr annotationExpr = get(javaParser.parseAnnotation(annotationSource));
 
         final String annotationName = annotationExpr.getNameAsString();
 
@@ -102,7 +135,7 @@ public class ClassDefinition {
                     .stream()
                     .filter(existing -> !existing.toString().equals(annotationString))
                     .collect(Collectors.toList());
-            
+
             annotations.add(annotationExpr);
             node.setAnnotations(new NodeList<>(annotations));
         } else {
@@ -121,25 +154,78 @@ public class ClassDefinition {
             unit.setImports(new NodeList<>(imports));
         }
 
-        { // sort fields
-            final List<FieldDeclaration> fields = new ArrayList<>(clazz.getFields());
-            fields.sort((o1, o2) -> {
-                final VariableDeclarator a = o1.getVariables().get(0);
-                final VariableDeclarator b = o2.getVariables().get(0);
-                return a.getNameAsString().compareTo(b.getNameAsString());
-            });
-            fields.forEach(clazz::remove);
-            fields.forEach(clazz::addMember);
-        }
+        final NodeList<BodyDeclaration<?>> members = new NodeList<>(clazz.getMembers());
+        members.sort(new NameComparator());
+        members.sort(new TypeComparator());
+
+        clazz.setMembers(members);
 
         return this;
     }
 
+    public static ClassDefinition parse(final File file) {
+        try {
+            return parse(IO.slurp(file));
+        } catch (IOException e) {
+            throw new UncheckedIOException(e);
+        }
+    }
+
     public static ClassDefinition parse(final String source) {
         final JavaParser javaParser = new JavaParser();
-        final ParseResult<CompilationUnit> parse = javaParser.parse(source);
-        final CompilationUnit unit = parse.getResult().get();
+        final CompilationUnit unit = get(javaParser.parse(source));
         final ClassOrInterfaceDeclaration clazz = Utils.getClazz(unit);
         return new ClassDefinition(unit, clazz);
+    }
+
+    /**
+     * Simply for style-purposes we like to have fields first, constructors second, methods
+     * third and inner classes at the end.
+     *
+     * This also helps us ensure any diffs are meaningful and not random reformatting.
+     */
+    private static class TypeComparator implements Comparator<BodyDeclaration<?>> {
+        @Override
+        public int compare(final BodyDeclaration<?> bodyA, final BodyDeclaration<?> bodyB) {
+            final int a = score(bodyA);
+            final int b = score(bodyB);
+            return Integer.compare(a, b);
+        }
+
+        private int score(final BodyDeclaration<?> body) {
+            if (body instanceof FieldDeclaration) return 0;
+            if (body instanceof ConstructorDeclaration) return 1;
+            if (body instanceof MethodDeclaration) return 2;
+            return 10;
+        }
+    }
+
+    /**
+     * Simply for style-purposes we like to have the fields in alphabetical order.
+     *
+     * This also helps us ensure any diffs are meaningful and not random reformatting.
+     */
+    private static class NameComparator implements Comparator<BodyDeclaration<?>> {
+        @Override
+        public int compare(final BodyDeclaration<?> bodyA, final BodyDeclaration<?> bodyB) {
+            final String a = getName(bodyA);
+            final String b = getName(bodyB);
+            return a.compareTo(b);
+        }
+
+        private String getName(final BodyDeclaration<?> body) {
+            if (body instanceof NodeWithSimpleName) {
+                final NodeWithSimpleName<?> node = (NodeWithSimpleName<?>) body;
+                return node.getNameAsString();
+            }
+
+            if (body instanceof FieldDeclaration) {
+                final FieldDeclaration field = (FieldDeclaration) body;
+                final VariableDeclarator node = field.getVariables().get(0);
+                return node.getNameAsString();
+            }
+
+            throw new UnsupportedOperationException("Unknown type " + body.getClass().getSimpleName());
+        }
     }
 }

@@ -17,8 +17,14 @@
 package org.tomitribe.github.gen.code.model;
 
 import com.github.javaparser.ast.Modifier;
+import com.github.javaparser.ast.Node;
+import com.github.javaparser.ast.NodeList;
+import com.github.javaparser.ast.body.EnumConstantDeclaration;
+import com.github.javaparser.ast.body.EnumDeclaration;
 import com.github.javaparser.ast.body.FieldDeclaration;
 import com.github.javaparser.ast.body.VariableDeclarator;
+import com.github.javaparser.ast.expr.StringLiteralExpr;
+import com.github.javaparser.ast.nodeTypes.NodeWithSimpleName;
 import org.apache.commons.lang3.text.WordUtils;
 import org.tomitribe.github.gen.ClassDefinition;
 import org.tomitribe.github.gen.Package;
@@ -31,8 +37,12 @@ import org.tomitribe.util.Strings;
 import java.io.File;
 import java.io.IOException;
 import java.io.UncheckedIOException;
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -59,15 +69,13 @@ public class ClazzRenderer {
                 throw new UncheckedIOException(e);
             }
         } else {
-            content = template(className, packageName);
+            content = classTemplate(className);
         }
 
         final ClassDefinition definition = ClassDefinition.parse(content);
         if (definition.getClazz() == null) throw new IllegalStateException("Parsed clazz is null");
 
-        clazz.getFields().stream()
-                .map(Field::getIn)
-                .flatMap(this::imports)
+        imports(clazz)
                 .sorted()
                 .distinct()
                 .forEach(definition::addImport);
@@ -75,6 +83,21 @@ public class ClazzRenderer {
         clazz.getComponentIds().stream()
                 .map(s -> String.format("@ComponentId(\"%s\")", s))
                 .forEach(definition::addRepeatableAnnotation);
+
+        // Add any enums or inner classes
+        addInnerClasses(clazz, definition);
+
+        addFields(clazz, definition);
+
+        aPackage.write(className + ".java", definition.clean().toString());
+
+        renderTestCase(clazz);
+    }
+
+    public void addFields(final Clazz clazz, final ClassDefinition definition) {
+        final List<String> enums = definition.selectEnums()
+                .map(NodeWithSimpleName::getNameAsString)
+                .collect(Collectors.toList());
 
         final Map<String, FieldDeclaration> fields = definition.mapFields();
         for (final Field field : clazz.getFields()) {
@@ -87,7 +110,7 @@ public class ClazzRenderer {
             }
 
             final VariableDeclarator variable = fieldDeclaration.getVariable(0);
-            if (field.isCollection()){
+            if (field.isCollection()) {
                 variable.setType(String.format("List<%s>", field.getType()));
             } else {
                 variable.setType(field.getType());
@@ -116,24 +139,114 @@ public class ClazzRenderer {
                 default:
                     throw new UnsupportedOperationException(field.getIn().name());
             }
+
+            if (enums.contains(field.getType())) {
+                definition.addAnnotation(fieldDeclaration, String.format("@JsonbTypeAdapter(%sAdapter.class)", field.getType()));
+            }
         }
-
-        aPackage.write(className + ".java", definition.clean().toString());
-
-        renderTestCase(clazz);
     }
 
-    private String template(final String className, final String packageName) {
+    public void addInnerClasses(final Clazz clazz, final ClassDefinition definition) {
+        for (final Clazz innerClass : clazz.getInnerClasses()) {
+            if (innerClass instanceof EnumClazz) {
+                final EnumClazz enumClazz = (EnumClazz) innerClass;
+
+                final ClassDefinition template = ClassDefinition.parse(enumTemplate(enumClazz.getName()));
+
+                { // Add the enum declaration
+                    final Optional<EnumDeclaration> existing = definition.selectEnum(enumClazz.getName());
+                    final EnumDeclaration enumDeclaration = existing
+                            .orElseGet(template.selectEnum(enumClazz.getName())::get);
+
+                    final Map<String, EnumConstantDeclaration> entries = enumDeclaration.getEntries().stream()
+                            .collect(Collectors.toMap(EnumConstantDeclaration::getNameAsString, Function.identity()));
+
+                    for (final String value : enumClazz.getValues()) {
+                        final String constant = value.replaceAll("[ .:-]", "_").toUpperCase();
+                        if (entries.containsKey(constant)) continue;
+
+                        // Some github enums have dashes such as "long-running"
+                        // We need a version that is safe to be used as the constant
+
+                        final EnumConstantDeclaration constantDeclaration = new EnumConstantDeclaration(constant);
+                        constantDeclaration.addArgument(new StringLiteralExpr(value));
+                        enumDeclaration.addEntry(constantDeclaration);
+                    }
+
+                    if (!existing.isPresent()) {
+                        definition.getClazz().addMember(enumDeclaration);
+                    }
+                }
+
+                { // Now add the enum adapter
+                    final String name = enumClazz.getName() + "Adapter";
+
+                    if (!definition.selectInnerClass(name).isPresent()) {
+                        definition.getClazz().addMember(template.selectInnerClass(name).get().getClazz());
+                    }
+                }
+            }
+        }
+    }
+
+    private String classTemplate(final String className) {
+        return readTemplate("Model").replace("the_package", packageName)
+                .replace("Model", className);
+    }
+
+    private String enumTemplate(final String className) {
+        return readTemplate("ModelEnum").replace("the_package", packageName)
+                .replace("Orange", className);
+    }
+
+    private String readTemplate(final String templateName) {
         final ClassLoader loader = this.getClass().getClassLoader();
         final String content;
         try {
-            content = IO.slurp(loader.getResource("gen/templates/Model.java"));
+            content = IO.slurp(loader.getResource("gen/templates/" + templateName + ".java"));
         } catch (IOException e) {
             throw new UncheckedIOException(e);
         }
+        return content;
+    }
 
-        return content.replace("the_package", packageName)
-                .replace("Model", className);
+    private Stream<String> imports(final Clazz clazz) {
+        final List<String> imports = new ArrayList<>();
+
+        for (final Clazz innerClass : clazz.getInnerClasses()) {
+            if (innerClass instanceof EnumClazz) {
+                imports.add("javax.json.bind.annotation.JsonbTypeAdapter");
+                imports.add("org.tomitribe.github.core.EnumAdapter");
+            }
+        }
+
+        for (final Field field : clazz.getFields()) {
+            switch (field.getIn()) {
+                case BODY: {
+                    imports.add("javax.json.bind.annotation.JsonbProperty");
+                    break;
+                }
+                case PATH: {
+                    imports.add("javax.json.bind.annotation.JsonbTransient");
+                    imports.add("javax.ws.rs.PathParam");
+                    break;
+                }
+                case QUERY: {
+                    imports.add("javax.json.bind.annotation.JsonbTransient");
+                    imports.add("javax.ws.rs.QueryParam");
+                    break;
+                }
+                case HEADER: {
+                    imports.add("javax.json.bind.annotation.JsonbTransient");
+                    imports.add("javax.ws.rs.HeaderParam");
+                    break;
+                }
+                default:
+                    throw new UnsupportedOperationException(field.getIn().name());
+            }
+        }
+
+        return imports.stream();
     }
 
     private Stream<String> imports(final Field.In in) {
@@ -208,5 +321,14 @@ public class ClazzRenderer {
             return Strings.ucfirst(name.substring(1));
         }
         return Strings.ucfirst(name);
+    }
+
+    public static class UnmodifiableNodeList<N extends Node> extends NodeList<N> {
+        @Override
+        public void sort(final Comparator<? super N> comparator) {
+            super.sort(comparator);
+        }
+
+
     }
 }
