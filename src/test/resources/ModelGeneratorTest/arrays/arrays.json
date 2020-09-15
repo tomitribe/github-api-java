@@ -1,0 +1,50 @@
+{
+  "type": "object",
+  "properties": {
+    "repositories": {
+      "description": "List of repository names that the token should have access to",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "example": "rails"
+      }
+    },
+    "repository_ids": {
+      "description": "List of repository IDs that the token should have access to",
+      "example": [
+        1
+      ],
+      "type": "array",
+      "items": {
+        "type": "integer"
+      }
+    },
+    "permissions": {
+      "type": "object",
+      "properties": {
+        "contents": {
+          "type": "string"
+        },
+        "issues": {
+          "type": "string"
+        },
+        "deployments": {
+          "type": "string"
+        },
+        "single_file": {
+          "type": "string"
+        },
+        "def_not_a_repo": {
+          "type": "string",
+          "example": "\"read\""
+        }
+      },
+      "example": {
+        "contents": "read",
+        "issues": "read",
+        "deployments": "write",
+        "single_file": "read"
+      }
+    }
+  }
+}

@@ -221,6 +221,10 @@ public class ClazzRenderer {
         }
 
         for (final Field field : clazz.getFields()) {
+            if (field.isCollection()){
+                imports.add("java.util.List");
+            }
+            
             switch (field.getIn()) {
                 case BODY: {
                     imports.add("javax.json.bind.annotation.JsonbProperty");

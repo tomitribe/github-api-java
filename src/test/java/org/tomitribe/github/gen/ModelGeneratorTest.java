@@ -52,6 +52,11 @@ public class ModelGeneratorTest {
         assertScenario("enums", "enums.json", "enums");
     }
 
+    @Test
+    public void arrays() throws Exception {
+        assertScenario("arrays", "arrays.json", "arrays");
+    }
+
     public void assertScenario(final String simple, final String name, final String name1) throws IOException {
         final Dir test = this.resources.dir(simple);
 
@@ -128,18 +133,14 @@ public class ModelGeneratorTest {
                 return Field.field(name, referencedClazz.getName()).build();
             }
 
-//            if ("array".equals(type)) {
-//                return Field.field(name, "Boolean").build();
-//                final Schema items = value.getItems();
-//                if (items == null) throw new IllegalStateException("Array type missing items");
-//
-//                final String componentRef = items.getRef();
-//                if (componentRef == null) return Stream.of();
-//
-//                final String component = getRefName(componentRef);
-//                return exampleNames.stream()
-//                        .map(s -> new ExampleReference(component, null, s, true));
-//            }
+            if ("array".equals(type)) {
+                final Schema items = value.getItems();
+                if (items == null) throw new IllegalStateException("Array type missing items");
+
+                final Field field = getField(clazz, name, items);
+                field.setCollection(true);
+                return field;
+            }
 
             throw new UnsupportedOperationException("Unknown type: " + type);
         }

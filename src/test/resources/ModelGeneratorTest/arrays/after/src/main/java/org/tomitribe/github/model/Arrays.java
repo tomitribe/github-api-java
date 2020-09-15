@@ -18,9 +18,6 @@ package org.tomitribe.github.model;
 
 import java.util.List;
 import javax.json.bind.annotation.JsonbProperty;
-import javax.json.bind.annotation.JsonbTransient;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.QueryParam;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -30,31 +27,14 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@ComponentId("#/components/schemas/pull-request-minimal")
-@ComponentId("#/components/schemas/pull-request")
-public class PullRequest {
+public class Arrays {
 
-    @JsonbProperty("labels")
-    private List<String> labels;
+    @JsonbProperty("permissions")
+    private Permissions permissions;
 
-    @JsonbTransient
-    @PathParam("owner")
-    private String owner;
+    @JsonbProperty("repositories")
+    private List<String> repositories;
 
-    @JsonbProperty("pull_request_number")
-    private Integer pullRequestNumber;
-
-    @JsonbProperty("pull_request_url")
-    private String pullRequestUrl;
-
-    @JsonbTransient
-    @PathParam("repo")
-    private String repo;
-
-    @JsonbProperty("repository_url")
-    private String repositoryUrl;
-
-    @JsonbTransient
-    @QueryParam("state")
-    private State state;
+    @JsonbProperty("repository_ids")
+    private List<Integer> repositoryIds;
 }

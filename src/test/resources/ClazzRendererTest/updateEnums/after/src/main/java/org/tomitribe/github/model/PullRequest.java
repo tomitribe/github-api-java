@@ -16,6 +16,7 @@
  */
 package org.tomitribe.github.model;
 
+import java.util.List;
 import javax.json.bind.annotation.JsonbProperty;
 import javax.json.bind.annotation.JsonbTransient;
 import javax.json.bind.annotation.JsonbTypeAdapter;
