@@ -35,7 +35,11 @@ public class EnumClazz extends Clazz {
     }
 
     public static EnumClazz of(final String type, final String... values) {
-        if (values == null || values.length == 0) throw new IllegalArgumentException("Enum requires at least one value");
-        return new EnumClazz(type, Arrays.asList(values));
+        return of(type, Arrays.asList(values));
+    }
+
+    public static EnumClazz of(final String type, final List<String> values) {
+        if (values == null || values.size() == 0) throw new IllegalArgumentException("Enum requires at least one value");
+        return new EnumClazz(type, values);
     }
 }

@@ -22,6 +22,7 @@ import org.tomitribe.github.Resources;
 import org.tomitribe.github.core.JsonMarshalling;
 import org.tomitribe.github.gen.code.model.Clazz;
 import org.tomitribe.github.gen.code.model.ClazzRenderer;
+import org.tomitribe.github.gen.code.model.EnumClazz;
 import org.tomitribe.github.gen.code.model.Field;
 import org.tomitribe.github.gen.openapi.Schema;
 import org.tomitribe.util.Files;
@@ -44,6 +45,11 @@ public class ModelGeneratorTest {
     @Test
     public void simple() throws Exception {
         assertScenario("simple", "pull-request-minimal.json", "pull-request-minimal");
+    }
+
+    @Test
+    public void enums() throws Exception {
+        assertScenario("enums", "enums.json", "enums");
     }
 
     public void assertScenario(final String simple, final String name, final String name1) throws IOException {
@@ -88,7 +94,7 @@ public class ModelGeneratorTest {
                 final String name = entry.getKey();
                 final Schema value = entry.getValue();
 
-                clazz.field(getField(name, value));
+                clazz.field(getField(clazz, name, value));
             }
 
             final Clazz build = clazz.build();
@@ -96,10 +102,16 @@ public class ModelGeneratorTest {
             return build;
         }
 
-        public Field getField(final String name, final Schema value) {
+        public Field getField(final Clazz.Builder clazz, final String name, final Schema value) {
             final String type = value.getType();
             if ("integer".equals(type)) {
                 return Field.field(name, "Integer").build();
+            }
+
+            if ("string".equals(type) && value.getEnumValues() != null) {
+                final String className = Strings.camelCase(name);
+                clazz.innerClass(EnumClazz.of(className, value.getEnumValues()));
+                return Field.field(name, className).build();
             }
 
             if ("string".equals(type)) {
@@ -112,8 +124,8 @@ public class ModelGeneratorTest {
 
             if ("object".equals(type)) {
                 value.setName(name);
-                final Clazz clazz = build(value);
-                return Field.field(name, clazz.getName()).build();
+                final Clazz referencedClazz = build(value);
+                return Field.field(name, referencedClazz.getName()).build();
             }
 
 //            if ("array".equals(type)) {
