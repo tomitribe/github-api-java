@@ -20,6 +20,7 @@ import org.junit.Test;
 import org.tomitribe.github.Resources;
 import org.tomitribe.github.core.JsonMarshalling;
 import org.tomitribe.github.gen.code.model.Clazz;
+import org.tomitribe.github.gen.code.model.ClazzReference;
 import org.tomitribe.github.gen.code.model.ClazzRenderer;
 import org.tomitribe.github.gen.openapi.Schema;
 import org.tomitribe.util.Files;
@@ -28,6 +29,7 @@ import org.tomitribe.util.dir.Dir;
 
 import java.io.IOException;
 
+import static org.junit.Assert.assertTrue;
 import static org.tomitribe.github.gen.ProjectAsserts.assertProject;
 
 public class ModelGeneratorTest {
@@ -47,6 +49,21 @@ public class ModelGeneratorTest {
     @Test
     public void arrays() throws Exception {
         assertScenario("arrays", "arrays.json", "arrays");
+    }
+
+    @Test
+    public void classReference() throws Exception {
+        final String content = "{\n" +
+                "  \"$ref\": \"#/components/schemas/integration\"\n" +
+                "}";
+        final Schema schema = JsonMarshalling.unmarshal(Schema.class, content);
+
+        final ModelGenerator modelGenerator = new ModelGenerator();
+
+        final Clazz clazz = modelGenerator.build(schema);
+
+        assertTrue(clazz instanceof ClazzReference);
+
     }
 
     public void assertScenario(final String simple, final String name, final String name1) throws IOException {

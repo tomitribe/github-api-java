@@ -18,6 +18,7 @@ package org.tomitribe.github.gen;
 
 import lombok.Data;
 import org.tomitribe.github.gen.code.model.Clazz;
+import org.tomitribe.github.gen.code.model.ClazzReference;
 import org.tomitribe.github.gen.code.model.EnumClazz;
 import org.tomitribe.github.gen.code.model.Field;
 import org.tomitribe.github.gen.openapi.Schema;
@@ -34,6 +35,10 @@ public class ModelGenerator {
     private final List<Clazz> classes = new ArrayList<>();
 
     public Clazz build(final Schema schema) {
+        if (schema.getRef() != null) {
+            return new ClazzReference(schema.getRef());
+        }
+
         Objects.requireNonNull(schema.getName(), "Schema name");
 
         // TODO get the component Id in there somewhere

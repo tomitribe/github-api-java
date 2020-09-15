@@ -16,32 +16,19 @@
  */
 package org.tomitribe.github.gen.code.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import org.tomitribe.util.Strings;
+import lombok.Getter;
 
-@Data
-@AllArgsConstructor
-@Builder(builderClassName = "Builder", toBuilder = true)
-public class Field {
-    private String name;
-    private String jsonName;
-    private String type;
-    @lombok.Builder.Default
-    private In in = In.BODY;
-    private boolean collection;
-    private String reference;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
-    public enum In {
-        QUERY, HEADER, BODY, PATH;
+@Getter
+public class ClazzReference extends Clazz {
+    private final String reference;
+
+    public ClazzReference(final String reference) {
+        super(null, null);
+        this.reference = reference;
     }
 
-    public static Field.Builder field(final String jsonName, final String type) {
-        final String name = Strings.lcfirst(Strings.camelCase(jsonName
-                .replace("_", "-")
-                .replace(" ", "-")
-        ));
-        return new Field.Builder().jsonName(jsonName).type(type).name(name);
-    }
 }
