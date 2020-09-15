@@ -52,6 +52,11 @@ public class ModelGeneratorTest {
     }
 
     @Test
+    public void stringFormats() throws Exception {
+        assertScenario("stringFormats", "stringFormats.json", "stringFormats");
+    }
+
+    @Test
     public void classReference() throws Exception {
         final String content = "{\n" +
                 "  \"$ref\": \"#/components/schemas/integration\"\n" +

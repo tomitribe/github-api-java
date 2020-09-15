@@ -71,6 +71,14 @@ public class ModelGenerator {
             return Field.field(name, className).build();
         }
 
+        if ("string".equals(type) && "uri".equals(value.getFormat())) {
+            return Field.field(name, "URI").build();
+        }
+
+        if ("string".equals(type) && "date-time".equals(value.getFormat())) {
+            return Field.field(name, "Date").build();
+        }
+
         if ("string".equals(type)) {
             return Field.field(name, "String").build();
         }

@@ -26,6 +26,8 @@ import com.github.javaparser.ast.body.VariableDeclarator;
 import com.github.javaparser.ast.expr.StringLiteralExpr;
 import com.github.javaparser.ast.nodeTypes.NodeWithSimpleName;
 import org.apache.commons.lang3.text.WordUtils;
+import org.tomitribe.github.core.DateAdapter;
+import org.tomitribe.github.core.EnumAdapter;
 import org.tomitribe.github.gen.ClassDefinition;
 import org.tomitribe.github.gen.Package;
 import org.tomitribe.github.gen.Project;
@@ -34,11 +36,19 @@ import org.tomitribe.util.Join;
 import org.tomitribe.util.PrintString;
 import org.tomitribe.util.Strings;
 
+import javax.json.bind.annotation.JsonbProperty;
+import javax.json.bind.annotation.JsonbTransient;
+import javax.json.bind.annotation.JsonbTypeAdapter;
+import javax.ws.rs.HeaderParam;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.QueryParam;
 import java.io.File;
 import java.io.IOException;
 import java.io.UncheckedIOException;
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -143,6 +153,10 @@ public class ClazzRenderer {
             if (enums.contains(field.getType())) {
                 definition.addAnnotation(fieldDeclaration, String.format("@JsonbTypeAdapter(%sAdapter.class)", field.getType()));
             }
+
+            if ("Date".equals(field.getType())) {
+                definition.addAnnotation(fieldDeclaration, "@JsonbTypeAdapter(DateAdapter.class)");
+            }
         }
     }
 
@@ -215,34 +229,43 @@ public class ClazzRenderer {
 
         for (final Clazz innerClass : clazz.getInnerClasses()) {
             if (innerClass instanceof EnumClazz) {
-                imports.add("javax.json.bind.annotation.JsonbTypeAdapter");
-                imports.add("org.tomitribe.github.core.EnumAdapter");
+                imports.add(JsonbTypeAdapter.class.getName());
+                imports.add(EnumAdapter.class.getName());
             }
         }
 
         for (final Field field : clazz.getFields()) {
-            if (field.isCollection()){
-                imports.add("java.util.List");
+            if (field.isCollection()) {
+                imports.add(List.class.getName());
             }
-            
+
+            if ("URI".equals(field.getType())) {
+                imports.add(URI.class.getName());
+            }
+
+            if ("Date".equals(field.getType())) {
+                imports.add(Date.class.getName());
+                imports.add(DateAdapter.class.getName());
+            }
+
             switch (field.getIn()) {
                 case BODY: {
-                    imports.add("javax.json.bind.annotation.JsonbProperty");
+                    imports.add(JsonbProperty.class.getName());
                     break;
                 }
                 case PATH: {
-                    imports.add("javax.json.bind.annotation.JsonbTransient");
-                    imports.add("javax.ws.rs.PathParam");
+                    imports.add(JsonbTransient.class.getName());
+                    imports.add(PathParam.class.getName());
                     break;
                 }
                 case QUERY: {
-                    imports.add("javax.json.bind.annotation.JsonbTransient");
-                    imports.add("javax.ws.rs.QueryParam");
+                    imports.add(JsonbTransient.class.getName());
+                    imports.add(QueryParam.class.getName());
                     break;
                 }
                 case HEADER: {
-                    imports.add("javax.json.bind.annotation.JsonbTransient");
-                    imports.add("javax.ws.rs.HeaderParam");
+                    imports.add(JsonbTransient.class.getName());
+                    imports.add(HeaderParam.class.getName());
                     break;
                 }
                 default:
@@ -251,25 +274,6 @@ public class ClazzRenderer {
         }
 
         return imports.stream();
-    }
-
-    private Stream<String> imports(final Field.In in) {
-        switch (in) {
-            case BODY: {
-                return Stream.of("javax.json.bind.annotation.JsonbProperty");
-            }
-            case PATH: {
-                return Stream.of("javax.json.bind.annotation.JsonbTransient", "javax.ws.rs.PathParam");
-            }
-            case QUERY: {
-                return Stream.of("javax.json.bind.annotation.JsonbTransient", "javax.ws.rs.QueryParam");
-            }
-            case HEADER: {
-                return Stream.of("javax.json.bind.annotation.JsonbTransient", "javax.ws.rs.HeaderParam");
-            }
-            default:
-                throw new UnsupportedOperationException(in.name());
-        }
     }
 
     private void renderTestCase(final Clazz clazz) {
