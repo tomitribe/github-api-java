@@ -16,25 +16,17 @@
  */
 package org.tomitribe.github.gen;
 
-import lombok.Data;
 import org.junit.Test;
 import org.tomitribe.github.Resources;
 import org.tomitribe.github.core.JsonMarshalling;
 import org.tomitribe.github.gen.code.model.Clazz;
 import org.tomitribe.github.gen.code.model.ClazzRenderer;
-import org.tomitribe.github.gen.code.model.EnumClazz;
-import org.tomitribe.github.gen.code.model.Field;
 import org.tomitribe.github.gen.openapi.Schema;
 import org.tomitribe.util.Files;
 import org.tomitribe.util.IO;
-import org.tomitribe.util.Strings;
 import org.tomitribe.util.dir.Dir;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
 
 import static org.tomitribe.github.gen.ProjectAsserts.assertProject;
 
@@ -81,69 +73,4 @@ public class ModelGeneratorTest {
         assertProject(expected, actual);
     }
 
-    @Data
-    public static class ModelGenerator {
-
-        private final List<Clazz> classes = new ArrayList<>();
-
-        public Clazz build(final Schema schema) {
-            Objects.requireNonNull(schema.getName(), "Schema name");
-
-            // TODO get the component Id in there somewhere
-            // maybe that needs to happen before we get here
-            final Clazz.Builder clazz = Clazz.builder()
-                    .name(Strings.camelCase(schema.getName()));
-
-            final Map<String, Schema> properties = schema.getProperties();
-            for (final Map.Entry<String, Schema> entry : properties.entrySet()) {
-                final String name = entry.getKey();
-                final Schema value = entry.getValue();
-
-                clazz.field(getField(clazz, name, value));
-            }
-
-            final Clazz build = clazz.build();
-            classes.add(build);
-            return build;
-        }
-
-        public Field getField(final Clazz.Builder clazz, final String name, final Schema value) {
-            final String type = value.getType();
-            if ("integer".equals(type)) {
-                return Field.field(name, "Integer").build();
-            }
-
-            if ("string".equals(type) && value.getEnumValues() != null) {
-                final String className = Strings.camelCase(name);
-                clazz.innerClass(EnumClazz.of(className, value.getEnumValues()));
-                return Field.field(name, className).build();
-            }
-
-            if ("string".equals(type)) {
-                return Field.field(name, "String").build();
-            }
-
-            if ("boolean".equals(type)) {
-                return Field.field(name, "Boolean").build();
-            }
-
-            if ("object".equals(type)) {
-                value.setName(name);
-                final Clazz referencedClazz = build(value);
-                return Field.field(name, referencedClazz.getName()).build();
-            }
-
-            if ("array".equals(type)) {
-                final Schema items = value.getItems();
-                if (items == null) throw new IllegalStateException("Array type missing items");
-
-                final Field field = getField(clazz, name, items);
-                field.setCollection(true);
-                return field;
-            }
-
-            throw new UnsupportedOperationException("Unknown type: " + type);
-        }
-
-    }
 }
