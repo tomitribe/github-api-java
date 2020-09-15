@@ -16,22 +16,18 @@
  */
 package org.tomitribe.github.gen;
 
-import com.github.javaparser.ast.CompilationUnit;
 import org.junit.Test;
+import org.tomitribe.github.Resources;
 import org.tomitribe.github.gen.code.model.Clazz;
 import org.tomitribe.github.gen.code.model.ClazzRenderer;
 import org.tomitribe.github.gen.code.model.EnumClazz;
 import org.tomitribe.github.gen.code.model.Field;
 import org.tomitribe.util.Files;
 import org.tomitribe.util.IO;
-import org.tomitribe.util.JarLocation;
-import org.tomitribe.util.Join;
 import org.tomitribe.util.dir.Dir;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.List;
-import java.util.stream.Collectors;
 
 import static org.junit.Assert.assertEquals;
 import static org.tomitribe.github.gen.code.model.Field.In.PATH;
@@ -39,7 +35,7 @@ import static org.tomitribe.github.gen.code.model.Field.In.QUERY;
 
 public class ClazzRendererTest {
 
-    private final Dir resources = getResources();
+    private final Dir resources = Resources.resources(ClazzRendererTest.class);
 
     @Test
     public void simple() throws IOException {
@@ -64,7 +60,7 @@ public class ClazzRendererTest {
 
         final Project expected = Project.from(resources.file("simple"));
 
-        assertProject(expected, actual);
+        ProjectAsserts.assertProject(expected, actual);
     }
 
     @Test
@@ -92,7 +88,7 @@ public class ClazzRendererTest {
 
         final Project expected = Project.from(resources.file("update/after"));
 
-        assertProject(expected, actual);
+        ProjectAsserts.assertProject(expected, actual);
     }
 
     @Test
@@ -118,7 +114,7 @@ public class ClazzRendererTest {
 
         final Project expected = Project.from(resources.file("enums"));
 
-        assertProject(expected, actual);
+        ProjectAsserts.assertProject(expected, actual);
     }
 
 
@@ -148,27 +144,7 @@ public class ClazzRendererTest {
 
         final Project expected = Project.from(resources.file("updateEnums/after"));
 
-        assertProject(expected, actual);
+        ProjectAsserts.assertProject(expected, actual);
     }
 
-    public static void assertProject(final Project expected, final Project actual) throws IOException {
-
-        final String expectedPaths = Join.join("\n", expected.paths().collect(Collectors.toList()));
-        final String actualPaths = Join.join("\n", actual.paths().collect(Collectors.toList()));
-        assertEquals(expectedPaths, actualPaths);
-
-        final List<String> paths = expected.paths().collect(Collectors.toList());
-        for (final String path : paths) {
-            final String expectedContent = IO.slurp(expected.file(path));
-            final String actualContent = IO.slurp(actual.file(path));
-            assertEquals(path, expectedContent, actualContent);
-        }
-    }
-
-    public static Dir getResources() {
-        final Class<ClazzRendererTest> clazz = ClazzRendererTest.class;
-        final File testClasses = JarLocation.jarLocation(clazz);
-        final File testResources = new File(testClasses, clazz.getSimpleName());
-        return Dir.of(Dir.class, testResources);
-    }
 }

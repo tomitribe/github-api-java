@@ -14,28 +14,18 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package org.tomitribe.github;
+package org.tomitribe.github.model;
 
-import org.tomitribe.util.IO;
-import org.tomitribe.util.JarLocation;
-import org.tomitribe.util.dir.Dir;
+import org.junit.Test;
 
-import java.io.File;
 import java.io.IOException;
-import java.net.URL;
 
-public class Resources {
+import static org.tomitribe.github.app.events.PayloadAsserts.assertPayload;
 
-    public static String read(final Class<?> clazz, final String name) throws IOException {
-        final ClassLoader loader = Thread.currentThread().getContextClassLoader();
-        final String simpleName = clazz.getSimpleName();
-        final URL resource = loader.getResource(String.format("%s/%s", simpleName, name));
-        return IO.slurp(resource);
-    }
+public class BaseTest {
 
-    public static Dir resources(final Class<?> clazz) {
-        final File testClasses = JarLocation.jarLocation(clazz);
-        final File testResources = new File(testClasses, clazz.getSimpleName());
-        return Dir.of(Dir.class, testResources);
+    @Test
+    public void parse() throws IOException {
+        assertPayload(Base.class);
     }
 }
