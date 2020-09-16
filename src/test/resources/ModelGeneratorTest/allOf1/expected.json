@@ -7,6 +7,7 @@
         "collection":false,
         "in":"BODY",
         "jsonName":"client_id",
+        "map":false,
         "name":"clientId",
         "type":"String"
       },
@@ -14,6 +15,7 @@
         "collection":false,
         "in":"BODY",
         "jsonName":"name",
+        "map":false,
         "name":"name",
         "type":"String"
       },
@@ -21,6 +23,7 @@
         "collection":false,
         "in":"BODY",
         "jsonName":"url",
+        "map":false,
         "name":"url",
         "type":"URI"
       }
@@ -37,6 +40,7 @@
         "collection":false,
         "in":"BODY",
         "jsonName":"id",
+        "map":false,
         "name":"id",
         "type":"Integer"
       },
@@ -44,6 +48,7 @@
         "collection":false,
         "in":"BODY",
         "jsonName":"url",
+        "map":false,
         "name":"url",
         "type":"URI"
       },
@@ -51,6 +56,7 @@
         "collection":false,
         "in":"BODY",
         "jsonName":"app",
+        "map":false,
         "name":"app",
         "type":"App"
       },
@@ -58,6 +64,7 @@
         "collection":false,
         "in":"BODY",
         "jsonName":"created_at",
+        "map":false,
         "name":"createdAt",
         "type":"Date"
       },
@@ -65,6 +72,7 @@
         "collection":false,
         "in":"BODY",
         "jsonName":"updated_at",
+        "map":false,
         "name":"updatedAt",
         "type":"Date"
       },
@@ -72,6 +80,7 @@
         "collection":true,
         "in":"BODY",
         "jsonName":"scopes",
+        "map":false,
         "name":"scopes",
         "type":"String"
       },
@@ -79,6 +88,7 @@
         "collection":false,
         "in":"BODY",
         "jsonName":"user",
+        "map":false,
         "name":"user",
         "reference":"#/components/schemas/simple-user"
       }

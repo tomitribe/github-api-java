@@ -1,57 +1,61 @@
 [
   {
-    "componentIds": [
+    "componentIds":[
     ],
-    "fields": [
+    "fields":[
     ],
-    "innerClasses": [
+    "innerClasses":[
     ],
-    "reference": "#/components/schemas/integration"
+    "reference":"#/components/schemas/integration"
   },
   {
-    "componentIds": [
+    "componentIds":[
     ],
-    "fields": [
+    "fields":[
       {
-        "collection": false,
-        "in": "BODY",
-        "jsonName": "client_id",
-        "name": "clientId",
-        "type": "String"
+        "collection":false,
+        "in":"BODY",
+        "jsonName":"client_id",
+        "map":false,
+        "name":"clientId",
+        "type":"String"
       },
       {
-        "collection": false,
-        "in": "BODY",
-        "jsonName": "client_secret",
-        "name": "clientSecret",
-        "type": "String"
+        "collection":false,
+        "in":"BODY",
+        "jsonName":"client_secret",
+        "map":false,
+        "name":"clientSecret",
+        "type":"String"
       },
       {
-        "collection": false,
-        "in": "BODY",
-        "jsonName": "webhook_secret",
-        "name": "webhookSecret",
-        "type": "String"
+        "collection":false,
+        "in":"BODY",
+        "jsonName":"webhook_secret",
+        "map":false,
+        "name":"webhookSecret",
+        "type":"String"
       },
       {
-        "collection": false,
-        "in": "BODY",
-        "jsonName": "pem",
-        "name": "pem",
-        "type": "String"
+        "collection":false,
+        "in":"BODY",
+        "jsonName":"pem",
+        "map":false,
+        "name":"pem",
+        "type":"String"
       }
     ],
-    "innerClasses": [
+    "innerClasses":[
     ],
-    "name": "AllOf2",
-    "parent": {
-      "componentIds": [
+    "name":"AllOf2",
+    "parent":{
+      "componentIds":[
       ],
-      "fields": [
+      "fields":[
       ],
-      "innerClasses": [
+      "innerClasses":[
       ],
-      "reference": "#/components/schemas/integration"
+      "reference":"#/components/schemas/integration"
     }
   }
 ]
