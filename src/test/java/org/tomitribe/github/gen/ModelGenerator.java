@@ -125,6 +125,18 @@ public class ModelGenerator {
             return Field.field(name, "Boolean").build();
         }
 
+        if ("object".equals(type) && additionalProperties("string", value)) {
+            return Field.field(name, "String").map(true).build();
+        }
+
+        if ("object".equals(type) && additionalProperties("integer", value)) {
+            return Field.field(name, "Long").map(true).build();
+        }
+
+        if ("object".equals(type) && additionalProperties("boolean", value)) {
+            return Field.field(name, "Boolean").map(true).build();
+        }
+
         if ("object".equals(type)) {
             value.setName(name);
             final Clazz referencedClazz = build(value);
@@ -154,6 +166,14 @@ public class ModelGenerator {
         }
 
         throw new UnsupportedOperationException("Unknown type: " + value);
+    }
+
+    private boolean additionalProperties(final String type, final Schema schema) {
+        if (schema.getAdditionalProperties() == null) return false;
+        if (!(schema.getAdditionalProperties() instanceof Map)) return false;
+        final Map<String, Object> map = (Map<String, Object>) schema.getAdditionalProperties();
+
+        return type.equals(map.get("type"));
     }
 
     private String getClassName(final String name) {

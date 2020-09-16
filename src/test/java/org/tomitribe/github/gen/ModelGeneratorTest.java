@@ -77,7 +77,20 @@ public class ModelGeneratorTest {
         assertScenario("oneOf", "oneOf.json", "oneOf");
     }
 
-    
+    /**
+     * In OpenAPI schema 'additionalProperties' indicates a map.  The key
+     * will always be string.  The value of additionalProperties indicated
+     * what is inside the map.  Therefore additionalProperties pointing
+     * to string indicates a Map<String,String>
+     *
+     * This test asserts map types of String, Long and Boolean
+     */
+    @Test
+    public void additionalPropertiesSimple() throws Exception {
+        assertScenario("additionalPropertiesSimple", "additionalPropertiesSimple.json", "additionalProperties");
+    }
+
+
     @Test
     public void allOf2() throws Exception {
 

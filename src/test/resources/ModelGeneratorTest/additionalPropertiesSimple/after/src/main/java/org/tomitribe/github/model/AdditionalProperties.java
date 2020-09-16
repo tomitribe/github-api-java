@@ -14,35 +14,30 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package org.tomitribe.github.gen.code.model;
+package org.tomitribe.github.model;
 
+import java.util.Map;
+import javax.json.bind.annotation.JsonbProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import org.tomitribe.util.Strings;
+import lombok.NoArgsConstructor;
 
 @Data
+@Builder
 @AllArgsConstructor
-@Builder(builderClassName = "Builder", toBuilder = true)
-public class Field {
-    private String name;
-    private String jsonName;
-    private String type;
-    @lombok.Builder.Default
-    private In in = In.BODY;
-    private boolean collection;
-    private boolean map;
-    private String reference;
+@NoArgsConstructor
+public class AdditionalProperties {
 
-    public enum In {
-        QUERY, HEADER, BODY, PATH;
-    }
+    @JsonbProperty("flags")
+    private Map<String, Boolean> flags;
 
-    public static Field.Builder field(final String jsonName, final String type) {
-        final String name = Strings.lcfirst(Strings.camelCase(jsonName
-                .replace("_", "-")
-                .replace(" ", "-")
-        ));
-        return new Field.Builder().jsonName(jsonName).type(type).name(name);
-    }
+    @JsonbProperty("inputs")
+    private Map<String, String> inputs;
+
+    @JsonbProperty("language")
+    private Map<String, Long> language;
+
+    @JsonbProperty("ref")
+    private String ref;
 }

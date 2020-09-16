@@ -121,7 +121,13 @@ public class ClazzRenderer {
 
             final VariableDeclarator variable = fieldDeclaration.getVariable(0);
             if (field.isCollection()) {
+
                 variable.setType(String.format("List<%s>", field.getType()));
+
+            } else if (field.isMap()) {
+
+                variable.setType(String.format("Map<String, %s>", field.getType()));
+
             } else {
                 if ("Object".equals(field.getType())) {
                     /*
@@ -247,6 +253,10 @@ public class ClazzRenderer {
         for (final Field field : clazz.getFields()) {
             if (field.isCollection()) {
                 imports.add(List.class.getName());
+            }
+
+            if (field.isMap()) {
+                imports.add(Map.class.getName());
             }
 
             if ("URI".equals(field.getType())) {

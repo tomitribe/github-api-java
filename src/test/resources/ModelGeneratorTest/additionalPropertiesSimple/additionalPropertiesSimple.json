@@ -1,0 +1,36 @@
+{
+  "type": "object",
+  "properties": {
+    "ref": {
+      "type": "string",
+      "description": "The reference of the workflow run. The reference can be a branch, tag, or a commit SHA."
+    },
+    "language": {
+      "title": "Language",
+      "description": "Language",
+      "type": "object",
+      "additionalProperties": {
+        "type": "integer"
+      }
+    },
+    "flags": {
+      "title": "Flags",
+      "description": "Feature flags enabled",
+      "type": "object",
+      "additionalProperties": {
+        "type": "boolean"
+      }
+    },
+    "inputs": {
+      "type": "object",
+      "description": "Input keys and values configured in the workflow file. The maximum number of properties is 10. Any default properties configured in the workflow file will be used when `inputs` are omitted.",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "maxProperties": 10
+    }
+  },
+  "required": [
+    "ref"
+  ]
+}
