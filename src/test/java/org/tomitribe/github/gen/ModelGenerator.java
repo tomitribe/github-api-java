@@ -149,6 +149,10 @@ public class ModelGenerator {
             return Field.field(name, "Object").build();
         }
 
+        if (value.getOneOf() != null) {
+            return Field.field(name, "Object").build();
+        }
+
         throw new UnsupportedOperationException("Unknown type: " + value);
     }
 

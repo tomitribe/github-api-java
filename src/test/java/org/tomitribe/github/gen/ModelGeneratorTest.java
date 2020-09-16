@@ -68,6 +68,15 @@ public class ModelGeneratorTest {
         assertScenario("anyOf", "anyOf.json", "anyOf");
     }
 
+    /**
+     * For the moment we will process oneOf as 'Object'.  Considering the field
+     * isn't strongly-typed, we don't have much of a choice.
+     */
+    @Test
+    public void oneOf() throws Exception {
+        assertScenario("oneOf", "oneOf.json", "oneOf");
+    }
+
     
     @Test
     public void allOf2() throws Exception {

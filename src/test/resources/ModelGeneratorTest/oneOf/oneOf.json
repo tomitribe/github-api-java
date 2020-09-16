@@ -1,0 +1,36 @@
+{
+  "properties": {
+    "description": {
+      "description": "Description of the gist",
+      "example": "Example Ruby script",
+      "type": "string"
+    },
+    "files": {
+      "description": "Names and content for the files that make up the gist",
+      "type": "string"
+    },
+    "public": {
+      "oneOf": [
+        {
+          "description": "Flag indicating whether the gist is public",
+          "example": true,
+          "type": "boolean",
+          "default": false
+        },
+        {
+          "type": "string",
+          "example": "true",
+          "default": "false",
+          "enum": [
+            "true",
+            "false"
+          ]
+        }
+      ]
+    }
+  },
+  "required": [
+    "files"
+  ],
+  "type": "object"
+}
