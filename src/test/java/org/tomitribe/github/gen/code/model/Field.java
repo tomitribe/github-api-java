@@ -19,7 +19,7 @@ package org.tomitribe.github.gen.code.model;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import org.tomitribe.util.Strings;
+import org.tomitribe.github.gen.util.Words;
 
 @Data
 @AllArgsConstructor
@@ -39,10 +39,9 @@ public class Field {
     }
 
     public static Field.Builder field(final String jsonName, final String type) {
-        final String name = Strings.lcfirst(Strings.camelCase(jsonName
-                .replace("_", "-")
-                .replace(" ", "-")
-        ));
-        return new Field.Builder().jsonName(jsonName).type(type).name(name);
+
+        final String javaName = Words.getVariableName(jsonName);
+        return new Builder().jsonName(jsonName).type(type).name(javaName);
     }
+
 }

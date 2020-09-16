@@ -72,32 +72,6 @@ public class Generators {
         return readerFactory.createReader(IO.read(jsonFile)).readObject();
     }
 
-    private static final List<String> keywords = Arrays.asList(
-            "abstract", "assert", "boolean", "break", "byte", "case", "catch", "char",
-            "class", "const", "continue", "default", "do", "double", "else", "enum", "exports",
-            "extends", "false", "final", "finally", "float", "for", "goto", "if", "implements",
-            "import", "instanceof", "int", "interface", "long", "module", "native", "new", "null",
-            "package", "private", "protected", "public", "requires", "return", "short", "static",
-            "strictfp", "super", "switch", "synchronized", "this", "throw", "throws", "transient",
-            "true", "try", "var", "void", "volatile", "while"
-    );
-
-    public static String toJavaName(String jsonName) {
-        try {
-            String cleaned = jsonName
-                    .replaceAll("^_", "")
-                    .replace("_", "-")
-                    .replace("@", "");
-
-            if (keywords.contains(cleaned)) {
-                return "_" + cleaned;
-            }
-            return Strings.lcfirst(Strings.camelCase(cleaned));
-        } catch (Exception e) {
-            throw new IllegalStateException(jsonName, e);
-        }
-    }
-
     public static File getParentFile(final String name) {
         return getFile(name).getParentFile();
     }

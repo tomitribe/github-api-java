@@ -16,6 +16,7 @@
  */
 package org.tomitribe.github.gen;
 
+import org.tomitribe.github.gen.util.Words;
 import org.tomitribe.util.IO;
 import org.tomitribe.util.Join;
 import org.tomitribe.util.PrintString;
@@ -52,7 +53,7 @@ public class GenerateExamplesOpenApiTest {
     }
 
     private String toTestMethod(final File file) {
-        String method = Strings.lcfirst(Strings.camelCase(file.getName().replace(".json", "")));
+        String method = Words.getVariableName(file.getName().replace(".json", ""));
         if (method.equals("import")) method = "_" + method;
 
         final String contents;

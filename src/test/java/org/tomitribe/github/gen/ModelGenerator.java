@@ -23,12 +23,13 @@ import org.tomitribe.github.gen.code.model.ClazzReference;
 import org.tomitribe.github.gen.code.model.EnumClazz;
 import org.tomitribe.github.gen.code.model.Field;
 import org.tomitribe.github.gen.openapi.Schema;
-import org.tomitribe.util.Strings;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+
+import static org.tomitribe.github.gen.util.Words.getTypeName;
 
 @Data
 public class ModelGenerator {
@@ -47,7 +48,7 @@ public class ModelGenerator {
         final Clazz.Builder clazz = Clazz.builder().title(schema.getTitle());
 
         if (schema.getName() != null) {
-            clazz.name(getClassName(schema.getName()));
+            clazz.name(getTypeName(schema.getName()));
         }
 
         if (schema.getAllOf() != null) {
@@ -105,7 +106,7 @@ public class ModelGenerator {
         }
 
         if ("string".equals(type) && value.getEnumValues() != null) {
-            final String className = getClassName(name);
+            final String className = getTypeName(name);
             clazz.innerClass(EnumClazz.of(className, value.getEnumValues()));
             return Field.field(name, className).build();
         }
@@ -198,10 +199,6 @@ public class ModelGenerator {
         if (schema.getAdditionalProperties() == null) return false;
         if (!(schema.getAdditionalProperties() instanceof Boolean)) return false;
         return Boolean.TRUE.equals(schema.getAdditionalProperties());
-    }
-
-    private String getClassName(final String name) {
-        return Strings.camelCase(name.replace("_", "-").replace(" ", "-"));
     }
 
     private boolean isAllOfRef(final Schema schema) {

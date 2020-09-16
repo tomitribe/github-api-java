@@ -32,8 +32,8 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static org.tomitribe.util.Strings.camelCase;
-import static org.tomitribe.util.Strings.lcfirst;
+import static org.tomitribe.github.gen.util.Words.getTypeName;
+import static org.tomitribe.github.gen.util.Words.getVariableName;
 
 public class InspectPayloads {
 
@@ -110,9 +110,9 @@ public class InspectPayloads {
         if (!matcher.find()) return null;
 
         final String verb = matcher.group(1);
-        final String subject = camelCase(matcher.group(2), " ");
+        final String subject = getTypeName(matcher.group(2));
 
-        final String name = lcfirst(camelCase(title, " "));
+        final String name = getVariableName(title);
 
         return normalize(Signature.builder()
                 .endpoint(endpoint)

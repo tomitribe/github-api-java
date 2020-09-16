@@ -16,9 +16,11 @@
  */
 package org.tomitribe.github.gen.json;
 
-import org.tomitribe.util.Strings;
+import org.tomitribe.github.gen.util.Words;
 
 import javax.json.JsonValue;
+
+import static org.tomitribe.github.gen.util.Words.getVariableName;
 
 public class Attribute implements Comparable<Attribute> {
     private final String name;
@@ -26,11 +28,7 @@ public class Attribute implements Comparable<Attribute> {
     private final String javaName;
 
     public Attribute(String name, JsonValue value) {
-        this(name, value, toJavaName(name));
-    }
-
-    private static String toJavaName(String name) {
-        return Strings.lcfirst(Strings.camelCase(name.replace("_", "-").replace("@", "")));
+        this(name, value, getVariableName(name));
     }
 
     public Attribute(String name, JsonValue value, String javaName) {

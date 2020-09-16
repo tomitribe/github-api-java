@@ -16,6 +16,8 @@
  */
 package org.tomitribe.github.gen.json;
 
+import org.tomitribe.github.gen.util.Words;
+
 import javax.json.JsonValue;
 import java.util.Set;
 import java.util.TreeSet;
@@ -28,7 +30,7 @@ public class Field {
 
     public Field(String jsonName, JsonValue value) {
         this.jsonName = jsonName;
-        this.name = Generators.toJavaName(jsonName);
+        this.name = Words.getVariableName(jsonName);
         this.type = toJavaType(value);
     }
 

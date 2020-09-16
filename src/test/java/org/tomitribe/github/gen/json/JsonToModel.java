@@ -17,6 +17,7 @@
 package org.tomitribe.github.gen.json;
 
 import org.tomitribe.github.gen.ParseEvents;
+import org.tomitribe.github.gen.util.Words;
 import org.tomitribe.util.Strings;
 
 import javax.json.JsonArray;
@@ -114,7 +115,7 @@ public class JsonToModel {
     }
 
     private String getClassName(final String jsonName, final Clazz parent, final boolean isArray) {
-        String name = Strings.ucfirst(Generators.toJavaName(jsonName));
+        String name = Strings.ucfirst(Words.getVariableName(jsonName));
         if ("Params".equals(name)) {
             name = parent.getName() + name;
         }
