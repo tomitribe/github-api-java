@@ -59,6 +59,16 @@ public class ModelGeneratorTest {
         assertScenario("stringFormats", "stringFormats.json", "stringFormats");
     }
 
+    /**
+     * For the moment we will process anyOf as 'Object'.  Considering the field
+     * isn't strongly-typed, we don't have much of a choice.
+     */
+    @Test
+    public void anyOf() throws Exception {
+        assertScenario("anyOf", "anyOf.json", "anyOf");
+    }
+
+    
     @Test
     public void allOf2() throws Exception {
 

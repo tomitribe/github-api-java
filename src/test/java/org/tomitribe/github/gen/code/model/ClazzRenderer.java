@@ -123,7 +123,17 @@ public class ClazzRenderer {
             if (field.isCollection()) {
                 variable.setType(String.format("List<%s>", field.getType()));
             } else {
-                variable.setType(field.getType());
+                if ("Object".equals(field.getType())) {
+                    /*
+                     * If Clazz says the type is Object and the source already has a type,
+                     * just use what ever type the source has and do not override it
+                     */
+                    if (variable.getType() == null) {
+                        variable.setType(field.getType());
+                    }
+                } else {
+                    variable.setType(field.getType());
+                }
             }
 
             switch (field.getIn()) {

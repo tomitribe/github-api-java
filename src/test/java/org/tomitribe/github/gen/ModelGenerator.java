@@ -46,7 +46,7 @@ public class ModelGenerator {
         final Clazz.Builder clazz = Clazz.builder().title(schema.getTitle());
 
         if (schema.getName() != null) {
-            clazz.name(Strings.camelCase(schema.getName()));
+            clazz.name(getClassName(schema.getName()));
         }
 
         if (schema.getAllOf() != null) {
@@ -104,7 +104,7 @@ public class ModelGenerator {
         }
 
         if ("string".equals(type) && value.getEnumValues() != null) {
-            final String className = Strings.camelCase(name);
+            final String className = getClassName(name);
             clazz.innerClass(EnumClazz.of(className, value.getEnumValues()));
             return Field.field(name, className).build();
         }
@@ -144,8 +144,16 @@ public class ModelGenerator {
             final String ref = value.getAllOf().get(0).getRef();
             return Field.field(name, null).reference(ref).build();
         }
-        
-        throw new UnsupportedOperationException("Unknown type: " + type);
+
+        if (value.getAnyOf() != null) {
+            return Field.field(name, "Object").build();
+        }
+
+        throw new UnsupportedOperationException("Unknown type: " + value);
+    }
+
+    private String getClassName(final String name) {
+        return Strings.camelCase(name.replace("_", "-").replace(" ", "-"));
     }
 
     private boolean isRef(final Schema schema) {

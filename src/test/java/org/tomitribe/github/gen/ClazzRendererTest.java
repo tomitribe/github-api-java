@@ -29,7 +29,6 @@ import org.tomitribe.util.dir.Dir;
 import java.io.File;
 import java.io.IOException;
 
-import static org.junit.Assert.assertEquals;
 import static org.tomitribe.github.gen.code.model.Field.In.PATH;
 import static org.tomitribe.github.gen.code.model.Field.In.QUERY;
 
@@ -87,6 +86,46 @@ public class ClazzRendererTest {
         renderer.render(clazz);
 
         final Project expected = Project.from(resources.file("update/after"));
+
+        ProjectAsserts.assertProject(expected, actual);
+    }
+
+    /**
+     * Normally we will update the field type in source to match what has been specified
+     * in the Clazz instance.  However, the OpenAPI 'anyOf' field is something we have
+     * no choice but to interpret as 'Object'.
+     *
+     * We want to make it possible for someone to come later, study the use of `anyOf`
+     * and manually update the type from `Object` to something better.  To accomplish
+     * this we have the rule that if Clazz says the type for a field is Object but
+     * the source has something more specific, then we do NOT change the type and instead
+     * leave it the way the source prefers it.
+     */
+    @Test
+    public void updateObject() throws IOException {
+
+        final Clazz clazz = Clazz.builder()
+                .name("PullRequest")
+                .componentId("#/components/schemas/pull-request-minimal")
+                .componentId("#/components/schemas/pull-request")
+                .field(Field.field("repository_url", "URI").build())
+                .field(Field.field("pull_request_url", "URI").build())
+                .field(Field.field("pull_request_number", "Integer").build())
+                .field(Field.field("labels", "String").collection(true).build())
+                .field(Field.field("license", "Object").build())
+                .field(Field.field("owner", "String").in(PATH).build())
+                .field(Field.field("repo", "String").in(PATH).build())
+                .field(Field.field("state", "State").in(QUERY).build())
+                .build();
+
+        final Project actual = Project.from(Files.tmpdir());
+
+        IO.copyDirectory(resources.file("updateObject/before"), actual.get());
+
+        final ClazzRenderer renderer = new ClazzRenderer(actual, "org.tomitribe.github.model");
+        renderer.render(clazz);
+
+        final Project expected = Project.from(resources.file("updateObject/after"));
 
         ProjectAsserts.assertProject(expected, actual);
     }
