@@ -27,7 +27,7 @@ public class EnumClazz extends Clazz {
     final List<String> values;
 
     public EnumClazz(final String name, final List<String> values) {
-        super(name, null);
+        super(name, null, null);
         this.values = new ArrayList<>();
         if (values != null) {
             this.values.addAll(values);

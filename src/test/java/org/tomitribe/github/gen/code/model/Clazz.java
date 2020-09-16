@@ -28,6 +28,7 @@ import java.util.List;
 @Builder(builderClassName = "Builder", toBuilder = true)
 public class Clazz {
     private String name;
+    private String title;
     private Clazz parent;
     private final List<String> componentIds = new ArrayList<>();
     private final List<Field> fields = new ArrayList<>();
@@ -50,6 +51,7 @@ public class Clazz {
 
     public static class Builder {
         private String name;
+        private String title;
         private Clazz parent;
         private final List<String> componentIds = new ArrayList<>();
         private final List<Field> fields = new ArrayList<>();
@@ -57,6 +59,10 @@ public class Clazz {
 
         public String getName() {
             return name;
+        }
+
+        public String getTitle() {
+            return title;
         }
 
         public Clazz getParent() {
@@ -101,7 +107,7 @@ public class Clazz {
         }
 
         public Clazz build() {
-            final Clazz clazz = new Clazz(name, parent);
+            final Clazz clazz = new Clazz(name, title, parent);
             componentIds.forEach(clazz::addComponentId);
             fields.forEach(clazz::addField);
             innerClasses.forEach(clazz::addInnerClass);

@@ -83,6 +83,26 @@ public class ModelGeneratorTest {
     }
 
     @Test
+    public void allOf1() throws Exception {
+
+        final Dir test = this.resources.dir("allOf1");
+
+        final String content = IO.slurp(test.file("allOf1.json"));
+        final String expected = IO.slurp(test.file("expected.json"));
+
+        final Schema schema = JsonMarshalling.unmarshal(Schema.class, content);
+        schema.setName("allOf1");
+
+        final ModelGenerator modelGenerator = new ModelGenerator();
+
+        modelGenerator.build(schema);
+
+        final List<Clazz> classes = modelGenerator.getClasses();
+        final String json = JsonMarshalling.toFormattedJson(classes);
+        JsonAsserts.assertJson(expected, json);
+    }
+
+    @Test
     public void classReference() throws Exception {
         final String content = "{\n" +
                 "  \"$ref\": \"#/components/schemas/integration\"\n" +

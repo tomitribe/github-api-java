@@ -43,7 +43,7 @@ public class ModelGenerator {
 
         // TODO get the component Id in there somewhere
         // maybe that needs to happen before we get here
-        final Clazz.Builder clazz = Clazz.builder();
+        final Clazz.Builder clazz = Clazz.builder().title(schema.getTitle());
 
         if (schema.getName() != null) {
             clazz.name(Strings.camelCase(schema.getName()));
@@ -140,7 +140,19 @@ public class ModelGenerator {
             return field;
         }
 
+        if (isRef(value)) {
+            final String ref = value.getAllOf().get(0).getRef();
+            return Field.field(name, null).reference(ref).build();
+        }
+        
         throw new UnsupportedOperationException("Unknown type: " + type);
+    }
+
+    private boolean isRef(final Schema schema) {
+        if (schema.getAllOf() == null) return false;
+        if (schema.getAllOf().size() != 1) return false;
+        if (schema.getAllOf().get(0).getRef() == null) return false;
+        return true;
     }
 
 }
