@@ -27,7 +27,7 @@ import org.tomitribe.util.Strings;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
+import java.util.stream.Collectors;
 
 @Data
 public class ModelGenerator {
@@ -36,27 +36,65 @@ public class ModelGenerator {
 
     public Clazz build(final Schema schema) {
         if (schema.getRef() != null) {
-            return new ClazzReference(schema.getRef());
+            final ClazzReference clazzReference = new ClazzReference(schema.getRef());
+            classes.add(clazzReference);
+            return clazzReference;
         }
-
-        Objects.requireNonNull(schema.getName(), "Schema name");
 
         // TODO get the component Id in there somewhere
         // maybe that needs to happen before we get here
-        final Clazz.Builder clazz = Clazz.builder()
-                .name(Strings.camelCase(schema.getName()));
+        final Clazz.Builder clazz = Clazz.builder();
 
-        final Map<String, Schema> properties = schema.getProperties();
-        for (final Map.Entry<String, Schema> entry : properties.entrySet()) {
-            final String name = entry.getKey();
-            final Schema value = entry.getValue();
+        if (schema.getName() != null) {
+            clazz.name(Strings.camelCase(schema.getName()));
+        }
 
-            clazz.field(getField(clazz, name, value));
+        if (schema.getAllOf() != null) {
+            final List<Clazz> allOf = schema.getAllOf().stream()
+                    .map(this::build)
+                    .collect(Collectors.toList());
+
+            if (isSubclass(allOf)) {
+                final Clazz parent = allOf.get(0);
+                final Clazz subclass = allOf.get(1);
+                subclass.setParent(parent);
+                subclass.setName(clazz.getName());
+                return subclass;
+            }
+
+            System.out.println(allOf);
+        }
+
+        if (schema.getProperties() != null) {
+            for (final Map.Entry<String, Schema> entry : schema.getProperties().entrySet()) {
+                final String name = entry.getKey();
+                final Schema value = entry.getValue();
+
+                clazz.field(getField(clazz, name, value));
+            }
         }
 
         final Clazz build = clazz.build();
         classes.add(build);
         return build;
+    }
+
+    /**
+     * In Github's OpenAPI definition they use `allOf` to express the concept
+     * that the class being defined has a parent class and some fields of
+     * its own.
+     *
+     * In this situation the allOf array will have exactly two elements.
+     * The first element will be a reference to the parent, the second
+     * element will be the fields that apply to this class (the subclass).
+     */
+    private boolean isSubclass(final List<Clazz> allOf) {
+        if (allOf == null) return false;
+        if (allOf.size() != 2) return false;
+        if (!(allOf.get(0) instanceof ClazzReference)) return false;
+        if (allOf.get(1).getFields() == null || allOf.get(1).getFields().size() == 0) return false;
+
+        return true;
     }
 
     public Field getField(final Clazz.Builder clazz, final String name, final Schema value) {

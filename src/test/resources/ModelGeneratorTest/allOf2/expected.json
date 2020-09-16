@@ -1,0 +1,57 @@
+[
+  {
+    "componentIds": [
+    ],
+    "fields": [
+    ],
+    "innerClasses": [
+    ],
+    "reference": "#/components/schemas/integration"
+  },
+  {
+    "componentIds": [
+    ],
+    "fields": [
+      {
+        "collection": false,
+        "in": "BODY",
+        "jsonName": "client_id",
+        "name": "clientId",
+        "type": "String"
+      },
+      {
+        "collection": false,
+        "in": "BODY",
+        "jsonName": "client_secret",
+        "name": "clientSecret",
+        "type": "String"
+      },
+      {
+        "collection": false,
+        "in": "BODY",
+        "jsonName": "webhook_secret",
+        "name": "webhookSecret",
+        "type": "String"
+      },
+      {
+        "collection": false,
+        "in": "BODY",
+        "jsonName": "pem",
+        "name": "pem",
+        "type": "String"
+      }
+    ],
+    "innerClasses": [
+    ],
+    "name": "AllOf2",
+    "parent": {
+      "componentIds": [
+      ],
+      "fields": [
+      ],
+      "innerClasses": [
+      ],
+      "reference": "#/components/schemas/integration"
+    }
+  }
+]

@@ -17,6 +17,7 @@
 package org.tomitribe.github.gen;
 
 import org.junit.Test;
+import org.tomitribe.github.JsonAsserts;
 import org.tomitribe.github.Resources;
 import org.tomitribe.github.core.JsonMarshalling;
 import org.tomitribe.github.gen.code.model.Clazz;
@@ -28,7 +29,9 @@ import org.tomitribe.util.IO;
 import org.tomitribe.util.dir.Dir;
 
 import java.io.IOException;
+import java.util.List;
 
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static org.tomitribe.github.gen.ProjectAsserts.assertProject;
 
@@ -54,6 +57,29 @@ public class ModelGeneratorTest {
     @Test
     public void stringFormats() throws Exception {
         assertScenario("stringFormats", "stringFormats.json", "stringFormats");
+    }
+
+    @Test
+    public void allOf2() throws Exception {
+
+        final Dir test = this.resources.dir("allOf2");
+
+        final String content = IO.slurp(test.file("allOf2.json"));
+        final String expected = IO.slurp(test.file("expected.json"));
+
+        final Schema schema = JsonMarshalling.unmarshal(Schema.class, content);
+        schema.setName("allOf2");
+
+        final ModelGenerator modelGenerator = new ModelGenerator();
+
+        final Clazz clazz = modelGenerator.build(schema);
+
+        assertNotNull(clazz);
+        assertNotNull(clazz.getParent());
+
+        final List<Clazz> classes = modelGenerator.getClasses();
+        final String json = JsonMarshalling.toFormattedJson(classes);
+        JsonAsserts.assertJson(expected, json);
     }
 
     @Test

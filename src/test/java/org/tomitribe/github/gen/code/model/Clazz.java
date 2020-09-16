@@ -55,6 +55,26 @@ public class Clazz {
         private final List<Field> fields = new ArrayList<>();
         private final List<Clazz> innerClasses = new ArrayList<>();
 
+        public String getName() {
+            return name;
+        }
+
+        public Clazz getParent() {
+            return parent;
+        }
+
+        public List<String> getComponentIds() {
+            return componentIds;
+        }
+
+        public List<Field> getFields() {
+            return fields;
+        }
+
+        public List<Clazz> getInnerClasses() {
+            return innerClasses;
+        }
+
         public Builder field(final Field field) {
             fields.add(field);
             return this;
