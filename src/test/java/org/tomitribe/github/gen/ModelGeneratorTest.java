@@ -145,6 +145,26 @@ public class ModelGeneratorTest {
     }
 
     @Test
+    public void arrayOfRefs() throws Exception {
+
+        final Dir test = this.resources.dir("arrayOfRefs");
+
+        final String content = IO.slurp(test.file("arrayOfRefs.json"));
+        final String expected = IO.slurp(test.file("expected.json"));
+
+        final Schema schema = JsonMarshalling.unmarshal(Schema.class, content);
+        schema.setName("arrayOfRefs");
+
+        final ModelGenerator modelGenerator = new ModelGenerator();
+
+        modelGenerator.build(schema);
+
+        final List<Clazz> classes = modelGenerator.getClasses();
+        final String json = JsonMarshalling.toFormattedJson(classes);
+        JsonAsserts.assertJson(expected, json);
+    }
+
+    @Test
     public void classReference() throws Exception {
         final String content = "{\n" +
                 "  \"$ref\": \"#/components/schemas/integration\"\n" +

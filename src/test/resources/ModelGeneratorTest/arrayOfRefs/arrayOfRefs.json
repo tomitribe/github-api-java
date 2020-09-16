@@ -1,0 +1,49 @@
+{
+  "title": "Installation Token",
+  "description": "Authentication token for a GitHub App installed on a user or org.",
+  "type": "object",
+  "properties": {
+    "token": {
+      "type": "string"
+    },
+    "expires_at": {
+      "type": "string"
+    },
+    "permissions": {
+      "type": "object",
+      "properties": {
+        "issues": {
+          "type": "string"
+        },
+        "contents": {
+          "type": "string"
+        },
+        "metadata": {
+          "type": "string",
+          "example": "read"
+        },
+        "single_file": {
+          "type": "string",
+          "example": "read"
+        }
+      }
+    },
+    "repository_selection": {
+      "type": "string",
+      "enum": [
+        "all",
+        "selected"
+      ]
+    },
+    "repositories": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/repository"
+      }
+    },
+    "single_file": {
+      "type": "string",
+      "example": "README.md"
+    }
+  }
+}

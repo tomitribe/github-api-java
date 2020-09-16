@@ -166,7 +166,7 @@ public class ModelGenerator {
             return field;
         }
 
-        if (isRef(value)) {
+        if (isAllOfRef(value)) {
             final String ref = value.getAllOf().get(0).getRef();
             return Field.field(name, null).reference(ref).build();
         }
@@ -179,6 +179,10 @@ public class ModelGenerator {
             return Field.field(name, "Object").build();
         }
 
+        if (value.getRef() != null) {
+            return Field.field(name, null).reference(value.getRef()).build();
+        }
+        
         throw new UnsupportedOperationException("Unknown type: " + value);
     }
 
@@ -200,10 +204,15 @@ public class ModelGenerator {
         return Strings.camelCase(name.replace("_", "-").replace(" ", "-"));
     }
 
-    private boolean isRef(final Schema schema) {
+    private boolean isAllOfRef(final Schema schema) {
         if (schema.getAllOf() == null) return false;
         if (schema.getAllOf().size() != 1) return false;
         if (schema.getAllOf().get(0).getRef() == null) return false;
+        return true;
+    }
+
+    private boolean isRef(final Schema schema) {
+        if (schema.getRef() == null) return false;
         return true;
     }
 
