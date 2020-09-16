@@ -1,0 +1,35 @@
+{
+  "properties": {
+    "description": {
+      "description": "Description of the gist",
+      "example": "Example Ruby script",
+      "type": "string"
+    },
+    "files": {
+      "description": "Names and content for the files that make up the gist",
+      "example": {
+        "hello.rb": {
+          "content": "puts \"Hello, World!\""
+        }
+      },
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "content": {
+            "description": "Content of the file",
+            "readOnly": false,
+            "type": "string"
+          }
+        },
+        "required": [
+          "content"
+        ]
+      }
+    }
+  },
+  "required": [
+    "files"
+  ],
+  "type": "object"
+}

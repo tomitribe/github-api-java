@@ -90,6 +90,16 @@ public class ModelGeneratorTest {
         assertScenario("additionalPropertiesSimple", "additionalPropertiesSimple.json", "additionalProperties");
     }
 
+    @Test
+    public void additionalPropertiesObject() throws Exception {
+        assertScenario("additionalPropertiesObject", "additionalPropertiesObject.json", "additionalProperties");
+    }
+
+    @Test
+    public void additionalPropertiesTrue() throws Exception {
+        assertScenario("additionalPropertiesTrue", "additionalPropertiesTrue.json", "additionalProperties");
+    }
+
 
     @Test
     public void allOf2() throws Exception {

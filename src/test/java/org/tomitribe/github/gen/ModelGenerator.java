@@ -17,6 +17,7 @@
 package org.tomitribe.github.gen;
 
 import lombok.Data;
+import org.tomitribe.github.core.JsonMarshalling;
 import org.tomitribe.github.gen.code.model.Clazz;
 import org.tomitribe.github.gen.code.model.ClazzReference;
 import org.tomitribe.github.gen.code.model.EnumClazz;
@@ -137,6 +138,19 @@ public class ModelGenerator {
             return Field.field(name, "Boolean").map(true).build();
         }
 
+        if ("object".equals(type) && additionalProperties("object", value)) {
+            final String json = JsonMarshalling.toFormattedJson(value.getAdditionalProperties());
+            final Schema schema = JsonMarshalling.unmarshal(Schema.class, json);
+            final String singularName = name.replaceAll("s$", "");
+            schema.setName(singularName);
+            final Clazz mapType = build(schema);
+            return Field.field(name, mapType.getName()).map(true).build();
+        }
+
+        if ("object".equals(type) && additionalPropertiesAny(value)) {
+            return Field.field(name, "Object").map(true).build();
+        }
+
         if ("object".equals(type)) {
             value.setName(name);
             final Clazz referencedClazz = build(value);
@@ -174,6 +188,12 @@ public class ModelGenerator {
         final Map<String, Object> map = (Map<String, Object>) schema.getAdditionalProperties();
 
         return type.equals(map.get("type"));
+    }
+
+    private boolean additionalPropertiesAny(final Schema schema) {
+        if (schema.getAdditionalProperties() == null) return false;
+        if (!(schema.getAdditionalProperties() instanceof Boolean)) return false;
+        return Boolean.TRUE.equals(schema.getAdditionalProperties());
     }
 
     private String getClassName(final String name) {
