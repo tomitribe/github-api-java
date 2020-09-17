@@ -27,7 +27,7 @@ public class ClazzReference extends Clazz {
     private final String reference;
 
     public ClazzReference(final String reference) {
-        super(null, null, null);
+        super(null,null, null, null);
         this.reference = reference;
     }
 

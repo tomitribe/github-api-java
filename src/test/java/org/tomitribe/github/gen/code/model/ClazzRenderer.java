@@ -91,6 +91,7 @@ public class ClazzRenderer {
                 .forEach(definition::addImport);
 
         clazz.getComponentIds().stream()
+                .sorted()
                 .map(s -> String.format("@ComponentId(\"%s\")", s))
                 .forEach(definition::addRepeatableAnnotation);
 

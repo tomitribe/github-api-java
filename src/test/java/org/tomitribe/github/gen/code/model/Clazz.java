@@ -16,23 +16,40 @@
  */
 package org.tomitribe.github.gen.code.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
+import javax.json.bind.annotation.JsonbTransient;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 @Data
-@AllArgsConstructor
-@Builder(builderClassName = "Builder", toBuilder = true)
 public class Clazz {
+    @JsonbTransient
+    private final Id id;
+
     private String name;
+    @EqualsAndHashCode.Exclude
     private String title;
     private Clazz parent;
-    private final List<String> componentIds = new ArrayList<>();
+    @EqualsAndHashCode.Exclude
+    private final Set<String> componentIds = new HashSet<>();
     private final List<Field> fields = new ArrayList<>();
     private final List<Clazz> innerClasses = new ArrayList<>();
+
+    public Clazz(final Id id, final String name, final String title, final Clazz parent) {
+        this.id = id != null ? id : Id.next();
+        this.name = name;
+        this.title = title;
+        this.parent = parent;
+        this.id.owner = this;
+    }
 
     public Clazz addComponentId(final String componentId) {
         componentIds.add(componentId);
@@ -49,13 +66,103 @@ public class Clazz {
         return this;
     }
 
+    public static class Id {
+        private static final AtomicInteger ids = new AtomicInteger(1000);
+
+        private final int id;
+        private Clazz owner;
+        private final List<Id> references = new ArrayList<>();
+
+        public Id(final int id) {
+            this.id = id;
+        }
+
+        public int getId() {
+            return id;
+        }
+
+        public Clazz getOwner() {
+            return owner;
+        }
+
+        public List<Id> getReferences() {
+            return references;
+        }
+
+        public void addReference(final Id id) {
+            this.references.add(id);
+        }
+
+        public static Id next() {
+            return new Id(ids.getAndIncrement());
+        }
+
+        @Override
+        public String toString() {
+            return id + ":" + references.size();
+        }
+    }
+
+    /**
+     * Analyzes if the class supplied is effectively a subset of this
+     * class.
+     *
+     * To be considered a subset, the class supplied must have all the
+     * fields of this class by json name and type.  This class may have
+     * more fields (superset).
+     */
+    public boolean isSupersetOf(final Clazz that) {
+        final Map<String, Field> thisFields = this.getFields().stream()
+                .collect(Collectors.toMap(Field::getJsonName, Function.identity()));
+
+        final Map<String, Field> thatFields = that.getFields().stream()
+                .collect(Collectors.toMap(Field::getJsonName, Function.identity()));
+
+        if (thatFields.size() > thisFields.size()) return false;
+
+        for (final Map.Entry<String, Field> entry : thatFields.entrySet()) {
+            final Field a = thisFields.get(entry.getKey());
+            final Field b = entry.getValue();
+
+            if (a == null) return false;
+            if (equals(Field::getJsonName, a, b)) return false;
+            if (equals(Field::getType, a, b)) return false;
+            if (equals(Field::getIn, a, b)) return false;
+        }
+
+        return true;
+    }
+
+    private <T> boolean equals(final Function<T, ?> method, final T objectA, final T objectB) {
+        final Object a = method.apply(objectA);
+        final Object b = method.apply(objectB);
+
+        if (a == null && b == null) return true;
+        if (a == null) return false;
+        return a.equals(b);
+    }
+
+    public static Builder builder() {
+        return new Builder();
+    }
+
     public static class Builder {
+        private final Id id = Id.next();
         private String name;
         private String title;
         private Clazz parent;
-        private final List<String> componentIds = new ArrayList<>();
+        private final Set<String> componentIds = new HashSet<>();
         private final List<Field> fields = new ArrayList<>();
         private final List<Clazz> innerClasses = new ArrayList<>();
+        private final List<Clazz> references = new ArrayList<>();
+
+        public List<Clazz> getReferences() {
+            return references;
+        }
+
+        public Id getId() {
+            return id;
+        }
 
         public String getName() {
             return name;
@@ -69,7 +176,7 @@ public class Clazz {
             return parent;
         }
 
-        public List<String> getComponentIds() {
+        public Set<String> getComponentIds() {
             return componentIds;
         }
 
@@ -101,13 +208,18 @@ public class Clazz {
             return this;
         }
 
+        public Builder title(String title) {
+            this.title = title;
+            return this;
+        }
+
         public Builder parent(Clazz parent) {
             this.parent = parent;
             return this;
         }
 
         public Clazz build() {
-            final Clazz clazz = new Clazz(name, title, parent);
+            final Clazz clazz = new Clazz(id, name, title, parent);
             componentIds.forEach(clazz::addComponentId);
             fields.forEach(clazz::addField);
             innerClasses.forEach(clazz::addInnerClass);

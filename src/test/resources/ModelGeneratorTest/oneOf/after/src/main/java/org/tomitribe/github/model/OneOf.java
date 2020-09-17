@@ -28,12 +28,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class OneOf {
 
+    @JsonbProperty("public")
+    private Object _public;
+
     @JsonbProperty("description")
     private String description;
 
     @JsonbProperty("files")
     private String files;
-
-    @JsonbProperty("public")
-    private Object public;
 }

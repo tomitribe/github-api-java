@@ -32,8 +32,8 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@ComponentId("#/components/schemas/pull-request-minimal")
 @ComponentId("#/components/schemas/pull-request")
+@ComponentId("#/components/schemas/pull-request-minimal")
 public class PullRequest {
 
     @JsonbProperty("labels")

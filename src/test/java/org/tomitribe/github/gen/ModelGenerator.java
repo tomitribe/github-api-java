@@ -145,6 +145,7 @@ public class ModelGenerator {
             final String singularName = name.replaceAll("s$", "");
             schema.setName(singularName);
             final Clazz mapType = build(schema);
+            mapType.getId().addReference(clazz.getId());
             return Field.field(name, mapType.getName()).map(true).build();
         }
 
@@ -155,6 +156,7 @@ public class ModelGenerator {
         if ("object".equals(type)) {
             value.setName(name);
             final Clazz referencedClazz = build(value);
+            referencedClazz.getId().addReference(clazz.getId());
             return Field.field(name, referencedClazz.getName()).build();
         }
 
@@ -183,7 +185,7 @@ public class ModelGenerator {
         if (value.getRef() != null) {
             return Field.field(name, null).reference(value.getRef()).build();
         }
-        
+
         throw new UnsupportedOperationException("Unknown type: " + value);
     }
 
