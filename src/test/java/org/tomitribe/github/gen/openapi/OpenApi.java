@@ -164,6 +164,12 @@ public class OpenApi {
     }
 
     @JsonbTransient
+    public Stream<Method> getMethods() {
+        return getPaths().values().stream()
+                .flatMap(Path::getMethods);
+    }
+
+    @JsonbTransient
     private Stream<ExampleReference> getExampleReferences(final Content content) {
         final Schema schema = content.getSchema();
         if (schema == null) return Stream.of();
@@ -207,8 +213,8 @@ public class OpenApi {
                     .findFirst().orElseThrow(() -> new IllegalStateException("Missing items array"));
 
             final Schema items = array.getItems();
-            if (items==null) throw new IllegalStateException("Missing array type");
-            
+            if (items == null) throw new IllegalStateException("Missing array type");
+
             final String ref = items.getRef();
             if (ref == null) throw new IllegalStateException("Missing items ref");
 
