@@ -36,4 +36,17 @@ public interface Dir extends org.tomitribe.util.dir.Dir {
             throw new UncheckedIOException("Cannot write to file: " + file.getAbsolutePath(), e);
         }
     }
+
+    default String read(final String fileName) {
+        final File file = file(fileName);
+        return read(file);
+    }
+
+    default String read(final File file) {
+        try {
+            return IO.slurp(file);
+        } catch (IOException e) {
+            throw new UncheckedIOException("Cannot read to file: " + file.getAbsolutePath(), e);
+        }
+    }
 }
