@@ -19,7 +19,10 @@ package org.tomitribe.github.gen;
 import org.tomitribe.github.gen.code.model.Clazz;
 import org.tomitribe.github.gen.code.model.ClazzReference;
 import org.tomitribe.github.gen.code.model.Field;
+import org.tomitribe.github.gen.openapi.Method;
 import org.tomitribe.github.gen.openapi.OpenApi;
+import org.tomitribe.github.gen.openapi.Parameter;
+import org.tomitribe.github.gen.openapi.Path;
 import org.tomitribe.github.gen.openapi.Schema;
 import org.tomitribe.util.IO;
 
@@ -39,8 +42,10 @@ public class GenerateModels {
 
     private final List<Clazz> classes = new ArrayList<Clazz>();
     private final Map<String, Clazz> components = new HashMap<>();
+    private final Clazz parameters;
     private Map<String, Schema> schemas;
     private final OpenApi openApi;
+    private final ModelGenerator modelGenerator;
 
     public static void main(String[] args) throws Exception {
         new GenerateModels().main();
@@ -53,17 +58,28 @@ public class GenerateModels {
 
         this.openApi = OpenApi.parse(IO.slurp(gen.getGithubOpenApiJson()));
         this.schemas = openApi.getComponents().getSchemas();
+        this.modelGenerator = new ModelGenerator();
 
-        { // Generate the Clazz definitions
-            final ModelGenerator modelGenerator = new ModelGenerator();
-
-            for (final Schema schema : this.schemas.values()) {
-                final Clazz clazz = modelGenerator.build(schema);
-                clazz.addComponentId(getComponentId(schema));
-            }
-
-            this.classes.addAll(modelGenerator.getClasses());
+        for (final Schema schema : this.schemas.values()) {
+            final Clazz clazz = modelGenerator.build(schema);
+            clazz.addComponentId(getComponentId(schema));
         }
+
+        this.parameters = getParameters();
+
+        {
+            final List<Method> methods = openApi.getPaths().values().stream()
+                    .flatMap(Path::getMethods)
+                    .collect(Collectors.toList());
+
+            for (final Method method : methods) {
+                final String target = String.format("%s %s", method.getName(), method.getPath().getName());
+                final Clazz.Builder clazz = Clazz.builder().endpoint(target);
+                
+            }
+        }
+
+        this.classes.addAll(modelGenerator.getClasses());
 
         { // Create an index of all the componentIds
             for (final Clazz clazz : this.classes) {
@@ -73,6 +89,23 @@ public class GenerateModels {
             }
         }
     }
+
+    private Clazz getParameters() {
+        final Clazz.Builder clazz = Clazz.builder().name("ParameterComponents");
+        for (final Map.Entry<String, Parameter> entry : openApi.getComponents().getParameters().entrySet()) {
+            final Parameter value = entry.getValue();
+
+            final Field field = modelGenerator.getField(clazz, entry.getKey(), value.getSchema());
+            if (value.getIn() != null) {
+                final Field.In in = Field.In.valueOf(value.getIn().toUpperCase());
+                field.setIn(in);
+            }
+            clazz.field(field);
+        }
+        final Clazz build = clazz.build();
+        return build;
+    }
+
 
     private void main() throws Exception {
 

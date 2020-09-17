@@ -40,6 +40,8 @@ public class Clazz {
     private Clazz parent;
     @EqualsAndHashCode.Exclude
     private final Set<String> componentIds = new HashSet<>();
+    @JsonbTransient
+    private final Set<String> endpoints = new HashSet<>();
     private final List<Field> fields = new ArrayList<>();
     private final List<Clazz> innerClasses = new ArrayList<>();
 
@@ -53,6 +55,11 @@ public class Clazz {
 
     public Clazz addComponentId(final String componentId) {
         componentIds.add(componentId);
+        return this;
+    }
+
+    public Clazz addEndpoint(final String method) {
+        endpoints.add(method);
         return this;
     }
 
@@ -152,6 +159,7 @@ public class Clazz {
         private String title;
         private Clazz parent;
         private final Set<String> componentIds = new HashSet<>();
+        private final Set<String> endpoint = new HashSet<>();
         private final List<Field> fields = new ArrayList<>();
         private final List<Clazz> innerClasses = new ArrayList<>();
         private final List<Clazz> references = new ArrayList<>();
@@ -188,6 +196,10 @@ public class Clazz {
             return innerClasses;
         }
 
+        public Set<String> getEndpoint() {
+            return endpoint;
+        }
+
         public Builder field(final Field field) {
             fields.add(field);
             return this;
@@ -200,6 +212,11 @@ public class Clazz {
 
         public Builder componentId(final String componentId) {
             componentIds.add(componentId);
+            return this;
+        }
+
+        public Builder endpoint(final String endpoint) {
+            this.endpoint.add(endpoint);
             return this;
         }
 
@@ -221,6 +238,7 @@ public class Clazz {
         public Clazz build() {
             final Clazz clazz = new Clazz(id, name, title, parent);
             componentIds.forEach(clazz::addComponentId);
+            endpoint.forEach(clazz::addEndpoint);
             fields.forEach(clazz::addField);
             innerClasses.forEach(clazz::addInnerClass);
             return clazz;
