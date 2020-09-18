@@ -14,7 +14,23 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package org.tomitribe.github.gen.code.model;
+package org.tomitribe.github.gen.code.endpoint;
 
-public class EndpointRenderer {
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@Data
+@AllArgsConstructor
+@Builder(builderClassName = "Builder", toBuilder = true)
+public class Endpoint {
+
+    private final String className;
+
+    @lombok.Builder.Default
+    final List<EndpointMethod> method = new ArrayList<>();
+
 }

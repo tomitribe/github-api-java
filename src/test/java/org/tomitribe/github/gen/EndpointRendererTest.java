@@ -17,8 +17,7 @@
 package org.tomitribe.github.gen;
 
 import org.junit.Test;
-import org.tomitribe.github.JsonAsserts;
-import org.tomitribe.github.gen.code.endpoint.Endpoint;
+import org.tomitribe.github.core.JsonMarshalling;
 import org.tomitribe.github.gen.openapi.OpenApi;
 import org.tomitribe.util.Files;
 import org.tomitribe.util.IO;
@@ -29,44 +28,41 @@ import org.tomitribe.util.dir.Name;
 import java.io.File;
 import java.io.IOException;
 import java.io.UncheckedIOException;
-import java.util.List;
 
-public class EndpointGeneratorTest {
+public class EndpointRendererTest {
 
 
     @Test
     public void complete() throws Exception {
-        final Scenario scenario = Scenario.get("complete");
-
-        final OpenApi openApi = scenario.getOpenApi();
-
-        final EndpointGenerator endpointGenerator = new EndpointGenerator();
-        final List<Endpoint> endpoints = endpointGenerator.build(openApi);
-
-        JsonAsserts.assertJsonb(scenario.expected(), endpoints);
+//        final Scenario scenario = Scenario.get("complete");
+//
+//        final OpenApi openApi = scenario.getOpenApi();
+//
+//        final EndpointGenerator endpointGenerator = new EndpointGenerator();
+//        final List<Endpoint> endpointList = endpointGenerator.build(openApi);
+//
+//        final ClazzRenderer renderer = new ClazzRenderer(scenario.after(), "org.tomitribe.github.model");
+//        final ModelGenerator modelGenerator = new ModelGenerator();
+//
+//        modelGenerator.build(schema);
+//
+//        final Project actual = Project.from(Files.tmpdir());
+//        final Project expected = Project.from(resources.file("after"));
+//
+//
+//        for (final ModelClazz aClass : modelGenerator.getClasses()) {
+//            renderer.render(aClass);
+//        }
+//
+//        assertProject(expected, actual);
     }
 
     public interface Scenario extends Dir {
         @Name("openapi.json")
         File openapiJson();
 
-        @Name("expected.json")
-        File expectedJson();
-
-        default String expected() {
-            try {
-                return IO.slurp(expectedJson());
-            } catch (IOException e) {
-                throw new UncheckedIOException(e);
-            }
-        }
-
         default OpenApi getOpenApi() {
-            try {
-                return OpenApi.parse(IO.slurp(openapiJson()));
-            } catch (IOException e) {
-                throw new UncheckedIOException(e);
-            }
+            return JsonMarshalling.unmarshal(OpenApi.class, openapiJson());
         }
 
         Project before();
@@ -75,7 +71,7 @@ public class EndpointGeneratorTest {
 
 
         static Scenario get(final String testName) {
-            final Class<?> clazz = EndpointGeneratorTest.class;
+            final Class<?> clazz = EndpointRendererTest.class;
             final File testClasses = JarLocation.jarLocation(clazz);
             final File target = testClasses.getParentFile();
             final File module = target.getParentFile();
@@ -89,7 +85,7 @@ public class EndpointGeneratorTest {
                 throw new UncheckedIOException(e);
             }
 
-            return org.tomitribe.util.dir.Dir.of(Scenario.class, tmpdir);
+            return Dir.of(Scenario.class, tmpdir);
         }
     }
 

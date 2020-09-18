@@ -14,11 +14,12 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package org.tomitribe.github.gen.code.model;
+package org.tomitribe.github.gen.code.endpoint;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import org.tomitribe.github.gen.code.model.Clazz;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +27,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @Builder(builderClassName = "Builder", toBuilder = true)
-public class Endpoint {
+public class EndpointMethod {
 
     private Clazz response;
     private Clazz request;
@@ -37,8 +38,17 @@ public class Endpoint {
     private String summary;
     private String javaMethod;
     private String operationId;
-    private final List<String> previews = new ArrayList<String>();
+    @lombok.Builder.Default
+    private List<String> previews = new ArrayList<String>();
     private boolean githubCloudOnly;
     private boolean enabledForGitHubApps;
 
+    public static class Builder {
+        private List<String> previews = new ArrayList<String>();
+
+        public Builder preview(final String preview) {
+            this.previews.add(preview);
+            return this;
+        }
+    }
 }

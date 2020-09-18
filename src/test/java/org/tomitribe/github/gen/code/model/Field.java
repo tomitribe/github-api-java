@@ -39,9 +39,12 @@ public class Field {
     }
 
     public static Field.Builder field(final String jsonName, final String type) {
-
-        final String javaName = Words.getVariableName(jsonName);
-        return new Builder().jsonName(jsonName).type(type).name(javaName);
+        if (jsonName == null) {
+            return new Builder().type(type);
+        } else {
+            final String javaName = Words.getVariableName(jsonName);
+            return new Builder().jsonName(jsonName).type(type).name(javaName);
+        }
     }
 
 }

@@ -92,7 +92,8 @@ public class GenerateModels {
 
     private Clazz getParameters() {
         final Clazz.Builder clazz = Clazz.builder().name("ParameterComponents");
-        for (final Map.Entry<String, Parameter> entry : openApi.getComponents().getParameters().entrySet()) {
+        final Map<String, Parameter> parameters = openApi.getComponents().getParameters();
+        for (final Map.Entry<String, Parameter> entry : parameters.entrySet()) {
             final Parameter value = entry.getValue();
 
             final Field field = modelGenerator.getField(clazz, entry.getKey(), value.getSchema());

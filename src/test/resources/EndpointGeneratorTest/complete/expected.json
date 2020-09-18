@@ -1,0 +1,196 @@
+[
+  {
+    "className": "IssuesClient",
+    "method": [
+      {
+        "category": "issues",
+        "enabledForGitHubApps": true,
+        "githubCloudOnly": false,
+        "javaMethod": "listRepositoryIssues",
+        "method": "get",
+        "operationId": "issues/list-for-repo",
+        "path": "/repos/{owner}/{repo}/issues",
+        "previews": [
+        ],
+        "request": {
+          "componentIds": [
+          ],
+          "fields": [
+            {
+              "collection": false,
+              "in": "BODY",
+              "map": false,
+              "reference": "#/components/parameters/owner"
+            },
+            {
+              "collection": false,
+              "in": "BODY",
+              "map": false,
+              "reference": "#/components/parameters/repo"
+            },
+            {
+              "collection": false,
+              "in": "QUERY",
+              "jsonName": "milestone",
+              "map": false,
+              "name": "milestone",
+              "type": "String"
+            },
+            {
+              "collection": false,
+              "in": "QUERY",
+              "jsonName": "state",
+              "map": false,
+              "name": "state",
+              "type": "State"
+            },
+            {
+              "collection": false,
+              "in": "QUERY",
+              "jsonName": "assignee",
+              "map": false,
+              "name": "assignee",
+              "type": "String"
+            },
+            {
+              "collection": false,
+              "in": "QUERY",
+              "jsonName": "creator",
+              "map": false,
+              "name": "creator",
+              "type": "String"
+            },
+            {
+              "collection": false,
+              "in": "QUERY",
+              "jsonName": "mentioned",
+              "map": false,
+              "name": "mentioned",
+              "type": "String"
+            },
+            {
+              "collection": false,
+              "in": "BODY",
+              "map": false,
+              "reference": "#/components/parameters/labels"
+            },
+            {
+              "collection": false,
+              "in": "QUERY",
+              "jsonName": "sort",
+              "map": false,
+              "name": "sort",
+              "type": "Sort"
+            },
+            {
+              "collection": false,
+              "in": "BODY",
+              "map": false,
+              "reference": "#/components/parameters/direction"
+            },
+            {
+              "collection": false,
+              "in": "BODY",
+              "map": false,
+              "reference": "#/components/parameters/since"
+            },
+            {
+              "collection": false,
+              "in": "BODY",
+              "map": false,
+              "reference": "#/components/parameters/per_page"
+            },
+            {
+              "collection": false,
+              "in": "BODY",
+              "map": false,
+              "reference": "#/components/parameters/page"
+            }
+          ],
+          "innerClasses": [
+            {
+              "componentIds": [
+              ],
+              "fields": [
+              ],
+              "innerClasses": [
+              ],
+              "name": "State",
+              "values": [
+                "open",
+                "closed",
+                "all"
+              ]
+            },
+            {
+              "componentIds": [
+              ],
+              "fields": [
+              ],
+              "innerClasses": [
+              ],
+              "name": "Sort",
+              "values": [
+                "created",
+                "updated",
+                "comments"
+              ]
+            }
+          ],
+          "name": "ListRepositoryIssues"
+        },
+        "response": {
+          "componentIds": [
+          ],
+          "fields": [
+          ],
+          "innerClasses": [
+          ]
+        },
+        "summary": "List repository issues"
+      },
+      {
+        "category": "issues",
+        "enabledForGitHubApps": true,
+        "githubCloudOnly": false,
+        "javaMethod": "createAnIssue",
+        "method": "post",
+        "operationId": "issues/create",
+        "path": "/repos/{owner}/{repo}/issues",
+        "previews": [
+        ],
+        "request": {
+          "componentIds": [
+          ],
+          "fields": [
+            {
+              "collection": false,
+              "in": "BODY",
+              "map": false,
+              "reference": "#/components/parameters/owner"
+            },
+            {
+              "collection": false,
+              "in": "BODY",
+              "map": false,
+              "reference": "#/components/parameters/repo"
+            }
+          ],
+          "innerClasses": [
+          ],
+          "name": "CreateAnIssue"
+        },
+        "response": {
+          "componentIds": [
+          ],
+          "fields": [
+          ],
+          "innerClasses": [
+          ],
+          "reference": "#/components/schemas/issue"
+        },
+        "summary": "Create an issue"
+      }
+    ]
+  }
+]

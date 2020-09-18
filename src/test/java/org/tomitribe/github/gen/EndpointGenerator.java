@@ -17,22 +17,29 @@
 package org.tomitribe.github.gen;
 
 import lombok.Data;
-import org.tomitribe.github.core.JsonMarshalling;
+import org.tomitribe.github.gen.code.endpoint.Endpoint;
+import org.tomitribe.github.gen.code.endpoint.EndpointMethod;
 import org.tomitribe.github.gen.code.model.Clazz;
-import org.tomitribe.github.gen.code.model.ClazzReference;
-import org.tomitribe.github.gen.code.model.Endpoint;
-import org.tomitribe.github.gen.code.model.EnumClazz;
 import org.tomitribe.github.gen.code.model.Field;
+import org.tomitribe.github.gen.openapi.Content;
+import org.tomitribe.github.gen.openapi.Github;
 import org.tomitribe.github.gen.openapi.Method;
 import org.tomitribe.github.gen.openapi.OpenApi;
+import org.tomitribe.github.gen.openapi.Parameter;
+import org.tomitribe.github.gen.openapi.Preview;
+import org.tomitribe.github.gen.openapi.Response;
 import org.tomitribe.github.gen.openapi.Schema;
+import org.tomitribe.github.gen.util.Words;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
-import static org.tomitribe.github.gen.util.Words.getTypeName;
+import static java.lang.Boolean.TRUE;
 
 @Data
 public class EndpointGenerator {
@@ -41,11 +48,167 @@ public class EndpointGenerator {
     private final ModelGenerator modelGenerator = new ModelGenerator();
 
     public List<Endpoint> build(final OpenApi openApi) {
-//        openApi.getMethods()
-//                .map()
-        
-        return null;
+
+        final Map<String, List<EndpointMethod>> categories = openApi.getMethods()
+                .filter(this::isSupported)
+                .map(this::createMethod)
+                .collect(Collectors.groupingBy(EndpointMethod::getCategory));
+
+        final List<Endpoint> endpoints = new ArrayList<>();
+
+        for (final Map.Entry<String, List<EndpointMethod>> entry : categories.entrySet()) {
+            final String category = entry.getKey();
+            final List<EndpointMethod> methods = entry.getValue();
+
+            final String typeName = Words.getTypeName(category + "-client");
+
+            endpoints.add(Endpoint.builder()
+                    .className(typeName)
+                    .method(methods)
+                    .build());
+        }
+
+        return endpoints;
     }
 
+    private boolean isSupported(final Method method) {
+        /*
+         * We use the summary to create the method name
+         */
+        if (method.getSummary() == null) return false;
+
+        /*
+         * If we don't have response information, we can't do anything
+         */
+        if (method.getResponses() == null) return false;
+
+        /*
+         * If there are no 200 range responses, we don't currently support it
+         * There are some that legitimately return 302 redirects, which we
+         * should add support for in future versions.
+         */
+        if (method.getResponses().keySet().stream().noneMatch(s -> s.startsWith("2"))) return false;
+
+        /*
+         * If it returns void or returns json, we're good.
+         * If it returns neither of those things we currently can't support it.
+         *
+         * There are API calls that return binary data like zips, which we should
+         * add support for in future versions.
+         */
+        if (!returnsVoid(method) && !returnsApplicationJson(method)) return false;
+
+        return true;
+    }
+
+    private boolean returnsApplicationJson(final Method method) {
+        return method.getResponses().values().stream()
+                .map(Response::getContent)
+                .map(Map::keySet)
+                .flatMap(Collection::stream)
+                .anyMatch(s -> s.equals("application/json"));
+    }
+
+    private boolean returnsVoid(final Method method) {
+        return method.getResponses().keySet().stream().anyMatch(s -> s.equals("204"));
+    }
+
+    private EndpointMethod createMethod(final Method method) {
+        final String methodName = asMethodName(method.getSummary());
+        final String requestClassName = asRequestName(method.getSummary());
+
+        final Clazz requestClass = generateRequestClass(requestClassName, method.getParameters());
+        final Clazz responseClass = generateResponseClass(method);
+
+        final EndpointMethod.Builder builder = EndpointMethod.builder()
+                .method(method.getName())
+                .path(method.getPath().getName())
+                .javaMethod(methodName)
+                .request(requestClass)
+                .response(responseClass)
+                .summary(method.getSummary())
+                .operationId(method.getOperationId());
+
+        final Github github = method.getGithub();
+        if (github != null) {
+            builder.category(github.getCategory())
+                    .subcategory(github.getSubcategory())
+                    .enabledForGitHubApps(TRUE.equals(github.getEnabledForGitHubApps()))
+                    .githubCloudOnly(TRUE.equals(github.getGithubCloudOnly()));
+
+            if (github.getPreviews() != null) {
+                for (final Preview preview : github.getPreviews()) {
+                    builder.preview(preview.getName());
+                }
+            }
+        }
+
+        return builder.build();
+    }
+
+    private Clazz generateResponseClass(final Method method) {
+        final Content jsonResponse = get2xxJsonResponse(method);
+
+        return modelGenerator.build(jsonResponse.getSchema());
+    }
+
+    private Content get2xxJsonResponse(final Method method) {
+        if (method.getResponses() == null) {
+            throw new IllegalStateException("Method has no responses: " + method);
+        }
+        if (method.getResponses().values() == null) {
+            throw new IllegalStateException("Method has no responses: " + method);
+        }
+        final Response ok = method.getResponses().values().stream()
+                .peek(response -> System.out.println())
+                .filter(response -> response.getName().startsWith("2"))
+                .peek(response -> System.out.println())
+                .min(Comparator.comparing(Response::getName))
+                .orElseThrow(() -> new IllegalStateException("No 200 range responses found"));
+
+        final Content jsonResponse = ok.getContent().get("application/json");
+        if (jsonResponse == null) throw new IllegalStateException("Expected 'application/json' content");
+        return jsonResponse;
+    }
+
+    private Clazz generateRequestClass(final String requestClassName, final List<Parameter> parameters) {
+        final Clazz.Builder clazz = Clazz.builder().name(requestClassName);
+        for (final Parameter parameter : parameters) {
+            final Schema schema = getSchema(parameter);
+
+            final String name = Optional.ofNullable(parameter.getName())
+                    .orElse(schema.getName());
+            final Field field = modelGenerator.getField(clazz, name, schema);
+
+            if (parameter.getIn() != null) {
+                final Field.In in = Field.In.valueOf(parameter.getIn().toUpperCase());
+                field.setIn(in);
+            }
+            clazz.field(field);
+        }
+        return clazz.build();
+    }
+
+    private Schema getSchema(final Parameter parameter) {
+        if (parameter.getSchema() != null) {
+            return parameter.getSchema();
+        }
+
+        if (parameter.getRef() != null) {
+            final Schema schema = new Schema();
+            schema.setRef(parameter.getRef());
+            return schema;
+        }
+
+        throw new IllegalStateException("No schema found for parameter: " + parameter);
+    }
+
+    private String asRequestName(final String summary) {
+        return Words.getTypeName(summary);
+    }
+
+    private String asMethodName(final String summary) {
+        return Words.getVariableName(summary);
+    }
 //    public EndpointClazz
 }
