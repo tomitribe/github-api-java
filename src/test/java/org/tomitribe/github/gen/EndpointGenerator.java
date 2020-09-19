@@ -46,8 +46,10 @@ public class EndpointGenerator {
 
 
     private final ModelGenerator modelGenerator = new ModelGenerator();
+    private ComponentIndex componentIndex;
 
     public List<Endpoint> build(final OpenApi openApi) {
+        this.componentIndex = new ComponentIndex(modelGenerator, openApi);
 
         final Map<String, List<EndpointMethod>> categories = openApi.getMethods()
                 .filter(this::isSupported)
@@ -68,6 +70,8 @@ public class EndpointGenerator {
                     .build());
         }
 
+        final List<Clazz> classes = modelGenerator.getClasses();
+        ResolveReferences.resolve(classes, componentIndex, endpoints);
         return endpoints;
     }
 
@@ -160,9 +164,7 @@ public class EndpointGenerator {
             throw new IllegalStateException("Method has no responses: " + method);
         }
         final Response ok = method.getResponses().values().stream()
-                .peek(response -> System.out.println())
                 .filter(response -> response.getName().startsWith("2"))
-                .peek(response -> System.out.println())
                 .min(Comparator.comparing(Response::getName))
                 .orElseThrow(() -> new IllegalStateException("No 200 range responses found"));
 

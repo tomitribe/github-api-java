@@ -22,6 +22,21 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+/**
+ * Indicated the generated class comes from the components
+ * section of the OpenAPI definition and what name it has.
+ *
+ * Example component ids:
+ *
+ * #/components/examples/base-gist
+ * #/components/examples/check-run
+ * #/components/parameters/owner
+ * #/components/parameters/page
+ * #/components/responses/preview_header_missing
+ * #/components/responses/requires_authentication
+ * #/components/schemas/check-run
+ * #/components/schemas/issue
+ */
 @Repeatable(ComponentIds.class)
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.SOURCE)
