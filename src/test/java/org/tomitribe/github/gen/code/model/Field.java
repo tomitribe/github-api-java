@@ -27,7 +27,7 @@ import org.tomitribe.github.gen.util.Words;
 public class Field {
     private String name;
     private String jsonName;
-    private String type;
+    private Name type;
     @lombok.Builder.Default
     private In in = In.BODY;
     private boolean collection;
@@ -38,7 +38,7 @@ public class Field {
         QUERY, HEADER, BODY, PATH;
     }
 
-    public static Field.Builder field(final String jsonName, final String type) {
+    public static Field.Builder field(final String jsonName, final Name type) {
         if (jsonName == null) {
             return new Builder().type(type);
         } else {

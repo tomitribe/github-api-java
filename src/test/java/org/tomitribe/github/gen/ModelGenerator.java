@@ -22,13 +22,18 @@ import org.tomitribe.github.gen.code.model.Clazz;
 import org.tomitribe.github.gen.code.model.ClazzReference;
 import org.tomitribe.github.gen.code.model.EnumClazz;
 import org.tomitribe.github.gen.code.model.Field;
+import org.tomitribe.github.gen.code.model.Name;
 import org.tomitribe.github.gen.openapi.Schema;
 
+import java.net.URI;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
+import static org.tomitribe.github.gen.code.model.Name.name;
 import static org.tomitribe.github.gen.util.Words.getTypeName;
 
 @Data
@@ -102,41 +107,42 @@ public class ModelGenerator {
     public Field getField(final Clazz.Builder clazz, final String name, final Schema value) {
         final String type = value.getType();
         if ("integer".equals(type)) {
-            return Field.field(name, "Integer").build();
+            return Field.field(name, name(Integer.class)).build();
         }
 
         if ("string".equals(type) && value.getEnumValues() != null) {
             final String className = getTypeName(name);
-            clazz.innerClass(EnumClazz.of(className, value.getEnumValues()));
-            return Field.field(name, className).build();
+            final EnumClazz enumClazz = EnumClazz.of(className, value.getEnumValues());
+            clazz.innerClass(enumClazz);
+            return Field.field(name, enumClazz.getName()).build();
         }
 
         if ("string".equals(type) && "uri".equals(value.getFormat())) {
-            return Field.field(name, "URI").build();
+            return Field.field(name, name(URI.class)).build();
         }
 
         if ("string".equals(type) && "date-time".equals(value.getFormat())) {
-            return Field.field(name, "Date").build();
+            return Field.field(name, name(Date.class)).build();
         }
 
         if ("string".equals(type)) {
-            return Field.field(name, "String").build();
+            return Field.field(name, name(String.class)).build();
         }
 
         if ("boolean".equals(type)) {
-            return Field.field(name, "Boolean").build();
+            return Field.field(name, name(Boolean.class)).build();
         }
 
         if ("object".equals(type) && additionalProperties("string", value)) {
-            return Field.field(name, "String").map(true).build();
+            return Field.field(name, name(String.class)).map(true).build();
         }
 
         if ("object".equals(type) && additionalProperties("integer", value)) {
-            return Field.field(name, "Long").map(true).build();
+            return Field.field(name, name(Long.class)).map(true).build();
         }
 
         if ("object".equals(type) && additionalProperties("boolean", value)) {
-            return Field.field(name, "Boolean").map(true).build();
+            return Field.field(name, name(Boolean.class)).map(true).build();
         }
 
         if ("object".equals(type) && additionalProperties("object", value)) {
@@ -150,7 +156,7 @@ public class ModelGenerator {
         }
 
         if ("object".equals(type) && additionalPropertiesAny(value)) {
-            return Field.field(name, "Object").map(true).build();
+            return Field.field(name, name(Object.class)).map(true).build();
         }
 
         if ("object".equals(type)) {
@@ -175,11 +181,11 @@ public class ModelGenerator {
         }
 
         if (value.getAnyOf() != null) {
-            return Field.field(name, "Object").build();
+            return Field.field(name, name(Object.class)).build();
         }
 
         if (value.getOneOf() != null) {
-            return Field.field(name, "Object").build();
+            return Field.field(name, name(Object.class)).build();
         }
 
         if (value.getRef() != null) {

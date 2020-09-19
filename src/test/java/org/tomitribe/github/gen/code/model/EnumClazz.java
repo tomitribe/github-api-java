@@ -26,7 +26,7 @@ import java.util.List;
 public class EnumClazz extends Clazz {
     final List<String> values;
 
-    public EnumClazz(final String name, final List<String> values) {
+    public EnumClazz(final Name name, final List<String> values) {
         super(null, name, null, null);
         this.values = new ArrayList<>();
         if (values != null) {
@@ -40,6 +40,6 @@ public class EnumClazz extends Clazz {
 
     public static EnumClazz of(final String type, final List<String> values) {
         if (values == null || values.size() == 0) throw new IllegalArgumentException("Enum requires at least one value");
-        return new EnumClazz(type, values);
+        return new EnumClazz(Name.name(type), values);
     }
 }

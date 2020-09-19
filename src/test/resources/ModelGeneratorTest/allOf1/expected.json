@@ -9,7 +9,10 @@
         "jsonName":"client_id",
         "map":false,
         "name":"clientId",
-        "type":"String"
+        "type":{
+          "packageName":"java.lang",
+          "simpleName":"String"
+        }
       },
       {
         "collection":false,
@@ -17,7 +20,10 @@
         "jsonName":"name",
         "map":false,
         "name":"name",
-        "type":"String"
+        "type":{
+          "packageName":"java.lang",
+          "simpleName":"String"
+        }
       },
       {
         "collection":false,
@@ -25,12 +31,17 @@
         "jsonName":"url",
         "map":false,
         "name":"url",
-        "type":"URI"
+        "type":{
+          "packageName":"java.net",
+          "simpleName":"URI"
+        }
       }
     ],
     "innerClasses":[
     ],
-    "name":"App"
+    "name":{
+      "simpleName":"App"
+    }
   },
   {
     "componentIds":[
@@ -42,7 +53,10 @@
         "jsonName":"id",
         "map":false,
         "name":"id",
-        "type":"Integer"
+        "type":{
+          "packageName":"java.lang",
+          "simpleName":"Integer"
+        }
       },
       {
         "collection":false,
@@ -50,7 +64,10 @@
         "jsonName":"url",
         "map":false,
         "name":"url",
-        "type":"URI"
+        "type":{
+          "packageName":"java.net",
+          "simpleName":"URI"
+        }
       },
       {
         "collection":false,
@@ -58,7 +75,9 @@
         "jsonName":"app",
         "map":false,
         "name":"app",
-        "type":"App"
+        "type":{
+          "simpleName":"App"
+        }
       },
       {
         "collection":false,
@@ -66,7 +85,10 @@
         "jsonName":"created_at",
         "map":false,
         "name":"createdAt",
-        "type":"Date"
+        "type":{
+          "packageName":"java.util",
+          "simpleName":"Date"
+        }
       },
       {
         "collection":false,
@@ -74,7 +96,10 @@
         "jsonName":"updated_at",
         "map":false,
         "name":"updatedAt",
-        "type":"Date"
+        "type":{
+          "packageName":"java.util",
+          "simpleName":"Date"
+        }
       },
       {
         "collection":true,
@@ -82,7 +107,10 @@
         "jsonName":"scopes",
         "map":false,
         "name":"scopes",
-        "type":"String"
+        "type":{
+          "packageName":"java.lang",
+          "simpleName":"String"
+        }
       },
       {
         "collection":false,
@@ -95,7 +123,9 @@
     ],
     "innerClasses":[
     ],
-    "name":"AllOf1",
+    "name":{
+      "simpleName":"AllOf1"
+    },
     "title":"Application Grant"
   }
 ]

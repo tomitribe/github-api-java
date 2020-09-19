@@ -34,7 +34,10 @@
               "jsonName": "milestone",
               "map": false,
               "name": "milestone",
-              "type": "String"
+              "type": {
+                "packageName": "java.lang",
+                "simpleName": "String"
+              }
             },
             {
               "collection": false,
@@ -42,7 +45,9 @@
               "jsonName": "state",
               "map": false,
               "name": "state",
-              "type": "State"
+              "type": {
+                "simpleName": "State"
+              }
             },
             {
               "collection": false,
@@ -50,7 +55,10 @@
               "jsonName": "assignee",
               "map": false,
               "name": "assignee",
-              "type": "String"
+              "type": {
+                "packageName": "java.lang",
+                "simpleName": "String"
+              }
             },
             {
               "collection": false,
@@ -58,7 +66,10 @@
               "jsonName": "creator",
               "map": false,
               "name": "creator",
-              "type": "String"
+              "type": {
+                "packageName": "java.lang",
+                "simpleName": "String"
+              }
             },
             {
               "collection": false,
@@ -66,7 +77,10 @@
               "jsonName": "mentioned",
               "map": false,
               "name": "mentioned",
-              "type": "String"
+              "type": {
+                "packageName": "java.lang",
+                "simpleName": "String"
+              }
             },
             {
               "collection": false,
@@ -80,7 +94,9 @@
               "jsonName": "sort",
               "map": false,
               "name": "sort",
-              "type": "Sort"
+              "type": {
+                "simpleName": "Sort"
+              }
             },
             {
               "collection": false,
@@ -115,7 +131,9 @@
               ],
               "innerClasses": [
               ],
-              "name": "State",
+              "name": {
+                "simpleName": "State"
+              },
               "values": [
                 "open",
                 "closed",
@@ -129,7 +147,9 @@
               ],
               "innerClasses": [
               ],
-              "name": "Sort",
+              "name": {
+                "simpleName": "Sort"
+              },
               "values": [
                 "created",
                 "updated",
@@ -137,7 +157,9 @@
               ]
             }
           ],
-          "name": "ListRepositoryIssues"
+          "name": {
+            "simpleName": "ListRepositoryIssues"
+          }
         },
         "response": {
           "componentIds": [
@@ -178,7 +200,9 @@
           ],
           "innerClasses": [
           ],
-          "name": "CreateAnIssue"
+          "name": {
+            "simpleName": "CreateAnIssue"
+          }
         },
         "response": {
           "componentIds": [

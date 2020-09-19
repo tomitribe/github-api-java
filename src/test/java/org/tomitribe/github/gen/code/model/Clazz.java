@@ -34,7 +34,7 @@ public class Clazz {
     @JsonbTransient
     private final Id id;
 
-    private String name;
+    private Name name;
     @EqualsAndHashCode.Exclude
     private String title;
     private Clazz parent;
@@ -45,7 +45,7 @@ public class Clazz {
     private final List<Field> fields = new ArrayList<>();
     private final List<Clazz> innerClasses = new ArrayList<>();
 
-    public Clazz(final Id id, final String name, final String title, final Clazz parent) {
+    public Clazz(final Id id, final Name name, final String title, final Clazz parent) {
         this.id = id != null ? id : Id.next();
         this.name = name;
         this.title = title;
@@ -155,7 +155,7 @@ public class Clazz {
 
     public static class Builder {
         private final Id id = Id.next();
-        private String name;
+        private Name name;
         private String title;
         private Clazz parent;
         private final Set<String> componentIds = new HashSet<>();
@@ -172,7 +172,7 @@ public class Clazz {
             return id;
         }
 
-        public String getName() {
+        public Name getName() {
             return name;
         }
 
@@ -220,17 +220,17 @@ public class Clazz {
             return this;
         }
 
-        public Builder name(String name) {
-            this.name = name;
+        public Builder name(final String name) {
+            this.name = Name.name(name);
             return this;
         }
 
-        public Builder title(String title) {
+        public Builder title(final String title) {
             this.title = title;
             return this;
         }
 
-        public Builder parent(Clazz parent) {
+        public Builder parent(final Clazz parent) {
             this.parent = parent;
             return this;
         }

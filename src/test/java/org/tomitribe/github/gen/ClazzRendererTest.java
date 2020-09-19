@@ -31,6 +31,10 @@ import java.io.IOException;
 
 import static org.tomitribe.github.gen.code.model.Field.In.PATH;
 import static org.tomitribe.github.gen.code.model.Field.In.QUERY;
+import static org.tomitribe.github.gen.code.model.Name.INTEGER;
+import static org.tomitribe.github.gen.code.model.Name.STRING;
+import static org.tomitribe.github.gen.code.model.Name.URI;
+import static org.tomitribe.github.gen.code.model.Name.name;
 
 public class ClazzRendererTest {
 
@@ -43,13 +47,13 @@ public class ClazzRendererTest {
                 .name("PullRequest")
                 .componentId("#/components/schemas/pull-request-minimal")
                 .componentId("#/components/schemas/pull-request")
-                .field(Field.field("repository_url", "String").build())
-                .field(Field.field("pull_request_url", "String").build())
-                .field(Field.field("pull_request_number", "Integer").build())
-                .field(Field.field("labels", "String").collection(true).build())
-                .field(Field.field("owner", "String").in(PATH).build())
-                .field(Field.field("repo", "String").in(PATH).build())
-                .field(Field.field("state", "State").in(QUERY).build())
+                .field(Field.field("repository_url", STRING).build())
+                .field(Field.field("pull_request_url", STRING).build())
+                .field(Field.field("pull_request_number", INTEGER).build())
+                .field(Field.field("labels", STRING).collection(true).build())
+                .field(Field.field("owner", STRING).in(PATH).build())
+                .field(Field.field("repo", STRING).in(PATH).build())
+                .field(Field.field("state", name("State")).in(QUERY).build())
                 .build();
 
         final File tmpdir = Files.tmpdir();
@@ -69,13 +73,13 @@ public class ClazzRendererTest {
                 .name("PullRequest")
                 .componentId("#/components/schemas/pull-request-minimal")
                 .componentId("#/components/schemas/pull-request")
-                .field(Field.field("repository_url", "String").build())
-                .field(Field.field("pull_request_url", "String").build())
-                .field(Field.field("pull_request_number", "Integer").build())
-                .field(Field.field("labels", "String").collection(true).build())
-                .field(Field.field("owner", "String").in(PATH).build())
-                .field(Field.field("repo", "String").in(PATH).build())
-                .field(Field.field("state", "State").in(QUERY).build())
+                .field(Field.field("repository_url", STRING).build())
+                .field(Field.field("pull_request_url", STRING).build())
+                .field(Field.field("pull_request_number", INTEGER).build())
+                .field(Field.field("labels", STRING).collection(true).build())
+                .field(Field.field("owner", STRING).in(PATH).build())
+                .field(Field.field("repo", STRING).in(PATH).build())
+                .field(Field.field("state", name("State")).in(QUERY).build())
                 .build();
 
         final Project actual = Project.from(Files.tmpdir());
@@ -108,14 +112,14 @@ public class ClazzRendererTest {
                 .name("PullRequest")
                 .componentId("#/components/schemas/pull-request-minimal")
                 .componentId("#/components/schemas/pull-request")
-                .field(Field.field("repository_url", "URI").build())
-                .field(Field.field("pull_request_url", "URI").build())
-                .field(Field.field("pull_request_number", "Integer").build())
-                .field(Field.field("labels", "String").collection(true).build())
-                .field(Field.field("license", "Object").build())
-                .field(Field.field("owner", "String").in(PATH).build())
-                .field(Field.field("repo", "String").in(PATH).build())
-                .field(Field.field("state", "State").in(QUERY).build())
+                .field(Field.field("repository_url", URI).build())
+                .field(Field.field("pull_request_url", URI).build())
+                .field(Field.field("pull_request_number", INTEGER).build())
+                .field(Field.field("labels", STRING).collection(true).build())
+                .field(Field.field("license", name(Object.class)).build())
+                .field(Field.field("owner", STRING).in(PATH).build())
+                .field(Field.field("repo", STRING).in(PATH).build())
+                .field(Field.field("state", name("State")).in(QUERY).build())
                 .build();
 
         final Project actual = Project.from(Files.tmpdir());
@@ -136,13 +140,13 @@ public class ClazzRendererTest {
                 .name("PullRequest")
                 .componentId("#/components/schemas/pull-request-minimal")
                 .componentId("#/components/schemas/pull-request")
-                .field(Field.field("repository_url", "String").build())
-                .field(Field.field("pull_request_url", "String").build())
-                .field(Field.field("pull_request_number", "Integer").build())
-                .field(Field.field("labels", "String").collection(true).build())
-                .field(Field.field("owner", "String").in(PATH).build())
-                .field(Field.field("repo", "String").in(PATH).build())
-                .field(Field.field("state", "State").in(QUERY).build())
+                .field(Field.field("repository_url", STRING).build())
+                .field(Field.field("pull_request_url", STRING).build())
+                .field(Field.field("pull_request_number", INTEGER).build())
+                .field(Field.field("labels", STRING).collection(true).build())
+                .field(Field.field("owner", STRING).in(PATH).build())
+                .field(Field.field("repo", STRING).in(PATH).build())
+                .field(Field.field("state", name("State")).in(QUERY).build())
                 .innerClass(EnumClazz.of("State", "created", "updated", "popularity", "long-running"))
                 .build();
 
@@ -164,13 +168,13 @@ public class ClazzRendererTest {
                 .name("PullRequest")
                 .componentId("#/components/schemas/pull-request-minimal")
                 .componentId("#/components/schemas/pull-request")
-                .field(Field.field("repository_url", "String").build())
-                .field(Field.field("pull_request_url", "String").build())
-                .field(Field.field("pull_request_number", "Integer").build())
-                .field(Field.field("labels", "String").collection(true).build())
-                .field(Field.field("owner", "String").in(PATH).build())
-                .field(Field.field("repo", "String").in(PATH).build())
-                .field(Field.field("state", "State").in(QUERY).build())
+                .field(Field.field("repository_url", STRING).build())
+                .field(Field.field("pull_request_url", STRING).build())
+                .field(Field.field("pull_request_number", INTEGER).build())
+                .field(Field.field("labels", STRING).collection(true).build())
+                .field(Field.field("owner", STRING).in(PATH).build())
+                .field(Field.field("repo", STRING).in(PATH).build())
+                .field(Field.field("state", name("State")).in(QUERY).build())
                 .innerClass(EnumClazz.of("State", "created", "updated", "popularity", "long-running"))
                 .build();
 

@@ -45,16 +45,17 @@ import javax.ws.rs.QueryParam;
 import java.io.File;
 import java.io.IOException;
 import java.io.UncheckedIOException;
-import java.net.URI;
 import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
+import static org.tomitribe.github.gen.code.model.Name.DATE;
+import static org.tomitribe.github.gen.code.model.Name.OBJECT;
 
 public class ClazzRenderer {
 
@@ -67,7 +68,7 @@ public class ClazzRenderer {
     }
 
     public void render(final Clazz clazz) {
-        final String className = clazz.getName();
+        final String className = clazz.getName().getSimpleName();
         final Package aPackage = project.src().main().java().packageName(packageName);
         final File sourceFile = aPackage.file(className + ".java");
 
@@ -117,29 +118,29 @@ public class ClazzRenderer {
             if (fields.containsKey(field.getName())) {
                 fieldDeclaration = fields.get(field.getName());
             } else {
-                fieldDeclaration = definition.getClazz().addField(field.getType(), field.getName(), Modifier.Keyword.PRIVATE);
+                fieldDeclaration = definition.getClazz().addField(field.getType().getSimpleName(), field.getName(), Modifier.Keyword.PRIVATE);
             }
 
             final VariableDeclarator variable = fieldDeclaration.getVariable(0);
             if (field.isCollection()) {
 
-                variable.setType(String.format("List<%s>", field.getType()));
+                variable.setType(String.format("List<%s>", field.getType().getSimpleName()));
 
             } else if (field.isMap()) {
 
-                variable.setType(String.format("Map<String, %s>", field.getType()));
+                variable.setType(String.format("Map<String, %s>", field.getType().getSimpleName()));
 
             } else {
-                if ("Object".equals(field.getType())) {
+                if (OBJECT.equals(field.getType())) {
                     /*
                      * If Clazz says the type is Object and the source already has a type,
                      * just use what ever type the source has and do not override it
                      */
                     if (variable.getType() == null) {
-                        variable.setType(field.getType());
+                        variable.setType(field.getType().getSimpleName());
                     }
                 } else {
-                    variable.setType(field.getType());
+                    variable.setType(field.getType().getSimpleName());
                 }
             }
 
@@ -167,11 +168,11 @@ public class ClazzRenderer {
                     throw new UnsupportedOperationException(field.getIn().name());
             }
 
-            if (enums.contains(field.getType())) {
+            if (enums.contains(field.getType().getSimpleName())) {
                 definition.addAnnotation(fieldDeclaration, String.format("@JsonbTypeAdapter(%sAdapter.class)", field.getType()));
             }
 
-            if ("Date".equals(field.getType())) {
+            if (DATE.equals(field.getType())) {
                 definition.addAnnotation(fieldDeclaration, "@JsonbTypeAdapter(DateAdapter.class)");
             }
         }
@@ -182,12 +183,12 @@ public class ClazzRenderer {
             if (innerClass instanceof EnumClazz) {
                 final EnumClazz enumClazz = (EnumClazz) innerClass;
 
-                final ClassDefinition template = ClassDefinition.parse(enumTemplate(enumClazz.getName()));
+                final ClassDefinition template = ClassDefinition.parse(enumTemplate(enumClazz.getName().getSimpleName()));
 
                 { // Add the enum declaration
-                    final Optional<EnumDeclaration> existing = definition.selectEnum(enumClazz.getName());
+                    final Optional<EnumDeclaration> existing = definition.selectEnum(enumClazz.getName().getSimpleName());
                     final EnumDeclaration enumDeclaration = existing
-                            .orElseGet(template.selectEnum(enumClazz.getName())::get);
+                            .orElseGet(template.selectEnum(enumClazz.getName().getSimpleName())::get);
 
                     final Map<String, EnumConstantDeclaration> entries = enumDeclaration.getEntries().stream()
                             .collect(Collectors.toMap(EnumConstantDeclaration::getNameAsString, Function.identity()));
@@ -260,12 +261,9 @@ public class ClazzRenderer {
                 imports.add(Map.class.getName());
             }
 
-            if ("URI".equals(field.getType())) {
-                imports.add(URI.class.getName());
-            }
+            imports.add(field.getType().toString());
 
-            if ("Date".equals(field.getType())) {
-                imports.add(Date.class.getName());
+            if (DATE.equals(field.getType())) {
                 imports.add(DateAdapter.class.getName());
             }
 

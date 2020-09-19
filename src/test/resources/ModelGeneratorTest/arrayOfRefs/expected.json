@@ -9,7 +9,10 @@
         "jsonName":"issues",
         "map":false,
         "name":"issues",
-        "type":"String"
+        "type":{
+          "packageName":"java.lang",
+          "simpleName":"String"
+        }
       },
       {
         "collection":false,
@@ -17,7 +20,10 @@
         "jsonName":"contents",
         "map":false,
         "name":"contents",
-        "type":"String"
+        "type":{
+          "packageName":"java.lang",
+          "simpleName":"String"
+        }
       },
       {
         "collection":false,
@@ -25,7 +31,10 @@
         "jsonName":"metadata",
         "map":false,
         "name":"metadata",
-        "type":"String"
+        "type":{
+          "packageName":"java.lang",
+          "simpleName":"String"
+        }
       },
       {
         "collection":false,
@@ -33,12 +42,17 @@
         "jsonName":"single_file",
         "map":false,
         "name":"singleFile",
-        "type":"String"
+        "type":{
+          "packageName":"java.lang",
+          "simpleName":"String"
+        }
       }
     ],
     "innerClasses":[
     ],
-    "name":"Permissions"
+    "name":{
+      "simpleName":"Permissions"
+    }
   },
   {
     "componentIds":[
@@ -50,7 +64,10 @@
         "jsonName":"token",
         "map":false,
         "name":"token",
-        "type":"String"
+        "type":{
+          "packageName":"java.lang",
+          "simpleName":"String"
+        }
       },
       {
         "collection":false,
@@ -58,7 +75,10 @@
         "jsonName":"expires_at",
         "map":false,
         "name":"expiresAt",
-        "type":"String"
+        "type":{
+          "packageName":"java.lang",
+          "simpleName":"String"
+        }
       },
       {
         "collection":false,
@@ -66,7 +86,9 @@
         "jsonName":"permissions",
         "map":false,
         "name":"permissions",
-        "type":"Permissions"
+        "type":{
+          "simpleName":"Permissions"
+        }
       },
       {
         "collection":false,
@@ -74,7 +96,9 @@
         "jsonName":"repository_selection",
         "map":false,
         "name":"repositorySelection",
-        "type":"RepositorySelection"
+        "type":{
+          "simpleName":"RepositorySelection"
+        }
       },
       {
         "collection":true,
@@ -90,7 +114,10 @@
         "jsonName":"single_file",
         "map":false,
         "name":"singleFile",
-        "type":"String"
+        "type":{
+          "packageName":"java.lang",
+          "simpleName":"String"
+        }
       }
     ],
     "innerClasses":[
@@ -101,14 +128,18 @@
         ],
         "innerClasses":[
         ],
-        "name":"RepositorySelection",
+        "name":{
+          "simpleName":"RepositorySelection"
+        },
         "values":[
           "all",
           "selected"
         ]
       }
     ],
-    "name":"ArrayOfRefs",
+    "name":{
+      "simpleName":"ArrayOfRefs"
+    },
     "title":"Installation Token"
   }
 ]

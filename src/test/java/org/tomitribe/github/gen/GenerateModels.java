@@ -210,12 +210,12 @@ public class GenerateModels {
     private Map<String, List<Clazz>> conflicts(final List<Clazz> classes) {
         final Map<String, List<Clazz>> map = classes.stream()
                 .filter(clazz -> clazz.getName() != null)
-                .collect(Collectors.groupingBy(Clazz::getName));
+                .collect(Collectors.groupingBy(clazz -> clazz.getName().toString()));
 
         final Map<String, List<Clazz>> conflicts = map.values().stream()
                 .filter(clazzes -> clazzes.size() > 1)
                 .flatMap(Collection::stream)
-                .collect(Collectors.groupingBy(Clazz::getName));
+                .collect(Collectors.groupingBy(clazz -> clazz.getName().toString()));
         return conflicts;
     }
 

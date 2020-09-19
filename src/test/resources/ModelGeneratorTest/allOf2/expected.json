@@ -18,7 +18,10 @@
         "jsonName":"client_id",
         "map":false,
         "name":"clientId",
-        "type":"String"
+        "type":{
+          "packageName":"java.lang",
+          "simpleName":"String"
+        }
       },
       {
         "collection":false,
@@ -26,7 +29,10 @@
         "jsonName":"client_secret",
         "map":false,
         "name":"clientSecret",
-        "type":"String"
+        "type":{
+          "packageName":"java.lang",
+          "simpleName":"String"
+        }
       },
       {
         "collection":false,
@@ -34,7 +40,10 @@
         "jsonName":"webhook_secret",
         "map":false,
         "name":"webhookSecret",
-        "type":"String"
+        "type":{
+          "packageName":"java.lang",
+          "simpleName":"String"
+        }
       },
       {
         "collection":false,
@@ -42,12 +51,17 @@
         "jsonName":"pem",
         "map":false,
         "name":"pem",
-        "type":"String"
+        "type":{
+          "packageName":"java.lang",
+          "simpleName":"String"
+        }
       }
     ],
     "innerClasses":[
     ],
-    "name":"AllOf2",
+    "name":{
+      "simpleName":"AllOf2"
+    },
     "parent":{
       "componentIds":[
       ],
