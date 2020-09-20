@@ -17,16 +17,21 @@
 package org.tomitribe.github.gen;
 
 import org.tomitribe.github.gen.code.endpoint.Endpoint;
+import org.tomitribe.github.gen.code.endpoint.EndpointMethod;
+import org.tomitribe.github.gen.code.model.ArrayClazz;
 import org.tomitribe.github.gen.code.model.Clazz;
 import org.tomitribe.github.gen.code.model.ClazzReference;
 import org.tomitribe.github.gen.code.model.Field;
 
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.Objects;
+import java.util.Set;
 
 public class ResolveReferences {
 
+    private final Set<Clazz> seen = new HashSet<>();
     private final List<Clazz> classes;
     private final ComponentIndex componentIndex;
     private final List<Endpoint> endpoints;
@@ -35,6 +40,23 @@ public class ResolveReferences {
         this.classes = classes;
         this.componentIndex = componentIndex;
         this.endpoints = endpoints;
+
+        this.classes.forEach(this::resolve);
+        this.endpoints.stream().map(Endpoint::getMethods)
+                .flatMap(Collection::stream)
+                .forEach(this::resolveMethod);
+    }
+
+    private void resolveMethod(final EndpointMethod method) {
+        if (method.getRequest() instanceof ClazzReference) {
+            method.setRequest(resolve((ClazzReference) method.getRequest()));
+        }
+        if (method.getResponse() instanceof ClazzReference) {
+            method.setResponse(resolve((ClazzReference) method.getResponse()));
+        }
+
+        resolve(method.getRequest());
+        resolve(method.getResponse());
     }
 
     public static void resolve(final List<Clazz> classes, final ComponentIndex componentIndex, final List<Endpoint> endpoints) {
@@ -42,6 +64,12 @@ public class ResolveReferences {
     }
 
     private void resolve(final Clazz clazz) {
+        /*
+         * If we have already started processing this class, do
+         * not continue as that would cause an endless loop
+         */
+        if (isResolved(clazz)) return;
+
         if (clazz.getParent() instanceof ClazzReference) {
             clazz.setParent(resolve((ClazzReference) clazz.getParent()));
         }
@@ -50,10 +78,39 @@ public class ResolveReferences {
         for (int i = 0; i < fields.size(); i++) {
             final Field field = fields.get(i);
             final String reference = field.getReference();
-            if (reference != null) {
+            if (reference == null) continue;
 
+            final Object resolved = componentIndex.resolve(reference);
+
+            if (resolved instanceof Field) {
+
+                final Field resolvedField = (Field) resolved;
+                fields.set(i, resolvedField);
+
+            } else if (resolved instanceof Clazz) {
+
+                final Clazz resolvedClazz = (Clazz) resolved;
+                field.setType(resolvedClazz.getName());
+                field.setReference(null);
+            } else {
+                final String message = String.format("Expected Clazz or Field reference, found '%s' resolving to: %s", reference, resolved);
+                throw new IllegalStateException(message);
             }
         }
+
+        if (clazz instanceof ArrayClazz) {
+            final ArrayClazz arrayClazz = (ArrayClazz) clazz;
+            final Clazz item = arrayClazz.getOf();
+            if (item instanceof ClazzReference) {
+                final ClazzReference clazzReference = (ClazzReference) item;
+                final Clazz resolvedItem = resolveClazz(clazzReference.getReference());
+                arrayClazz.setOf(resolvedItem);
+            }
+        }
+    }
+
+    private boolean isResolved(final Clazz clazz) {
+        return !seen.add(clazz);
     }
 
     private Clazz resolve(final ClazzReference clazzReference) {
@@ -62,19 +119,11 @@ public class ResolveReferences {
 
         final String reference = clazzReference.getReference();
 
-        final Clazz clazz;
-        if (reference.startsWith("#/components/schemas/")) {
-            clazz = componentIndex.getSchemas().get(reference);
-        } else if (reference.startsWith("#/components/responses/")) {
-            clazz = componentIndex.getResponses().get(reference);
-        } else {
-            throw new IllegalStateException("Reference type not supported: " + reference);
-        }
-
-        if (clazz == null) {
-            throw new NoSuchElementException("Component not found " + reference);
-        }
-
-        return clazz;
+        return resolveClazz(reference);
     }
+
+    private Clazz resolveClazz(final String reference) {
+        return componentIndex.resolveClazz(reference);
+    }
+
 }

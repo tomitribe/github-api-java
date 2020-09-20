@@ -14,23 +14,22 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package org.tomitribe.github.gen.code.endpoint;
+package org.tomitribe.github.gen.code.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-import java.util.ArrayList;
-import java.util.List;
+@Getter
+@Setter
+public class ArrayClazz extends Clazz {
+    private Clazz of;
 
-@Data
-@AllArgsConstructor
-@Builder(builderClassName = "Builder", toBuilder = true)
-public class Endpoint {
+    public ArrayClazz(final Clazz of) {
+        super(null, null, null, null);
+        this.of = of;
+    }
 
-    private final String className;
-
-    @lombok.Builder.Default
-    final List<EndpointMethod> methods = new ArrayList<>();
-
+    public static ArrayClazz of(final Clazz item) {
+        return new ArrayClazz(item);
+    }
 }

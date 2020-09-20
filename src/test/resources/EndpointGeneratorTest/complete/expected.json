@@ -1,7 +1,7 @@
 [
   {
     "className": "IssuesClient",
-    "method": [
+    "methods": [
       {
         "category": "issues",
         "enabledForGitHubApps": true,
@@ -18,15 +18,25 @@
           "fields": [
             {
               "collection": false,
-              "in": "BODY",
+              "in": "PATH",
+              "jsonName": "owner",
               "map": false,
-              "reference": "#/components/parameters/owner"
+              "name": "owner",
+              "type": {
+                "packageName": "java.lang",
+                "simpleName": "String"
+              }
             },
             {
               "collection": false,
-              "in": "BODY",
+              "in": "PATH",
+              "jsonName": "repo",
               "map": false,
-              "reference": "#/components/parameters/repo"
+              "name": "repo",
+              "type": {
+                "packageName": "java.lang",
+                "simpleName": "String"
+              }
             },
             {
               "collection": false,
@@ -84,9 +94,14 @@
             },
             {
               "collection": false,
-              "in": "BODY",
+              "in": "QUERY",
+              "jsonName": "labels",
               "map": false,
-              "reference": "#/components/parameters/labels"
+              "name": "labels",
+              "type": {
+                "packageName": "java.lang",
+                "simpleName": "String"
+              }
             },
             {
               "collection": false,
@@ -100,27 +115,46 @@
             },
             {
               "collection": false,
-              "in": "BODY",
+              "in": "QUERY",
+              "jsonName": "direction",
               "map": false,
-              "reference": "#/components/parameters/direction"
+              "name": "direction",
+              "type": {
+                "simpleName": "Direction"
+              }
             },
             {
               "collection": false,
-              "in": "BODY",
+              "in": "QUERY",
+              "jsonName": "since",
               "map": false,
-              "reference": "#/components/parameters/since"
+              "name": "since",
+              "type": {
+                "packageName": "java.lang",
+                "simpleName": "String"
+              }
             },
             {
               "collection": false,
-              "in": "BODY",
+              "in": "QUERY",
+              "jsonName": "per_page",
               "map": false,
-              "reference": "#/components/parameters/per_page"
+              "name": "perPage",
+              "type": {
+                "packageName": "java.lang",
+                "simpleName": "Integer"
+              }
             },
             {
               "collection": false,
-              "in": "BODY",
+              "in": "QUERY",
+              "jsonName": "page",
               "map": false,
-              "reference": "#/components/parameters/page"
+              "name": "page",
+              "type": {
+                "packageName": "java.lang",
+                "simpleName": "Integer"
+              }
             }
           ],
           "innerClasses": [
@@ -167,7 +201,342 @@
           "fields": [
           ],
           "innerClasses": [
-          ]
+          ],
+          "of": {
+            "componentIds": [
+              "#/components/schemas/issue-simple"
+            ],
+            "fields": [
+              {
+                "collection": false,
+                "in": "BODY",
+                "jsonName": "id",
+                "map": false,
+                "name": "id",
+                "type": {
+                  "packageName": "java.lang",
+                  "simpleName": "Integer"
+                }
+              },
+              {
+                "collection": false,
+                "in": "BODY",
+                "jsonName": "node_id",
+                "map": false,
+                "name": "nodeId",
+                "type": {
+                  "packageName": "java.lang",
+                  "simpleName": "String"
+                }
+              },
+              {
+                "collection": false,
+                "in": "BODY",
+                "jsonName": "url",
+                "map": false,
+                "name": "url",
+                "type": {
+                  "packageName": "java.net",
+                  "simpleName": "URI"
+                }
+              },
+              {
+                "collection": false,
+                "in": "BODY",
+                "jsonName": "repository_url",
+                "map": false,
+                "name": "repositoryUrl",
+                "type": {
+                  "packageName": "java.net",
+                  "simpleName": "URI"
+                }
+              },
+              {
+                "collection": false,
+                "in": "BODY",
+                "jsonName": "labels_url",
+                "map": false,
+                "name": "labelsUrl",
+                "type": {
+                  "packageName": "java.lang",
+                  "simpleName": "String"
+                }
+              },
+              {
+                "collection": false,
+                "in": "BODY",
+                "jsonName": "comments_url",
+                "map": false,
+                "name": "commentsUrl",
+                "type": {
+                  "packageName": "java.net",
+                  "simpleName": "URI"
+                }
+              },
+              {
+                "collection": false,
+                "in": "BODY",
+                "jsonName": "events_url",
+                "map": false,
+                "name": "eventsUrl",
+                "type": {
+                  "packageName": "java.net",
+                  "simpleName": "URI"
+                }
+              },
+              {
+                "collection": false,
+                "in": "BODY",
+                "jsonName": "html_url",
+                "map": false,
+                "name": "htmlUrl",
+                "type": {
+                  "packageName": "java.net",
+                  "simpleName": "URI"
+                }
+              },
+              {
+                "collection": false,
+                "in": "BODY",
+                "jsonName": "number",
+                "map": false,
+                "name": "number",
+                "type": {
+                  "packageName": "java.lang",
+                  "simpleName": "Integer"
+                }
+              },
+              {
+                "collection": false,
+                "in": "BODY",
+                "jsonName": "state",
+                "map": false,
+                "name": "state",
+                "type": {
+                  "packageName": "java.lang",
+                  "simpleName": "String"
+                }
+              },
+              {
+                "collection": false,
+                "in": "BODY",
+                "jsonName": "title",
+                "map": false,
+                "name": "title",
+                "type": {
+                  "packageName": "java.lang",
+                  "simpleName": "String"
+                }
+              },
+              {
+                "collection": false,
+                "in": "BODY",
+                "jsonName": "body",
+                "map": false,
+                "name": "body",
+                "type": {
+                  "packageName": "java.lang",
+                  "simpleName": "String"
+                }
+              },
+              {
+                "collection": false,
+                "in": "BODY",
+                "jsonName": "user",
+                "map": false,
+                "name": "user",
+                "type": {
+                  "simpleName": "SimpleUser"
+                }
+              },
+              {
+                "collection": true,
+                "in": "BODY",
+                "jsonName": "labels",
+                "map": false,
+                "name": "labels",
+                "type": {
+                  "simpleName": "Labels"
+                }
+              },
+              {
+                "collection": false,
+                "in": "BODY",
+                "jsonName": "assignee",
+                "map": false,
+                "name": "assignee",
+                "type": {
+                  "simpleName": "SimpleUser"
+                }
+              },
+              {
+                "collection": true,
+                "in": "BODY",
+                "jsonName": "assignees",
+                "map": false,
+                "name": "assignees",
+                "type": {
+                  "simpleName": "SimpleUser"
+                }
+              },
+              {
+                "collection": false,
+                "in": "BODY",
+                "jsonName": "milestone",
+                "map": false,
+                "name": "milestone",
+                "type": {
+                  "simpleName": "Milestone"
+                }
+              },
+              {
+                "collection": false,
+                "in": "BODY",
+                "jsonName": "locked",
+                "map": false,
+                "name": "locked",
+                "type": {
+                  "packageName": "java.lang",
+                  "simpleName": "Boolean"
+                }
+              },
+              {
+                "collection": false,
+                "in": "BODY",
+                "jsonName": "active_lock_reason",
+                "map": false,
+                "name": "activeLockReason",
+                "type": {
+                  "packageName": "java.lang",
+                  "simpleName": "String"
+                }
+              },
+              {
+                "collection": false,
+                "in": "BODY",
+                "jsonName": "comments",
+                "map": false,
+                "name": "comments",
+                "type": {
+                  "packageName": "java.lang",
+                  "simpleName": "Integer"
+                }
+              },
+              {
+                "collection": false,
+                "in": "BODY",
+                "jsonName": "pull_request",
+                "map": false,
+                "name": "pullRequest",
+                "type": {
+                  "simpleName": "PullRequest"
+                }
+              },
+              {
+                "collection": false,
+                "in": "BODY",
+                "jsonName": "closed_at",
+                "map": false,
+                "name": "closedAt",
+                "type": {
+                  "packageName": "java.util",
+                  "simpleName": "Date"
+                }
+              },
+              {
+                "collection": false,
+                "in": "BODY",
+                "jsonName": "created_at",
+                "map": false,
+                "name": "createdAt",
+                "type": {
+                  "packageName": "java.util",
+                  "simpleName": "Date"
+                }
+              },
+              {
+                "collection": false,
+                "in": "BODY",
+                "jsonName": "updated_at",
+                "map": false,
+                "name": "updatedAt",
+                "type": {
+                  "packageName": "java.util",
+                  "simpleName": "Date"
+                }
+              },
+              {
+                "collection": false,
+                "in": "BODY",
+                "jsonName": "author_association",
+                "map": false,
+                "name": "authorAssociation",
+                "type": {
+                  "packageName": "java.lang",
+                  "simpleName": "String"
+                }
+              },
+              {
+                "collection": false,
+                "in": "BODY",
+                "jsonName": "body_html",
+                "map": false,
+                "name": "bodyHtml",
+                "type": {
+                  "packageName": "java.lang",
+                  "simpleName": "String"
+                }
+              },
+              {
+                "collection": false,
+                "in": "BODY",
+                "jsonName": "body_text",
+                "map": false,
+                "name": "bodyText",
+                "type": {
+                  "packageName": "java.lang",
+                  "simpleName": "String"
+                }
+              },
+              {
+                "collection": false,
+                "in": "BODY",
+                "jsonName": "timeline_url",
+                "map": false,
+                "name": "timelineUrl",
+                "type": {
+                  "packageName": "java.net",
+                  "simpleName": "URI"
+                }
+              },
+              {
+                "collection": false,
+                "in": "BODY",
+                "jsonName": "repository",
+                "map": false,
+                "name": "repository",
+                "type": {
+                  "simpleName": "Repository"
+                }
+              },
+              {
+                "collection": false,
+                "in": "BODY",
+                "jsonName": "performed_via_github_app",
+                "map": false,
+                "name": "performedViaGithubApp",
+                "type": {
+                  "simpleName": "Integration"
+                }
+              }
+            ],
+            "innerClasses": [
+            ],
+            "name": {
+              "simpleName": "IssueSimple"
+            },
+            "title": "Issue Simple"
+          }
         },
         "summary": "List repository issues"
       },
@@ -187,15 +556,25 @@
           "fields": [
             {
               "collection": false,
-              "in": "BODY",
+              "in": "PATH",
+              "jsonName": "owner",
               "map": false,
-              "reference": "#/components/parameters/owner"
+              "name": "owner",
+              "type": {
+                "packageName": "java.lang",
+                "simpleName": "String"
+              }
             },
             {
               "collection": false,
-              "in": "BODY",
+              "in": "PATH",
+              "jsonName": "repo",
               "map": false,
-              "reference": "#/components/parameters/repo"
+              "name": "repo",
+              "type": {
+                "packageName": "java.lang",
+                "simpleName": "String"
+              }
             }
           ],
           "innerClasses": [
@@ -206,12 +585,359 @@
         },
         "response": {
           "componentIds": [
+            "#/components/schemas/issue"
           ],
           "fields": [
+            {
+              "collection": false,
+              "in": "BODY",
+              "jsonName": "id",
+              "map": false,
+              "name": "id",
+              "type": {
+                "packageName": "java.lang",
+                "simpleName": "Integer"
+              }
+            },
+            {
+              "collection": false,
+              "in": "BODY",
+              "jsonName": "node_id",
+              "map": false,
+              "name": "nodeId",
+              "type": {
+                "packageName": "java.lang",
+                "simpleName": "String"
+              }
+            },
+            {
+              "collection": false,
+              "in": "BODY",
+              "jsonName": "url",
+              "map": false,
+              "name": "url",
+              "type": {
+                "packageName": "java.net",
+                "simpleName": "URI"
+              }
+            },
+            {
+              "collection": false,
+              "in": "BODY",
+              "jsonName": "repository_url",
+              "map": false,
+              "name": "repositoryUrl",
+              "type": {
+                "packageName": "java.net",
+                "simpleName": "URI"
+              }
+            },
+            {
+              "collection": false,
+              "in": "BODY",
+              "jsonName": "labels_url",
+              "map": false,
+              "name": "labelsUrl",
+              "type": {
+                "packageName": "java.lang",
+                "simpleName": "String"
+              }
+            },
+            {
+              "collection": false,
+              "in": "BODY",
+              "jsonName": "comments_url",
+              "map": false,
+              "name": "commentsUrl",
+              "type": {
+                "packageName": "java.net",
+                "simpleName": "URI"
+              }
+            },
+            {
+              "collection": false,
+              "in": "BODY",
+              "jsonName": "events_url",
+              "map": false,
+              "name": "eventsUrl",
+              "type": {
+                "packageName": "java.net",
+                "simpleName": "URI"
+              }
+            },
+            {
+              "collection": false,
+              "in": "BODY",
+              "jsonName": "html_url",
+              "map": false,
+              "name": "htmlUrl",
+              "type": {
+                "packageName": "java.net",
+                "simpleName": "URI"
+              }
+            },
+            {
+              "collection": false,
+              "in": "BODY",
+              "jsonName": "number",
+              "map": false,
+              "name": "number",
+              "type": {
+                "packageName": "java.lang",
+                "simpleName": "Integer"
+              }
+            },
+            {
+              "collection": false,
+              "in": "BODY",
+              "jsonName": "state",
+              "map": false,
+              "name": "state",
+              "type": {
+                "packageName": "java.lang",
+                "simpleName": "String"
+              }
+            },
+            {
+              "collection": false,
+              "in": "BODY",
+              "jsonName": "title",
+              "map": false,
+              "name": "title",
+              "type": {
+                "packageName": "java.lang",
+                "simpleName": "String"
+              }
+            },
+            {
+              "collection": false,
+              "in": "BODY",
+              "jsonName": "body",
+              "map": false,
+              "name": "body",
+              "type": {
+                "packageName": "java.lang",
+                "simpleName": "String"
+              }
+            },
+            {
+              "collection": false,
+              "in": "BODY",
+              "jsonName": "user",
+              "map": false,
+              "name": "user",
+              "type": {
+                "simpleName": "SimpleUser"
+              }
+            },
+            {
+              "collection": true,
+              "in": "BODY",
+              "jsonName": "labels",
+              "map": false,
+              "name": "labels",
+              "type": {
+                "packageName": "java.lang",
+                "simpleName": "Object"
+              }
+            },
+            {
+              "collection": false,
+              "in": "BODY",
+              "jsonName": "assignee",
+              "map": false,
+              "name": "assignee",
+              "type": {
+                "simpleName": "SimpleUser"
+              }
+            },
+            {
+              "collection": true,
+              "in": "BODY",
+              "jsonName": "assignees",
+              "map": false,
+              "name": "assignees",
+              "type": {
+                "simpleName": "SimpleUser"
+              }
+            },
+            {
+              "collection": false,
+              "in": "BODY",
+              "jsonName": "milestone",
+              "map": false,
+              "name": "milestone",
+              "type": {
+                "simpleName": "Milestone"
+              }
+            },
+            {
+              "collection": false,
+              "in": "BODY",
+              "jsonName": "locked",
+              "map": false,
+              "name": "locked",
+              "type": {
+                "packageName": "java.lang",
+                "simpleName": "Boolean"
+              }
+            },
+            {
+              "collection": false,
+              "in": "BODY",
+              "jsonName": "active_lock_reason",
+              "map": false,
+              "name": "activeLockReason",
+              "type": {
+                "packageName": "java.lang",
+                "simpleName": "String"
+              }
+            },
+            {
+              "collection": false,
+              "in": "BODY",
+              "jsonName": "comments",
+              "map": false,
+              "name": "comments",
+              "type": {
+                "packageName": "java.lang",
+                "simpleName": "Integer"
+              }
+            },
+            {
+              "collection": false,
+              "in": "BODY",
+              "jsonName": "pull_request",
+              "map": false,
+              "name": "pullRequest",
+              "type": {
+                "simpleName": "PullRequest"
+              }
+            },
+            {
+              "collection": false,
+              "in": "BODY",
+              "jsonName": "closed_at",
+              "map": false,
+              "name": "closedAt",
+              "type": {
+                "packageName": "java.util",
+                "simpleName": "Date"
+              }
+            },
+            {
+              "collection": false,
+              "in": "BODY",
+              "jsonName": "created_at",
+              "map": false,
+              "name": "createdAt",
+              "type": {
+                "packageName": "java.util",
+                "simpleName": "Date"
+              }
+            },
+            {
+              "collection": false,
+              "in": "BODY",
+              "jsonName": "updated_at",
+              "map": false,
+              "name": "updatedAt",
+              "type": {
+                "packageName": "java.util",
+                "simpleName": "Date"
+              }
+            },
+            {
+              "collection": false,
+              "in": "BODY",
+              "jsonName": "closed_by",
+              "map": false,
+              "name": "closedBy",
+              "type": {
+                "simpleName": "SimpleUser"
+              }
+            },
+            {
+              "collection": false,
+              "in": "BODY",
+              "jsonName": "body_html",
+              "map": false,
+              "name": "bodyHtml",
+              "type": {
+                "packageName": "java.lang",
+                "simpleName": "String"
+              }
+            },
+            {
+              "collection": false,
+              "in": "BODY",
+              "jsonName": "body_text",
+              "map": false,
+              "name": "bodyText",
+              "type": {
+                "packageName": "java.lang",
+                "simpleName": "String"
+              }
+            },
+            {
+              "collection": false,
+              "in": "BODY",
+              "jsonName": "timeline_url",
+              "map": false,
+              "name": "timelineUrl",
+              "type": {
+                "packageName": "java.net",
+                "simpleName": "URI"
+              }
+            },
+            {
+              "collection": false,
+              "in": "BODY",
+              "jsonName": "repository",
+              "map": false,
+              "name": "repository",
+              "type": {
+                "simpleName": "Repository"
+              }
+            },
+            {
+              "collection": false,
+              "in": "BODY",
+              "jsonName": "performed_via_github_app",
+              "map": false,
+              "name": "performedViaGithubApp",
+              "type": {
+                "simpleName": "Integration"
+              }
+            },
+            {
+              "collection": false,
+              "in": "BODY",
+              "jsonName": "author_association",
+              "map": false,
+              "name": "authorAssociation",
+              "type": {
+                "packageName": "java.lang",
+                "simpleName": "String"
+              }
+            },
+            {
+              "collection": false,
+              "in": "BODY",
+              "jsonName": "reactions",
+              "map": false,
+              "name": "reactions",
+              "type": {
+                "simpleName": "ReactionRollup"
+              }
+            }
           ],
           "innerClasses": [
           ],
-          "reference": "#/components/schemas/issue"
+          "name": {
+            "simpleName": "Issue"
+          },
+          "title": "Issue"
         },
         "summary": "Create an issue"
       }

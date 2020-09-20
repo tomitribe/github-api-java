@@ -18,6 +18,7 @@ package org.tomitribe.github.gen;
 
 import lombok.Getter;
 import org.tomitribe.github.gen.code.model.Clazz;
+import org.tomitribe.github.gen.code.model.ClazzReference;
 import org.tomitribe.github.gen.code.model.Field;
 import org.tomitribe.github.gen.openapi.Content;
 import org.tomitribe.github.gen.openapi.Example;
@@ -29,6 +30,7 @@ import org.tomitribe.github.gen.openapi.Schema;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.NoSuchElementException;
 
 /**
  * Will build and index the items under the components section of OpenAPI
@@ -50,6 +52,60 @@ public class ComponentIndex {
         this.responses = indexResponses(modelGenerator, openApi);
         this.parameters = indexParameters(modelGenerator, openApi);
         this.examples = indexExamples(modelGenerator, openApi);
+    }
+
+    public Field resolveParameter(final String reference) {
+        final Field field = getParameters().get(reference);
+        if (field == null) throw new NoSuchElementException("Parameter not found " + reference);
+        return field;
+    }
+
+    public Object resolveExample(final String reference) {
+        final Object example = getExamples().get(reference);
+        if (example == null) throw new NoSuchElementException("Example not found " + reference);
+        return example;
+    }
+
+    public Clazz resolveSchema(final String reference) {
+        final Clazz clazz = getSchemas().get(reference);
+        if (clazz == null) throw new NoSuchElementException("Schema not found " + reference);
+
+        if (clazz instanceof ClazzReference) {
+            final ClazzReference clazzReference = (ClazzReference) clazz;
+            return resolveClazz(clazzReference.getReference());
+        }
+        
+        return clazz;
+    }
+
+    public Clazz resolveClazz(final String reference) {
+        final Object resolved = resolve(reference);
+
+        if (resolved instanceof ClazzReference) {
+            final ClazzReference clazzReference = (ClazzReference) resolved;
+            return resolveClazz(clazzReference.getReference());
+        }
+
+        if (resolved instanceof Clazz) {
+            return (Clazz) resolved;
+        }
+
+        final String message = String.format("Expected Clazz reference, found '%s' resolving to: %s", reference, resolved);
+        throw new IllegalStateException(message);
+    }
+
+    public Clazz resolveResponse(final String reference) {
+        final Clazz clazz = getResponses().get(reference);
+        if (clazz == null) throw new NoSuchElementException("Response not found " + reference);
+        return clazz;
+    }
+
+    public Object resolve(final String reference) {
+        if (reference.startsWith("#/components/examples/")) return resolveExample(reference);
+        if (reference.startsWith("#/components/parameters/")) return resolveParameter(reference);
+        if (reference.startsWith("#/components/schemas/")) return resolveSchema(reference);
+        if (reference.startsWith("#/components/responses/")) return resolveResponse(reference);
+        throw new UnsupportedOperationException("Unsupported component type: " + reference);
     }
 
     private Map<String, Object> indexExamples(final ModelGenerator modelGenerator, final OpenApi openApi) {

@@ -18,11 +18,11 @@ package org.tomitribe.github.gen;
 
 import lombok.Data;
 import org.tomitribe.github.core.JsonMarshalling;
+import org.tomitribe.github.gen.code.model.ArrayClazz;
 import org.tomitribe.github.gen.code.model.Clazz;
 import org.tomitribe.github.gen.code.model.ClazzReference;
 import org.tomitribe.github.gen.code.model.EnumClazz;
 import org.tomitribe.github.gen.code.model.Field;
-import org.tomitribe.github.gen.code.model.Name;
 import org.tomitribe.github.gen.openapi.Schema;
 
 import java.net.URI;
@@ -30,7 +30,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.stream.Collectors;
 
 import static org.tomitribe.github.gen.code.model.Name.name;
@@ -79,6 +78,10 @@ public class ModelGenerator {
 
                 clazz.field(getField(clazz, name, value));
             }
+        }
+
+        if ("array".equals(schema.getType())) {
+            return ArrayClazz.of(build(schema.getItems()));
         }
 
         final Clazz build = clazz.build();

@@ -20,6 +20,7 @@ import lombok.Data;
 import org.tomitribe.github.gen.code.endpoint.Endpoint;
 import org.tomitribe.github.gen.code.endpoint.EndpointMethod;
 import org.tomitribe.github.gen.code.model.Clazz;
+import org.tomitribe.github.gen.code.model.ClazzReference;
 import org.tomitribe.github.gen.code.model.Field;
 import org.tomitribe.github.gen.openapi.Content;
 import org.tomitribe.github.gen.openapi.Github;
@@ -34,6 +35,7 @@ import org.tomitribe.github.gen.util.Words;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Comparator;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -66,12 +68,17 @@ public class EndpointGenerator {
 
             endpoints.add(Endpoint.builder()
                     .className(typeName)
-                    .method(methods)
+                    .methods(methods)
                     .build());
         }
 
         final List<Clazz> classes = modelGenerator.getClasses();
         ResolveReferences.resolve(classes, componentIndex, endpoints);
+
+        // We no longer need any of the ClazzReference instances
+        // Remove them so they aren't rendered
+        classes.removeIf(clazz -> clazz instanceof ClazzReference);
+
         return endpoints;
     }
 
