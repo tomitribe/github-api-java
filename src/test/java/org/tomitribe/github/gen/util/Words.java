@@ -48,6 +48,9 @@ public class Words {
                 .replace("_", "-")
                 .replace(" ", "-")
                 .replace("@", "")
+                .replace("-a-", "-")
+                .replace("-an-", "-")
+                .replace("-the-", "-")
                 .replaceAll("^-+", "");
 
         if (keywords.contains(cleaned)) {

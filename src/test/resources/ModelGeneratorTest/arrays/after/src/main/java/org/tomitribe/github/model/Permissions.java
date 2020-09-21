@@ -32,7 +32,7 @@ public class Permissions {
     private String contents;
 
     @JsonbProperty("def_not_a_repo")
-    private String defNotARepo;
+    private String defNotRepo;
 
     @JsonbProperty("deployments")
     private String deployments;

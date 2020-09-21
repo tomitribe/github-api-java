@@ -20,7 +20,7 @@ import java.util.stream.Stream;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
-import org.tomitribe.github.model.CreateAnIssue;
+import org.tomitribe.github.model.CreateIssue;
 import org.tomitribe.github.model.Issue;
 import org.tomitribe.github.model.IssueSimple;
 import org.tomitribe.github.model.ListRepositoryIssues;
@@ -33,7 +33,7 @@ public interface IssuesClient {
     @Docs("https://developer.github.com/v3/issues/#create-an-issue")
     @EnabledForGithubApps
     @Category("issues")
-    Issue createAnIssue(final CreateAnIssue createAnIssue);
+    Issue createIssue(final CreateIssue createIssue);
 
     @GET
     @Path("/repos/{owner}/{repo}/issues")
