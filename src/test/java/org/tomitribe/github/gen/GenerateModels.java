@@ -58,7 +58,7 @@ public class GenerateModels {
 
         this.openApi = OpenApi.parse(IO.slurp(gen.getGithubOpenApiJson()));
         this.schemas = openApi.getComponents().getSchemas();
-        this.modelGenerator = new ModelGenerator();
+        this.modelGenerator = new ModelGenerator("org.tomitribe.github.model");
 
         for (final Schema schema : this.schemas.values()) {
             final Clazz clazz = modelGenerator.build(schema);

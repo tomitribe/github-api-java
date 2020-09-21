@@ -195,6 +195,7 @@
             }
           ],
           "name": {
+            "packageName": "org.tomitribe.github.model",
             "simpleName": "ListRepositoryIssues"
           }
         },
@@ -349,6 +350,7 @@
                 "map": false,
                 "name": "user",
                 "type": {
+                  "packageName": "org.tomitribe.github.model",
                   "simpleName": "SimpleUser"
                 }
               },
@@ -359,6 +361,7 @@
                 "map": false,
                 "name": "labels",
                 "type": {
+                  "packageName": "org.tomitribe.github.model",
                   "simpleName": "Labels"
                 }
               },
@@ -369,6 +372,7 @@
                 "map": false,
                 "name": "assignee",
                 "type": {
+                  "packageName": "org.tomitribe.github.model",
                   "simpleName": "SimpleUser"
                 }
               },
@@ -379,6 +383,7 @@
                 "map": false,
                 "name": "assignees",
                 "type": {
+                  "packageName": "org.tomitribe.github.model",
                   "simpleName": "SimpleUser"
                 }
               },
@@ -389,6 +394,7 @@
                 "map": false,
                 "name": "milestone",
                 "type": {
+                  "packageName": "org.tomitribe.github.model",
                   "simpleName": "Milestone"
                 }
               },
@@ -432,6 +438,7 @@
                 "map": false,
                 "name": "pullRequest",
                 "type": {
+                  "packageName": "org.tomitribe.github.model",
                   "simpleName": "PullRequest"
                 }
               },
@@ -519,6 +526,7 @@
                 "map": false,
                 "name": "repository",
                 "type": {
+                  "packageName": "org.tomitribe.github.model",
                   "simpleName": "Repository"
                 }
               },
@@ -529,6 +537,7 @@
                 "map": false,
                 "name": "performedViaGithubApp",
                 "type": {
+                  "packageName": "org.tomitribe.github.model",
                   "simpleName": "Integration"
                 }
               }
@@ -536,6 +545,7 @@
             "innerClasses": [
             ],
             "name": {
+              "packageName": "org.tomitribe.github.model",
               "simpleName": "IssueSimple"
             },
             "title": "Issue Simple"
@@ -584,6 +594,7 @@
           "innerClasses": [
           ],
           "name": {
+            "packageName": "org.tomitribe.github.model",
             "simpleName": "CreateAnIssue"
           }
         },
@@ -731,6 +742,7 @@
               "map": false,
               "name": "user",
               "type": {
+                "packageName": "org.tomitribe.github.model",
                 "simpleName": "SimpleUser"
               }
             },
@@ -752,6 +764,7 @@
               "map": false,
               "name": "assignee",
               "type": {
+                "packageName": "org.tomitribe.github.model",
                 "simpleName": "SimpleUser"
               }
             },
@@ -762,6 +775,7 @@
               "map": false,
               "name": "assignees",
               "type": {
+                "packageName": "org.tomitribe.github.model",
                 "simpleName": "SimpleUser"
               }
             },
@@ -772,6 +786,7 @@
               "map": false,
               "name": "milestone",
               "type": {
+                "packageName": "org.tomitribe.github.model",
                 "simpleName": "Milestone"
               }
             },
@@ -815,6 +830,7 @@
               "map": false,
               "name": "pullRequest",
               "type": {
+                "packageName": "org.tomitribe.github.model",
                 "simpleName": "PullRequest"
               }
             },
@@ -858,6 +874,7 @@
               "map": false,
               "name": "closedBy",
               "type": {
+                "packageName": "org.tomitribe.github.model",
                 "simpleName": "SimpleUser"
               }
             },
@@ -901,6 +918,7 @@
               "map": false,
               "name": "repository",
               "type": {
+                "packageName": "org.tomitribe.github.model",
                 "simpleName": "Repository"
               }
             },
@@ -911,6 +929,7 @@
               "map": false,
               "name": "performedViaGithubApp",
               "type": {
+                "packageName": "org.tomitribe.github.model",
                 "simpleName": "Integration"
               }
             },
@@ -932,6 +951,7 @@
               "map": false,
               "name": "reactions",
               "type": {
+                "packageName": "org.tomitribe.github.model",
                 "simpleName": "ReactionRollup"
               }
             }
@@ -939,6 +959,7 @@
           "innerClasses": [
           ],
           "name": {
+            "packageName": "org.tomitribe.github.model",
             "simpleName": "Issue"
           },
           "title": "Issue"

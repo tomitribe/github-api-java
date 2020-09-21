@@ -60,6 +60,7 @@
     "innerClasses":[
     ],
     "name":{
+      "packageName":"org.tomitribe.github.model",
       "simpleName":"AllOf2"
     },
     "parent":{

@@ -297,6 +297,7 @@ public class ClazzRenderer {
 
     private void renderTestCase(final Clazz clazz) {
         final PrintString out = new PrintString();
+        final String name = clazz.getName().getSimpleName();
         out.printf("/*\n" +
                 " * Licensed to the Apache Software Foundation (ASF) under one or more\n" +
                 " * contributor license agreements.  See the NOTICE file distributed with\n" +
@@ -327,10 +328,10 @@ public class ClazzRenderer {
                 "    public void parse() throws IOException {\n" +
                 "        assertPayload(%s.class);\n" +
                 "    }\n" +
-                "}\n", clazz.getName(), clazz.getName());
+                "}\n", name, name);
 
         final Package aPackage = project.src().test().java().packageName(packageName);
-        aPackage.write(clazz.getName() + "Test.java", new String(out.toByteArray()));
+        aPackage.write(name + "Test.java", new String(out.toByteArray()));
     }
 
     private static String formatComment(final String s) {

@@ -51,6 +51,7 @@
     "innerClasses":[
     ],
     "name":{
+      "packageName":"org.tomitribe.github.model",
       "simpleName":"Permissions"
     }
   },
@@ -87,6 +88,7 @@
         "map":false,
         "name":"permissions",
         "type":{
+          "packageName":"org.tomitribe.github.model",
           "simpleName":"Permissions"
         }
       },
@@ -138,6 +140,7 @@
       }
     ],
     "name":{
+      "packageName":"org.tomitribe.github.model",
       "simpleName":"ArrayOfRefs"
     },
     "title":"Installation Token"

@@ -33,7 +33,9 @@ import org.tomitribe.github.gen.ClassDefinition;
 import org.tomitribe.github.gen.Package;
 import org.tomitribe.github.gen.Project;
 import org.tomitribe.github.gen.code.model.ArrayClazz;
+import org.tomitribe.github.gen.code.model.Clazz;
 import org.tomitribe.github.gen.code.model.ClazzRenderer;
+import org.tomitribe.github.gen.code.model.Name;
 import org.tomitribe.util.IO;
 import org.tomitribe.util.Strings;
 
@@ -49,6 +51,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.UncheckedIOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Stream;
@@ -85,9 +88,12 @@ public class EndpointRenderer {
         if (definition.getClazz() == null) throw new IllegalStateException("Parsed clazz is null");
 
         endpoint.getMethods()
-                .stream().flatMap(this::imports)
+                .stream()
+                .flatMap(this::imports)
+                .peek(System.out::println)
                 .sorted()
                 .distinct()
+                .peek(System.out::println)
                 .forEach(definition::addImport);
 
         endpoint.getMethods().sort(Comparator.comparing(EndpointMethod::getMethod));
@@ -156,8 +162,28 @@ public class EndpointRenderer {
         aPackage.write(className + ".java", definition.clean().toString());
     }
 
+    public static class Imports {
+        final List<String> imports = new ArrayList<>();
+
+        public void add(final Class<?> clazz) {
+            imports.add(clazz.getName());
+        }
+
+        public void add(final String className) {
+            imports.add(className);
+        }
+
+        public void add(final Name className) {
+            imports.add(className.toString());
+        }
+
+        private Stream<String> stream() {
+            return imports.stream();
+        }
+    }
+
     private Stream<String> imports(final EndpointMethod method) {
-        final List<Class<?>> imports = new ArrayList<>();
+        final Imports imports = new Imports();
 
         if (method.getResponse() instanceof ArrayClazz) {
             imports.add(Stream.class);
@@ -173,8 +199,19 @@ public class EndpointRenderer {
 
         imports.add(Path.class);
 
-        return imports.stream()
-                .map(Class::getName);
+        final List<Clazz> clazzes = Arrays.asList(method.getRequest(), method.getResponse());
+        for (final Clazz clazz : clazzes) {
+            if (clazz == null) continue;
+
+            if (clazz instanceof ArrayClazz) {
+                final ArrayClazz arrayClazz = (ArrayClazz) clazz;
+                imports.add(arrayClazz.getOf().getName());
+            } else {
+                imports.add(clazz.getName());
+            }
+        }
+
+        return imports.stream();
     }
 
     public static class Annotations {

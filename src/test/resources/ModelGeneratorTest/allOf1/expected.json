@@ -40,6 +40,7 @@
     "innerClasses":[
     ],
     "name":{
+      "packageName":"org.tomitribe.github.model",
       "simpleName":"App"
     }
   },
@@ -76,6 +77,7 @@
         "map":false,
         "name":"app",
         "type":{
+          "packageName":"org.tomitribe.github.model",
           "simpleName":"App"
         }
       },
@@ -124,6 +126,7 @@
     "innerClasses":[
     ],
     "name":{
+      "packageName":"org.tomitribe.github.model",
       "simpleName":"AllOf1"
     },
     "title":"Application Grant"

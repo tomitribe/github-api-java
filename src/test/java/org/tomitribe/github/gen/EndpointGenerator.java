@@ -46,8 +46,16 @@ import static java.lang.Boolean.TRUE;
 public class EndpointGenerator {
 
 
-    private final ModelGenerator modelGenerator = new ModelGenerator();
+    private final ModelGenerator modelGenerator;
+    private final String modelPackage;
     private ComponentIndex componentIndex;
+    private final String endpointPackage;
+
+    public EndpointGenerator() {
+        this.modelPackage = "org.tomitribe.github.model";
+        this.endpointPackage = "org.tomitribe.github.client";
+        this.modelGenerator = new ModelGenerator(modelPackage);
+    }
 
     public List<Endpoint> build(final OpenApi openApi) {
         this.componentIndex = new ComponentIndex(modelGenerator, openApi);
@@ -186,7 +194,7 @@ public class EndpointGenerator {
     }
 
     private Clazz generateRequestClass(final String requestClassName, final List<Parameter> parameters) {
-        final Clazz.Builder clazz = Clazz.builder().name(requestClassName);
+        final Clazz.Builder clazz = Clazz.builder().name(modelPackage + "." + requestClassName);
         for (final Parameter parameter : parameters) {
             final Schema schema = getSchema(parameter);
 

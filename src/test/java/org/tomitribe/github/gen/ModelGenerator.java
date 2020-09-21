@@ -39,6 +39,11 @@ import static org.tomitribe.github.gen.util.Words.getTypeName;
 public class ModelGenerator {
 
     private final List<Clazz> classes = new ArrayList<>();
+    private final String packageName;
+
+    public ModelGenerator(final String packageName) {
+        this.packageName = packageName;
+    }
 
     public Clazz build(final Schema schema) {
         if (schema.getRef() != null) {
@@ -52,7 +57,7 @@ public class ModelGenerator {
         final Clazz.Builder clazz = Clazz.builder().title(schema.getTitle());
 
         if (schema.getName() != null) {
-            clazz.name(getTypeName(schema.getName()));
+            clazz.name(packageName + "." + getTypeName(schema.getName()));
         }
 
         if (schema.getAllOf() != null) {

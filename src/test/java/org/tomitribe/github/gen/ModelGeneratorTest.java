@@ -112,7 +112,7 @@ public class ModelGeneratorTest {
         final Schema schema = JsonMarshalling.unmarshal(Schema.class, content);
         schema.setName("allOf2");
 
-        final ModelGenerator modelGenerator = new ModelGenerator();
+        final ModelGenerator modelGenerator = getModelGenerator();
 
         final Clazz clazz = modelGenerator.build(schema);
 
@@ -122,6 +122,10 @@ public class ModelGeneratorTest {
         final List<Clazz> classes = modelGenerator.getClasses();
         final String json = JsonMarshalling.toFormattedJson(classes);
         JsonAsserts.assertJson(expected, json);
+    }
+
+    private ModelGenerator getModelGenerator() {
+        return new ModelGenerator("org.tomitribe.github.model");
     }
 
     @Test
@@ -135,7 +139,7 @@ public class ModelGeneratorTest {
         final Schema schema = JsonMarshalling.unmarshal(Schema.class, content);
         schema.setName("allOf1");
 
-        final ModelGenerator modelGenerator = new ModelGenerator();
+        final ModelGenerator modelGenerator = getModelGenerator();
 
         modelGenerator.build(schema);
 
@@ -155,7 +159,7 @@ public class ModelGeneratorTest {
         final Schema schema = JsonMarshalling.unmarshal(Schema.class, content);
         schema.setName("arrayOfRefs");
 
-        final ModelGenerator modelGenerator = new ModelGenerator();
+        final ModelGenerator modelGenerator = getModelGenerator();
 
         modelGenerator.build(schema);
 
@@ -171,7 +175,7 @@ public class ModelGeneratorTest {
                 "}";
         final Schema schema = JsonMarshalling.unmarshal(Schema.class, content);
 
-        final ModelGenerator modelGenerator = new ModelGenerator();
+        final ModelGenerator modelGenerator = getModelGenerator();
 
         final Clazz clazz = modelGenerator.build(schema);
 
@@ -187,7 +191,7 @@ public class ModelGeneratorTest {
         final Schema schema = JsonMarshalling.unmarshal(Schema.class, content);
         schema.setName(name1);
 
-        final ModelGenerator modelGenerator = new ModelGenerator();
+        final ModelGenerator modelGenerator = getModelGenerator();
 
         modelGenerator.build(schema);
 
