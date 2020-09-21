@@ -36,6 +36,7 @@ import org.tomitribe.github.gen.code.model.ArrayClazz;
 import org.tomitribe.github.gen.code.model.Clazz;
 import org.tomitribe.github.gen.code.model.ClazzRenderer;
 import org.tomitribe.github.gen.code.model.Name;
+import org.tomitribe.github.gen.code.model.VoidClazz;
 import org.tomitribe.util.IO;
 import org.tomitribe.util.Strings;
 
@@ -101,9 +102,14 @@ public class EndpointRenderer {
         for (final EndpointMethod method : endpoint.getMethods()) {
             final MethodDeclaration methodDeclaration = new MethodDeclaration();
             methodDeclaration.setName(method.getJavaMethod());
-            methodDeclaration.addParameter(param(
-                    method.getRequest().getName().getSimpleName(),
-                    Strings.lcfirst(method.getRequest().getName().getSimpleName())));
+
+            if (method.getRequest() instanceof VoidClazz) {
+                // skip setting any parameters
+            } else {
+                methodDeclaration.addParameter(param(
+                        method.getRequest().getName().getSimpleName(),
+                        Strings.lcfirst(method.getRequest().getName().getSimpleName())));
+            }
 
             if (method.getResponse() instanceof ArrayClazz) {
                 final ArrayClazz arrayClazz = (ArrayClazz) method.getResponse();
@@ -173,7 +179,11 @@ public class EndpointRenderer {
         }
 
         public void add(final Name className) {
-            imports.add(className.toString());
+            try {
+                imports.add(className.toString());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
 
         private Stream<String> stream() {
@@ -205,6 +215,8 @@ public class EndpointRenderer {
             if (clazz instanceof ArrayClazz) {
                 final ArrayClazz arrayClazz = (ArrayClazz) clazz;
                 imports.add(arrayClazz.getOf().getName());
+            } else if (clazz instanceof VoidClazz) {
+                // skip
             } else {
                 imports.add(clazz.getName());
             }

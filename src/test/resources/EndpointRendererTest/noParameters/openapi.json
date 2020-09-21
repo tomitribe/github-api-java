@@ -1,0 +1,227 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "version": "0.0.5",
+    "title": "GitHub v3 REST API",
+    "description": "GitHub's v3 REST API.",
+    "license": {
+      "name": "MIT",
+      "url": "https://spdx.org/licenses/MIT"
+    },
+    "termsOfService": "https://docs.github.com/articles/github-terms-of-service",
+    "contact": {
+      "name": "Support",
+      "url": "https://support.github.com"
+    }
+  },
+  "paths": {
+    "/": {
+      "get": {
+        "summary": "GitHub API Root",
+        "description": "Get Hypermedia links to resources accessible in GitHub's REST API",
+        "tags": [
+          "meta"
+        ],
+        "operationId": "meta/root",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "current_user_url": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "current_user_authorizations_html_url": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "authorizations_url": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "code_search_url": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "commit_search_url": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "emails_url": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "emojis_url": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "events_url": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "feeds_url": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "followers_url": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "following_url": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "gists_url": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "hub_url": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "issue_search_url": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "issues_url": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "keys_url": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "label_search_url": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "notifications_url": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "organization_url": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "organization_repositories_url": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "organization_teams_url": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "public_gists_url": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "rate_limit_url": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "repository_url": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "repository_search_url": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "current_user_repositories_url": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "starred_url": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "starred_gists_url": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "topic_search_url": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "user_url": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "user_organizations_url": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "user_repositories_url": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "user_search_url": {
+                      "type": "string",
+                      "format": "uri"
+                    }
+                  },
+                  "required": [
+                    "current_user_url",
+                    "current_user_authorizations_html_url",
+                    "authorizations_url",
+                    "code_search_url",
+                    "commit_search_url",
+                    "emails_url",
+                    "emojis_url",
+                    "events_url",
+                    "feeds_url",
+                    "followers_url",
+                    "following_url",
+                    "gists_url",
+                    "hub_url",
+                    "issue_search_url",
+                    "issues_url",
+                    "keys_url",
+                    "label_search_url",
+                    "notifications_url",
+                    "organization_url",
+                    "organization_repositories_url",
+                    "organization_teams_url",
+                    "public_gists_url",
+                    "rate_limit_url",
+                    "repository_url",
+                    "repository_search_url",
+                    "current_user_repositories_url",
+                    "starred_url",
+                    "starred_gists_url",
+                    "user_url",
+                    "user_organizations_url",
+                    "user_repositories_url",
+                    "user_search_url"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "x-github": {
+          "githubCloudOnly": false,
+          "enabledForGitHubApps": true,
+          "previews": [],
+          "category": "meta"
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+    },
+    "parameters": {
+    },
+    "responses": {
+    },
+    "examples": {
+    },
+    "headers": {
+    }
+  }
+}

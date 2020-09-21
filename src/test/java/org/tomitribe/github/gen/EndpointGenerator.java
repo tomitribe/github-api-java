@@ -19,9 +19,11 @@ package org.tomitribe.github.gen;
 import lombok.Data;
 import org.tomitribe.github.gen.code.endpoint.Endpoint;
 import org.tomitribe.github.gen.code.endpoint.EndpointMethod;
+import org.tomitribe.github.gen.code.model.ArrayClazz;
 import org.tomitribe.github.gen.code.model.Clazz;
 import org.tomitribe.github.gen.code.model.ClazzReference;
 import org.tomitribe.github.gen.code.model.Field;
+import org.tomitribe.github.gen.code.model.Name;
 import org.tomitribe.github.gen.code.model.VoidClazz;
 import org.tomitribe.github.gen.openapi.Content;
 import org.tomitribe.github.gen.openapi.Github;
@@ -187,10 +189,24 @@ public class EndpointGenerator {
         final Content jsonResponse = ok.getContent().get("application/json");
         if (jsonResponse == null) throw new IllegalStateException("Expected 'application/json' content");
 
-        return modelGenerator.build(jsonResponse.getSchema());
+        final Clazz clazz = modelGenerator.build(jsonResponse.getSchema());
+
+        if (shouldHaveName(clazz) && clazz.getName() == null) {
+            final String name = Words.getTypeName(method.getSummary()) + "Response";
+            clazz.setName(new Name(modelPackage, name));
+        }
+        return clazz;
+    }
+
+    private boolean shouldHaveName(final Clazz clazz) {
+        if (clazz instanceof ArrayClazz) return false;
+        if (clazz instanceof VoidClazz) return false;
+        return true;
     }
 
     private Clazz generateRequestClass(final String requestClassName, final List<Parameter> parameters) {
+        if (parameters == null) return new VoidClazz();
+
         final Clazz.Builder clazz = Clazz.builder().name(modelPackage + "." + requestClassName);
         for (final Parameter parameter : parameters) {
             final Schema schema = getSchema(parameter);

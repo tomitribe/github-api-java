@@ -16,6 +16,7 @@
  */
 package org.tomitribe.github.gen;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.tomitribe.github.gen.code.endpoint.Endpoint;
 import org.tomitribe.github.gen.code.endpoint.EndpointRenderer;
@@ -43,6 +44,17 @@ public class EndpointRendererTest {
     @Test
     public void voidReturn() throws Exception {
         assertScenario(Scenario.get("voidReturn"));
+    }
+
+    @Test
+    public void noParameters() throws Exception {
+        assertScenario(Scenario.get("noParameters"));
+    }
+
+    @Ignore
+    @Test
+    public void all() throws Exception {
+        assertScenario(Scenario.get("all"));
     }
 
     private void assertScenario(final Scenario scenario) throws IOException {
