@@ -38,13 +38,15 @@ public class EndpointMethod {
     private String summary;
     private String javaMethod;
     private String operationId;
-    @lombok.Builder.Default
-    private List<String> previews = new ArrayList<String>();
+    private String removalDate;
+    private String deprecationDate;
+    private String docs;
+    private List<String> previews;
     private boolean githubCloudOnly;
     private boolean enabledForGitHubApps;
 
     public static class Builder {
-        private List<String> previews = new ArrayList<String>();
+        private List<String> previews = new ArrayList<>();
 
         public Builder preview(final String preview) {
             this.previews.add(preview);

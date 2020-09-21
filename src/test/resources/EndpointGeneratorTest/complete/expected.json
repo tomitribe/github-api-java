@@ -4,6 +4,7 @@
     "methods": [
       {
         "category": "issues",
+        "docs": "https://developer.github.com/v3/issues/#list-repository-issues",
         "enabledForGitHubApps": true,
         "githubCloudOnly": false,
         "javaMethod": "listRepositoryIssues",
@@ -11,6 +12,8 @@
         "operationId": "issues/list-for-repo",
         "path": "/repos/{owner}/{repo}/issues",
         "previews": [
+          "machine-man",
+          "squirrel-girl"
         ],
         "request": {
           "componentIds": [
@@ -542,6 +545,7 @@
       },
       {
         "category": "issues",
+        "docs": "https://developer.github.com/v3/issues/#create-an-issue",
         "enabledForGitHubApps": true,
         "githubCloudOnly": false,
         "javaMethod": "createAnIssue",

@@ -35,7 +35,6 @@ import org.tomitribe.github.gen.util.Words;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Comparator;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -140,10 +139,16 @@ public class EndpointGenerator {
                 .summary(method.getSummary())
                 .operationId(method.getOperationId());
 
+        if (method.getExternalDocs() != null) {
+            builder.docs(method.getExternalDocs().getUrl());
+        }
+
         final Github github = method.getGithub();
         if (github != null) {
             builder.category(github.getCategory())
                     .subcategory(github.getSubcategory())
+                    .removalDate(github.getRemovalDate())
+                    .deprecationDate(github.getDeprecationDate())
                     .enabledForGitHubApps(TRUE.equals(github.getEnabledForGitHubApps()))
                     .githubCloudOnly(TRUE.equals(github.getGithubCloudOnly()));
 

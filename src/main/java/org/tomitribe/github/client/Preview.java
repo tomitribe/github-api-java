@@ -14,7 +14,7 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package org.tomitribe.github.model;
+package org.tomitribe.github.client;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Repeatable;
@@ -37,9 +37,9 @@ import java.lang.annotation.Target;
  * #/components/schemas/check-run
  * #/components/schemas/issue
  */
-@Repeatable(ComponentIds.class)
-@Target(ElementType.TYPE)
+@Repeatable(Previews.class)
+@Target({ElementType.METHOD, ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
-public @interface ComponentId {
+public @interface Preview {
     String value();
 }

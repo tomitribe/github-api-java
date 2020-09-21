@@ -14,32 +14,14 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package org.tomitribe.github.model;
+package org.tomitribe.github.client;
 
 import java.lang.annotation.ElementType;
-import java.lang.annotation.Repeatable;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-/**
- * Indicated the generated class comes from the components
- * section of the OpenAPI definition and what name it has.
- *
- * Example component ids:
- *
- * #/components/examples/base-gist
- * #/components/examples/check-run
- * #/components/parameters/owner
- * #/components/parameters/page
- * #/components/responses/preview_header_missing
- * #/components/responses/requires_authentication
- * #/components/schemas/check-run
- * #/components/schemas/issue
- */
-@Repeatable(ComponentIds.class)
-@Target(ElementType.TYPE)
+@Target({ElementType.METHOD, ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
-public @interface ComponentId {
-    String value();
+public @interface EnabledForGithubApps {
 }
