@@ -90,10 +90,9 @@ public class EndpointRenderer {
         endpoint.getMethods()
                 .stream()
                 .flatMap(this::imports)
-                .peek(System.out::println)
                 .sorted()
                 .distinct()
-                .peek(System.out::println)
+                .filter(s -> !"void".equals(s))
                 .forEach(definition::addImport);
 
         endpoint.getMethods().sort(Comparator.comparing(EndpointMethod::getMethod));

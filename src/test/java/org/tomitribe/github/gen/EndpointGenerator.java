@@ -22,6 +22,7 @@ import org.tomitribe.github.gen.code.endpoint.EndpointMethod;
 import org.tomitribe.github.gen.code.model.Clazz;
 import org.tomitribe.github.gen.code.model.ClazzReference;
 import org.tomitribe.github.gen.code.model.Field;
+import org.tomitribe.github.gen.code.model.VoidClazz;
 import org.tomitribe.github.gen.openapi.Content;
 import org.tomitribe.github.gen.openapi.Github;
 import org.tomitribe.github.gen.openapi.Method;
@@ -171,26 +172,22 @@ public class EndpointGenerator {
     }
 
     private Clazz generateResponseClass(final Method method) {
-        final Content jsonResponse = get2xxJsonResponse(method);
+        if (method.getResponses() == null) throw new IllegalStateException("Method has no responses: " + method);
+        if (method.getResponses().values() == null) throw new IllegalStateException("Method has no responses: " + method);
 
-        return modelGenerator.build(jsonResponse.getSchema());
-    }
-
-    private Content get2xxJsonResponse(final Method method) {
-        if (method.getResponses() == null) {
-            throw new IllegalStateException("Method has no responses: " + method);
-        }
-        if (method.getResponses().values() == null) {
-            throw new IllegalStateException("Method has no responses: " + method);
-        }
         final Response ok = method.getResponses().values().stream()
                 .filter(response -> response.getName().startsWith("2"))
                 .min(Comparator.comparing(Response::getName))
                 .orElseThrow(() -> new IllegalStateException("No 200 range responses found"));
 
+        if (ok.getContent() == null) {
+            return new VoidClazz();
+        }
+
         final Content jsonResponse = ok.getContent().get("application/json");
         if (jsonResponse == null) throw new IllegalStateException("Expected 'application/json' content");
-        return jsonResponse;
+
+        return modelGenerator.build(jsonResponse.getSchema());
     }
 
     private Clazz generateRequestClass(final String requestClassName, final List<Parameter> parameters) {

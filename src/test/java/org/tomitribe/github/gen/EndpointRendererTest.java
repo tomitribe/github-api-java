@@ -37,9 +37,15 @@ public class EndpointRendererTest {
 
     @Test
     public void simple() throws Exception {
-//        inspect();
-        final Scenario scenario = Scenario.get("simple");
+        assertScenario(Scenario.get("simple"));
+    }
 
+    @Test
+    public void voidReturn() throws Exception {
+        assertScenario(Scenario.get("voidReturn"));
+    }
+
+    private void assertScenario(final Scenario scenario) throws IOException {
         final OpenApi openApi = scenario.getOpenApi();
 
         final EndpointGenerator endpointGenerator = new EndpointGenerator();
@@ -54,13 +60,6 @@ public class EndpointRendererTest {
         final Project expected = scenario.after();
 
         assertProject(expected, actual);
-    }
-
-    private void inspect() {
-        final File file = new File("/Users/dblevins/work/tomitribe/github-api-java/src/test/resources/EndpointRendererTest/simple/after/src/main/java/org/tomitribe/github/model/IssuesClient.java");
-
-        final ClassDefinition definition = ClassDefinition.parse(file);
-        System.out.println(definition);
     }
 
     public interface Scenario extends Dir {
