@@ -89,6 +89,22 @@ public class ModelGenerator {
             return ArrayClazz.of(build(schema.getItems()));
         }
 
+        if ("string".equals(schema.getType())) {
+            return Clazz.of(String.class);
+        }
+
+        if ("boolean".equals(schema.getType())) {
+            return Clazz.of(Boolean.class);
+        }
+
+        if ("integer".equals(schema.getType())) {
+            return Clazz.of(Integer.class);
+        }
+
+        if ("date-time".equals(schema.getType())) {
+            return Clazz.of(Date.class);
+        }
+
         final Clazz build = clazz.build();
         classes.add(build);
         return build;

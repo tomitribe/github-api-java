@@ -73,6 +73,45 @@ public class Clazz {
         return this;
     }
 
+    public static Clazz of(final Class<?> clazz) {
+        return new Clazz(Id.next(), Name.name(clazz), null, null) {
+            @Override
+            public void setName(final Name name) {
+                throw new UnsupportedOperationException();
+            }
+
+            @Override
+            public void setParent(final Clazz parent) {
+                throw new UnsupportedOperationException();
+            }
+
+            @Override
+            public void setTitle(final String title) {
+                throw new UnsupportedOperationException();
+            }
+
+            @Override
+            public Clazz addComponentId(final String componentId) {
+                throw new UnsupportedOperationException();
+            }
+
+            @Override
+            public Clazz addEndpoint(final String method) {
+                throw new UnsupportedOperationException();
+            }
+
+            @Override
+            public Clazz addField(final Field field) {
+                throw new UnsupportedOperationException();
+            }
+
+            @Override
+            public Clazz addInnerClass(final Clazz innerClass) {
+                throw new UnsupportedOperationException();
+            }
+        };
+    }
+
     public static class Id {
         private static final AtomicInteger ids = new AtomicInteger(1000);
 

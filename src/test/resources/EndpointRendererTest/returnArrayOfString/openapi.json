@@ -1,0 +1,83 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "version": "0.0.5",
+    "title": "GitHub v3 REST API",
+    "description": "GitHub's v3 REST API.",
+    "license": {
+      "name": "MIT",
+      "url": "https://spdx.org/licenses/MIT"
+    },
+    "termsOfService": "https://docs.github.com/articles/github-terms-of-service",
+    "contact": {
+      "name": "Support",
+      "url": "https://support.github.com"
+    }
+  },
+  "paths": {
+    "/gitignore/templates": {
+      "get": {
+        "summary": "Get all gitignore templates",
+        "description": "List all templates available to pass as an option when [creating a repository](https://developer.github.com/v3/repos/#create-a-repository-for-the-authenticated-user).",
+        "operationId": "gitignore/get-all-templates",
+        "tags": [
+          "gitignore"
+        ],
+        "externalDocs": {
+          "description": "API method documentation",
+          "url": "https://developer.github.com/v3/gitignore/#get-all-gitignore-templates"
+        },
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "example": [
+                  "Actionscript",
+                  "Android",
+                  "AppceleratorTitanium",
+                  "Autotools",
+                  "Bancha",
+                  "C",
+                  "C++"
+                ]
+              }
+            }
+          },
+          "304": {
+            "$ref": "#/components/responses/not_modified"
+          }
+        },
+        "x-github": {
+          "githubCloudOnly": false,
+          "enabledForGitHubApps": true,
+          "previews": [],
+          "category": "gitignore",
+          "subcategory": null
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+    },
+    "parameters": {
+    },
+    "responses": {
+      "not_modified": {
+        "description": "Not Modified"
+      }
+    },
+    "examples": {
+    },
+    "headers": {
+    }
+  }
+}
