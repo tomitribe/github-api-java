@@ -47,10 +47,13 @@ public class Words {
         final String cleaned = jsonName
                 .replace("_", "-")
                 .replace(" ", "-")
+                .replace("(", "-")
+                .replace(")", "-")
                 .replace("@", "")
                 .replace("-a-", "-")
                 .replace("-an-", "-")
                 .replace("-the-", "-")
+                .replaceAll("-+", "-")
                 .replaceAll("^-+", "");
 
         if (keywords.contains(cleaned)) {

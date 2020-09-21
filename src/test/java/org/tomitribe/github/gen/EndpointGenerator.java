@@ -40,6 +40,7 @@ import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -124,9 +125,12 @@ public class EndpointGenerator {
 
     private boolean returnsApplicationJson(final Method method) {
         return method.getResponses().values().stream()
+                .filter(response -> response.getName().startsWith("2"))
                 .map(Response::getContent)
+                .filter(Objects::nonNull)
                 .map(Map::keySet)
                 .flatMap(Collection::stream)
+                .filter(Objects::nonNull)
                 .anyMatch(s -> s.equals("application/json"));
     }
 
@@ -187,7 +191,13 @@ public class EndpointGenerator {
         }
 
         final Content jsonResponse = ok.getContent().get("application/json");
-        if (jsonResponse == null) throw new IllegalStateException("Expected 'application/json' content");
+        if (jsonResponse == null) {
+            if (method.getResponses().values().stream().anyMatch(response -> response.getName().equals("204"))) {
+                return new VoidClazz();
+            } else {
+                throw new IllegalStateException("Expected 'application/json' content");
+            }
+        }
 
         final Clazz clazz = modelGenerator.build(jsonResponse.getSchema());
 

@@ -182,7 +182,7 @@ public class EndpointRenderer {
             try {
                 imports.add(className.toString());
             } catch (Exception e) {
-                e.printStackTrace();
+                throw new IllegalStateException(String.format("Cannot add import for name: %s", className), e);
             }
         }
 
