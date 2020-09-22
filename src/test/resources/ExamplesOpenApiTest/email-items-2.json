@@ -1,8 +1,8 @@
 [
   {
-    "email":"octocat@github.com",
-    "verified":true,
-    "primary":true,
-    "visibility":"public"
+    "email": "octocat@github.com",
+    "verified": true,
+    "primary": true,
+    "visibility": "public"
   }
 ]

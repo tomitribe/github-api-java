@@ -1,8 +1,8 @@
 {
-  "contexts":[
+  "contexts": [
     {
-      "message":"Owns this repository",
-      "octicon":"repo"
+      "message": "Owns this repository",
+      "octicon": "repo"
     }
   ]
 }
