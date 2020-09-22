@@ -55,6 +55,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Stream;
 
 public class EndpointRenderer {
@@ -111,7 +112,10 @@ public class EndpointRenderer {
                         Strings.lcfirst(method.getRequest().getName().getSimpleName())));
             }
 
-            if (method.getResponse() instanceof ArrayClazz) {
+            if (isArrayOfArray(method)) {
+                final Name arrayType = getImport(method.getResponse());
+                methodDeclaration.setType(String.format("%s[][]", arrayType.getSimpleName()));
+            } else if (isArray(method)) {
                 final ArrayClazz arrayClazz = (ArrayClazz) method.getResponse();
                 methodDeclaration.setType(String.format("Stream<%s>", arrayClazz.getOf().getName().getSimpleName()));
             } else {
@@ -167,6 +171,19 @@ public class EndpointRenderer {
         aPackage.write(className + ".java", definition.clean().toString());
     }
 
+    private boolean isArray(final EndpointMethod method) {
+        return method.getResponse() instanceof ArrayClazz;
+    }
+
+    private boolean isArrayOfArray(final EndpointMethod method) {
+        final Clazz clazz = method.getResponse();
+        if (clazz instanceof ArrayClazz) {
+            final ArrayClazz arrayClazz = (ArrayClazz) clazz;
+            return arrayClazz.getOf() instanceof ArrayClazz;
+        }
+        return false;
+    }
+
     public static class Imports {
         final List<String> imports = new ArrayList<>();
 
@@ -194,7 +211,7 @@ public class EndpointRenderer {
     private Stream<String> imports(final EndpointMethod method) {
         final Imports imports = new Imports();
 
-        if (method.getResponse() instanceof ArrayClazz) {
+        if (isArray(method)) {
             imports.add(Stream.class);
         }
 
@@ -211,18 +228,21 @@ public class EndpointRenderer {
         final List<Clazz> clazzes = Arrays.asList(method.getRequest(), method.getResponse());
         for (final Clazz clazz : clazzes) {
             if (clazz == null) continue;
-
-            if (clazz instanceof ArrayClazz) {
-                final ArrayClazz arrayClazz = (ArrayClazz) clazz;
-                imports.add(arrayClazz.getOf().getName());
-            } else if (clazz instanceof VoidClazz) {
-                // skip
-            } else {
-                imports.add(clazz.getName());
-            }
+            imports.add(getImport(clazz));
         }
 
-        return imports.stream();
+        return imports.stream().filter(Objects::nonNull);
+    }
+
+    private Name getImport(final Clazz clazz) {
+        if (clazz == null) return new Name(null, null);
+        if (clazz instanceof VoidClazz) return new Name(null, null);
+        if (clazz instanceof ArrayClazz) {
+            final ArrayClazz arrayClazz = (ArrayClazz) clazz;
+            return getImport(arrayClazz.getOf());
+        }
+
+        return clazz.getName();
     }
 
     public static class Annotations {
