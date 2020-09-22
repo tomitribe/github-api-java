@@ -1,0 +1,113 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "version": "0.0.5",
+    "title": "GitHub v3 REST API",
+    "description": "GitHub's v3 REST API.",
+    "license": {
+      "name": "MIT",
+      "url": "https://spdx.org/licenses/MIT"
+    },
+    "termsOfService": "https://docs.github.com/articles/github-terms-of-service",
+    "contact": {
+      "name": "Support",
+      "url": "https://support.github.com"
+    }
+  },
+  "paths": {
+    "/repos/{owner}/{repo}/stats/code_frequency": {
+      "get": {
+        "summary": "Get the weekly commit activity",
+        "description": "Returns a weekly aggregate of the number of additions and deletions pushed to a repository.",
+        "tags": [
+          "repos"
+        ],
+        "operationId": "repos/get-code-frequency-stats",
+        "externalDocs": {
+          "description": "API method documentation",
+          "url": "https://developer.github.com/v3/repos/statistics/#get-the-weekly-commit-activity"
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/owner"
+          },
+          {
+            "$ref": "#/components/parameters/repo"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns a weekly aggregate of the number of additions and deletions pushed to a repository.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/code-frequency-stat"
+                  }
+                },
+                "examples": {
+                  "default": {
+                    "$ref": "#/components/examples/code-frequency-stat-items"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-github": {
+          "githubCloudOnly": false,
+          "enabledForGitHubApps": true,
+          "previews": [],
+          "category": "repos",
+          "subcategory": "statistics"
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "code-frequency-stat": {
+        "title": "Code Frequency Stat",
+        "description": "Code Frequency Stat",
+        "type": "array",
+        "items": {
+          "type": "integer"
+        }
+      }
+    },
+    "parameters": {
+      "owner": {
+        "name": "owner",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "repo": {
+        "name": "repo",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    "responses": {
+    },
+    "examples": {
+      "code-frequency-stat-items": {
+        "value": [
+          [
+            1302998400,
+            1124,
+            -435
+          ]
+        ]
+      }
+    },
+    "headers": {
+    }
+  }
+}
