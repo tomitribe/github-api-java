@@ -30,4 +30,14 @@ public interface ScimClient {
     @EnabledForGithubApps
     @Category("scim")
     void deleteSCIMUserFromOrganization(final DeleteSCIMUserFromOrganization deleteSCIMUserFromOrganization);
+
+    @DELETE
+    @Path("/scim/v2/organizations/{org}/Users/{scim_user_id}")
+    @OperationId("scim/delete-user-from-org")
+    @Docs("https://developer.github.com/v3/scim/#delete-a-scim-user-from-an-organization")
+    @GithubCloudOnly
+    @EnabledForGithubApps
+    @Category("scim")
+    void deleteSCIMUserFromOrganization(@PathParam("org") final String org, @PathParam("scim_user_id") final String scimUserId) {
+    }
 }

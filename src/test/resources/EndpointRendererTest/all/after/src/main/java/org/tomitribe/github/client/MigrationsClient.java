@@ -61,6 +61,16 @@ public interface MigrationsClient {
     void cancelImport(final CancelImport cancelImport);
 
     @DELETE
+    @Path("/repos/{owner}/{repo}/import")
+    @OperationId("migrations/cancel-import")
+    @Docs("https://developer.github.com/v3/migrations/source_imports/#cancel-an-import")
+    @EnabledForGithubApps
+    @Category("migrations")
+    @Subcategory("source-imports")
+    void cancelImport(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
+    }
+
+    @DELETE
     @Path("/orgs/{org}/migrations/{migration_id}/archive")
     @OperationId("migrations/delete-archive-for-org")
     @Docs("https://developer.github.com/v3/migrations/orgs/#delete-an-organization-migration-archive")
@@ -70,6 +80,16 @@ public interface MigrationsClient {
     void deleteOrganizationMigrationArchive(final DeleteOrganizationMigrationArchive deleteOrganizationMigrationArchive);
 
     @DELETE
+    @Path("/orgs/{org}/migrations/{migration_id}/archive")
+    @OperationId("migrations/delete-archive-for-org")
+    @Docs("https://developer.github.com/v3/migrations/orgs/#delete-an-organization-migration-archive")
+    @Preview("wyandotte")
+    @Category("migrations")
+    @Subcategory("orgs")
+    void deleteOrganizationMigrationArchive(@PathParam("org") final String org, @PathParam("migration_id") final int migrationId) {
+    }
+
+    @DELETE
     @Path("/user/migrations/{migration_id}/archive")
     @OperationId("migrations/delete-archive-for-authenticated-user")
     @Docs("https://developer.github.com/v3/migrations/users/#delete-a-user-migration-archive")
@@ -77,6 +97,16 @@ public interface MigrationsClient {
     @Category("migrations")
     @Subcategory("users")
     void deleteUserMigrationArchive(final DeleteUserMigrationArchive deleteUserMigrationArchive);
+
+    @DELETE
+    @Path("/user/migrations/{migration_id}/archive")
+    @OperationId("migrations/delete-archive-for-authenticated-user")
+    @Docs("https://developer.github.com/v3/migrations/users/#delete-a-user-migration-archive")
+    @Preview("wyandotte")
+    @Category("migrations")
+    @Subcategory("users")
+    void deleteUserMigrationArchive(@PathParam("migration_id") final int migrationId) {
+    }
 
     @GET
     @Path("/repos/{owner}/{repo}/import/authors")
@@ -88,6 +118,16 @@ public interface MigrationsClient {
     Stream<PorterAuthor> getCommitAuthors(final GetCommitAuthors getCommitAuthors);
 
     @GET
+    @Path("/repos/{owner}/{repo}/import/authors")
+    @OperationId("migrations/get-commit-authors")
+    @Docs("https://developer.github.com/v3/migrations/source_imports/#get-commit-authors")
+    @EnabledForGithubApps
+    @Category("migrations")
+    @Subcategory("source-imports")
+    Stream<PorterAuthor> getCommitAuthors(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
+    }
+
+    @GET
     @Path("/repos/{owner}/{repo}/import")
     @OperationId("migrations/get-import-status")
     @Docs("https://developer.github.com/v3/migrations/source_imports/#get-an-import-status")
@@ -95,6 +135,16 @@ public interface MigrationsClient {
     @Category("migrations")
     @Subcategory("source-imports")
     _import getImportStatus(final GetImportStatus getImportStatus);
+
+    @GET
+    @Path("/repos/{owner}/{repo}/import")
+    @OperationId("migrations/get-import-status")
+    @Docs("https://developer.github.com/v3/migrations/source_imports/#get-an-import-status")
+    @EnabledForGithubApps
+    @Category("migrations")
+    @Subcategory("source-imports")
+    _import getImportStatus(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
+    }
 
     @GET
     @Path("/repos/{owner}/{repo}/import/large_files")
@@ -106,6 +156,16 @@ public interface MigrationsClient {
     Stream<PorterLargeFile> getLargeFiles(final GetLargeFiles getLargeFiles);
 
     @GET
+    @Path("/repos/{owner}/{repo}/import/large_files")
+    @OperationId("migrations/get-large-files")
+    @Docs("https://developer.github.com/v3/migrations/source_imports/#get-large-files")
+    @EnabledForGithubApps
+    @Category("migrations")
+    @Subcategory("source-imports")
+    Stream<PorterLargeFile> getLargeFiles(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
+    }
+
+    @GET
     @Path("/orgs/{org}/migrations/{migration_id}")
     @OperationId("migrations/get-status-for-org")
     @Docs("https://developer.github.com/v3/migrations/orgs/#get-an-organization-migration-status")
@@ -113,6 +173,16 @@ public interface MigrationsClient {
     @Category("migrations")
     @Subcategory("orgs")
     Migration getOrganizationMigrationStatus(final GetOrganizationMigrationStatus getOrganizationMigrationStatus);
+
+    @GET
+    @Path("/orgs/{org}/migrations/{migration_id}")
+    @OperationId("migrations/get-status-for-org")
+    @Docs("https://developer.github.com/v3/migrations/orgs/#get-an-organization-migration-status")
+    @Preview("wyandotte")
+    @Category("migrations")
+    @Subcategory("orgs")
+    Migration getOrganizationMigrationStatus(@PathParam("org") final String org, @PathParam("migration_id") final int migrationId) {
+    }
 
     @GET
     @Path("/user/migrations/{migration_id}")
@@ -124,6 +194,16 @@ public interface MigrationsClient {
     Migration getUserMigrationStatus(final GetUserMigrationStatus getUserMigrationStatus);
 
     @GET
+    @Path("/user/migrations/{migration_id}")
+    @OperationId("migrations/get-status-for-authenticated-user")
+    @Docs("https://developer.github.com/v3/migrations/users/#get-a-user-migration-status")
+    @Preview("wyandotte")
+    @Category("migrations")
+    @Subcategory("users")
+    Migration getUserMigrationStatus(@PathParam("migration_id") final int migrationId) {
+    }
+
+    @GET
     @Path("/orgs/{org}/migrations")
     @OperationId("migrations/list-for-org")
     @Docs("https://developer.github.com/v3/migrations/orgs/#list-organization-migrations")
@@ -131,6 +211,16 @@ public interface MigrationsClient {
     @Category("migrations")
     @Subcategory("orgs")
     Stream<Migration> listOrganizationMigrations(final ListOrganizationMigrations listOrganizationMigrations);
+
+    @GET
+    @Path("/orgs/{org}/migrations")
+    @OperationId("migrations/list-for-org")
+    @Docs("https://developer.github.com/v3/migrations/orgs/#list-organization-migrations")
+    @Preview("wyandotte")
+    @Category("migrations")
+    @Subcategory("orgs")
+    Stream<Migration> listOrganizationMigrations(@PathParam("org") final String org) {
+    }
 
     @GET
     @Path("/user/migrations/{migration_id}/repositories")
@@ -142,6 +232,16 @@ public interface MigrationsClient {
     Stream<MinimalRepository> listRepositoriesForUserMigration(final ListRepositoriesForUserMigration listRepositoriesForUserMigration);
 
     @GET
+    @Path("/user/migrations/{migration_id}/repositories")
+    @OperationId("migrations/list-repos-for-user")
+    @Docs("https://developer.github.com/v3/migrations/users/#list-repositories-for-a-user-migration")
+    @Preview("wyandotte")
+    @Category("migrations")
+    @Subcategory("users")
+    Stream<MinimalRepository> listRepositoriesForUserMigration(@PathParam("migration_id") final int migrationId) {
+    }
+
+    @GET
     @Path("/orgs/{org}/migrations/{migration_id}/repositories")
     @OperationId("migrations/list-repos-for-org")
     @Docs("https://developer.github.com/v3/migrations/orgs/#list-repositories-in-an-organization-migration")
@@ -149,6 +249,16 @@ public interface MigrationsClient {
     @Category("migrations")
     @Subcategory("orgs")
     Stream<MinimalRepository> listRepositoriesInOrganizationMigration(final ListRepositoriesInOrganizationMigration listRepositoriesInOrganizationMigration);
+
+    @GET
+    @Path("/orgs/{org}/migrations/{migration_id}/repositories")
+    @OperationId("migrations/list-repos-for-org")
+    @Docs("https://developer.github.com/v3/migrations/orgs/#list-repositories-in-an-organization-migration")
+    @Preview("wyandotte")
+    @Category("migrations")
+    @Subcategory("orgs")
+    Stream<MinimalRepository> listRepositoriesInOrganizationMigration(@PathParam("org") final String org, @PathParam("migration_id") final int migrationId) {
+    }
 
     @GET
     @Path("/user/migrations")
@@ -168,6 +278,16 @@ public interface MigrationsClient {
     @Subcategory("source-imports")
     PorterAuthor mapCommitAuthor(final MapCommitAuthor mapCommitAuthor);
 
+    @PATCH
+    @Path("/repos/{owner}/{repo}/import/authors/{author_id}")
+    @OperationId("migrations/map-commit-author")
+    @Docs("https://developer.github.com/v3/migrations/source_imports/#map-a-commit-author")
+    @EnabledForGithubApps
+    @Category("migrations")
+    @Subcategory("source-imports")
+    PorterAuthor mapCommitAuthor(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("author_id") final int authorId) {
+    }
+
     @PUT
     @Path("/repos/{owner}/{repo}/import")
     @OperationId("migrations/start-import")
@@ -177,6 +297,16 @@ public interface MigrationsClient {
     @Subcategory("source-imports")
     _import startImport(final StartImport startImport);
 
+    @PUT
+    @Path("/repos/{owner}/{repo}/import")
+    @OperationId("migrations/start-import")
+    @Docs("https://developer.github.com/v3/migrations/source_imports/#start-an-import")
+    @EnabledForGithubApps
+    @Category("migrations")
+    @Subcategory("source-imports")
+    _import startImport(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
+    }
+
     @POST
     @Path("/orgs/{org}/migrations")
     @OperationId("migrations/start-for-org")
@@ -184,6 +314,15 @@ public interface MigrationsClient {
     @Category("migrations")
     @Subcategory("orgs")
     Migration startOrganizationMigration(final StartOrganizationMigration startOrganizationMigration);
+
+    @POST
+    @Path("/orgs/{org}/migrations")
+    @OperationId("migrations/start-for-org")
+    @Docs("https://developer.github.com/v3/migrations/orgs/#start-an-organization-migration")
+    @Category("migrations")
+    @Subcategory("orgs")
+    Migration startOrganizationMigration(@PathParam("org") final String org) {
+    }
 
     @POST
     @Path("/user/migrations")
@@ -203,6 +342,16 @@ public interface MigrationsClient {
     void unlockOrganizationRepository(final UnlockOrganizationRepository unlockOrganizationRepository);
 
     @DELETE
+    @Path("/orgs/{org}/migrations/{migration_id}/repos/{repo_name}/lock")
+    @OperationId("migrations/unlock-repo-for-org")
+    @Docs("https://developer.github.com/v3/migrations/orgs/#unlock-an-organization-repository")
+    @Preview("wyandotte")
+    @Category("migrations")
+    @Subcategory("orgs")
+    void unlockOrganizationRepository(@PathParam("org") final String org, @PathParam("migration_id") final int migrationId, @PathParam("repo_name") final String repoName) {
+    }
+
+    @DELETE
     @Path("/user/migrations/{migration_id}/repos/{repo_name}/lock")
     @OperationId("migrations/unlock-repo-for-authenticated-user")
     @Docs("https://developer.github.com/v3/migrations/users/#unlock-a-user-repository")
@@ -210,6 +359,16 @@ public interface MigrationsClient {
     @Category("migrations")
     @Subcategory("users")
     void unlockUserRepository(final UnlockUserRepository unlockUserRepository);
+
+    @DELETE
+    @Path("/user/migrations/{migration_id}/repos/{repo_name}/lock")
+    @OperationId("migrations/unlock-repo-for-authenticated-user")
+    @Docs("https://developer.github.com/v3/migrations/users/#unlock-a-user-repository")
+    @Preview("wyandotte")
+    @Category("migrations")
+    @Subcategory("users")
+    void unlockUserRepository(@PathParam("migration_id") final int migrationId, @PathParam("repo_name") final String repoName) {
+    }
 
     @PATCH
     @Path("/repos/{owner}/{repo}/import/lfs")
@@ -221,6 +380,16 @@ public interface MigrationsClient {
     _import updateGitLFSPreference(final UpdateGitLFSPreference updateGitLFSPreference);
 
     @PATCH
+    @Path("/repos/{owner}/{repo}/import/lfs")
+    @OperationId("migrations/set-lfs-preference")
+    @Docs("https://developer.github.com/v3/migrations/source_imports/#update-git-lfs-preference")
+    @EnabledForGithubApps
+    @Category("migrations")
+    @Subcategory("source-imports")
+    _import updateGitLFSPreference(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
+    }
+
+    @PATCH
     @Path("/repos/{owner}/{repo}/import")
     @OperationId("migrations/update-import")
     @Docs("https://developer.github.com/v3/migrations/source_imports/#update-an-import")
@@ -228,4 +397,14 @@ public interface MigrationsClient {
     @Category("migrations")
     @Subcategory("source-imports")
     _import updateImport(final UpdateImport updateImport);
+
+    @PATCH
+    @Path("/repos/{owner}/{repo}/import")
+    @OperationId("migrations/update-import")
+    @Docs("https://developer.github.com/v3/migrations/source_imports/#update-an-import")
+    @EnabledForGithubApps
+    @Category("migrations")
+    @Subcategory("source-imports")
+    _import updateImport(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
+    }
 }

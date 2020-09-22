@@ -37,6 +37,16 @@ public interface EnterpriseAdminClient {
     ActionsBillingUsage getGitHubActionsBillingForEnterprise(final GetGitHubActionsBillingForEnterprise getGitHubActionsBillingForEnterprise);
 
     @GET
+    @Path("/enterprises/{enterprise_id}/settings/billing/actions")
+    @OperationId("billing/get-github-actions-billing-ghe")
+    @Docs("https://developer.github.com/v3/billing/#get-github-actions-billing-for-an-enterprise")
+    @GithubCloudOnly
+    @Category("enterprise-admin")
+    @Subcategory("billing")
+    ActionsBillingUsage getGitHubActionsBillingForEnterprise(@PathParam("enterprise-id") final String enterpriseId) {
+    }
+
+    @GET
     @Path("/enterprises/{enterprise_id}/settings/billing/packages")
     @OperationId("billing/get-github-packages-billing-ghe")
     @Docs("https://developer.github.com/v3/billing/#get-github-packages-billing-for-an-enterprise")
@@ -46,6 +56,16 @@ public interface EnterpriseAdminClient {
     PackagesBillingUsage getGitHubPackagesBillingForEnterprise(final GetGitHubPackagesBillingForEnterprise getGitHubPackagesBillingForEnterprise);
 
     @GET
+    @Path("/enterprises/{enterprise_id}/settings/billing/packages")
+    @OperationId("billing/get-github-packages-billing-ghe")
+    @Docs("https://developer.github.com/v3/billing/#get-github-packages-billing-for-an-enterprise")
+    @GithubCloudOnly
+    @Category("enterprise-admin")
+    @Subcategory("billing")
+    PackagesBillingUsage getGitHubPackagesBillingForEnterprise(@PathParam("enterprise-id") final String enterpriseId) {
+    }
+
+    @GET
     @Path("/enterprises/{enterprise_id}/settings/billing/shared-storage")
     @OperationId("billing/get-shared-storage-billing-ghe")
     @Docs("https://developer.github.com/v3/billing/#get-shared-storage-billing-for-an-enterprise")
@@ -53,4 +73,14 @@ public interface EnterpriseAdminClient {
     @Category("enterprise-admin")
     @Subcategory("billing")
     CombinedBillingUsage getSharedStorageBillingForEnterprise(final GetSharedStorageBillingForEnterprise getSharedStorageBillingForEnterprise);
+
+    @GET
+    @Path("/enterprises/{enterprise_id}/settings/billing/shared-storage")
+    @OperationId("billing/get-shared-storage-billing-ghe")
+    @Docs("https://developer.github.com/v3/billing/#get-shared-storage-billing-for-an-enterprise")
+    @GithubCloudOnly
+    @Category("enterprise-admin")
+    @Subcategory("billing")
+    CombinedBillingUsage getSharedStorageBillingForEnterprise(@PathParam("enterprise-id") final String enterpriseId) {
+    }
 }

@@ -45,10 +45,28 @@ public interface LicensesClient {
     License getLicense(final GetLicense getLicense);
 
     @GET
+    @Path("/licenses/{license}")
+    @OperationId("licenses/get")
+    @Docs("https://developer.github.com/v3/licenses/#get-a-license")
+    @EnabledForGithubApps
+    @Category("licenses")
+    License getLicense(@PathParam("license") final String license) {
+    }
+
+    @GET
     @Path("/repos/{owner}/{repo}/license")
     @OperationId("licenses/get-for-repo")
     @Docs("https://developer.github.com/v3/licenses/#get-the-license-for-a-repository")
     @EnabledForGithubApps
     @Category("licenses")
     LicenseContent getLicenseForRepository(final GetLicenseForRepository getLicenseForRepository);
+
+    @GET
+    @Path("/repos/{owner}/{repo}/license")
+    @OperationId("licenses/get-for-repo")
+    @Docs("https://developer.github.com/v3/licenses/#get-the-license-for-a-repository")
+    @EnabledForGithubApps
+    @Category("licenses")
+    LicenseContent getLicenseForRepository(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
+    }
 }

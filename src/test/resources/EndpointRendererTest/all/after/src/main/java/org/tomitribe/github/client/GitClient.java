@@ -54,6 +54,16 @@ public interface GitClient {
     ShortBlob createBlob(final CreateBlob createBlob);
 
     @POST
+    @Path("/repos/{owner}/{repo}/git/blobs")
+    @OperationId("git/create-blob")
+    @Docs("https://developer.github.com/v3/git/blobs/#create-a-blob")
+    @EnabledForGithubApps
+    @Category("git")
+    @Subcategory("blobs")
+    ShortBlob createBlob(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
+    }
+
+    @POST
     @Path("/repos/{owner}/{repo}/git/commits")
     @OperationId("git/create-commit")
     @Docs("https://developer.github.com/v3/git/commits/#create-a-commit")
@@ -61,6 +71,16 @@ public interface GitClient {
     @Category("git")
     @Subcategory("commits")
     GitCommit createCommit(final CreateCommit createCommit);
+
+    @POST
+    @Path("/repos/{owner}/{repo}/git/commits")
+    @OperationId("git/create-commit")
+    @Docs("https://developer.github.com/v3/git/commits/#create-a-commit")
+    @EnabledForGithubApps
+    @Category("git")
+    @Subcategory("commits")
+    GitCommit createCommit(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
+    }
 
     @POST
     @Path("/repos/{owner}/{repo}/git/refs")
@@ -72,6 +92,16 @@ public interface GitClient {
     GitRef createReference(final CreateReference createReference);
 
     @POST
+    @Path("/repos/{owner}/{repo}/git/refs")
+    @OperationId("git/create-ref")
+    @Docs("https://developer.github.com/v3/git/refs/#create-a-reference")
+    @EnabledForGithubApps
+    @Category("git")
+    @Subcategory("refs")
+    GitRef createReference(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
+    }
+
+    @POST
     @Path("/repos/{owner}/{repo}/git/tags")
     @OperationId("git/create-tag")
     @Docs("https://developer.github.com/v3/git/tags/#create-a-tag-object")
@@ -79,6 +109,16 @@ public interface GitClient {
     @Category("git")
     @Subcategory("tags")
     GitTag createTagObject(final CreateTagObject createTagObject);
+
+    @POST
+    @Path("/repos/{owner}/{repo}/git/tags")
+    @OperationId("git/create-tag")
+    @Docs("https://developer.github.com/v3/git/tags/#create-a-tag-object")
+    @EnabledForGithubApps
+    @Category("git")
+    @Subcategory("tags")
+    GitTag createTagObject(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
+    }
 
     @POST
     @Path("/repos/{owner}/{repo}/git/trees")
@@ -89,6 +129,16 @@ public interface GitClient {
     @Subcategory("trees")
     GitTree createTree(final CreateTree createTree);
 
+    @POST
+    @Path("/repos/{owner}/{repo}/git/trees")
+    @OperationId("git/create-tree")
+    @Docs("https://developer.github.com/v3/git/trees/#create-a-tree")
+    @EnabledForGithubApps
+    @Category("git")
+    @Subcategory("trees")
+    GitTree createTree(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
+    }
+
     @DELETE
     @Path("/repos/{owner}/{repo}/git/refs/{ref}")
     @OperationId("git/delete-ref")
@@ -97,6 +147,16 @@ public interface GitClient {
     @Category("git")
     @Subcategory("refs")
     void deleteReference(final DeleteReference deleteReference);
+
+    @DELETE
+    @Path("/repos/{owner}/{repo}/git/refs/{ref}")
+    @OperationId("git/delete-ref")
+    @Docs("https://developer.github.com/v3/git/refs/#delete-a-reference")
+    @EnabledForGithubApps
+    @Category("git")
+    @Subcategory("refs")
+    void deleteReference(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("ref") final String ref) {
+    }
 
     @GET
     @Path("/repos/{owner}/{repo}/git/blobs/{file_sha}")
@@ -108,6 +168,16 @@ public interface GitClient {
     Blob getBlob(final GetBlob getBlob);
 
     @GET
+    @Path("/repos/{owner}/{repo}/git/blobs/{file_sha}")
+    @OperationId("git/get-blob")
+    @Docs("https://developer.github.com/v3/git/blobs/#get-a-blob")
+    @EnabledForGithubApps
+    @Category("git")
+    @Subcategory("blobs")
+    Blob getBlob(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("file_sha") final String fileSha) {
+    }
+
+    @GET
     @Path("/repos/{owner}/{repo}/git/commits/{commit_sha}")
     @OperationId("git/get-commit")
     @Docs("https://developer.github.com/v3/git/commits/#get-a-commit")
@@ -115,6 +185,16 @@ public interface GitClient {
     @Category("git")
     @Subcategory("commits")
     GitCommit getCommit(final GetCommit getCommit);
+
+    @GET
+    @Path("/repos/{owner}/{repo}/git/commits/{commit_sha}")
+    @OperationId("git/get-commit")
+    @Docs("https://developer.github.com/v3/git/commits/#get-a-commit")
+    @EnabledForGithubApps
+    @Category("git")
+    @Subcategory("commits")
+    GitCommit getCommit(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("commit_sha") final String commitSha) {
+    }
 
     @GET
     @Path("/repos/{owner}/{repo}/git/ref/{ref}")
@@ -126,6 +206,16 @@ public interface GitClient {
     GitRef getReference(final GetReference getReference);
 
     @GET
+    @Path("/repos/{owner}/{repo}/git/ref/{ref}")
+    @OperationId("git/get-ref")
+    @Docs("https://developer.github.com/v3/git/refs/#get-a-reference")
+    @EnabledForGithubApps
+    @Category("git")
+    @Subcategory("refs")
+    GitRef getReference(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("ref") final String ref) {
+    }
+
+    @GET
     @Path("/repos/{owner}/{repo}/git/tags/{tag_sha}")
     @OperationId("git/get-tag")
     @Docs("https://developer.github.com/v3/git/tags/#get-a-tag")
@@ -133,6 +223,16 @@ public interface GitClient {
     @Category("git")
     @Subcategory("tags")
     GitTag getTag(final GetTag getTag);
+
+    @GET
+    @Path("/repos/{owner}/{repo}/git/tags/{tag_sha}")
+    @OperationId("git/get-tag")
+    @Docs("https://developer.github.com/v3/git/tags/#get-a-tag")
+    @EnabledForGithubApps
+    @Category("git")
+    @Subcategory("tags")
+    GitTag getTag(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("tag_sha") final String tagSha) {
+    }
 
     @GET
     @Path("/repos/{owner}/{repo}/git/trees/{tree_sha}")
@@ -144,6 +244,16 @@ public interface GitClient {
     GitTree getTree(final GetTree getTree);
 
     @GET
+    @Path("/repos/{owner}/{repo}/git/trees/{tree_sha}")
+    @OperationId("git/get-tree")
+    @Docs("https://developer.github.com/v3/git/trees/#get-a-tree")
+    @EnabledForGithubApps
+    @Category("git")
+    @Subcategory("trees")
+    GitTree getTree(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("tree_sha") final String treeSha) {
+    }
+
+    @GET
     @Path("/repos/{owner}/{repo}/git/matching-refs/{ref}")
     @OperationId("git/list-matching-refs")
     @Docs("https://developer.github.com/v3/git/refs/#list-matching-references")
@@ -151,6 +261,16 @@ public interface GitClient {
     @Category("git")
     @Subcategory("refs")
     Stream<GitRef> listMatchingReferences(final ListMatchingReferences listMatchingReferences);
+
+    @GET
+    @Path("/repos/{owner}/{repo}/git/matching-refs/{ref}")
+    @OperationId("git/list-matching-refs")
+    @Docs("https://developer.github.com/v3/git/refs/#list-matching-references")
+    @EnabledForGithubApps
+    @Category("git")
+    @Subcategory("refs")
+    Stream<GitRef> listMatchingReferences(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("ref") final String ref) {
+    }
 
     @PATCH
     @Path("/repos/{owner}/{repo}/git/refs/{ref}")
@@ -160,4 +280,14 @@ public interface GitClient {
     @Category("git")
     @Subcategory("refs")
     GitRef updateReference(final UpdateReference updateReference);
+
+    @PATCH
+    @Path("/repos/{owner}/{repo}/git/refs/{ref}")
+    @OperationId("git/update-ref")
+    @Docs("https://developer.github.com/v3/git/refs/#update-a-reference")
+    @EnabledForGithubApps
+    @Category("git")
+    @Subcategory("refs")
+    GitRef updateReference(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("ref") final String ref) {
+    }
 }

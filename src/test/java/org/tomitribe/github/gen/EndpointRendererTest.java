@@ -61,7 +61,6 @@ public class EndpointRendererTest {
         assertScenario(Scenario.get("returnArrayOfArray"));
     }
 
-    @Ignore
     @Test
     public void all() throws Exception {
         assertScenario(Scenario.get("all"));

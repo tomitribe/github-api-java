@@ -35,7 +35,10 @@ public class Field {
     private String reference;
 
     public enum In {
-        QUERY, HEADER, BODY, PATH;
+        PATH,
+        QUERY,
+        HEADER,
+        BODY;
     }
 
     public static Field.Builder field(final String jsonName, final Name type) {

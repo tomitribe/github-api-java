@@ -33,6 +33,7 @@ import com.github.javaparser.ast.expr.AnnotationExpr;
 import com.github.javaparser.ast.nodeTypes.NodeWithAnnotations;
 import com.github.javaparser.ast.nodeTypes.NodeWithSimpleName;
 import lombok.Data;
+import org.tomitribe.github.gen.code.model.Name;
 import org.tomitribe.util.IO;
 
 import java.io.File;
@@ -77,6 +78,10 @@ public class ClassDefinition {
                 .findAny();
     }
 
+
+    public void addImport(final Name className) {
+        addImport(className.toString());
+    }
 
     public void addImport(final String className) {
         final boolean exists = unit.getImports().stream()

@@ -35,6 +35,15 @@ public interface IssuesClient {
     @Category("issues")
     Issue createIssue(final CreateIssue createIssue);
 
+    @POST
+    @Path("/repos/{owner}/{repo}/issues")
+    @OperationId("issues/create")
+    @Docs("https://developer.github.com/v3/issues/#create-an-issue")
+    @EnabledForGithubApps
+    @Category("issues")
+    Issue createIssue(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
+    }
+
     @GET
     @Path("/repos/{owner}/{repo}/issues")
     @OperationId("issues/list-for-repo")
@@ -44,4 +53,15 @@ public interface IssuesClient {
     @Preview("squirrel-girl")
     @Category("issues")
     Stream<IssueSimple> listRepositoryIssues(final ListRepositoryIssues listRepositoryIssues);
+
+    @GET
+    @Path("/repos/{owner}/{repo}/issues")
+    @OperationId("issues/list-for-repo")
+    @Docs("https://developer.github.com/v3/issues/#list-repository-issues")
+    @EnabledForGithubApps
+    @Preview("machine-man")
+    @Preview("squirrel-girl")
+    @Category("issues")
+    Stream<IssueSimple> listRepositoryIssues(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
+    }
 }

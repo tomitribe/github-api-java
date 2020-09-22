@@ -83,6 +83,16 @@ public interface AppsClient {
     @Subcategory("installations")
     void addRepositoryToAppInstallation(final AddRepositoryToAppInstallation addRepositoryToAppInstallation);
 
+    @PUT
+    @Path("/user/installations/{installation_id}/repositories/{repository_id}")
+    @OperationId("apps/add-repo-to-installation")
+    @Docs("https://developer.github.com/v3/apps/installations/#add-a-repository-to-an-app-installation")
+    @Preview("machine-man")
+    @Category("apps")
+    @Subcategory("installations")
+    void addRepositoryToAppInstallation(@PathParam("installation_id") final int installationId, @PathParam("repository_id") final int repositoryId) {
+    }
+
     @GET
     @Path("/applications/{client_id}/tokens/{access_token}")
     @OperationId("apps/check-authorization")
@@ -93,6 +103,17 @@ public interface AppsClient {
     @Subcategory("oauth-applications")
     CheckAuthorizationResponse checkAuthorization(final CheckAuthorization checkAuthorization);
 
+    @GET
+    @Path("/applications/{client_id}/tokens/{access_token}")
+    @OperationId("apps/check-authorization")
+    @Docs("https://developer.github.com/v3/apps/oauth_applications/#check-an-authorization")
+    @RemovalDate("2021-05-05")
+    @DeprecationDate("2020-02-14")
+    @Category("apps")
+    @Subcategory("oauth-applications")
+    CheckAuthorizationResponse checkAuthorization(@PathParam("client-id") final String clientId, @PathParam("access-token") final String accessToken) {
+    }
+
     @POST
     @Path("/applications/{client_id}/token")
     @OperationId("apps/check-token")
@@ -100,6 +121,15 @@ public interface AppsClient {
     @Category("apps")
     @Subcategory("oauth-applications")
     Authorization checkToken(final CheckToken checkToken);
+
+    @POST
+    @Path("/applications/{client_id}/token")
+    @OperationId("apps/check-token")
+    @Docs("https://developer.github.com/v3/apps/oauth_applications/#check-a-token")
+    @Category("apps")
+    @Subcategory("oauth-applications")
+    Authorization checkToken(@PathParam("client-id") final String clientId) {
+    }
 
     @POST
     @Path("/content_references/{content_reference_id}/attachments")
@@ -112,11 +142,30 @@ public interface AppsClient {
     ContentReferenceAttachment createContentAttachment(final CreateContentAttachment createContentAttachment);
 
     @POST
+    @Path("/content_references/{content_reference_id}/attachments")
+    @OperationId("apps/create-content-attachment")
+    @Docs("https://developer.github.com/v3/apps/installations/#create-a-content-attachment")
+    @EnabledForGithubApps
+    @Preview("corsair")
+    @Category("apps")
+    @Subcategory("installations")
+    ContentReferenceAttachment createContentAttachment(@PathParam("content_reference_id") final int contentReferenceId) {
+    }
+
+    @POST
     @Path("/app-manifests/{code}/conversions")
     @OperationId("apps/create-from-manifest")
     @Docs("https://developer.github.com/v3/apps/#create-a-github-app-from-a-manifest")
     @Category("apps")
     CreateGitHubAppFromManifestResponse createGitHubAppFromManifest(final CreateGitHubAppFromManifest createGitHubAppFromManifest);
+
+    @POST
+    @Path("/app-manifests/{code}/conversions")
+    @OperationId("apps/create-from-manifest")
+    @Docs("https://developer.github.com/v3/apps/#create-a-github-app-from-a-manifest")
+    @Category("apps")
+    CreateGitHubAppFromManifestResponse createGitHubAppFromManifest(@PathParam("code") final String code) {
+    }
 
     @POST
     @Path("/app/installations/{installation_id}/access_tokens")
@@ -127,6 +176,16 @@ public interface AppsClient {
     @Category("apps")
     InstallationToken createInstallationAccessTokenForApp(final CreateInstallationAccessTokenForApp createInstallationAccessTokenForApp);
 
+    @POST
+    @Path("/app/installations/{installation_id}/access_tokens")
+    @OperationId("apps/create-installation-access-token")
+    @Docs("https://developer.github.com/v3/apps/#create-an-installation-access-token-for-an-app")
+    @EnabledForGithubApps
+    @Preview("machine-man")
+    @Category("apps")
+    InstallationToken createInstallationAccessTokenForApp(@PathParam("installation_id") final int installationId) {
+    }
+
     @DELETE
     @Path("/applications/{client_id}/grant")
     @OperationId("apps/delete-authorization")
@@ -134,6 +193,15 @@ public interface AppsClient {
     @Category("apps")
     @Subcategory("oauth-applications")
     void deleteAppAuthorization(final DeleteAppAuthorization deleteAppAuthorization);
+
+    @DELETE
+    @Path("/applications/{client_id}/grant")
+    @OperationId("apps/delete-authorization")
+    @Docs("https://developer.github.com/v3/apps/oauth_applications/#delete-an-app-authorization")
+    @Category("apps")
+    @Subcategory("oauth-applications")
+    void deleteAppAuthorization(@PathParam("client-id") final String clientId) {
+    }
 
     @DELETE
     @Path("/applications/{client_id}/token")
@@ -144,12 +212,30 @@ public interface AppsClient {
     void deleteAppToken(final DeleteAppToken deleteAppToken);
 
     @DELETE
+    @Path("/applications/{client_id}/token")
+    @OperationId("apps/delete-token")
+    @Docs("https://developer.github.com/v3/apps/oauth_applications/#delete-an-app-token")
+    @Category("apps")
+    @Subcategory("oauth-applications")
+    void deleteAppToken(@PathParam("client-id") final String clientId) {
+    }
+
+    @DELETE
     @Path("/app/installations/{installation_id}")
     @OperationId("apps/delete-installation")
     @Docs("https://developer.github.com/v3/apps/#delete-an-installation-for-the-authenticated-app")
     @Preview("machine-man")
     @Category("apps")
     void deleteInstallationForAuthenticatedApp(final DeleteInstallationForAuthenticatedApp deleteInstallationForAuthenticatedApp);
+
+    @DELETE
+    @Path("/app/installations/{installation_id}")
+    @OperationId("apps/delete-installation")
+    @Docs("https://developer.github.com/v3/apps/#delete-an-installation-for-the-authenticated-app")
+    @Preview("machine-man")
+    @Category("apps")
+    void deleteInstallationForAuthenticatedApp(@PathParam("installation_id") final int installationId) {
+    }
 
     @GET
     @Path("/apps/{app_slug}")
@@ -159,6 +245,16 @@ public interface AppsClient {
     @Preview("machine-man")
     @Category("apps")
     Integration getApp(final GetApp getApp);
+
+    @GET
+    @Path("/apps/{app_slug}")
+    @OperationId("apps/get-by-slug")
+    @Docs("https://developer.github.com/v3/apps/#get-an-app")
+    @EnabledForGithubApps
+    @Preview("machine-man")
+    @Category("apps")
+    Integration getApp(@PathParam("app_slug") final String appSlug) {
+    }
 
     @GET
     @Path("/app")
@@ -179,12 +275,31 @@ public interface AppsClient {
     Installation getInstallationForAuthenticatedApp(final GetInstallationForAuthenticatedApp getInstallationForAuthenticatedApp);
 
     @GET
+    @Path("/app/installations/{installation_id}")
+    @OperationId("apps/get-installation")
+    @Docs("https://developer.github.com/v3/apps/#get-an-installation-for-the-authenticated-app")
+    @EnabledForGithubApps
+    @Preview("machine-man")
+    @Category("apps")
+    Installation getInstallationForAuthenticatedApp(@PathParam("installation_id") final int installationId) {
+    }
+
+    @GET
     @Path("/orgs/{org}/installation")
     @OperationId("apps/get-org-installation")
     @Docs("https://developer.github.com/v3/apps/#get-an-organization-installation-for-the-authenticated-app")
     @Preview("machine-man")
     @Category("apps")
     Installation getOrganizationInstallationForAuthenticatedApp(final GetOrganizationInstallationForAuthenticatedApp getOrganizationInstallationForAuthenticatedApp);
+
+    @GET
+    @Path("/orgs/{org}/installation")
+    @OperationId("apps/get-org-installation")
+    @Docs("https://developer.github.com/v3/apps/#get-an-organization-installation-for-the-authenticated-app")
+    @Preview("machine-man")
+    @Category("apps")
+    Installation getOrganizationInstallationForAuthenticatedApp(@PathParam("org") final String org) {
+    }
 
     @GET
     @Path("/repos/{owner}/{repo}/installation")
@@ -195,12 +310,30 @@ public interface AppsClient {
     Installation getRepositoryInstallationForAuthenticatedApp(final GetRepositoryInstallationForAuthenticatedApp getRepositoryInstallationForAuthenticatedApp);
 
     @GET
+    @Path("/repos/{owner}/{repo}/installation")
+    @OperationId("apps/get-repo-installation")
+    @Docs("https://developer.github.com/v3/apps/#get-a-repository-installation-for-the-authenticated-app")
+    @Preview("machine-man")
+    @Category("apps")
+    Installation getRepositoryInstallationForAuthenticatedApp(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
+    }
+
+    @GET
     @Path("/marketplace_listing/accounts/{account_id}")
     @OperationId("apps/get-subscription-plan-for-account")
     @Docs("https://developer.github.com/v3/apps/marketplace/#get-a-subscription-plan-for-an-account")
     @Category("apps")
     @Subcategory("marketplace")
     MarketplacePurchase getSubscriptionPlanForAccount(final GetSubscriptionPlanForAccount getSubscriptionPlanForAccount);
+
+    @GET
+    @Path("/marketplace_listing/accounts/{account_id}")
+    @OperationId("apps/get-subscription-plan-for-account")
+    @Docs("https://developer.github.com/v3/apps/marketplace/#get-a-subscription-plan-for-an-account")
+    @Category("apps")
+    @Subcategory("marketplace")
+    MarketplacePurchase getSubscriptionPlanForAccount(@PathParam("account_id") final int accountId) {
+    }
 
     @GET
     @Path("/marketplace_listing/stubbed/accounts/{account_id}")
@@ -211,12 +344,30 @@ public interface AppsClient {
     MarketplacePurchase getSubscriptionPlanForAccountStubbed(final GetSubscriptionPlanForAccountStubbed getSubscriptionPlanForAccountStubbed);
 
     @GET
+    @Path("/marketplace_listing/stubbed/accounts/{account_id}")
+    @OperationId("apps/get-subscription-plan-for-account-stubbed")
+    @Docs("https://developer.github.com/v3/apps/marketplace/#get-a-subscription-plan-for-an-account-stubbed")
+    @Category("apps")
+    @Subcategory("marketplace")
+    MarketplacePurchase getSubscriptionPlanForAccountStubbed(@PathParam("account_id") final int accountId) {
+    }
+
+    @GET
     @Path("/users/{username}/installation")
     @OperationId("apps/get-user-installation")
     @Docs("https://developer.github.com/v3/apps/#get-a-user-installation-for-the-authenticated-app")
     @Preview("machine-man")
     @Category("apps")
     Installation getUserInstallationForAuthenticatedApp(final GetUserInstallationForAuthenticatedApp getUserInstallationForAuthenticatedApp);
+
+    @GET
+    @Path("/users/{username}/installation")
+    @OperationId("apps/get-user-installation")
+    @Docs("https://developer.github.com/v3/apps/#get-a-user-installation-for-the-authenticated-app")
+    @Preview("machine-man")
+    @Category("apps")
+    Installation getUserInstallationForAuthenticatedApp(@PathParam("username") final String username) {
+    }
 
     @GET
     @Path("/marketplace_listing/plans/{plan_id}/accounts")
@@ -227,12 +378,30 @@ public interface AppsClient {
     Stream<MarketplacePurchase> listAccountsForPlan(final ListAccountsForPlan listAccountsForPlan);
 
     @GET
+    @Path("/marketplace_listing/plans/{plan_id}/accounts")
+    @OperationId("apps/list-accounts-for-plan")
+    @Docs("https://developer.github.com/v3/apps/marketplace/#list-accounts-for-a-plan")
+    @Category("apps")
+    @Subcategory("marketplace")
+    Stream<MarketplacePurchase> listAccountsForPlan(@PathParam("plan_id") final int planId) {
+    }
+
+    @GET
     @Path("/marketplace_listing/stubbed/plans/{plan_id}/accounts")
     @OperationId("apps/list-accounts-for-plan-stubbed")
     @Docs("https://developer.github.com/v3/apps/marketplace/#list-accounts-for-a-plan-stubbed")
     @Category("apps")
     @Subcategory("marketplace")
     Stream<MarketplacePurchase> listAccountsForPlanStubbed(final ListAccountsForPlanStubbed listAccountsForPlanStubbed);
+
+    @GET
+    @Path("/marketplace_listing/stubbed/plans/{plan_id}/accounts")
+    @OperationId("apps/list-accounts-for-plan-stubbed")
+    @Docs("https://developer.github.com/v3/apps/marketplace/#list-accounts-for-a-plan-stubbed")
+    @Category("apps")
+    @Subcategory("marketplace")
+    Stream<MarketplacePurchase> listAccountsForPlanStubbed(@PathParam("plan_id") final int planId) {
+    }
 
     @GET
     @Path("/user/installations")
@@ -290,6 +459,17 @@ public interface AppsClient {
     ListRepositoriesAccessibleToUserAccessTokenResponse listRepositoriesAccessibleToUserAccessToken(final ListRepositoriesAccessibleToUserAccessToken listRepositoriesAccessibleToUserAccessToken);
 
     @GET
+    @Path("/user/installations/{installation_id}/repositories")
+    @OperationId("apps/list-installation-repos-for-authenticated-user")
+    @Docs("https://developer.github.com/v3/apps/installations/#list-repositories-accessible-to-the-user-access-token")
+    @Preview("machine-man")
+    @Preview("mercy")
+    @Category("apps")
+    @Subcategory("installations")
+    ListRepositoriesAccessibleToUserAccessTokenResponse listRepositoriesAccessibleToUserAccessToken(@PathParam("installation_id") final int installationId) {
+    }
+
+    @GET
     @Path("/user/marketplace_purchases")
     @OperationId("apps/list-subscriptions-for-authenticated-user")
     @Docs("https://developer.github.com/v3/apps/marketplace/#list-subscriptions-for-the-authenticated-user")
@@ -314,6 +494,16 @@ public interface AppsClient {
     @Subcategory("installations")
     void removeRepositoryFromAppInstallation(final RemoveRepositoryFromAppInstallation removeRepositoryFromAppInstallation);
 
+    @DELETE
+    @Path("/user/installations/{installation_id}/repositories/{repository_id}")
+    @OperationId("apps/remove-repo-from-installation")
+    @Docs("https://developer.github.com/v3/apps/installations/#remove-a-repository-from-an-app-installation")
+    @Preview("machine-man")
+    @Category("apps")
+    @Subcategory("installations")
+    void removeRepositoryFromAppInstallation(@PathParam("installation_id") final int installationId, @PathParam("repository_id") final int repositoryId) {
+    }
+
     @POST
     @Path("/applications/{client_id}/tokens/{access_token}")
     @OperationId("apps/reset-authorization")
@@ -324,6 +514,17 @@ public interface AppsClient {
     @Subcategory("oauth-applications")
     Authorization resetAuthorization(final ResetAuthorization resetAuthorization);
 
+    @POST
+    @Path("/applications/{client_id}/tokens/{access_token}")
+    @OperationId("apps/reset-authorization")
+    @Docs("https://developer.github.com/v3/apps/oauth_applications/#reset-an-authorization")
+    @RemovalDate("2021-05-05")
+    @DeprecationDate("2020-02-14")
+    @Category("apps")
+    @Subcategory("oauth-applications")
+    Authorization resetAuthorization(@PathParam("client-id") final String clientId, @PathParam("access-token") final String accessToken) {
+    }
+
     @PATCH
     @Path("/applications/{client_id}/token")
     @OperationId("apps/reset-token")
@@ -331,6 +532,15 @@ public interface AppsClient {
     @Category("apps")
     @Subcategory("oauth-applications")
     Authorization resetToken(final ResetToken resetToken);
+
+    @PATCH
+    @Path("/applications/{client_id}/token")
+    @OperationId("apps/reset-token")
+    @Docs("https://developer.github.com/v3/apps/oauth_applications/#reset-a-token")
+    @Category("apps")
+    @Subcategory("oauth-applications")
+    Authorization resetToken(@PathParam("client-id") final String clientId) {
+    }
 
     @DELETE
     @Path("/applications/{client_id}/tokens/{access_token}")
@@ -343,6 +553,17 @@ public interface AppsClient {
     void revokeAuthorizationForApplication(final RevokeAuthorizationForApplication revokeAuthorizationForApplication);
 
     @DELETE
+    @Path("/applications/{client_id}/tokens/{access_token}")
+    @OperationId("apps/revoke-authorization-for-application")
+    @Docs("https://developer.github.com/v3/apps/oauth_applications/#revoke-an-authorization-for-an-application")
+    @RemovalDate("2021-05-05")
+    @DeprecationDate("2020-02-14")
+    @Category("apps")
+    @Subcategory("oauth-applications")
+    void revokeAuthorizationForApplication(@PathParam("client-id") final String clientId, @PathParam("access-token") final String accessToken) {
+    }
+
+    @DELETE
     @Path("/applications/{client_id}/grants/{access_token}")
     @OperationId("apps/revoke-grant-for-application")
     @Docs("https://developer.github.com/v3/apps/oauth_applications/#revoke-a-grant-for-an-application")
@@ -351,6 +572,17 @@ public interface AppsClient {
     @Category("apps")
     @Subcategory("oauth-applications")
     void revokeGrantForApplication(final RevokeGrantForApplication revokeGrantForApplication);
+
+    @DELETE
+    @Path("/applications/{client_id}/grants/{access_token}")
+    @OperationId("apps/revoke-grant-for-application")
+    @Docs("https://developer.github.com/v3/apps/oauth_applications/#revoke-a-grant-for-an-application")
+    @RemovalDate("2021-05-05")
+    @DeprecationDate("2020-02-14")
+    @Category("apps")
+    @Subcategory("oauth-applications")
+    void revokeGrantForApplication(@PathParam("client-id") final String clientId, @PathParam("access-token") final String accessToken) {
+    }
 
     @DELETE
     @Path("/installation/token")
@@ -368,10 +600,26 @@ public interface AppsClient {
     @Category("apps")
     void suspendAppInstallation(final SuspendAppInstallation suspendAppInstallation);
 
+    @PUT
+    @Path("/app/installations/{installation_id}/suspended")
+    @OperationId("apps/suspend-installation")
+    @Docs("https://developer.github.com/v3/apps/#suspend-an-app-installation")
+    @Category("apps")
+    void suspendAppInstallation(@PathParam("installation_id") final int installationId) {
+    }
+
     @DELETE
     @Path("/app/installations/{installation_id}/suspended")
     @OperationId("apps/unsuspend-installation")
     @Docs("https://developer.github.com/v3/apps/#unsuspend-an-app-installation")
     @Category("apps")
     void unsuspendAppInstallation(final UnsuspendAppInstallation unsuspendAppInstallation);
+
+    @DELETE
+    @Path("/app/installations/{installation_id}/suspended")
+    @OperationId("apps/unsuspend-installation")
+    @Docs("https://developer.github.com/v3/apps/#unsuspend-an-app-installation")
+    @Category("apps")
+    void unsuspendAppInstallation(@PathParam("installation_id") final int installationId) {
+    }
 }

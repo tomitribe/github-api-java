@@ -220,6 +220,15 @@ public interface ReposClient {
     @Subcategory("invitations")
     void acceptRepositoryInvitation(final AcceptRepositoryInvitation acceptRepositoryInvitation);
 
+    @PATCH
+    @Path("/user/repository_invitations/{invitation_id}")
+    @OperationId("repos/accept-invitation")
+    @Docs("https://developer.github.com/v3/repos/invitations/#accept-a-repository-invitation")
+    @Category("repos")
+    @Subcategory("invitations")
+    void acceptRepositoryInvitation(@PathParam("invitation_id") final int invitationId) {
+    }
+
     @POST
     @Path("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps")
     @OperationId("repos/add-app-access-restrictions")
@@ -229,6 +238,16 @@ public interface ReposClient {
     @Subcategory("branches")
     Stream<Integration> addAppAccessRestrictions(final AddAppAccessRestrictions addAppAccessRestrictions);
 
+    @POST
+    @Path("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps")
+    @OperationId("repos/add-app-access-restrictions")
+    @Docs("https://developer.github.com/v3/repos/branches/#add-app-access-restrictions")
+    @EnabledForGithubApps
+    @Category("repos")
+    @Subcategory("branches")
+    Stream<Integration> addAppAccessRestrictions(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("branch") final String branch) {
+    }
+
     @PUT
     @Path("/repos/{owner}/{repo}/collaborators/{username}")
     @OperationId("repos/add-collaborator")
@@ -237,6 +256,16 @@ public interface ReposClient {
     @Category("repos")
     @Subcategory("collaborators")
     RepositoryInvitation addRepositoryCollaborator(final AddRepositoryCollaborator addRepositoryCollaborator);
+
+    @PUT
+    @Path("/repos/{owner}/{repo}/collaborators/{username}")
+    @OperationId("repos/add-collaborator")
+    @Docs("https://developer.github.com/v3/repos/collaborators/#add-a-repository-collaborator")
+    @EnabledForGithubApps
+    @Category("repos")
+    @Subcategory("collaborators")
+    RepositoryInvitation addRepositoryCollaborator(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("username") final String username) {
+    }
 
     @POST
     @Path("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts")
@@ -248,6 +277,16 @@ public interface ReposClient {
     Stream<String> addStatusCheckContexts(final AddStatusCheckContexts addStatusCheckContexts);
 
     @POST
+    @Path("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts")
+    @OperationId("repos/add-status-check-contexts")
+    @Docs("https://developer.github.com/v3/repos/branches/#add-status-check-contexts")
+    @EnabledForGithubApps
+    @Category("repos")
+    @Subcategory("branches")
+    Stream<String> addStatusCheckContexts(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("branch") final String branch) {
+    }
+
+    @POST
     @Path("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams")
     @OperationId("repos/add-team-access-restrictions")
     @Docs("https://developer.github.com/v3/repos/branches/#add-team-access-restrictions")
@@ -257,6 +296,16 @@ public interface ReposClient {
     Stream<Team> addTeamAccessRestrictions(final AddTeamAccessRestrictions addTeamAccessRestrictions);
 
     @POST
+    @Path("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams")
+    @OperationId("repos/add-team-access-restrictions")
+    @Docs("https://developer.github.com/v3/repos/branches/#add-team-access-restrictions")
+    @EnabledForGithubApps
+    @Category("repos")
+    @Subcategory("branches")
+    Stream<Team> addTeamAccessRestrictions(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("branch") final String branch) {
+    }
+
+    @POST
     @Path("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users")
     @OperationId("repos/add-user-access-restrictions")
     @Docs("https://developer.github.com/v3/repos/branches/#add-user-access-restrictions")
@@ -264,6 +313,16 @@ public interface ReposClient {
     @Category("repos")
     @Subcategory("branches")
     Stream<SimpleUser> addUserAccessRestrictions(final AddUserAccessRestrictions addUserAccessRestrictions);
+
+    @POST
+    @Path("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users")
+    @OperationId("repos/add-user-access-restrictions")
+    @Docs("https://developer.github.com/v3/repos/branches/#add-user-access-restrictions")
+    @EnabledForGithubApps
+    @Category("repos")
+    @Subcategory("branches")
+    Stream<SimpleUser> addUserAccessRestrictions(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("branch") final String branch) {
+    }
 
     @GET
     @Path("/repos/{owner}/{repo}/collaborators/{username}")
@@ -275,12 +334,31 @@ public interface ReposClient {
     void checkIfUserIsRepositoryCollaborator(final CheckIfUserIsRepositoryCollaborator checkIfUserIsRepositoryCollaborator);
 
     @GET
+    @Path("/repos/{owner}/{repo}/collaborators/{username}")
+    @OperationId("repos/check-collaborator")
+    @Docs("https://developer.github.com/v3/repos/collaborators/#check-if-a-user-is-a-repository-collaborator")
+    @EnabledForGithubApps
+    @Category("repos")
+    @Subcategory("collaborators")
+    void checkIfUserIsRepositoryCollaborator(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("username") final String username) {
+    }
+
+    @GET
     @Path("/repos/{owner}/{repo}/vulnerability-alerts")
     @OperationId("repos/check-vulnerability-alerts")
     @Docs("https://developer.github.com/v3/repos/#check-if-vulnerability-alerts-are-enabled-for-a-repository")
     @Preview("dorian")
     @Category("repos")
     void checkIfVulnerabilityAlertsAreEnabledForRepository(final CheckIfVulnerabilityAlertsAreEnabledForRepository checkIfVulnerabilityAlertsAreEnabledForRepository);
+
+    @GET
+    @Path("/repos/{owner}/{repo}/vulnerability-alerts")
+    @OperationId("repos/check-vulnerability-alerts")
+    @Docs("https://developer.github.com/v3/repos/#check-if-vulnerability-alerts-are-enabled-for-a-repository")
+    @Preview("dorian")
+    @Category("repos")
+    void checkIfVulnerabilityAlertsAreEnabledForRepository(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
+    }
 
     @GET
     @Path("/repos/{owner}/{repo}/compare/{base}...{head}")
@@ -291,6 +369,16 @@ public interface ReposClient {
     @Subcategory("commits")
     CommitComparison compareTwoCommits(final CompareTwoCommits compareTwoCommits);
 
+    @GET
+    @Path("/repos/{owner}/{repo}/compare/{base}...{head}")
+    @OperationId("repos/compare-commits")
+    @Docs("https://developer.github.com/v3/repos/commits/#compare-two-commits")
+    @EnabledForGithubApps
+    @Category("repos")
+    @Subcategory("commits")
+    CommitComparison compareTwoCommits(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("base") final String base, @PathParam("head") final String head) {
+    }
+
     @POST
     @Path("/repos/{owner}/{repo}/commits/{commit_sha}/comments")
     @OperationId("repos/create-commit-comment")
@@ -299,6 +387,16 @@ public interface ReposClient {
     @Category("repos")
     @Subcategory("comments")
     CommitComment createCommitComment(final CreateCommitComment createCommitComment);
+
+    @POST
+    @Path("/repos/{owner}/{repo}/commits/{commit_sha}/comments")
+    @OperationId("repos/create-commit-comment")
+    @Docs("https://developer.github.com/v3/repos/comments/#create-a-commit-comment")
+    @EnabledForGithubApps
+    @Category("repos")
+    @Subcategory("comments")
+    CommitComment createCommitComment(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("commit_sha") final String commitSha) {
+    }
 
     @POST
     @Path("/repos/{owner}/{repo}/branches/{branch}/protection/required_signatures")
@@ -311,6 +409,17 @@ public interface ReposClient {
     ProtectedBranchAdminEnforced createCommitSignatureProtection(final CreateCommitSignatureProtection createCommitSignatureProtection);
 
     @POST
+    @Path("/repos/{owner}/{repo}/branches/{branch}/protection/required_signatures")
+    @OperationId("repos/create-commit-signature-protection")
+    @Docs("https://developer.github.com/v3/repos/branches/#create-commit-signature-protection")
+    @EnabledForGithubApps
+    @Preview("zzzax")
+    @Category("repos")
+    @Subcategory("branches")
+    ProtectedBranchAdminEnforced createCommitSignatureProtection(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("branch") final String branch) {
+    }
+
+    @POST
     @Path("/repos/{owner}/{repo}/statuses/{sha}")
     @OperationId("repos/create-commit-status")
     @Docs("https://developer.github.com/v3/repos/statuses/#create-a-commit-status")
@@ -318,6 +427,16 @@ public interface ReposClient {
     @Category("repos")
     @Subcategory("statuses")
     Status createCommitStatus(final CreateCommitStatus createCommitStatus);
+
+    @POST
+    @Path("/repos/{owner}/{repo}/statuses/{sha}")
+    @OperationId("repos/create-commit-status")
+    @Docs("https://developer.github.com/v3/repos/statuses/#create-a-commit-status")
+    @EnabledForGithubApps
+    @Category("repos")
+    @Subcategory("statuses")
+    Status createCommitStatus(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("sha") final String sha) {
+    }
 
     @POST
     @Path("/repos/{owner}/{repo}/keys")
@@ -329,6 +448,16 @@ public interface ReposClient {
     DeployKey createDeployKey(final CreateDeployKey createDeployKey);
 
     @POST
+    @Path("/repos/{owner}/{repo}/keys")
+    @OperationId("repos/create-deploy-key")
+    @Docs("https://developer.github.com/v3/repos/keys/#create-a-deploy-key")
+    @EnabledForGithubApps
+    @Category("repos")
+    @Subcategory("keys")
+    DeployKey createDeployKey(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
+    }
+
+    @POST
     @Path("/repos/{owner}/{repo}/deployments")
     @OperationId("repos/create-deployment")
     @Docs("https://developer.github.com/v3/repos/deployments/#create-a-deployment")
@@ -337,6 +466,17 @@ public interface ReposClient {
     @Category("repos")
     @Subcategory("deployments")
     Deployment createDeployment(final CreateDeployment createDeployment);
+
+    @POST
+    @Path("/repos/{owner}/{repo}/deployments")
+    @OperationId("repos/create-deployment")
+    @Docs("https://developer.github.com/v3/repos/deployments/#create-a-deployment")
+    @EnabledForGithubApps
+    @Preview("ant-man")
+    @Category("repos")
+    @Subcategory("deployments")
+    Deployment createDeployment(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
+    }
 
     @POST
     @Path("/repos/{owner}/{repo}/deployments/{deployment_id}/statuses")
@@ -350,6 +490,18 @@ public interface ReposClient {
     DeploymentStatus createDeploymentStatus(final CreateDeploymentStatus createDeploymentStatus);
 
     @POST
+    @Path("/repos/{owner}/{repo}/deployments/{deployment_id}/statuses")
+    @OperationId("repos/create-deployment-status")
+    @Docs("https://developer.github.com/v3/repos/deployments/#create-a-deployment-status")
+    @EnabledForGithubApps
+    @Preview("flash")
+    @Preview("ant-man")
+    @Category("repos")
+    @Subcategory("deployments")
+    DeploymentStatus createDeploymentStatus(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("deployment_id") final int deploymentId) {
+    }
+
+    @POST
     @Path("/repos/{owner}/{repo}/forks")
     @OperationId("repos/create-fork")
     @Docs("https://developer.github.com/v3/repos/forks/#create-a-fork")
@@ -357,6 +509,16 @@ public interface ReposClient {
     @Category("repos")
     @Subcategory("forks")
     Repository createFork(final CreateFork createFork);
+
+    @POST
+    @Path("/repos/{owner}/{repo}/forks")
+    @OperationId("repos/create-fork")
+    @Docs("https://developer.github.com/v3/repos/forks/#create-a-fork")
+    @EnabledForGithubApps
+    @Category("repos")
+    @Subcategory("forks")
+    Repository createFork(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
+    }
 
     @POST
     @Path("/repos/{owner}/{repo}/pages")
@@ -368,6 +530,17 @@ public interface ReposClient {
     @Subcategory("pages")
     Page createGitHubPagesSite(final CreateGitHubPagesSite createGitHubPagesSite);
 
+    @POST
+    @Path("/repos/{owner}/{repo}/pages")
+    @OperationId("repos/create-pages-site")
+    @Docs("https://developer.github.com/v3/repos/pages/#create-a-github-pages-site")
+    @EnabledForGithubApps
+    @Preview("switcheroo")
+    @Category("repos")
+    @Subcategory("pages")
+    Page createGitHubPagesSite(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
+    }
+
     @PUT
     @Path("/repos/{owner}/{repo}/contents/{path}")
     @OperationId("repos/create-or-update-file-contents")
@@ -376,6 +549,16 @@ public interface ReposClient {
     @Category("repos")
     @Subcategory("contents")
     FileCommit createOrUpdateFileContents(final CreateOrUpdateFileContents createOrUpdateFileContents);
+
+    @PUT
+    @Path("/repos/{owner}/{repo}/contents/{path}")
+    @OperationId("repos/create-or-update-file-contents")
+    @Docs("https://developer.github.com/v3/repos/contents/#create-or-update-file-contents")
+    @EnabledForGithubApps
+    @Category("repos")
+    @Subcategory("contents")
+    FileCommit createOrUpdateFileContents(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("path") final String path) {
+    }
 
     @POST
     @Path("/orgs/{org}/repos")
@@ -388,6 +571,17 @@ public interface ReposClient {
     Repository createOrganizationRepository(final CreateOrganizationRepository createOrganizationRepository);
 
     @POST
+    @Path("/orgs/{org}/repos")
+    @OperationId("repos/create-in-org")
+    @Docs("https://developer.github.com/v3/repos/#create-an-organization-repository")
+    @EnabledForGithubApps
+    @Preview("nebula")
+    @Preview("baptiste")
+    @Category("repos")
+    Repository createOrganizationRepository(@PathParam("org") final String org) {
+    }
+
+    @POST
     @Path("/repos/{owner}/{repo}/releases")
     @OperationId("repos/create-release")
     @Docs("https://developer.github.com/v3/repos/releases/#create-a-release")
@@ -397,12 +591,31 @@ public interface ReposClient {
     Release createRelease(final CreateRelease createRelease);
 
     @POST
+    @Path("/repos/{owner}/{repo}/releases")
+    @OperationId("repos/create-release")
+    @Docs("https://developer.github.com/v3/repos/releases/#create-a-release")
+    @EnabledForGithubApps
+    @Category("repos")
+    @Subcategory("releases")
+    Release createRelease(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
+    }
+
+    @POST
     @Path("/repos/{owner}/{repo}/dispatches")
     @OperationId("repos/create-dispatch-event")
     @Docs("https://developer.github.com/v3/repos/#create-a-repository-dispatch-event")
     @EnabledForGithubApps
     @Category("repos")
     void createRepositoryDispatchEvent(final CreateRepositoryDispatchEvent createRepositoryDispatchEvent);
+
+    @POST
+    @Path("/repos/{owner}/{repo}/dispatches")
+    @OperationId("repos/create-dispatch-event")
+    @Docs("https://developer.github.com/v3/repos/#create-a-repository-dispatch-event")
+    @EnabledForGithubApps
+    @Category("repos")
+    void createRepositoryDispatchEvent(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
+    }
 
     @POST
     @Path("/user/repos")
@@ -422,6 +635,15 @@ public interface ReposClient {
     Repository createRepositoryUsingTemplate(final CreateRepositoryUsingTemplate createRepositoryUsingTemplate);
 
     @POST
+    @Path("/repos/{template_owner}/{template_repo}/generate")
+    @OperationId("repos/create-using-template")
+    @Docs("https://developer.github.com/v3/repos/#create-a-repository-using-a-template")
+    @Preview("baptiste")
+    @Category("repos")
+    Repository createRepositoryUsingTemplate(@PathParam("template_owner") final String templateOwner, @PathParam("template_repo") final String templateRepo) {
+    }
+
+    @POST
     @Path("/repos/{owner}/{repo}/hooks")
     @OperationId("repos/create-webhook")
     @Docs("https://developer.github.com/v3/repos/hooks/#create-a-repository-webhook")
@@ -430,6 +652,16 @@ public interface ReposClient {
     @Subcategory("hooks")
     Hook createRepositoryWebhook(final CreateRepositoryWebhook createRepositoryWebhook);
 
+    @POST
+    @Path("/repos/{owner}/{repo}/hooks")
+    @OperationId("repos/create-webhook")
+    @Docs("https://developer.github.com/v3/repos/hooks/#create-a-repository-webhook")
+    @EnabledForGithubApps
+    @Category("repos")
+    @Subcategory("hooks")
+    Hook createRepositoryWebhook(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
+    }
+
     @DELETE
     @Path("/user/repository_invitations/{invitation_id}")
     @OperationId("repos/decline-invitation")
@@ -437,6 +669,15 @@ public interface ReposClient {
     @Category("repos")
     @Subcategory("invitations")
     void declineRepositoryInvitation(final DeclineRepositoryInvitation declineRepositoryInvitation);
+
+    @DELETE
+    @Path("/user/repository_invitations/{invitation_id}")
+    @OperationId("repos/decline-invitation")
+    @Docs("https://developer.github.com/v3/repos/invitations/#decline-a-repository-invitation")
+    @Category("repos")
+    @Subcategory("invitations")
+    void declineRepositoryInvitation(@PathParam("invitation_id") final int invitationId) {
+    }
 
     @DELETE
     @Path("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions")
@@ -448,6 +689,16 @@ public interface ReposClient {
     void deleteAccessRestrictions(final DeleteAccessRestrictions deleteAccessRestrictions);
 
     @DELETE
+    @Path("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions")
+    @OperationId("repos/delete-access-restrictions")
+    @Docs("https://developer.github.com/v3/repos/branches/#delete-access-restrictions")
+    @EnabledForGithubApps
+    @Category("repos")
+    @Subcategory("branches")
+    void deleteAccessRestrictions(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("branch") final String branch) {
+    }
+
+    @DELETE
     @Path("/repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins")
     @OperationId("repos/delete-admin-branch-protection")
     @Docs("https://developer.github.com/v3/repos/branches/#delete-admin-branch-protection")
@@ -455,6 +706,16 @@ public interface ReposClient {
     @Category("repos")
     @Subcategory("branches")
     void deleteAdminBranchProtection(final DeleteAdminBranchProtection deleteAdminBranchProtection);
+
+    @DELETE
+    @Path("/repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins")
+    @OperationId("repos/delete-admin-branch-protection")
+    @Docs("https://developer.github.com/v3/repos/branches/#delete-admin-branch-protection")
+    @EnabledForGithubApps
+    @Category("repos")
+    @Subcategory("branches")
+    void deleteAdminBranchProtection(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("branch") final String branch) {
+    }
 
     @DELETE
     @Path("/repos/{owner}/{repo}/branches/{branch}/protection")
@@ -466,6 +727,16 @@ public interface ReposClient {
     void deleteBranchProtection(final DeleteBranchProtection deleteBranchProtection);
 
     @DELETE
+    @Path("/repos/{owner}/{repo}/branches/{branch}/protection")
+    @OperationId("repos/delete-branch-protection")
+    @Docs("https://developer.github.com/v3/repos/branches/#delete-branch-protection")
+    @EnabledForGithubApps
+    @Category("repos")
+    @Subcategory("branches")
+    void deleteBranchProtection(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("branch") final String branch) {
+    }
+
+    @DELETE
     @Path("/repos/{owner}/{repo}/comments/{comment_id}")
     @OperationId("repos/delete-commit-comment")
     @Docs("https://developer.github.com/v3/repos/comments/#delete-a-commit-comment")
@@ -473,6 +744,16 @@ public interface ReposClient {
     @Category("repos")
     @Subcategory("comments")
     void deleteCommitComment(final DeleteCommitComment deleteCommitComment);
+
+    @DELETE
+    @Path("/repos/{owner}/{repo}/comments/{comment_id}")
+    @OperationId("repos/delete-commit-comment")
+    @Docs("https://developer.github.com/v3/repos/comments/#delete-a-commit-comment")
+    @EnabledForGithubApps
+    @Category("repos")
+    @Subcategory("comments")
+    void deleteCommitComment(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("comment_id") final int commentId) {
+    }
 
     @DELETE
     @Path("/repos/{owner}/{repo}/branches/{branch}/protection/required_signatures")
@@ -485,6 +766,17 @@ public interface ReposClient {
     void deleteCommitSignatureProtection(final DeleteCommitSignatureProtection deleteCommitSignatureProtection);
 
     @DELETE
+    @Path("/repos/{owner}/{repo}/branches/{branch}/protection/required_signatures")
+    @OperationId("repos/delete-commit-signature-protection")
+    @Docs("https://developer.github.com/v3/repos/branches/#delete-commit-signature-protection")
+    @EnabledForGithubApps
+    @Preview("zzzax")
+    @Category("repos")
+    @Subcategory("branches")
+    void deleteCommitSignatureProtection(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("branch") final String branch) {
+    }
+
+    @DELETE
     @Path("/repos/{owner}/{repo}/keys/{key_id}")
     @OperationId("repos/delete-deploy-key")
     @Docs("https://developer.github.com/v3/repos/keys/#delete-a-deploy-key")
@@ -492,6 +784,16 @@ public interface ReposClient {
     @Category("repos")
     @Subcategory("keys")
     void deleteDeployKey(final DeleteDeployKey deleteDeployKey);
+
+    @DELETE
+    @Path("/repos/{owner}/{repo}/keys/{key_id}")
+    @OperationId("repos/delete-deploy-key")
+    @Docs("https://developer.github.com/v3/repos/keys/#delete-a-deploy-key")
+    @EnabledForGithubApps
+    @Category("repos")
+    @Subcategory("keys")
+    void deleteDeployKey(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("key_id") final int keyId) {
+    }
 
     @DELETE
     @Path("/repos/{owner}/{repo}/deployments/{deployment_id}")
@@ -503,6 +805,16 @@ public interface ReposClient {
     void deleteDeployment(final DeleteDeployment deleteDeployment);
 
     @DELETE
+    @Path("/repos/{owner}/{repo}/deployments/{deployment_id}")
+    @OperationId("repos/delete-deployment")
+    @Docs("https://developer.github.com/v3/repos/deployments/#delete-a-deployment")
+    @EnabledForGithubApps
+    @Category("repos")
+    @Subcategory("deployments")
+    void deleteDeployment(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("deployment_id") final int deploymentId) {
+    }
+
+    @DELETE
     @Path("/repos/{owner}/{repo}/contents/{path}")
     @OperationId("repos/delete-file")
     @Docs("https://developer.github.com/v3/repos/contents/#delete-a-file")
@@ -510,6 +822,16 @@ public interface ReposClient {
     @Category("repos")
     @Subcategory("contents")
     FileCommit deleteFile(final DeleteFile deleteFile);
+
+    @DELETE
+    @Path("/repos/{owner}/{repo}/contents/{path}")
+    @OperationId("repos/delete-file")
+    @Docs("https://developer.github.com/v3/repos/contents/#delete-a-file")
+    @EnabledForGithubApps
+    @Category("repos")
+    @Subcategory("contents")
+    FileCommit deleteFile(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("path") final String path) {
+    }
 
     @DELETE
     @Path("/repos/{owner}/{repo}/pages")
@@ -522,6 +844,17 @@ public interface ReposClient {
     void deleteGitHubPagesSite(final DeleteGitHubPagesSite deleteGitHubPagesSite);
 
     @DELETE
+    @Path("/repos/{owner}/{repo}/pages")
+    @OperationId("repos/delete-pages-site")
+    @Docs("https://developer.github.com/v3/repos/pages/#delete-a-github-pages-site")
+    @EnabledForGithubApps
+    @Preview("switcheroo")
+    @Category("repos")
+    @Subcategory("pages")
+    void deleteGitHubPagesSite(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
+    }
+
+    @DELETE
     @Path("/repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews")
     @OperationId("repos/delete-pull-request-review-protection")
     @Docs("https://developer.github.com/v3/repos/branches/#delete-pull-request-review-protection")
@@ -529,6 +862,16 @@ public interface ReposClient {
     @Category("repos")
     @Subcategory("branches")
     void deletePullRequestReviewProtection(final DeletePullRequestReviewProtection deletePullRequestReviewProtection);
+
+    @DELETE
+    @Path("/repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews")
+    @OperationId("repos/delete-pull-request-review-protection")
+    @Docs("https://developer.github.com/v3/repos/branches/#delete-pull-request-review-protection")
+    @EnabledForGithubApps
+    @Category("repos")
+    @Subcategory("branches")
+    void deletePullRequestReviewProtection(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("branch") final String branch) {
+    }
 
     @DELETE
     @Path("/repos/{owner}/{repo}/releases/{release_id}")
@@ -540,6 +883,16 @@ public interface ReposClient {
     void deleteRelease(final DeleteRelease deleteRelease);
 
     @DELETE
+    @Path("/repos/{owner}/{repo}/releases/{release_id}")
+    @OperationId("repos/delete-release")
+    @Docs("https://developer.github.com/v3/repos/releases/#delete-a-release")
+    @EnabledForGithubApps
+    @Category("repos")
+    @Subcategory("releases")
+    void deleteRelease(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("release_id") final int releaseId) {
+    }
+
+    @DELETE
     @Path("/repos/{owner}/{repo}/releases/assets/{asset_id}")
     @OperationId("repos/delete-release-asset")
     @Docs("https://developer.github.com/v3/repos/releases/#delete-a-release-asset")
@@ -549,12 +902,31 @@ public interface ReposClient {
     void deleteReleaseAsset(final DeleteReleaseAsset deleteReleaseAsset);
 
     @DELETE
+    @Path("/repos/{owner}/{repo}/releases/assets/{asset_id}")
+    @OperationId("repos/delete-release-asset")
+    @Docs("https://developer.github.com/v3/repos/releases/#delete-a-release-asset")
+    @EnabledForGithubApps
+    @Category("repos")
+    @Subcategory("releases")
+    void deleteReleaseAsset(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("asset_id") final int assetId) {
+    }
+
+    @DELETE
     @Path("/repos/{owner}/{repo}")
     @OperationId("repos/delete")
     @Docs("https://developer.github.com/v3/repos/#delete-a-repository")
     @EnabledForGithubApps
     @Category("repos")
     void deleteRepository(final DeleteRepository deleteRepository);
+
+    @DELETE
+    @Path("/repos/{owner}/{repo}")
+    @OperationId("repos/delete")
+    @Docs("https://developer.github.com/v3/repos/#delete-a-repository")
+    @EnabledForGithubApps
+    @Category("repos")
+    void deleteRepository(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
+    }
 
     @DELETE
     @Path("/repos/{owner}/{repo}/invitations/{invitation_id}")
@@ -566,6 +938,16 @@ public interface ReposClient {
     void deleteRepositoryInvitation(final DeleteRepositoryInvitation deleteRepositoryInvitation);
 
     @DELETE
+    @Path("/repos/{owner}/{repo}/invitations/{invitation_id}")
+    @OperationId("repos/delete-invitation")
+    @Docs("https://developer.github.com/v3/repos/invitations/#delete-a-repository-invitation")
+    @EnabledForGithubApps
+    @Category("repos")
+    @Subcategory("invitations")
+    void deleteRepositoryInvitation(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("invitation_id") final int invitationId) {
+    }
+
+    @DELETE
     @Path("/repos/{owner}/{repo}/hooks/{hook_id}")
     @OperationId("repos/delete-webhook")
     @Docs("https://developer.github.com/v3/repos/hooks/#delete-a-repository-webhook")
@@ -573,6 +955,16 @@ public interface ReposClient {
     @Category("repos")
     @Subcategory("hooks")
     void deleteRepositoryWebhook(final DeleteRepositoryWebhook deleteRepositoryWebhook);
+
+    @DELETE
+    @Path("/repos/{owner}/{repo}/hooks/{hook_id}")
+    @OperationId("repos/delete-webhook")
+    @Docs("https://developer.github.com/v3/repos/hooks/#delete-a-repository-webhook")
+    @EnabledForGithubApps
+    @Category("repos")
+    @Subcategory("hooks")
+    void deleteRepositoryWebhook(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("hook-id") final int hookId) {
+    }
 
     @DELETE
     @Path("/repos/{owner}/{repo}/automated-security-fixes")
@@ -584,6 +976,16 @@ public interface ReposClient {
     void disableAutomatedSecurityFixes(final DisableAutomatedSecurityFixes disableAutomatedSecurityFixes);
 
     @DELETE
+    @Path("/repos/{owner}/{repo}/automated-security-fixes")
+    @OperationId("repos/disable-automated-security-fixes")
+    @Docs("https://developer.github.com/v3/repos/#disable-automated-security-fixes")
+    @EnabledForGithubApps
+    @Preview("london")
+    @Category("repos")
+    void disableAutomatedSecurityFixes(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
+    }
+
+    @DELETE
     @Path("/repos/{owner}/{repo}/vulnerability-alerts")
     @OperationId("repos/disable-vulnerability-alerts")
     @Docs("https://developer.github.com/v3/repos/#disable-vulnerability-alerts")
@@ -591,6 +993,16 @@ public interface ReposClient {
     @Preview("dorian")
     @Category("repos")
     void disableVulnerabilityAlerts(final DisableVulnerabilityAlerts disableVulnerabilityAlerts);
+
+    @DELETE
+    @Path("/repos/{owner}/{repo}/vulnerability-alerts")
+    @OperationId("repos/disable-vulnerability-alerts")
+    @Docs("https://developer.github.com/v3/repos/#disable-vulnerability-alerts")
+    @EnabledForGithubApps
+    @Preview("dorian")
+    @Category("repos")
+    void disableVulnerabilityAlerts(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
+    }
 
     @PUT
     @Path("/repos/{owner}/{repo}/automated-security-fixes")
@@ -602,6 +1014,16 @@ public interface ReposClient {
     void enableAutomatedSecurityFixes(final EnableAutomatedSecurityFixes enableAutomatedSecurityFixes);
 
     @PUT
+    @Path("/repos/{owner}/{repo}/automated-security-fixes")
+    @OperationId("repos/enable-automated-security-fixes")
+    @Docs("https://developer.github.com/v3/repos/#enable-automated-security-fixes")
+    @EnabledForGithubApps
+    @Preview("london")
+    @Category("repos")
+    void enableAutomatedSecurityFixes(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
+    }
+
+    @PUT
     @Path("/repos/{owner}/{repo}/vulnerability-alerts")
     @OperationId("repos/enable-vulnerability-alerts")
     @Docs("https://developer.github.com/v3/repos/#enable-vulnerability-alerts")
@@ -609,6 +1031,16 @@ public interface ReposClient {
     @Preview("dorian")
     @Category("repos")
     void enableVulnerabilityAlerts(final EnableVulnerabilityAlerts enableVulnerabilityAlerts);
+
+    @PUT
+    @Path("/repos/{owner}/{repo}/vulnerability-alerts")
+    @OperationId("repos/enable-vulnerability-alerts")
+    @Docs("https://developer.github.com/v3/repos/#enable-vulnerability-alerts")
+    @EnabledForGithubApps
+    @Preview("dorian")
+    @Category("repos")
+    void enableVulnerabilityAlerts(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
+    }
 
     @GET
     @Path("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions")
@@ -620,6 +1052,16 @@ public interface ReposClient {
     BranchRestrictionPolicy getAccessRestrictions(final GetAccessRestrictions getAccessRestrictions);
 
     @GET
+    @Path("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions")
+    @OperationId("repos/get-access-restrictions")
+    @Docs("https://developer.github.com/v3/repos/branches/#get-access-restrictions")
+    @EnabledForGithubApps
+    @Category("repos")
+    @Subcategory("branches")
+    BranchRestrictionPolicy getAccessRestrictions(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("branch") final String branch) {
+    }
+
+    @GET
     @Path("/repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins")
     @OperationId("repos/get-admin-branch-protection")
     @Docs("https://developer.github.com/v3/repos/branches/#get-admin-branch-protection")
@@ -627,6 +1069,16 @@ public interface ReposClient {
     @Category("repos")
     @Subcategory("branches")
     ProtectedBranchAdminEnforced getAdminBranchProtection(final GetAdminBranchProtection getAdminBranchProtection);
+
+    @GET
+    @Path("/repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins")
+    @OperationId("repos/get-admin-branch-protection")
+    @Docs("https://developer.github.com/v3/repos/branches/#get-admin-branch-protection")
+    @EnabledForGithubApps
+    @Category("repos")
+    @Subcategory("branches")
+    ProtectedBranchAdminEnforced getAdminBranchProtection(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("branch") final String branch) {
+    }
 
     @GET
     @Path("/repos/{owner}/{repo}/stats/contributors")
@@ -638,6 +1090,16 @@ public interface ReposClient {
     Stream<ContributorActivity> getAllContributorCommitActivity(final GetAllContributorCommitActivity getAllContributorCommitActivity);
 
     @GET
+    @Path("/repos/{owner}/{repo}/stats/contributors")
+    @OperationId("repos/get-contributors-stats")
+    @Docs("https://developer.github.com/v3/repos/statistics/#get-all-contributor-commit-activity")
+    @EnabledForGithubApps
+    @Category("repos")
+    @Subcategory("statistics")
+    Stream<ContributorActivity> getAllContributorCommitActivity(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
+    }
+
+    @GET
     @Path("/repos/{owner}/{repo}/topics")
     @OperationId("repos/get-all-topics")
     @Docs("https://developer.github.com/v3/repos/#get-all-repository-topics")
@@ -645,6 +1107,16 @@ public interface ReposClient {
     @Preview("mercy")
     @Category("repos")
     Topic getAllRepositoryTopics(final GetAllRepositoryTopics getAllRepositoryTopics);
+
+    @GET
+    @Path("/repos/{owner}/{repo}/topics")
+    @OperationId("repos/get-all-topics")
+    @Docs("https://developer.github.com/v3/repos/#get-all-repository-topics")
+    @EnabledForGithubApps
+    @Preview("mercy")
+    @Category("repos")
+    Topic getAllRepositoryTopics(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
+    }
 
     @GET
     @Path("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts")
@@ -656,6 +1128,16 @@ public interface ReposClient {
     Stream<String> getAllStatusCheckContexts(final GetAllStatusCheckContexts getAllStatusCheckContexts);
 
     @GET
+    @Path("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts")
+    @OperationId("repos/get-all-status-check-contexts")
+    @Docs("https://developer.github.com/v3/repos/branches/#get-all-status-check-contexts")
+    @EnabledForGithubApps
+    @Category("repos")
+    @Subcategory("branches")
+    Stream<String> getAllStatusCheckContexts(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("branch") final String branch) {
+    }
+
+    @GET
     @Path("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps")
     @OperationId("repos/get-apps-with-access-to-protected-branch")
     @Docs("https://developer.github.com/v3/repos/branches/#list-apps-with-access-to-the-protected-branch")
@@ -665,6 +1147,16 @@ public interface ReposClient {
     Stream<Integration> getAppsWithAccessToProtectedBranch(final GetAppsWithAccessToProtectedBranch getAppsWithAccessToProtectedBranch);
 
     @GET
+    @Path("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps")
+    @OperationId("repos/get-apps-with-access-to-protected-branch")
+    @Docs("https://developer.github.com/v3/repos/branches/#list-apps-with-access-to-the-protected-branch")
+    @EnabledForGithubApps
+    @Category("repos")
+    @Subcategory("branches")
+    Stream<Integration> getAppsWithAccessToProtectedBranch(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("branch") final String branch) {
+    }
+
+    @GET
     @Path("/repos/{owner}/{repo}/branches/{branch}")
     @OperationId("repos/get-branch")
     @Docs("https://developer.github.com/v3/repos/branches/#get-a-branch")
@@ -672,6 +1164,16 @@ public interface ReposClient {
     @Category("repos")
     @Subcategory("branches")
     BranchWithProtection getBranch(final GetBranch getBranch);
+
+    @GET
+    @Path("/repos/{owner}/{repo}/branches/{branch}")
+    @OperationId("repos/get-branch")
+    @Docs("https://developer.github.com/v3/repos/branches/#get-a-branch")
+    @EnabledForGithubApps
+    @Category("repos")
+    @Subcategory("branches")
+    BranchWithProtection getBranch(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("branch") final String branch) {
+    }
 
     @GET
     @Path("/repos/{owner}/{repo}/branches/{branch}/protection")
@@ -684,6 +1186,17 @@ public interface ReposClient {
     BranchProtection getBranchProtection(final GetBranchProtection getBranchProtection);
 
     @GET
+    @Path("/repos/{owner}/{repo}/branches/{branch}/protection")
+    @OperationId("repos/get-branch-protection")
+    @Docs("https://developer.github.com/v3/repos/branches/#get-branch-protection")
+    @EnabledForGithubApps
+    @Preview("luke-cage")
+    @Category("repos")
+    @Subcategory("branches")
+    BranchProtection getBranchProtection(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("branch") final String branch) {
+    }
+
+    @GET
     @Path("/repos/{owner}/{repo}/commits/{ref}/status")
     @OperationId("repos/get-combined-status-for-ref")
     @Docs("https://developer.github.com/v3/repos/statuses/#get-the-combined-status-for-a-specific-reference")
@@ -693,6 +1206,16 @@ public interface ReposClient {
     CombinedCommitStatus getCombinedStatusForSpecificReference(final GetCombinedStatusForSpecificReference getCombinedStatusForSpecificReference);
 
     @GET
+    @Path("/repos/{owner}/{repo}/commits/{ref}/status")
+    @OperationId("repos/get-combined-status-for-ref")
+    @Docs("https://developer.github.com/v3/repos/statuses/#get-the-combined-status-for-a-specific-reference")
+    @EnabledForGithubApps
+    @Category("repos")
+    @Subcategory("statuses")
+    CombinedCommitStatus getCombinedStatusForSpecificReference(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("ref") final String ref) {
+    }
+
+    @GET
     @Path("/repos/{owner}/{repo}/commits/{ref}")
     @OperationId("repos/get-commit")
     @Docs("https://developer.github.com/v3/repos/commits/#get-a-commit")
@@ -700,6 +1223,16 @@ public interface ReposClient {
     @Category("repos")
     @Subcategory("commits")
     Commit getCommit(final GetCommit getCommit);
+
+    @GET
+    @Path("/repos/{owner}/{repo}/commits/{ref}")
+    @OperationId("repos/get-commit")
+    @Docs("https://developer.github.com/v3/repos/commits/#get-a-commit")
+    @EnabledForGithubApps
+    @Category("repos")
+    @Subcategory("commits")
+    Commit getCommit(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("ref") final String ref) {
+    }
 
     @GET
     @Path("/repos/{owner}/{repo}/comments/{comment_id}")
@@ -712,6 +1245,17 @@ public interface ReposClient {
     CommitComment getCommitComment(final GetCommitComment getCommitComment);
 
     @GET
+    @Path("/repos/{owner}/{repo}/comments/{comment_id}")
+    @OperationId("repos/get-commit-comment")
+    @Docs("https://developer.github.com/v3/repos/comments/#get-a-commit-comment")
+    @EnabledForGithubApps
+    @Preview("squirrel-girl")
+    @Category("repos")
+    @Subcategory("comments")
+    CommitComment getCommitComment(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("comment_id") final int commentId) {
+    }
+
+    @GET
     @Path("/repos/{owner}/{repo}/branches/{branch}/protection/required_signatures")
     @OperationId("repos/get-commit-signature-protection")
     @Docs("https://developer.github.com/v3/repos/branches/#get-commit-signature-protection")
@@ -720,6 +1264,17 @@ public interface ReposClient {
     @Category("repos")
     @Subcategory("branches")
     ProtectedBranchAdminEnforced getCommitSignatureProtection(final GetCommitSignatureProtection getCommitSignatureProtection);
+
+    @GET
+    @Path("/repos/{owner}/{repo}/branches/{branch}/protection/required_signatures")
+    @OperationId("repos/get-commit-signature-protection")
+    @Docs("https://developer.github.com/v3/repos/branches/#get-commit-signature-protection")
+    @EnabledForGithubApps
+    @Preview("zzzax")
+    @Category("repos")
+    @Subcategory("branches")
+    ProtectedBranchAdminEnforced getCommitSignatureProtection(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("branch") final String branch) {
+    }
 
     @GET
     @Path("/repos/{owner}/{repo}/community/profile")
@@ -732,6 +1287,17 @@ public interface ReposClient {
     CommunityProfile getCommunityProfileMetrics(final GetCommunityProfileMetrics getCommunityProfileMetrics);
 
     @GET
+    @Path("/repos/{owner}/{repo}/community/profile")
+    @OperationId("repos/get-community-profile-metrics")
+    @Docs("https://developer.github.com/v3/repos/community/#get-community-profile-metrics")
+    @EnabledForGithubApps
+    @Preview("black-panther")
+    @Category("repos")
+    @Subcategory("community")
+    CommunityProfile getCommunityProfileMetrics(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
+    }
+
+    @GET
     @Path("/repos/{owner}/{repo}/keys/{key_id}")
     @OperationId("repos/get-deploy-key")
     @Docs("https://developer.github.com/v3/repos/keys/#get-a-deploy-key")
@@ -739,6 +1305,16 @@ public interface ReposClient {
     @Category("repos")
     @Subcategory("keys")
     DeployKey getDeployKey(final GetDeployKey getDeployKey);
+
+    @GET
+    @Path("/repos/{owner}/{repo}/keys/{key_id}")
+    @OperationId("repos/get-deploy-key")
+    @Docs("https://developer.github.com/v3/repos/keys/#get-a-deploy-key")
+    @EnabledForGithubApps
+    @Category("repos")
+    @Subcategory("keys")
+    DeployKey getDeployKey(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("key_id") final int keyId) {
+    }
 
     @GET
     @Path("/repos/{owner}/{repo}/deployments/{deployment_id}")
@@ -750,6 +1326,18 @@ public interface ReposClient {
     @Category("repos")
     @Subcategory("deployments")
     Deployment getDeployment(final GetDeployment getDeployment);
+
+    @GET
+    @Path("/repos/{owner}/{repo}/deployments/{deployment_id}")
+    @OperationId("repos/get-deployment")
+    @Docs("https://developer.github.com/v3/repos/deployments/#get-a-deployment")
+    @EnabledForGithubApps
+    @Preview("machine-man")
+    @Preview("ant-man")
+    @Category("repos")
+    @Subcategory("deployments")
+    Deployment getDeployment(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("deployment_id") final int deploymentId) {
+    }
 
     @GET
     @Path("/repos/{owner}/{repo}/deployments/{deployment_id}/statuses/{status_id}")
@@ -764,6 +1352,19 @@ public interface ReposClient {
     DeploymentStatus getDeploymentStatus(final GetDeploymentStatus getDeploymentStatus);
 
     @GET
+    @Path("/repos/{owner}/{repo}/deployments/{deployment_id}/statuses/{status_id}")
+    @OperationId("repos/get-deployment-status")
+    @Docs("https://developer.github.com/v3/repos/deployments/#get-a-deployment-status")
+    @EnabledForGithubApps
+    @Preview("machine-man")
+    @Preview("flash")
+    @Preview("ant-man")
+    @Category("repos")
+    @Subcategory("deployments")
+    DeploymentStatus getDeploymentStatus(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("deployment_id") final int deploymentId, @PathParam("status_id") final int statusId) {
+    }
+
+    @GET
     @Path("/repos/{owner}/{repo}/pages/builds/{build_id}")
     @OperationId("repos/get-pages-build")
     @Docs("https://developer.github.com/v3/repos/pages/#get-github-pages-build")
@@ -771,6 +1372,16 @@ public interface ReposClient {
     @Category("repos")
     @Subcategory("pages")
     PageBuild getGitHubPagesBuild(final GetGitHubPagesBuild getGitHubPagesBuild);
+
+    @GET
+    @Path("/repos/{owner}/{repo}/pages/builds/{build_id}")
+    @OperationId("repos/get-pages-build")
+    @Docs("https://developer.github.com/v3/repos/pages/#get-github-pages-build")
+    @EnabledForGithubApps
+    @Category("repos")
+    @Subcategory("pages")
+    PageBuild getGitHubPagesBuild(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("build_id") final int buildId) {
+    }
 
     @GET
     @Path("/repos/{owner}/{repo}/pages")
@@ -782,13 +1393,33 @@ public interface ReposClient {
     Page getGitHubPagesSite(final GetGitHubPagesSite getGitHubPagesSite);
 
     @GET
+    @Path("/repos/{owner}/{repo}/pages")
+    @OperationId("repos/get-pages")
+    @Docs("https://developer.github.com/v3/repos/pages/#get-a-github-pages-site")
+    @EnabledForGithubApps
+    @Category("repos")
+    @Subcategory("pages")
+    Page getGitHubPagesSite(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
+    }
+
+    @GET
     @Path("/repos/{owner}/{repo}/stats/punch_card")
     @OperationId("repos/get-punch-card-stats")
     @Docs("https://developer.github.com/v3/repos/statistics/#get-the-hourly-commit-count-for-each-day")
     @EnabledForGithubApps
     @Category("repos")
     @Subcategory("statistics")
-    Integer[][] getHourlyCommitCountForEachDay(final GetHourlyCommitCountForEachDay getHourlyCommitCountForEachDay);
+    int[][] getHourlyCommitCountForEachDay(final GetHourlyCommitCountForEachDay getHourlyCommitCountForEachDay);
+
+    @GET
+    @Path("/repos/{owner}/{repo}/stats/punch_card")
+    @OperationId("repos/get-punch-card-stats")
+    @Docs("https://developer.github.com/v3/repos/statistics/#get-the-hourly-commit-count-for-each-day")
+    @EnabledForGithubApps
+    @Category("repos")
+    @Subcategory("statistics")
+    int[][] getHourlyCommitCountForEachDay(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
+    }
 
     @GET
     @Path("/repos/{owner}/{repo}/stats/commit_activity")
@@ -800,6 +1431,16 @@ public interface ReposClient {
     Stream<CommitActivity> getLastYearOfCommitActivity(final GetLastYearOfCommitActivity getLastYearOfCommitActivity);
 
     @GET
+    @Path("/repos/{owner}/{repo}/stats/commit_activity")
+    @OperationId("repos/get-commit-activity-stats")
+    @Docs("https://developer.github.com/v3/repos/statistics/#get-the-last-year-of-commit-activity")
+    @EnabledForGithubApps
+    @Category("repos")
+    @Subcategory("statistics")
+    Stream<CommitActivity> getLastYearOfCommitActivity(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
+    }
+
+    @GET
     @Path("/repos/{owner}/{repo}/pages/builds/latest")
     @OperationId("repos/get-latest-pages-build")
     @Docs("https://developer.github.com/v3/repos/pages/#get-latest-pages-build")
@@ -807,6 +1448,16 @@ public interface ReposClient {
     @Category("repos")
     @Subcategory("pages")
     PageBuild getLatestPagesBuild(final GetLatestPagesBuild getLatestPagesBuild);
+
+    @GET
+    @Path("/repos/{owner}/{repo}/pages/builds/latest")
+    @OperationId("repos/get-latest-pages-build")
+    @Docs("https://developer.github.com/v3/repos/pages/#get-latest-pages-build")
+    @EnabledForGithubApps
+    @Category("repos")
+    @Subcategory("pages")
+    PageBuild getLatestPagesBuild(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
+    }
 
     @GET
     @Path("/repos/{owner}/{repo}/releases/latest")
@@ -818,6 +1469,16 @@ public interface ReposClient {
     Release getLatestRelease(final GetLatestRelease getLatestRelease);
 
     @GET
+    @Path("/repos/{owner}/{repo}/releases/latest")
+    @OperationId("repos/get-latest-release")
+    @Docs("https://developer.github.com/v3/repos/releases/#get-the-latest-release")
+    @EnabledForGithubApps
+    @Category("repos")
+    @Subcategory("releases")
+    Release getLatestRelease(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
+    }
+
+    @GET
     @Path("/repos/{owner}/{repo}/traffic/views")
     @OperationId("repos/get-views")
     @Docs("https://developer.github.com/v3/repos/traffic/#get-page-views")
@@ -825,6 +1486,16 @@ public interface ReposClient {
     @Category("repos")
     @Subcategory("traffic")
     ViewTraffic getPageViews(final GetPageViews getPageViews);
+
+    @GET
+    @Path("/repos/{owner}/{repo}/traffic/views")
+    @OperationId("repos/get-views")
+    @Docs("https://developer.github.com/v3/repos/traffic/#get-page-views")
+    @EnabledForGithubApps
+    @Category("repos")
+    @Subcategory("traffic")
+    ViewTraffic getPageViews(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
+    }
 
     @GET
     @Path("/repos/{owner}/{repo}/releases/{release_id}")
@@ -836,6 +1507,16 @@ public interface ReposClient {
     Release getRelease(final GetRelease getRelease);
 
     @GET
+    @Path("/repos/{owner}/{repo}/releases/{release_id}")
+    @OperationId("repos/get-release")
+    @Docs("https://developer.github.com/v3/repos/releases/#get-a-release")
+    @EnabledForGithubApps
+    @Category("repos")
+    @Subcategory("releases")
+    Release getRelease(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("release_id") final int releaseId) {
+    }
+
+    @GET
     @Path("/repos/{owner}/{repo}/releases/assets/{asset_id}")
     @OperationId("repos/get-release-asset")
     @Docs("https://developer.github.com/v3/repos/releases/#get-a-release-asset")
@@ -845,6 +1526,16 @@ public interface ReposClient {
     ReleaseAsset getReleaseAsset(final GetReleaseAsset getReleaseAsset);
 
     @GET
+    @Path("/repos/{owner}/{repo}/releases/assets/{asset_id}")
+    @OperationId("repos/get-release-asset")
+    @Docs("https://developer.github.com/v3/repos/releases/#get-a-release-asset")
+    @EnabledForGithubApps
+    @Category("repos")
+    @Subcategory("releases")
+    ReleaseAsset getReleaseAsset(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("asset_id") final int assetId) {
+    }
+
+    @GET
     @Path("/repos/{owner}/{repo}/releases/tags/{tag}")
     @OperationId("repos/get-release-by-tag")
     @Docs("https://developer.github.com/v3/repos/releases/#get-a-release-by-tag-name")
@@ -852,6 +1543,16 @@ public interface ReposClient {
     @Category("repos")
     @Subcategory("releases")
     Release getReleaseByTagName(final GetReleaseByTagName getReleaseByTagName);
+
+    @GET
+    @Path("/repos/{owner}/{repo}/releases/tags/{tag}")
+    @OperationId("repos/get-release-by-tag")
+    @Docs("https://developer.github.com/v3/repos/releases/#get-a-release-by-tag-name")
+    @EnabledForGithubApps
+    @Category("repos")
+    @Subcategory("releases")
+    Release getReleaseByTagName(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("tag") final String tag) {
+    }
 
     @GET
     @Path("/repos/{owner}/{repo}")
@@ -864,6 +1565,17 @@ public interface ReposClient {
     FullRepository getRepository(final GetRepository getRepository);
 
     @GET
+    @Path("/repos/{owner}/{repo}")
+    @OperationId("repos/get")
+    @Docs("https://developer.github.com/v3/repos/#get-a-repository")
+    @EnabledForGithubApps
+    @Preview("nebula")
+    @Preview("scarlet-witch")
+    @Category("repos")
+    FullRepository getRepository(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
+    }
+
+    @GET
     @Path("/repos/{owner}/{repo}/traffic/clones")
     @OperationId("repos/get-clones")
     @Docs("https://developer.github.com/v3/repos/traffic/#get-repository-clones")
@@ -871,6 +1583,16 @@ public interface ReposClient {
     @Category("repos")
     @Subcategory("traffic")
     CloneTraffic getRepositoryClones(final GetRepositoryClones getRepositoryClones);
+
+    @GET
+    @Path("/repos/{owner}/{repo}/traffic/clones")
+    @OperationId("repos/get-clones")
+    @Docs("https://developer.github.com/v3/repos/traffic/#get-repository-clones")
+    @EnabledForGithubApps
+    @Category("repos")
+    @Subcategory("traffic")
+    CloneTraffic getRepositoryClones(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
+    }
 
     @GET
     @Path("/repos/{owner}/{repo}/contents/{path}")
@@ -882,6 +1604,16 @@ public interface ReposClient {
     GetRepositoryContentResponse getRepositoryContent(final GetRepositoryContent getRepositoryContent);
 
     @GET
+    @Path("/repos/{owner}/{repo}/contents/{path}")
+    @OperationId("repos/get-content")
+    @Docs("https://developer.github.com/v3/repos/contents/#get-repository-content")
+    @EnabledForGithubApps
+    @Category("repos")
+    @Subcategory("contents")
+    GetRepositoryContentResponse getRepositoryContent(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("path") final String path) {
+    }
+
+    @GET
     @Path("/repos/{owner}/{repo}/collaborators/{username}/permission")
     @OperationId("repos/get-collaborator-permission-level")
     @Docs("https://developer.github.com/v3/repos/collaborators/#get-repository-permissions-for-a-user")
@@ -889,6 +1621,16 @@ public interface ReposClient {
     @Category("repos")
     @Subcategory("collaborators")
     RepositoryCollaboratorPermission getRepositoryPermissionsForUser(final GetRepositoryPermissionsForUser getRepositoryPermissionsForUser);
+
+    @GET
+    @Path("/repos/{owner}/{repo}/collaborators/{username}/permission")
+    @OperationId("repos/get-collaborator-permission-level")
+    @Docs("https://developer.github.com/v3/repos/collaborators/#get-repository-permissions-for-a-user")
+    @EnabledForGithubApps
+    @Category("repos")
+    @Subcategory("collaborators")
+    RepositoryCollaboratorPermission getRepositoryPermissionsForUser(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("username") final String username) {
+    }
 
     @GET
     @Path("/repos/{owner}/{repo}/readme")
@@ -900,6 +1642,16 @@ public interface ReposClient {
     ContentFile getRepositoryREADME(final GetRepositoryREADME getRepositoryREADME);
 
     @GET
+    @Path("/repos/{owner}/{repo}/readme")
+    @OperationId("repos/get-readme")
+    @Docs("https://developer.github.com/v3/repos/contents/#get-a-repository-readme")
+    @EnabledForGithubApps
+    @Category("repos")
+    @Subcategory("contents")
+    ContentFile getRepositoryREADME(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
+    }
+
+    @GET
     @Path("/repos/{owner}/{repo}/hooks/{hook_id}")
     @OperationId("repos/get-webhook")
     @Docs("https://developer.github.com/v3/repos/hooks/#get-a-repository-webhook")
@@ -907,6 +1659,16 @@ public interface ReposClient {
     @Category("repos")
     @Subcategory("hooks")
     Hook getRepositoryWebhook(final GetRepositoryWebhook getRepositoryWebhook);
+
+    @GET
+    @Path("/repos/{owner}/{repo}/hooks/{hook_id}")
+    @OperationId("repos/get-webhook")
+    @Docs("https://developer.github.com/v3/repos/hooks/#get-a-repository-webhook")
+    @EnabledForGithubApps
+    @Category("repos")
+    @Subcategory("hooks")
+    Hook getRepositoryWebhook(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("hook-id") final int hookId) {
+    }
 
     @GET
     @Path("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks")
@@ -918,6 +1680,16 @@ public interface ReposClient {
     StatusCheckPolicy getStatusChecksProtection(final GetStatusChecksProtection getStatusChecksProtection);
 
     @GET
+    @Path("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks")
+    @OperationId("repos/get-status-checks-protection")
+    @Docs("https://developer.github.com/v3/repos/branches/#get-status-checks-protection")
+    @EnabledForGithubApps
+    @Category("repos")
+    @Subcategory("branches")
+    StatusCheckPolicy getStatusChecksProtection(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("branch") final String branch) {
+    }
+
+    @GET
     @Path("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams")
     @OperationId("repos/get-teams-with-access-to-protected-branch")
     @Docs("https://developer.github.com/v3/repos/branches/#list-teams-with-access-to-the-protected-branch")
@@ -925,6 +1697,16 @@ public interface ReposClient {
     @Category("repos")
     @Subcategory("branches")
     Stream<Team> getTeamsWithAccessToProtectedBranch(final GetTeamsWithAccessToProtectedBranch getTeamsWithAccessToProtectedBranch);
+
+    @GET
+    @Path("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams")
+    @OperationId("repos/get-teams-with-access-to-protected-branch")
+    @Docs("https://developer.github.com/v3/repos/branches/#list-teams-with-access-to-the-protected-branch")
+    @EnabledForGithubApps
+    @Category("repos")
+    @Subcategory("branches")
+    Stream<Team> getTeamsWithAccessToProtectedBranch(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("branch") final String branch) {
+    }
 
     @GET
     @Path("/repos/{owner}/{repo}/traffic/popular/paths")
@@ -936,6 +1718,16 @@ public interface ReposClient {
     Stream<ContentTraffic> getTopReferralPaths(final GetTopReferralPaths getTopReferralPaths);
 
     @GET
+    @Path("/repos/{owner}/{repo}/traffic/popular/paths")
+    @OperationId("repos/get-top-paths")
+    @Docs("https://developer.github.com/v3/repos/traffic/#get-top-referral-paths")
+    @EnabledForGithubApps
+    @Category("repos")
+    @Subcategory("traffic")
+    Stream<ContentTraffic> getTopReferralPaths(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
+    }
+
+    @GET
     @Path("/repos/{owner}/{repo}/traffic/popular/referrers")
     @OperationId("repos/get-top-referrers")
     @Docs("https://developer.github.com/v3/repos/traffic/#get-top-referral-sources")
@@ -943,6 +1735,16 @@ public interface ReposClient {
     @Category("repos")
     @Subcategory("traffic")
     Stream<ReferrerTraffic> getTopReferralSources(final GetTopReferralSources getTopReferralSources);
+
+    @GET
+    @Path("/repos/{owner}/{repo}/traffic/popular/referrers")
+    @OperationId("repos/get-top-referrers")
+    @Docs("https://developer.github.com/v3/repos/traffic/#get-top-referral-sources")
+    @EnabledForGithubApps
+    @Category("repos")
+    @Subcategory("traffic")
+    Stream<ReferrerTraffic> getTopReferralSources(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
+    }
 
     @GET
     @Path("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users")
@@ -954,13 +1756,33 @@ public interface ReposClient {
     Stream<SimpleUser> getUsersWithAccessToProtectedBranch(final GetUsersWithAccessToProtectedBranch getUsersWithAccessToProtectedBranch);
 
     @GET
+    @Path("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users")
+    @OperationId("repos/get-users-with-access-to-protected-branch")
+    @Docs("https://developer.github.com/v3/repos/branches/#list-users-with-access-to-the-protected-branch")
+    @EnabledForGithubApps
+    @Category("repos")
+    @Subcategory("branches")
+    Stream<SimpleUser> getUsersWithAccessToProtectedBranch(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("branch") final String branch) {
+    }
+
+    @GET
     @Path("/repos/{owner}/{repo}/stats/code_frequency")
     @OperationId("repos/get-code-frequency-stats")
     @Docs("https://developer.github.com/v3/repos/statistics/#get-the-weekly-commit-activity")
     @EnabledForGithubApps
     @Category("repos")
     @Subcategory("statistics")
-    Integer[][] getWeeklyCommitActivity(final GetWeeklyCommitActivity getWeeklyCommitActivity);
+    int[][] getWeeklyCommitActivity(final GetWeeklyCommitActivity getWeeklyCommitActivity);
+
+    @GET
+    @Path("/repos/{owner}/{repo}/stats/code_frequency")
+    @OperationId("repos/get-code-frequency-stats")
+    @Docs("https://developer.github.com/v3/repos/statistics/#get-the-weekly-commit-activity")
+    @EnabledForGithubApps
+    @Category("repos")
+    @Subcategory("statistics")
+    int[][] getWeeklyCommitActivity(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
+    }
 
     @GET
     @Path("/repos/{owner}/{repo}/stats/participation")
@@ -972,6 +1794,16 @@ public interface ReposClient {
     ParticipationStats getWeeklyCommitCount(final GetWeeklyCommitCount getWeeklyCommitCount);
 
     @GET
+    @Path("/repos/{owner}/{repo}/stats/participation")
+    @OperationId("repos/get-participation-stats")
+    @Docs("https://developer.github.com/v3/repos/statistics/#get-the-weekly-commit-count")
+    @EnabledForGithubApps
+    @Category("repos")
+    @Subcategory("statistics")
+    ParticipationStats getWeeklyCommitCount(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
+    }
+
+    @GET
     @Path("/repos/{owner}/{repo}/branches")
     @OperationId("repos/list-branches")
     @Docs("https://developer.github.com/v3/repos/branches/#list-branches")
@@ -979,6 +1811,16 @@ public interface ReposClient {
     @Category("repos")
     @Subcategory("branches")
     Stream<ShortBranch> listBranches(final ListBranches listBranches);
+
+    @GET
+    @Path("/repos/{owner}/{repo}/branches")
+    @OperationId("repos/list-branches")
+    @Docs("https://developer.github.com/v3/repos/branches/#list-branches")
+    @EnabledForGithubApps
+    @Category("repos")
+    @Subcategory("branches")
+    Stream<ShortBranch> listBranches(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
+    }
 
     @GET
     @Path("/repos/{owner}/{repo}/commits/{commit_sha}/branches-where-head")
@@ -991,6 +1833,17 @@ public interface ReposClient {
     Stream<BranchShort> listBranchesForHEADCommit(final ListBranchesForHEADCommit listBranchesForHEADCommit);
 
     @GET
+    @Path("/repos/{owner}/{repo}/commits/{commit_sha}/branches-where-head")
+    @OperationId("repos/list-branches-for-head-commit")
+    @Docs("https://developer.github.com/v3/repos/commits/#list-branches-for-head-commit")
+    @EnabledForGithubApps
+    @Preview("groot")
+    @Category("repos")
+    @Subcategory("commits")
+    Stream<BranchShort> listBranchesForHEADCommit(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("commit_sha") final String commitSha) {
+    }
+
+    @GET
     @Path("/repos/{owner}/{repo}/commits/{commit_sha}/comments")
     @OperationId("repos/list-comments-for-commit")
     @Docs("https://developer.github.com/v3/repos/comments/#list-commit-comments")
@@ -999,6 +1852,17 @@ public interface ReposClient {
     @Category("repos")
     @Subcategory("comments")
     Stream<CommitComment> listCommitComments(final ListCommitComments listCommitComments);
+
+    @GET
+    @Path("/repos/{owner}/{repo}/commits/{commit_sha}/comments")
+    @OperationId("repos/list-comments-for-commit")
+    @Docs("https://developer.github.com/v3/repos/comments/#list-commit-comments")
+    @EnabledForGithubApps
+    @Preview("squirrel-girl")
+    @Category("repos")
+    @Subcategory("comments")
+    Stream<CommitComment> listCommitComments(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("commit_sha") final String commitSha) {
+    }
 
     @GET
     @Path("/repos/{owner}/{repo}/comments")
@@ -1011,6 +1875,17 @@ public interface ReposClient {
     Stream<CommitComment> listCommitCommentsForRepository(final ListCommitCommentsForRepository listCommitCommentsForRepository);
 
     @GET
+    @Path("/repos/{owner}/{repo}/comments")
+    @OperationId("repos/list-commit-comments-for-repo")
+    @Docs("https://developer.github.com/v3/repos/comments/#list-commit-comments-for-a-repository")
+    @EnabledForGithubApps
+    @Preview("squirrel-girl")
+    @Category("repos")
+    @Subcategory("comments")
+    Stream<CommitComment> listCommitCommentsForRepository(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
+    }
+
+    @GET
     @Path("/repos/{owner}/{repo}/commits/{ref}/statuses")
     @OperationId("repos/list-commit-statuses-for-ref")
     @Docs("https://developer.github.com/v3/repos/statuses/#list-commit-statuses-for-a-reference")
@@ -1018,6 +1893,16 @@ public interface ReposClient {
     @Category("repos")
     @Subcategory("statuses")
     Stream<Status> listCommitStatusesForReference(final ListCommitStatusesForReference listCommitStatusesForReference);
+
+    @GET
+    @Path("/repos/{owner}/{repo}/commits/{ref}/statuses")
+    @OperationId("repos/list-commit-statuses-for-ref")
+    @Docs("https://developer.github.com/v3/repos/statuses/#list-commit-statuses-for-a-reference")
+    @EnabledForGithubApps
+    @Category("repos")
+    @Subcategory("statuses")
+    Stream<Status> listCommitStatusesForReference(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("ref") final String ref) {
+    }
 
     @GET
     @Path("/repos/{owner}/{repo}/commits")
@@ -1029,6 +1914,16 @@ public interface ReposClient {
     Stream<SimpleCommit> listCommits(final ListCommits listCommits);
 
     @GET
+    @Path("/repos/{owner}/{repo}/commits")
+    @OperationId("repos/list-commits")
+    @Docs("https://developer.github.com/v3/repos/commits/#list-commits")
+    @EnabledForGithubApps
+    @Category("repos")
+    @Subcategory("commits")
+    Stream<SimpleCommit> listCommits(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
+    }
+
+    @GET
     @Path("/repos/{owner}/{repo}/keys")
     @OperationId("repos/list-deploy-keys")
     @Docs("https://developer.github.com/v3/repos/keys/#list-deploy-keys")
@@ -1036,6 +1931,16 @@ public interface ReposClient {
     @Category("repos")
     @Subcategory("keys")
     Stream<DeployKey> listDeployKeys(final ListDeployKeys listDeployKeys);
+
+    @GET
+    @Path("/repos/{owner}/{repo}/keys")
+    @OperationId("repos/list-deploy-keys")
+    @Docs("https://developer.github.com/v3/repos/keys/#list-deploy-keys")
+    @EnabledForGithubApps
+    @Category("repos")
+    @Subcategory("keys")
+    Stream<DeployKey> listDeployKeys(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
+    }
 
     @GET
     @Path("/repos/{owner}/{repo}/deployments/{deployment_id}/statuses")
@@ -1049,6 +1954,18 @@ public interface ReposClient {
     Stream<DeploymentStatus> listDeploymentStatuses(final ListDeploymentStatuses listDeploymentStatuses);
 
     @GET
+    @Path("/repos/{owner}/{repo}/deployments/{deployment_id}/statuses")
+    @OperationId("repos/list-deployment-statuses")
+    @Docs("https://developer.github.com/v3/repos/deployments/#list-deployment-statuses")
+    @EnabledForGithubApps
+    @Preview("flash")
+    @Preview("ant-man")
+    @Category("repos")
+    @Subcategory("deployments")
+    Stream<DeploymentStatus> listDeploymentStatuses(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("deployment_id") final int deploymentId) {
+    }
+
+    @GET
     @Path("/repos/{owner}/{repo}/deployments")
     @OperationId("repos/list-deployments")
     @Docs("https://developer.github.com/v3/repos/deployments/#list-deployments")
@@ -1057,6 +1974,17 @@ public interface ReposClient {
     @Category("repos")
     @Subcategory("deployments")
     Stream<Deployment> listDeployments(final ListDeployments listDeployments);
+
+    @GET
+    @Path("/repos/{owner}/{repo}/deployments")
+    @OperationId("repos/list-deployments")
+    @Docs("https://developer.github.com/v3/repos/deployments/#list-deployments")
+    @EnabledForGithubApps
+    @Preview("ant-man")
+    @Category("repos")
+    @Subcategory("deployments")
+    Stream<Deployment> listDeployments(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
+    }
 
     @GET
     @Path("/repos/{owner}/{repo}/forks")
@@ -1068,6 +1996,16 @@ public interface ReposClient {
     Stream<MinimalRepository> listForks(final ListForks listForks);
 
     @GET
+    @Path("/repos/{owner}/{repo}/forks")
+    @OperationId("repos/list-forks")
+    @Docs("https://developer.github.com/v3/repos/forks/#list-forks")
+    @EnabledForGithubApps
+    @Category("repos")
+    @Subcategory("forks")
+    Stream<MinimalRepository> listForks(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
+    }
+
+    @GET
     @Path("/repos/{owner}/{repo}/pages/builds")
     @OperationId("repos/list-pages-builds")
     @Docs("https://developer.github.com/v3/repos/pages/#list-github-pages-builds")
@@ -1075,6 +2013,16 @@ public interface ReposClient {
     @Category("repos")
     @Subcategory("pages")
     Stream<PageBuild> listGitHubPagesBuilds(final ListGitHubPagesBuilds listGitHubPagesBuilds);
+
+    @GET
+    @Path("/repos/{owner}/{repo}/pages/builds")
+    @OperationId("repos/list-pages-builds")
+    @Docs("https://developer.github.com/v3/repos/pages/#list-github-pages-builds")
+    @EnabledForGithubApps
+    @Category("repos")
+    @Subcategory("pages")
+    Stream<PageBuild> listGitHubPagesBuilds(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
+    }
 
     @GET
     @Path("/orgs/{org}/repos")
@@ -1085,6 +2033,17 @@ public interface ReposClient {
     @Preview("baptiste")
     @Category("repos")
     Stream<MinimalRepository> listOrganizationRepositories(final ListOrganizationRepositories listOrganizationRepositories);
+
+    @GET
+    @Path("/orgs/{org}/repos")
+    @OperationId("repos/list-for-org")
+    @Docs("https://developer.github.com/v3/repos/#list-organization-repositories")
+    @EnabledForGithubApps
+    @Preview("nebula")
+    @Preview("baptiste")
+    @Category("repos")
+    Stream<MinimalRepository> listOrganizationRepositories(@PathParam("org") final String org) {
+    }
 
     @GET
     @Path("/repositories")
@@ -1105,6 +2064,17 @@ public interface ReposClient {
     Stream<PullRequestSimple> listPullRequestsAssociatedWithCommit(final ListPullRequestsAssociatedWithCommit listPullRequestsAssociatedWithCommit);
 
     @GET
+    @Path("/repos/{owner}/{repo}/commits/{commit_sha}/pulls")
+    @OperationId("repos/list-pull-requests-associated-with-commit")
+    @Docs("https://developer.github.com/v3/repos/commits/#list-pull-requests-associated-with-a-commit")
+    @EnabledForGithubApps
+    @Preview("groot")
+    @Category("repos")
+    @Subcategory("commits")
+    Stream<PullRequestSimple> listPullRequestsAssociatedWithCommit(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("commit_sha") final String commitSha) {
+    }
+
+    @GET
     @Path("/repos/{owner}/{repo}/releases/{release_id}/assets")
     @OperationId("repos/list-release-assets")
     @Docs("https://developer.github.com/v3/repos/releases/#list-release-assets")
@@ -1114,6 +2084,16 @@ public interface ReposClient {
     Stream<ReleaseAsset> listReleaseAssets(final ListReleaseAssets listReleaseAssets);
 
     @GET
+    @Path("/repos/{owner}/{repo}/releases/{release_id}/assets")
+    @OperationId("repos/list-release-assets")
+    @Docs("https://developer.github.com/v3/repos/releases/#list-release-assets")
+    @EnabledForGithubApps
+    @Category("repos")
+    @Subcategory("releases")
+    Stream<ReleaseAsset> listReleaseAssets(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("release_id") final int releaseId) {
+    }
+
+    @GET
     @Path("/repos/{owner}/{repo}/releases")
     @OperationId("repos/list-releases")
     @Docs("https://developer.github.com/v3/repos/releases/#list-releases")
@@ -1121,6 +2101,16 @@ public interface ReposClient {
     @Category("repos")
     @Subcategory("releases")
     Stream<Release> listReleases(final ListReleases listReleases);
+
+    @GET
+    @Path("/repos/{owner}/{repo}/releases")
+    @OperationId("repos/list-releases")
+    @Docs("https://developer.github.com/v3/repos/releases/#list-releases")
+    @EnabledForGithubApps
+    @Category("repos")
+    @Subcategory("releases")
+    Stream<Release> listReleases(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
+    }
 
     @GET
     @Path("/user/repos")
@@ -1139,6 +2129,16 @@ public interface ReposClient {
     Stream<MinimalRepository> listRepositoriesForUser(final ListRepositoriesForUser listRepositoriesForUser);
 
     @GET
+    @Path("/users/{username}/repos")
+    @OperationId("repos/list-for-user")
+    @Docs("https://developer.github.com/v3/repos/#list-repositories-for-a-user")
+    @EnabledForGithubApps
+    @Preview("nebula")
+    @Category("repos")
+    Stream<MinimalRepository> listRepositoriesForUser(@PathParam("username") final String username) {
+    }
+
+    @GET
     @Path("/repos/{owner}/{repo}/collaborators")
     @OperationId("repos/list-collaborators")
     @Docs("https://developer.github.com/v3/repos/collaborators/#list-repository-collaborators")
@@ -1146,6 +2146,16 @@ public interface ReposClient {
     @Category("repos")
     @Subcategory("collaborators")
     Stream<Collaborator> listRepositoryCollaborators(final ListRepositoryCollaborators listRepositoryCollaborators);
+
+    @GET
+    @Path("/repos/{owner}/{repo}/collaborators")
+    @OperationId("repos/list-collaborators")
+    @Docs("https://developer.github.com/v3/repos/collaborators/#list-repository-collaborators")
+    @EnabledForGithubApps
+    @Category("repos")
+    @Subcategory("collaborators")
+    Stream<Collaborator> listRepositoryCollaborators(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
+    }
 
     @GET
     @Path("/repos/{owner}/{repo}/contributors")
@@ -1156,6 +2166,15 @@ public interface ReposClient {
     Stream<Contributor> listRepositoryContributors(final ListRepositoryContributors listRepositoryContributors);
 
     @GET
+    @Path("/repos/{owner}/{repo}/contributors")
+    @OperationId("repos/list-contributors")
+    @Docs("https://developer.github.com/v3/repos/#list-repository-contributors")
+    @EnabledForGithubApps
+    @Category("repos")
+    Stream<Contributor> listRepositoryContributors(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
+    }
+
+    @GET
     @Path("/repos/{owner}/{repo}/invitations")
     @OperationId("repos/list-invitations")
     @Docs("https://developer.github.com/v3/repos/invitations/#list-repository-invitations")
@@ -1163,6 +2182,16 @@ public interface ReposClient {
     @Category("repos")
     @Subcategory("invitations")
     Stream<RepositoryInvitation> listRepositoryInvitations(final ListRepositoryInvitations listRepositoryInvitations);
+
+    @GET
+    @Path("/repos/{owner}/{repo}/invitations")
+    @OperationId("repos/list-invitations")
+    @Docs("https://developer.github.com/v3/repos/invitations/#list-repository-invitations")
+    @EnabledForGithubApps
+    @Category("repos")
+    @Subcategory("invitations")
+    Stream<RepositoryInvitation> listRepositoryInvitations(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
+    }
 
     @GET
     @Path("/user/repository_invitations")
@@ -1181,12 +2210,30 @@ public interface ReposClient {
     Language listRepositoryLanguages(final ListRepositoryLanguages listRepositoryLanguages);
 
     @GET
+    @Path("/repos/{owner}/{repo}/languages")
+    @OperationId("repos/list-languages")
+    @Docs("https://developer.github.com/v3/repos/#list-repository-languages")
+    @EnabledForGithubApps
+    @Category("repos")
+    Language listRepositoryLanguages(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
+    }
+
+    @GET
     @Path("/repos/{owner}/{repo}/tags")
     @OperationId("repos/list-tags")
     @Docs("https://developer.github.com/v3/repos/#list-repository-tags")
     @EnabledForGithubApps
     @Category("repos")
     Stream<Tag> listRepositoryTags(final ListRepositoryTags listRepositoryTags);
+
+    @GET
+    @Path("/repos/{owner}/{repo}/tags")
+    @OperationId("repos/list-tags")
+    @Docs("https://developer.github.com/v3/repos/#list-repository-tags")
+    @EnabledForGithubApps
+    @Category("repos")
+    Stream<Tag> listRepositoryTags(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
+    }
 
     @GET
     @Path("/repos/{owner}/{repo}/teams")
@@ -1197,6 +2244,15 @@ public interface ReposClient {
     Stream<Team> listRepositoryTeams(final ListRepositoryTeams listRepositoryTeams);
 
     @GET
+    @Path("/repos/{owner}/{repo}/teams")
+    @OperationId("repos/list-teams")
+    @Docs("https://developer.github.com/v3/repos/#list-repository-teams")
+    @EnabledForGithubApps
+    @Category("repos")
+    Stream<Team> listRepositoryTeams(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
+    }
+
+    @GET
     @Path("/repos/{owner}/{repo}/hooks")
     @OperationId("repos/list-webhooks")
     @Docs("https://developer.github.com/v3/repos/hooks/#list-repository-webhooks")
@@ -1204,6 +2260,16 @@ public interface ReposClient {
     @Category("repos")
     @Subcategory("hooks")
     Stream<Hook> listRepositoryWebhooks(final ListRepositoryWebhooks listRepositoryWebhooks);
+
+    @GET
+    @Path("/repos/{owner}/{repo}/hooks")
+    @OperationId("repos/list-webhooks")
+    @Docs("https://developer.github.com/v3/repos/hooks/#list-repository-webhooks")
+    @EnabledForGithubApps
+    @Category("repos")
+    @Subcategory("hooks")
+    Stream<Hook> listRepositoryWebhooks(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
+    }
 
     @POST
     @Path("/repos/{owner}/{repo}/merges")
@@ -1215,6 +2281,16 @@ public interface ReposClient {
     Commit mergeBranch(final MergeBranch mergeBranch);
 
     @POST
+    @Path("/repos/{owner}/{repo}/merges")
+    @OperationId("repos/merge")
+    @Docs("https://developer.github.com/v3/repos/merging/#merge-a-branch")
+    @EnabledForGithubApps
+    @Category("repos")
+    @Subcategory("merging")
+    Commit mergeBranch(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
+    }
+
+    @POST
     @Path("/repos/{owner}/{repo}/hooks/{hook_id}/pings")
     @OperationId("repos/ping-webhook")
     @Docs("https://developer.github.com/v3/repos/hooks/#ping-a-repository-webhook")
@@ -1222,6 +2298,16 @@ public interface ReposClient {
     @Category("repos")
     @Subcategory("hooks")
     void pingRepositoryWebhook(final PingRepositoryWebhook pingRepositoryWebhook);
+
+    @POST
+    @Path("/repos/{owner}/{repo}/hooks/{hook_id}/pings")
+    @OperationId("repos/ping-webhook")
+    @Docs("https://developer.github.com/v3/repos/hooks/#ping-a-repository-webhook")
+    @EnabledForGithubApps
+    @Category("repos")
+    @Subcategory("hooks")
+    void pingRepositoryWebhook(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("hook-id") final int hookId) {
+    }
 
     @DELETE
     @Path("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps")
@@ -1233,6 +2319,16 @@ public interface ReposClient {
     Stream<Integration> removeAppAccessRestrictions(final RemoveAppAccessRestrictions removeAppAccessRestrictions);
 
     @DELETE
+    @Path("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps")
+    @OperationId("repos/remove-app-access-restrictions")
+    @Docs("https://developer.github.com/v3/repos/branches/#remove-app-access-restrictions")
+    @EnabledForGithubApps
+    @Category("repos")
+    @Subcategory("branches")
+    Stream<Integration> removeAppAccessRestrictions(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("branch") final String branch) {
+    }
+
+    @DELETE
     @Path("/repos/{owner}/{repo}/collaborators/{username}")
     @OperationId("repos/remove-collaborator")
     @Docs("https://developer.github.com/v3/repos/collaborators/#remove-a-repository-collaborator")
@@ -1240,6 +2336,16 @@ public interface ReposClient {
     @Category("repos")
     @Subcategory("collaborators")
     void removeRepositoryCollaborator(final RemoveRepositoryCollaborator removeRepositoryCollaborator);
+
+    @DELETE
+    @Path("/repos/{owner}/{repo}/collaborators/{username}")
+    @OperationId("repos/remove-collaborator")
+    @Docs("https://developer.github.com/v3/repos/collaborators/#remove-a-repository-collaborator")
+    @EnabledForGithubApps
+    @Category("repos")
+    @Subcategory("collaborators")
+    void removeRepositoryCollaborator(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("username") final String username) {
+    }
 
     @DELETE
     @Path("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts")
@@ -1251,6 +2357,16 @@ public interface ReposClient {
     Stream<String> removeStatusCheckContexts(final RemoveStatusCheckContexts removeStatusCheckContexts);
 
     @DELETE
+    @Path("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts")
+    @OperationId("repos/remove-status-check-contexts")
+    @Docs("https://developer.github.com/v3/repos/branches/#remove-status-check-contexts")
+    @EnabledForGithubApps
+    @Category("repos")
+    @Subcategory("branches")
+    Stream<String> removeStatusCheckContexts(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("branch") final String branch) {
+    }
+
+    @DELETE
     @Path("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks")
     @OperationId("repos/remove-status-check-protection")
     @Docs("https://developer.github.com/v3/repos/branches/#remove-status-check-protection")
@@ -1258,6 +2374,16 @@ public interface ReposClient {
     @Category("repos")
     @Subcategory("branches")
     void removeStatusCheckProtection(final RemoveStatusCheckProtection removeStatusCheckProtection);
+
+    @DELETE
+    @Path("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks")
+    @OperationId("repos/remove-status-check-protection")
+    @Docs("https://developer.github.com/v3/repos/branches/#remove-status-check-protection")
+    @EnabledForGithubApps
+    @Category("repos")
+    @Subcategory("branches")
+    void removeStatusCheckProtection(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("branch") final String branch) {
+    }
 
     @DELETE
     @Path("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams")
@@ -1269,6 +2395,16 @@ public interface ReposClient {
     Stream<Team> removeTeamAccessRestrictions(final RemoveTeamAccessRestrictions removeTeamAccessRestrictions);
 
     @DELETE
+    @Path("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams")
+    @OperationId("repos/remove-team-access-restrictions")
+    @Docs("https://developer.github.com/v3/repos/branches/#remove-team-access-restrictions")
+    @EnabledForGithubApps
+    @Category("repos")
+    @Subcategory("branches")
+    Stream<Team> removeTeamAccessRestrictions(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("branch") final String branch) {
+    }
+
+    @DELETE
     @Path("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users")
     @OperationId("repos/remove-user-access-restrictions")
     @Docs("https://developer.github.com/v3/repos/branches/#remove-user-access-restrictions")
@@ -1276,6 +2412,16 @@ public interface ReposClient {
     @Category("repos")
     @Subcategory("branches")
     Stream<SimpleUser> removeUserAccessRestrictions(final RemoveUserAccessRestrictions removeUserAccessRestrictions);
+
+    @DELETE
+    @Path("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users")
+    @OperationId("repos/remove-user-access-restrictions")
+    @Docs("https://developer.github.com/v3/repos/branches/#remove-user-access-restrictions")
+    @EnabledForGithubApps
+    @Category("repos")
+    @Subcategory("branches")
+    Stream<SimpleUser> removeUserAccessRestrictions(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("branch") final String branch) {
+    }
 
     @PUT
     @Path("/repos/{owner}/{repo}/topics")
@@ -1285,6 +2431,16 @@ public interface ReposClient {
     @Preview("mercy")
     @Category("repos")
     Topic replaceAllRepositoryTopics(final ReplaceAllRepositoryTopics replaceAllRepositoryTopics);
+
+    @PUT
+    @Path("/repos/{owner}/{repo}/topics")
+    @OperationId("repos/replace-all-topics")
+    @Docs("https://developer.github.com/v3/repos/#replace-all-repository-topics")
+    @EnabledForGithubApps
+    @Preview("mercy")
+    @Category("repos")
+    Topic replaceAllRepositoryTopics(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
+    }
 
     @POST
     @Path("/repos/{owner}/{repo}/pages/builds")
@@ -1296,6 +2452,16 @@ public interface ReposClient {
     PageBuildStatus requestGitHubPagesBuild(final RequestGitHubPagesBuild requestGitHubPagesBuild);
 
     @POST
+    @Path("/repos/{owner}/{repo}/pages/builds")
+    @OperationId("repos/request-pages-build")
+    @Docs("https://developer.github.com/v3/repos/pages/#request-a-github-pages-build")
+    @EnabledForGithubApps
+    @Category("repos")
+    @Subcategory("pages")
+    PageBuildStatus requestGitHubPagesBuild(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
+    }
+
+    @POST
     @Path("/repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins")
     @OperationId("repos/set-admin-branch-protection")
     @Docs("https://developer.github.com/v3/repos/branches/#set-admin-branch-protection")
@@ -1303,6 +2469,16 @@ public interface ReposClient {
     @Category("repos")
     @Subcategory("branches")
     ProtectedBranchAdminEnforced setAdminBranchProtection(final SetAdminBranchProtection setAdminBranchProtection);
+
+    @POST
+    @Path("/repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins")
+    @OperationId("repos/set-admin-branch-protection")
+    @Docs("https://developer.github.com/v3/repos/branches/#set-admin-branch-protection")
+    @EnabledForGithubApps
+    @Category("repos")
+    @Subcategory("branches")
+    ProtectedBranchAdminEnforced setAdminBranchProtection(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("branch") final String branch) {
+    }
 
     @PUT
     @Path("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps")
@@ -1314,6 +2490,16 @@ public interface ReposClient {
     Stream<Integration> setAppAccessRestrictions(final SetAppAccessRestrictions setAppAccessRestrictions);
 
     @PUT
+    @Path("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps")
+    @OperationId("repos/set-app-access-restrictions")
+    @Docs("https://developer.github.com/v3/repos/branches/#set-app-access-restrictions")
+    @EnabledForGithubApps
+    @Category("repos")
+    @Subcategory("branches")
+    Stream<Integration> setAppAccessRestrictions(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("branch") final String branch) {
+    }
+
+    @PUT
     @Path("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts")
     @OperationId("repos/set-status-check-contexts")
     @Docs("https://developer.github.com/v3/repos/branches/#set-status-check-contexts")
@@ -1321,6 +2507,16 @@ public interface ReposClient {
     @Category("repos")
     @Subcategory("branches")
     Stream<String> setStatusCheckContexts(final SetStatusCheckContexts setStatusCheckContexts);
+
+    @PUT
+    @Path("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts")
+    @OperationId("repos/set-status-check-contexts")
+    @Docs("https://developer.github.com/v3/repos/branches/#set-status-check-contexts")
+    @EnabledForGithubApps
+    @Category("repos")
+    @Subcategory("branches")
+    Stream<String> setStatusCheckContexts(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("branch") final String branch) {
+    }
 
     @PUT
     @Path("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams")
@@ -1332,6 +2528,16 @@ public interface ReposClient {
     Stream<Team> setTeamAccessRestrictions(final SetTeamAccessRestrictions setTeamAccessRestrictions);
 
     @PUT
+    @Path("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams")
+    @OperationId("repos/set-team-access-restrictions")
+    @Docs("https://developer.github.com/v3/repos/branches/#set-team-access-restrictions")
+    @EnabledForGithubApps
+    @Category("repos")
+    @Subcategory("branches")
+    Stream<Team> setTeamAccessRestrictions(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("branch") final String branch) {
+    }
+
+    @PUT
     @Path("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users")
     @OperationId("repos/set-user-access-restrictions")
     @Docs("https://developer.github.com/v3/repos/branches/#set-user-access-restrictions")
@@ -1339,6 +2545,16 @@ public interface ReposClient {
     @Category("repos")
     @Subcategory("branches")
     Stream<SimpleUser> setUserAccessRestrictions(final SetUserAccessRestrictions setUserAccessRestrictions);
+
+    @PUT
+    @Path("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users")
+    @OperationId("repos/set-user-access-restrictions")
+    @Docs("https://developer.github.com/v3/repos/branches/#set-user-access-restrictions")
+    @EnabledForGithubApps
+    @Category("repos")
+    @Subcategory("branches")
+    Stream<SimpleUser> setUserAccessRestrictions(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("branch") final String branch) {
+    }
 
     @POST
     @Path("/repos/{owner}/{repo}/hooks/{hook_id}/tests")
@@ -1350,12 +2566,31 @@ public interface ReposClient {
     void testPushRepositoryWebhook(final TestPushRepositoryWebhook testPushRepositoryWebhook);
 
     @POST
+    @Path("/repos/{owner}/{repo}/hooks/{hook_id}/tests")
+    @OperationId("repos/test-push-webhook")
+    @Docs("https://developer.github.com/v3/repos/hooks/#test-the-push-repository-webhook")
+    @EnabledForGithubApps
+    @Category("repos")
+    @Subcategory("hooks")
+    void testPushRepositoryWebhook(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("hook-id") final int hookId) {
+    }
+
+    @POST
     @Path("/repos/{owner}/{repo}/transfer")
     @OperationId("repos/transfer")
     @Docs("https://developer.github.com/v3/repos/#transfer-a-repository")
     @EnabledForGithubApps
     @Category("repos")
     Repository transferRepository(final TransferRepository transferRepository);
+
+    @POST
+    @Path("/repos/{owner}/{repo}/transfer")
+    @OperationId("repos/transfer")
+    @Docs("https://developer.github.com/v3/repos/#transfer-a-repository")
+    @EnabledForGithubApps
+    @Category("repos")
+    Repository transferRepository(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
+    }
 
     @PUT
     @Path("/repos/{owner}/{repo}/branches/{branch}/protection")
@@ -1367,6 +2602,17 @@ public interface ReposClient {
     @Subcategory("branches")
     ProtectedBranch updateBranchProtection(final UpdateBranchProtection updateBranchProtection);
 
+    @PUT
+    @Path("/repos/{owner}/{repo}/branches/{branch}/protection")
+    @OperationId("repos/update-branch-protection")
+    @Docs("https://developer.github.com/v3/repos/branches/#update-branch-protection")
+    @EnabledForGithubApps
+    @Preview("luke-cage")
+    @Category("repos")
+    @Subcategory("branches")
+    ProtectedBranch updateBranchProtection(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("branch") final String branch) {
+    }
+
     @PATCH
     @Path("/repos/{owner}/{repo}/comments/{comment_id}")
     @OperationId("repos/update-commit-comment")
@@ -1376,6 +2622,16 @@ public interface ReposClient {
     @Subcategory("comments")
     CommitComment updateCommitComment(final UpdateCommitComment updateCommitComment);
 
+    @PATCH
+    @Path("/repos/{owner}/{repo}/comments/{comment_id}")
+    @OperationId("repos/update-commit-comment")
+    @Docs("https://developer.github.com/v3/repos/comments/#update-a-commit-comment")
+    @EnabledForGithubApps
+    @Category("repos")
+    @Subcategory("comments")
+    CommitComment updateCommitComment(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("comment_id") final int commentId) {
+    }
+
     @PUT
     @Path("/repos/{owner}/{repo}/pages")
     @OperationId("repos/update-information-about-pages-site")
@@ -1384,6 +2640,16 @@ public interface ReposClient {
     @Category("repos")
     @Subcategory("pages")
     void updateInformationAboutGitHubPagesSite(final UpdateInformationAboutGitHubPagesSite updateInformationAboutGitHubPagesSite);
+
+    @PUT
+    @Path("/repos/{owner}/{repo}/pages")
+    @OperationId("repos/update-information-about-pages-site")
+    @Docs("https://developer.github.com/v3/repos/pages/#update-information-about-a-github-pages-site")
+    @EnabledForGithubApps
+    @Category("repos")
+    @Subcategory("pages")
+    void updateInformationAboutGitHubPagesSite(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
+    }
 
     @PATCH
     @Path("/repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews")
@@ -1396,6 +2662,17 @@ public interface ReposClient {
     ProtectedBranchPullRequestReview updatePullRequestReviewProtection(final UpdatePullRequestReviewProtection updatePullRequestReviewProtection);
 
     @PATCH
+    @Path("/repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews")
+    @OperationId("repos/update-pull-request-review-protection")
+    @Docs("https://developer.github.com/v3/repos/branches/#update-pull-request-review-protection")
+    @EnabledForGithubApps
+    @Preview("luke-cage")
+    @Category("repos")
+    @Subcategory("branches")
+    ProtectedBranchPullRequestReview updatePullRequestReviewProtection(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("branch") final String branch) {
+    }
+
+    @PATCH
     @Path("/repos/{owner}/{repo}/releases/{release_id}")
     @OperationId("repos/update-release")
     @Docs("https://developer.github.com/v3/repos/releases/#update-a-release")
@@ -1405,6 +2682,16 @@ public interface ReposClient {
     Release updateRelease(final UpdateRelease updateRelease);
 
     @PATCH
+    @Path("/repos/{owner}/{repo}/releases/{release_id}")
+    @OperationId("repos/update-release")
+    @Docs("https://developer.github.com/v3/repos/releases/#update-a-release")
+    @EnabledForGithubApps
+    @Category("repos")
+    @Subcategory("releases")
+    Release updateRelease(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("release_id") final int releaseId) {
+    }
+
+    @PATCH
     @Path("/repos/{owner}/{repo}/releases/assets/{asset_id}")
     @OperationId("repos/update-release-asset")
     @Docs("https://developer.github.com/v3/repos/releases/#update-a-release-asset")
@@ -1412,6 +2699,16 @@ public interface ReposClient {
     @Category("repos")
     @Subcategory("releases")
     ReleaseAsset updateReleaseAsset(final UpdateReleaseAsset updateReleaseAsset);
+
+    @PATCH
+    @Path("/repos/{owner}/{repo}/releases/assets/{asset_id}")
+    @OperationId("repos/update-release-asset")
+    @Docs("https://developer.github.com/v3/repos/releases/#update-a-release-asset")
+    @EnabledForGithubApps
+    @Category("repos")
+    @Subcategory("releases")
+    ReleaseAsset updateReleaseAsset(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("asset_id") final int assetId) {
+    }
 
     @PATCH
     @Path("/repos/{owner}/{repo}")
@@ -1424,6 +2721,17 @@ public interface ReposClient {
     FullRepository updateRepository(final UpdateRepository updateRepository);
 
     @PATCH
+    @Path("/repos/{owner}/{repo}")
+    @OperationId("repos/update")
+    @Docs("https://developer.github.com/v3/repos/#update-a-repository")
+    @EnabledForGithubApps
+    @Preview("nebula")
+    @Preview("baptiste")
+    @Category("repos")
+    FullRepository updateRepository(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
+    }
+
+    @PATCH
     @Path("/repos/{owner}/{repo}/invitations/{invitation_id}")
     @OperationId("repos/update-invitation")
     @Docs("https://developer.github.com/v3/repos/invitations/#update-a-repository-invitation")
@@ -1431,6 +2739,16 @@ public interface ReposClient {
     @Category("repos")
     @Subcategory("invitations")
     RepositoryInvitation updateRepositoryInvitation(final UpdateRepositoryInvitation updateRepositoryInvitation);
+
+    @PATCH
+    @Path("/repos/{owner}/{repo}/invitations/{invitation_id}")
+    @OperationId("repos/update-invitation")
+    @Docs("https://developer.github.com/v3/repos/invitations/#update-a-repository-invitation")
+    @EnabledForGithubApps
+    @Category("repos")
+    @Subcategory("invitations")
+    RepositoryInvitation updateRepositoryInvitation(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("invitation_id") final int invitationId) {
+    }
 
     @PATCH
     @Path("/repos/{owner}/{repo}/hooks/{hook_id}")
@@ -1442,6 +2760,16 @@ public interface ReposClient {
     Hook updateRepositoryWebhook(final UpdateRepositoryWebhook updateRepositoryWebhook);
 
     @PATCH
+    @Path("/repos/{owner}/{repo}/hooks/{hook_id}")
+    @OperationId("repos/update-webhook")
+    @Docs("https://developer.github.com/v3/repos/hooks/#update-a-repository-webhook")
+    @EnabledForGithubApps
+    @Category("repos")
+    @Subcategory("hooks")
+    Hook updateRepositoryWebhook(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("hook-id") final int hookId) {
+    }
+
+    @PATCH
     @Path("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks")
     @OperationId("repos/update-status-check-protection")
     @Docs("https://developer.github.com/v3/repos/branches/#update-status-check-potection")
@@ -1449,6 +2777,16 @@ public interface ReposClient {
     @Category("repos")
     @Subcategory("branches")
     StatusCheckPolicy updateStatusCheckProtection(final UpdateStatusCheckProtection updateStatusCheckProtection);
+
+    @PATCH
+    @Path("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks")
+    @OperationId("repos/update-status-check-protection")
+    @Docs("https://developer.github.com/v3/repos/branches/#update-status-check-potection")
+    @EnabledForGithubApps
+    @Category("repos")
+    @Subcategory("branches")
+    StatusCheckPolicy updateStatusCheckProtection(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("branch") final String branch) {
+    }
 
     @POST
     @Path("/repos/{owner}/{repo}/releases/{release_id}/assets")
@@ -1458,4 +2796,14 @@ public interface ReposClient {
     @Category("repos")
     @Subcategory("releases")
     ReleaseAsset uploadReleaseAsset(final UploadReleaseAsset uploadReleaseAsset);
+
+    @POST
+    @Path("/repos/{owner}/{repo}/releases/{release_id}/assets")
+    @OperationId("repos/upload-release-asset")
+    @Docs("https://developer.github.com/v3/repos/releases/#upload-a-release-asset")
+    @EnabledForGithubApps
+    @Category("repos")
+    @Subcategory("releases")
+    ReleaseAsset uploadReleaseAsset(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("release_id") final int releaseId) {
+    }
 }

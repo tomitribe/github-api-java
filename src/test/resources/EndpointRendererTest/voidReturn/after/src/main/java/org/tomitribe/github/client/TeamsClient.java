@@ -36,6 +36,16 @@ public interface TeamsClient {
     @Subcategory("discussions")
     void deleteDiscussion(final DeleteDiscussion deleteDiscussion);
 
+    @DELETE
+    @Path("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}")
+    @OperationId("teams/delete-discussion-in-org")
+    @Docs("https://developer.github.com/v3/teams/discussions/#delete-a-discussion")
+    @EnabledForGithubApps
+    @Category("teams")
+    @Subcategory("discussions")
+    void deleteDiscussion(@PathParam("org") final String org, @PathParam("team_slug") final String teamSlug, @PathParam("discussion-number") final int discussionNumber) {
+    }
+
     @GET
     @Path("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}")
     @OperationId("teams/get-discussion-in-org")
@@ -46,6 +56,17 @@ public interface TeamsClient {
     @Subcategory("discussions")
     TeamDiscussion getDiscussion(final GetDiscussion getDiscussion);
 
+    @GET
+    @Path("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}")
+    @OperationId("teams/get-discussion-in-org")
+    @Docs("https://developer.github.com/v3/teams/discussions/#get-a-discussion")
+    @EnabledForGithubApps
+    @Preview("squirrel-girl")
+    @Category("teams")
+    @Subcategory("discussions")
+    TeamDiscussion getDiscussion(@PathParam("org") final String org, @PathParam("team_slug") final String teamSlug, @PathParam("discussion-number") final int discussionNumber) {
+    }
+
     @PATCH
     @Path("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}")
     @OperationId("teams/update-discussion-in-org")
@@ -55,4 +76,15 @@ public interface TeamsClient {
     @Category("teams")
     @Subcategory("discussions")
     TeamDiscussion updateDiscussion(final UpdateDiscussion updateDiscussion);
+
+    @PATCH
+    @Path("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}")
+    @OperationId("teams/update-discussion-in-org")
+    @Docs("https://developer.github.com/v3/teams/discussions/#update-a-discussion")
+    @EnabledForGithubApps
+    @Preview("squirrel-girl")
+    @Category("teams")
+    @Subcategory("discussions")
+    TeamDiscussion updateDiscussion(@PathParam("org") final String org, @PathParam("team_slug") final String teamSlug, @PathParam("discussion-number") final int discussionNumber) {
+    }
 }

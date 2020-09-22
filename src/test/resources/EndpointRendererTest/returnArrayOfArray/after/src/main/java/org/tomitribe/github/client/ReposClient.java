@@ -30,5 +30,15 @@ public interface ReposClient {
     @EnabledForGithubApps
     @Category("repos")
     @Subcategory("statistics")
-    Integer[][] getWeeklyCommitActivity(final GetWeeklyCommitActivity getWeeklyCommitActivity);
+    int[][] getWeeklyCommitActivity(final GetWeeklyCommitActivity getWeeklyCommitActivity);
+
+    @GET
+    @Path("/repos/{owner}/{repo}/stats/code_frequency")
+    @OperationId("repos/get-code-frequency-stats")
+    @Docs("https://developer.github.com/v3/repos/statistics/#get-the-weekly-commit-activity")
+    @EnabledForGithubApps
+    @Category("repos")
+    @Subcategory("statistics")
+    int[][] getWeeklyCommitActivity(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
+    }
 }

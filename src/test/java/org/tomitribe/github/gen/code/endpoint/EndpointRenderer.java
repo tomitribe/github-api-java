@@ -20,6 +20,8 @@ import com.github.javaparser.ast.Modifier;
 import com.github.javaparser.ast.NodeList;
 import com.github.javaparser.ast.body.MethodDeclaration;
 import com.github.javaparser.ast.body.Parameter;
+import com.github.javaparser.ast.expr.SingleMemberAnnotationExpr;
+import com.github.javaparser.ast.expr.StringLiteralExpr;
 import org.tomitribe.github.client.Category;
 import org.tomitribe.github.client.DeprecationDate;
 import org.tomitribe.github.client.Docs;
@@ -35,6 +37,7 @@ import org.tomitribe.github.gen.Project;
 import org.tomitribe.github.gen.code.model.ArrayClazz;
 import org.tomitribe.github.gen.code.model.Clazz;
 import org.tomitribe.github.gen.code.model.ClazzRenderer;
+import org.tomitribe.github.gen.code.model.Field;
 import org.tomitribe.github.gen.code.model.Name;
 import org.tomitribe.github.gen.code.model.VoidClazz;
 import org.tomitribe.util.IO;
@@ -48,6 +51,8 @@ import javax.ws.rs.PATCH;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.QueryParam;
 import java.io.File;
 import java.io.IOException;
 import java.io.UncheckedIOException;
@@ -56,6 +61,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
+import java.util.function.Predicate;
 import java.util.stream.Stream;
 
 public class EndpointRenderer {
@@ -114,12 +120,12 @@ public class EndpointRenderer {
 
             if (isArrayOfArray(method)) {
                 final Name arrayType = getImport(method.getResponse());
-                methodDeclaration.setType(String.format("%s[][]", arrayType.getSimpleName()));
+                methodDeclaration.setType(String.format("%s[][]", asRequiredType(arrayType)));
             } else if (isArray(method)) {
                 final ArrayClazz arrayClazz = (ArrayClazz) method.getResponse();
                 methodDeclaration.setType(String.format("Stream<%s>", arrayClazz.getOf().getName().getSimpleName()));
             } else {
-                methodDeclaration.setType(method.getResponse().getName().getSimpleName());
+                methodDeclaration.setType(asRequiredType(method.getResponse().getName()));
             }
 
             final Annotations annotations = new Annotations(methodDeclaration, definition);
@@ -166,9 +172,88 @@ public class EndpointRenderer {
 
             methodDeclaration.setBody(null);
             definition.getClazz().addMember(methodDeclaration);
+
+            /*
+             * Some people may not like the all-in-one request object style
+             * of methods and may prefer individual parameters.
+             * Let's generate an overloaded version of the method that has
+             * each path parameter individually.
+             */
+            if (canOverload(method)) {
+                final MethodDeclaration overloaded = new MethodDeclaration();
+                overloaded.setType(methodDeclaration.getType());
+                overloaded.setAnnotations(methodDeclaration.getAnnotations());
+                overloaded.setName(methodDeclaration.getName());
+
+                method.getRequest().getFields().stream()
+                        .filter(field -> field.getIn().equals(Field.In.PATH))
+                        .peek(field -> definition.addImport(field.getName()))
+                        .map(this::asParameter)
+                        .forEach(overloaded::addParameter);
+
+                definition.getClazz().addMember(overloaded);
+            }
         }
 
         aPackage.write(className + ".java", definition.clean().toString());
+    }
+
+    private Parameter asParameter(final Field field) {
+
+        if (field.getIn().equals(Field.In.PATH)) {
+
+            final Parameter parameter = new Parameter();
+            parameter.addAnnotation(ann(PathParam.class, field.getJsonName()));
+            parameter.setModifiers(Modifier.Keyword.FINAL);
+            parameter.setType(asRequiredType(field.getType()));
+            parameter.setName(field.getName());
+            return parameter;
+
+        }
+
+        if (field.getIn().equals(Field.In.QUERY)) {
+
+            final Parameter parameter = new Parameter();
+            parameter.addAnnotation(ann(QueryParam.class, field.getJsonName()));
+            parameter.setModifiers(Modifier.Keyword.FINAL);
+            parameter.setType(field.getType().getSimpleName());
+            parameter.setName(field.getName());
+            return parameter;
+
+        }
+
+        throw new UnsupportedOperationException("Unsupported parameter type: " + field.getIn());
+    }
+
+    /**
+     * When a method returns json "integer" we should not
+     * return Integer but int.  Similarly, when a method
+     * parameter takes json "integer" and that parameter
+     * is a path parameter or other non-optional value,
+     * we should also use the "int" version so users are
+     * forced to supply values.
+     */
+    private String asRequiredType(final Name type) {
+        if (Name.BOOLEAN.equals(type)) return "boolean";
+        if (Name.INTEGER.equals(type)) return "int";
+        if (Name.LONG.equals(type)) return "long";
+        return type.getSimpleName();
+    }
+
+    private static SingleMemberAnnotationExpr ann(final Class<?> annotationType, final String value) {
+        return new SingleMemberAnnotationExpr(
+                new com.github.javaparser.ast.expr.Name(annotationType.getSimpleName()),
+                new StringLiteralExpr(value));
+    }
+
+    private boolean canOverload(final EndpointMethod method) {
+        int parameter = 0;
+        final List<Field> fields = method.getRequest().getFields();
+        for (final Field field : fields) {
+            if (field.getIn().equals(Field.In.BODY)) return false;
+            if (field.getIn().equals(Field.In.PATH)) parameter++;
+        }
+        return parameter > 0;
     }
 
     private boolean isArray(final EndpointMethod method) {

@@ -40,4 +40,13 @@ public interface GitignoreClient {
     @EnabledForGithubApps
     @Category("gitignore")
     GitignoreTemplate getGitignoreTemplate(final GetGitignoreTemplate getGitignoreTemplate);
+
+    @GET
+    @Path("/gitignore/templates/{name}")
+    @OperationId("gitignore/get-template")
+    @Docs("https://developer.github.com/v3/gitignore/#get-a-gitignore-template")
+    @EnabledForGithubApps
+    @Category("gitignore")
+    GitignoreTemplate getGitignoreTemplate(@PathParam("name") final String name) {
+    }
 }

@@ -57,6 +57,16 @@ public interface OauthAuthorizationsClient {
     void deleteAuthorization(final DeleteAuthorization deleteAuthorization);
 
     @DELETE
+    @Path("/authorizations/{authorization_id}")
+    @OperationId("oauth-authorizations/delete-authorization")
+    @Docs("https://developer.github.com/v3/oauth_authorizations/#delete-an-authorization")
+    @RemovalDate("2020-11-13")
+    @DeprecationDate("2020-02-14")
+    @Category("oauth-authorizations")
+    void deleteAuthorization(@PathParam("authorization_id") final int authorizationId) {
+    }
+
+    @DELETE
     @Path("/applications/grants/{grant_id}")
     @OperationId("oauth-authorizations/delete-grant")
     @Docs("https://developer.github.com/v3/oauth_authorizations/#delete-a-grant")
@@ -64,6 +74,16 @@ public interface OauthAuthorizationsClient {
     @DeprecationDate("2020-02-14")
     @Category("oauth-authorizations")
     void deleteGrant(final DeleteGrant deleteGrant);
+
+    @DELETE
+    @Path("/applications/grants/{grant_id}")
+    @OperationId("oauth-authorizations/delete-grant")
+    @Docs("https://developer.github.com/v3/oauth_authorizations/#delete-a-grant")
+    @RemovalDate("2020-11-13")
+    @DeprecationDate("2020-02-14")
+    @Category("oauth-authorizations")
+    void deleteGrant(@PathParam("grant_id") final int grantId) {
+    }
 
     @PUT
     @Path("/authorizations/clients/{client_id}")
@@ -75,6 +95,16 @@ public interface OauthAuthorizationsClient {
     Authorization getOrCreateAuthorizationForSpecificApp(final GetOrCreateAuthorizationForSpecificApp getOrCreateAuthorizationForSpecificApp);
 
     @PUT
+    @Path("/authorizations/clients/{client_id}")
+    @OperationId("oauth-authorizations/get-or-create-authorization-for-app")
+    @Docs("https://developer.github.com/v3/oauth_authorizations/#get-or-create-an-authorization-for-a-specific-app")
+    @RemovalDate("2020-11-13")
+    @DeprecationDate("2020-02-14")
+    @Category("oauth-authorizations")
+    Authorization getOrCreateAuthorizationForSpecificApp(@PathParam("client-id") final String clientId) {
+    }
+
+    @PUT
     @Path("/authorizations/clients/{client_id}/{fingerprint}")
     @OperationId("oauth-authorizations/get-or-create-authorization-for-app-and-fingerprint")
     @Docs("https://developer.github.com/v3/oauth_authorizations/#get-or-create-an-authorization-for-a-specific-app-and-fingerprint")
@@ -82,6 +112,16 @@ public interface OauthAuthorizationsClient {
     @DeprecationDate("2020-02-14")
     @Category("oauth-authorizations")
     Authorization getOrCreateAuthorizationForSpecificAppAndFingerprint(final GetOrCreateAuthorizationForSpecificAppAndFingerprint getOrCreateAuthorizationForSpecificAppAndFingerprint);
+
+    @PUT
+    @Path("/authorizations/clients/{client_id}/{fingerprint}")
+    @OperationId("oauth-authorizations/get-or-create-authorization-for-app-and-fingerprint")
+    @Docs("https://developer.github.com/v3/oauth_authorizations/#get-or-create-an-authorization-for-a-specific-app-and-fingerprint")
+    @RemovalDate("2020-11-13")
+    @DeprecationDate("2020-02-14")
+    @Category("oauth-authorizations")
+    Authorization getOrCreateAuthorizationForSpecificAppAndFingerprint(@PathParam("client-id") final String clientId, @PathParam("fingerprint") final String fingerprint) {
+    }
 
     @GET
     @Path("/authorizations/{authorization_id}")
@@ -93,6 +133,16 @@ public interface OauthAuthorizationsClient {
     Authorization getSingleAuthorization(final GetSingleAuthorization getSingleAuthorization);
 
     @GET
+    @Path("/authorizations/{authorization_id}")
+    @OperationId("oauth-authorizations/get-authorization")
+    @Docs("https://developer.github.com/v3/oauth_authorizations/#get-a-single-authorization")
+    @RemovalDate("2020-11-13")
+    @DeprecationDate("2020-02-14")
+    @Category("oauth-authorizations")
+    Authorization getSingleAuthorization(@PathParam("authorization_id") final int authorizationId) {
+    }
+
+    @GET
     @Path("/applications/grants/{grant_id}")
     @OperationId("oauth-authorizations/get-grant")
     @Docs("https://developer.github.com/v3/oauth_authorizations/#get-a-single-grant")
@@ -100,6 +150,16 @@ public interface OauthAuthorizationsClient {
     @DeprecationDate("2020-02-14")
     @Category("oauth-authorizations")
     ApplicationGrant getSingleGrant(final GetSingleGrant getSingleGrant);
+
+    @GET
+    @Path("/applications/grants/{grant_id}")
+    @OperationId("oauth-authorizations/get-grant")
+    @Docs("https://developer.github.com/v3/oauth_authorizations/#get-a-single-grant")
+    @RemovalDate("2020-11-13")
+    @DeprecationDate("2020-02-14")
+    @Category("oauth-authorizations")
+    ApplicationGrant getSingleGrant(@PathParam("grant_id") final int grantId) {
+    }
 
     @GET
     @Path("/authorizations")
@@ -127,4 +187,14 @@ public interface OauthAuthorizationsClient {
     @DeprecationDate("2020-02-14")
     @Category("oauth-authorizations")
     Authorization updateExistingAuthorization(final UpdateExistingAuthorization updateExistingAuthorization);
+
+    @PATCH
+    @Path("/authorizations/{authorization_id}")
+    @OperationId("oauth-authorizations/update-authorization")
+    @Docs("https://developer.github.com/v3/oauth_authorizations/#update-an-existing-authorization")
+    @RemovalDate("2020-11-13")
+    @DeprecationDate("2020-02-14")
+    @Category("oauth-authorizations")
+    Authorization updateExistingAuthorization(@PathParam("authorization_id") final int authorizationId) {
+    }
 }
