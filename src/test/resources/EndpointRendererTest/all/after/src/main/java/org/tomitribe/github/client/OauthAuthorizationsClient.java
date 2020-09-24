@@ -63,8 +63,7 @@ public interface OauthAuthorizationsClient {
     @RemovalDate("2020-11-13")
     @DeprecationDate("2020-02-14")
     @Category("oauth-authorizations")
-    void deleteAuthorization(@PathParam("authorization_id") final int authorizationId) {
-    }
+    void deleteAuthorization(@PathParam("authorization_id") final int authorizationId);
 
     @DELETE
     @Path("/applications/grants/{grant_id}")
@@ -82,8 +81,7 @@ public interface OauthAuthorizationsClient {
     @RemovalDate("2020-11-13")
     @DeprecationDate("2020-02-14")
     @Category("oauth-authorizations")
-    void deleteGrant(@PathParam("grant_id") final int grantId) {
-    }
+    void deleteGrant(@PathParam("grant_id") final int grantId);
 
     @PUT
     @Path("/authorizations/clients/{client_id}")
@@ -101,8 +99,7 @@ public interface OauthAuthorizationsClient {
     @RemovalDate("2020-11-13")
     @DeprecationDate("2020-02-14")
     @Category("oauth-authorizations")
-    Authorization getOrCreateAuthorizationForSpecificApp(@PathParam("client-id") final String clientId) {
-    }
+    Authorization getOrCreateAuthorizationForSpecificApp(@PathParam("client-id") final String clientId);
 
     @PUT
     @Path("/authorizations/clients/{client_id}/{fingerprint}")
@@ -120,8 +117,7 @@ public interface OauthAuthorizationsClient {
     @RemovalDate("2020-11-13")
     @DeprecationDate("2020-02-14")
     @Category("oauth-authorizations")
-    Authorization getOrCreateAuthorizationForSpecificAppAndFingerprint(@PathParam("client-id") final String clientId, @PathParam("fingerprint") final String fingerprint) {
-    }
+    Authorization getOrCreateAuthorizationForSpecificAppAndFingerprint(@PathParam("client-id") final String clientId, @PathParam("fingerprint") final String fingerprint);
 
     @GET
     @Path("/authorizations/{authorization_id}")
@@ -139,8 +135,7 @@ public interface OauthAuthorizationsClient {
     @RemovalDate("2020-11-13")
     @DeprecationDate("2020-02-14")
     @Category("oauth-authorizations")
-    Authorization getSingleAuthorization(@PathParam("authorization_id") final int authorizationId) {
-    }
+    Authorization getSingleAuthorization(@PathParam("authorization_id") final int authorizationId);
 
     @GET
     @Path("/applications/grants/{grant_id}")
@@ -158,8 +153,7 @@ public interface OauthAuthorizationsClient {
     @RemovalDate("2020-11-13")
     @DeprecationDate("2020-02-14")
     @Category("oauth-authorizations")
-    ApplicationGrant getSingleGrant(@PathParam("grant_id") final int grantId) {
-    }
+    ApplicationGrant getSingleGrant(@PathParam("grant_id") final int grantId);
 
     @GET
     @Path("/authorizations")
@@ -168,6 +162,7 @@ public interface OauthAuthorizationsClient {
     @RemovalDate("2020-11-13")
     @DeprecationDate("2020-02-14")
     @Category("oauth-authorizations")
+    @Paged(Authorization[].class)
     Stream<Authorization> listYourAuthorizations(final ListYourAuthorizations listYourAuthorizations);
 
     @GET
@@ -177,6 +172,7 @@ public interface OauthAuthorizationsClient {
     @RemovalDate("2020-11-13")
     @DeprecationDate("2020-02-14")
     @Category("oauth-authorizations")
+    @Paged(ApplicationGrant[].class)
     Stream<ApplicationGrant> listYourGrants(final ListYourGrants listYourGrants);
 
     @PATCH
@@ -195,6 +191,5 @@ public interface OauthAuthorizationsClient {
     @RemovalDate("2020-11-13")
     @DeprecationDate("2020-02-14")
     @Category("oauth-authorizations")
-    Authorization updateExistingAuthorization(@PathParam("authorization_id") final int authorizationId) {
-    }
+    Authorization updateExistingAuthorization(@PathParam("authorization_id") final int authorizationId);
 }

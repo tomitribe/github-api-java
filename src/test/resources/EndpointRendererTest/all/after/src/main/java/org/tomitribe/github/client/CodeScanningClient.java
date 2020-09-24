@@ -39,8 +39,7 @@ public interface CodeScanningClient {
     @Docs("https://developer.github.com/v3/code-scanning/#get-a-code-scanning-alert")
     @EnabledForGithubApps
     @Category("code-scanning")
-    CodeScanningAlert getCodeScanningAlert(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("alert_id") final int alertId) {
-    }
+    CodeScanningAlert getCodeScanningAlert(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("alert_id") final int alertId);
 
     @GET
     @Path("/repos/{owner}/{repo}/code-scanning/alerts")
@@ -56,6 +55,5 @@ public interface CodeScanningClient {
     @Docs("https://developer.github.com/v3/code-scanning/#list-code-scanning-alerts-for-a-repository")
     @EnabledForGithubApps
     @Category("code-scanning")
-    Stream<CodeScanningAlert> listCodeScanningAlertsForRepository(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
-    }
+    Stream<CodeScanningAlert> listCodeScanningAlertsForRepository(@PathParam("owner") final String owner, @PathParam("repo") final String repo);
 }

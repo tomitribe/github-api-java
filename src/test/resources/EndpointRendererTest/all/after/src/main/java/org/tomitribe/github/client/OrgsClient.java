@@ -36,8 +36,9 @@ import org.tomitribe.github.model.GetOrganization;
 import org.tomitribe.github.model.GetOrganizationMembershipForAuthenticatedUser;
 import org.tomitribe.github.model.GetOrganizationMembershipForUser;
 import org.tomitribe.github.model.GetOrganizationWebhook;
+import org.tomitribe.github.model.Installation;
+import org.tomitribe.github.model.InstallationsPage;
 import org.tomitribe.github.model.ListAppInstallationsForOrganization;
-import org.tomitribe.github.model.ListAppInstallationsForOrganizationResponse;
 import org.tomitribe.github.model.ListOrganizationInvitationTeams;
 import org.tomitribe.github.model.ListOrganizationMembers;
 import org.tomitribe.github.model.ListOrganizationMembershipsForAuthenticatedUser;
@@ -88,8 +89,7 @@ public interface OrgsClient {
     @EnabledForGithubApps
     @Category("orgs")
     @Subcategory("blocking")
-    void blockUserFromOrganization(@PathParam("org") final String org, @PathParam("username") final String username) {
-    }
+    void blockUserFromOrganization(@PathParam("org") final String org, @PathParam("username") final String username);
 
     @GET
     @Path("/orgs/{org}/blocks/{username}")
@@ -107,8 +107,7 @@ public interface OrgsClient {
     @EnabledForGithubApps
     @Category("orgs")
     @Subcategory("blocking")
-    void checkIfUserIsBlockedByOrganization(@PathParam("org") final String org, @PathParam("username") final String username) {
-    }
+    void checkIfUserIsBlockedByOrganization(@PathParam("org") final String org, @PathParam("username") final String username);
 
     @GET
     @Path("/orgs/{org}/members/{username}")
@@ -126,8 +125,7 @@ public interface OrgsClient {
     @EnabledForGithubApps
     @Category("orgs")
     @Subcategory("members")
-    void checkOrganizationMembershipForUser(@PathParam("org") final String org, @PathParam("username") final String username) {
-    }
+    void checkOrganizationMembershipForUser(@PathParam("org") final String org, @PathParam("username") final String username);
 
     @GET
     @Path("/orgs/{org}/public_members/{username}")
@@ -145,8 +143,7 @@ public interface OrgsClient {
     @EnabledForGithubApps
     @Category("orgs")
     @Subcategory("members")
-    void checkPublicOrganizationMembershipForUser(@PathParam("org") final String org, @PathParam("username") final String username) {
-    }
+    void checkPublicOrganizationMembershipForUser(@PathParam("org") final String org, @PathParam("username") final String username);
 
     @PUT
     @Path("/orgs/{org}/outside_collaborators/{username}")
@@ -164,8 +161,7 @@ public interface OrgsClient {
     @EnabledForGithubApps
     @Category("orgs")
     @Subcategory("outside-collaborators")
-    void convertOrganizationMemberToOutsideCollaborator(@PathParam("org") final String org, @PathParam("username") final String username) {
-    }
+    void convertOrganizationMemberToOutsideCollaborator(@PathParam("org") final String org, @PathParam("username") final String username);
 
     @POST
     @Path("/orgs/{org}/invitations")
@@ -183,8 +179,7 @@ public interface OrgsClient {
     @EnabledForGithubApps
     @Category("orgs")
     @Subcategory("members")
-    OrganizationInvitation createOrganizationInvitation(@PathParam("org") final String org) {
-    }
+    OrganizationInvitation createOrganizationInvitation(@PathParam("org") final String org);
 
     @POST
     @Path("/orgs/{org}/hooks")
@@ -202,8 +197,7 @@ public interface OrgsClient {
     @EnabledForGithubApps
     @Category("orgs")
     @Subcategory("hooks")
-    OrgHook createOrganizationWebhook(@PathParam("org") final String org) {
-    }
+    OrgHook createOrganizationWebhook(@PathParam("org") final String org);
 
     @DELETE
     @Path("/orgs/{org}/hooks/{hook_id}")
@@ -221,8 +215,7 @@ public interface OrgsClient {
     @EnabledForGithubApps
     @Category("orgs")
     @Subcategory("hooks")
-    void deleteOrganizationWebhook(@PathParam("org") final String org, @PathParam("hook-id") final int hookId) {
-    }
+    void deleteOrganizationWebhook(@PathParam("org") final String org, @PathParam("hook-id") final int hookId);
 
     @GET
     @Path("/orgs/{org}")
@@ -240,8 +233,7 @@ public interface OrgsClient {
     @EnabledForGithubApps
     @Preview("surtur")
     @Category("orgs")
-    OrganizationFull getOrganization(@PathParam("org") final String org) {
-    }
+    OrganizationFull getOrganization(@PathParam("org") final String org);
 
     @GET
     @Path("/user/memberships/orgs/{org}")
@@ -257,8 +249,7 @@ public interface OrgsClient {
     @Docs("https://developer.github.com/v3/orgs/members/#get-an-organization-membership-for-the-authenticated-user")
     @Category("orgs")
     @Subcategory("members")
-    OrgMembership getOrganizationMembershipForAuthenticatedUser(@PathParam("org") final String org) {
-    }
+    OrgMembership getOrganizationMembershipForAuthenticatedUser(@PathParam("org") final String org);
 
     @GET
     @Path("/orgs/{org}/memberships/{username}")
@@ -276,8 +267,7 @@ public interface OrgsClient {
     @EnabledForGithubApps
     @Category("orgs")
     @Subcategory("members")
-    OrgMembership getOrganizationMembershipForUser(@PathParam("org") final String org, @PathParam("username") final String username) {
-    }
+    OrgMembership getOrganizationMembershipForUser(@PathParam("org") final String org, @PathParam("username") final String username);
 
     @GET
     @Path("/orgs/{org}/hooks/{hook_id}")
@@ -295,8 +285,7 @@ public interface OrgsClient {
     @EnabledForGithubApps
     @Category("orgs")
     @Subcategory("hooks")
-    OrgHook getOrganizationWebhook(@PathParam("org") final String org, @PathParam("hook-id") final int hookId) {
-    }
+    OrgHook getOrganizationWebhook(@PathParam("org") final String org, @PathParam("hook-id") final int hookId);
 
     @GET
     @Path("/orgs/{org}/installations")
@@ -305,7 +294,8 @@ public interface OrgsClient {
     @EnabledForGithubApps
     @Preview("machine-man")
     @Category("orgs")
-    ListAppInstallationsForOrganizationResponse listAppInstallationsForOrganization(final ListAppInstallationsForOrganization listAppInstallationsForOrganization);
+    @Paged(InstallationsPage.class)
+    Stream<Installation> listAppInstallationsForOrganization(final ListAppInstallationsForOrganization listAppInstallationsForOrganization);
 
     @GET
     @Path("/orgs/{org}/installations")
@@ -314,8 +304,8 @@ public interface OrgsClient {
     @EnabledForGithubApps
     @Preview("machine-man")
     @Category("orgs")
-    ListAppInstallationsForOrganizationResponse listAppInstallationsForOrganization(@PathParam("org") final String org) {
-    }
+    @Paged(InstallationsPage.class)
+    Stream<Installation> listAppInstallationsForOrganization(@PathParam("org") final String org);
 
     @GET
     @Path("/orgs/{org}/invitations/{invitation_id}/teams")
@@ -324,6 +314,7 @@ public interface OrgsClient {
     @EnabledForGithubApps
     @Category("orgs")
     @Subcategory("members")
+    @Paged(Team[].class)
     Stream<Team> listOrganizationInvitationTeams(final ListOrganizationInvitationTeams listOrganizationInvitationTeams);
 
     @GET
@@ -333,8 +324,8 @@ public interface OrgsClient {
     @EnabledForGithubApps
     @Category("orgs")
     @Subcategory("members")
-    Stream<Team> listOrganizationInvitationTeams(@PathParam("org") final String org, @PathParam("invitation_id") final int invitationId) {
-    }
+    @Paged(Team[].class)
+    Stream<Team> listOrganizationInvitationTeams(@PathParam("org") final String org, @PathParam("invitation_id") final int invitationId);
 
     @GET
     @Path("/orgs/{org}/members")
@@ -343,6 +334,7 @@ public interface OrgsClient {
     @EnabledForGithubApps
     @Category("orgs")
     @Subcategory("members")
+    @Paged(SimpleUser[].class)
     Stream<SimpleUser> listOrganizationMembers(final ListOrganizationMembers listOrganizationMembers);
 
     @GET
@@ -352,8 +344,8 @@ public interface OrgsClient {
     @EnabledForGithubApps
     @Category("orgs")
     @Subcategory("members")
-    Stream<SimpleUser> listOrganizationMembers(@PathParam("org") final String org) {
-    }
+    @Paged(SimpleUser[].class)
+    Stream<SimpleUser> listOrganizationMembers(@PathParam("org") final String org);
 
     @GET
     @Path("/user/memberships/orgs")
@@ -361,6 +353,7 @@ public interface OrgsClient {
     @Docs("https://developer.github.com/v3/orgs/members/#list-organization-memberships-for-the-authenticated-user")
     @Category("orgs")
     @Subcategory("members")
+    @Paged(OrgMembership[].class)
     Stream<OrgMembership> listOrganizationMembershipsForAuthenticatedUser(final ListOrganizationMembershipsForAuthenticatedUser listOrganizationMembershipsForAuthenticatedUser);
 
     @GET
@@ -370,6 +363,7 @@ public interface OrgsClient {
     @EnabledForGithubApps
     @Category("orgs")
     @Subcategory("hooks")
+    @Paged(OrgHook[].class)
     Stream<OrgHook> listOrganizationWebhooks(final ListOrganizationWebhooks listOrganizationWebhooks);
 
     @GET
@@ -379,8 +373,8 @@ public interface OrgsClient {
     @EnabledForGithubApps
     @Category("orgs")
     @Subcategory("hooks")
-    Stream<OrgHook> listOrganizationWebhooks(@PathParam("org") final String org) {
-    }
+    @Paged(OrgHook[].class)
+    Stream<OrgHook> listOrganizationWebhooks(@PathParam("org") final String org);
 
     @GET
     @Path("/organizations")
@@ -388,6 +382,7 @@ public interface OrgsClient {
     @Docs("https://developer.github.com/v3/orgs/#list-organizations")
     @EnabledForGithubApps
     @Category("orgs")
+    @Paged(OrganizationSimple[].class)
     Stream<OrganizationSimple> listOrganizations(final ListOrganizations listOrganizations);
 
     @GET
@@ -395,6 +390,7 @@ public interface OrgsClient {
     @OperationId("orgs/list-for-authenticated-user")
     @Docs("https://developer.github.com/v3/orgs/#list-organizations-for-the-authenticated-user")
     @Category("orgs")
+    @Paged(OrganizationSimple[].class)
     Stream<OrganizationSimple> listOrganizationsForAuthenticatedUser(final ListOrganizationsForAuthenticatedUser listOrganizationsForAuthenticatedUser);
 
     @GET
@@ -403,6 +399,7 @@ public interface OrgsClient {
     @Docs("https://developer.github.com/v3/orgs/#list-organizations-for-a-user")
     @EnabledForGithubApps
     @Category("orgs")
+    @Paged(OrganizationSimple[].class)
     Stream<OrganizationSimple> listOrganizationsForUser(final ListOrganizationsForUser listOrganizationsForUser);
 
     @GET
@@ -411,8 +408,8 @@ public interface OrgsClient {
     @Docs("https://developer.github.com/v3/orgs/#list-organizations-for-a-user")
     @EnabledForGithubApps
     @Category("orgs")
-    Stream<OrganizationSimple> listOrganizationsForUser(@PathParam("username") final String username) {
-    }
+    @Paged(OrganizationSimple[].class)
+    Stream<OrganizationSimple> listOrganizationsForUser(@PathParam("username") final String username);
 
     @GET
     @Path("/orgs/{org}/outside_collaborators")
@@ -421,6 +418,7 @@ public interface OrgsClient {
     @EnabledForGithubApps
     @Category("orgs")
     @Subcategory("outside-collaborators")
+    @Paged(SimpleUser[].class)
     Stream<SimpleUser> listOutsideCollaboratorsForOrganization(final ListOutsideCollaboratorsForOrganization listOutsideCollaboratorsForOrganization);
 
     @GET
@@ -430,8 +428,8 @@ public interface OrgsClient {
     @EnabledForGithubApps
     @Category("orgs")
     @Subcategory("outside-collaborators")
-    Stream<SimpleUser> listOutsideCollaboratorsForOrganization(@PathParam("org") final String org) {
-    }
+    @Paged(SimpleUser[].class)
+    Stream<SimpleUser> listOutsideCollaboratorsForOrganization(@PathParam("org") final String org);
 
     @GET
     @Path("/orgs/{org}/invitations")
@@ -440,6 +438,7 @@ public interface OrgsClient {
     @EnabledForGithubApps
     @Category("orgs")
     @Subcategory("members")
+    @Paged(OrganizationInvitation[].class)
     Stream<OrganizationInvitation> listPendingOrganizationInvitations(final ListPendingOrganizationInvitations listPendingOrganizationInvitations);
 
     @GET
@@ -449,8 +448,8 @@ public interface OrgsClient {
     @EnabledForGithubApps
     @Category("orgs")
     @Subcategory("members")
-    Stream<OrganizationInvitation> listPendingOrganizationInvitations(@PathParam("org") final String org) {
-    }
+    @Paged(OrganizationInvitation[].class)
+    Stream<OrganizationInvitation> listPendingOrganizationInvitations(@PathParam("org") final String org);
 
     @GET
     @Path("/orgs/{org}/public_members")
@@ -459,6 +458,7 @@ public interface OrgsClient {
     @EnabledForGithubApps
     @Category("orgs")
     @Subcategory("members")
+    @Paged(SimpleUser[].class)
     Stream<SimpleUser> listPublicOrganizationMembers(final ListPublicOrganizationMembers listPublicOrganizationMembers);
 
     @GET
@@ -468,8 +468,8 @@ public interface OrgsClient {
     @EnabledForGithubApps
     @Category("orgs")
     @Subcategory("members")
-    Stream<SimpleUser> listPublicOrganizationMembers(@PathParam("org") final String org) {
-    }
+    @Paged(SimpleUser[].class)
+    Stream<SimpleUser> listPublicOrganizationMembers(@PathParam("org") final String org);
 
     @GET
     @Path("/orgs/{org}/credential-authorizations")
@@ -487,8 +487,7 @@ public interface OrgsClient {
     @GithubCloudOnly
     @EnabledForGithubApps
     @Category("orgs")
-    Stream<CredentialAuthorization> listSAMLSSOAuthorizationsForOrganization(@PathParam("org") final String org) {
-    }
+    Stream<CredentialAuthorization> listSAMLSSOAuthorizationsForOrganization(@PathParam("org") final String org);
 
     @GET
     @Path("/orgs/{org}/blocks")
@@ -506,8 +505,7 @@ public interface OrgsClient {
     @EnabledForGithubApps
     @Category("orgs")
     @Subcategory("blocking")
-    Stream<SimpleUser> listUsersBlockedByOrganization(@PathParam("org") final String org) {
-    }
+    Stream<SimpleUser> listUsersBlockedByOrganization(@PathParam("org") final String org);
 
     @POST
     @Path("/orgs/{org}/hooks/{hook_id}/pings")
@@ -525,8 +523,7 @@ public interface OrgsClient {
     @EnabledForGithubApps
     @Category("orgs")
     @Subcategory("hooks")
-    void pingOrganizationWebhook(@PathParam("org") final String org, @PathParam("hook-id") final int hookId) {
-    }
+    void pingOrganizationWebhook(@PathParam("org") final String org, @PathParam("hook-id") final int hookId);
 
     @DELETE
     @Path("/orgs/{org}/members/{username}")
@@ -544,8 +541,7 @@ public interface OrgsClient {
     @EnabledForGithubApps
     @Category("orgs")
     @Subcategory("members")
-    void removeOrganizationMember(@PathParam("org") final String org, @PathParam("username") final String username) {
-    }
+    void removeOrganizationMember(@PathParam("org") final String org, @PathParam("username") final String username);
 
     @DELETE
     @Path("/orgs/{org}/memberships/{username}")
@@ -563,8 +559,7 @@ public interface OrgsClient {
     @EnabledForGithubApps
     @Category("orgs")
     @Subcategory("members")
-    void removeOrganizationMembershipForUser(@PathParam("org") final String org, @PathParam("username") final String username) {
-    }
+    void removeOrganizationMembershipForUser(@PathParam("org") final String org, @PathParam("username") final String username);
 
     @DELETE
     @Path("/orgs/{org}/outside_collaborators/{username}")
@@ -582,8 +577,7 @@ public interface OrgsClient {
     @EnabledForGithubApps
     @Category("orgs")
     @Subcategory("outside-collaborators")
-    void removeOutsideCollaboratorFromOrganization(@PathParam("org") final String org, @PathParam("username") final String username) {
-    }
+    void removeOutsideCollaboratorFromOrganization(@PathParam("org") final String org, @PathParam("username") final String username);
 
     @DELETE
     @Path("/orgs/{org}/public_members/{username}")
@@ -599,8 +593,7 @@ public interface OrgsClient {
     @Docs("https://developer.github.com/v3/orgs/members/#remove-public-organization-membership-for-the-authenticated-user")
     @Category("orgs")
     @Subcategory("members")
-    void removePublicOrganizationMembershipForAuthenticatedUser(@PathParam("org") final String org, @PathParam("username") final String username) {
-    }
+    void removePublicOrganizationMembershipForAuthenticatedUser(@PathParam("org") final String org, @PathParam("username") final String username);
 
     @DELETE
     @Path("/orgs/{org}/credential-authorizations/{credential_id}")
@@ -618,8 +611,7 @@ public interface OrgsClient {
     @GithubCloudOnly
     @EnabledForGithubApps
     @Category("orgs")
-    void removeSAMLSSOAuthorizationForOrganization(@PathParam("org") final String org, @PathParam("credential_id") final int credentialId) {
-    }
+    void removeSAMLSSOAuthorizationForOrganization(@PathParam("org") final String org, @PathParam("credential_id") final int credentialId);
 
     @PUT
     @Path("/orgs/{org}/memberships/{username}")
@@ -637,8 +629,7 @@ public interface OrgsClient {
     @EnabledForGithubApps
     @Category("orgs")
     @Subcategory("members")
-    OrgMembership setOrganizationMembershipForUser(@PathParam("org") final String org, @PathParam("username") final String username) {
-    }
+    OrgMembership setOrganizationMembershipForUser(@PathParam("org") final String org, @PathParam("username") final String username);
 
     @PUT
     @Path("/orgs/{org}/public_members/{username}")
@@ -654,8 +645,7 @@ public interface OrgsClient {
     @Docs("https://developer.github.com/v3/orgs/members/#set-public-organization-membership-for-the-authenticated-user")
     @Category("orgs")
     @Subcategory("members")
-    void setPublicOrganizationMembershipForAuthenticatedUser(@PathParam("org") final String org, @PathParam("username") final String username) {
-    }
+    void setPublicOrganizationMembershipForAuthenticatedUser(@PathParam("org") final String org, @PathParam("username") final String username);
 
     @DELETE
     @Path("/orgs/{org}/blocks/{username}")
@@ -673,8 +663,7 @@ public interface OrgsClient {
     @EnabledForGithubApps
     @Category("orgs")
     @Subcategory("blocking")
-    void unblockUserFromOrganization(@PathParam("org") final String org, @PathParam("username") final String username) {
-    }
+    void unblockUserFromOrganization(@PathParam("org") final String org, @PathParam("username") final String username);
 
     @PATCH
     @Path("/orgs/{org}")
@@ -692,8 +681,7 @@ public interface OrgsClient {
     @EnabledForGithubApps
     @Preview("surtur")
     @Category("orgs")
-    OrganizationFull updateOrganization(@PathParam("org") final String org) {
-    }
+    OrganizationFull updateOrganization(@PathParam("org") final String org);
 
     @PATCH
     @Path("/user/memberships/orgs/{org}")
@@ -709,8 +697,7 @@ public interface OrgsClient {
     @Docs("https://developer.github.com/v3/orgs/members/#update-an-organization-membership-for-the-authenticated-user")
     @Category("orgs")
     @Subcategory("members")
-    OrgMembership updateOrganizationMembershipForAuthenticatedUser(@PathParam("org") final String org) {
-    }
+    OrgMembership updateOrganizationMembershipForAuthenticatedUser(@PathParam("org") final String org);
 
     @PATCH
     @Path("/orgs/{org}/hooks/{hook_id}")
@@ -728,6 +715,5 @@ public interface OrgsClient {
     @EnabledForGithubApps
     @Category("orgs")
     @Subcategory("hooks")
-    OrgHook updateOrganizationWebhook(@PathParam("org") final String org, @PathParam("hook-id") final int hookId) {
-    }
+    OrgHook updateOrganizationWebhook(@PathParam("org") final String org, @PathParam("hook-id") final int hookId);
 }

@@ -62,8 +62,7 @@ public interface GistsClient {
     @OperationId("gists/check-is-starred")
     @Docs("https://developer.github.com/v3/gists/#check-if-a-gist-is-starred")
     @Category("gists")
-    void checkIfGistIsStarred(@PathParam("gist_id") final String gistId) {
-    }
+    void checkIfGistIsStarred(@PathParam("gist_id") final String gistId);
 
     @POST
     @Path("/gists")
@@ -86,8 +85,7 @@ public interface GistsClient {
     @Docs("https://developer.github.com/v3/gists/comments/#create-a-gist-comment")
     @Category("gists")
     @Subcategory("comments")
-    GistComment createGistComment(@PathParam("gist_id") final String gistId) {
-    }
+    GistComment createGistComment(@PathParam("gist_id") final String gistId);
 
     @DELETE
     @Path("/gists/{gist_id}")
@@ -101,8 +99,7 @@ public interface GistsClient {
     @OperationId("gists/delete")
     @Docs("https://developer.github.com/v3/gists/#delete-a-gist")
     @Category("gists")
-    void deleteGist(@PathParam("gist_id") final String gistId) {
-    }
+    void deleteGist(@PathParam("gist_id") final String gistId);
 
     @DELETE
     @Path("/gists/{gist_id}/comments/{comment_id}")
@@ -118,8 +115,7 @@ public interface GistsClient {
     @Docs("https://developer.github.com/v3/gists/comments/#delete-a-gist-comment")
     @Category("gists")
     @Subcategory("comments")
-    void deleteGistComment(@PathParam("gist_id") final String gistId, @PathParam("comment_id") final int commentId) {
-    }
+    void deleteGistComment(@PathParam("gist_id") final String gistId, @PathParam("comment_id") final int commentId);
 
     @POST
     @Path("/gists/{gist_id}/forks")
@@ -133,8 +129,7 @@ public interface GistsClient {
     @OperationId("gists/fork")
     @Docs("https://developer.github.com/v3/gists/#fork-a-gist")
     @Category("gists")
-    BaseGist forkGist(@PathParam("gist_id") final String gistId) {
-    }
+    BaseGist forkGist(@PathParam("gist_id") final String gistId);
 
     @GET
     @Path("/gists/{gist_id}")
@@ -148,8 +143,7 @@ public interface GistsClient {
     @OperationId("gists/get")
     @Docs("https://developer.github.com/v3/gists/#get-a-gist")
     @Category("gists")
-    GistFull getGist(@PathParam("gist_id") final String gistId) {
-    }
+    GistFull getGist(@PathParam("gist_id") final String gistId);
 
     @GET
     @Path("/gists/{gist_id}/comments/{comment_id}")
@@ -165,8 +159,7 @@ public interface GistsClient {
     @Docs("https://developer.github.com/v3/gists/comments/#get-a-gist-comment")
     @Category("gists")
     @Subcategory("comments")
-    GistComment getGistComment(@PathParam("gist_id") final String gistId, @PathParam("comment_id") final int commentId) {
-    }
+    GistComment getGistComment(@PathParam("gist_id") final String gistId, @PathParam("comment_id") final int commentId);
 
     @GET
     @Path("/gists/{gist_id}/{sha}")
@@ -180,8 +173,7 @@ public interface GistsClient {
     @OperationId("gists/get-revision")
     @Docs("https://developer.github.com/v3/gists/#get-a-gist-revision")
     @Category("gists")
-    GistFull getGistRevision(@PathParam("gist_id") final String gistId, @PathParam("sha") final String sha) {
-    }
+    GistFull getGistRevision(@PathParam("gist_id") final String gistId, @PathParam("sha") final String sha);
 
     @GET
     @Path("/gists/{gist_id}/comments")
@@ -189,6 +181,7 @@ public interface GistsClient {
     @Docs("https://developer.github.com/v3/gists/comments/#list-gist-comments")
     @Category("gists")
     @Subcategory("comments")
+    @Paged(GistComment[].class)
     Stream<GistComment> listGistComments(final ListGistComments listGistComments);
 
     @GET
@@ -197,14 +190,15 @@ public interface GistsClient {
     @Docs("https://developer.github.com/v3/gists/comments/#list-gist-comments")
     @Category("gists")
     @Subcategory("comments")
-    Stream<GistComment> listGistComments(@PathParam("gist_id") final String gistId) {
-    }
+    @Paged(GistComment[].class)
+    Stream<GistComment> listGistComments(@PathParam("gist_id") final String gistId);
 
     @GET
     @Path("/gists/{gist_id}/commits")
     @OperationId("gists/list-commits")
     @Docs("https://developer.github.com/v3/gists/#list-gist-commits")
     @Category("gists")
+    @Paged(GistCommit[].class)
     Stream<GistCommit> listGistCommits(final ListGistCommits listGistCommits);
 
     @GET
@@ -212,14 +206,15 @@ public interface GistsClient {
     @OperationId("gists/list-commits")
     @Docs("https://developer.github.com/v3/gists/#list-gist-commits")
     @Category("gists")
-    Stream<GistCommit> listGistCommits(@PathParam("gist_id") final String gistId) {
-    }
+    @Paged(GistCommit[].class)
+    Stream<GistCommit> listGistCommits(@PathParam("gist_id") final String gistId);
 
     @GET
     @Path("/gists/{gist_id}/forks")
     @OperationId("gists/list-forks")
     @Docs("https://developer.github.com/v3/gists/#list-gist-forks")
     @Category("gists")
+    @Paged(GistFull[].class)
     Stream<GistFull> listGistForks(final ListGistForks listGistForks);
 
     @GET
@@ -227,14 +222,15 @@ public interface GistsClient {
     @OperationId("gists/list-forks")
     @Docs("https://developer.github.com/v3/gists/#list-gist-forks")
     @Category("gists")
-    Stream<GistFull> listGistForks(@PathParam("gist_id") final String gistId) {
-    }
+    @Paged(GistFull[].class)
+    Stream<GistFull> listGistForks(@PathParam("gist_id") final String gistId);
 
     @GET
     @Path("/gists")
     @OperationId("gists/list")
     @Docs("https://developer.github.com/v3/gists/#list-gists-for-the-authenticated-user")
     @Category("gists")
+    @Paged(BaseGist[].class)
     Stream<BaseGist> listGistsForAuthenticatedUser(final ListGistsForAuthenticatedUser listGistsForAuthenticatedUser);
 
     @GET
@@ -242,6 +238,7 @@ public interface GistsClient {
     @OperationId("gists/list-for-user")
     @Docs("https://developer.github.com/v3/gists/#list-gists-for-a-user")
     @Category("gists")
+    @Paged(BaseGist[].class)
     Stream<BaseGist> listGistsForUser(final ListGistsForUser listGistsForUser);
 
     @GET
@@ -249,14 +246,15 @@ public interface GistsClient {
     @OperationId("gists/list-for-user")
     @Docs("https://developer.github.com/v3/gists/#list-gists-for-a-user")
     @Category("gists")
-    Stream<BaseGist> listGistsForUser(@PathParam("username") final String username) {
-    }
+    @Paged(BaseGist[].class)
+    Stream<BaseGist> listGistsForUser(@PathParam("username") final String username);
 
     @GET
     @Path("/gists/public")
     @OperationId("gists/list-public")
     @Docs("https://developer.github.com/v3/gists/#list-public-gists")
     @Category("gists")
+    @Paged(BaseGist[].class)
     Stream<BaseGist> listPublicGists(final ListPublicGists listPublicGists);
 
     @GET
@@ -264,6 +262,7 @@ public interface GistsClient {
     @OperationId("gists/list-starred")
     @Docs("https://developer.github.com/v3/gists/#list-starred-gists")
     @Category("gists")
+    @Paged(BaseGist[].class)
     Stream<BaseGist> listStarredGists(final ListStarredGists listStarredGists);
 
     @PUT
@@ -278,8 +277,7 @@ public interface GistsClient {
     @OperationId("gists/star")
     @Docs("https://developer.github.com/v3/gists/#star-a-gist")
     @Category("gists")
-    void starGist(@PathParam("gist_id") final String gistId) {
-    }
+    void starGist(@PathParam("gist_id") final String gistId);
 
     @DELETE
     @Path("/gists/{gist_id}/star")
@@ -293,8 +291,7 @@ public interface GistsClient {
     @OperationId("gists/unstar")
     @Docs("https://developer.github.com/v3/gists/#unstar-a-gist")
     @Category("gists")
-    void unstarGist(@PathParam("gist_id") final String gistId) {
-    }
+    void unstarGist(@PathParam("gist_id") final String gistId);
 
     @PATCH
     @Path("/gists/{gist_id}")
@@ -308,8 +305,7 @@ public interface GistsClient {
     @OperationId("gists/update")
     @Docs("https://developer.github.com/v3/gists/#update-a-gist")
     @Category("gists")
-    GistFull updateGist(@PathParam("gist_id") final String gistId) {
-    }
+    GistFull updateGist(@PathParam("gist_id") final String gistId);
 
     @PATCH
     @Path("/gists/{gist_id}/comments/{comment_id}")
@@ -325,6 +321,5 @@ public interface GistsClient {
     @Docs("https://developer.github.com/v3/gists/comments/#update-a-gist-comment")
     @Category("gists")
     @Subcategory("comments")
-    GistComment updateGistComment(@PathParam("gist_id") final String gistId, @PathParam("comment_id") final int commentId) {
-    }
+    GistComment updateGistComment(@PathParam("gist_id") final String gistId, @PathParam("comment_id") final int commentId);
 }

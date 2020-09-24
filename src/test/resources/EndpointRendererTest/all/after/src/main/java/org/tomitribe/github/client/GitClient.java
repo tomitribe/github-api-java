@@ -60,8 +60,7 @@ public interface GitClient {
     @EnabledForGithubApps
     @Category("git")
     @Subcategory("blobs")
-    ShortBlob createBlob(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
-    }
+    ShortBlob createBlob(@PathParam("owner") final String owner, @PathParam("repo") final String repo);
 
     @POST
     @Path("/repos/{owner}/{repo}/git/commits")
@@ -79,8 +78,7 @@ public interface GitClient {
     @EnabledForGithubApps
     @Category("git")
     @Subcategory("commits")
-    GitCommit createCommit(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
-    }
+    GitCommit createCommit(@PathParam("owner") final String owner, @PathParam("repo") final String repo);
 
     @POST
     @Path("/repos/{owner}/{repo}/git/refs")
@@ -98,8 +96,7 @@ public interface GitClient {
     @EnabledForGithubApps
     @Category("git")
     @Subcategory("refs")
-    GitRef createReference(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
-    }
+    GitRef createReference(@PathParam("owner") final String owner, @PathParam("repo") final String repo);
 
     @POST
     @Path("/repos/{owner}/{repo}/git/tags")
@@ -117,8 +114,7 @@ public interface GitClient {
     @EnabledForGithubApps
     @Category("git")
     @Subcategory("tags")
-    GitTag createTagObject(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
-    }
+    GitTag createTagObject(@PathParam("owner") final String owner, @PathParam("repo") final String repo);
 
     @POST
     @Path("/repos/{owner}/{repo}/git/trees")
@@ -136,8 +132,7 @@ public interface GitClient {
     @EnabledForGithubApps
     @Category("git")
     @Subcategory("trees")
-    GitTree createTree(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
-    }
+    GitTree createTree(@PathParam("owner") final String owner, @PathParam("repo") final String repo);
 
     @DELETE
     @Path("/repos/{owner}/{repo}/git/refs/{ref}")
@@ -155,8 +150,7 @@ public interface GitClient {
     @EnabledForGithubApps
     @Category("git")
     @Subcategory("refs")
-    void deleteReference(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("ref") final String ref) {
-    }
+    void deleteReference(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("ref") final String ref);
 
     @GET
     @Path("/repos/{owner}/{repo}/git/blobs/{file_sha}")
@@ -174,8 +168,7 @@ public interface GitClient {
     @EnabledForGithubApps
     @Category("git")
     @Subcategory("blobs")
-    Blob getBlob(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("file_sha") final String fileSha) {
-    }
+    Blob getBlob(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("file_sha") final String fileSha);
 
     @GET
     @Path("/repos/{owner}/{repo}/git/commits/{commit_sha}")
@@ -193,8 +186,7 @@ public interface GitClient {
     @EnabledForGithubApps
     @Category("git")
     @Subcategory("commits")
-    GitCommit getCommit(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("commit_sha") final String commitSha) {
-    }
+    GitCommit getCommit(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("commit_sha") final String commitSha);
 
     @GET
     @Path("/repos/{owner}/{repo}/git/ref/{ref}")
@@ -212,8 +204,7 @@ public interface GitClient {
     @EnabledForGithubApps
     @Category("git")
     @Subcategory("refs")
-    GitRef getReference(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("ref") final String ref) {
-    }
+    GitRef getReference(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("ref") final String ref);
 
     @GET
     @Path("/repos/{owner}/{repo}/git/tags/{tag_sha}")
@@ -231,8 +222,7 @@ public interface GitClient {
     @EnabledForGithubApps
     @Category("git")
     @Subcategory("tags")
-    GitTag getTag(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("tag_sha") final String tagSha) {
-    }
+    GitTag getTag(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("tag_sha") final String tagSha);
 
     @GET
     @Path("/repos/{owner}/{repo}/git/trees/{tree_sha}")
@@ -250,8 +240,7 @@ public interface GitClient {
     @EnabledForGithubApps
     @Category("git")
     @Subcategory("trees")
-    GitTree getTree(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("tree_sha") final String treeSha) {
-    }
+    GitTree getTree(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("tree_sha") final String treeSha);
 
     @GET
     @Path("/repos/{owner}/{repo}/git/matching-refs/{ref}")
@@ -260,6 +249,7 @@ public interface GitClient {
     @EnabledForGithubApps
     @Category("git")
     @Subcategory("refs")
+    @Paged(GitRef[].class)
     Stream<GitRef> listMatchingReferences(final ListMatchingReferences listMatchingReferences);
 
     @GET
@@ -269,8 +259,8 @@ public interface GitClient {
     @EnabledForGithubApps
     @Category("git")
     @Subcategory("refs")
-    Stream<GitRef> listMatchingReferences(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("ref") final String ref) {
-    }
+    @Paged(GitRef[].class)
+    Stream<GitRef> listMatchingReferences(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("ref") final String ref);
 
     @PATCH
     @Path("/repos/{owner}/{repo}/git/refs/{ref}")
@@ -288,6 +278,5 @@ public interface GitClient {
     @EnabledForGithubApps
     @Category("git")
     @Subcategory("refs")
-    GitRef updateReference(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("ref") final String ref) {
-    }
+    GitRef updateReference(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("ref") final String ref);
 }

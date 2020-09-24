@@ -42,8 +42,7 @@ public interface BillingClient {
     @OperationId("billing/get-github-actions-billing-org")
     @Docs("https://developer.github.com/v3/billing/#get-github-actions-billing-for-an-organization")
     @Category("billing")
-    ActionsBillingUsage getGitHubActionsBillingForOrganization(@PathParam("org") final String org) {
-    }
+    ActionsBillingUsage getGitHubActionsBillingForOrganization(@PathParam("org") final String org);
 
     @GET
     @Path("/users/{username}/settings/billing/actions")
@@ -57,8 +56,7 @@ public interface BillingClient {
     @OperationId("billing/get-github-actions-billing-user")
     @Docs("https://developer.github.com/v3/billing/#get-github-actions-billing-for-a-user")
     @Category("billing")
-    ActionsBillingUsage getGitHubActionsBillingForUser(@PathParam("username") final String username) {
-    }
+    ActionsBillingUsage getGitHubActionsBillingForUser(@PathParam("username") final String username);
 
     @GET
     @Path("/orgs/{org}/settings/billing/packages")
@@ -72,8 +70,7 @@ public interface BillingClient {
     @OperationId("billing/get-github-packages-billing-org")
     @Docs("https://developer.github.com/v3/billing/#get-github-packages-billing-for-an-organization")
     @Category("billing")
-    PackagesBillingUsage getGitHubPackagesBillingForOrganization(@PathParam("org") final String org) {
-    }
+    PackagesBillingUsage getGitHubPackagesBillingForOrganization(@PathParam("org") final String org);
 
     @GET
     @Path("/users/{username}/settings/billing/packages")
@@ -87,8 +84,7 @@ public interface BillingClient {
     @OperationId("billing/get-github-packages-billing-user")
     @Docs("https://developer.github.com/v3/billing/#get-github-packages-billing-for-a-user")
     @Category("billing")
-    PackagesBillingUsage getGitHubPackagesBillingForUser(@PathParam("username") final String username) {
-    }
+    PackagesBillingUsage getGitHubPackagesBillingForUser(@PathParam("username") final String username);
 
     @GET
     @Path("/orgs/{org}/settings/billing/shared-storage")
@@ -102,8 +98,7 @@ public interface BillingClient {
     @OperationId("billing/get-shared-storage-billing-org")
     @Docs("https://developer.github.com/v3/billing/#get-shared-storage-billing-for-an-organization")
     @Category("billing")
-    CombinedBillingUsage getSharedStorageBillingForOrganization(@PathParam("org") final String org) {
-    }
+    CombinedBillingUsage getSharedStorageBillingForOrganization(@PathParam("org") final String org);
 
     @GET
     @Path("/users/{username}/settings/billing/shared-storage")
@@ -117,6 +112,5 @@ public interface BillingClient {
     @OperationId("billing/get-shared-storage-billing-user")
     @Docs("https://developer.github.com/v3/billing/#get-shared-storage-billing-for-a-user")
     @Category("billing")
-    CombinedBillingUsage getSharedStorageBillingForUser(@PathParam("username") final String username) {
-    }
+    CombinedBillingUsage getSharedStorageBillingForUser(@PathParam("username") final String username);
 }

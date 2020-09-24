@@ -76,8 +76,7 @@ public interface ActivityClient {
     @Docs("https://developer.github.com/v3/activity/starring/#check-if-a-repository-is-starred-by-the-authenticated-user")
     @Category("activity")
     @Subcategory("starring")
-    void checkIfRepositoryIsStarredByAuthenticatedUser(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
-    }
+    void checkIfRepositoryIsStarredByAuthenticatedUser(@PathParam("owner") final String owner, @PathParam("repo") final String repo);
 
     @DELETE
     @Path("/repos/{owner}/{repo}/subscription")
@@ -93,8 +92,7 @@ public interface ActivityClient {
     @Docs("https://developer.github.com/v3/activity/watching/#delete-a-repository-subscription")
     @Category("activity")
     @Subcategory("watching")
-    void deleteRepositorySubscription(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
-    }
+    void deleteRepositorySubscription(@PathParam("owner") final String owner, @PathParam("repo") final String repo);
 
     @DELETE
     @Path("/notifications/threads/{thread_id}/subscription")
@@ -110,8 +108,7 @@ public interface ActivityClient {
     @Docs("https://developer.github.com/v3/activity/notifications/#delete-a-thread-subscription")
     @Category("activity")
     @Subcategory("notifications")
-    void deleteThreadSubscription(@PathParam("thread_id") final int threadId) {
-    }
+    void deleteThreadSubscription(@PathParam("thread_id") final int threadId);
 
     @GET
     @Path("/feeds")
@@ -136,8 +133,7 @@ public interface ActivityClient {
     @Docs("https://developer.github.com/v3/activity/watching/#get-a-repository-subscription")
     @Category("activity")
     @Subcategory("watching")
-    RepositorySubscription getRepositorySubscription(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
-    }
+    RepositorySubscription getRepositorySubscription(@PathParam("owner") final String owner, @PathParam("repo") final String repo);
 
     @GET
     @Path("/notifications/threads/{thread_id}")
@@ -153,8 +149,7 @@ public interface ActivityClient {
     @Docs("https://developer.github.com/v3/activity/notifications/#get-a-thread")
     @Category("activity")
     @Subcategory("notifications")
-    Thread getThread(@PathParam("thread_id") final int threadId) {
-    }
+    Thread getThread(@PathParam("thread_id") final int threadId);
 
     @GET
     @Path("/notifications/threads/{thread_id}/subscription")
@@ -170,8 +165,7 @@ public interface ActivityClient {
     @Docs("https://developer.github.com/v3/activity/notifications/#get-a-thread-subscription-for-the-authenticated-user")
     @Category("activity")
     @Subcategory("notifications")
-    ThreadSubscription getThreadSubscriptionForAuthenticatedUser(@PathParam("thread_id") final int threadId) {
-    }
+    ThreadSubscription getThreadSubscriptionForAuthenticatedUser(@PathParam("thread_id") final int threadId);
 
     @GET
     @Path("/users/{username}/events")
@@ -189,8 +183,7 @@ public interface ActivityClient {
     @EnabledForGithubApps
     @Category("activity")
     @Subcategory("events")
-    Stream<Event> listEventsForAuthenticatedUser(@PathParam("username") final String username) {
-    }
+    Stream<Event> listEventsForAuthenticatedUser(@PathParam("username") final String username);
 
     @GET
     @Path("/users/{username}/received_events")
@@ -208,8 +201,7 @@ public interface ActivityClient {
     @EnabledForGithubApps
     @Category("activity")
     @Subcategory("events")
-    Stream<Event> listEventsReceivedByAuthenticatedUser(@PathParam("username") final String username) {
-    }
+    Stream<Event> listEventsReceivedByAuthenticatedUser(@PathParam("username") final String username);
 
     @GET
     @Path("/notifications")
@@ -217,6 +209,7 @@ public interface ActivityClient {
     @Docs("https://developer.github.com/v3/activity/notifications/#list-notifications-for-the-authenticated-user")
     @Category("activity")
     @Subcategory("notifications")
+    @Paged(Thread[].class)
     Stream<Thread> listNotificationsForAuthenticatedUser(final ListNotificationsForAuthenticatedUser listNotificationsForAuthenticatedUser);
 
     @GET
@@ -233,8 +226,7 @@ public interface ActivityClient {
     @Docs("https://developer.github.com/v3/activity/events/#list-organization-events-for-the-authenticated-user")
     @Category("activity")
     @Subcategory("events")
-    Stream<Event> listOrganizationEventsForAuthenticatedUser(@PathParam("username") final String username, @PathParam("org") final String org) {
-    }
+    Stream<Event> listOrganizationEventsForAuthenticatedUser(@PathParam("username") final String username, @PathParam("org") final String org);
 
     @GET
     @Path("/events")
@@ -261,8 +253,7 @@ public interface ActivityClient {
     @EnabledForGithubApps
     @Category("activity")
     @Subcategory("events")
-    Stream<Event> listPublicEventsForNetworkOfRepositories(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
-    }
+    Stream<Event> listPublicEventsForNetworkOfRepositories(@PathParam("owner") final String owner, @PathParam("repo") final String repo);
 
     @GET
     @Path("/users/{username}/events/public")
@@ -280,8 +271,7 @@ public interface ActivityClient {
     @EnabledForGithubApps
     @Category("activity")
     @Subcategory("events")
-    Stream<Event> listPublicEventsForUser(@PathParam("username") final String username) {
-    }
+    Stream<Event> listPublicEventsForUser(@PathParam("username") final String username);
 
     @GET
     @Path("/users/{username}/received_events/public")
@@ -299,8 +289,7 @@ public interface ActivityClient {
     @EnabledForGithubApps
     @Category("activity")
     @Subcategory("events")
-    Stream<Event> listPublicEventsReceivedByUser(@PathParam("username") final String username) {
-    }
+    Stream<Event> listPublicEventsReceivedByUser(@PathParam("username") final String username);
 
     @GET
     @Path("/orgs/{org}/events")
@@ -318,8 +307,7 @@ public interface ActivityClient {
     @EnabledForGithubApps
     @Category("activity")
     @Subcategory("events")
-    Stream<Event> listPublicOrganizationEvents(@PathParam("org") final String org) {
-    }
+    Stream<Event> listPublicOrganizationEvents(@PathParam("org") final String org);
 
     @GET
     @Path("/user/starred")
@@ -327,6 +315,7 @@ public interface ActivityClient {
     @Docs("https://developer.github.com/v3/activity/starring/#list-repositories-starred-by-the-authenticated-user")
     @Category("activity")
     @Subcategory("starring")
+    @Paged(Repository[].class)
     Stream<Repository> listRepositoriesStarredByAuthenticatedUser(final ListRepositoriesStarredByAuthenticatedUser listRepositoriesStarredByAuthenticatedUser);
 
     @GET
@@ -336,6 +325,7 @@ public interface ActivityClient {
     @EnabledForGithubApps
     @Category("activity")
     @Subcategory("starring")
+    @Paged(Repository[].class)
     Stream<Repository> listRepositoriesStarredByUser(final ListRepositoriesStarredByUser listRepositoriesStarredByUser);
 
     @GET
@@ -345,8 +335,8 @@ public interface ActivityClient {
     @EnabledForGithubApps
     @Category("activity")
     @Subcategory("starring")
-    Stream<Repository> listRepositoriesStarredByUser(@PathParam("username") final String username) {
-    }
+    @Paged(Repository[].class)
+    Stream<Repository> listRepositoriesStarredByUser(@PathParam("username") final String username);
 
     @GET
     @Path("/user/subscriptions")
@@ -354,6 +344,7 @@ public interface ActivityClient {
     @Docs("https://developer.github.com/v3/activity/watching/#list-repositories-watched-by-the-authenticated-user")
     @Category("activity")
     @Subcategory("watching")
+    @Paged(MinimalRepository[].class)
     Stream<MinimalRepository> listRepositoriesWatchedByAuthenticatedUser(final ListRepositoriesWatchedByAuthenticatedUser listRepositoriesWatchedByAuthenticatedUser);
 
     @GET
@@ -363,6 +354,7 @@ public interface ActivityClient {
     @EnabledForGithubApps
     @Category("activity")
     @Subcategory("watching")
+    @Paged(MinimalRepository[].class)
     Stream<MinimalRepository> listRepositoriesWatchedByUser(final ListRepositoriesWatchedByUser listRepositoriesWatchedByUser);
 
     @GET
@@ -372,8 +364,8 @@ public interface ActivityClient {
     @EnabledForGithubApps
     @Category("activity")
     @Subcategory("watching")
-    Stream<MinimalRepository> listRepositoriesWatchedByUser(@PathParam("username") final String username) {
-    }
+    @Paged(MinimalRepository[].class)
+    Stream<MinimalRepository> listRepositoriesWatchedByUser(@PathParam("username") final String username);
 
     @GET
     @Path("/repos/{owner}/{repo}/events")
@@ -391,8 +383,7 @@ public interface ActivityClient {
     @EnabledForGithubApps
     @Category("activity")
     @Subcategory("events")
-    Stream<Event> listRepositoryEvents(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
-    }
+    Stream<Event> listRepositoryEvents(@PathParam("owner") final String owner, @PathParam("repo") final String repo);
 
     @GET
     @Path("/repos/{owner}/{repo}/notifications")
@@ -400,6 +391,7 @@ public interface ActivityClient {
     @Docs("https://developer.github.com/v3/activity/notifications/#list-repository-notifications-for-the-authenticated-user")
     @Category("activity")
     @Subcategory("notifications")
+    @Paged(Thread[].class)
     Stream<Thread> listRepositoryNotificationsForAuthenticatedUser(final ListRepositoryNotificationsForAuthenticatedUser listRepositoryNotificationsForAuthenticatedUser);
 
     @GET
@@ -408,8 +400,8 @@ public interface ActivityClient {
     @Docs("https://developer.github.com/v3/activity/notifications/#list-repository-notifications-for-the-authenticated-user")
     @Category("activity")
     @Subcategory("notifications")
-    Stream<Thread> listRepositoryNotificationsForAuthenticatedUser(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
-    }
+    @Paged(Thread[].class)
+    Stream<Thread> listRepositoryNotificationsForAuthenticatedUser(@PathParam("owner") final String owner, @PathParam("repo") final String repo);
 
     @GET
     @Path("/repos/{owner}/{repo}/stargazers")
@@ -418,6 +410,7 @@ public interface ActivityClient {
     @EnabledForGithubApps
     @Category("activity")
     @Subcategory("starring")
+    @Paged(SimpleUser[].class)
     Stream<SimpleUser> listStargazers(final ListStargazers listStargazers);
 
     @GET
@@ -427,8 +420,8 @@ public interface ActivityClient {
     @EnabledForGithubApps
     @Category("activity")
     @Subcategory("starring")
-    Stream<SimpleUser> listStargazers(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
-    }
+    @Paged(SimpleUser[].class)
+    Stream<SimpleUser> listStargazers(@PathParam("owner") final String owner, @PathParam("repo") final String repo);
 
     @GET
     @Path("/repos/{owner}/{repo}/subscribers")
@@ -437,6 +430,7 @@ public interface ActivityClient {
     @EnabledForGithubApps
     @Category("activity")
     @Subcategory("watching")
+    @Paged(SimpleUser[].class)
     Stream<SimpleUser> listWatchers(final ListWatchers listWatchers);
 
     @GET
@@ -446,8 +440,8 @@ public interface ActivityClient {
     @EnabledForGithubApps
     @Category("activity")
     @Subcategory("watching")
-    Stream<SimpleUser> listWatchers(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
-    }
+    @Paged(SimpleUser[].class)
+    Stream<SimpleUser> listWatchers(@PathParam("owner") final String owner, @PathParam("repo") final String repo);
 
     @PUT
     @Path("/notifications")
@@ -471,8 +465,7 @@ public interface ActivityClient {
     @Docs("https://developer.github.com/v3/activity/watching/#set-a-repository-subscription")
     @Category("activity")
     @Subcategory("watching")
-    RepositorySubscription setRepositorySubscription(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
-    }
+    RepositorySubscription setRepositorySubscription(@PathParam("owner") final String owner, @PathParam("repo") final String repo);
 
     @PUT
     @Path("/notifications/threads/{thread_id}/subscription")
@@ -488,8 +481,7 @@ public interface ActivityClient {
     @Docs("https://developer.github.com/v3/activity/notifications/#set-a-thread-subscription")
     @Category("activity")
     @Subcategory("notifications")
-    ThreadSubscription setThreadSubscription(@PathParam("thread_id") final int threadId) {
-    }
+    ThreadSubscription setThreadSubscription(@PathParam("thread_id") final int threadId);
 
     @PUT
     @Path("/user/starred/{owner}/{repo}")
@@ -505,8 +497,7 @@ public interface ActivityClient {
     @Docs("https://developer.github.com/v3/activity/starring/#star-a-repository-for-the-authenticated-user")
     @Category("activity")
     @Subcategory("starring")
-    void starRepositoryForAuthenticatedUser(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
-    }
+    void starRepositoryForAuthenticatedUser(@PathParam("owner") final String owner, @PathParam("repo") final String repo);
 
     @DELETE
     @Path("/user/starred/{owner}/{repo}")
@@ -522,6 +513,5 @@ public interface ActivityClient {
     @Docs("https://developer.github.com/v3/activity/starring/#unstar-a-repository-for-the-authenticated-user")
     @Category("activity")
     @Subcategory("starring")
-    void unstarRepositoryForAuthenticatedUser(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
-    }
+    void unstarRepositoryForAuthenticatedUser(@PathParam("owner") final String owner, @PathParam("repo") final String repo);
 }

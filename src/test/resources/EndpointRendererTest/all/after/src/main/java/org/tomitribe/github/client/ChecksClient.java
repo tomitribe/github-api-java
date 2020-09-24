@@ -23,19 +23,18 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import org.tomitribe.github.model.CheckAnnotation;
 import org.tomitribe.github.model.CheckRun;
+import org.tomitribe.github.model.CheckRunsPage;
 import org.tomitribe.github.model.CheckSuite;
 import org.tomitribe.github.model.CheckSuitePreference;
+import org.tomitribe.github.model.CheckSuitesPage;
 import org.tomitribe.github.model.CreateCheckRun;
 import org.tomitribe.github.model.CreateCheckSuite;
 import org.tomitribe.github.model.GetCheckRun;
 import org.tomitribe.github.model.GetCheckSuite;
 import org.tomitribe.github.model.ListCheckRunAnnotations;
 import org.tomitribe.github.model.ListCheckRunsForGitReference;
-import org.tomitribe.github.model.ListCheckRunsForGitReferenceResponse;
 import org.tomitribe.github.model.ListCheckRunsInCheckSuite;
-import org.tomitribe.github.model.ListCheckRunsInCheckSuiteResponse;
 import org.tomitribe.github.model.ListCheckSuitesForGitReference;
-import org.tomitribe.github.model.ListCheckSuitesForGitReferenceResponse;
 import org.tomitribe.github.model.UpdateCheckRun;
 import org.tomitribe.github.model.UpdateRepositoryPreferencesForCheckSuites;
 
@@ -59,8 +58,7 @@ public interface ChecksClient {
     @Preview("antiope")
     @Category("checks")
     @Subcategory("runs")
-    CheckRun createCheckRun(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
-    }
+    CheckRun createCheckRun(@PathParam("owner") final String owner, @PathParam("repo") final String repo);
 
     @POST
     @Path("/repos/{owner}/{repo}/check-suites")
@@ -80,8 +78,7 @@ public interface ChecksClient {
     @Preview("antiope")
     @Category("checks")
     @Subcategory("suites")
-    CheckSuite createCheckSuite(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
-    }
+    CheckSuite createCheckSuite(@PathParam("owner") final String owner, @PathParam("repo") final String repo);
 
     @GET
     @Path("/repos/{owner}/{repo}/check-runs/{check_run_id}")
@@ -101,8 +98,7 @@ public interface ChecksClient {
     @Preview("antiope")
     @Category("checks")
     @Subcategory("runs")
-    CheckRun getCheckRun(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("check_run_id") final int checkRunId) {
-    }
+    CheckRun getCheckRun(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("check_run_id") final int checkRunId);
 
     @GET
     @Path("/repos/{owner}/{repo}/check-suites/{check_suite_id}")
@@ -122,8 +118,7 @@ public interface ChecksClient {
     @Preview("antiope")
     @Category("checks")
     @Subcategory("suites")
-    CheckSuite getCheckSuite(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("check_suite_id") final int checkSuiteId) {
-    }
+    CheckSuite getCheckSuite(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("check_suite_id") final int checkSuiteId);
 
     @GET
     @Path("/repos/{owner}/{repo}/check-runs/{check_run_id}/annotations")
@@ -133,6 +128,7 @@ public interface ChecksClient {
     @Preview("antiope")
     @Category("checks")
     @Subcategory("runs")
+    @Paged(CheckAnnotation[].class)
     Stream<CheckAnnotation> listCheckRunAnnotations(final ListCheckRunAnnotations listCheckRunAnnotations);
 
     @GET
@@ -143,8 +139,8 @@ public interface ChecksClient {
     @Preview("antiope")
     @Category("checks")
     @Subcategory("runs")
-    Stream<CheckAnnotation> listCheckRunAnnotations(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("check_run_id") final int checkRunId) {
-    }
+    @Paged(CheckAnnotation[].class)
+    Stream<CheckAnnotation> listCheckRunAnnotations(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("check_run_id") final int checkRunId);
 
     @GET
     @Path("/repos/{owner}/{repo}/commits/{ref}/check-runs")
@@ -154,7 +150,8 @@ public interface ChecksClient {
     @Preview("antiope")
     @Category("checks")
     @Subcategory("runs")
-    ListCheckRunsForGitReferenceResponse listCheckRunsForGitReference(final ListCheckRunsForGitReference listCheckRunsForGitReference);
+    @Paged(CheckRunsPage.class)
+    Stream<CheckRun> listCheckRunsForGitReference(final ListCheckRunsForGitReference listCheckRunsForGitReference);
 
     @GET
     @Path("/repos/{owner}/{repo}/commits/{ref}/check-runs")
@@ -164,8 +161,8 @@ public interface ChecksClient {
     @Preview("antiope")
     @Category("checks")
     @Subcategory("runs")
-    ListCheckRunsForGitReferenceResponse listCheckRunsForGitReference(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("ref") final String ref) {
-    }
+    @Paged(CheckRunsPage.class)
+    Stream<CheckRun> listCheckRunsForGitReference(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("ref") final String ref);
 
     @GET
     @Path("/repos/{owner}/{repo}/check-suites/{check_suite_id}/check-runs")
@@ -175,7 +172,8 @@ public interface ChecksClient {
     @Preview("antiope")
     @Category("checks")
     @Subcategory("runs")
-    ListCheckRunsInCheckSuiteResponse listCheckRunsInCheckSuite(final ListCheckRunsInCheckSuite listCheckRunsInCheckSuite);
+    @Paged(CheckRunsPage.class)
+    Stream<CheckRun> listCheckRunsInCheckSuite(final ListCheckRunsInCheckSuite listCheckRunsInCheckSuite);
 
     @GET
     @Path("/repos/{owner}/{repo}/check-suites/{check_suite_id}/check-runs")
@@ -185,8 +183,8 @@ public interface ChecksClient {
     @Preview("antiope")
     @Category("checks")
     @Subcategory("runs")
-    ListCheckRunsInCheckSuiteResponse listCheckRunsInCheckSuite(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("check_suite_id") final int checkSuiteId) {
-    }
+    @Paged(CheckRunsPage.class)
+    Stream<CheckRun> listCheckRunsInCheckSuite(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("check_suite_id") final int checkSuiteId);
 
     @GET
     @Path("/repos/{owner}/{repo}/commits/{ref}/check-suites")
@@ -196,7 +194,8 @@ public interface ChecksClient {
     @Preview("antiope")
     @Category("checks")
     @Subcategory("suites")
-    ListCheckSuitesForGitReferenceResponse listCheckSuitesForGitReference(final ListCheckSuitesForGitReference listCheckSuitesForGitReference);
+    @Paged(CheckSuitesPage.class)
+    Stream<CheckSuite> listCheckSuitesForGitReference(final ListCheckSuitesForGitReference listCheckSuitesForGitReference);
 
     @GET
     @Path("/repos/{owner}/{repo}/commits/{ref}/check-suites")
@@ -206,8 +205,8 @@ public interface ChecksClient {
     @Preview("antiope")
     @Category("checks")
     @Subcategory("suites")
-    ListCheckSuitesForGitReferenceResponse listCheckSuitesForGitReference(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("ref") final String ref) {
-    }
+    @Paged(CheckSuitesPage.class)
+    Stream<CheckSuite> listCheckSuitesForGitReference(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("ref") final String ref);
 
     @PATCH
     @Path("/repos/{owner}/{repo}/check-runs/{check_run_id}")
@@ -227,8 +226,7 @@ public interface ChecksClient {
     @Preview("antiope")
     @Category("checks")
     @Subcategory("runs")
-    CheckRun updateCheckRun(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("check_run_id") final int checkRunId) {
-    }
+    CheckRun updateCheckRun(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("check_run_id") final int checkRunId);
 
     @PATCH
     @Path("/repos/{owner}/{repo}/check-suites/preferences")
@@ -248,6 +246,5 @@ public interface ChecksClient {
     @Preview("antiope")
     @Category("checks")
     @Subcategory("suites")
-    CheckSuitePreference updateRepositoryPreferencesForCheckSuites(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
-    }
+    CheckSuitePreference updateRepositoryPreferencesForCheckSuites(@PathParam("owner") final String owner, @PathParam("repo") final String repo);
 }

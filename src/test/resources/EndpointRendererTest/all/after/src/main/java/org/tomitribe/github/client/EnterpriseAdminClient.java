@@ -43,8 +43,7 @@ public interface EnterpriseAdminClient {
     @GithubCloudOnly
     @Category("enterprise-admin")
     @Subcategory("billing")
-    ActionsBillingUsage getGitHubActionsBillingForEnterprise(@PathParam("enterprise-id") final String enterpriseId) {
-    }
+    ActionsBillingUsage getGitHubActionsBillingForEnterprise(@PathParam("enterprise-id") final String enterpriseId);
 
     @GET
     @Path("/enterprises/{enterprise_id}/settings/billing/packages")
@@ -62,8 +61,7 @@ public interface EnterpriseAdminClient {
     @GithubCloudOnly
     @Category("enterprise-admin")
     @Subcategory("billing")
-    PackagesBillingUsage getGitHubPackagesBillingForEnterprise(@PathParam("enterprise-id") final String enterpriseId) {
-    }
+    PackagesBillingUsage getGitHubPackagesBillingForEnterprise(@PathParam("enterprise-id") final String enterpriseId);
 
     @GET
     @Path("/enterprises/{enterprise_id}/settings/billing/shared-storage")
@@ -81,6 +79,5 @@ public interface EnterpriseAdminClient {
     @GithubCloudOnly
     @Category("enterprise-admin")
     @Subcategory("billing")
-    CombinedBillingUsage getSharedStorageBillingForEnterprise(@PathParam("enterprise-id") final String enterpriseId) {
-    }
+    CombinedBillingUsage getSharedStorageBillingForEnterprise(@PathParam("enterprise-id") final String enterpriseId);
 }

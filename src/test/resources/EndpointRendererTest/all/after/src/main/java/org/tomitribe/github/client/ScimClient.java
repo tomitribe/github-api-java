@@ -38,6 +38,5 @@ public interface ScimClient {
     @GithubCloudOnly
     @EnabledForGithubApps
     @Category("scim")
-    void deleteSCIMUserFromOrganization(@PathParam("org") final String org, @PathParam("scim_user_id") final String scimUserId) {
-    }
+    void deleteSCIMUserFromOrganization(@PathParam("org") final String org, @PathParam("scim_user_id") final String scimUserId);
 }

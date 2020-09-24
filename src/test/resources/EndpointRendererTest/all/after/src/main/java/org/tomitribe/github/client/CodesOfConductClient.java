@@ -51,8 +51,7 @@ public interface CodesOfConductClient {
     @EnabledForGithubApps
     @Preview("scarlet-witch")
     @Category("codes-of-conduct")
-    CodeOfConduct getCodeOfConduct(@PathParam("key") final String key) {
-    }
+    CodeOfConduct getCodeOfConduct(@PathParam("key") final String key);
 
     @GET
     @Path("/repos/{owner}/{repo}/community/code_of_conduct")
@@ -70,6 +69,5 @@ public interface CodesOfConductClient {
     @EnabledForGithubApps
     @Preview("scarlet-witch")
     @Category("codes-of-conduct")
-    CodeOfConduct getCodeOfConductForRepository(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
-    }
+    CodeOfConduct getCodeOfConductForRepository(@PathParam("owner") final String owner, @PathParam("repo") final String repo);
 }

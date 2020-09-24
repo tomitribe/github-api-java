@@ -64,8 +64,7 @@ public interface ReactionsClient {
     @EnabledForGithubApps
     @Preview("squirrel-girl")
     @Category("reactions")
-    Reaction createReactionForCommitComment(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("comment_id") final int commentId) {
-    }
+    Reaction createReactionForCommitComment(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("comment_id") final int commentId);
 
     @POST
     @Path("/repos/{owner}/{repo}/issues/{issue_number}/reactions")
@@ -81,8 +80,7 @@ public interface ReactionsClient {
     @Docs("https://developer.github.com/v3/reactions/#create-reaction-for-an-issue")
     @Preview("squirrel-girl")
     @Category("reactions")
-    Reaction createReactionForIssue(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("issue_number") final int issueNumber) {
-    }
+    Reaction createReactionForIssue(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("issue_number") final int issueNumber);
 
     @POST
     @Path("/repos/{owner}/{repo}/issues/comments/{comment_id}/reactions")
@@ -100,8 +98,7 @@ public interface ReactionsClient {
     @EnabledForGithubApps
     @Preview("squirrel-girl")
     @Category("reactions")
-    Reaction createReactionForIssueComment(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("comment_id") final int commentId) {
-    }
+    Reaction createReactionForIssueComment(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("comment_id") final int commentId);
 
     @POST
     @Path("/repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions")
@@ -119,8 +116,7 @@ public interface ReactionsClient {
     @EnabledForGithubApps
     @Preview("squirrel-girl")
     @Category("reactions")
-    Reaction createReactionForPullRequestReviewComment(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("comment_id") final int commentId) {
-    }
+    Reaction createReactionForPullRequestReviewComment(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("comment_id") final int commentId);
 
     @POST
     @Path("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions")
@@ -136,8 +132,7 @@ public interface ReactionsClient {
     @Docs("https://developer.github.com/v3/reactions/#create-reaction-for-a-team-discussion")
     @Preview("squirrel-girl")
     @Category("reactions")
-    Reaction createReactionForTeamDiscussion(@PathParam("org") final String org, @PathParam("team_slug") final String teamSlug, @PathParam("discussion-number") final int discussionNumber) {
-    }
+    Reaction createReactionForTeamDiscussion(@PathParam("org") final String org, @PathParam("team_slug") final String teamSlug, @PathParam("discussion-number") final int discussionNumber);
 
     @POST
     @Path("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions")
@@ -155,8 +150,7 @@ public interface ReactionsClient {
     @EnabledForGithubApps
     @Preview("squirrel-girl")
     @Category("reactions")
-    Reaction createReactionForTeamDiscussionComment(@PathParam("org") final String org, @PathParam("team_slug") final String teamSlug, @PathParam("discussion-number") final int discussionNumber, @PathParam("comment-number") final int commentNumber) {
-    }
+    Reaction createReactionForTeamDiscussionComment(@PathParam("org") final String org, @PathParam("team_slug") final String teamSlug, @PathParam("discussion-number") final int discussionNumber, @PathParam("comment-number") final int commentNumber);
 
     @POST
     @Path("/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions")
@@ -178,8 +172,7 @@ public interface ReactionsClient {
     @EnabledForGithubApps
     @Preview("squirrel-girl")
     @Category("reactions")
-    Reaction createReactionForTeamDiscussionCommentLegacy(@PathParam("team-id") final int teamId, @PathParam("discussion-number") final int discussionNumber, @PathParam("comment-number") final int commentNumber) {
-    }
+    Reaction createReactionForTeamDiscussionCommentLegacy(@PathParam("team-id") final int teamId, @PathParam("discussion-number") final int discussionNumber, @PathParam("comment-number") final int commentNumber);
 
     @POST
     @Path("/teams/{team_id}/discussions/{discussion_number}/reactions")
@@ -199,8 +192,7 @@ public interface ReactionsClient {
     @DeprecationDate("2020-02-26")
     @Preview("squirrel-girl")
     @Category("reactions")
-    Reaction createReactionForTeamDiscussionLegacy(@PathParam("team-id") final int teamId, @PathParam("discussion-number") final int discussionNumber) {
-    }
+    Reaction createReactionForTeamDiscussionLegacy(@PathParam("team-id") final int teamId, @PathParam("discussion-number") final int discussionNumber);
 
     @DELETE
     @Path("/repos/{owner}/{repo}/comments/{comment_id}/reactions/{reaction_id}")
@@ -218,8 +210,7 @@ public interface ReactionsClient {
     @EnabledForGithubApps
     @Preview("squirrel-girl")
     @Category("reactions")
-    void deleteCommitCommentReaction(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("comment_id") final int commentId, @PathParam("reaction-id") final int reactionId) {
-    }
+    void deleteCommitCommentReaction(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("comment_id") final int commentId, @PathParam("reaction-id") final int reactionId);
 
     @DELETE
     @Path("/repos/{owner}/{repo}/issues/comments/{comment_id}/reactions/{reaction_id}")
@@ -237,8 +228,7 @@ public interface ReactionsClient {
     @EnabledForGithubApps
     @Preview("squirrel-girl")
     @Category("reactions")
-    void deleteIssueCommentReaction(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("comment_id") final int commentId, @PathParam("reaction-id") final int reactionId) {
-    }
+    void deleteIssueCommentReaction(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("comment_id") final int commentId, @PathParam("reaction-id") final int reactionId);
 
     @DELETE
     @Path("/repos/{owner}/{repo}/issues/{issue_number}/reactions/{reaction_id}")
@@ -256,8 +246,7 @@ public interface ReactionsClient {
     @EnabledForGithubApps
     @Preview("squirrel-girl")
     @Category("reactions")
-    void deleteIssueReaction(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("issue_number") final int issueNumber, @PathParam("reaction-id") final int reactionId) {
-    }
+    void deleteIssueReaction(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("issue_number") final int issueNumber, @PathParam("reaction-id") final int reactionId);
 
     @DELETE
     @Path("/repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions/{reaction_id}")
@@ -275,8 +264,7 @@ public interface ReactionsClient {
     @EnabledForGithubApps
     @Preview("squirrel-girl")
     @Category("reactions")
-    void deletePullRequestCommentReaction(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("comment_id") final int commentId, @PathParam("reaction-id") final int reactionId) {
-    }
+    void deletePullRequestCommentReaction(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("comment_id") final int commentId, @PathParam("reaction-id") final int reactionId);
 
     @DELETE
     @Path("/reactions/{reaction_id}")
@@ -298,8 +286,7 @@ public interface ReactionsClient {
     @EnabledForGithubApps
     @Preview("squirrel-girl")
     @Category("reactions")
-    void deleteReactionLegacy(@PathParam("reaction-id") final int reactionId) {
-    }
+    void deleteReactionLegacy(@PathParam("reaction-id") final int reactionId);
 
     @DELETE
     @Path("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions/{reaction_id}")
@@ -317,8 +304,7 @@ public interface ReactionsClient {
     @EnabledForGithubApps
     @Preview("squirrel-girl")
     @Category("reactions")
-    void deleteTeamDiscussionCommentReaction(@PathParam("org") final String org, @PathParam("team_slug") final String teamSlug, @PathParam("discussion-number") final int discussionNumber, @PathParam("comment-number") final int commentNumber, @PathParam("reaction-id") final int reactionId) {
-    }
+    void deleteTeamDiscussionCommentReaction(@PathParam("org") final String org, @PathParam("team_slug") final String teamSlug, @PathParam("discussion-number") final int discussionNumber, @PathParam("comment-number") final int commentNumber, @PathParam("reaction-id") final int reactionId);
 
     @DELETE
     @Path("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions/{reaction_id}")
@@ -336,8 +322,7 @@ public interface ReactionsClient {
     @EnabledForGithubApps
     @Preview("squirrel-girl")
     @Category("reactions")
-    void deleteTeamDiscussionReaction(@PathParam("org") final String org, @PathParam("team_slug") final String teamSlug, @PathParam("discussion-number") final int discussionNumber, @PathParam("reaction-id") final int reactionId) {
-    }
+    void deleteTeamDiscussionReaction(@PathParam("org") final String org, @PathParam("team_slug") final String teamSlug, @PathParam("discussion-number") final int discussionNumber, @PathParam("reaction-id") final int reactionId);
 
     @GET
     @Path("/repos/{owner}/{repo}/comments/{comment_id}/reactions")
@@ -346,6 +331,7 @@ public interface ReactionsClient {
     @EnabledForGithubApps
     @Preview("squirrel-girl")
     @Category("reactions")
+    @Paged(Reaction[].class)
     Stream<Reaction> listReactionsForCommitComment(final ListReactionsForCommitComment listReactionsForCommitComment);
 
     @GET
@@ -355,8 +341,8 @@ public interface ReactionsClient {
     @EnabledForGithubApps
     @Preview("squirrel-girl")
     @Category("reactions")
-    Stream<Reaction> listReactionsForCommitComment(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("comment_id") final int commentId) {
-    }
+    @Paged(Reaction[].class)
+    Stream<Reaction> listReactionsForCommitComment(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("comment_id") final int commentId);
 
     @GET
     @Path("/repos/{owner}/{repo}/issues/{issue_number}/reactions")
@@ -365,6 +351,7 @@ public interface ReactionsClient {
     @EnabledForGithubApps
     @Preview("squirrel-girl")
     @Category("reactions")
+    @Paged(Reaction[].class)
     Stream<Reaction> listReactionsForIssue(final ListReactionsForIssue listReactionsForIssue);
 
     @GET
@@ -374,8 +361,8 @@ public interface ReactionsClient {
     @EnabledForGithubApps
     @Preview("squirrel-girl")
     @Category("reactions")
-    Stream<Reaction> listReactionsForIssue(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("issue_number") final int issueNumber) {
-    }
+    @Paged(Reaction[].class)
+    Stream<Reaction> listReactionsForIssue(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("issue_number") final int issueNumber);
 
     @GET
     @Path("/repos/{owner}/{repo}/issues/comments/{comment_id}/reactions")
@@ -384,6 +371,7 @@ public interface ReactionsClient {
     @EnabledForGithubApps
     @Preview("squirrel-girl")
     @Category("reactions")
+    @Paged(Reaction[].class)
     Stream<Reaction> listReactionsForIssueComment(final ListReactionsForIssueComment listReactionsForIssueComment);
 
     @GET
@@ -393,8 +381,8 @@ public interface ReactionsClient {
     @EnabledForGithubApps
     @Preview("squirrel-girl")
     @Category("reactions")
-    Stream<Reaction> listReactionsForIssueComment(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("comment_id") final int commentId) {
-    }
+    @Paged(Reaction[].class)
+    Stream<Reaction> listReactionsForIssueComment(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("comment_id") final int commentId);
 
     @GET
     @Path("/repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions")
@@ -403,6 +391,7 @@ public interface ReactionsClient {
     @EnabledForGithubApps
     @Preview("squirrel-girl")
     @Category("reactions")
+    @Paged(Reaction[].class)
     Stream<Reaction> listReactionsForPullRequestReviewComment(final ListReactionsForPullRequestReviewComment listReactionsForPullRequestReviewComment);
 
     @GET
@@ -412,8 +401,8 @@ public interface ReactionsClient {
     @EnabledForGithubApps
     @Preview("squirrel-girl")
     @Category("reactions")
-    Stream<Reaction> listReactionsForPullRequestReviewComment(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("comment_id") final int commentId) {
-    }
+    @Paged(Reaction[].class)
+    Stream<Reaction> listReactionsForPullRequestReviewComment(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("comment_id") final int commentId);
 
     @GET
     @Path("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions")
@@ -422,6 +411,7 @@ public interface ReactionsClient {
     @EnabledForGithubApps
     @Preview("squirrel-girl")
     @Category("reactions")
+    @Paged(Reaction[].class)
     Stream<Reaction> listReactionsForTeamDiscussion(final ListReactionsForTeamDiscussion listReactionsForTeamDiscussion);
 
     @GET
@@ -431,8 +421,8 @@ public interface ReactionsClient {
     @EnabledForGithubApps
     @Preview("squirrel-girl")
     @Category("reactions")
-    Stream<Reaction> listReactionsForTeamDiscussion(@PathParam("org") final String org, @PathParam("team_slug") final String teamSlug, @PathParam("discussion-number") final int discussionNumber) {
-    }
+    @Paged(Reaction[].class)
+    Stream<Reaction> listReactionsForTeamDiscussion(@PathParam("org") final String org, @PathParam("team_slug") final String teamSlug, @PathParam("discussion-number") final int discussionNumber);
 
     @GET
     @Path("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions")
@@ -441,6 +431,7 @@ public interface ReactionsClient {
     @EnabledForGithubApps
     @Preview("squirrel-girl")
     @Category("reactions")
+    @Paged(Reaction[].class)
     Stream<Reaction> listReactionsForTeamDiscussionComment(final ListReactionsForTeamDiscussionComment listReactionsForTeamDiscussionComment);
 
     @GET
@@ -450,8 +441,8 @@ public interface ReactionsClient {
     @EnabledForGithubApps
     @Preview("squirrel-girl")
     @Category("reactions")
-    Stream<Reaction> listReactionsForTeamDiscussionComment(@PathParam("org") final String org, @PathParam("team_slug") final String teamSlug, @PathParam("discussion-number") final int discussionNumber, @PathParam("comment-number") final int commentNumber) {
-    }
+    @Paged(Reaction[].class)
+    Stream<Reaction> listReactionsForTeamDiscussionComment(@PathParam("org") final String org, @PathParam("team_slug") final String teamSlug, @PathParam("discussion-number") final int discussionNumber, @PathParam("comment-number") final int commentNumber);
 
     @GET
     @Path("/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions")
@@ -462,6 +453,7 @@ public interface ReactionsClient {
     @EnabledForGithubApps
     @Preview("squirrel-girl")
     @Category("reactions")
+    @Paged(Reaction[].class)
     Stream<Reaction> listReactionsForTeamDiscussionCommentLegacy(final ListReactionsForTeamDiscussionCommentLegacy listReactionsForTeamDiscussionCommentLegacy);
 
     @GET
@@ -473,8 +465,8 @@ public interface ReactionsClient {
     @EnabledForGithubApps
     @Preview("squirrel-girl")
     @Category("reactions")
-    Stream<Reaction> listReactionsForTeamDiscussionCommentLegacy(@PathParam("team-id") final int teamId, @PathParam("discussion-number") final int discussionNumber, @PathParam("comment-number") final int commentNumber) {
-    }
+    @Paged(Reaction[].class)
+    Stream<Reaction> listReactionsForTeamDiscussionCommentLegacy(@PathParam("team-id") final int teamId, @PathParam("discussion-number") final int discussionNumber, @PathParam("comment-number") final int commentNumber);
 
     @GET
     @Path("/teams/{team_id}/discussions/{discussion_number}/reactions")
@@ -485,6 +477,7 @@ public interface ReactionsClient {
     @EnabledForGithubApps
     @Preview("squirrel-girl")
     @Category("reactions")
+    @Paged(Reaction[].class)
     Stream<Reaction> listReactionsForTeamDiscussionLegacy(final ListReactionsForTeamDiscussionLegacy listReactionsForTeamDiscussionLegacy);
 
     @GET
@@ -496,6 +489,6 @@ public interface ReactionsClient {
     @EnabledForGithubApps
     @Preview("squirrel-girl")
     @Category("reactions")
-    Stream<Reaction> listReactionsForTeamDiscussionLegacy(@PathParam("team-id") final int teamId, @PathParam("discussion-number") final int discussionNumber) {
-    }
+    @Paged(Reaction[].class)
+    Stream<Reaction> listReactionsForTeamDiscussionLegacy(@PathParam("team-id") final int teamId, @PathParam("discussion-number") final int discussionNumber);
 }

@@ -89,8 +89,7 @@ public interface UsersClient {
     @Docs("https://developer.github.com/v3/users/blocking/#block-a-user")
     @Category("users")
     @Subcategory("blocking")
-    void blockUser(@PathParam("username") final String username) {
-    }
+    void blockUser(@PathParam("username") final String username);
 
     @GET
     @Path("/user/following/{username}")
@@ -106,8 +105,7 @@ public interface UsersClient {
     @Docs("https://developer.github.com/v3/users/followers/#check-if-a-person-is-followed-by-the-authenticated-user")
     @Category("users")
     @Subcategory("followers")
-    void checkIfPersonIsFollowedByAuthenticatedUser(@PathParam("username") final String username) {
-    }
+    void checkIfPersonIsFollowedByAuthenticatedUser(@PathParam("username") final String username);
 
     @GET
     @Path("/users/{username}/following/{target_user}")
@@ -125,8 +123,7 @@ public interface UsersClient {
     @EnabledForGithubApps
     @Category("users")
     @Subcategory("followers")
-    void checkIfUserFollowsAnotherUser(@PathParam("username") final String username, @PathParam("target_user") final String targetUser) {
-    }
+    void checkIfUserFollowsAnotherUser(@PathParam("username") final String username, @PathParam("target_user") final String targetUser);
 
     @GET
     @Path("/user/blocks/{username}")
@@ -142,8 +139,7 @@ public interface UsersClient {
     @Docs("https://developer.github.com/v3/users/blocking/#check-if-a-user-is-blocked-by-the-authenticated-user")
     @Category("users")
     @Subcategory("blocking")
-    void checkIfUserIsBlockedByAuthenticatedUser(@PathParam("username") final String username) {
-    }
+    void checkIfUserIsBlockedByAuthenticatedUser(@PathParam("username") final String username);
 
     @POST
     @Path("/user/gpg_keys")
@@ -183,8 +179,7 @@ public interface UsersClient {
     @Docs("https://developer.github.com/v3/users/gpg_keys/#delete-a-gpg-key-for-the-authenticated-user")
     @Category("users")
     @Subcategory("gpg-keys")
-    void deleteGPGKeyForAuthenticatedUser(@PathParam("gpg_key_id") final int gpgKeyId) {
-    }
+    void deleteGPGKeyForAuthenticatedUser(@PathParam("gpg_key_id") final int gpgKeyId);
 
     @DELETE
     @Path("/user/keys/{key_id}")
@@ -200,8 +195,7 @@ public interface UsersClient {
     @Docs("https://developer.github.com/v3/users/keys/#delete-a-public-ssh-key-for-the-authenticated-user")
     @Category("users")
     @Subcategory("keys")
-    void deletePublicSSHKeyForAuthenticatedUser(@PathParam("key_id") final int keyId) {
-    }
+    void deletePublicSSHKeyForAuthenticatedUser(@PathParam("key_id") final int keyId);
 
     @PUT
     @Path("/user/following/{username}")
@@ -217,8 +211,7 @@ public interface UsersClient {
     @Docs("https://developer.github.com/v3/users/followers/#follow-a-user")
     @Category("users")
     @Subcategory("followers")
-    void followUser(@PathParam("username") final String username) {
-    }
+    void followUser(@PathParam("username") final String username);
 
     @GET
     @Path("/user")
@@ -239,8 +232,7 @@ public interface UsersClient {
     @OperationId("users/get-context-for-user")
     @Docs("https://developer.github.com/v3/users/#get-contextual-information-for-a-user")
     @Category("users")
-    Hovercard getContextualInformationForUser(@PathParam("username") final String username) {
-    }
+    Hovercard getContextualInformationForUser(@PathParam("username") final String username);
 
     @GET
     @Path("/user/gpg_keys/{gpg_key_id}")
@@ -256,8 +248,7 @@ public interface UsersClient {
     @Docs("https://developer.github.com/v3/users/gpg_keys/#get-a-gpg-key-for-the-authenticated-user")
     @Category("users")
     @Subcategory("gpg-keys")
-    GpgKey getGPGKeyForAuthenticatedUser(@PathParam("gpg_key_id") final int gpgKeyId) {
-    }
+    GpgKey getGPGKeyForAuthenticatedUser(@PathParam("gpg_key_id") final int gpgKeyId);
 
     @GET
     @Path("/user/keys/{key_id}")
@@ -273,8 +264,7 @@ public interface UsersClient {
     @Docs("https://developer.github.com/v3/users/keys/#get-a-public-ssh-key-for-the-authenticated-user")
     @Category("users")
     @Subcategory("keys")
-    Key getPublicSSHKeyForAuthenticatedUser(@PathParam("key_id") final int keyId) {
-    }
+    Key getPublicSSHKeyForAuthenticatedUser(@PathParam("key_id") final int keyId);
 
     @GET
     @Path("/users/{username}")
@@ -290,8 +280,7 @@ public interface UsersClient {
     @Docs("https://developer.github.com/v3/users/#get-a-user")
     @EnabledForGithubApps
     @Category("users")
-    GetUserResponse getUser(@PathParam("username") final String username) {
-    }
+    GetUserResponse getUser(@PathParam("username") final String username);
 
     @GET
     @Path("/user/emails")
@@ -299,6 +288,7 @@ public interface UsersClient {
     @Docs("https://developer.github.com/v3/users/emails/#list-email-addresses-for-the-authenticated-user")
     @Category("users")
     @Subcategory("emails")
+    @Paged(Email[].class)
     Stream<Email> listEmailAddressesForAuthenticatedUser(final ListEmailAddressesForAuthenticatedUser listEmailAddressesForAuthenticatedUser);
 
     @GET
@@ -307,6 +297,7 @@ public interface UsersClient {
     @Docs("https://developer.github.com/v3/users/followers/#list-followers-of-the-authenticated-user")
     @Category("users")
     @Subcategory("followers")
+    @Paged(SimpleUser[].class)
     Stream<SimpleUser> listFollowersOfAuthenticatedUser(final ListFollowersOfAuthenticatedUser listFollowersOfAuthenticatedUser);
 
     @GET
@@ -316,6 +307,7 @@ public interface UsersClient {
     @EnabledForGithubApps
     @Category("users")
     @Subcategory("followers")
+    @Paged(SimpleUser[].class)
     Stream<SimpleUser> listFollowersOfUser(final ListFollowersOfUser listFollowersOfUser);
 
     @GET
@@ -325,8 +317,8 @@ public interface UsersClient {
     @EnabledForGithubApps
     @Category("users")
     @Subcategory("followers")
-    Stream<SimpleUser> listFollowersOfUser(@PathParam("username") final String username) {
-    }
+    @Paged(SimpleUser[].class)
+    Stream<SimpleUser> listFollowersOfUser(@PathParam("username") final String username);
 
     @GET
     @Path("/user/gpg_keys")
@@ -334,6 +326,7 @@ public interface UsersClient {
     @Docs("https://developer.github.com/v3/users/gpg_keys/#list-gpg-keys-for-the-authenticated-user")
     @Category("users")
     @Subcategory("gpg-keys")
+    @Paged(GpgKey[].class)
     Stream<GpgKey> listGPGKeysForAuthenticatedUser(final ListGPGKeysForAuthenticatedUser listGPGKeysForAuthenticatedUser);
 
     @GET
@@ -343,6 +336,7 @@ public interface UsersClient {
     @EnabledForGithubApps
     @Category("users")
     @Subcategory("gpg-keys")
+    @Paged(GpgKey[].class)
     Stream<GpgKey> listGPGKeysForUser(final ListGPGKeysForUser listGPGKeysForUser);
 
     @GET
@@ -352,8 +346,8 @@ public interface UsersClient {
     @EnabledForGithubApps
     @Category("users")
     @Subcategory("gpg-keys")
-    Stream<GpgKey> listGPGKeysForUser(@PathParam("username") final String username) {
-    }
+    @Paged(GpgKey[].class)
+    Stream<GpgKey> listGPGKeysForUser(@PathParam("username") final String username);
 
     @GET
     @Path("/user/following")
@@ -361,6 +355,7 @@ public interface UsersClient {
     @Docs("https://developer.github.com/v3/users/followers/#list-the-people-the-authenticated-user-follows")
     @Category("users")
     @Subcategory("followers")
+    @Paged(SimpleUser[].class)
     Stream<SimpleUser> listPeopleAuthenticatedUserFollows(final ListPeopleAuthenticatedUserFollows listPeopleAuthenticatedUserFollows);
 
     @GET
@@ -370,6 +365,7 @@ public interface UsersClient {
     @EnabledForGithubApps
     @Category("users")
     @Subcategory("followers")
+    @Paged(SimpleUser[].class)
     Stream<SimpleUser> listPeopleUserFollows(final ListPeopleUserFollows listPeopleUserFollows);
 
     @GET
@@ -379,8 +375,8 @@ public interface UsersClient {
     @EnabledForGithubApps
     @Category("users")
     @Subcategory("followers")
-    Stream<SimpleUser> listPeopleUserFollows(@PathParam("username") final String username) {
-    }
+    @Paged(SimpleUser[].class)
+    Stream<SimpleUser> listPeopleUserFollows(@PathParam("username") final String username);
 
     @GET
     @Path("/user/public_emails")
@@ -388,6 +384,7 @@ public interface UsersClient {
     @Docs("https://developer.github.com/v3/users/emails/#list-public-email-addresses-for-the-authenticated-user")
     @Category("users")
     @Subcategory("emails")
+    @Paged(Email[].class)
     Stream<Email> listPublicEmailAddressesForAuthenticatedUser(final ListPublicEmailAddressesForAuthenticatedUser listPublicEmailAddressesForAuthenticatedUser);
 
     @GET
@@ -397,6 +394,7 @@ public interface UsersClient {
     @EnabledForGithubApps
     @Category("users")
     @Subcategory("keys")
+    @Paged(KeySimple[].class)
     Stream<KeySimple> listPublicKeysForUser(final ListPublicKeysForUser listPublicKeysForUser);
 
     @GET
@@ -406,8 +404,8 @@ public interface UsersClient {
     @EnabledForGithubApps
     @Category("users")
     @Subcategory("keys")
-    Stream<KeySimple> listPublicKeysForUser(@PathParam("username") final String username) {
-    }
+    @Paged(KeySimple[].class)
+    Stream<KeySimple> listPublicKeysForUser(@PathParam("username") final String username);
 
     @GET
     @Path("/user/keys")
@@ -415,6 +413,7 @@ public interface UsersClient {
     @Docs("https://developer.github.com/v3/users/keys/#list-public-ssh-keys-for-the-authenticated-user")
     @Category("users")
     @Subcategory("keys")
+    @Paged(Key[].class)
     Stream<Key> listPublicSSHKeysForAuthenticatedUser(final ListPublicSSHKeysForAuthenticatedUser listPublicSSHKeysForAuthenticatedUser);
 
     @GET
@@ -423,6 +422,7 @@ public interface UsersClient {
     @Docs("https://developer.github.com/v3/users/#list-users")
     @EnabledForGithubApps
     @Category("users")
+    @Paged(SimpleUser[].class)
     Stream<SimpleUser> listUsers(final ListUsers listUsers);
 
     @GET
@@ -455,8 +455,7 @@ public interface UsersClient {
     @Docs("https://developer.github.com/v3/users/blocking/#unblock-a-user")
     @Category("users")
     @Subcategory("blocking")
-    void unblockUser(@PathParam("username") final String username) {
-    }
+    void unblockUser(@PathParam("username") final String username);
 
     @DELETE
     @Path("/user/following/{username}")
@@ -472,8 +471,7 @@ public interface UsersClient {
     @Docs("https://developer.github.com/v3/users/followers/#unfollow-a-user")
     @Category("users")
     @Subcategory("followers")
-    void unfollowUser(@PathParam("username") final String username) {
-    }
+    void unfollowUser(@PathParam("username") final String username);
 
     @PATCH
     @Path("/user")

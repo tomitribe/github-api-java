@@ -76,8 +76,7 @@ public interface ProjectsClient {
     @Preview("inertia")
     @Category("projects")
     @Subcategory("collaborators")
-    void addProjectCollaborator(@PathParam("project-id") final int projectId, @PathParam("username") final String username) {
-    }
+    void addProjectCollaborator(@PathParam("project-id") final int projectId, @PathParam("username") final String username);
 
     @POST
     @Path("/orgs/{org}/projects")
@@ -95,8 +94,7 @@ public interface ProjectsClient {
     @EnabledForGithubApps
     @Preview("inertia")
     @Category("projects")
-    Project createOrganizationProject(@PathParam("org") final String org) {
-    }
+    Project createOrganizationProject(@PathParam("org") final String org);
 
     @POST
     @Path("/projects/columns/{column_id}/cards")
@@ -116,8 +114,7 @@ public interface ProjectsClient {
     @Preview("inertia")
     @Category("projects")
     @Subcategory("cards")
-    ProjectCard createProjectCard(@PathParam("column_id") final int columnId) {
-    }
+    ProjectCard createProjectCard(@PathParam("column_id") final int columnId);
 
     @POST
     @Path("/projects/{project_id}/columns")
@@ -137,8 +134,7 @@ public interface ProjectsClient {
     @Preview("inertia")
     @Category("projects")
     @Subcategory("columns")
-    ProjectColumn createProjectColumn(@PathParam("project-id") final int projectId) {
-    }
+    ProjectColumn createProjectColumn(@PathParam("project-id") final int projectId);
 
     @POST
     @Path("/repos/{owner}/{repo}/projects")
@@ -156,8 +152,7 @@ public interface ProjectsClient {
     @EnabledForGithubApps
     @Preview("inertia")
     @Category("projects")
-    Project createRepositoryProject(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
-    }
+    Project createRepositoryProject(@PathParam("owner") final String owner, @PathParam("repo") final String repo);
 
     @POST
     @Path("/user/projects")
@@ -184,8 +179,7 @@ public interface ProjectsClient {
     @EnabledForGithubApps
     @Preview("inertia")
     @Category("projects")
-    void deleteProject(@PathParam("project-id") final int projectId) {
-    }
+    void deleteProject(@PathParam("project-id") final int projectId);
 
     @DELETE
     @Path("/projects/columns/cards/{card_id}")
@@ -205,8 +199,7 @@ public interface ProjectsClient {
     @Preview("inertia")
     @Category("projects")
     @Subcategory("cards")
-    void deleteProjectCard(@PathParam("card_id") final int cardId) {
-    }
+    void deleteProjectCard(@PathParam("card_id") final int cardId);
 
     @DELETE
     @Path("/projects/columns/{column_id}")
@@ -226,8 +219,7 @@ public interface ProjectsClient {
     @Preview("inertia")
     @Category("projects")
     @Subcategory("columns")
-    void deleteProjectColumn(@PathParam("column_id") final int columnId) {
-    }
+    void deleteProjectColumn(@PathParam("column_id") final int columnId);
 
     @GET
     @Path("/projects/{project_id}")
@@ -245,8 +237,7 @@ public interface ProjectsClient {
     @EnabledForGithubApps
     @Preview("inertia")
     @Category("projects")
-    Project getProject(@PathParam("project-id") final int projectId) {
-    }
+    Project getProject(@PathParam("project-id") final int projectId);
 
     @GET
     @Path("/projects/columns/cards/{card_id}")
@@ -266,8 +257,7 @@ public interface ProjectsClient {
     @Preview("inertia")
     @Category("projects")
     @Subcategory("cards")
-    ProjectCard getProjectCard(@PathParam("card_id") final int cardId) {
-    }
+    ProjectCard getProjectCard(@PathParam("card_id") final int cardId);
 
     @GET
     @Path("/projects/columns/{column_id}")
@@ -287,8 +277,7 @@ public interface ProjectsClient {
     @Preview("inertia")
     @Category("projects")
     @Subcategory("columns")
-    ProjectColumn getProjectColumn(@PathParam("column_id") final int columnId) {
-    }
+    ProjectColumn getProjectColumn(@PathParam("column_id") final int columnId);
 
     @GET
     @Path("/projects/{project_id}/collaborators/{username}/permission")
@@ -308,8 +297,7 @@ public interface ProjectsClient {
     @Preview("inertia")
     @Category("projects")
     @Subcategory("collaborators")
-    RepositoryCollaboratorPermission getProjectPermissionForUser(@PathParam("project-id") final int projectId, @PathParam("username") final String username) {
-    }
+    RepositoryCollaboratorPermission getProjectPermissionForUser(@PathParam("project-id") final int projectId, @PathParam("username") final String username);
 
     @GET
     @Path("/orgs/{org}/projects")
@@ -318,6 +306,7 @@ public interface ProjectsClient {
     @EnabledForGithubApps
     @Preview("inertia")
     @Category("projects")
+    @Paged(Project[].class)
     Stream<Project> listOrganizationProjects(final ListOrganizationProjects listOrganizationProjects);
 
     @GET
@@ -327,8 +316,8 @@ public interface ProjectsClient {
     @EnabledForGithubApps
     @Preview("inertia")
     @Category("projects")
-    Stream<Project> listOrganizationProjects(@PathParam("org") final String org) {
-    }
+    @Paged(Project[].class)
+    Stream<Project> listOrganizationProjects(@PathParam("org") final String org);
 
     @GET
     @Path("/projects/columns/{column_id}/cards")
@@ -338,6 +327,7 @@ public interface ProjectsClient {
     @Preview("inertia")
     @Category("projects")
     @Subcategory("cards")
+    @Paged(ProjectCard[].class)
     Stream<ProjectCard> listProjectCards(final ListProjectCards listProjectCards);
 
     @GET
@@ -348,8 +338,8 @@ public interface ProjectsClient {
     @Preview("inertia")
     @Category("projects")
     @Subcategory("cards")
-    Stream<ProjectCard> listProjectCards(@PathParam("column_id") final int columnId) {
-    }
+    @Paged(ProjectCard[].class)
+    Stream<ProjectCard> listProjectCards(@PathParam("column_id") final int columnId);
 
     @GET
     @Path("/projects/{project_id}/collaborators")
@@ -359,6 +349,7 @@ public interface ProjectsClient {
     @Preview("inertia")
     @Category("projects")
     @Subcategory("collaborators")
+    @Paged(SimpleUser[].class)
     Stream<SimpleUser> listProjectCollaborators(final ListProjectCollaborators listProjectCollaborators);
 
     @GET
@@ -369,8 +360,8 @@ public interface ProjectsClient {
     @Preview("inertia")
     @Category("projects")
     @Subcategory("collaborators")
-    Stream<SimpleUser> listProjectCollaborators(@PathParam("project-id") final int projectId) {
-    }
+    @Paged(SimpleUser[].class)
+    Stream<SimpleUser> listProjectCollaborators(@PathParam("project-id") final int projectId);
 
     @GET
     @Path("/projects/{project_id}/columns")
@@ -380,6 +371,7 @@ public interface ProjectsClient {
     @Preview("inertia")
     @Category("projects")
     @Subcategory("columns")
+    @Paged(ProjectColumn[].class)
     Stream<ProjectColumn> listProjectColumns(final ListProjectColumns listProjectColumns);
 
     @GET
@@ -390,8 +382,8 @@ public interface ProjectsClient {
     @Preview("inertia")
     @Category("projects")
     @Subcategory("columns")
-    Stream<ProjectColumn> listProjectColumns(@PathParam("project-id") final int projectId) {
-    }
+    @Paged(ProjectColumn[].class)
+    Stream<ProjectColumn> listProjectColumns(@PathParam("project-id") final int projectId);
 
     @GET
     @Path("/repos/{owner}/{repo}/projects")
@@ -400,6 +392,7 @@ public interface ProjectsClient {
     @EnabledForGithubApps
     @Preview("inertia")
     @Category("projects")
+    @Paged(Project[].class)
     Stream<Project> listRepositoryProjects(final ListRepositoryProjects listRepositoryProjects);
 
     @GET
@@ -409,8 +402,8 @@ public interface ProjectsClient {
     @EnabledForGithubApps
     @Preview("inertia")
     @Category("projects")
-    Stream<Project> listRepositoryProjects(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
-    }
+    @Paged(Project[].class)
+    Stream<Project> listRepositoryProjects(@PathParam("owner") final String owner, @PathParam("repo") final String repo);
 
     @GET
     @Path("/users/{username}/projects")
@@ -419,6 +412,7 @@ public interface ProjectsClient {
     @EnabledForGithubApps
     @Preview("inertia")
     @Category("projects")
+    @Paged(Project[].class)
     Stream<Project> listUserProjects(final ListUserProjects listUserProjects);
 
     @GET
@@ -428,8 +422,8 @@ public interface ProjectsClient {
     @EnabledForGithubApps
     @Preview("inertia")
     @Category("projects")
-    Stream<Project> listUserProjects(@PathParam("username") final String username) {
-    }
+    @Paged(Project[].class)
+    Stream<Project> listUserProjects(@PathParam("username") final String username);
 
     @POST
     @Path("/projects/columns/cards/{card_id}/moves")
@@ -449,8 +443,7 @@ public interface ProjectsClient {
     @Preview("inertia")
     @Category("projects")
     @Subcategory("cards")
-    MoveProjectCardResponse moveProjectCard(@PathParam("card_id") final int cardId) {
-    }
+    MoveProjectCardResponse moveProjectCard(@PathParam("card_id") final int cardId);
 
     @POST
     @Path("/projects/columns/{column_id}/moves")
@@ -470,8 +463,7 @@ public interface ProjectsClient {
     @Preview("inertia")
     @Category("projects")
     @Subcategory("columns")
-    MoveProjectColumnResponse moveProjectColumn(@PathParam("column_id") final int columnId) {
-    }
+    MoveProjectColumnResponse moveProjectColumn(@PathParam("column_id") final int columnId);
 
     @DELETE
     @Path("/projects/{project_id}/collaborators/{username}")
@@ -491,8 +483,7 @@ public interface ProjectsClient {
     @Preview("inertia")
     @Category("projects")
     @Subcategory("collaborators")
-    void removeUserAsCollaborator(@PathParam("project-id") final int projectId, @PathParam("username") final String username) {
-    }
+    void removeUserAsCollaborator(@PathParam("project-id") final int projectId, @PathParam("username") final String username);
 
     @PATCH
     @Path("/projects/columns/cards/{card_id}")
@@ -512,8 +503,7 @@ public interface ProjectsClient {
     @Preview("inertia")
     @Category("projects")
     @Subcategory("cards")
-    ProjectCard updateExistingProjectCard(@PathParam("card_id") final int cardId) {
-    }
+    ProjectCard updateExistingProjectCard(@PathParam("card_id") final int cardId);
 
     @PATCH
     @Path("/projects/columns/{column_id}")
@@ -533,8 +523,7 @@ public interface ProjectsClient {
     @Preview("inertia")
     @Category("projects")
     @Subcategory("columns")
-    ProjectColumn updateExistingProjectColumn(@PathParam("column_id") final int columnId) {
-    }
+    ProjectColumn updateExistingProjectColumn(@PathParam("column_id") final int columnId);
 
     @PATCH
     @Path("/projects/{project_id}")
@@ -552,6 +541,5 @@ public interface ProjectsClient {
     @EnabledForGithubApps
     @Preview("inertia")
     @Category("projects")
-    Project updateProject(@PathParam("project-id") final int projectId) {
-    }
+    Project updateProject(@PathParam("project-id") final int projectId);
 }

@@ -117,8 +117,7 @@ public interface TeamsClient {
     @EnabledForGithubApps
     @Category("teams")
     @Subcategory("members")
-    TeamMembership addOrUpdateTeamMembershipForUser(@PathParam("org") final String org, @PathParam("team_slug") final String teamSlug, @PathParam("username") final String username) {
-    }
+    TeamMembership addOrUpdateTeamMembershipForUser(@PathParam("org") final String org, @PathParam("team_slug") final String teamSlug, @PathParam("username") final String username);
 
     @PUT
     @Path("/teams/{team_id}/memberships/{username}")
@@ -140,8 +139,7 @@ public interface TeamsClient {
     @EnabledForGithubApps
     @Category("teams")
     @Subcategory("members")
-    TeamMembership addOrUpdateTeamMembershipForUserLegacy(@PathParam("team-id") final int teamId, @PathParam("username") final String username) {
-    }
+    TeamMembership addOrUpdateTeamMembershipForUserLegacy(@PathParam("team-id") final int teamId, @PathParam("username") final String username);
 
     @PUT
     @Path("/orgs/{org}/teams/{team_slug}/projects/{project_id}")
@@ -159,8 +157,7 @@ public interface TeamsClient {
     @EnabledForGithubApps
     @Preview("inertia")
     @Category("teams")
-    void addOrUpdateTeamProjectPermissions(@PathParam("org") final String org, @PathParam("team_slug") final String teamSlug, @PathParam("project-id") final int projectId) {
-    }
+    void addOrUpdateTeamProjectPermissions(@PathParam("org") final String org, @PathParam("team_slug") final String teamSlug, @PathParam("project-id") final int projectId);
 
     @PUT
     @Path("/teams/{team_id}/projects/{project_id}")
@@ -182,8 +179,7 @@ public interface TeamsClient {
     @EnabledForGithubApps
     @Preview("inertia")
     @Category("teams")
-    void addOrUpdateTeamProjectPermissionsLegacy(@PathParam("team-id") final int teamId, @PathParam("project-id") final int projectId) {
-    }
+    void addOrUpdateTeamProjectPermissionsLegacy(@PathParam("team-id") final int teamId, @PathParam("project-id") final int projectId);
 
     @PUT
     @Path("/orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}")
@@ -199,8 +195,7 @@ public interface TeamsClient {
     @Docs("https://developer.github.com/v3/teams/#add-or-update-team-repository-permissions")
     @EnabledForGithubApps
     @Category("teams")
-    void addOrUpdateTeamRepositoryPermissions(@PathParam("org") final String org, @PathParam("team_slug") final String teamSlug, @PathParam("owner") final String owner, @PathParam("repo") final String repo) {
-    }
+    void addOrUpdateTeamRepositoryPermissions(@PathParam("org") final String org, @PathParam("team_slug") final String teamSlug, @PathParam("owner") final String owner, @PathParam("repo") final String repo);
 
     @PUT
     @Path("/teams/{team_id}/repos/{owner}/{repo}")
@@ -220,8 +215,7 @@ public interface TeamsClient {
     @DeprecationDate("2020-01-21")
     @EnabledForGithubApps
     @Category("teams")
-    void addOrUpdateTeamRepositoryPermissionsLegacy(@PathParam("team-id") final int teamId, @PathParam("owner") final String owner, @PathParam("repo") final String repo) {
-    }
+    void addOrUpdateTeamRepositoryPermissionsLegacy(@PathParam("team-id") final int teamId, @PathParam("owner") final String owner, @PathParam("repo") final String repo);
 
     @PUT
     @Path("/teams/{team_id}/members/{username}")
@@ -243,8 +237,7 @@ public interface TeamsClient {
     @EnabledForGithubApps
     @Category("teams")
     @Subcategory("members")
-    void addTeamMemberLegacy(@PathParam("team-id") final int teamId, @PathParam("username") final String username) {
-    }
+    void addTeamMemberLegacy(@PathParam("team-id") final int teamId, @PathParam("username") final String username);
 
     @GET
     @Path("/orgs/{org}/teams/{team_slug}/projects/{project_id}")
@@ -262,8 +255,7 @@ public interface TeamsClient {
     @EnabledForGithubApps
     @Preview("inertia")
     @Category("teams")
-    TeamProject checkTeamPermissionsForProject(@PathParam("org") final String org, @PathParam("team_slug") final String teamSlug, @PathParam("project-id") final int projectId) {
-    }
+    TeamProject checkTeamPermissionsForProject(@PathParam("org") final String org, @PathParam("team_slug") final String teamSlug, @PathParam("project-id") final int projectId);
 
     @GET
     @Path("/teams/{team_id}/projects/{project_id}")
@@ -285,8 +277,7 @@ public interface TeamsClient {
     @EnabledForGithubApps
     @Preview("inertia")
     @Category("teams")
-    TeamProject checkTeamPermissionsForProjectLegacy(@PathParam("team-id") final int teamId, @PathParam("project-id") final int projectId) {
-    }
+    TeamProject checkTeamPermissionsForProjectLegacy(@PathParam("team-id") final int teamId, @PathParam("project-id") final int projectId);
 
     @GET
     @Path("/orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}")
@@ -302,8 +293,7 @@ public interface TeamsClient {
     @Docs("https://developer.github.com/v3/teams/#check-team-permissions-for-a-repository")
     @EnabledForGithubApps
     @Category("teams")
-    void checkTeamPermissionsForRepository(@PathParam("org") final String org, @PathParam("team_slug") final String teamSlug, @PathParam("owner") final String owner, @PathParam("repo") final String repo) {
-    }
+    void checkTeamPermissionsForRepository(@PathParam("org") final String org, @PathParam("team_slug") final String teamSlug, @PathParam("owner") final String owner, @PathParam("repo") final String repo);
 
     @GET
     @Path("/teams/{team_id}/repos/{owner}/{repo}")
@@ -323,8 +313,7 @@ public interface TeamsClient {
     @DeprecationDate("2020-01-21")
     @EnabledForGithubApps
     @Category("teams")
-    void checkTeamPermissionsForRepositoryLegacy(@PathParam("team-id") final int teamId, @PathParam("owner") final String owner, @PathParam("repo") final String repo) {
-    }
+    void checkTeamPermissionsForRepositoryLegacy(@PathParam("team-id") final int teamId, @PathParam("owner") final String owner, @PathParam("repo") final String repo);
 
     @POST
     @Path("/orgs/{org}/teams/{team_slug}/discussions")
@@ -344,8 +333,7 @@ public interface TeamsClient {
     @Preview("squirrel-girl")
     @Category("teams")
     @Subcategory("discussions")
-    TeamDiscussion createDiscussion(@PathParam("org") final String org, @PathParam("team_slug") final String teamSlug) {
-    }
+    TeamDiscussion createDiscussion(@PathParam("org") final String org, @PathParam("team_slug") final String teamSlug);
 
     @POST
     @Path("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments")
@@ -365,8 +353,7 @@ public interface TeamsClient {
     @Preview("squirrel-girl")
     @Category("teams")
     @Subcategory("discussion-comments")
-    TeamDiscussionComment createDiscussionComment(@PathParam("org") final String org, @PathParam("team_slug") final String teamSlug, @PathParam("discussion-number") final int discussionNumber) {
-    }
+    TeamDiscussionComment createDiscussionComment(@PathParam("org") final String org, @PathParam("team_slug") final String teamSlug, @PathParam("discussion-number") final int discussionNumber);
 
     @POST
     @Path("/teams/{team_id}/discussions/{discussion_number}/comments")
@@ -390,8 +377,7 @@ public interface TeamsClient {
     @Preview("squirrel-girl")
     @Category("teams")
     @Subcategory("discussion-comments")
-    TeamDiscussionComment createDiscussionCommentLegacy(@PathParam("team-id") final int teamId, @PathParam("discussion-number") final int discussionNumber) {
-    }
+    TeamDiscussionComment createDiscussionCommentLegacy(@PathParam("team-id") final int teamId, @PathParam("discussion-number") final int discussionNumber);
 
     @POST
     @Path("/teams/{team_id}/discussions")
@@ -415,8 +401,7 @@ public interface TeamsClient {
     @Preview("squirrel-girl")
     @Category("teams")
     @Subcategory("discussions")
-    TeamDiscussion createDiscussionLegacy(@PathParam("team-id") final int teamId) {
-    }
+    TeamDiscussion createDiscussionLegacy(@PathParam("team-id") final int teamId);
 
     @PATCH
     @Path("/orgs/{org}/teams/{team_slug}/team-sync/group-mappings")
@@ -434,8 +419,7 @@ public interface TeamsClient {
     @GithubCloudOnly
     @Category("teams")
     @Subcategory("team-sync")
-    GroupMapping createOrUpdateIdPGroupConnections(@PathParam("org") final String org, @PathParam("team_slug") final String teamSlug) {
-    }
+    GroupMapping createOrUpdateIdPGroupConnections(@PathParam("org") final String org, @PathParam("team_slug") final String teamSlug);
 
     @PATCH
     @Path("/teams/{team_id}/team-sync/group-mappings")
@@ -457,8 +441,7 @@ public interface TeamsClient {
     @GithubCloudOnly
     @Category("teams")
     @Subcategory("team-sync")
-    GroupMapping createOrUpdateIdPGroupConnectionsLegacy(@PathParam("team-id") final int teamId) {
-    }
+    GroupMapping createOrUpdateIdPGroupConnectionsLegacy(@PathParam("team-id") final int teamId);
 
     @POST
     @Path("/orgs/{org}/teams")
@@ -474,8 +457,7 @@ public interface TeamsClient {
     @Docs("https://developer.github.com/v3/teams/#create-a-team")
     @EnabledForGithubApps
     @Category("teams")
-    TeamFull createTeam(@PathParam("org") final String org) {
-    }
+    TeamFull createTeam(@PathParam("org") final String org);
 
     @DELETE
     @Path("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}")
@@ -493,8 +475,7 @@ public interface TeamsClient {
     @EnabledForGithubApps
     @Category("teams")
     @Subcategory("discussions")
-    void deleteDiscussion(@PathParam("org") final String org, @PathParam("team_slug") final String teamSlug, @PathParam("discussion-number") final int discussionNumber) {
-    }
+    void deleteDiscussion(@PathParam("org") final String org, @PathParam("team_slug") final String teamSlug, @PathParam("discussion-number") final int discussionNumber);
 
     @DELETE
     @Path("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}")
@@ -512,8 +493,7 @@ public interface TeamsClient {
     @EnabledForGithubApps
     @Category("teams")
     @Subcategory("discussion-comments")
-    void deleteDiscussionComment(@PathParam("org") final String org, @PathParam("team_slug") final String teamSlug, @PathParam("discussion-number") final int discussionNumber, @PathParam("comment-number") final int commentNumber) {
-    }
+    void deleteDiscussionComment(@PathParam("org") final String org, @PathParam("team_slug") final String teamSlug, @PathParam("discussion-number") final int discussionNumber, @PathParam("comment-number") final int commentNumber);
 
     @DELETE
     @Path("/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}")
@@ -535,8 +515,7 @@ public interface TeamsClient {
     @EnabledForGithubApps
     @Category("teams")
     @Subcategory("discussion-comments")
-    void deleteDiscussionCommentLegacy(@PathParam("team-id") final int teamId, @PathParam("discussion-number") final int discussionNumber, @PathParam("comment-number") final int commentNumber) {
-    }
+    void deleteDiscussionCommentLegacy(@PathParam("team-id") final int teamId, @PathParam("discussion-number") final int discussionNumber, @PathParam("comment-number") final int commentNumber);
 
     @DELETE
     @Path("/teams/{team_id}/discussions/{discussion_number}")
@@ -558,8 +537,7 @@ public interface TeamsClient {
     @EnabledForGithubApps
     @Category("teams")
     @Subcategory("discussions")
-    void deleteDiscussionLegacy(@PathParam("team-id") final int teamId, @PathParam("discussion-number") final int discussionNumber) {
-    }
+    void deleteDiscussionLegacy(@PathParam("team-id") final int teamId, @PathParam("discussion-number") final int discussionNumber);
 
     @DELETE
     @Path("/orgs/{org}/teams/{team_slug}")
@@ -575,8 +553,7 @@ public interface TeamsClient {
     @Docs("https://developer.github.com/v3/teams/#delete-a-team")
     @EnabledForGithubApps
     @Category("teams")
-    void deleteTeam(@PathParam("org") final String org, @PathParam("team_slug") final String teamSlug) {
-    }
+    void deleteTeam(@PathParam("org") final String org, @PathParam("team_slug") final String teamSlug);
 
     @DELETE
     @Path("/teams/{team_id}")
@@ -596,8 +573,7 @@ public interface TeamsClient {
     @DeprecationDate("2020-01-21")
     @EnabledForGithubApps
     @Category("teams")
-    void deleteTeamLegacy(@PathParam("team-id") final int teamId) {
-    }
+    void deleteTeamLegacy(@PathParam("team-id") final int teamId);
 
     @GET
     @Path("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}")
@@ -617,8 +593,7 @@ public interface TeamsClient {
     @Preview("squirrel-girl")
     @Category("teams")
     @Subcategory("discussions")
-    TeamDiscussion getDiscussion(@PathParam("org") final String org, @PathParam("team_slug") final String teamSlug, @PathParam("discussion-number") final int discussionNumber) {
-    }
+    TeamDiscussion getDiscussion(@PathParam("org") final String org, @PathParam("team_slug") final String teamSlug, @PathParam("discussion-number") final int discussionNumber);
 
     @GET
     @Path("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}")
@@ -638,8 +613,7 @@ public interface TeamsClient {
     @Preview("squirrel-girl")
     @Category("teams")
     @Subcategory("discussion-comments")
-    TeamDiscussionComment getDiscussionComment(@PathParam("org") final String org, @PathParam("team_slug") final String teamSlug, @PathParam("discussion-number") final int discussionNumber, @PathParam("comment-number") final int commentNumber) {
-    }
+    TeamDiscussionComment getDiscussionComment(@PathParam("org") final String org, @PathParam("team_slug") final String teamSlug, @PathParam("discussion-number") final int discussionNumber, @PathParam("comment-number") final int commentNumber);
 
     @GET
     @Path("/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}")
@@ -663,8 +637,7 @@ public interface TeamsClient {
     @Preview("squirrel-girl")
     @Category("teams")
     @Subcategory("discussion-comments")
-    TeamDiscussionComment getDiscussionCommentLegacy(@PathParam("team-id") final int teamId, @PathParam("discussion-number") final int discussionNumber, @PathParam("comment-number") final int commentNumber) {
-    }
+    TeamDiscussionComment getDiscussionCommentLegacy(@PathParam("team-id") final int teamId, @PathParam("discussion-number") final int discussionNumber, @PathParam("comment-number") final int commentNumber);
 
     @GET
     @Path("/teams/{team_id}/discussions/{discussion_number}")
@@ -688,8 +661,7 @@ public interface TeamsClient {
     @Preview("squirrel-girl")
     @Category("teams")
     @Subcategory("discussions")
-    TeamDiscussion getDiscussionLegacy(@PathParam("team-id") final int teamId, @PathParam("discussion-number") final int discussionNumber) {
-    }
+    TeamDiscussion getDiscussionLegacy(@PathParam("team-id") final int teamId, @PathParam("discussion-number") final int discussionNumber);
 
     @GET
     @Path("/orgs/{org}/teams/{team_slug}")
@@ -705,8 +677,7 @@ public interface TeamsClient {
     @Docs("https://developer.github.com/v3/teams/#get-a-team-by-name")
     @EnabledForGithubApps
     @Category("teams")
-    TeamFull getTeamByName(@PathParam("org") final String org, @PathParam("team_slug") final String teamSlug) {
-    }
+    TeamFull getTeamByName(@PathParam("org") final String org, @PathParam("team_slug") final String teamSlug);
 
     @GET
     @Path("/teams/{team_id}")
@@ -726,8 +697,7 @@ public interface TeamsClient {
     @DeprecationDate("2020-01-21")
     @EnabledForGithubApps
     @Category("teams")
-    TeamFull getTeamLegacy(@PathParam("team-id") final int teamId) {
-    }
+    TeamFull getTeamLegacy(@PathParam("team-id") final int teamId);
 
     @GET
     @Path("/teams/{team_id}/members/{username}")
@@ -749,8 +719,7 @@ public interface TeamsClient {
     @EnabledForGithubApps
     @Category("teams")
     @Subcategory("members")
-    void getTeamMemberLegacy(@PathParam("team-id") final int teamId, @PathParam("username") final String username) {
-    }
+    void getTeamMemberLegacy(@PathParam("team-id") final int teamId, @PathParam("username") final String username);
 
     @GET
     @Path("/orgs/{org}/teams/{team_slug}/memberships/{username}")
@@ -768,8 +737,7 @@ public interface TeamsClient {
     @EnabledForGithubApps
     @Category("teams")
     @Subcategory("members")
-    TeamMembership getTeamMembershipForUser(@PathParam("org") final String org, @PathParam("team_slug") final String teamSlug, @PathParam("username") final String username) {
-    }
+    TeamMembership getTeamMembershipForUser(@PathParam("org") final String org, @PathParam("team_slug") final String teamSlug, @PathParam("username") final String username);
 
     @GET
     @Path("/teams/{team_id}/memberships/{username}")
@@ -791,8 +759,7 @@ public interface TeamsClient {
     @EnabledForGithubApps
     @Category("teams")
     @Subcategory("members")
-    TeamMembership getTeamMembershipForUserLegacy(@PathParam("team-id") final int teamId, @PathParam("username") final String username) {
-    }
+    TeamMembership getTeamMembershipForUserLegacy(@PathParam("team-id") final int teamId, @PathParam("username") final String username);
 
     @GET
     @Path("/orgs/{org}/teams/{team_slug}/teams")
@@ -800,6 +767,7 @@ public interface TeamsClient {
     @Docs("https://developer.github.com/v3/teams/#list-child-teams")
     @EnabledForGithubApps
     @Category("teams")
+    @Paged(Team[].class)
     Stream<Team> listChildTeams(final ListChildTeams listChildTeams);
 
     @GET
@@ -808,8 +776,8 @@ public interface TeamsClient {
     @Docs("https://developer.github.com/v3/teams/#list-child-teams")
     @EnabledForGithubApps
     @Category("teams")
-    Stream<Team> listChildTeams(@PathParam("org") final String org, @PathParam("team_slug") final String teamSlug) {
-    }
+    @Paged(Team[].class)
+    Stream<Team> listChildTeams(@PathParam("org") final String org, @PathParam("team_slug") final String teamSlug);
 
     @GET
     @Path("/teams/{team_id}/teams")
@@ -819,6 +787,7 @@ public interface TeamsClient {
     @DeprecationDate("2020-01-21")
     @EnabledForGithubApps
     @Category("teams")
+    @Paged(Team[].class)
     Stream<Team> listChildTeamsLegacy(final ListChildTeamsLegacy listChildTeamsLegacy);
 
     @GET
@@ -829,8 +798,8 @@ public interface TeamsClient {
     @DeprecationDate("2020-01-21")
     @EnabledForGithubApps
     @Category("teams")
-    Stream<Team> listChildTeamsLegacy(@PathParam("team-id") final int teamId) {
-    }
+    @Paged(Team[].class)
+    Stream<Team> listChildTeamsLegacy(@PathParam("team-id") final int teamId);
 
     @GET
     @Path("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments")
@@ -840,6 +809,7 @@ public interface TeamsClient {
     @Preview("squirrel-girl")
     @Category("teams")
     @Subcategory("discussion-comments")
+    @Paged(TeamDiscussionComment[].class)
     Stream<TeamDiscussionComment> listDiscussionComments(final ListDiscussionComments listDiscussionComments);
 
     @GET
@@ -850,8 +820,8 @@ public interface TeamsClient {
     @Preview("squirrel-girl")
     @Category("teams")
     @Subcategory("discussion-comments")
-    Stream<TeamDiscussionComment> listDiscussionComments(@PathParam("org") final String org, @PathParam("team_slug") final String teamSlug, @PathParam("discussion-number") final int discussionNumber) {
-    }
+    @Paged(TeamDiscussionComment[].class)
+    Stream<TeamDiscussionComment> listDiscussionComments(@PathParam("org") final String org, @PathParam("team_slug") final String teamSlug, @PathParam("discussion-number") final int discussionNumber);
 
     @GET
     @Path("/teams/{team_id}/discussions/{discussion_number}/comments")
@@ -863,6 +833,7 @@ public interface TeamsClient {
     @Preview("squirrel-girl")
     @Category("teams")
     @Subcategory("discussion-comments")
+    @Paged(TeamDiscussionComment[].class)
     Stream<TeamDiscussionComment> listDiscussionCommentsLegacy(final ListDiscussionCommentsLegacy listDiscussionCommentsLegacy);
 
     @GET
@@ -875,8 +846,8 @@ public interface TeamsClient {
     @Preview("squirrel-girl")
     @Category("teams")
     @Subcategory("discussion-comments")
-    Stream<TeamDiscussionComment> listDiscussionCommentsLegacy(@PathParam("team-id") final int teamId, @PathParam("discussion-number") final int discussionNumber) {
-    }
+    @Paged(TeamDiscussionComment[].class)
+    Stream<TeamDiscussionComment> listDiscussionCommentsLegacy(@PathParam("team-id") final int teamId, @PathParam("discussion-number") final int discussionNumber);
 
     @GET
     @Path("/orgs/{org}/teams/{team_slug}/discussions")
@@ -886,6 +857,7 @@ public interface TeamsClient {
     @Preview("squirrel-girl")
     @Category("teams")
     @Subcategory("discussions")
+    @Paged(TeamDiscussion[].class)
     Stream<TeamDiscussion> listDiscussions(final ListDiscussions listDiscussions);
 
     @GET
@@ -896,8 +868,8 @@ public interface TeamsClient {
     @Preview("squirrel-girl")
     @Category("teams")
     @Subcategory("discussions")
-    Stream<TeamDiscussion> listDiscussions(@PathParam("org") final String org, @PathParam("team_slug") final String teamSlug) {
-    }
+    @Paged(TeamDiscussion[].class)
+    Stream<TeamDiscussion> listDiscussions(@PathParam("org") final String org, @PathParam("team_slug") final String teamSlug);
 
     @GET
     @Path("/teams/{team_id}/discussions")
@@ -909,6 +881,7 @@ public interface TeamsClient {
     @Preview("squirrel-girl")
     @Category("teams")
     @Subcategory("discussions")
+    @Paged(TeamDiscussion[].class)
     Stream<TeamDiscussion> listDiscussionsLegacy(final ListDiscussionsLegacy listDiscussionsLegacy);
 
     @GET
@@ -921,8 +894,8 @@ public interface TeamsClient {
     @Preview("squirrel-girl")
     @Category("teams")
     @Subcategory("discussions")
-    Stream<TeamDiscussion> listDiscussionsLegacy(@PathParam("team-id") final int teamId) {
-    }
+    @Paged(TeamDiscussion[].class)
+    Stream<TeamDiscussion> listDiscussionsLegacy(@PathParam("team-id") final int teamId);
 
     @GET
     @Path("/orgs/{org}/team-sync/groups")
@@ -942,8 +915,7 @@ public interface TeamsClient {
     @EnabledForGithubApps
     @Category("teams")
     @Subcategory("team-sync")
-    GroupMapping listIdPGroupsForOrganization(@PathParam("org") final String org) {
-    }
+    GroupMapping listIdPGroupsForOrganization(@PathParam("org") final String org);
 
     @GET
     @Path("/orgs/{org}/teams/{team_slug}/team-sync/group-mappings")
@@ -961,8 +933,7 @@ public interface TeamsClient {
     @GithubCloudOnly
     @Category("teams")
     @Subcategory("team-sync")
-    GroupMapping listIdPGroupsForTeam(@PathParam("org") final String org, @PathParam("team_slug") final String teamSlug) {
-    }
+    GroupMapping listIdPGroupsForTeam(@PathParam("org") final String org, @PathParam("team_slug") final String teamSlug);
 
     @GET
     @Path("/teams/{team_id}/team-sync/group-mappings")
@@ -984,8 +955,7 @@ public interface TeamsClient {
     @GithubCloudOnly
     @Category("teams")
     @Subcategory("team-sync")
-    GroupMapping listIdPGroupsForTeamLegacy(@PathParam("team-id") final int teamId) {
-    }
+    GroupMapping listIdPGroupsForTeamLegacy(@PathParam("team-id") final int teamId);
 
     @GET
     @Path("/orgs/{org}/teams/{team_slug}/invitations")
@@ -994,6 +964,7 @@ public interface TeamsClient {
     @EnabledForGithubApps
     @Category("teams")
     @Subcategory("members")
+    @Paged(OrganizationInvitation[].class)
     Stream<OrganizationInvitation> listPendingTeamInvitations(final ListPendingTeamInvitations listPendingTeamInvitations);
 
     @GET
@@ -1003,8 +974,8 @@ public interface TeamsClient {
     @EnabledForGithubApps
     @Category("teams")
     @Subcategory("members")
-    Stream<OrganizationInvitation> listPendingTeamInvitations(@PathParam("org") final String org, @PathParam("team_slug") final String teamSlug) {
-    }
+    @Paged(OrganizationInvitation[].class)
+    Stream<OrganizationInvitation> listPendingTeamInvitations(@PathParam("org") final String org, @PathParam("team_slug") final String teamSlug);
 
     @GET
     @Path("/teams/{team_id}/invitations")
@@ -1015,6 +986,7 @@ public interface TeamsClient {
     @EnabledForGithubApps
     @Category("teams")
     @Subcategory("members")
+    @Paged(OrganizationInvitation[].class)
     Stream<OrganizationInvitation> listPendingTeamInvitationsLegacy(final ListPendingTeamInvitationsLegacy listPendingTeamInvitationsLegacy);
 
     @GET
@@ -1026,8 +998,8 @@ public interface TeamsClient {
     @EnabledForGithubApps
     @Category("teams")
     @Subcategory("members")
-    Stream<OrganizationInvitation> listPendingTeamInvitationsLegacy(@PathParam("team-id") final int teamId) {
-    }
+    @Paged(OrganizationInvitation[].class)
+    Stream<OrganizationInvitation> listPendingTeamInvitationsLegacy(@PathParam("team-id") final int teamId);
 
     @GET
     @Path("/orgs/{org}/teams/{team_slug}/members")
@@ -1036,6 +1008,7 @@ public interface TeamsClient {
     @EnabledForGithubApps
     @Category("teams")
     @Subcategory("members")
+    @Paged(SimpleUser[].class)
     Stream<SimpleUser> listTeamMembers(final ListTeamMembers listTeamMembers);
 
     @GET
@@ -1045,8 +1018,8 @@ public interface TeamsClient {
     @EnabledForGithubApps
     @Category("teams")
     @Subcategory("members")
-    Stream<SimpleUser> listTeamMembers(@PathParam("org") final String org, @PathParam("team_slug") final String teamSlug) {
-    }
+    @Paged(SimpleUser[].class)
+    Stream<SimpleUser> listTeamMembers(@PathParam("org") final String org, @PathParam("team_slug") final String teamSlug);
 
     @GET
     @Path("/teams/{team_id}/members")
@@ -1057,6 +1030,7 @@ public interface TeamsClient {
     @EnabledForGithubApps
     @Category("teams")
     @Subcategory("members")
+    @Paged(SimpleUser[].class)
     Stream<SimpleUser> listTeamMembersLegacy(final ListTeamMembersLegacy listTeamMembersLegacy);
 
     @GET
@@ -1068,8 +1042,8 @@ public interface TeamsClient {
     @EnabledForGithubApps
     @Category("teams")
     @Subcategory("members")
-    Stream<SimpleUser> listTeamMembersLegacy(@PathParam("team-id") final int teamId) {
-    }
+    @Paged(SimpleUser[].class)
+    Stream<SimpleUser> listTeamMembersLegacy(@PathParam("team-id") final int teamId);
 
     @GET
     @Path("/orgs/{org}/teams/{team_slug}/projects")
@@ -1078,6 +1052,7 @@ public interface TeamsClient {
     @EnabledForGithubApps
     @Preview("inertia")
     @Category("teams")
+    @Paged(TeamProject[].class)
     Stream<TeamProject> listTeamProjects(final ListTeamProjects listTeamProjects);
 
     @GET
@@ -1087,8 +1062,8 @@ public interface TeamsClient {
     @EnabledForGithubApps
     @Preview("inertia")
     @Category("teams")
-    Stream<TeamProject> listTeamProjects(@PathParam("org") final String org, @PathParam("team_slug") final String teamSlug) {
-    }
+    @Paged(TeamProject[].class)
+    Stream<TeamProject> listTeamProjects(@PathParam("org") final String org, @PathParam("team_slug") final String teamSlug);
 
     @GET
     @Path("/teams/{team_id}/projects")
@@ -1099,6 +1074,7 @@ public interface TeamsClient {
     @EnabledForGithubApps
     @Preview("inertia")
     @Category("teams")
+    @Paged(TeamProject[].class)
     Stream<TeamProject> listTeamProjectsLegacy(final ListTeamProjectsLegacy listTeamProjectsLegacy);
 
     @GET
@@ -1110,8 +1086,8 @@ public interface TeamsClient {
     @EnabledForGithubApps
     @Preview("inertia")
     @Category("teams")
-    Stream<TeamProject> listTeamProjectsLegacy(@PathParam("team-id") final int teamId) {
-    }
+    @Paged(TeamProject[].class)
+    Stream<TeamProject> listTeamProjectsLegacy(@PathParam("team-id") final int teamId);
 
     @GET
     @Path("/orgs/{org}/teams/{team_slug}/repos")
@@ -1119,6 +1095,7 @@ public interface TeamsClient {
     @Docs("https://developer.github.com/v3/teams/#list-team-repositories")
     @EnabledForGithubApps
     @Category("teams")
+    @Paged(MinimalRepository[].class)
     Stream<MinimalRepository> listTeamRepositories(final ListTeamRepositories listTeamRepositories);
 
     @GET
@@ -1127,8 +1104,8 @@ public interface TeamsClient {
     @Docs("https://developer.github.com/v3/teams/#list-team-repositories")
     @EnabledForGithubApps
     @Category("teams")
-    Stream<MinimalRepository> listTeamRepositories(@PathParam("org") final String org, @PathParam("team_slug") final String teamSlug) {
-    }
+    @Paged(MinimalRepository[].class)
+    Stream<MinimalRepository> listTeamRepositories(@PathParam("org") final String org, @PathParam("team_slug") final String teamSlug);
 
     @GET
     @Path("/teams/{team_id}/repos")
@@ -1138,6 +1115,7 @@ public interface TeamsClient {
     @DeprecationDate("2020-01-21")
     @EnabledForGithubApps
     @Category("teams")
+    @Paged(MinimalRepository[].class)
     Stream<MinimalRepository> listTeamRepositoriesLegacy(final ListTeamRepositoriesLegacy listTeamRepositoriesLegacy);
 
     @GET
@@ -1148,8 +1126,8 @@ public interface TeamsClient {
     @DeprecationDate("2020-01-21")
     @EnabledForGithubApps
     @Category("teams")
-    Stream<MinimalRepository> listTeamRepositoriesLegacy(@PathParam("team-id") final int teamId) {
-    }
+    @Paged(MinimalRepository[].class)
+    Stream<MinimalRepository> listTeamRepositoriesLegacy(@PathParam("team-id") final int teamId);
 
     @GET
     @Path("/orgs/{org}/teams")
@@ -1157,6 +1135,7 @@ public interface TeamsClient {
     @Docs("https://developer.github.com/v3/teams/#list-teams")
     @EnabledForGithubApps
     @Category("teams")
+    @Paged(Team[].class)
     Stream<Team> listTeams(final ListTeams listTeams);
 
     @GET
@@ -1165,14 +1144,15 @@ public interface TeamsClient {
     @Docs("https://developer.github.com/v3/teams/#list-teams")
     @EnabledForGithubApps
     @Category("teams")
-    Stream<Team> listTeams(@PathParam("org") final String org) {
-    }
+    @Paged(Team[].class)
+    Stream<Team> listTeams(@PathParam("org") final String org);
 
     @GET
     @Path("/user/teams")
     @OperationId("teams/list-for-authenticated-user")
     @Docs("https://developer.github.com/v3/teams/#list-teams-for-the-authenticated-user")
     @Category("teams")
+    @Paged(TeamFull[].class)
     Stream<TeamFull> listTeamsForAuthenticatedUser(final ListTeamsForAuthenticatedUser listTeamsForAuthenticatedUser);
 
     @DELETE
@@ -1189,8 +1169,7 @@ public interface TeamsClient {
     @Docs("https://developer.github.com/v3/teams/#remove-a-project-from-a-team")
     @EnabledForGithubApps
     @Category("teams")
-    void removeProjectFromTeam(@PathParam("org") final String org, @PathParam("team_slug") final String teamSlug, @PathParam("project-id") final int projectId) {
-    }
+    void removeProjectFromTeam(@PathParam("org") final String org, @PathParam("team_slug") final String teamSlug, @PathParam("project-id") final int projectId);
 
     @DELETE
     @Path("/teams/{team_id}/projects/{project_id}")
@@ -1210,8 +1189,7 @@ public interface TeamsClient {
     @DeprecationDate("2020-01-21")
     @EnabledForGithubApps
     @Category("teams")
-    void removeProjectFromTeamLegacy(@PathParam("team-id") final int teamId, @PathParam("project-id") final int projectId) {
-    }
+    void removeProjectFromTeamLegacy(@PathParam("team-id") final int teamId, @PathParam("project-id") final int projectId);
 
     @DELETE
     @Path("/orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}")
@@ -1227,8 +1205,7 @@ public interface TeamsClient {
     @Docs("https://developer.github.com/v3/teams/#remove-a-repository-from-a-team")
     @EnabledForGithubApps
     @Category("teams")
-    void removeRepositoryFromTeam(@PathParam("org") final String org, @PathParam("team_slug") final String teamSlug, @PathParam("owner") final String owner, @PathParam("repo") final String repo) {
-    }
+    void removeRepositoryFromTeam(@PathParam("org") final String org, @PathParam("team_slug") final String teamSlug, @PathParam("owner") final String owner, @PathParam("repo") final String repo);
 
     @DELETE
     @Path("/teams/{team_id}/repos/{owner}/{repo}")
@@ -1248,8 +1225,7 @@ public interface TeamsClient {
     @DeprecationDate("2020-01-21")
     @EnabledForGithubApps
     @Category("teams")
-    void removeRepositoryFromTeamLegacy(@PathParam("team-id") final int teamId, @PathParam("owner") final String owner, @PathParam("repo") final String repo) {
-    }
+    void removeRepositoryFromTeamLegacy(@PathParam("team-id") final int teamId, @PathParam("owner") final String owner, @PathParam("repo") final String repo);
 
     @DELETE
     @Path("/teams/{team_id}/members/{username}")
@@ -1271,8 +1247,7 @@ public interface TeamsClient {
     @EnabledForGithubApps
     @Category("teams")
     @Subcategory("members")
-    void removeTeamMemberLegacy(@PathParam("team-id") final int teamId, @PathParam("username") final String username) {
-    }
+    void removeTeamMemberLegacy(@PathParam("team-id") final int teamId, @PathParam("username") final String username);
 
     @DELETE
     @Path("/orgs/{org}/teams/{team_slug}/memberships/{username}")
@@ -1290,8 +1265,7 @@ public interface TeamsClient {
     @EnabledForGithubApps
     @Category("teams")
     @Subcategory("members")
-    void removeTeamMembershipForUser(@PathParam("org") final String org, @PathParam("team_slug") final String teamSlug, @PathParam("username") final String username) {
-    }
+    void removeTeamMembershipForUser(@PathParam("org") final String org, @PathParam("team_slug") final String teamSlug, @PathParam("username") final String username);
 
     @DELETE
     @Path("/teams/{team_id}/memberships/{username}")
@@ -1313,8 +1287,7 @@ public interface TeamsClient {
     @EnabledForGithubApps
     @Category("teams")
     @Subcategory("members")
-    void removeTeamMembershipForUserLegacy(@PathParam("team-id") final int teamId, @PathParam("username") final String username) {
-    }
+    void removeTeamMembershipForUserLegacy(@PathParam("team-id") final int teamId, @PathParam("username") final String username);
 
     @PATCH
     @Path("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}")
@@ -1334,8 +1307,7 @@ public interface TeamsClient {
     @Preview("squirrel-girl")
     @Category("teams")
     @Subcategory("discussions")
-    TeamDiscussion updateDiscussion(@PathParam("org") final String org, @PathParam("team_slug") final String teamSlug, @PathParam("discussion-number") final int discussionNumber) {
-    }
+    TeamDiscussion updateDiscussion(@PathParam("org") final String org, @PathParam("team_slug") final String teamSlug, @PathParam("discussion-number") final int discussionNumber);
 
     @PATCH
     @Path("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}")
@@ -1355,8 +1327,7 @@ public interface TeamsClient {
     @Preview("squirrel-girl")
     @Category("teams")
     @Subcategory("discussion-comments")
-    TeamDiscussionComment updateDiscussionComment(@PathParam("org") final String org, @PathParam("team_slug") final String teamSlug, @PathParam("discussion-number") final int discussionNumber, @PathParam("comment-number") final int commentNumber) {
-    }
+    TeamDiscussionComment updateDiscussionComment(@PathParam("org") final String org, @PathParam("team_slug") final String teamSlug, @PathParam("discussion-number") final int discussionNumber, @PathParam("comment-number") final int commentNumber);
 
     @PATCH
     @Path("/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}")
@@ -1380,8 +1351,7 @@ public interface TeamsClient {
     @Preview("squirrel-girl")
     @Category("teams")
     @Subcategory("discussion-comments")
-    TeamDiscussionComment updateDiscussionCommentLegacy(@PathParam("team-id") final int teamId, @PathParam("discussion-number") final int discussionNumber, @PathParam("comment-number") final int commentNumber) {
-    }
+    TeamDiscussionComment updateDiscussionCommentLegacy(@PathParam("team-id") final int teamId, @PathParam("discussion-number") final int discussionNumber, @PathParam("comment-number") final int commentNumber);
 
     @PATCH
     @Path("/teams/{team_id}/discussions/{discussion_number}")
@@ -1405,8 +1375,7 @@ public interface TeamsClient {
     @Preview("squirrel-girl")
     @Category("teams")
     @Subcategory("discussions")
-    TeamDiscussion updateDiscussionLegacy(@PathParam("team-id") final int teamId, @PathParam("discussion-number") final int discussionNumber) {
-    }
+    TeamDiscussion updateDiscussionLegacy(@PathParam("team-id") final int teamId, @PathParam("discussion-number") final int discussionNumber);
 
     @PATCH
     @Path("/orgs/{org}/teams/{team_slug}")
@@ -1422,8 +1391,7 @@ public interface TeamsClient {
     @Docs("https://developer.github.com/v3/teams/#update-a-team")
     @EnabledForGithubApps
     @Category("teams")
-    TeamFull updateTeam(@PathParam("org") final String org, @PathParam("team_slug") final String teamSlug) {
-    }
+    TeamFull updateTeam(@PathParam("org") final String org, @PathParam("team_slug") final String teamSlug);
 
     @PATCH
     @Path("/teams/{team_id}")
@@ -1443,6 +1411,5 @@ public interface TeamsClient {
     @DeprecationDate("2020-01-21")
     @EnabledForGithubApps
     @Category("teams")
-    TeamFull updateTeamLegacy(@PathParam("team-id") final int teamId) {
-    }
+    TeamFull updateTeamLegacy(@PathParam("team-id") final int teamId);
 }

@@ -89,8 +89,7 @@ public interface IssuesClient {
     @EnabledForGithubApps
     @Category("issues")
     @Subcategory("assignees")
-    IssueSimple addAssigneesToIssue(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("issue_number") final int issueNumber) {
-    }
+    IssueSimple addAssigneesToIssue(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("issue_number") final int issueNumber);
 
     @POST
     @Path("/repos/{owner}/{repo}/issues/{issue_number}/labels")
@@ -108,8 +107,7 @@ public interface IssuesClient {
     @EnabledForGithubApps
     @Category("issues")
     @Subcategory("labels")
-    Stream<Label> addLabelsToIssue(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("issue_number") final int issueNumber) {
-    }
+    Stream<Label> addLabelsToIssue(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("issue_number") final int issueNumber);
 
     @GET
     @Path("/repos/{owner}/{repo}/assignees/{assignee}")
@@ -127,8 +125,7 @@ public interface IssuesClient {
     @EnabledForGithubApps
     @Category("issues")
     @Subcategory("assignees")
-    void checkIfUserCanBeAssigned(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("assignee") final String assignee) {
-    }
+    void checkIfUserCanBeAssigned(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("assignee") final String assignee);
 
     @POST
     @Path("/repos/{owner}/{repo}/issues")
@@ -144,8 +141,7 @@ public interface IssuesClient {
     @Docs("https://developer.github.com/v3/issues/#create-an-issue")
     @EnabledForGithubApps
     @Category("issues")
-    Issue createIssue(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
-    }
+    Issue createIssue(@PathParam("owner") final String owner, @PathParam("repo") final String repo);
 
     @POST
     @Path("/repos/{owner}/{repo}/issues/{issue_number}/comments")
@@ -163,8 +159,7 @@ public interface IssuesClient {
     @EnabledForGithubApps
     @Category("issues")
     @Subcategory("comments")
-    IssueComment createIssueComment(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("issue_number") final int issueNumber) {
-    }
+    IssueComment createIssueComment(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("issue_number") final int issueNumber);
 
     @POST
     @Path("/repos/{owner}/{repo}/labels")
@@ -182,8 +177,7 @@ public interface IssuesClient {
     @EnabledForGithubApps
     @Category("issues")
     @Subcategory("labels")
-    Label createLabel(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
-    }
+    Label createLabel(@PathParam("owner") final String owner, @PathParam("repo") final String repo);
 
     @POST
     @Path("/repos/{owner}/{repo}/milestones")
@@ -201,8 +195,7 @@ public interface IssuesClient {
     @EnabledForGithubApps
     @Category("issues")
     @Subcategory("milestones")
-    Milestone createMilestone(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
-    }
+    Milestone createMilestone(@PathParam("owner") final String owner, @PathParam("repo") final String repo);
 
     @DELETE
     @Path("/repos/{owner}/{repo}/issues/comments/{comment_id}")
@@ -220,8 +213,7 @@ public interface IssuesClient {
     @EnabledForGithubApps
     @Category("issues")
     @Subcategory("comments")
-    void deleteIssueComment(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("comment_id") final int commentId) {
-    }
+    void deleteIssueComment(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("comment_id") final int commentId);
 
     @DELETE
     @Path("/repos/{owner}/{repo}/labels/{name}")
@@ -239,8 +231,7 @@ public interface IssuesClient {
     @EnabledForGithubApps
     @Category("issues")
     @Subcategory("labels")
-    void deleteLabel(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("name") final String name) {
-    }
+    void deleteLabel(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("name") final String name);
 
     @DELETE
     @Path("/repos/{owner}/{repo}/milestones/{milestone_number}")
@@ -258,8 +249,7 @@ public interface IssuesClient {
     @EnabledForGithubApps
     @Category("issues")
     @Subcategory("milestones")
-    void deleteMilestone(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("milestone_number") final int milestoneNumber) {
-    }
+    void deleteMilestone(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("milestone_number") final int milestoneNumber);
 
     @GET
     @Path("/repos/{owner}/{repo}/issues/{issue_number}")
@@ -277,8 +267,7 @@ public interface IssuesClient {
     @EnabledForGithubApps
     @Preview("squirrel-girl")
     @Category("issues")
-    Issue getIssue(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("issue_number") final int issueNumber) {
-    }
+    Issue getIssue(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("issue_number") final int issueNumber);
 
     @GET
     @Path("/repos/{owner}/{repo}/issues/comments/{comment_id}")
@@ -300,8 +289,7 @@ public interface IssuesClient {
     @Preview("squirrel-girl")
     @Category("issues")
     @Subcategory("comments")
-    IssueComment getIssueComment(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("comment_id") final int commentId) {
-    }
+    IssueComment getIssueComment(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("comment_id") final int commentId);
 
     @GET
     @Path("/repos/{owner}/{repo}/issues/events/{event_id}")
@@ -325,8 +313,7 @@ public interface IssuesClient {
     @Preview("sailor-v")
     @Category("issues")
     @Subcategory("events")
-    IssueEvent getIssueEvent(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("event_id") final int eventId) {
-    }
+    IssueEvent getIssueEvent(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("event_id") final int eventId);
 
     @GET
     @Path("/repos/{owner}/{repo}/labels/{name}")
@@ -344,8 +331,7 @@ public interface IssuesClient {
     @EnabledForGithubApps
     @Category("issues")
     @Subcategory("labels")
-    Label getLabel(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("name") final String name) {
-    }
+    Label getLabel(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("name") final String name);
 
     @GET
     @Path("/repos/{owner}/{repo}/milestones/{milestone_number}")
@@ -363,8 +349,7 @@ public interface IssuesClient {
     @EnabledForGithubApps
     @Category("issues")
     @Subcategory("milestones")
-    Milestone getMilestone(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("milestone_number") final int milestoneNumber) {
-    }
+    Milestone getMilestone(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("milestone_number") final int milestoneNumber);
 
     @GET
     @Path("/repos/{owner}/{repo}/assignees")
@@ -373,6 +358,7 @@ public interface IssuesClient {
     @EnabledForGithubApps
     @Category("issues")
     @Subcategory("assignees")
+    @Paged(SimpleUser[].class)
     Stream<SimpleUser> listAssignees(final ListAssignees listAssignees);
 
     @GET
@@ -382,8 +368,8 @@ public interface IssuesClient {
     @EnabledForGithubApps
     @Category("issues")
     @Subcategory("assignees")
-    Stream<SimpleUser> listAssignees(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
-    }
+    @Paged(SimpleUser[].class)
+    Stream<SimpleUser> listAssignees(@PathParam("owner") final String owner, @PathParam("repo") final String repo);
 
     @GET
     @Path("/repos/{owner}/{repo}/issues/{issue_number}/comments")
@@ -393,6 +379,7 @@ public interface IssuesClient {
     @Preview("squirrel-girl")
     @Category("issues")
     @Subcategory("comments")
+    @Paged(IssueComment[].class)
     Stream<IssueComment> listIssueComments(final ListIssueComments listIssueComments);
 
     @GET
@@ -403,8 +390,8 @@ public interface IssuesClient {
     @Preview("squirrel-girl")
     @Category("issues")
     @Subcategory("comments")
-    Stream<IssueComment> listIssueComments(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("issue_number") final int issueNumber) {
-    }
+    @Paged(IssueComment[].class)
+    Stream<IssueComment> listIssueComments(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("issue_number") final int issueNumber);
 
     @GET
     @Path("/repos/{owner}/{repo}/issues/comments")
@@ -414,6 +401,7 @@ public interface IssuesClient {
     @Preview("squirrel-girl")
     @Category("issues")
     @Subcategory("comments")
+    @Paged(IssueComment[].class)
     Stream<IssueComment> listIssueCommentsForRepository(final ListIssueCommentsForRepository listIssueCommentsForRepository);
 
     @GET
@@ -424,8 +412,8 @@ public interface IssuesClient {
     @Preview("squirrel-girl")
     @Category("issues")
     @Subcategory("comments")
-    Stream<IssueComment> listIssueCommentsForRepository(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
-    }
+    @Paged(IssueComment[].class)
+    Stream<IssueComment> listIssueCommentsForRepository(@PathParam("owner") final String owner, @PathParam("repo") final String repo);
 
     @GET
     @Path("/repos/{owner}/{repo}/issues/{issue_number}/events")
@@ -436,6 +424,7 @@ public interface IssuesClient {
     @Preview("sailor-v")
     @Category("issues")
     @Subcategory("events")
+    @Paged(IssueEventForIssue[].class)
     Stream<IssueEventForIssue> listIssueEvents(final ListIssueEvents listIssueEvents);
 
     @GET
@@ -447,8 +436,8 @@ public interface IssuesClient {
     @Preview("sailor-v")
     @Category("issues")
     @Subcategory("events")
-    Stream<IssueEventForIssue> listIssueEvents(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("issue_number") final int issueNumber) {
-    }
+    @Paged(IssueEventForIssue[].class)
+    Stream<IssueEventForIssue> listIssueEvents(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("issue_number") final int issueNumber);
 
     @GET
     @Path("/repos/{owner}/{repo}/issues/events")
@@ -459,6 +448,7 @@ public interface IssuesClient {
     @Preview("sailor-v")
     @Category("issues")
     @Subcategory("events")
+    @Paged(IssueEvent[].class)
     Stream<IssueEvent> listIssueEventsForRepository(final ListIssueEventsForRepository listIssueEventsForRepository);
 
     @GET
@@ -470,8 +460,8 @@ public interface IssuesClient {
     @Preview("sailor-v")
     @Category("issues")
     @Subcategory("events")
-    Stream<IssueEvent> listIssueEventsForRepository(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
-    }
+    @Paged(IssueEvent[].class)
+    Stream<IssueEvent> listIssueEventsForRepository(@PathParam("owner") final String owner, @PathParam("repo") final String repo);
 
     @GET
     @Path("/issues")
@@ -480,6 +470,7 @@ public interface IssuesClient {
     @Preview("machine-man")
     @Preview("squirrel-girl")
     @Category("issues")
+    @Paged(Issue[].class)
     Stream<Issue> listIssuesAssignedToAuthenticatedUser(final ListIssuesAssignedToAuthenticatedUser listIssuesAssignedToAuthenticatedUser);
 
     @GET
@@ -489,6 +480,7 @@ public interface IssuesClient {
     @EnabledForGithubApps
     @Category("issues")
     @Subcategory("labels")
+    @Paged(Label[].class)
     Stream<Label> listLabelsForIssue(final ListLabelsForIssue listLabelsForIssue);
 
     @GET
@@ -498,8 +490,8 @@ public interface IssuesClient {
     @EnabledForGithubApps
     @Category("issues")
     @Subcategory("labels")
-    Stream<Label> listLabelsForIssue(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("issue_number") final int issueNumber) {
-    }
+    @Paged(Label[].class)
+    Stream<Label> listLabelsForIssue(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("issue_number") final int issueNumber);
 
     @GET
     @Path("/repos/{owner}/{repo}/milestones/{milestone_number}/labels")
@@ -508,6 +500,7 @@ public interface IssuesClient {
     @EnabledForGithubApps
     @Category("issues")
     @Subcategory("labels")
+    @Paged(Label[].class)
     Stream<Label> listLabelsForIssuesInMilestone(final ListLabelsForIssuesInMilestone listLabelsForIssuesInMilestone);
 
     @GET
@@ -517,8 +510,8 @@ public interface IssuesClient {
     @EnabledForGithubApps
     @Category("issues")
     @Subcategory("labels")
-    Stream<Label> listLabelsForIssuesInMilestone(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("milestone_number") final int milestoneNumber) {
-    }
+    @Paged(Label[].class)
+    Stream<Label> listLabelsForIssuesInMilestone(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("milestone_number") final int milestoneNumber);
 
     @GET
     @Path("/repos/{owner}/{repo}/labels")
@@ -527,6 +520,7 @@ public interface IssuesClient {
     @EnabledForGithubApps
     @Category("issues")
     @Subcategory("labels")
+    @Paged(Label[].class)
     Stream<Label> listLabelsForRepository(final ListLabelsForRepository listLabelsForRepository);
 
     @GET
@@ -536,8 +530,8 @@ public interface IssuesClient {
     @EnabledForGithubApps
     @Category("issues")
     @Subcategory("labels")
-    Stream<Label> listLabelsForRepository(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
-    }
+    @Paged(Label[].class)
+    Stream<Label> listLabelsForRepository(@PathParam("owner") final String owner, @PathParam("repo") final String repo);
 
     @GET
     @Path("/repos/{owner}/{repo}/milestones")
@@ -546,6 +540,7 @@ public interface IssuesClient {
     @EnabledForGithubApps
     @Category("issues")
     @Subcategory("milestones")
+    @Paged(Milestone[].class)
     Stream<Milestone> listMilestones(final ListMilestones listMilestones);
 
     @GET
@@ -555,8 +550,8 @@ public interface IssuesClient {
     @EnabledForGithubApps
     @Category("issues")
     @Subcategory("milestones")
-    Stream<Milestone> listMilestones(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
-    }
+    @Paged(Milestone[].class)
+    Stream<Milestone> listMilestones(@PathParam("owner") final String owner, @PathParam("repo") final String repo);
 
     @GET
     @Path("/orgs/{org}/issues")
@@ -565,6 +560,7 @@ public interface IssuesClient {
     @Preview("machine-man")
     @Preview("squirrel-girl")
     @Category("issues")
+    @Paged(Issue[].class)
     Stream<Issue> listOrganizationIssuesAssignedToAuthenticatedUser(final ListOrganizationIssuesAssignedToAuthenticatedUser listOrganizationIssuesAssignedToAuthenticatedUser);
 
     @GET
@@ -574,8 +570,8 @@ public interface IssuesClient {
     @Preview("machine-man")
     @Preview("squirrel-girl")
     @Category("issues")
-    Stream<Issue> listOrganizationIssuesAssignedToAuthenticatedUser(@PathParam("org") final String org) {
-    }
+    @Paged(Issue[].class)
+    Stream<Issue> listOrganizationIssuesAssignedToAuthenticatedUser(@PathParam("org") final String org);
 
     @GET
     @Path("/repos/{owner}/{repo}/issues")
@@ -585,6 +581,7 @@ public interface IssuesClient {
     @Preview("machine-man")
     @Preview("squirrel-girl")
     @Category("issues")
+    @Paged(IssueSimple[].class)
     Stream<IssueSimple> listRepositoryIssues(final ListRepositoryIssues listRepositoryIssues);
 
     @GET
@@ -595,8 +592,8 @@ public interface IssuesClient {
     @Preview("machine-man")
     @Preview("squirrel-girl")
     @Category("issues")
-    Stream<IssueSimple> listRepositoryIssues(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
-    }
+    @Paged(IssueSimple[].class)
+    Stream<IssueSimple> listRepositoryIssues(@PathParam("owner") final String owner, @PathParam("repo") final String repo);
 
     @GET
     @Path("/repos/{owner}/{repo}/issues/{issue_number}/timeline")
@@ -607,6 +604,7 @@ public interface IssuesClient {
     @Preview("starfox")
     @Category("issues")
     @Subcategory("timeline")
+    @Paged(IssueEventForIssue[].class)
     Stream<IssueEventForIssue> listTimelineEventsForIssue(final ListTimelineEventsForIssue listTimelineEventsForIssue);
 
     @GET
@@ -618,8 +616,8 @@ public interface IssuesClient {
     @Preview("starfox")
     @Category("issues")
     @Subcategory("timeline")
-    Stream<IssueEventForIssue> listTimelineEventsForIssue(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("issue_number") final int issueNumber) {
-    }
+    @Paged(IssueEventForIssue[].class)
+    Stream<IssueEventForIssue> listTimelineEventsForIssue(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("issue_number") final int issueNumber);
 
     @GET
     @Path("/user/issues")
@@ -628,6 +626,7 @@ public interface IssuesClient {
     @Preview("machine-man")
     @Preview("squirrel-girl")
     @Category("issues")
+    @Paged(Issue[].class)
     Stream<Issue> listUserAccountIssuesAssignedToAuthenticatedUser(final ListUserAccountIssuesAssignedToAuthenticatedUser listUserAccountIssuesAssignedToAuthenticatedUser);
 
     @PUT
@@ -646,8 +645,7 @@ public interface IssuesClient {
     @EnabledForGithubApps
     @Preview("sailor-v")
     @Category("issues")
-    void lockIssue(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("issue_number") final int issueNumber) {
-    }
+    void lockIssue(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("issue_number") final int issueNumber);
 
     @DELETE
     @Path("/repos/{owner}/{repo}/issues/{issue_number}/labels")
@@ -665,8 +663,7 @@ public interface IssuesClient {
     @EnabledForGithubApps
     @Category("issues")
     @Subcategory("labels")
-    void removeAllLabelsFromIssue(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("issue_number") final int issueNumber) {
-    }
+    void removeAllLabelsFromIssue(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("issue_number") final int issueNumber);
 
     @DELETE
     @Path("/repos/{owner}/{repo}/issues/{issue_number}/assignees")
@@ -684,8 +681,7 @@ public interface IssuesClient {
     @EnabledForGithubApps
     @Category("issues")
     @Subcategory("assignees")
-    IssueSimple removeAssigneesFromIssue(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("issue_number") final int issueNumber) {
-    }
+    IssueSimple removeAssigneesFromIssue(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("issue_number") final int issueNumber);
 
     @DELETE
     @Path("/repos/{owner}/{repo}/issues/{issue_number}/labels/{name}")
@@ -703,8 +699,7 @@ public interface IssuesClient {
     @EnabledForGithubApps
     @Category("issues")
     @Subcategory("labels")
-    Stream<Label> removeLabelFromIssue(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("issue_number") final int issueNumber, @PathParam("name") final String name) {
-    }
+    Stream<Label> removeLabelFromIssue(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("issue_number") final int issueNumber, @PathParam("name") final String name);
 
     @PUT
     @Path("/repos/{owner}/{repo}/issues/{issue_number}/labels")
@@ -722,8 +717,7 @@ public interface IssuesClient {
     @EnabledForGithubApps
     @Category("issues")
     @Subcategory("labels")
-    Stream<Label> setLabelsForIssue(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("issue_number") final int issueNumber) {
-    }
+    Stream<Label> setLabelsForIssue(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("issue_number") final int issueNumber);
 
     @DELETE
     @Path("/repos/{owner}/{repo}/issues/{issue_number}/lock")
@@ -739,8 +733,7 @@ public interface IssuesClient {
     @Docs("https://developer.github.com/v3/issues/#unlock-an-issue")
     @EnabledForGithubApps
     @Category("issues")
-    void unlockIssue(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("issue_number") final int issueNumber) {
-    }
+    void unlockIssue(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("issue_number") final int issueNumber);
 
     @PATCH
     @Path("/repos/{owner}/{repo}/issues/{issue_number}")
@@ -756,8 +749,7 @@ public interface IssuesClient {
     @Docs("https://developer.github.com/v3/issues/#update-an-issue")
     @EnabledForGithubApps
     @Category("issues")
-    Issue updateIssue(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("issue_number") final int issueNumber) {
-    }
+    Issue updateIssue(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("issue_number") final int issueNumber);
 
     @PATCH
     @Path("/repos/{owner}/{repo}/issues/comments/{comment_id}")
@@ -775,8 +767,7 @@ public interface IssuesClient {
     @EnabledForGithubApps
     @Category("issues")
     @Subcategory("comments")
-    IssueComment updateIssueComment(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("comment_id") final int commentId) {
-    }
+    IssueComment updateIssueComment(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("comment_id") final int commentId);
 
     @PATCH
     @Path("/repos/{owner}/{repo}/labels/{name}")
@@ -794,8 +785,7 @@ public interface IssuesClient {
     @EnabledForGithubApps
     @Category("issues")
     @Subcategory("labels")
-    Label updateLabel(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("name") final String name) {
-    }
+    Label updateLabel(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("name") final String name);
 
     @PATCH
     @Path("/repos/{owner}/{repo}/milestones/{milestone_number}")
@@ -813,6 +803,5 @@ public interface IssuesClient {
     @EnabledForGithubApps
     @Category("issues")
     @Subcategory("milestones")
-    Milestone updateMilestone(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("milestone_number") final int milestoneNumber) {
-    }
+    Milestone updateMilestone(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("milestone_number") final int milestoneNumber);
 }

@@ -48,8 +48,7 @@ public interface InteractionsClient {
     @Preview("sombra")
     @Category("interactions")
     @Subcategory("orgs")
-    InteractionLimit getInteractionRestrictionsForOrganization(@PathParam("org") final String org) {
-    }
+    InteractionLimit getInteractionRestrictionsForOrganization(@PathParam("org") final String org);
 
     @GET
     @Path("/repos/{owner}/{repo}/interaction-limits")
@@ -69,8 +68,7 @@ public interface InteractionsClient {
     @Preview("sombra")
     @Category("interactions")
     @Subcategory("repos")
-    InteractionLimit getInteractionRestrictionsForRepository(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
-    }
+    InteractionLimit getInteractionRestrictionsForRepository(@PathParam("owner") final String owner, @PathParam("repo") final String repo);
 
     @DELETE
     @Path("/orgs/{org}/interaction-limits")
@@ -90,8 +88,7 @@ public interface InteractionsClient {
     @Preview("sombra")
     @Category("interactions")
     @Subcategory("orgs")
-    void removeInteractionRestrictionsForOrganization(@PathParam("org") final String org) {
-    }
+    void removeInteractionRestrictionsForOrganization(@PathParam("org") final String org);
 
     @DELETE
     @Path("/repos/{owner}/{repo}/interaction-limits")
@@ -111,8 +108,7 @@ public interface InteractionsClient {
     @Preview("sombra")
     @Category("interactions")
     @Subcategory("repos")
-    void removeInteractionRestrictionsForRepository(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
-    }
+    void removeInteractionRestrictionsForRepository(@PathParam("owner") final String owner, @PathParam("repo") final String repo);
 
     @PUT
     @Path("/orgs/{org}/interaction-limits")
@@ -132,8 +128,7 @@ public interface InteractionsClient {
     @Preview("sombra")
     @Category("interactions")
     @Subcategory("orgs")
-    InteractionLimit setInteractionRestrictionsForOrganization(@PathParam("org") final String org) {
-    }
+    InteractionLimit setInteractionRestrictionsForOrganization(@PathParam("org") final String org);
 
     @PUT
     @Path("/repos/{owner}/{repo}/interaction-limits")
@@ -153,6 +148,5 @@ public interface InteractionsClient {
     @Preview("sombra")
     @Category("interactions")
     @Subcategory("repos")
-    InteractionLimit setInteractionRestrictionsForRepository(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
-    }
+    InteractionLimit setInteractionRestrictionsForRepository(@PathParam("owner") final String owner, @PathParam("repo") final String repo);
 }

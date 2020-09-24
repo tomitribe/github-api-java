@@ -26,6 +26,7 @@ import org.tomitribe.github.model.ActionsPublicKey;
 import org.tomitribe.github.model.ActionsSecret;
 import org.tomitribe.github.model.AddSelectedRepositoryToOrganizationSecret;
 import org.tomitribe.github.model.Artifact;
+import org.tomitribe.github.model.ArtifactsPage;
 import org.tomitribe.github.model.AuthenticationToken;
 import org.tomitribe.github.model.CreateOrUpdateOrganizationSecret;
 import org.tomitribe.github.model.CreateOrUpdateRepositorySecret;
@@ -54,39 +55,34 @@ import org.tomitribe.github.model.GetWorkflowRun;
 import org.tomitribe.github.model.GetWorkflowRunUsage;
 import org.tomitribe.github.model.GetWorkflowUsage;
 import org.tomitribe.github.model.Job;
+import org.tomitribe.github.model.JobsPage;
 import org.tomitribe.github.model.ListArtifactsForRepository;
-import org.tomitribe.github.model.ListArtifactsForRepositoryResponse;
 import org.tomitribe.github.model.ListJobsForWorkflowRun;
-import org.tomitribe.github.model.ListJobsForWorkflowRunResponse;
 import org.tomitribe.github.model.ListOrganizationSecrets;
-import org.tomitribe.github.model.ListOrganizationSecretsResponse;
 import org.tomitribe.github.model.ListRepositorySecrets;
-import org.tomitribe.github.model.ListRepositorySecretsResponse;
 import org.tomitribe.github.model.ListRepositoryWorkflows;
-import org.tomitribe.github.model.ListRepositoryWorkflowsResponse;
 import org.tomitribe.github.model.ListRunnerApplicationsForOrganization;
 import org.tomitribe.github.model.ListRunnerApplicationsForRepository;
 import org.tomitribe.github.model.ListSelectedRepositoriesForOrganizationSecret;
 import org.tomitribe.github.model.ListSelectedRepositoriesForOrganizationSecretResponse;
 import org.tomitribe.github.model.ListSelfHostedRunnersForOrganization;
-import org.tomitribe.github.model.ListSelfHostedRunnersForOrganizationResponse;
 import org.tomitribe.github.model.ListSelfHostedRunnersForRepository;
-import org.tomitribe.github.model.ListSelfHostedRunnersForRepositoryResponse;
 import org.tomitribe.github.model.ListWorkflowRunArtifacts;
-import org.tomitribe.github.model.ListWorkflowRunArtifactsResponse;
 import org.tomitribe.github.model.ListWorkflowRuns;
 import org.tomitribe.github.model.ListWorkflowRunsForRepository;
-import org.tomitribe.github.model.ListWorkflowRunsForRepositoryResponse;
-import org.tomitribe.github.model.ListWorkflowRunsResponse;
 import org.tomitribe.github.model.OrganizationActionsSecret;
 import org.tomitribe.github.model.RemoveSelectedRepositoryFromOrganizationSecret;
 import org.tomitribe.github.model.Runner;
 import org.tomitribe.github.model.RunnerApplication;
+import org.tomitribe.github.model.RunnersPage;
+import org.tomitribe.github.model.SecretsPage;
 import org.tomitribe.github.model.SetSelectedRepositoriesForOrganizationSecret;
 import org.tomitribe.github.model.Workflow;
 import org.tomitribe.github.model.WorkflowRun;
 import org.tomitribe.github.model.WorkflowRunUsage;
+import org.tomitribe.github.model.WorkflowRunsPage;
 import org.tomitribe.github.model.WorkflowUsage;
+import org.tomitribe.github.model.WorkflowsPage;
 
 public interface ActionsClient {
 
@@ -106,8 +102,7 @@ public interface ActionsClient {
     @EnabledForGithubApps
     @Category("actions")
     @Subcategory("secrets")
-    void addSelectedRepositoryToOrganizationSecret(@PathParam("org") final String org, @PathParam("secret_name") final String secretName, @PathParam("repository_id") final int repositoryId) {
-    }
+    void addSelectedRepositoryToOrganizationSecret(@PathParam("org") final String org, @PathParam("secret_name") final String secretName, @PathParam("repository_id") final int repositoryId);
 
     @PUT
     @Path("/orgs/{org}/actions/secrets/{secret_name}")
@@ -125,8 +120,7 @@ public interface ActionsClient {
     @EnabledForGithubApps
     @Category("actions")
     @Subcategory("secrets")
-    void createOrUpdateOrganizationSecret(@PathParam("org") final String org, @PathParam("secret_name") final String secretName) {
-    }
+    void createOrUpdateOrganizationSecret(@PathParam("org") final String org, @PathParam("secret_name") final String secretName);
 
     @PUT
     @Path("/repos/{owner}/{repo}/actions/secrets/{secret_name}")
@@ -144,8 +138,7 @@ public interface ActionsClient {
     @EnabledForGithubApps
     @Category("actions")
     @Subcategory("secrets")
-    void createOrUpdateRepositorySecret(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("secret_name") final String secretName) {
-    }
+    void createOrUpdateRepositorySecret(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("secret_name") final String secretName);
 
     @POST
     @Path("/orgs/{org}/actions/runners/registration-token")
@@ -163,8 +156,7 @@ public interface ActionsClient {
     @EnabledForGithubApps
     @Category("actions")
     @Subcategory("self-hosted-runners")
-    AuthenticationToken createRegistrationTokenForOrganization(@PathParam("org") final String org) {
-    }
+    AuthenticationToken createRegistrationTokenForOrganization(@PathParam("org") final String org);
 
     @POST
     @Path("/repos/{owner}/{repo}/actions/runners/registration-token")
@@ -182,8 +174,7 @@ public interface ActionsClient {
     @EnabledForGithubApps
     @Category("actions")
     @Subcategory("self-hosted-runners")
-    AuthenticationToken createRegistrationTokenForRepository(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
-    }
+    AuthenticationToken createRegistrationTokenForRepository(@PathParam("owner") final String owner, @PathParam("repo") final String repo);
 
     @POST
     @Path("/orgs/{org}/actions/runners/remove-token")
@@ -201,8 +192,7 @@ public interface ActionsClient {
     @EnabledForGithubApps
     @Category("actions")
     @Subcategory("self-hosted-runners")
-    AuthenticationToken createRemoveTokenForOrganization(@PathParam("org") final String org) {
-    }
+    AuthenticationToken createRemoveTokenForOrganization(@PathParam("org") final String org);
 
     @POST
     @Path("/repos/{owner}/{repo}/actions/runners/remove-token")
@@ -220,8 +210,7 @@ public interface ActionsClient {
     @EnabledForGithubApps
     @Category("actions")
     @Subcategory("self-hosted-runners")
-    AuthenticationToken createRemoveTokenForRepository(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
-    }
+    AuthenticationToken createRemoveTokenForRepository(@PathParam("owner") final String owner, @PathParam("repo") final String repo);
 
     @POST
     @Path("/repos/{owner}/{repo}/actions/workflows/{workflow_id}/dispatches")
@@ -239,8 +228,7 @@ public interface ActionsClient {
     @EnabledForGithubApps
     @Category("actions")
     @Subcategory("workflows")
-    void createWorkflowDispatchEvent(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("workflow-id") final int workflowId) {
-    }
+    void createWorkflowDispatchEvent(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("workflow-id") final int workflowId);
 
     @DELETE
     @Path("/repos/{owner}/{repo}/actions/artifacts/{artifact_id}")
@@ -258,8 +246,7 @@ public interface ActionsClient {
     @EnabledForGithubApps
     @Category("actions")
     @Subcategory("artifacts")
-    void deleteArtifact(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("artifact_id") final int artifactId) {
-    }
+    void deleteArtifact(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("artifact_id") final int artifactId);
 
     @DELETE
     @Path("/orgs/{org}/actions/secrets/{secret_name}")
@@ -277,8 +264,7 @@ public interface ActionsClient {
     @EnabledForGithubApps
     @Category("actions")
     @Subcategory("secrets")
-    void deleteOrganizationSecret(@PathParam("org") final String org, @PathParam("secret_name") final String secretName) {
-    }
+    void deleteOrganizationSecret(@PathParam("org") final String org, @PathParam("secret_name") final String secretName);
 
     @DELETE
     @Path("/repos/{owner}/{repo}/actions/secrets/{secret_name}")
@@ -296,8 +282,7 @@ public interface ActionsClient {
     @EnabledForGithubApps
     @Category("actions")
     @Subcategory("secrets")
-    void deleteRepositorySecret(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("secret_name") final String secretName) {
-    }
+    void deleteRepositorySecret(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("secret_name") final String secretName);
 
     @DELETE
     @Path("/orgs/{org}/actions/runners/{runner_id}")
@@ -315,8 +300,7 @@ public interface ActionsClient {
     @EnabledForGithubApps
     @Category("actions")
     @Subcategory("self-hosted-runners")
-    void deleteSelfHostedRunnerFromOrganization(@PathParam("org") final String org, @PathParam("runner_id") final int runnerId) {
-    }
+    void deleteSelfHostedRunnerFromOrganization(@PathParam("org") final String org, @PathParam("runner_id") final int runnerId);
 
     @DELETE
     @Path("/repos/{owner}/{repo}/actions/runners/{runner_id}")
@@ -334,8 +318,7 @@ public interface ActionsClient {
     @EnabledForGithubApps
     @Category("actions")
     @Subcategory("self-hosted-runners")
-    void deleteSelfHostedRunnerFromRepository(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("runner_id") final int runnerId) {
-    }
+    void deleteSelfHostedRunnerFromRepository(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("runner_id") final int runnerId);
 
     @DELETE
     @Path("/repos/{owner}/{repo}/actions/runs/{run_id}")
@@ -353,8 +336,7 @@ public interface ActionsClient {
     @EnabledForGithubApps
     @Category("actions")
     @Subcategory("workflow-runs")
-    void deleteWorkflowRun(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("run-id") final int runId) {
-    }
+    void deleteWorkflowRun(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("run-id") final int runId);
 
     @DELETE
     @Path("/repos/{owner}/{repo}/actions/runs/{run_id}/logs")
@@ -372,8 +354,7 @@ public interface ActionsClient {
     @EnabledForGithubApps
     @Category("actions")
     @Subcategory("workflow-runs")
-    void deleteWorkflowRunLogs(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("run-id") final int runId) {
-    }
+    void deleteWorkflowRunLogs(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("run-id") final int runId);
 
     @GET
     @Path("/repos/{owner}/{repo}/actions/artifacts/{artifact_id}")
@@ -391,8 +372,7 @@ public interface ActionsClient {
     @EnabledForGithubApps
     @Category("actions")
     @Subcategory("artifacts")
-    Artifact getArtifact(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("artifact_id") final int artifactId) {
-    }
+    Artifact getArtifact(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("artifact_id") final int artifactId);
 
     @GET
     @Path("/repos/{owner}/{repo}/actions/jobs/{job_id}")
@@ -410,8 +390,7 @@ public interface ActionsClient {
     @EnabledForGithubApps
     @Category("actions")
     @Subcategory("workflow-jobs")
-    Job getJobForWorkflowRun(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("job_id") final int jobId) {
-    }
+    Job getJobForWorkflowRun(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("job_id") final int jobId);
 
     @GET
     @Path("/orgs/{org}/actions/secrets/public-key")
@@ -429,8 +408,7 @@ public interface ActionsClient {
     @EnabledForGithubApps
     @Category("actions")
     @Subcategory("secrets")
-    ActionsPublicKey getOrganizationPublicKey(@PathParam("org") final String org) {
-    }
+    ActionsPublicKey getOrganizationPublicKey(@PathParam("org") final String org);
 
     @GET
     @Path("/orgs/{org}/actions/secrets/{secret_name}")
@@ -448,8 +426,7 @@ public interface ActionsClient {
     @EnabledForGithubApps
     @Category("actions")
     @Subcategory("secrets")
-    OrganizationActionsSecret getOrganizationSecret(@PathParam("org") final String org, @PathParam("secret_name") final String secretName) {
-    }
+    OrganizationActionsSecret getOrganizationSecret(@PathParam("org") final String org, @PathParam("secret_name") final String secretName);
 
     @GET
     @Path("/repos/{owner}/{repo}/actions/secrets/public-key")
@@ -467,8 +444,7 @@ public interface ActionsClient {
     @EnabledForGithubApps
     @Category("actions")
     @Subcategory("secrets")
-    ActionsPublicKey getRepositoryPublicKey(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
-    }
+    ActionsPublicKey getRepositoryPublicKey(@PathParam("owner") final String owner, @PathParam("repo") final String repo);
 
     @GET
     @Path("/repos/{owner}/{repo}/actions/secrets/{secret_name}")
@@ -486,8 +462,7 @@ public interface ActionsClient {
     @EnabledForGithubApps
     @Category("actions")
     @Subcategory("secrets")
-    ActionsSecret getRepositorySecret(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("secret_name") final String secretName) {
-    }
+    ActionsSecret getRepositorySecret(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("secret_name") final String secretName);
 
     @GET
     @Path("/orgs/{org}/actions/runners/{runner_id}")
@@ -505,8 +480,7 @@ public interface ActionsClient {
     @EnabledForGithubApps
     @Category("actions")
     @Subcategory("self-hosted-runners")
-    Runner getSelfHostedRunnerForOrganization(@PathParam("org") final String org, @PathParam("runner_id") final int runnerId) {
-    }
+    Runner getSelfHostedRunnerForOrganization(@PathParam("org") final String org, @PathParam("runner_id") final int runnerId);
 
     @GET
     @Path("/repos/{owner}/{repo}/actions/runners/{runner_id}")
@@ -524,8 +498,7 @@ public interface ActionsClient {
     @EnabledForGithubApps
     @Category("actions")
     @Subcategory("self-hosted-runners")
-    Runner getSelfHostedRunnerForRepository(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("runner_id") final int runnerId) {
-    }
+    Runner getSelfHostedRunnerForRepository(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("runner_id") final int runnerId);
 
     @GET
     @Path("/repos/{owner}/{repo}/actions/workflows/{workflow_id}")
@@ -543,8 +516,7 @@ public interface ActionsClient {
     @EnabledForGithubApps
     @Category("actions")
     @Subcategory("workflows")
-    Workflow getWorkflow(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("workflow-id") final int workflowId) {
-    }
+    Workflow getWorkflow(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("workflow-id") final int workflowId);
 
     @GET
     @Path("/repos/{owner}/{repo}/actions/runs/{run_id}")
@@ -562,8 +534,7 @@ public interface ActionsClient {
     @EnabledForGithubApps
     @Category("actions")
     @Subcategory("workflow-runs")
-    WorkflowRun getWorkflowRun(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("run-id") final int runId) {
-    }
+    WorkflowRun getWorkflowRun(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("run-id") final int runId);
 
     @GET
     @Path("/repos/{owner}/{repo}/actions/runs/{run_id}/timing")
@@ -579,8 +550,7 @@ public interface ActionsClient {
     @Docs("https://developer.github.com/v3/actions/workflow-runs/#get-workflow-run-usage")
     @Category("actions")
     @Subcategory("workflow-runs")
-    WorkflowRunUsage getWorkflowRunUsage(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("run-id") final int runId) {
-    }
+    WorkflowRunUsage getWorkflowRunUsage(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("run-id") final int runId);
 
     @GET
     @Path("/repos/{owner}/{repo}/actions/workflows/{workflow_id}/timing")
@@ -596,8 +566,7 @@ public interface ActionsClient {
     @Docs("https://developer.github.com/v3/actions/workflows/#get-workflow-usage")
     @Category("actions")
     @Subcategory("workflows")
-    WorkflowUsage getWorkflowUsage(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("workflow-id") final int workflowId) {
-    }
+    WorkflowUsage getWorkflowUsage(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("workflow-id") final int workflowId);
 
     @GET
     @Path("/repos/{owner}/{repo}/actions/artifacts")
@@ -606,7 +575,8 @@ public interface ActionsClient {
     @EnabledForGithubApps
     @Category("actions")
     @Subcategory("artifacts")
-    ListArtifactsForRepositoryResponse listArtifactsForRepository(final ListArtifactsForRepository listArtifactsForRepository);
+    @Paged(ArtifactsPage.class)
+    Stream<Artifact> listArtifactsForRepository(final ListArtifactsForRepository listArtifactsForRepository);
 
     @GET
     @Path("/repos/{owner}/{repo}/actions/artifacts")
@@ -615,8 +585,8 @@ public interface ActionsClient {
     @EnabledForGithubApps
     @Category("actions")
     @Subcategory("artifacts")
-    ListArtifactsForRepositoryResponse listArtifactsForRepository(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
-    }
+    @Paged(ArtifactsPage.class)
+    Stream<Artifact> listArtifactsForRepository(@PathParam("owner") final String owner, @PathParam("repo") final String repo);
 
     @GET
     @Path("/repos/{owner}/{repo}/actions/runs/{run_id}/jobs")
@@ -625,7 +595,8 @@ public interface ActionsClient {
     @EnabledForGithubApps
     @Category("actions")
     @Subcategory("workflow-jobs")
-    ListJobsForWorkflowRunResponse listJobsForWorkflowRun(final ListJobsForWorkflowRun listJobsForWorkflowRun);
+    @Paged(JobsPage.class)
+    Stream<Job> listJobsForWorkflowRun(final ListJobsForWorkflowRun listJobsForWorkflowRun);
 
     @GET
     @Path("/repos/{owner}/{repo}/actions/runs/{run_id}/jobs")
@@ -634,8 +605,8 @@ public interface ActionsClient {
     @EnabledForGithubApps
     @Category("actions")
     @Subcategory("workflow-jobs")
-    ListJobsForWorkflowRunResponse listJobsForWorkflowRun(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("run-id") final int runId) {
-    }
+    @Paged(JobsPage.class)
+    Stream<Job> listJobsForWorkflowRun(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("run-id") final int runId);
 
     @GET
     @Path("/orgs/{org}/actions/secrets")
@@ -644,7 +615,8 @@ public interface ActionsClient {
     @EnabledForGithubApps
     @Category("actions")
     @Subcategory("secrets")
-    ListOrganizationSecretsResponse listOrganizationSecrets(final ListOrganizationSecrets listOrganizationSecrets);
+    @Paged(SecretsPage.class)
+    Stream<OrganizationActionsSecret> listOrganizationSecrets(final ListOrganizationSecrets listOrganizationSecrets);
 
     @GET
     @Path("/orgs/{org}/actions/secrets")
@@ -653,8 +625,8 @@ public interface ActionsClient {
     @EnabledForGithubApps
     @Category("actions")
     @Subcategory("secrets")
-    ListOrganizationSecretsResponse listOrganizationSecrets(@PathParam("org") final String org) {
-    }
+    @Paged(SecretsPage.class)
+    Stream<OrganizationActionsSecret> listOrganizationSecrets(@PathParam("org") final String org);
 
     @GET
     @Path("/repos/{owner}/{repo}/actions/secrets")
@@ -663,7 +635,8 @@ public interface ActionsClient {
     @EnabledForGithubApps
     @Category("actions")
     @Subcategory("secrets")
-    ListRepositorySecretsResponse listRepositorySecrets(final ListRepositorySecrets listRepositorySecrets);
+    @Paged(SecretsPage.class)
+    Stream<ActionsSecret> listRepositorySecrets(final ListRepositorySecrets listRepositorySecrets);
 
     @GET
     @Path("/repos/{owner}/{repo}/actions/secrets")
@@ -672,8 +645,8 @@ public interface ActionsClient {
     @EnabledForGithubApps
     @Category("actions")
     @Subcategory("secrets")
-    ListRepositorySecretsResponse listRepositorySecrets(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
-    }
+    @Paged(SecretsPage.class)
+    Stream<ActionsSecret> listRepositorySecrets(@PathParam("owner") final String owner, @PathParam("repo") final String repo);
 
     @GET
     @Path("/repos/{owner}/{repo}/actions/workflows")
@@ -682,7 +655,8 @@ public interface ActionsClient {
     @EnabledForGithubApps
     @Category("actions")
     @Subcategory("workflows")
-    ListRepositoryWorkflowsResponse listRepositoryWorkflows(final ListRepositoryWorkflows listRepositoryWorkflows);
+    @Paged(WorkflowsPage.class)
+    Stream<Workflow> listRepositoryWorkflows(final ListRepositoryWorkflows listRepositoryWorkflows);
 
     @GET
     @Path("/repos/{owner}/{repo}/actions/workflows")
@@ -691,8 +665,8 @@ public interface ActionsClient {
     @EnabledForGithubApps
     @Category("actions")
     @Subcategory("workflows")
-    ListRepositoryWorkflowsResponse listRepositoryWorkflows(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
-    }
+    @Paged(WorkflowsPage.class)
+    Stream<Workflow> listRepositoryWorkflows(@PathParam("owner") final String owner, @PathParam("repo") final String repo);
 
     @GET
     @Path("/orgs/{org}/actions/runners/downloads")
@@ -710,8 +684,7 @@ public interface ActionsClient {
     @EnabledForGithubApps
     @Category("actions")
     @Subcategory("self-hosted-runners")
-    Stream<RunnerApplication> listRunnerApplicationsForOrganization(@PathParam("org") final String org) {
-    }
+    Stream<RunnerApplication> listRunnerApplicationsForOrganization(@PathParam("org") final String org);
 
     @GET
     @Path("/repos/{owner}/{repo}/actions/runners/downloads")
@@ -729,8 +702,7 @@ public interface ActionsClient {
     @EnabledForGithubApps
     @Category("actions")
     @Subcategory("self-hosted-runners")
-    Stream<RunnerApplication> listRunnerApplicationsForRepository(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
-    }
+    Stream<RunnerApplication> listRunnerApplicationsForRepository(@PathParam("owner") final String owner, @PathParam("repo") final String repo);
 
     @GET
     @Path("/orgs/{org}/actions/secrets/{secret_name}/repositories")
@@ -748,8 +720,7 @@ public interface ActionsClient {
     @EnabledForGithubApps
     @Category("actions")
     @Subcategory("secrets")
-    ListSelectedRepositoriesForOrganizationSecretResponse listSelectedRepositoriesForOrganizationSecret(@PathParam("org") final String org, @PathParam("secret_name") final String secretName) {
-    }
+    ListSelectedRepositoriesForOrganizationSecretResponse listSelectedRepositoriesForOrganizationSecret(@PathParam("org") final String org, @PathParam("secret_name") final String secretName);
 
     @GET
     @Path("/orgs/{org}/actions/runners")
@@ -758,7 +729,8 @@ public interface ActionsClient {
     @EnabledForGithubApps
     @Category("actions")
     @Subcategory("self-hosted-runners")
-    ListSelfHostedRunnersForOrganizationResponse listSelfHostedRunnersForOrganization(final ListSelfHostedRunnersForOrganization listSelfHostedRunnersForOrganization);
+    @Paged(RunnersPage.class)
+    Stream<Runner> listSelfHostedRunnersForOrganization(final ListSelfHostedRunnersForOrganization listSelfHostedRunnersForOrganization);
 
     @GET
     @Path("/orgs/{org}/actions/runners")
@@ -767,8 +739,8 @@ public interface ActionsClient {
     @EnabledForGithubApps
     @Category("actions")
     @Subcategory("self-hosted-runners")
-    ListSelfHostedRunnersForOrganizationResponse listSelfHostedRunnersForOrganization(@PathParam("org") final String org) {
-    }
+    @Paged(RunnersPage.class)
+    Stream<Runner> listSelfHostedRunnersForOrganization(@PathParam("org") final String org);
 
     @GET
     @Path("/repos/{owner}/{repo}/actions/runners")
@@ -777,7 +749,8 @@ public interface ActionsClient {
     @EnabledForGithubApps
     @Category("actions")
     @Subcategory("self-hosted-runners")
-    ListSelfHostedRunnersForRepositoryResponse listSelfHostedRunnersForRepository(final ListSelfHostedRunnersForRepository listSelfHostedRunnersForRepository);
+    @Paged(RunnersPage.class)
+    Stream<Runner> listSelfHostedRunnersForRepository(final ListSelfHostedRunnersForRepository listSelfHostedRunnersForRepository);
 
     @GET
     @Path("/repos/{owner}/{repo}/actions/runners")
@@ -786,8 +759,8 @@ public interface ActionsClient {
     @EnabledForGithubApps
     @Category("actions")
     @Subcategory("self-hosted-runners")
-    ListSelfHostedRunnersForRepositoryResponse listSelfHostedRunnersForRepository(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
-    }
+    @Paged(RunnersPage.class)
+    Stream<Runner> listSelfHostedRunnersForRepository(@PathParam("owner") final String owner, @PathParam("repo") final String repo);
 
     @GET
     @Path("/repos/{owner}/{repo}/actions/runs/{run_id}/artifacts")
@@ -796,7 +769,8 @@ public interface ActionsClient {
     @EnabledForGithubApps
     @Category("actions")
     @Subcategory("artifacts")
-    ListWorkflowRunArtifactsResponse listWorkflowRunArtifacts(final ListWorkflowRunArtifacts listWorkflowRunArtifacts);
+    @Paged(ArtifactsPage.class)
+    Stream<Artifact> listWorkflowRunArtifacts(final ListWorkflowRunArtifacts listWorkflowRunArtifacts);
 
     @GET
     @Path("/repos/{owner}/{repo}/actions/runs/{run_id}/artifacts")
@@ -805,8 +779,8 @@ public interface ActionsClient {
     @EnabledForGithubApps
     @Category("actions")
     @Subcategory("artifacts")
-    ListWorkflowRunArtifactsResponse listWorkflowRunArtifacts(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("run-id") final int runId) {
-    }
+    @Paged(ArtifactsPage.class)
+    Stream<Artifact> listWorkflowRunArtifacts(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("run-id") final int runId);
 
     @GET
     @Path("/repos/{owner}/{repo}/actions/workflows/{workflow_id}/runs")
@@ -815,7 +789,8 @@ public interface ActionsClient {
     @EnabledForGithubApps
     @Category("actions")
     @Subcategory("workflow-runs")
-    ListWorkflowRunsResponse listWorkflowRuns(final ListWorkflowRuns listWorkflowRuns);
+    @Paged(WorkflowRunsPage.class)
+    Stream<WorkflowRun> listWorkflowRuns(final ListWorkflowRuns listWorkflowRuns);
 
     @GET
     @Path("/repos/{owner}/{repo}/actions/workflows/{workflow_id}/runs")
@@ -824,8 +799,8 @@ public interface ActionsClient {
     @EnabledForGithubApps
     @Category("actions")
     @Subcategory("workflow-runs")
-    ListWorkflowRunsResponse listWorkflowRuns(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("workflow-id") final int workflowId) {
-    }
+    @Paged(WorkflowRunsPage.class)
+    Stream<WorkflowRun> listWorkflowRuns(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("workflow-id") final int workflowId);
 
     @GET
     @Path("/repos/{owner}/{repo}/actions/runs")
@@ -834,7 +809,8 @@ public interface ActionsClient {
     @EnabledForGithubApps
     @Category("actions")
     @Subcategory("workflow-runs")
-    ListWorkflowRunsForRepositoryResponse listWorkflowRunsForRepository(final ListWorkflowRunsForRepository listWorkflowRunsForRepository);
+    @Paged(WorkflowRunsPage.class)
+    Stream<WorkflowRun> listWorkflowRunsForRepository(final ListWorkflowRunsForRepository listWorkflowRunsForRepository);
 
     @GET
     @Path("/repos/{owner}/{repo}/actions/runs")
@@ -843,8 +819,8 @@ public interface ActionsClient {
     @EnabledForGithubApps
     @Category("actions")
     @Subcategory("workflow-runs")
-    ListWorkflowRunsForRepositoryResponse listWorkflowRunsForRepository(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
-    }
+    @Paged(WorkflowRunsPage.class)
+    Stream<WorkflowRun> listWorkflowRunsForRepository(@PathParam("owner") final String owner, @PathParam("repo") final String repo);
 
     @DELETE
     @Path("/orgs/{org}/actions/secrets/{secret_name}/repositories/{repository_id}")
@@ -862,8 +838,7 @@ public interface ActionsClient {
     @EnabledForGithubApps
     @Category("actions")
     @Subcategory("secrets")
-    void removeSelectedRepositoryFromOrganizationSecret(@PathParam("org") final String org, @PathParam("secret_name") final String secretName, @PathParam("repository_id") final int repositoryId) {
-    }
+    void removeSelectedRepositoryFromOrganizationSecret(@PathParam("org") final String org, @PathParam("secret_name") final String secretName, @PathParam("repository_id") final int repositoryId);
 
     @PUT
     @Path("/orgs/{org}/actions/secrets/{secret_name}/repositories")
@@ -881,6 +856,5 @@ public interface ActionsClient {
     @EnabledForGithubApps
     @Category("actions")
     @Subcategory("secrets")
-    void setSelectedRepositoriesForOrganizationSecret(@PathParam("org") final String org, @PathParam("secret_name") final String secretName) {
-    }
+    void setSelectedRepositoriesForOrganizationSecret(@PathParam("org") final String org, @PathParam("secret_name") final String secretName);
 }
