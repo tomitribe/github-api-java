@@ -32,22 +32,13 @@ import java.util.Set;
 public class ResolveReferences {
 
     private final Set<Clazz> seen = new HashSet<>();
-    private final List<Clazz> classes;
     private final ComponentIndex componentIndex;
-    private final List<Endpoint> endpoints;
 
-    public ResolveReferences(final List<Clazz> classes, final ComponentIndex componentIndex, final List<Endpoint> endpoints) {
-        this.classes = classes;
+    public ResolveReferences(final ComponentIndex componentIndex) {
         this.componentIndex = componentIndex;
-        this.endpoints = endpoints;
-
-        this.classes.forEach(this::resolve);
-        this.endpoints.stream().map(Endpoint::getMethods)
-                .flatMap(Collection::stream)
-                .forEach(this::resolveMethod);
     }
 
-    private void resolveMethod(final EndpointMethod method) {
+    public void resolveMethod(final EndpointMethod method) {
         if (method.getRequest() instanceof ClazzReference) {
             method.setRequest(resolve((ClazzReference) method.getRequest()));
         }
@@ -59,11 +50,7 @@ public class ResolveReferences {
         resolve(method.getResponse());
     }
 
-    public static void resolve(final List<Clazz> classes, final ComponentIndex componentIndex, final List<Endpoint> endpoints) {
-        new ResolveReferences(classes, componentIndex, endpoints);
-    }
-
-    private void resolve(final Clazz clazz) {
+    public void resolve(final Clazz clazz) {
         /*
          * If we have already started processing this class, do
          * not continue as that would cause an endless loop

@@ -43,8 +43,7 @@ public interface TeamsClient {
     @EnabledForGithubApps
     @Category("teams")
     @Subcategory("discussions")
-    void deleteDiscussion(@PathParam("org") final String org, @PathParam("team_slug") final String teamSlug, @PathParam("discussion-number") final int discussionNumber) {
-    }
+    void deleteDiscussion(@PathParam("org") final String org, @PathParam("team_slug") final String teamSlug, @PathParam("discussion-number") final int discussionNumber);
 
     @GET
     @Path("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}")
@@ -64,8 +63,7 @@ public interface TeamsClient {
     @Preview("squirrel-girl")
     @Category("teams")
     @Subcategory("discussions")
-    TeamDiscussion getDiscussion(@PathParam("org") final String org, @PathParam("team_slug") final String teamSlug, @PathParam("discussion-number") final int discussionNumber) {
-    }
+    TeamDiscussion getDiscussion(@PathParam("org") final String org, @PathParam("team_slug") final String teamSlug, @PathParam("discussion-number") final int discussionNumber);
 
     @PATCH
     @Path("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}")
@@ -85,6 +83,5 @@ public interface TeamsClient {
     @Preview("squirrel-girl")
     @Category("teams")
     @Subcategory("discussions")
-    TeamDiscussion updateDiscussion(@PathParam("org") final String org, @PathParam("team_slug") final String teamSlug, @PathParam("discussion-number") final int discussionNumber) {
-    }
+    TeamDiscussion updateDiscussion(@PathParam("org") final String org, @PathParam("team_slug") final String teamSlug, @PathParam("discussion-number") final int discussionNumber);
 }

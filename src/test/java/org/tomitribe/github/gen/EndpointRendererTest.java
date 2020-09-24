@@ -16,7 +16,6 @@
  */
 package org.tomitribe.github.gen;
 
-import org.junit.Ignore;
 import org.junit.Test;
 import org.tomitribe.github.gen.code.endpoint.Endpoint;
 import org.tomitribe.github.gen.code.endpoint.EndpointRenderer;
@@ -59,6 +58,16 @@ public class EndpointRendererTest {
     @Test
     public void returnArrayOfArray() throws Exception {
         assertScenario(Scenario.get("returnArrayOfArray"));
+    }
+
+    @Test
+    public void returnPagedStream() throws Exception {
+        assertScenario(Scenario.get("returnPagedStream"));
+    }
+
+    @Test
+    public void returnPagedStreamFromArray() throws Exception {
+        assertScenario(Scenario.get("returnPagedStreamFromArray"));
     }
 
     @Test

@@ -28,6 +28,7 @@ import org.tomitribe.github.client.Docs;
 import org.tomitribe.github.client.EnabledForGithubApps;
 import org.tomitribe.github.client.GithubCloudOnly;
 import org.tomitribe.github.client.OperationId;
+import org.tomitribe.github.client.Paged;
 import org.tomitribe.github.client.Preview;
 import org.tomitribe.github.client.RemovalDate;
 import org.tomitribe.github.client.Subcategory;
@@ -61,8 +62,9 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
-import java.util.function.Predicate;
 import java.util.stream.Stream;
+
+import static org.tomitribe.github.gen.EndpointGenerator.getPagedItem;
 
 public class EndpointRenderer {
 
@@ -118,7 +120,15 @@ public class EndpointRenderer {
                         Strings.lcfirst(method.getRequest().getName().getSimpleName())));
             }
 
-            if (isArrayOfArray(method)) {
+            if (method.getResponse().isPaged()) {
+                if (method.getResponse() instanceof ArrayClazz) {
+                    final ArrayClazz arrayClazz = (ArrayClazz) method.getResponse();
+                    methodDeclaration.setType(String.format("Stream<%s>", arrayClazz.getOf().getName().getSimpleName()));
+                } else {
+                    final Field pagedItem = getPagedItem(method.getResponse());
+                    methodDeclaration.setType(String.format("Stream<%s>", pagedItem.getType().getSimpleName()));
+                }
+            } else if (isArrayOfArray(method)) {
                 final Name arrayType = getImport(method.getResponse());
                 methodDeclaration.setType(String.format("%s[][]", asRequiredType(arrayType)));
             } else if (isArray(method)) {
@@ -170,6 +180,16 @@ public class EndpointRenderer {
                 annotations.add(Subcategory.class, method.getSubcategory());
             }
 
+            if (method.getResponse().isPaged()) {
+                if (method.getResponse() instanceof ArrayClazz) {
+                    final ArrayClazz arrayClazz = (ArrayClazz) method.getResponse();
+                    annotations.add("@%s(%s[].class)", Paged.class.getSimpleName(),
+                            arrayClazz.getOf().getName().getSimpleName());
+                } else {
+                    annotations.add(Paged.class, method.getResponse().getName());
+                }
+            }
+
             methodDeclaration.setBody(null);
             definition.getClazz().addMember(methodDeclaration);
 
@@ -184,6 +204,7 @@ public class EndpointRenderer {
                 overloaded.setType(methodDeclaration.getType());
                 overloaded.setAnnotations(methodDeclaration.getAnnotations());
                 overloaded.setName(methodDeclaration.getName());
+                overloaded.setBody(null);
 
                 method.getRequest().getFields().stream()
                         .filter(field -> field.getIn().equals(Field.In.PATH))
@@ -300,6 +321,16 @@ public class EndpointRenderer {
             imports.add(Stream.class);
         }
 
+        if (method.getResponse().isPaged()) {
+            if (method.getResponse() instanceof ArrayClazz) {
+                final ArrayClazz arrayClazz = (ArrayClazz) method.getResponse();
+                imports.add(arrayClazz.getOf().getName());
+            } else {
+                imports.add(method.getResponse().getName());
+                imports.add(getPagedItem(method.getResponse()).getType());
+            }
+        }
+
         if ("GET".equalsIgnoreCase(method.getMethod())) imports.add(GET.class);
         if ("POST".equalsIgnoreCase(method.getMethod())) imports.add(POST.class);
         if ("PUT".equalsIgnoreCase(method.getMethod())) imports.add(PUT.class);
@@ -347,6 +378,10 @@ public class EndpointRenderer {
 
         public Annotations add(final Class<?> annotation, final String value) {
             return add("@%s(\"%s\")", annotation.getSimpleName(), value);
+        }
+
+        public Annotations add(final Class<?> annotation, final Name value) {
+            return add("@%s(%s.class)", annotation.getSimpleName(), value.getSimpleName());
         }
 
         public Annotations add(final Class<?> annotation) {

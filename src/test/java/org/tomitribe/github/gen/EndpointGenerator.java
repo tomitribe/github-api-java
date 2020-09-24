@@ -34,9 +34,11 @@ import org.tomitribe.github.gen.openapi.Preview;
 import org.tomitribe.github.gen.openapi.Response;
 import org.tomitribe.github.gen.openapi.Schema;
 import org.tomitribe.github.gen.util.Words;
+import org.tomitribe.util.Strings;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
@@ -54,6 +56,7 @@ public class EndpointGenerator {
     private final String modelPackage;
     private ComponentIndex componentIndex;
     private final String endpointPackage;
+    private ResolveReferences resolver;
 
     public EndpointGenerator() {
         this.modelPackage = "org.tomitribe.github.model";
@@ -63,7 +66,10 @@ public class EndpointGenerator {
 
     public List<Endpoint> build(final OpenApi openApi) {
         this.componentIndex = new ComponentIndex(modelGenerator, openApi);
+        this.resolver = new ResolveReferences(componentIndex);
 
+        modelGenerator.getClasses().forEach(resolver::resolve);
+        
         final Map<String, List<EndpointMethod>> categories = openApi.getMethods()
                 .filter(this::isSupported)
                 .map(this::createMethod)
@@ -84,7 +90,7 @@ public class EndpointGenerator {
         }
 
         final List<Clazz> classes = modelGenerator.getClasses();
-        ResolveReferences.resolve(classes, componentIndex, endpoints);
+        classes.forEach(resolver::resolve);
 
         // We no longer need any of the ClazzReference instances
         // Remove them so they aren't rendered
@@ -174,7 +180,19 @@ public class EndpointGenerator {
             }
         }
 
-        return builder.build();
+        final EndpointMethod endpointMethod = builder.build();
+        resolver.resolveMethod(endpointMethod);
+
+        final Clazz clazz = endpointMethod.getResponse();
+        if (clazz.isPaged()) {
+            paged(clazz);
+        }
+        if (shouldHaveName(clazz) && clazz.getName() == null) {
+            final String name = Words.getTypeName(method.getSummary()) + "Response";
+            clazz.setName(new Name(modelPackage, name));
+        }
+
+        return endpointMethod;
     }
 
     private Clazz generateResponseClass(final Method method) {
@@ -201,11 +219,41 @@ public class EndpointGenerator {
 
         final Clazz clazz = modelGenerator.build(jsonResponse.getSchema());
 
-        if (shouldHaveName(clazz) && clazz.getName() == null) {
-            final String name = Words.getTypeName(method.getSummary()) + "Response";
-            clazz.setName(new Name(modelPackage, name));
+        if (isPaged(ok)) {
+            clazz.setPaged(true);
         }
+        
         return clazz;
+    }
+
+    private void paged(final Clazz clazz) {
+        if (clazz instanceof ArrayClazz) {
+            final ArrayClazz arrayClazz = (ArrayClazz) clazz;
+            arrayClazz.setPaged(true);
+        } else {
+            final Field items = getPagedItem(clazz);
+
+            final String pageName = Strings.ucfirst(items.getName()) + "Page";
+
+            clazz.setName(new Name(modelPackage, pageName));
+            clazz.setPaged(true);
+        }
+    }
+
+    public static Field getPagedItem(final Clazz clazz) {
+        final List<Field> arrays = clazz.getFields().stream()
+                .filter(Field::isCollection)
+                .collect(Collectors.toList());
+
+        if (arrays.size() != 1) {
+            throw new IllegalStateException("Expected exactly 1 array field, found " + arrays.size());
+        }
+
+        return arrays.get(0);
+    }
+
+    private boolean isPaged(final Response ok) {
+        return ok.getHeaders() != null && ok.getHeaders().get("Link") != null;
     }
 
     private boolean shouldHaveName(final Clazz clazz) {

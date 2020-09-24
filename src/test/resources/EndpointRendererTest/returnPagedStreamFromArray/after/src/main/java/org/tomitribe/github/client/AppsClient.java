@@ -19,25 +19,18 @@ package org.tomitribe.github.client;
 import java.util.stream.Stream;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
-import org.tomitribe.github.model.GetWeeklyCommitActivity;
+import org.tomitribe.github.model.Installation;
+import org.tomitribe.github.model.ListInstallationsForAuthenticatedApp;
 
-public interface ReposClient {
-
-    @GET
-    @Path("/repos/{owner}/{repo}/stats/code_frequency")
-    @OperationId("repos/get-code-frequency-stats")
-    @Docs("https://developer.github.com/v3/repos/statistics/#get-the-weekly-commit-activity")
-    @EnabledForGithubApps
-    @Category("repos")
-    @Subcategory("statistics")
-    int[][] getWeeklyCommitActivity(final GetWeeklyCommitActivity getWeeklyCommitActivity);
+public interface AppsClient {
 
     @GET
-    @Path("/repos/{owner}/{repo}/stats/code_frequency")
-    @OperationId("repos/get-code-frequency-stats")
-    @Docs("https://developer.github.com/v3/repos/statistics/#get-the-weekly-commit-activity")
+    @Path("/app/installations")
+    @OperationId("apps/list-installations")
+    @Docs("https://developer.github.com/v3/apps/#list-installations-for-the-authenticated-app")
     @EnabledForGithubApps
-    @Category("repos")
-    @Subcategory("statistics")
-    int[][] getWeeklyCommitActivity(@PathParam("owner") final String owner, @PathParam("repo") final String repo);
+    @Preview("machine-man")
+    @Category("apps")
+    @Paged(Installation[].class)
+    Stream<Installation> listInstallationsForAuthenticatedApp(final ListInstallationsForAuthenticatedApp listInstallationsForAuthenticatedApp);
 }

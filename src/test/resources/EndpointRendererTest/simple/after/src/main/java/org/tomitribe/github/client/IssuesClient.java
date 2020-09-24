@@ -41,8 +41,7 @@ public interface IssuesClient {
     @Docs("https://developer.github.com/v3/issues/#create-an-issue")
     @EnabledForGithubApps
     @Category("issues")
-    Issue createIssue(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
-    }
+    Issue createIssue(@PathParam("owner") final String owner, @PathParam("repo") final String repo);
 
     @GET
     @Path("/repos/{owner}/{repo}/issues")
@@ -52,6 +51,7 @@ public interface IssuesClient {
     @Preview("machine-man")
     @Preview("squirrel-girl")
     @Category("issues")
+    @Paged(IssueSimple[].class)
     Stream<IssueSimple> listRepositoryIssues(final ListRepositoryIssues listRepositoryIssues);
 
     @GET
@@ -62,6 +62,6 @@ public interface IssuesClient {
     @Preview("machine-man")
     @Preview("squirrel-girl")
     @Category("issues")
-    Stream<IssueSimple> listRepositoryIssues(@PathParam("owner") final String owner, @PathParam("repo") final String repo) {
-    }
+    @Paged(IssueSimple[].class)
+    Stream<IssueSimple> listRepositoryIssues(@PathParam("owner") final String owner, @PathParam("repo") final String repo);
 }
