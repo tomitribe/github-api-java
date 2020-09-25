@@ -36,7 +36,7 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.stream.Stream;
 
-public class Api {
+public class ApiOld {
 
     private final MediaType[] mediaTypes;
     private final URI host;
@@ -44,7 +44,7 @@ public class Api {
     private final Consumer<Object> responses;
     private final Client client;
 
-    private Api(final URI host, final Client client, final List<Consumer<Invocation.Builder>> handlers, final Consumer<Object> responses, final List<MediaType> mediaTypes) {
+    private ApiOld(final URI host, final Client client, final List<Consumer<Invocation.Builder>> handlers, final Consumer<Object> responses, final List<MediaType> mediaTypes) {
         this.host = normalize(host);
         this.handlers = handlers;
         this.client = client
@@ -77,7 +77,20 @@ public class Api {
      * @return A fully Jsonb unmarshalled instance of JsonbType
      */
     public <JsonbType> JsonbType post(final Request<JsonbType> request) {
-        return execute(request, "POST");
+        final URI uri = request.getURI();
+        final Invocation.Builder builder = client.target(resolve(uri))
+                .request()
+                .accept(mediaTypes);
+
+        handlers.forEach(requestConsumer -> requestConsumer.accept(builder));
+
+        final Entity<String> entity = request.getEntity();
+
+        final String content = builder.post(entity, String.class);
+
+        responses.accept(content);
+
+        return JsonMarshalling.unmarshal(request.getResponseType(), content);
     }
 
     /**
@@ -88,40 +101,51 @@ public class Api {
      * @return A fully Jsonb unmarshalled instance of JsonbType
      */
     public <JsonbType> JsonbType put(final Request<JsonbType> request) {
-        return execute(request, "PUT");
+        Objects.requireNonNull(request, () -> "Request cannot be null");
+        Objects.requireNonNull(request.getResponseType(), () -> "Request responseType cannot be null");
+
+        final URI uri = request.getURI();
+
+        Objects.requireNonNull(uri, () -> "Request.getURI cannot be null");
+
+        final Invocation.Builder builder = client.target(resolve(uri))
+                .request()
+                .accept(mediaTypes);
+
+        handlers.forEach(requestConsumer -> requestConsumer.accept(builder));
+
+        final Entity<String> entity = request.getEntity();
+
+        final String content = builder.put(entity, String.class);
+
+        responses.accept(content);
+
+        return (JsonbType) JsonMarshalling.unmarshal(request.getResponseType(), content);
     }
 
     /**
      * Executes a PATCH to the specified path using the specified 'patch' object
      * marshalled to json via Jsonb and sent as 'application/json'
      *
+     * @param responseType  A Jsonb compatible class to marshall the response
      * @param <JsonbType> A Jsonb compatible class to marshall the response
      * @return A fully Jsonb unmarshalled instance of JsonbType
      */
-    public <JsonbType> JsonbType patch(final Request<JsonbType> request) {
-        return execute(request, "PATCH");
-    }
+    public <JsonbType> JsonbType patch(final Request request, final Class<JsonbType> responseType) {
+        final URI uri = request.getURI();
+        final Invocation.Builder builder = client.target(resolve(uri))
+                .request()
+                .accept(mediaTypes);
 
-    /**
-     * Executes a HEAD to the specified path using the specified 'patch' object
-     * marshalled to json via Jsonb and sent as 'application/json'
-     *
-     * @param <JsonbType> A Jsonb compatible class to marshall the response
-     * @return A fully Jsonb unmarshalled instance of JsonbType
-     */
-    public <JsonbType> JsonbType head(final Request<JsonbType> request) {
-        return execute(request, "HEAD");
-    }
+        handlers.forEach(requestConsumer -> requestConsumer.accept(builder));
 
-    /**
-     * Executes a OPTIONS to the specified path using the specified 'patch' object
-     * marshalled to json via Jsonb and sent as 'application/json'
-     *
-     * @param <JsonbType> A Jsonb compatible class to marshall the response
-     * @return A fully Jsonb unmarshalled instance of JsonbType
-     */
-    public <JsonbType> JsonbType options(final Request<JsonbType> request) {
-        return execute(request, "OPTIONS");
+        final Entity<String> entity = request.getEntity();
+
+        final String content = builder.method("PATCH", entity, String.class);
+
+        responses.accept(content);
+
+        return JsonMarshalling.unmarshal(responseType, content);
     }
 
     /**
@@ -131,36 +155,40 @@ public class Api {
      * @return A fully Jsonb unmarshalled instance of JsonbType
      */
     public <JsonbType> JsonbType get(final Request<JsonbType> request) {
-        return execute(request, "GET");
+        final URI uri = request.getURI();
+        final Invocation.Builder builder = client.target(resolve(uri))
+                .request()
+                .accept(mediaTypes);
+
+        handlers.forEach(requestConsumer -> requestConsumer.accept(builder));
+
+        final String content = builder.get(String.class);
+
+        responses.accept(content);
+
+        return JsonMarshalling.unmarshal(request.getResponseType(), content);
     }
 
     /**
      * Executes a DELETE to the specified path
      *
+     * @param responseType  A Jsonb compatible class to marshall the response
      * @param <JsonbType> A Jsonb compatible class to marshall the response
      * @return A fully Jsonb unmarshalled instance of JsonbType
      */
-    public <JsonbType> JsonbType delete(final Request<JsonbType> request) {
-        return execute(request, "DELETE");
-    }
-
-
-    private <JsonbType> JsonbType execute(final Request<JsonbType> request, final String post) {
+    public <JsonbType> JsonbType delete(final Request request, final Class<JsonbType> responseType) {
         final URI uri = request.getURI();
         final Invocation.Builder builder = client.target(resolve(uri))
-                .request();
-
-        request.getHeaderParams().forEach(builder::header);
+                .request()
+                .accept(mediaTypes);
 
         handlers.forEach(requestConsumer -> requestConsumer.accept(builder));
 
-        final Entity<String> entity = request.getEntity();
-
-        final String content = builder.method(post, entity, String.class);
+        final String content = builder.get(String.class);
 
         responses.accept(content);
 
-        return JsonMarshalling.unmarshal(request.getResponseType(), content);
+        return JsonMarshalling.unmarshal(responseType, content);
     }
 
     public <Page, Item> Stream<Item> stream(final Request<Page> request, final Function<Page, List<Item>> getItems) {
@@ -274,10 +302,10 @@ public class Api {
             return this;
         }
 
-        public Api build() {
+        public ApiOld build() {
             if (client == null) client = ClientBuilder.newClient();
 
-            return new Api(api, client, handlers, responses, mediaTypes);
+            return new ApiOld(api, client, handlers, responses, mediaTypes);
         }
     }
 }

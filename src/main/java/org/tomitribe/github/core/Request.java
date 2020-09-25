@@ -46,7 +46,7 @@ public class Request<ResponseType> {
     private final Map<String, Object> queryParams;
     private final Map<String, Object> headerParams;
 
-    private Request(final String path, final String body, final Map<String, Object> queryParams, final Map<String, Object> headerParams, final Map<String, Object> pathParams) {
+    public Request(final String path, final String body, final Map<String, Object> queryParams, final Map<String, Object> headerParams, final Map<String, Object> pathParams) {
         this.path = path;
         this.body = body;
         this.queryParams = queryParams;

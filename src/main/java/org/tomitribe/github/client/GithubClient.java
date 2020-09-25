@@ -17,7 +17,7 @@
 package org.tomitribe.github.client;
 
 
-import org.tomitribe.github.core.Api;
+import org.tomitribe.github.core.ApiOld;
 import org.tomitribe.github.core.Request;
 import org.tomitribe.github.model.Code;
 import org.tomitribe.github.model.CodePage;
@@ -73,9 +73,9 @@ public class GithubClient {
             MediaType.valueOf("application/vnd.github.shadow-cat-preview+json")
     };
 
-    private final Api client;
+    private final ApiOld client;
 
-    private GithubClient(final Api client) {
+    private GithubClient(final ApiOld client) {
         this.client = client;
     }
 
@@ -211,7 +211,7 @@ public class GithubClient {
     }
 
     public static class Builder {
-        private final Api.Builder builder = Api.builder()
+        private final ApiOld.Builder builder = ApiOld.builder()
                 .accept(MEDIA_TYPES);
 
         public Builder handler(final Consumer<Invocation.Builder> e) {
