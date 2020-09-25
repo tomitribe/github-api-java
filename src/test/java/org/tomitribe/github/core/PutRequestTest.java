@@ -32,9 +32,8 @@ import org.tomitribe.github.model.CreatePullRequest;
 import org.tomitribe.github.model.PullRequest;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.ws.rs.ClientErrorException;
 import javax.ws.rs.HeaderParam;
-import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.WebApplicationException;
@@ -46,14 +45,11 @@ import javax.ws.rs.core.Response;
 import java.io.IOException;
 import java.lang.reflect.Proxy;
 import java.net.URI;
-import java.util.Arrays;
-import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-import static org.tomitribe.util.Join.join;
 
 
-public class PostRequestTest {
+public class PutRequestTest {
 
     private static URI uri;
 
@@ -82,33 +78,6 @@ public class PostRequestTest {
         assertEquals("Update the README with new information.", pullRequest.getTitle());
     }
 
-    @Test
-    public void testVoid() throws Exception {
-        final PullsClient pullsClient = getPullsClient();
-
-        /*
-         * Our goal with this request is to prove we are reaching the
-         * right endpoint.
-         */
-        try {
-            pullsClient.updatePullRequest(CreatePullRequest.builder().owner("colors").repo("orange").build());
-        } catch (final ClientErrorException e) {
-            assertEquals(418, e.getResponse().getStatus());
-        }
-
-        final CreatePullRequest createPullRequest = CreatePullRequest.builder()
-                .owner("colors")
-                .repo("orange")
-                .title("This is awesome")
-                .head("fancyorg:critical-fixes")
-                .base("master")
-                .body("Let's get this done!")
-                .maintainerCanModify(true)
-                .draft(true).build();
-
-        pullsClient.updatePullRequest(createPullRequest);
-    }
-
     private PullsClient getPullsClient() {
         final Client client = ClientBuilder.newClient()
                 .register(new MessageLogger.RequestFilter())
@@ -134,7 +103,7 @@ public class PostRequestTest {
     }
 
     public interface PullsClient {
-        @POST
+        @PUT
         @Path("/repos/{owner}/{repo}/pulls")
         @OperationId("pulls/create")
         @Docs("https://developer.github.com/v3/pulls/#create-a-pull-request")
@@ -142,18 +111,6 @@ public class PostRequestTest {
         @Preview("sailor-v")
         @Category("pulls")
         PullRequest createPullRequest(final CreatePullRequest createPullRequest);
-
-        /**
-         * Test we can handle void
-         */
-        @POST
-        @Path("/repos/{owner}/{repo}/pulls/update")
-        @OperationId("pulls/create")
-        @Docs("https://developer.github.com/v3/pulls/#create-a-pull-request")
-        @EnabledForGithubApps
-        @Preview("sailor-v")
-        @Category("pulls")
-        void updatePullRequest(final CreatePullRequest createPullRequest);
     }
 
     @Path("/")
@@ -162,7 +119,7 @@ public class PostRequestTest {
         @Context
         private HttpServletRequest request;
 
-        @POST
+        @PUT
         @Path("repos/{owner}/{name}/pulls")
         public Response createPullRequest(@HeaderParam("authorization") final String authorization,
                                           @HeaderParam("accept") final String accept,
@@ -184,42 +141,8 @@ public class PostRequestTest {
                     "  \"title\":\"This is awesome\"\n" +
                     "}", body);
 
-            final String response = Resources.read(PostRequestTest.class, "response1.json");
+            final String response = Resources.read(PutRequestTest.class, "response1.json");
             return Response.ok(response, MediaType.APPLICATION_JSON_TYPE).build();
-        }
-
-        @POST
-        @Path("repos/{owner}/{name}/pulls/update")
-        public Response updatePullRequest(@HeaderParam("authorization") final String authorization,
-                                          @HeaderParam("accept") final String accept,
-                                          String body) throws IOException {
-
-            RequestAsserts.from(request)
-                    .assertAccepts("application/json\napplication/vnd.github.sailor-v-preview+json");
-
-            if ("{\n\n}".equals(body)) throw new WebApplicationException(418);
-
-            // Assert the client sends the authorization header github will need
-            if (!authorization.contains("token")) throw new WebApplicationException(401);
-            if (!authorization.contains("23456789dfghjklkjhgfdsdfghuiytrewertyui")) throw new WebApplicationException(401);
-
-            JsonAsserts.assertJsonb("{\n" +
-                    "  \"maintainer_can_modify\":true,\n" +
-                    "  \"base\":\"master\",\n" +
-                    "  \"body\":\"Let's get this done!\",\n" +
-                    "  \"draft\":true,\n" +
-                    "  \"head\":\"fancyorg:critical-fixes\",\n" +
-                    "  \"title\":\"This is awesome\"\n" +
-                    "}", body);
-
-            return Response.ok().build();
-        }
-
-        public static void assertAccepts(final String expected, final HttpServletRequest request) {
-            final List<String> accepts = Arrays.asList(request.getHeader("accept").split(" *, *"));
-            accepts.sort(String::compareTo);
-
-            assertEquals(expected, join("\n", accepts));
         }
 
         public static URI run() throws Exception {

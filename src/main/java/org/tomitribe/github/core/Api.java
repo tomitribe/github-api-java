@@ -160,7 +160,11 @@ public class Api {
 
         responses.accept(content);
 
-        return JsonMarshalling.unmarshal(request.getResponseType(), content);
+        if (content == null || content.length() == 0) {
+            return null;
+        } else {
+            return JsonMarshalling.unmarshal(request.getResponseType(), content);
+        }
     }
 
     public <Page, Item> Stream<Item> stream(final Request<Page> request, final Function<Page, List<Item>> getItems) {
