@@ -69,8 +69,22 @@ class ClientHandler implements InvocationHandler {
 
         final List<Param<Field>> fields = new ArrayList<>();
 
+        // TODO support http entities
+        final String body;
+
         if (unknown.size() == 1) {
-            fields.addAll(Param.fromFields(unknown.get(0)));
+            final Object annotatedObject = unknown.get(0);
+            fields.addAll(Param.fromFields(annotatedObject));
+            final boolean hasContent = fields.stream()
+                    .anyMatch(param -> param.getType().equals(Param.Type.BODY));
+
+            if (hasContent) {
+                body = JsonMarshalling.toFormattedJson(annotatedObject);
+            } else {
+                body = null;
+            }
+        } else {
+            body = null;
         }
 
         final Map<String, Object> pathParams = mapParams(params, fields, Param.Type.PATH);
@@ -89,9 +103,6 @@ class ClientHandler implements InvocationHandler {
         }
 
         headerParams.put("accept", Join.join(", ", accept));
-
-        // TODO support http entities
-        final String body = null;
 
         if (method.getReturnType().equals(Void.class)) {
             final Request<?> request = new Request<>(path, body, queryParams, headerParams, pathParams);
