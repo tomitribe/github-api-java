@@ -18,20 +18,27 @@ package org.tomitribe.github.client;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import org.tomitribe.github.model.CodeSearchResultItem;
+import org.tomitribe.github.model.CodeSearchResultItemsPage;
+import org.tomitribe.github.model.CommitSearchResultItem;
+import org.tomitribe.github.model.CommitSearchResultItemsPage;
+import org.tomitribe.github.model.IssueSearchResultItem;
+import org.tomitribe.github.model.IssueSearchResultItemsPage;
+import org.tomitribe.github.model.LabelSearchResultItem;
+import org.tomitribe.github.model.LabelSearchResultItemsPage;
+import org.tomitribe.github.model.RepoSearchResultItem;
+import org.tomitribe.github.model.RepoSearchResultItemsPage;
 import org.tomitribe.github.model.SearchCode;
-import org.tomitribe.github.model.SearchCodeResponse;
 import org.tomitribe.github.model.SearchCommits;
-import org.tomitribe.github.model.SearchCommitsResponse;
 import org.tomitribe.github.model.SearchIssuesAndPullRequests;
-import org.tomitribe.github.model.SearchIssuesAndPullRequestsResponse;
 import org.tomitribe.github.model.SearchLabels;
-import org.tomitribe.github.model.SearchLabelsResponse;
 import org.tomitribe.github.model.SearchRepositories;
-import org.tomitribe.github.model.SearchRepositoriesResponse;
 import org.tomitribe.github.model.SearchTopics;
-import org.tomitribe.github.model.SearchTopicsResponse;
 import org.tomitribe.github.model.SearchUsers;
-import org.tomitribe.github.model.SearchUsersResponse;
+import org.tomitribe.github.model.TopicSearchResultItem;
+import org.tomitribe.github.model.TopicSearchResultItemsPage;
+import org.tomitribe.github.model.UserSearchResultItem;
+import org.tomitribe.github.model.UserSearchResultItemsPage;
 
 public interface SearchClient {
 
@@ -41,7 +48,8 @@ public interface SearchClient {
     @Docs("https://developer.github.com/v3/search/#search-code")
     @EnabledForGithubApps
     @Category("search")
-    SearchCodeResponse searchCode(final SearchCode searchCode);
+    @Paged(CodeSearchResultItemsPage.class)
+    Stream<CodeSearchResultItem> searchCode(final SearchCode searchCode);
 
     @GET
     @Path("/search/commits")
@@ -50,7 +58,8 @@ public interface SearchClient {
     @EnabledForGithubApps
     @Preview("cloak")
     @Category("search")
-    SearchCommitsResponse searchCommits(final SearchCommits searchCommits);
+    @Paged(CommitSearchResultItemsPage.class)
+    Stream<CommitSearchResultItem> searchCommits(final SearchCommits searchCommits);
 
     @GET
     @Path("/search/issues")
@@ -58,7 +67,8 @@ public interface SearchClient {
     @Docs("https://developer.github.com/v3/search/#search-issues-and-pull-requests")
     @EnabledForGithubApps
     @Category("search")
-    SearchIssuesAndPullRequestsResponse searchIssuesAndPullRequests(final SearchIssuesAndPullRequests searchIssuesAndPullRequests);
+    @Paged(IssueSearchResultItemsPage.class)
+    Stream<IssueSearchResultItem> searchIssuesAndPullRequests(final SearchIssuesAndPullRequests searchIssuesAndPullRequests);
 
     @GET
     @Path("/search/labels")
@@ -66,7 +76,8 @@ public interface SearchClient {
     @Docs("https://developer.github.com/v3/search/#search-labels")
     @EnabledForGithubApps
     @Category("search")
-    SearchLabelsResponse searchLabels(final SearchLabels searchLabels);
+    @Paged(LabelSearchResultItemsPage.class)
+    Stream<LabelSearchResultItem> searchLabels(final SearchLabels searchLabels);
 
     @GET
     @Path("/search/repositories")
@@ -75,7 +86,8 @@ public interface SearchClient {
     @EnabledForGithubApps
     @Preview("mercy")
     @Category("search")
-    SearchRepositoriesResponse searchRepositories(final SearchRepositories searchRepositories);
+    @Paged(RepoSearchResultItemsPage.class)
+    Stream<RepoSearchResultItem> searchRepositories(final SearchRepositories searchRepositories);
 
     @GET
     @Path("/search/topics")
@@ -84,7 +96,8 @@ public interface SearchClient {
     @EnabledForGithubApps
     @Preview("mercy")
     @Category("search")
-    SearchTopicsResponse searchTopics(final SearchTopics searchTopics);
+    @Paged(TopicSearchResultItemsPage.class)
+    Stream<TopicSearchResultItem> searchTopics(final SearchTopics searchTopics);
 
     @GET
     @Path("/search/users")
@@ -92,5 +105,6 @@ public interface SearchClient {
     @Docs("https://developer.github.com/v3/search/#search-users")
     @EnabledForGithubApps
     @Category("search")
-    SearchUsersResponse searchUsers(final SearchUsers searchUsers);
+    @Paged(UserSearchResultItemsPage.class)
+    Stream<UserSearchResultItem> searchUsers(final SearchUsers searchUsers);
 }

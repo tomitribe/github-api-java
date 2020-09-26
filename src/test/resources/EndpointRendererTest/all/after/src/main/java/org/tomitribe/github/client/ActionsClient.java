@@ -24,6 +24,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import org.tomitribe.github.model.ActionsPublicKey;
 import org.tomitribe.github.model.ActionsSecret;
+import org.tomitribe.github.model.ActionsSecretsPage;
 import org.tomitribe.github.model.AddSelectedRepositoryToOrganizationSecret;
 import org.tomitribe.github.model.Artifact;
 import org.tomitribe.github.model.ArtifactsPage;
@@ -71,11 +72,11 @@ import org.tomitribe.github.model.ListWorkflowRunArtifacts;
 import org.tomitribe.github.model.ListWorkflowRuns;
 import org.tomitribe.github.model.ListWorkflowRunsForRepository;
 import org.tomitribe.github.model.OrganizationActionsSecret;
+import org.tomitribe.github.model.OrganizationActionsSecretsPage;
 import org.tomitribe.github.model.RemoveSelectedRepositoryFromOrganizationSecret;
 import org.tomitribe.github.model.Runner;
 import org.tomitribe.github.model.RunnerApplication;
 import org.tomitribe.github.model.RunnersPage;
-import org.tomitribe.github.model.SecretsPage;
 import org.tomitribe.github.model.SetSelectedRepositoriesForOrganizationSecret;
 import org.tomitribe.github.model.Workflow;
 import org.tomitribe.github.model.WorkflowRun;
@@ -615,7 +616,7 @@ public interface ActionsClient {
     @EnabledForGithubApps
     @Category("actions")
     @Subcategory("secrets")
-    @Paged(SecretsPage.class)
+    @Paged(OrganizationActionsSecretsPage.class)
     Stream<OrganizationActionsSecret> listOrganizationSecrets(final ListOrganizationSecrets listOrganizationSecrets);
 
     @GET
@@ -625,7 +626,7 @@ public interface ActionsClient {
     @EnabledForGithubApps
     @Category("actions")
     @Subcategory("secrets")
-    @Paged(SecretsPage.class)
+    @Paged(OrganizationActionsSecretsPage.class)
     Stream<OrganizationActionsSecret> listOrganizationSecrets(@PathParam("org") final String org);
 
     @GET
@@ -635,7 +636,7 @@ public interface ActionsClient {
     @EnabledForGithubApps
     @Category("actions")
     @Subcategory("secrets")
-    @Paged(SecretsPage.class)
+    @Paged(ActionsSecretsPage.class)
     Stream<ActionsSecret> listRepositorySecrets(final ListRepositorySecrets listRepositorySecrets);
 
     @GET
@@ -645,7 +646,7 @@ public interface ActionsClient {
     @EnabledForGithubApps
     @Category("actions")
     @Subcategory("secrets")
-    @Paged(SecretsPage.class)
+    @Paged(ActionsSecretsPage.class)
     Stream<ActionsSecret> listRepositorySecrets(@PathParam("owner") final String owner, @PathParam("repo") final String repo);
 
     @GET

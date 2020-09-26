@@ -71,6 +71,11 @@ public class EndpointRendererTest {
     }
 
     @Test
+    public void returnPagedStreamUnknown() throws Exception {
+        assertScenario(Scenario.get("returnPagedStreamUnknown"));
+    }
+
+    @Test
     public void all() throws Exception {
         assertScenario(Scenario.get("all"));
     }

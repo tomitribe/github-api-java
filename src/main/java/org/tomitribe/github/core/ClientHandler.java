@@ -74,7 +74,6 @@ class ClientHandler implements InvocationHandler {
 
         final List<Param<Field>> fields = new ArrayList<>();
 
-        // TODO support http entities
         final String body;
 
         if (unknown.size() == 1) {

@@ -34,11 +34,9 @@ import org.tomitribe.github.gen.openapi.Preview;
 import org.tomitribe.github.gen.openapi.Response;
 import org.tomitribe.github.gen.openapi.Schema;
 import org.tomitribe.github.gen.util.Words;
-import org.tomitribe.util.Strings;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
@@ -69,7 +67,7 @@ public class EndpointGenerator {
         this.resolver = new ResolveReferences(componentIndex);
 
         modelGenerator.getClasses().forEach(resolver::resolve);
-        
+
         final Map<String, List<EndpointMethod>> categories = openApi.getMethods()
                 .filter(this::isSupported)
                 .map(this::createMethod)
@@ -222,7 +220,7 @@ public class EndpointGenerator {
         if (isPaged(ok)) {
             clazz.setPaged(true);
         }
-        
+
         return clazz;
     }
 
@@ -233,11 +231,21 @@ public class EndpointGenerator {
         } else {
             final Field items = getPagedItem(clazz);
 
-            final String pageName = Strings.ucfirst(items.getName()) + "Page";
+            final String pageName = plural(items.getType().getSimpleName()) + "Page";
 
             clazz.setName(new Name(modelPackage, pageName));
             clazz.setPaged(true);
         }
+    }
+
+    private String plural(final String name) {
+        if (name.endsWith("y")) {
+            return name.replaceAll("y$", "ies");
+        }
+        if (name.endsWith("s")) {
+            return name + "es";
+        }
+        return name + "s";
     }
 
     public static Field getPagedItem(final Clazz clazz) {
@@ -252,8 +260,33 @@ public class EndpointGenerator {
         return arrays.get(0);
     }
 
-    private boolean isPaged(final Response ok) {
-        return ok.getHeaders() != null && ok.getHeaders().get("Link") != null;
+    private boolean isPaged(final Response response) {
+        /*
+         * Our preferred way to detect if the response is paged is to have a `Link` header
+         * However, the openapi definition for github leaves it out in a few places.
+         */
+        if (response.getHeaders() != null && response.getHeaders().get("Link") != null) return true;
+
+        /*
+         * Our backup detection is if the class as a field called 'items' that is an array,
+         * another field called `total_count` which is an int.
+         */
+        if (response.getContent() == null) return false;
+
+        final Content content = response.getContent().get("application/json");
+        if (content == null) return false;
+        if (content.getSchema() == null) return false;
+        if (content.getSchema().getProperties() == null) return false;
+        if (content.getSchema().getProperties().get("items") == null) return false;
+        if (content.getSchema().getProperties().get("total_count") == null) return false;
+
+        final Schema page = content.getSchema();
+        final Schema items = page.getProperties().get("items");
+        final Schema totalCount = page.getProperties().get("total_count");
+
+        if (!items.getType().equals("array")) return false;
+        if (!totalCount.getType().equals("integer")) return false;
+        return true;
     }
 
     private boolean shouldHaveName(final Clazz clazz) {
