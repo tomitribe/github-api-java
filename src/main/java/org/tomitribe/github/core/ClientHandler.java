@@ -16,6 +16,7 @@
  */
 package org.tomitribe.github.core;
 
+import org.tomitribe.github.client.Paged;
 import org.tomitribe.github.client.Preview;
 import org.tomitribe.github.client.Previews;
 import org.tomitribe.util.Join;
@@ -31,13 +32,17 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
 import java.lang.reflect.Parameter;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -111,10 +116,59 @@ class ClientHandler implements InvocationHandler {
         }
 
         if (method.getReturnType().equals(Stream.class)) {
-            final Class<?> streamType = Generics.getReturnType(method).getClass();
-            final Request<?> request = new Request<>(path, body, queryParams, headerParams, pathParams).response(streamType);
-            final Function<Request<?>, Object> clientMethod = getRequestMethod(method);
-            return clientMethod.apply(request);
+            final Paged paged = method.getAnnotation(Paged.class);
+            final Class<?> pageType = paged.value();
+            final Class<?> streamType = (Class<?>) Generics.getReturnType(method);
+            final Request<?> request = new Request<>(path, body, queryParams, headerParams, pathParams).response(pageType);
+
+            if (pageType.isArray()) {
+                return client.stream(request, page -> Arrays.asList((Object[]) page));
+            } else {
+                final Optional<Method> arrayReturn = Stream.of(pageType.getMethods())
+                        .filter(method1 -> method1.getReturnType().isArray())
+                        .filter(method1 -> method1.getReturnType().getComponentType().equals(streamType))
+                        .filter(method1 -> method1.getParameters().length == 0)
+                        .filter(method1 -> Modifier.isPublic(method1.getModifiers()))
+                        .sorted(Comparator.comparing(Method::getName))
+                        .findFirst();
+
+                if (arrayReturn.isPresent()) {
+                    final Method getItemsArray = arrayReturn.get();
+                    return client.stream(request, page -> {
+                        try {
+                            final Object[] items = (Object[]) getItemsArray.invoke(page);
+                            return Arrays.asList(items);
+                        } catch (final IllegalAccessException e) {
+                            throw new IllegalStateException("Page items cannot be accessed via: " + getItemsArray, e);
+                        } catch (InvocationTargetException e) {
+                            throw new IllegalStateException("Page items cannot be accessed via: " + getItemsArray, e.getCause());
+                        }
+                    });
+                }
+
+                final Optional<Method> listReturn = Stream.of(pageType.getMethods())
+                        .filter(method1 -> List.class.isAssignableFrom(method1.getReturnType()))
+                        .filter(method1 -> Generics.getReturnType(method1).equals(streamType))
+                        .filter(method1 -> method1.getParameters().length == 0)
+                        .filter(method1 -> Modifier.isPublic(method1.getModifiers()))
+                        .sorted(Comparator.comparing(Method::getName))
+                        .findFirst();
+
+                if (listReturn.isPresent()) {
+                    final Method getItemsList = listReturn.get();
+                    return client.stream(request, page -> {
+                        try {
+                            return (List<?>) getItemsList.invoke(page);
+                        } catch (final IllegalAccessException e) {
+                            throw new IllegalStateException("Page items cannot be accessed via: " + getItemsList, e);
+                        } catch (InvocationTargetException e) {
+                            throw new IllegalStateException("Page items cannot be accessed via: " + getItemsList, e.getCause());
+                        }
+                    });
+                }
+
+                throw new InvalidMethodSignatureException("Unsupported Stream method", method);
+            }
         }
 
         final Class<?> returnType = method.getReturnType();
