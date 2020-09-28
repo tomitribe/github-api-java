@@ -22,6 +22,7 @@ import org.tomitribe.github.gen.code.endpoint.EndpointMethod;
 import org.tomitribe.github.gen.code.model.ArrayClazz;
 import org.tomitribe.github.gen.code.model.Clazz;
 import org.tomitribe.github.gen.code.model.ClazzReference;
+import org.tomitribe.github.gen.code.model.Example;
 import org.tomitribe.github.gen.code.model.Field;
 import org.tomitribe.github.gen.code.model.Name;
 import org.tomitribe.github.gen.code.model.VoidClazz;
@@ -105,6 +106,8 @@ public class EndpointGenerator {
 
         /*
          * If we don't have response information, we can't do anything
+         *
+         * Does not appear to skip any endpoints
          */
         if (method.getResponses() == null) return false;
 
@@ -112,6 +115,15 @@ public class EndpointGenerator {
          * If there are no 200 range responses, we don't currently support it
          * There are some that legitimately return 302 redirects, which we
          * should add support for in future versions.
+         *
+         * Skips
+         * migrations/download-archive-for-org
+         * actions/download-artifact
+         * actions/download-job-logs-for-workflow-run
+         * actions/download-workflow-run-logs
+         * repos/download-tarball-archive
+         * repos/download-zipball-archive
+         * migrations/get-archive-for-authenticated-user
          */
         if (method.getResponses().keySet().stream().noneMatch(s -> s.startsWith("2"))) return false;
 
@@ -121,10 +133,41 @@ public class EndpointGenerator {
          *
          * There are API calls that return binary data like zips, which we should
          * add support for in future versions.
+         *
+         * Skips:
+         * markdown/render
+         * markdown/render-raw
+         * activity/mark-thread-as-read
+         * meta/get-octocat
+         * actions/cancel-workflow-run
+         * actions/re-run-workflow
+         * repos/get-pull-request-review-protection
+         * checks/rerequest-suite
+         * activity/mark-repo-notifications-as-read
+         * pulls/remove-requested-reviewers
+         * scim/list-provisioned-identities
+         * scim/provision-and-invite-user
+         * scim/get-provisioning-information-for-user
+         * scim/update-attribute-for-user
+         * scim/set-information-for-provisioned-user
+         * meta/get-zen
          */
         if (!returnsVoid(method) && !returnsApplicationJson(method)) return false;
 
+        /*
+         * If the request body is not application/json we can't support it yet.
+         *
+         * Skips:
+         * repos/upload-release-asset
+         */
+        if (method.getRequestBody() != null && !acceptsApplicationJson(method)) return false;
+
         return true;
+    }
+
+    private boolean acceptsApplicationJson(final Method method) {
+        return method.getRequestBody().getContent().keySet().stream()
+                .anyMatch(s -> s.equals("application/json"));
     }
 
     private boolean returnsApplicationJson(final Method method) {
@@ -146,7 +189,7 @@ public class EndpointGenerator {
         final String methodName = asMethodName(method.getSummary());
         final String requestClassName = asRequestName(method.getSummary());
 
-        final Clazz requestClass = generateRequestClass(requestClassName, method.getParameters());
+        final Clazz requestClass = generateRequestClass(requestClassName, method);
         final Clazz responseClass = generateResponseClass(method);
 
         final EndpointMethod.Builder builder = EndpointMethod.builder()
@@ -217,11 +260,30 @@ public class EndpointGenerator {
 
         final Clazz clazz = modelGenerator.build(jsonResponse.getSchema());
 
+        processExamples(jsonResponse, clazz);
+
         if (isPaged(ok)) {
             clazz.setPaged(true);
         }
 
         return clazz;
+    }
+
+    private static void processExamples(final Content jsonResponse, final Clazz clazz) {
+        if (jsonResponse.getExamples() != null) {
+            jsonResponse.getExamples().values().stream()
+                    .map(Map.class::cast)
+                    .map(map -> map.get("$ref"))
+                    .filter(Objects::nonNull)
+                    .map(String.class::cast)
+                    .map(s -> s.replaceAll("^#/components/examples/", ""))
+                    .map(s -> Example.builder().name(s).build())
+                    .forEach(clazz.getExamples()::add);
+        }
+
+        if (jsonResponse.getExample() != null) {
+            clazz.getExamples().add(Example.builder().content(jsonResponse.getExample()).build());
+        }
     }
 
     private void paged(final Clazz clazz) {
@@ -295,24 +357,71 @@ public class EndpointGenerator {
         return true;
     }
 
-    private Clazz generateRequestClass(final String requestClassName, final List<Parameter> parameters) {
-        if (parameters == null) return new VoidClazz();
-
-        final Clazz.Builder clazz = Clazz.builder().name(modelPackage + "." + requestClassName);
-        for (final Parameter parameter : parameters) {
-            final Schema schema = getSchema(parameter);
-
-            final String name = Optional.ofNullable(parameter.getName())
-                    .orElse(schema.getName());
-            final Field field = modelGenerator.getField(clazz, name, schema);
-
-            if (parameter.getIn() != null) {
-                final Field.In in = Field.In.valueOf(parameter.getIn().toUpperCase());
-                field.setIn(in);
+    private Clazz generateRequestClass(final String requestClassName, final Method method) {
+        // It has both parameters and a request body
+        if (method.getRequestBody() != null && method.getParameters() != null && method.getParameters().size() > 0) {
+            final Clazz clazz;
+            {
+                final Map<String, Content> content = method.getRequestBody().getContent();
+                final Content applicationJson = content.get("application/json");
+                final Schema schema = applicationJson.getSchema();
+                clazz = modelGenerator.build(schema);
+                if (clazz.getName() == null) {
+                    clazz.setName(new Name(modelPackage, requestClassName));
+                }
             }
-            clazz.field(field);
+
+            final Clazz.Builder builder = Clazz.builder();
+            for (final Parameter parameter : method.getParameters()) {
+                final Schema schema = getSchema(parameter);
+
+                final String name = Optional.ofNullable(parameter.getName())
+                        .orElse(schema.getName());
+                final Field field = modelGenerator.getField(builder, name, schema);
+
+                if (parameter.getIn() != null) {
+                    final Field.In in = Field.In.valueOf(parameter.getIn().toUpperCase());
+                    field.setIn(in);
+                }
+                clazz.getFields().add(field);
+            }
+
+            clazz.getInnerClasses().addAll(builder.getInnerClasses());
+
+            return clazz;
         }
-        return clazz.build();
+
+        if (method.getRequestBody() != null) {
+            final Map<String, Content> content = method.getRequestBody().getContent();
+            final Content applicationJson = content.get("application/json");
+            final Schema schema = applicationJson.getSchema();
+            final Clazz clazz = modelGenerator.build(schema);
+            if (clazz.getName() == null) {
+                clazz.setName(new Name(modelPackage, requestClassName));
+            }
+            return clazz;
+        }
+
+        if (method.getParameters() != null) {
+
+            final Clazz.Builder clazz = Clazz.builder().name(modelPackage + "." + requestClassName);
+            for (final Parameter parameter : method.getParameters()) {
+                final Schema schema = getSchema(parameter);
+
+                final String name = Optional.ofNullable(parameter.getName())
+                        .orElse(schema.getName());
+                final Field field = modelGenerator.getField(clazz, name, schema);
+
+                if (parameter.getIn() != null) {
+                    final Field.In in = Field.In.valueOf(parameter.getIn().toUpperCase());
+                    field.setIn(in);
+                }
+                clazz.field(field);
+            }
+            return clazz.build();
+        }
+
+        return new VoidClazz();
     }
 
     private Schema getSchema(final Parameter parameter) {

@@ -46,7 +46,9 @@ public class Clazz {
     private final List<Clazz> innerClasses = new ArrayList<>();
     @JsonbTransient
     private boolean paged;
-    
+    @JsonbTransient
+    private final List<Example> examples = new ArrayList<>();
+
     public Clazz(final Id id, final Name name, final String title, final Clazz parent) {
         this.id = id != null ? id : Id.next();
         this.name = name;

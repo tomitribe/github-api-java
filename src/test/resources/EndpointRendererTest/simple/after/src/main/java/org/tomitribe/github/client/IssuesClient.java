@@ -35,14 +35,6 @@ public interface IssuesClient {
     @Category("issues")
     Issue createIssue(final CreateIssue createIssue);
 
-    @POST
-    @Path("/repos/{owner}/{repo}/issues")
-    @OperationId("issues/create")
-    @Docs("https://developer.github.com/v3/issues/#create-an-issue")
-    @EnabledForGithubApps
-    @Category("issues")
-    Issue createIssue(@PathParam("owner") final String owner, @PathParam("repo") final String repo);
-
     @GET
     @Path("/repos/{owner}/{repo}/issues")
     @OperationId("issues/list-for-repo")

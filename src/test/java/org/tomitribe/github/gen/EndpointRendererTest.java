@@ -17,8 +17,6 @@
 package org.tomitribe.github.gen;
 
 import org.junit.Test;
-import org.tomitribe.github.gen.code.endpoint.Endpoint;
-import org.tomitribe.github.gen.code.endpoint.EndpointRenderer;
 import org.tomitribe.github.gen.openapi.OpenApi;
 import org.tomitribe.util.Files;
 import org.tomitribe.util.IO;
@@ -29,7 +27,6 @@ import org.tomitribe.util.dir.Name;
 import java.io.File;
 import java.io.IOException;
 import java.io.UncheckedIOException;
-import java.util.List;
 
 import static org.tomitribe.github.gen.ProjectAsserts.assertProject;
 
@@ -48,6 +45,11 @@ public class EndpointRendererTest {
     @Test
     public void noParameters() throws Exception {
         assertScenario(Scenario.get("noParameters"));
+    }
+
+    @Test
+    public void requestBody() throws Exception {
+        assertScenario(Scenario.get("requestBody"));
     }
 
     @Test
@@ -76,21 +78,28 @@ public class EndpointRendererTest {
     }
 
     @Test
+    public void requestBodyWithParams() throws Exception {
+        assertScenario(Scenario.get("requestBodyWithParams"));
+    }
+
+    @Test
     public void all() throws Exception {
         assertScenario(Scenario.get("all"));
     }
 
     private void assertScenario(final Scenario scenario) throws IOException {
-        final OpenApi openApi = scenario.getOpenApi();
-
-        final EndpointGenerator endpointGenerator = new EndpointGenerator();
-        final List<Endpoint> endpointList = endpointGenerator.build(openApi);
 
         final Project actual = Project.from(Files.tmpdir());
-        final EndpointRenderer renderer = new EndpointRenderer(actual, "org.tomitribe.github.client", "org.tomitribe.github.model");
-        for (final Endpoint endpoint : endpointList) {
-            renderer.render(endpoint);
-        }
+
+        Generator.builder()
+                .openApi(scenario.getOpenApi())
+                .project(actual)
+                .generateClient(true)
+                .generateModel(scenario.generateModels())
+                .clientPackage("org.tomitribe.github.client")
+                .modelPackage("org.tomitribe.github.model")
+                .build()
+                .generate();
 
         final Project expected = scenario.after();
 
@@ -100,6 +109,10 @@ public class EndpointRendererTest {
     public interface Scenario extends Dir {
         @Name("openapi.json")
         File openapiJson();
+
+        default boolean generateModels() {
+            return after().src().main().java().model().get().listFiles().length > 0;
+        }
 
         default OpenApi getOpenApi() {
             try {

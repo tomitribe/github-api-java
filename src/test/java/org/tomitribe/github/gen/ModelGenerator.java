@@ -72,8 +72,6 @@ public class ModelGenerator {
                 subclass.setName(clazz.getName());
                 return subclass;
             }
-
-            System.out.println(allOf);
         }
 
         if (schema.getProperties() != null) {
@@ -175,7 +173,6 @@ public class ModelGenerator {
             final String singularName = name.replaceAll("s$", "");
             schema.setName(singularName);
             final Clazz mapType = build(schema);
-            mapType.getId().addReference(clazz.getId());
             return Field.field(name, mapType.getName()).map(true).build();
         }
 
@@ -186,7 +183,6 @@ public class ModelGenerator {
         if ("object".equals(type)) {
             value.setName(name);
             final Clazz referencedClazz = build(value);
-            referencedClazz.getId().addReference(clazz.getId());
             return Field.field(name, referencedClazz.getName()).build();
         }
 

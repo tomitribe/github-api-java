@@ -20,12 +20,14 @@ import lombok.Getter;
 import org.tomitribe.github.gen.code.model.Clazz;
 import org.tomitribe.github.gen.code.model.ClazzReference;
 import org.tomitribe.github.gen.code.model.Field;
+import org.tomitribe.github.gen.code.model.Name;
 import org.tomitribe.github.gen.openapi.Content;
 import org.tomitribe.github.gen.openapi.Example;
 import org.tomitribe.github.gen.openapi.OpenApi;
 import org.tomitribe.github.gen.openapi.Parameter;
 import org.tomitribe.github.gen.openapi.Response;
 import org.tomitribe.github.gen.openapi.Schema;
+import org.tomitribe.github.gen.util.Words;
 
 import java.util.Collections;
 import java.util.HashMap;
@@ -74,7 +76,7 @@ public class ComponentIndex {
             final ClazzReference clazzReference = (ClazzReference) clazz;
             return resolveClazz(clazzReference.getReference());
         }
-        
+
         return clazz;
     }
 
@@ -156,6 +158,10 @@ public class ComponentIndex {
             if (jsonResponse == null) continue;
 
             final Clazz clazz = modelGenerator.build(jsonResponse.getSchema());
+            if (clazz.getName() == null) {
+                final String typeName = Words.getTypeName(name);
+                clazz.setName(new Name(modelGenerator.getPackageName(), typeName));
+            }
             final String responseId = getResponseId(name);
             clazz.addComponentId(responseId);
             map.put(responseId, clazz);

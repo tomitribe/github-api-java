@@ -570,6 +570,72 @@
           "fields": [
             {
               "collection": false,
+              "in": "BODY",
+              "jsonName": "title",
+              "map": false,
+              "name": "title",
+              "type": {
+                "packageName": "java.lang",
+                "simpleName": "String"
+              }
+            },
+            {
+              "collection": false,
+              "in": "BODY",
+              "jsonName": "body",
+              "map": false,
+              "name": "body",
+              "type": {
+                "packageName": "java.lang",
+                "simpleName": "String"
+              }
+            },
+            {
+              "collection": false,
+              "in": "BODY",
+              "jsonName": "assignee",
+              "map": false,
+              "name": "assignee",
+              "type": {
+                "packageName": "java.lang",
+                "simpleName": "String"
+              }
+            },
+            {
+              "collection": false,
+              "in": "BODY",
+              "jsonName": "milestone",
+              "map": false,
+              "name": "milestone",
+              "type": {
+                "packageName": "java.lang",
+                "simpleName": "Integer"
+              }
+            },
+            {
+              "collection": true,
+              "in": "BODY",
+              "jsonName": "labels",
+              "map": false,
+              "name": "labels",
+              "type": {
+                "packageName": "java.lang",
+                "simpleName": "Object"
+              }
+            },
+            {
+              "collection": true,
+              "in": "BODY",
+              "jsonName": "assignees",
+              "map": false,
+              "name": "assignees",
+              "type": {
+                "packageName": "java.lang",
+                "simpleName": "String"
+              }
+            },
+            {
+              "collection": false,
               "in": "PATH",
               "jsonName": "owner",
               "map": false,

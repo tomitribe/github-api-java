@@ -78,6 +78,10 @@ public class EndpointRenderer {
         this.clazzRenderer = new ClazzRenderer(project, modelPackage);
     }
 
+    public void render(final Clazz clazz) {
+        clazzRenderer.render(clazz);
+    }
+    
     public void render(final Endpoint endpoint) {
         final String className = endpoint.getClassName();
         final Package aPackage = project.src().main().java().packageName(packageName);

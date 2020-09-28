@@ -69,4 +69,9 @@ public class Path {
                 options
         ).filter(Objects::nonNull);
     }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }
