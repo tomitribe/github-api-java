@@ -51,16 +51,6 @@ public interface ChecksClient {
     CheckRun createCheckRun(final CreateCheckRun createCheckRun);
 
     @POST
-    @Path("/repos/{owner}/{repo}/check-runs")
-    @OperationId("checks/create")
-    @Docs("https://developer.github.com/v3/checks/runs/#create-a-check-run")
-    @EnabledForGithubApps
-    @Preview("antiope")
-    @Category("checks")
-    @Subcategory("runs")
-    CheckRun createCheckRun(@PathParam("owner") final String owner, @PathParam("repo") final String repo);
-
-    @POST
     @Path("/repos/{owner}/{repo}/check-suites")
     @OperationId("checks/create-suite")
     @Docs("https://developer.github.com/v3/checks/suites/#create-a-check-suite")
@@ -69,16 +59,6 @@ public interface ChecksClient {
     @Category("checks")
     @Subcategory("suites")
     CheckSuite createCheckSuite(final CreateCheckSuite createCheckSuite);
-
-    @POST
-    @Path("/repos/{owner}/{repo}/check-suites")
-    @OperationId("checks/create-suite")
-    @Docs("https://developer.github.com/v3/checks/suites/#create-a-check-suite")
-    @EnabledForGithubApps
-    @Preview("antiope")
-    @Category("checks")
-    @Subcategory("suites")
-    CheckSuite createCheckSuite(@PathParam("owner") final String owner, @PathParam("repo") final String repo);
 
     @GET
     @Path("/repos/{owner}/{repo}/check-runs/{check_run_id}")
@@ -219,16 +199,6 @@ public interface ChecksClient {
     CheckRun updateCheckRun(final UpdateCheckRun updateCheckRun);
 
     @PATCH
-    @Path("/repos/{owner}/{repo}/check-runs/{check_run_id}")
-    @OperationId("checks/update")
-    @Docs("https://developer.github.com/v3/checks/runs/#update-a-check-run")
-    @EnabledForGithubApps
-    @Preview("antiope")
-    @Category("checks")
-    @Subcategory("runs")
-    CheckRun updateCheckRun(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("check_run_id") final int checkRunId);
-
-    @PATCH
     @Path("/repos/{owner}/{repo}/check-suites/preferences")
     @OperationId("checks/set-suites-preferences")
     @Docs("https://developer.github.com/v3/checks/suites/#update-repository-preferences-for-check-suites")
@@ -237,14 +207,4 @@ public interface ChecksClient {
     @Category("checks")
     @Subcategory("suites")
     CheckSuitePreference updateRepositoryPreferencesForCheckSuites(final UpdateRepositoryPreferencesForCheckSuites updateRepositoryPreferencesForCheckSuites);
-
-    @PATCH
-    @Path("/repos/{owner}/{repo}/check-suites/preferences")
-    @OperationId("checks/set-suites-preferences")
-    @Docs("https://developer.github.com/v3/checks/suites/#update-repository-preferences-for-check-suites")
-    @EnabledForGithubApps
-    @Preview("antiope")
-    @Category("checks")
-    @Subcategory("suites")
-    CheckSuitePreference updateRepositoryPreferencesForCheckSuites(@PathParam("owner") final String owner, @PathParam("repo") final String repo);
 }

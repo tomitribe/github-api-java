@@ -121,16 +121,6 @@ public interface InteractionsClient {
     InteractionLimit setInteractionRestrictionsForOrganization(final SetInteractionRestrictionsForOrganization setInteractionRestrictionsForOrganization);
 
     @PUT
-    @Path("/orgs/{org}/interaction-limits")
-    @OperationId("interactions/set-restrictions-for-org")
-    @Docs("https://developer.github.com/v3/interactions/orgs/#set-interaction-restrictions-for-an-organization")
-    @EnabledForGithubApps
-    @Preview("sombra")
-    @Category("interactions")
-    @Subcategory("orgs")
-    InteractionLimit setInteractionRestrictionsForOrganization(@PathParam("org") final String org);
-
-    @PUT
     @Path("/repos/{owner}/{repo}/interaction-limits")
     @OperationId("interactions/set-restrictions-for-repo")
     @Docs("https://developer.github.com/v3/interactions/repos/#set-interaction-restrictions-for-a-repository")
@@ -139,14 +129,4 @@ public interface InteractionsClient {
     @Category("interactions")
     @Subcategory("repos")
     InteractionLimit setInteractionRestrictionsForRepository(final SetInteractionRestrictionsForRepository setInteractionRestrictionsForRepository);
-
-    @PUT
-    @Path("/repos/{owner}/{repo}/interaction-limits")
-    @OperationId("interactions/set-restrictions-for-repo")
-    @Docs("https://developer.github.com/v3/interactions/repos/#set-interaction-restrictions-for-a-repository")
-    @EnabledForGithubApps
-    @Preview("sombra")
-    @Category("interactions")
-    @Subcategory("repos")
-    InteractionLimit setInteractionRestrictionsForRepository(@PathParam("owner") final String owner, @PathParam("repo") final String repo);
 }

@@ -18,7 +18,6 @@ package org.tomitribe.github.client;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
-import org.tomitribe.github.model.GetEmojis;
 import org.tomitribe.github.model.GetEmojisResponse;
 
 public interface EmojisClient {
@@ -29,5 +28,5 @@ public interface EmojisClient {
     @Docs("https://developer.github.com/v3/emojis/#get-emojis")
     @EnabledForGithubApps
     @Category("emojis")
-    GetEmojisResponse getEmojis(final GetEmojis getEmojis);
+    GetEmojisResponse getEmojis();
 }

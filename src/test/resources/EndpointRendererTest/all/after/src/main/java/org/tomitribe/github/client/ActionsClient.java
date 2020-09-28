@@ -115,15 +115,6 @@ public interface ActionsClient {
     void createOrUpdateOrganizationSecret(final CreateOrUpdateOrganizationSecret createOrUpdateOrganizationSecret);
 
     @PUT
-    @Path("/orgs/{org}/actions/secrets/{secret_name}")
-    @OperationId("actions/create-or-update-org-secret")
-    @Docs("https://developer.github.com/v3/actions/secrets/#create-or-update-an-organization-secret")
-    @EnabledForGithubApps
-    @Category("actions")
-    @Subcategory("secrets")
-    void createOrUpdateOrganizationSecret(@PathParam("org") final String org, @PathParam("secret_name") final String secretName);
-
-    @PUT
     @Path("/repos/{owner}/{repo}/actions/secrets/{secret_name}")
     @OperationId("actions/create-or-update-repo-secret")
     @Docs("https://developer.github.com/v3/actions/secrets/#create-or-update-a-repository-secret")
@@ -131,15 +122,6 @@ public interface ActionsClient {
     @Category("actions")
     @Subcategory("secrets")
     void createOrUpdateRepositorySecret(final CreateOrUpdateRepositorySecret createOrUpdateRepositorySecret);
-
-    @PUT
-    @Path("/repos/{owner}/{repo}/actions/secrets/{secret_name}")
-    @OperationId("actions/create-or-update-repo-secret")
-    @Docs("https://developer.github.com/v3/actions/secrets/#create-or-update-a-repository-secret")
-    @EnabledForGithubApps
-    @Category("actions")
-    @Subcategory("secrets")
-    void createOrUpdateRepositorySecret(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("secret_name") final String secretName);
 
     @POST
     @Path("/orgs/{org}/actions/runners/registration-token")
@@ -221,15 +203,6 @@ public interface ActionsClient {
     @Category("actions")
     @Subcategory("workflows")
     void createWorkflowDispatchEvent(final CreateWorkflowDispatchEvent createWorkflowDispatchEvent);
-
-    @POST
-    @Path("/repos/{owner}/{repo}/actions/workflows/{workflow_id}/dispatches")
-    @OperationId("actions/create-workflow-dispatch")
-    @Docs("https://developer.github.com/v3/actions/workflows/#create-a-workflow-dispatch-event")
-    @EnabledForGithubApps
-    @Category("actions")
-    @Subcategory("workflows")
-    void createWorkflowDispatchEvent(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("workflow-id") final int workflowId);
 
     @DELETE
     @Path("/repos/{owner}/{repo}/actions/artifacts/{artifact_id}")
@@ -849,13 +822,4 @@ public interface ActionsClient {
     @Category("actions")
     @Subcategory("secrets")
     void setSelectedRepositoriesForOrganizationSecret(final SetSelectedRepositoriesForOrganizationSecret setSelectedRepositoriesForOrganizationSecret);
-
-    @PUT
-    @Path("/orgs/{org}/actions/secrets/{secret_name}/repositories")
-    @OperationId("actions/set-selected-repos-for-org-secret")
-    @Docs("https://developer.github.com/v3/actions/secrets/#set-selected-repositories-for-an-organization-secret")
-    @EnabledForGithubApps
-    @Category("actions")
-    @Subcategory("secrets")
-    void setSelectedRepositoriesForOrganizationSecret(@PathParam("org") final String org, @PathParam("secret_name") final String secretName);
 }

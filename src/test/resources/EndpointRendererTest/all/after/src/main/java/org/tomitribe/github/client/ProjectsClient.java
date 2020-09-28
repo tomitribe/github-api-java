@@ -68,16 +68,6 @@ public interface ProjectsClient {
     @Subcategory("collaborators")
     void addProjectCollaborator(final AddProjectCollaborator addProjectCollaborator);
 
-    @PUT
-    @Path("/projects/{project_id}/collaborators/{username}")
-    @OperationId("projects/add-collaborator")
-    @Docs("https://developer.github.com/v3/projects/collaborators/#add-project-collaborator")
-    @EnabledForGithubApps
-    @Preview("inertia")
-    @Category("projects")
-    @Subcategory("collaborators")
-    void addProjectCollaborator(@PathParam("project-id") final int projectId, @PathParam("username") final String username);
-
     @POST
     @Path("/orgs/{org}/projects")
     @OperationId("projects/create-for-org")
@@ -86,15 +76,6 @@ public interface ProjectsClient {
     @Preview("inertia")
     @Category("projects")
     Project createOrganizationProject(final CreateOrganizationProject createOrganizationProject);
-
-    @POST
-    @Path("/orgs/{org}/projects")
-    @OperationId("projects/create-for-org")
-    @Docs("https://developer.github.com/v3/projects/#create-an-organization-project")
-    @EnabledForGithubApps
-    @Preview("inertia")
-    @Category("projects")
-    Project createOrganizationProject(@PathParam("org") final String org);
 
     @POST
     @Path("/projects/columns/{column_id}/cards")
@@ -127,16 +108,6 @@ public interface ProjectsClient {
     ProjectColumn createProjectColumn(final CreateProjectColumn createProjectColumn);
 
     @POST
-    @Path("/projects/{project_id}/columns")
-    @OperationId("projects/create-column")
-    @Docs("https://developer.github.com/v3/projects/columns/#create-a-project-column")
-    @EnabledForGithubApps
-    @Preview("inertia")
-    @Category("projects")
-    @Subcategory("columns")
-    ProjectColumn createProjectColumn(@PathParam("project-id") final int projectId);
-
-    @POST
     @Path("/repos/{owner}/{repo}/projects")
     @OperationId("projects/create-for-repo")
     @Docs("https://developer.github.com/v3/projects/#create-a-repository-project")
@@ -144,15 +115,6 @@ public interface ProjectsClient {
     @Preview("inertia")
     @Category("projects")
     Project createRepositoryProject(final CreateRepositoryProject createRepositoryProject);
-
-    @POST
-    @Path("/repos/{owner}/{repo}/projects")
-    @OperationId("projects/create-for-repo")
-    @Docs("https://developer.github.com/v3/projects/#create-a-repository-project")
-    @EnabledForGithubApps
-    @Preview("inertia")
-    @Category("projects")
-    Project createRepositoryProject(@PathParam("owner") final String owner, @PathParam("repo") final String repo);
 
     @POST
     @Path("/user/projects")
@@ -436,16 +398,6 @@ public interface ProjectsClient {
     MoveProjectCardResponse moveProjectCard(final MoveProjectCard moveProjectCard);
 
     @POST
-    @Path("/projects/columns/cards/{card_id}/moves")
-    @OperationId("projects/move-card")
-    @Docs("https://developer.github.com/v3/projects/cards/#move-a-project-card")
-    @EnabledForGithubApps
-    @Preview("inertia")
-    @Category("projects")
-    @Subcategory("cards")
-    MoveProjectCardResponse moveProjectCard(@PathParam("card_id") final int cardId);
-
-    @POST
     @Path("/projects/columns/{column_id}/moves")
     @OperationId("projects/move-column")
     @Docs("https://developer.github.com/v3/projects/columns/#move-a-project-column")
@@ -454,16 +406,6 @@ public interface ProjectsClient {
     @Category("projects")
     @Subcategory("columns")
     MoveProjectColumnResponse moveProjectColumn(final MoveProjectColumn moveProjectColumn);
-
-    @POST
-    @Path("/projects/columns/{column_id}/moves")
-    @OperationId("projects/move-column")
-    @Docs("https://developer.github.com/v3/projects/columns/#move-a-project-column")
-    @EnabledForGithubApps
-    @Preview("inertia")
-    @Category("projects")
-    @Subcategory("columns")
-    MoveProjectColumnResponse moveProjectColumn(@PathParam("column_id") final int columnId);
 
     @DELETE
     @Path("/projects/{project_id}/collaborators/{username}")
@@ -496,16 +438,6 @@ public interface ProjectsClient {
     ProjectCard updateExistingProjectCard(final UpdateExistingProjectCard updateExistingProjectCard);
 
     @PATCH
-    @Path("/projects/columns/cards/{card_id}")
-    @OperationId("projects/update-card")
-    @Docs("https://developer.github.com/v3/projects/cards/#update-a-project-card")
-    @EnabledForGithubApps
-    @Preview("inertia")
-    @Category("projects")
-    @Subcategory("cards")
-    ProjectCard updateExistingProjectCard(@PathParam("card_id") final int cardId);
-
-    @PATCH
     @Path("/projects/columns/{column_id}")
     @OperationId("projects/update-column")
     @Docs("https://developer.github.com/v3/projects/columns/#update-a-project-column")
@@ -516,16 +448,6 @@ public interface ProjectsClient {
     ProjectColumn updateExistingProjectColumn(final UpdateExistingProjectColumn updateExistingProjectColumn);
 
     @PATCH
-    @Path("/projects/columns/{column_id}")
-    @OperationId("projects/update-column")
-    @Docs("https://developer.github.com/v3/projects/columns/#update-a-project-column")
-    @EnabledForGithubApps
-    @Preview("inertia")
-    @Category("projects")
-    @Subcategory("columns")
-    ProjectColumn updateExistingProjectColumn(@PathParam("column_id") final int columnId);
-
-    @PATCH
     @Path("/projects/{project_id}")
     @OperationId("projects/update")
     @Docs("https://developer.github.com/v3/projects/#update-a-project")
@@ -533,13 +455,4 @@ public interface ProjectsClient {
     @Preview("inertia")
     @Category("projects")
     Project updateProject(final UpdateProject updateProject);
-
-    @PATCH
-    @Path("/projects/{project_id}")
-    @OperationId("projects/update")
-    @Docs("https://developer.github.com/v3/projects/#update-a-project")
-    @EnabledForGithubApps
-    @Preview("inertia")
-    @Category("projects")
-    Project updateProject(@PathParam("project-id") final int projectId);
 }

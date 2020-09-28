@@ -83,15 +83,6 @@ public interface IssuesClient {
     IssueSimple addAssigneesToIssue(final AddAssigneesToIssue addAssigneesToIssue);
 
     @POST
-    @Path("/repos/{owner}/{repo}/issues/{issue_number}/assignees")
-    @OperationId("issues/add-assignees")
-    @Docs("https://developer.github.com/v3/issues/assignees/#add-assignees-to-an-issue")
-    @EnabledForGithubApps
-    @Category("issues")
-    @Subcategory("assignees")
-    IssueSimple addAssigneesToIssue(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("issue_number") final int issueNumber);
-
-    @POST
     @Path("/repos/{owner}/{repo}/issues/{issue_number}/labels")
     @OperationId("issues/add-labels")
     @Docs("https://developer.github.com/v3/issues/labels/#add-labels-to-an-issue")
@@ -99,15 +90,6 @@ public interface IssuesClient {
     @Category("issues")
     @Subcategory("labels")
     Stream<Label> addLabelsToIssue(final AddLabelsToIssue addLabelsToIssue);
-
-    @POST
-    @Path("/repos/{owner}/{repo}/issues/{issue_number}/labels")
-    @OperationId("issues/add-labels")
-    @Docs("https://developer.github.com/v3/issues/labels/#add-labels-to-an-issue")
-    @EnabledForGithubApps
-    @Category("issues")
-    @Subcategory("labels")
-    Stream<Label> addLabelsToIssue(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("issue_number") final int issueNumber);
 
     @GET
     @Path("/repos/{owner}/{repo}/assignees/{assignee}")
@@ -136,14 +118,6 @@ public interface IssuesClient {
     Issue createIssue(final CreateIssue createIssue);
 
     @POST
-    @Path("/repos/{owner}/{repo}/issues")
-    @OperationId("issues/create")
-    @Docs("https://developer.github.com/v3/issues/#create-an-issue")
-    @EnabledForGithubApps
-    @Category("issues")
-    Issue createIssue(@PathParam("owner") final String owner, @PathParam("repo") final String repo);
-
-    @POST
     @Path("/repos/{owner}/{repo}/issues/{issue_number}/comments")
     @OperationId("issues/create-comment")
     @Docs("https://developer.github.com/v3/issues/comments/#create-an-issue-comment")
@@ -151,15 +125,6 @@ public interface IssuesClient {
     @Category("issues")
     @Subcategory("comments")
     IssueComment createIssueComment(final CreateIssueComment createIssueComment);
-
-    @POST
-    @Path("/repos/{owner}/{repo}/issues/{issue_number}/comments")
-    @OperationId("issues/create-comment")
-    @Docs("https://developer.github.com/v3/issues/comments/#create-an-issue-comment")
-    @EnabledForGithubApps
-    @Category("issues")
-    @Subcategory("comments")
-    IssueComment createIssueComment(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("issue_number") final int issueNumber);
 
     @POST
     @Path("/repos/{owner}/{repo}/labels")
@@ -171,15 +136,6 @@ public interface IssuesClient {
     Label createLabel(final CreateLabel createLabel);
 
     @POST
-    @Path("/repos/{owner}/{repo}/labels")
-    @OperationId("issues/create-label")
-    @Docs("https://developer.github.com/v3/issues/labels/#create-a-label")
-    @EnabledForGithubApps
-    @Category("issues")
-    @Subcategory("labels")
-    Label createLabel(@PathParam("owner") final String owner, @PathParam("repo") final String repo);
-
-    @POST
     @Path("/repos/{owner}/{repo}/milestones")
     @OperationId("issues/create-milestone")
     @Docs("https://developer.github.com/v3/issues/milestones/#create-a-milestone")
@@ -187,15 +143,6 @@ public interface IssuesClient {
     @Category("issues")
     @Subcategory("milestones")
     Milestone createMilestone(final CreateMilestone createMilestone);
-
-    @POST
-    @Path("/repos/{owner}/{repo}/milestones")
-    @OperationId("issues/create-milestone")
-    @Docs("https://developer.github.com/v3/issues/milestones/#create-a-milestone")
-    @EnabledForGithubApps
-    @Category("issues")
-    @Subcategory("milestones")
-    Milestone createMilestone(@PathParam("owner") final String owner, @PathParam("repo") final String repo);
 
     @DELETE
     @Path("/repos/{owner}/{repo}/issues/comments/{comment_id}")
@@ -638,15 +585,6 @@ public interface IssuesClient {
     @Category("issues")
     void lockIssue(final LockIssue lockIssue);
 
-    @PUT
-    @Path("/repos/{owner}/{repo}/issues/{issue_number}/lock")
-    @OperationId("issues/lock")
-    @Docs("https://developer.github.com/v3/issues/#lock-an-issue")
-    @EnabledForGithubApps
-    @Preview("sailor-v")
-    @Category("issues")
-    void lockIssue(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("issue_number") final int issueNumber);
-
     @DELETE
     @Path("/repos/{owner}/{repo}/issues/{issue_number}/labels")
     @OperationId("issues/remove-all-labels")
@@ -675,15 +613,6 @@ public interface IssuesClient {
     IssueSimple removeAssigneesFromIssue(final RemoveAssigneesFromIssue removeAssigneesFromIssue);
 
     @DELETE
-    @Path("/repos/{owner}/{repo}/issues/{issue_number}/assignees")
-    @OperationId("issues/remove-assignees")
-    @Docs("https://developer.github.com/v3/issues/assignees/#remove-assignees-from-an-issue")
-    @EnabledForGithubApps
-    @Category("issues")
-    @Subcategory("assignees")
-    IssueSimple removeAssigneesFromIssue(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("issue_number") final int issueNumber);
-
-    @DELETE
     @Path("/repos/{owner}/{repo}/issues/{issue_number}/labels/{name}")
     @OperationId("issues/remove-label")
     @Docs("https://developer.github.com/v3/issues/labels/#remove-a-label-from-an-issue")
@@ -710,15 +639,6 @@ public interface IssuesClient {
     @Subcategory("labels")
     Stream<Label> setLabelsForIssue(final SetLabelsForIssue setLabelsForIssue);
 
-    @PUT
-    @Path("/repos/{owner}/{repo}/issues/{issue_number}/labels")
-    @OperationId("issues/set-labels")
-    @Docs("https://developer.github.com/v3/issues/labels/#set-labels-for-an-issue")
-    @EnabledForGithubApps
-    @Category("issues")
-    @Subcategory("labels")
-    Stream<Label> setLabelsForIssue(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("issue_number") final int issueNumber);
-
     @DELETE
     @Path("/repos/{owner}/{repo}/issues/{issue_number}/lock")
     @OperationId("issues/unlock")
@@ -744,14 +664,6 @@ public interface IssuesClient {
     Issue updateIssue(final UpdateIssue updateIssue);
 
     @PATCH
-    @Path("/repos/{owner}/{repo}/issues/{issue_number}")
-    @OperationId("issues/update")
-    @Docs("https://developer.github.com/v3/issues/#update-an-issue")
-    @EnabledForGithubApps
-    @Category("issues")
-    Issue updateIssue(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("issue_number") final int issueNumber);
-
-    @PATCH
     @Path("/repos/{owner}/{repo}/issues/comments/{comment_id}")
     @OperationId("issues/update-comment")
     @Docs("https://developer.github.com/v3/issues/comments/#update-an-issue-comment")
@@ -759,15 +671,6 @@ public interface IssuesClient {
     @Category("issues")
     @Subcategory("comments")
     IssueComment updateIssueComment(final UpdateIssueComment updateIssueComment);
-
-    @PATCH
-    @Path("/repos/{owner}/{repo}/issues/comments/{comment_id}")
-    @OperationId("issues/update-comment")
-    @Docs("https://developer.github.com/v3/issues/comments/#update-an-issue-comment")
-    @EnabledForGithubApps
-    @Category("issues")
-    @Subcategory("comments")
-    IssueComment updateIssueComment(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("comment_id") final int commentId);
 
     @PATCH
     @Path("/repos/{owner}/{repo}/labels/{name}")
@@ -779,15 +682,6 @@ public interface IssuesClient {
     Label updateLabel(final UpdateLabel updateLabel);
 
     @PATCH
-    @Path("/repos/{owner}/{repo}/labels/{name}")
-    @OperationId("issues/update-label")
-    @Docs("https://developer.github.com/v3/issues/labels/#update-a-label")
-    @EnabledForGithubApps
-    @Category("issues")
-    @Subcategory("labels")
-    Label updateLabel(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("name") final String name);
-
-    @PATCH
     @Path("/repos/{owner}/{repo}/milestones/{milestone_number}")
     @OperationId("issues/update-milestone")
     @Docs("https://developer.github.com/v3/issues/milestones/#update-a-milestone")
@@ -795,13 +689,4 @@ public interface IssuesClient {
     @Category("issues")
     @Subcategory("milestones")
     Milestone updateMilestone(final UpdateMilestone updateMilestone);
-
-    @PATCH
-    @Path("/repos/{owner}/{repo}/milestones/{milestone_number}")
-    @OperationId("issues/update-milestone")
-    @Docs("https://developer.github.com/v3/issues/milestones/#update-a-milestone")
-    @EnabledForGithubApps
-    @Category("issues")
-    @Subcategory("milestones")
-    Milestone updateMilestone(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("milestone_number") final int milestoneNumber);
 }

@@ -34,7 +34,6 @@ import org.tomitribe.github.model.GetUserMigrationStatus;
 import org.tomitribe.github.model.ListOrganizationMigrations;
 import org.tomitribe.github.model.ListRepositoriesForUserMigration;
 import org.tomitribe.github.model.ListRepositoriesInOrganizationMigration;
-import org.tomitribe.github.model.ListUserMigrations;
 import org.tomitribe.github.model.MapCommitAuthor;
 import org.tomitribe.github.model.Migration;
 import org.tomitribe.github.model.MinimalRepository;
@@ -263,7 +262,7 @@ public interface MigrationsClient {
     @Category("migrations")
     @Subcategory("users")
     @Paged(Migration[].class)
-    Stream<Migration> listUserMigrations(final ListUserMigrations listUserMigrations);
+    Stream<Migration> listUserMigrations();
 
     @PATCH
     @Path("/repos/{owner}/{repo}/import/authors/{author_id}")
@@ -274,15 +273,6 @@ public interface MigrationsClient {
     @Subcategory("source-imports")
     PorterAuthor mapCommitAuthor(final MapCommitAuthor mapCommitAuthor);
 
-    @PATCH
-    @Path("/repos/{owner}/{repo}/import/authors/{author_id}")
-    @OperationId("migrations/map-commit-author")
-    @Docs("https://developer.github.com/v3/migrations/source_imports/#map-a-commit-author")
-    @EnabledForGithubApps
-    @Category("migrations")
-    @Subcategory("source-imports")
-    PorterAuthor mapCommitAuthor(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("author_id") final int authorId);
-
     @PUT
     @Path("/repos/{owner}/{repo}/import")
     @OperationId("migrations/start-import")
@@ -292,15 +282,6 @@ public interface MigrationsClient {
     @Subcategory("source-imports")
     _import startImport(final StartImport startImport);
 
-    @PUT
-    @Path("/repos/{owner}/{repo}/import")
-    @OperationId("migrations/start-import")
-    @Docs("https://developer.github.com/v3/migrations/source_imports/#start-an-import")
-    @EnabledForGithubApps
-    @Category("migrations")
-    @Subcategory("source-imports")
-    _import startImport(@PathParam("owner") final String owner, @PathParam("repo") final String repo);
-
     @POST
     @Path("/orgs/{org}/migrations")
     @OperationId("migrations/start-for-org")
@@ -308,14 +289,6 @@ public interface MigrationsClient {
     @Category("migrations")
     @Subcategory("orgs")
     Migration startOrganizationMigration(final StartOrganizationMigration startOrganizationMigration);
-
-    @POST
-    @Path("/orgs/{org}/migrations")
-    @OperationId("migrations/start-for-org")
-    @Docs("https://developer.github.com/v3/migrations/orgs/#start-an-organization-migration")
-    @Category("migrations")
-    @Subcategory("orgs")
-    Migration startOrganizationMigration(@PathParam("org") final String org);
 
     @POST
     @Path("/user/migrations")
@@ -371,15 +344,6 @@ public interface MigrationsClient {
     _import updateGitLFSPreference(final UpdateGitLFSPreference updateGitLFSPreference);
 
     @PATCH
-    @Path("/repos/{owner}/{repo}/import/lfs")
-    @OperationId("migrations/set-lfs-preference")
-    @Docs("https://developer.github.com/v3/migrations/source_imports/#update-git-lfs-preference")
-    @EnabledForGithubApps
-    @Category("migrations")
-    @Subcategory("source-imports")
-    _import updateGitLFSPreference(@PathParam("owner") final String owner, @PathParam("repo") final String repo);
-
-    @PATCH
     @Path("/repos/{owner}/{repo}/import")
     @OperationId("migrations/update-import")
     @Docs("https://developer.github.com/v3/migrations/source_imports/#update-an-import")
@@ -387,13 +351,4 @@ public interface MigrationsClient {
     @Category("migrations")
     @Subcategory("source-imports")
     _import updateImport(final UpdateImport updateImport);
-
-    @PATCH
-    @Path("/repos/{owner}/{repo}/import")
-    @OperationId("migrations/update-import")
-    @Docs("https://developer.github.com/v3/migrations/source_imports/#update-an-import")
-    @EnabledForGithubApps
-    @Category("migrations")
-    @Subcategory("source-imports")
-    _import updateImport(@PathParam("owner") final String owner, @PathParam("repo") final String repo);
 }

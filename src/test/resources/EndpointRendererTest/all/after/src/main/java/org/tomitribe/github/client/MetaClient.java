@@ -19,7 +19,6 @@ package org.tomitribe.github.client;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import org.tomitribe.github.model.ApiOverview;
-import org.tomitribe.github.model.GetGitHubMetaInformation;
 import org.tomitribe.github.model.GitHubAPIRootResponse;
 
 public interface MetaClient {
@@ -30,7 +29,7 @@ public interface MetaClient {
     @Docs("https://developer.github.com/v3/meta/#get-github-meta-information")
     @EnabledForGithubApps
     @Category("meta")
-    ApiOverview getGitHubMetaInformation(final GetGitHubMetaInformation getGitHubMetaInformation);
+    ApiOverview getGitHubMetaInformation();
 
     @GET
     @Path("/")

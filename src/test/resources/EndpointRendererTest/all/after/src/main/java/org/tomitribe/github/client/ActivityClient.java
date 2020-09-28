@@ -26,7 +26,6 @@ import org.tomitribe.github.model.DeleteRepositorySubscription;
 import org.tomitribe.github.model.DeleteThreadSubscription;
 import org.tomitribe.github.model.Event;
 import org.tomitribe.github.model.Feed;
-import org.tomitribe.github.model.GetFeeds;
 import org.tomitribe.github.model.GetRepositorySubscription;
 import org.tomitribe.github.model.GetThread;
 import org.tomitribe.github.model.GetThreadSubscriptionForAuthenticatedUser;
@@ -34,14 +33,12 @@ import org.tomitribe.github.model.ListEventsForAuthenticatedUser;
 import org.tomitribe.github.model.ListEventsReceivedByAuthenticatedUser;
 import org.tomitribe.github.model.ListNotificationsForAuthenticatedUser;
 import org.tomitribe.github.model.ListOrganizationEventsForAuthenticatedUser;
-import org.tomitribe.github.model.ListPublicEvents;
 import org.tomitribe.github.model.ListPublicEventsForNetworkOfRepositories;
 import org.tomitribe.github.model.ListPublicEventsForUser;
 import org.tomitribe.github.model.ListPublicEventsReceivedByUser;
 import org.tomitribe.github.model.ListPublicOrganizationEvents;
 import org.tomitribe.github.model.ListRepositoriesStarredByAuthenticatedUser;
 import org.tomitribe.github.model.ListRepositoriesStarredByUser;
-import org.tomitribe.github.model.ListRepositoriesWatchedByAuthenticatedUser;
 import org.tomitribe.github.model.ListRepositoriesWatchedByUser;
 import org.tomitribe.github.model.ListRepositoryEvents;
 import org.tomitribe.github.model.ListRepositoryNotificationsForAuthenticatedUser;
@@ -117,7 +114,7 @@ public interface ActivityClient {
     @EnabledForGithubApps
     @Category("activity")
     @Subcategory("feeds")
-    Feed getFeeds(final GetFeeds getFeeds);
+    Feed getFeeds();
 
     @GET
     @Path("/repos/{owner}/{repo}/subscription")
@@ -235,7 +232,7 @@ public interface ActivityClient {
     @EnabledForGithubApps
     @Category("activity")
     @Subcategory("events")
-    Stream<Event> listPublicEvents(final ListPublicEvents listPublicEvents);
+    Stream<Event> listPublicEvents();
 
     @GET
     @Path("/networks/{owner}/{repo}/events")
@@ -345,7 +342,7 @@ public interface ActivityClient {
     @Category("activity")
     @Subcategory("watching")
     @Paged(MinimalRepository[].class)
-    Stream<MinimalRepository> listRepositoriesWatchedByAuthenticatedUser(final ListRepositoriesWatchedByAuthenticatedUser listRepositoriesWatchedByAuthenticatedUser);
+    Stream<MinimalRepository> listRepositoriesWatchedByAuthenticatedUser();
 
     @GET
     @Path("/users/{username}/subscriptions")
@@ -460,28 +457,12 @@ public interface ActivityClient {
     RepositorySubscription setRepositorySubscription(final SetRepositorySubscription setRepositorySubscription);
 
     @PUT
-    @Path("/repos/{owner}/{repo}/subscription")
-    @OperationId("activity/set-repo-subscription")
-    @Docs("https://developer.github.com/v3/activity/watching/#set-a-repository-subscription")
-    @Category("activity")
-    @Subcategory("watching")
-    RepositorySubscription setRepositorySubscription(@PathParam("owner") final String owner, @PathParam("repo") final String repo);
-
-    @PUT
     @Path("/notifications/threads/{thread_id}/subscription")
     @OperationId("activity/set-thread-subscription")
     @Docs("https://developer.github.com/v3/activity/notifications/#set-a-thread-subscription")
     @Category("activity")
     @Subcategory("notifications")
     ThreadSubscription setThreadSubscription(final SetThreadSubscription setThreadSubscription);
-
-    @PUT
-    @Path("/notifications/threads/{thread_id}/subscription")
-    @OperationId("activity/set-thread-subscription")
-    @Docs("https://developer.github.com/v3/activity/notifications/#set-a-thread-subscription")
-    @Category("activity")
-    @Subcategory("notifications")
-    ThreadSubscription setThreadSubscription(@PathParam("thread_id") final int threadId);
 
     @PUT
     @Path("/user/starred/{owner}/{repo}")

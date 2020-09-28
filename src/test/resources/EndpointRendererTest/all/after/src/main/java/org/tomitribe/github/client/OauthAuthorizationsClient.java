@@ -32,8 +32,6 @@ import org.tomitribe.github.model.GetOrCreateAuthorizationForSpecificApp;
 import org.tomitribe.github.model.GetOrCreateAuthorizationForSpecificAppAndFingerprint;
 import org.tomitribe.github.model.GetSingleAuthorization;
 import org.tomitribe.github.model.GetSingleGrant;
-import org.tomitribe.github.model.ListYourAuthorizations;
-import org.tomitribe.github.model.ListYourGrants;
 import org.tomitribe.github.model.UpdateExistingAuthorization;
 
 public interface OauthAuthorizationsClient {
@@ -93,15 +91,6 @@ public interface OauthAuthorizationsClient {
     Authorization getOrCreateAuthorizationForSpecificApp(final GetOrCreateAuthorizationForSpecificApp getOrCreateAuthorizationForSpecificApp);
 
     @PUT
-    @Path("/authorizations/clients/{client_id}")
-    @OperationId("oauth-authorizations/get-or-create-authorization-for-app")
-    @Docs("https://developer.github.com/v3/oauth_authorizations/#get-or-create-an-authorization-for-a-specific-app")
-    @RemovalDate("2020-11-13")
-    @DeprecationDate("2020-02-14")
-    @Category("oauth-authorizations")
-    Authorization getOrCreateAuthorizationForSpecificApp(@PathParam("client-id") final String clientId);
-
-    @PUT
     @Path("/authorizations/clients/{client_id}/{fingerprint}")
     @OperationId("oauth-authorizations/get-or-create-authorization-for-app-and-fingerprint")
     @Docs("https://developer.github.com/v3/oauth_authorizations/#get-or-create-an-authorization-for-a-specific-app-and-fingerprint")
@@ -109,15 +98,6 @@ public interface OauthAuthorizationsClient {
     @DeprecationDate("2020-02-14")
     @Category("oauth-authorizations")
     Authorization getOrCreateAuthorizationForSpecificAppAndFingerprint(final GetOrCreateAuthorizationForSpecificAppAndFingerprint getOrCreateAuthorizationForSpecificAppAndFingerprint);
-
-    @PUT
-    @Path("/authorizations/clients/{client_id}/{fingerprint}")
-    @OperationId("oauth-authorizations/get-or-create-authorization-for-app-and-fingerprint")
-    @Docs("https://developer.github.com/v3/oauth_authorizations/#get-or-create-an-authorization-for-a-specific-app-and-fingerprint")
-    @RemovalDate("2020-11-13")
-    @DeprecationDate("2020-02-14")
-    @Category("oauth-authorizations")
-    Authorization getOrCreateAuthorizationForSpecificAppAndFingerprint(@PathParam("client-id") final String clientId, @PathParam("fingerprint") final String fingerprint);
 
     @GET
     @Path("/authorizations/{authorization_id}")
@@ -163,7 +143,7 @@ public interface OauthAuthorizationsClient {
     @DeprecationDate("2020-02-14")
     @Category("oauth-authorizations")
     @Paged(Authorization[].class)
-    Stream<Authorization> listYourAuthorizations(final ListYourAuthorizations listYourAuthorizations);
+    Stream<Authorization> listYourAuthorizations();
 
     @GET
     @Path("/applications/grants")
@@ -173,7 +153,7 @@ public interface OauthAuthorizationsClient {
     @DeprecationDate("2020-02-14")
     @Category("oauth-authorizations")
     @Paged(ApplicationGrant[].class)
-    Stream<ApplicationGrant> listYourGrants(final ListYourGrants listYourGrants);
+    Stream<ApplicationGrant> listYourGrants();
 
     @PATCH
     @Path("/authorizations/{authorization_id}")
@@ -183,13 +163,4 @@ public interface OauthAuthorizationsClient {
     @DeprecationDate("2020-02-14")
     @Category("oauth-authorizations")
     Authorization updateExistingAuthorization(final UpdateExistingAuthorization updateExistingAuthorization);
-
-    @PATCH
-    @Path("/authorizations/{authorization_id}")
-    @OperationId("oauth-authorizations/update-authorization")
-    @Docs("https://developer.github.com/v3/oauth_authorizations/#update-an-existing-authorization")
-    @RemovalDate("2020-11-13")
-    @DeprecationDate("2020-02-14")
-    @Category("oauth-authorizations")
-    Authorization updateExistingAuthorization(@PathParam("authorization_id") final int authorizationId);
 }

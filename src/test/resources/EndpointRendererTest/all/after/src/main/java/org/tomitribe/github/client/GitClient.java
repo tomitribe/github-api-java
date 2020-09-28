@@ -54,15 +54,6 @@ public interface GitClient {
     ShortBlob createBlob(final CreateBlob createBlob);
 
     @POST
-    @Path("/repos/{owner}/{repo}/git/blobs")
-    @OperationId("git/create-blob")
-    @Docs("https://developer.github.com/v3/git/blobs/#create-a-blob")
-    @EnabledForGithubApps
-    @Category("git")
-    @Subcategory("blobs")
-    ShortBlob createBlob(@PathParam("owner") final String owner, @PathParam("repo") final String repo);
-
-    @POST
     @Path("/repos/{owner}/{repo}/git/commits")
     @OperationId("git/create-commit")
     @Docs("https://developer.github.com/v3/git/commits/#create-a-commit")
@@ -70,15 +61,6 @@ public interface GitClient {
     @Category("git")
     @Subcategory("commits")
     GitCommit createCommit(final CreateCommit createCommit);
-
-    @POST
-    @Path("/repos/{owner}/{repo}/git/commits")
-    @OperationId("git/create-commit")
-    @Docs("https://developer.github.com/v3/git/commits/#create-a-commit")
-    @EnabledForGithubApps
-    @Category("git")
-    @Subcategory("commits")
-    GitCommit createCommit(@PathParam("owner") final String owner, @PathParam("repo") final String repo);
 
     @POST
     @Path("/repos/{owner}/{repo}/git/refs")
@@ -90,15 +72,6 @@ public interface GitClient {
     GitRef createReference(final CreateReference createReference);
 
     @POST
-    @Path("/repos/{owner}/{repo}/git/refs")
-    @OperationId("git/create-ref")
-    @Docs("https://developer.github.com/v3/git/refs/#create-a-reference")
-    @EnabledForGithubApps
-    @Category("git")
-    @Subcategory("refs")
-    GitRef createReference(@PathParam("owner") final String owner, @PathParam("repo") final String repo);
-
-    @POST
     @Path("/repos/{owner}/{repo}/git/tags")
     @OperationId("git/create-tag")
     @Docs("https://developer.github.com/v3/git/tags/#create-a-tag-object")
@@ -108,15 +81,6 @@ public interface GitClient {
     GitTag createTagObject(final CreateTagObject createTagObject);
 
     @POST
-    @Path("/repos/{owner}/{repo}/git/tags")
-    @OperationId("git/create-tag")
-    @Docs("https://developer.github.com/v3/git/tags/#create-a-tag-object")
-    @EnabledForGithubApps
-    @Category("git")
-    @Subcategory("tags")
-    GitTag createTagObject(@PathParam("owner") final String owner, @PathParam("repo") final String repo);
-
-    @POST
     @Path("/repos/{owner}/{repo}/git/trees")
     @OperationId("git/create-tree")
     @Docs("https://developer.github.com/v3/git/trees/#create-a-tree")
@@ -124,15 +88,6 @@ public interface GitClient {
     @Category("git")
     @Subcategory("trees")
     GitTree createTree(final CreateTree createTree);
-
-    @POST
-    @Path("/repos/{owner}/{repo}/git/trees")
-    @OperationId("git/create-tree")
-    @Docs("https://developer.github.com/v3/git/trees/#create-a-tree")
-    @EnabledForGithubApps
-    @Category("git")
-    @Subcategory("trees")
-    GitTree createTree(@PathParam("owner") final String owner, @PathParam("repo") final String repo);
 
     @DELETE
     @Path("/repos/{owner}/{repo}/git/refs/{ref}")
@@ -270,13 +225,4 @@ public interface GitClient {
     @Category("git")
     @Subcategory("refs")
     GitRef updateReference(final UpdateReference updateReference);
-
-    @PATCH
-    @Path("/repos/{owner}/{repo}/git/refs/{ref}")
-    @OperationId("git/update-ref")
-    @Docs("https://developer.github.com/v3/git/refs/#update-a-reference")
-    @EnabledForGithubApps
-    @Category("git")
-    @Subcategory("refs")
-    GitRef updateReference(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("ref") final String ref);
 }

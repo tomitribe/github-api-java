@@ -75,7 +75,6 @@ import org.tomitribe.github.model.ListTeamProjectsLegacy;
 import org.tomitribe.github.model.ListTeamRepositories;
 import org.tomitribe.github.model.ListTeamRepositoriesLegacy;
 import org.tomitribe.github.model.ListTeams;
-import org.tomitribe.github.model.ListTeamsForAuthenticatedUser;
 import org.tomitribe.github.model.MinimalRepository;
 import org.tomitribe.github.model.OrganizationInvitation;
 import org.tomitribe.github.model.RemoveProjectFromTeam;
@@ -111,15 +110,6 @@ public interface TeamsClient {
     TeamMembership addOrUpdateTeamMembershipForUser(final AddOrUpdateTeamMembershipForUser addOrUpdateTeamMembershipForUser);
 
     @PUT
-    @Path("/orgs/{org}/teams/{team_slug}/memberships/{username}")
-    @OperationId("teams/add-or-update-membership-for-user-in-org")
-    @Docs("https://developer.github.com/v3/teams/members/#add-or-update-team-membership-for-a-user")
-    @EnabledForGithubApps
-    @Category("teams")
-    @Subcategory("members")
-    TeamMembership addOrUpdateTeamMembershipForUser(@PathParam("org") final String org, @PathParam("team_slug") final String teamSlug, @PathParam("username") final String username);
-
-    @PUT
     @Path("/teams/{team_id}/memberships/{username}")
     @OperationId("teams/add-or-update-membership-for-user-legacy")
     @Docs("https://developer.github.com/v3/teams/members/#add-or-update-team-membership-for-a-user-legacy")
@@ -131,17 +121,6 @@ public interface TeamsClient {
     TeamMembership addOrUpdateTeamMembershipForUserLegacy(final AddOrUpdateTeamMembershipForUserLegacy addOrUpdateTeamMembershipForUserLegacy);
 
     @PUT
-    @Path("/teams/{team_id}/memberships/{username}")
-    @OperationId("teams/add-or-update-membership-for-user-legacy")
-    @Docs("https://developer.github.com/v3/teams/members/#add-or-update-team-membership-for-a-user-legacy")
-    @RemovalDate("2021-02-01")
-    @DeprecationDate("2020-01-21")
-    @EnabledForGithubApps
-    @Category("teams")
-    @Subcategory("members")
-    TeamMembership addOrUpdateTeamMembershipForUserLegacy(@PathParam("team-id") final int teamId, @PathParam("username") final String username);
-
-    @PUT
     @Path("/orgs/{org}/teams/{team_slug}/projects/{project_id}")
     @OperationId("teams/add-or-update-project-permissions-in-org")
     @Docs("https://developer.github.com/v3/teams/#add-or-update-team-project-permissions")
@@ -149,15 +128,6 @@ public interface TeamsClient {
     @Preview("inertia")
     @Category("teams")
     void addOrUpdateTeamProjectPermissions(final AddOrUpdateTeamProjectPermissions addOrUpdateTeamProjectPermissions);
-
-    @PUT
-    @Path("/orgs/{org}/teams/{team_slug}/projects/{project_id}")
-    @OperationId("teams/add-or-update-project-permissions-in-org")
-    @Docs("https://developer.github.com/v3/teams/#add-or-update-team-project-permissions")
-    @EnabledForGithubApps
-    @Preview("inertia")
-    @Category("teams")
-    void addOrUpdateTeamProjectPermissions(@PathParam("org") final String org, @PathParam("team_slug") final String teamSlug, @PathParam("project-id") final int projectId);
 
     @PUT
     @Path("/teams/{team_id}/projects/{project_id}")
@@ -171,31 +141,12 @@ public interface TeamsClient {
     void addOrUpdateTeamProjectPermissionsLegacy(final AddOrUpdateTeamProjectPermissionsLegacy addOrUpdateTeamProjectPermissionsLegacy);
 
     @PUT
-    @Path("/teams/{team_id}/projects/{project_id}")
-    @OperationId("teams/add-or-update-project-permissions-legacy")
-    @Docs("https://developer.github.com/v3/teams/#add-or-update-team-project-permissions-legacy")
-    @RemovalDate("2021-02-01")
-    @DeprecationDate("2020-01-21")
-    @EnabledForGithubApps
-    @Preview("inertia")
-    @Category("teams")
-    void addOrUpdateTeamProjectPermissionsLegacy(@PathParam("team-id") final int teamId, @PathParam("project-id") final int projectId);
-
-    @PUT
     @Path("/orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}")
     @OperationId("teams/add-or-update-repo-permissions-in-org")
     @Docs("https://developer.github.com/v3/teams/#add-or-update-team-repository-permissions")
     @EnabledForGithubApps
     @Category("teams")
     void addOrUpdateTeamRepositoryPermissions(final AddOrUpdateTeamRepositoryPermissions addOrUpdateTeamRepositoryPermissions);
-
-    @PUT
-    @Path("/orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}")
-    @OperationId("teams/add-or-update-repo-permissions-in-org")
-    @Docs("https://developer.github.com/v3/teams/#add-or-update-team-repository-permissions")
-    @EnabledForGithubApps
-    @Category("teams")
-    void addOrUpdateTeamRepositoryPermissions(@PathParam("org") final String org, @PathParam("team_slug") final String teamSlug, @PathParam("owner") final String owner, @PathParam("repo") final String repo);
 
     @PUT
     @Path("/teams/{team_id}/repos/{owner}/{repo}")
@@ -206,16 +157,6 @@ public interface TeamsClient {
     @EnabledForGithubApps
     @Category("teams")
     void addOrUpdateTeamRepositoryPermissionsLegacy(final AddOrUpdateTeamRepositoryPermissionsLegacy addOrUpdateTeamRepositoryPermissionsLegacy);
-
-    @PUT
-    @Path("/teams/{team_id}/repos/{owner}/{repo}")
-    @OperationId("teams/add-or-update-repo-permissions-legacy")
-    @Docs("https://developer.github.com/v3/teams/#add-or-update-team-repository-permissions-legacy")
-    @RemovalDate("2021-02-01")
-    @DeprecationDate("2020-01-21")
-    @EnabledForGithubApps
-    @Category("teams")
-    void addOrUpdateTeamRepositoryPermissionsLegacy(@PathParam("team-id") final int teamId, @PathParam("owner") final String owner, @PathParam("repo") final String repo);
 
     @PUT
     @Path("/teams/{team_id}/members/{username}")
@@ -326,16 +267,6 @@ public interface TeamsClient {
     TeamDiscussion createDiscussion(final CreateDiscussion createDiscussion);
 
     @POST
-    @Path("/orgs/{org}/teams/{team_slug}/discussions")
-    @OperationId("teams/create-discussion-in-org")
-    @Docs("https://developer.github.com/v3/teams/discussions/#create-a-discussion")
-    @EnabledForGithubApps
-    @Preview("squirrel-girl")
-    @Category("teams")
-    @Subcategory("discussions")
-    TeamDiscussion createDiscussion(@PathParam("org") final String org, @PathParam("team_slug") final String teamSlug);
-
-    @POST
     @Path("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments")
     @OperationId("teams/create-discussion-comment-in-org")
     @Docs("https://developer.github.com/v3/teams/discussion_comments/#create-a-discussion-comment")
@@ -344,16 +275,6 @@ public interface TeamsClient {
     @Category("teams")
     @Subcategory("discussion-comments")
     TeamDiscussionComment createDiscussionComment(final CreateDiscussionComment createDiscussionComment);
-
-    @POST
-    @Path("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments")
-    @OperationId("teams/create-discussion-comment-in-org")
-    @Docs("https://developer.github.com/v3/teams/discussion_comments/#create-a-discussion-comment")
-    @EnabledForGithubApps
-    @Preview("squirrel-girl")
-    @Category("teams")
-    @Subcategory("discussion-comments")
-    TeamDiscussionComment createDiscussionComment(@PathParam("org") final String org, @PathParam("team_slug") final String teamSlug, @PathParam("discussion-number") final int discussionNumber);
 
     @POST
     @Path("/teams/{team_id}/discussions/{discussion_number}/comments")
@@ -368,18 +289,6 @@ public interface TeamsClient {
     TeamDiscussionComment createDiscussionCommentLegacy(final CreateDiscussionCommentLegacy createDiscussionCommentLegacy);
 
     @POST
-    @Path("/teams/{team_id}/discussions/{discussion_number}/comments")
-    @OperationId("teams/create-discussion-comment-legacy")
-    @Docs("https://developer.github.com/v3/teams/discussion_comments/#create-a-discussion-comment-legacy")
-    @RemovalDate("2021-02-01")
-    @DeprecationDate("2020-01-21")
-    @EnabledForGithubApps
-    @Preview("squirrel-girl")
-    @Category("teams")
-    @Subcategory("discussion-comments")
-    TeamDiscussionComment createDiscussionCommentLegacy(@PathParam("team-id") final int teamId, @PathParam("discussion-number") final int discussionNumber);
-
-    @POST
     @Path("/teams/{team_id}/discussions")
     @OperationId("teams/create-discussion-legacy")
     @Docs("https://developer.github.com/v3/teams/discussions/#create-a-discussion-legacy")
@@ -391,18 +300,6 @@ public interface TeamsClient {
     @Subcategory("discussions")
     TeamDiscussion createDiscussionLegacy(final CreateDiscussionLegacy createDiscussionLegacy);
 
-    @POST
-    @Path("/teams/{team_id}/discussions")
-    @OperationId("teams/create-discussion-legacy")
-    @Docs("https://developer.github.com/v3/teams/discussions/#create-a-discussion-legacy")
-    @RemovalDate("2021-02-01")
-    @DeprecationDate("2020-01-21")
-    @EnabledForGithubApps
-    @Preview("squirrel-girl")
-    @Category("teams")
-    @Subcategory("discussions")
-    TeamDiscussion createDiscussionLegacy(@PathParam("team-id") final int teamId);
-
     @PATCH
     @Path("/orgs/{org}/teams/{team_slug}/team-sync/group-mappings")
     @OperationId("teams/create-or-update-idp-group-connections-in-org")
@@ -411,15 +308,6 @@ public interface TeamsClient {
     @Category("teams")
     @Subcategory("team-sync")
     GroupMapping createOrUpdateIdPGroupConnections(final CreateOrUpdateIdPGroupConnections createOrUpdateIdPGroupConnections);
-
-    @PATCH
-    @Path("/orgs/{org}/teams/{team_slug}/team-sync/group-mappings")
-    @OperationId("teams/create-or-update-idp-group-connections-in-org")
-    @Docs("https://developer.github.com/v3/teams/team_sync/#create-or-update-idp-group-connections")
-    @GithubCloudOnly
-    @Category("teams")
-    @Subcategory("team-sync")
-    GroupMapping createOrUpdateIdPGroupConnections(@PathParam("org") final String org, @PathParam("team_slug") final String teamSlug);
 
     @PATCH
     @Path("/teams/{team_id}/team-sync/group-mappings")
@@ -432,17 +320,6 @@ public interface TeamsClient {
     @Subcategory("team-sync")
     GroupMapping createOrUpdateIdPGroupConnectionsLegacy(final CreateOrUpdateIdPGroupConnectionsLegacy createOrUpdateIdPGroupConnectionsLegacy);
 
-    @PATCH
-    @Path("/teams/{team_id}/team-sync/group-mappings")
-    @OperationId("teams/create-or-update-idp-group-connections-legacy")
-    @Docs("https://developer.github.com/v3/teams/team_sync/#create-or-update-idp-group-connections-legacy")
-    @RemovalDate("2021-02-01")
-    @DeprecationDate("2020-01-21")
-    @GithubCloudOnly
-    @Category("teams")
-    @Subcategory("team-sync")
-    GroupMapping createOrUpdateIdPGroupConnectionsLegacy(@PathParam("team-id") final int teamId);
-
     @POST
     @Path("/orgs/{org}/teams")
     @OperationId("teams/create")
@@ -450,14 +327,6 @@ public interface TeamsClient {
     @EnabledForGithubApps
     @Category("teams")
     TeamFull createTeam(final CreateTeam createTeam);
-
-    @POST
-    @Path("/orgs/{org}/teams")
-    @OperationId("teams/create")
-    @Docs("https://developer.github.com/v3/teams/#create-a-team")
-    @EnabledForGithubApps
-    @Category("teams")
-    TeamFull createTeam(@PathParam("org") final String org);
 
     @DELETE
     @Path("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}")
@@ -1153,7 +1022,7 @@ public interface TeamsClient {
     @Docs("https://developer.github.com/v3/teams/#list-teams-for-the-authenticated-user")
     @Category("teams")
     @Paged(TeamFull[].class)
-    Stream<TeamFull> listTeamsForAuthenticatedUser(final ListTeamsForAuthenticatedUser listTeamsForAuthenticatedUser);
+    Stream<TeamFull> listTeamsForAuthenticatedUser();
 
     @DELETE
     @Path("/orgs/{org}/teams/{team_slug}/projects/{project_id}")
@@ -1300,16 +1169,6 @@ public interface TeamsClient {
     TeamDiscussion updateDiscussion(final UpdateDiscussion updateDiscussion);
 
     @PATCH
-    @Path("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}")
-    @OperationId("teams/update-discussion-in-org")
-    @Docs("https://developer.github.com/v3/teams/discussions/#update-a-discussion")
-    @EnabledForGithubApps
-    @Preview("squirrel-girl")
-    @Category("teams")
-    @Subcategory("discussions")
-    TeamDiscussion updateDiscussion(@PathParam("org") final String org, @PathParam("team_slug") final String teamSlug, @PathParam("discussion-number") final int discussionNumber);
-
-    @PATCH
     @Path("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}")
     @OperationId("teams/update-discussion-comment-in-org")
     @Docs("https://developer.github.com/v3/teams/discussion_comments/#update-a-discussion-comment")
@@ -1318,16 +1177,6 @@ public interface TeamsClient {
     @Category("teams")
     @Subcategory("discussion-comments")
     TeamDiscussionComment updateDiscussionComment(final UpdateDiscussionComment updateDiscussionComment);
-
-    @PATCH
-    @Path("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}")
-    @OperationId("teams/update-discussion-comment-in-org")
-    @Docs("https://developer.github.com/v3/teams/discussion_comments/#update-a-discussion-comment")
-    @EnabledForGithubApps
-    @Preview("squirrel-girl")
-    @Category("teams")
-    @Subcategory("discussion-comments")
-    TeamDiscussionComment updateDiscussionComment(@PathParam("org") final String org, @PathParam("team_slug") final String teamSlug, @PathParam("discussion-number") final int discussionNumber, @PathParam("comment-number") final int commentNumber);
 
     @PATCH
     @Path("/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}")
@@ -1342,18 +1191,6 @@ public interface TeamsClient {
     TeamDiscussionComment updateDiscussionCommentLegacy(final UpdateDiscussionCommentLegacy updateDiscussionCommentLegacy);
 
     @PATCH
-    @Path("/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}")
-    @OperationId("teams/update-discussion-comment-legacy")
-    @Docs("https://developer.github.com/v3/teams/discussion_comments/#update-a-discussion-comment-legacy")
-    @RemovalDate("2021-02-01")
-    @DeprecationDate("2020-01-21")
-    @EnabledForGithubApps
-    @Preview("squirrel-girl")
-    @Category("teams")
-    @Subcategory("discussion-comments")
-    TeamDiscussionComment updateDiscussionCommentLegacy(@PathParam("team-id") final int teamId, @PathParam("discussion-number") final int discussionNumber, @PathParam("comment-number") final int commentNumber);
-
-    @PATCH
     @Path("/teams/{team_id}/discussions/{discussion_number}")
     @OperationId("teams/update-discussion-legacy")
     @Docs("https://developer.github.com/v3/teams/discussions/#update-a-discussion-legacy")
@@ -1366,32 +1203,12 @@ public interface TeamsClient {
     TeamDiscussion updateDiscussionLegacy(final UpdateDiscussionLegacy updateDiscussionLegacy);
 
     @PATCH
-    @Path("/teams/{team_id}/discussions/{discussion_number}")
-    @OperationId("teams/update-discussion-legacy")
-    @Docs("https://developer.github.com/v3/teams/discussions/#update-a-discussion-legacy")
-    @RemovalDate("2021-02-01")
-    @DeprecationDate("2020-01-21")
-    @EnabledForGithubApps
-    @Preview("squirrel-girl")
-    @Category("teams")
-    @Subcategory("discussions")
-    TeamDiscussion updateDiscussionLegacy(@PathParam("team-id") final int teamId, @PathParam("discussion-number") final int discussionNumber);
-
-    @PATCH
     @Path("/orgs/{org}/teams/{team_slug}")
     @OperationId("teams/update-in-org")
     @Docs("https://developer.github.com/v3/teams/#update-a-team")
     @EnabledForGithubApps
     @Category("teams")
     TeamFull updateTeam(final UpdateTeam updateTeam);
-
-    @PATCH
-    @Path("/orgs/{org}/teams/{team_slug}")
-    @OperationId("teams/update-in-org")
-    @Docs("https://developer.github.com/v3/teams/#update-a-team")
-    @EnabledForGithubApps
-    @Category("teams")
-    TeamFull updateTeam(@PathParam("org") final String org, @PathParam("team_slug") final String teamSlug);
 
     @PATCH
     @Path("/teams/{team_id}")
@@ -1402,14 +1219,4 @@ public interface TeamsClient {
     @EnabledForGithubApps
     @Category("teams")
     TeamFull updateTeamLegacy(final UpdateTeamLegacy updateTeamLegacy);
-
-    @PATCH
-    @Path("/teams/{team_id}")
-    @OperationId("teams/update-legacy")
-    @Docs("https://developer.github.com/v3/teams/#update-a-team-legacy")
-    @RemovalDate("2021-02-01")
-    @DeprecationDate("2020-01-21")
-    @EnabledForGithubApps
-    @Category("teams")
-    TeamFull updateTeamLegacy(@PathParam("team-id") final int teamId);
 }

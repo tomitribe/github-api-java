@@ -88,29 +88,12 @@ public interface PullsClient {
     PullRequest createPullRequest(final CreatePullRequest createPullRequest);
 
     @POST
-    @Path("/repos/{owner}/{repo}/pulls")
-    @OperationId("pulls/create")
-    @Docs("https://developer.github.com/v3/pulls/#create-a-pull-request")
-    @EnabledForGithubApps
-    @Preview("sailor-v")
-    @Category("pulls")
-    PullRequest createPullRequest(@PathParam("owner") final String owner, @PathParam("repo") final String repo);
-
-    @POST
     @Path("/repos/{owner}/{repo}/pulls/{pull_number}/comments/{comment_id}/replies")
     @OperationId("pulls/create-reply-for-review-comment")
     @Docs("https://developer.github.com/v3/pulls/comments/#create-a-reply-for-a-review-comment")
     @Category("pulls")
     @Subcategory("comments")
     PullRequestReviewComment createReplyForReviewComment(final CreateReplyForReviewComment createReplyForReviewComment);
-
-    @POST
-    @Path("/repos/{owner}/{repo}/pulls/{pull_number}/comments/{comment_id}/replies")
-    @OperationId("pulls/create-reply-for-review-comment")
-    @Docs("https://developer.github.com/v3/pulls/comments/#create-a-reply-for-a-review-comment")
-    @Category("pulls")
-    @Subcategory("comments")
-    PullRequestReviewComment createReplyForReviewComment(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("pull-number") final int pullNumber, @PathParam("comment_id") final int commentId);
 
     @POST
     @Path("/repos/{owner}/{repo}/pulls/{pull_number}/comments")
@@ -123,16 +106,6 @@ public interface PullsClient {
     PullRequestReviewComment createReviewCommentForPullRequest(final CreateReviewCommentForPullRequest createReviewCommentForPullRequest);
 
     @POST
-    @Path("/repos/{owner}/{repo}/pulls/{pull_number}/comments")
-    @OperationId("pulls/create-review-comment")
-    @Docs("https://developer.github.com/v3/pulls/comments/#create-a-review-comment-for-a-pull-request")
-    @EnabledForGithubApps
-    @Preview("comfort-fade")
-    @Category("pulls")
-    @Subcategory("comments")
-    PullRequestReviewComment createReviewCommentForPullRequest(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("pull-number") final int pullNumber);
-
-    @POST
     @Path("/repos/{owner}/{repo}/pulls/{pull_number}/reviews")
     @OperationId("pulls/create-review")
     @Docs("https://developer.github.com/v3/pulls/reviews/#create-a-review-for-a-pull-request")
@@ -140,15 +113,6 @@ public interface PullsClient {
     @Category("pulls")
     @Subcategory("reviews")
     PullRequestReview createReviewForPullRequest(final CreateReviewForPullRequest createReviewForPullRequest);
-
-    @POST
-    @Path("/repos/{owner}/{repo}/pulls/{pull_number}/reviews")
-    @OperationId("pulls/create-review")
-    @Docs("https://developer.github.com/v3/pulls/reviews/#create-a-review-for-a-pull-request")
-    @EnabledForGithubApps
-    @Category("pulls")
-    @Subcategory("reviews")
-    PullRequestReview createReviewForPullRequest(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("pull-number") final int pullNumber);
 
     @DELETE
     @Path("/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}")
@@ -194,15 +158,6 @@ public interface PullsClient {
     @Category("pulls")
     @Subcategory("reviews")
     PullRequestReview dismissReviewForPullRequest(final DismissReviewForPullRequest dismissReviewForPullRequest);
-
-    @PUT
-    @Path("/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/dismissals")
-    @OperationId("pulls/dismiss-review")
-    @Docs("https://developer.github.com/v3/pulls/reviews/#dismiss-a-review-for-a-pull-request")
-    @EnabledForGithubApps
-    @Category("pulls")
-    @Subcategory("reviews")
-    PullRequestReview dismissReviewForPullRequest(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("pull-number") final int pullNumber, @PathParam("review_id") final int reviewId);
 
     @GET
     @Path("/repos/{owner}/{repo}/pulls/{pull_number}")
@@ -432,14 +387,6 @@ public interface PullsClient {
     @Category("pulls")
     PullRequestMergeResult mergePullRequest(final MergePullRequest mergePullRequest);
 
-    @PUT
-    @Path("/repos/{owner}/{repo}/pulls/{pull_number}/merge")
-    @OperationId("pulls/merge")
-    @Docs("https://developer.github.com/v3/pulls/#merge-a-pull-request")
-    @EnabledForGithubApps
-    @Category("pulls")
-    PullRequestMergeResult mergePullRequest(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("pull-number") final int pullNumber);
-
     @POST
     @Path("/repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers")
     @OperationId("pulls/request-reviewers")
@@ -450,15 +397,6 @@ public interface PullsClient {
     PullRequestSimple requestReviewersForPullRequest(final RequestReviewersForPullRequest requestReviewersForPullRequest);
 
     @POST
-    @Path("/repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers")
-    @OperationId("pulls/request-reviewers")
-    @Docs("https://developer.github.com/v3/pulls/review_requests/#request-reviewers-for-a-pull-request")
-    @EnabledForGithubApps
-    @Category("pulls")
-    @Subcategory("review-requests")
-    PullRequestSimple requestReviewersForPullRequest(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("pull-number") final int pullNumber);
-
-    @POST
     @Path("/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/events")
     @OperationId("pulls/submit-review")
     @Docs("https://developer.github.com/v3/pulls/reviews/#submit-a-review-for-a-pull-request")
@@ -466,15 +404,6 @@ public interface PullsClient {
     @Category("pulls")
     @Subcategory("reviews")
     PullRequestReview submitReviewForPullRequest(final SubmitReviewForPullRequest submitReviewForPullRequest);
-
-    @POST
-    @Path("/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/events")
-    @OperationId("pulls/submit-review")
-    @Docs("https://developer.github.com/v3/pulls/reviews/#submit-a-review-for-a-pull-request")
-    @EnabledForGithubApps
-    @Category("pulls")
-    @Subcategory("reviews")
-    PullRequestReview submitReviewForPullRequest(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("pull-number") final int pullNumber, @PathParam("review_id") final int reviewId);
 
     @PATCH
     @Path("/repos/{owner}/{repo}/pulls/{pull_number}")
@@ -485,15 +414,6 @@ public interface PullsClient {
     @Category("pulls")
     PullRequest updatePullRequest(final UpdatePullRequest updatePullRequest);
 
-    @PATCH
-    @Path("/repos/{owner}/{repo}/pulls/{pull_number}")
-    @OperationId("pulls/update")
-    @Docs("https://developer.github.com/v3/pulls/#update-a-pull-request")
-    @EnabledForGithubApps
-    @Preview("sailor-v")
-    @Category("pulls")
-    PullRequest updatePullRequest(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("pull-number") final int pullNumber);
-
     @PUT
     @Path("/repos/{owner}/{repo}/pulls/{pull_number}/update-branch")
     @OperationId("pulls/update-branch")
@@ -501,14 +421,6 @@ public interface PullsClient {
     @Preview("lydian")
     @Category("pulls")
     UpdatePullRequestBranchResponse updatePullRequestBranch(final UpdatePullRequestBranch updatePullRequestBranch);
-
-    @PUT
-    @Path("/repos/{owner}/{repo}/pulls/{pull_number}/update-branch")
-    @OperationId("pulls/update-branch")
-    @Docs("https://developer.github.com/v3/pulls/#update-a-pull-request-branch")
-    @Preview("lydian")
-    @Category("pulls")
-    UpdatePullRequestBranchResponse updatePullRequestBranch(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("pull-number") final int pullNumber);
 
     @PATCH
     @Path("/repos/{owner}/{repo}/pulls/comments/{comment_id}")
@@ -520,16 +432,6 @@ public interface PullsClient {
     @Subcategory("comments")
     PullRequestReviewComment updateReviewCommentForPullRequest(final UpdateReviewCommentForPullRequest updateReviewCommentForPullRequest);
 
-    @PATCH
-    @Path("/repos/{owner}/{repo}/pulls/comments/{comment_id}")
-    @OperationId("pulls/update-review-comment")
-    @Docs("https://developer.github.com/v3/pulls/comments/#update-a-review-comment-for-a-pull-request")
-    @EnabledForGithubApps
-    @Preview("comfort-fade")
-    @Category("pulls")
-    @Subcategory("comments")
-    PullRequestReviewComment updateReviewCommentForPullRequest(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("comment_id") final int commentId);
-
     @PUT
     @Path("/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}")
     @OperationId("pulls/update-review")
@@ -538,13 +440,4 @@ public interface PullsClient {
     @Category("pulls")
     @Subcategory("reviews")
     PullRequestReview updateReviewForPullRequest(final UpdateReviewForPullRequest updateReviewForPullRequest);
-
-    @PUT
-    @Path("/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}")
-    @OperationId("pulls/update-review")
-    @Docs("https://developer.github.com/v3/pulls/reviews/#update-a-review-for-a-pull-request")
-    @EnabledForGithubApps
-    @Category("pulls")
-    @Subcategory("reviews")
-    PullRequestReview updateReviewForPullRequest(@PathParam("owner") final String owner, @PathParam("repo") final String repo, @PathParam("pull-number") final int pullNumber, @PathParam("review_id") final int reviewId);
 }

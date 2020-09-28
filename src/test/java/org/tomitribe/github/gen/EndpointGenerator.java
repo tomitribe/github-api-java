@@ -375,6 +375,8 @@ public class EndpointGenerator {
             for (final Parameter parameter : method.getParameters()) {
                 final Schema schema = getSchema(parameter);
 
+                if (isPagingParameter(schema)) continue;
+
                 final String name = Optional.ofNullable(parameter.getName())
                         .orElse(schema.getName());
                 final Field field = modelGenerator.getField(builder, name, schema);
@@ -408,6 +410,8 @@ public class EndpointGenerator {
             for (final Parameter parameter : method.getParameters()) {
                 final Schema schema = getSchema(parameter);
 
+                if (isPagingParameter(schema)) continue;
+
                 final String name = Optional.ofNullable(parameter.getName())
                         .orElse(schema.getName());
                 final Field field = modelGenerator.getField(clazz, name, schema);
@@ -418,10 +422,19 @@ public class EndpointGenerator {
                 }
                 clazz.field(field);
             }
+            if (clazz.getFields().size() == 0) {
+                return new VoidClazz();
+            }
             return clazz.build();
         }
 
         return new VoidClazz();
+    }
+
+    private boolean isPagingParameter(final Schema schema) {
+        if ("#/components/parameters/per_page".equals(schema.getRef())) return true;
+        if ("#/components/parameters/page".equals(schema.getRef())) return true;
+        return false;
     }
 
     private Schema getSchema(final Parameter parameter) {

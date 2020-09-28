@@ -37,7 +37,6 @@ import org.tomitribe.github.model.DeleteAppAuthorization;
 import org.tomitribe.github.model.DeleteAppToken;
 import org.tomitribe.github.model.DeleteInstallationForAuthenticatedApp;
 import org.tomitribe.github.model.GetApp;
-import org.tomitribe.github.model.GetAuthenticatedApp;
 import org.tomitribe.github.model.GetInstallationForAuthenticatedApp;
 import org.tomitribe.github.model.GetOrganizationInstallationForAuthenticatedApp;
 import org.tomitribe.github.model.GetRepositoryInstallationForAuthenticatedApp;
@@ -50,14 +49,8 @@ import org.tomitribe.github.model.InstallationsPage;
 import org.tomitribe.github.model.Integration;
 import org.tomitribe.github.model.ListAccountsForPlan;
 import org.tomitribe.github.model.ListAccountsForPlanStubbed;
-import org.tomitribe.github.model.ListAppInstallationsAccessibleToUserAccessToken;
 import org.tomitribe.github.model.ListInstallationsForAuthenticatedApp;
-import org.tomitribe.github.model.ListPlans;
-import org.tomitribe.github.model.ListPlansStubbed;
-import org.tomitribe.github.model.ListRepositoriesAccessibleToAppInstallation;
 import org.tomitribe.github.model.ListRepositoriesAccessibleToUserAccessToken;
-import org.tomitribe.github.model.ListSubscriptionsForAuthenticatedUser;
-import org.tomitribe.github.model.ListSubscriptionsForAuthenticatedUserStubbed;
 import org.tomitribe.github.model.MarketplaceListingPlan;
 import org.tomitribe.github.model.MarketplacePurchase;
 import org.tomitribe.github.model.RemoveRepositoryFromAppInstallation;
@@ -67,7 +60,6 @@ import org.tomitribe.github.model.ResetAuthorization;
 import org.tomitribe.github.model.ResetToken;
 import org.tomitribe.github.model.RevokeAuthorizationForApplication;
 import org.tomitribe.github.model.RevokeGrantForApplication;
-import org.tomitribe.github.model.RevokeInstallationAccessToken;
 import org.tomitribe.github.model.SuspendAppInstallation;
 import org.tomitribe.github.model.UnsuspendAppInstallation;
 import org.tomitribe.github.model.UserMarketplacePurchase;
@@ -121,14 +113,6 @@ public interface AppsClient {
     Authorization checkToken(final CheckToken checkToken);
 
     @POST
-    @Path("/applications/{client_id}/token")
-    @OperationId("apps/check-token")
-    @Docs("https://developer.github.com/v3/apps/oauth_applications/#check-a-token")
-    @Category("apps")
-    @Subcategory("oauth-applications")
-    Authorization checkToken(@PathParam("client-id") final String clientId);
-
-    @POST
     @Path("/content_references/{content_reference_id}/attachments")
     @OperationId("apps/create-content-attachment")
     @Docs("https://developer.github.com/v3/apps/installations/#create-a-content-attachment")
@@ -137,16 +121,6 @@ public interface AppsClient {
     @Category("apps")
     @Subcategory("installations")
     ContentReferenceAttachment createContentAttachment(final CreateContentAttachment createContentAttachment);
-
-    @POST
-    @Path("/content_references/{content_reference_id}/attachments")
-    @OperationId("apps/create-content-attachment")
-    @Docs("https://developer.github.com/v3/apps/installations/#create-a-content-attachment")
-    @EnabledForGithubApps
-    @Preview("corsair")
-    @Category("apps")
-    @Subcategory("installations")
-    ContentReferenceAttachment createContentAttachment(@PathParam("content_reference_id") final int contentReferenceId);
 
     @POST
     @Path("/app-manifests/{code}/conversions")
@@ -171,15 +145,6 @@ public interface AppsClient {
     @Category("apps")
     InstallationToken createInstallationAccessTokenForApp(final CreateInstallationAccessTokenForApp createInstallationAccessTokenForApp);
 
-    @POST
-    @Path("/app/installations/{installation_id}/access_tokens")
-    @OperationId("apps/create-installation-access-token")
-    @Docs("https://developer.github.com/v3/apps/#create-an-installation-access-token-for-an-app")
-    @EnabledForGithubApps
-    @Preview("machine-man")
-    @Category("apps")
-    InstallationToken createInstallationAccessTokenForApp(@PathParam("installation_id") final int installationId);
-
     @DELETE
     @Path("/applications/{client_id}/grant")
     @OperationId("apps/delete-authorization")
@@ -189,28 +154,12 @@ public interface AppsClient {
     void deleteAppAuthorization(final DeleteAppAuthorization deleteAppAuthorization);
 
     @DELETE
-    @Path("/applications/{client_id}/grant")
-    @OperationId("apps/delete-authorization")
-    @Docs("https://developer.github.com/v3/apps/oauth_applications/#delete-an-app-authorization")
-    @Category("apps")
-    @Subcategory("oauth-applications")
-    void deleteAppAuthorization(@PathParam("client-id") final String clientId);
-
-    @DELETE
     @Path("/applications/{client_id}/token")
     @OperationId("apps/delete-token")
     @Docs("https://developer.github.com/v3/apps/oauth_applications/#delete-an-app-token")
     @Category("apps")
     @Subcategory("oauth-applications")
     void deleteAppToken(final DeleteAppToken deleteAppToken);
-
-    @DELETE
-    @Path("/applications/{client_id}/token")
-    @OperationId("apps/delete-token")
-    @Docs("https://developer.github.com/v3/apps/oauth_applications/#delete-an-app-token")
-    @Category("apps")
-    @Subcategory("oauth-applications")
-    void deleteAppToken(@PathParam("client-id") final String clientId);
 
     @DELETE
     @Path("/app/installations/{installation_id}")
@@ -253,7 +202,7 @@ public interface AppsClient {
     @EnabledForGithubApps
     @Preview("machine-man")
     @Category("apps")
-    Integration getAuthenticatedApp(final GetAuthenticatedApp getAuthenticatedApp);
+    Integration getAuthenticatedApp();
 
     @GET
     @Path("/app/installations/{installation_id}")
@@ -397,7 +346,7 @@ public interface AppsClient {
     @Category("apps")
     @Subcategory("installations")
     @Paged(InstallationsPage.class)
-    Stream<Installation> listAppInstallationsAccessibleToUserAccessToken(final ListAppInstallationsAccessibleToUserAccessToken listAppInstallationsAccessibleToUserAccessToken);
+    Stream<Installation> listAppInstallationsAccessibleToUserAccessToken();
 
     @GET
     @Path("/app/installations")
@@ -416,7 +365,7 @@ public interface AppsClient {
     @Category("apps")
     @Subcategory("marketplace")
     @Paged(MarketplaceListingPlan[].class)
-    Stream<MarketplaceListingPlan> listPlans(final ListPlans listPlans);
+    Stream<MarketplaceListingPlan> listPlans();
 
     @GET
     @Path("/marketplace_listing/stubbed/plans")
@@ -425,7 +374,7 @@ public interface AppsClient {
     @Category("apps")
     @Subcategory("marketplace")
     @Paged(MarketplaceListingPlan[].class)
-    Stream<MarketplaceListingPlan> listPlansStubbed(final ListPlansStubbed listPlansStubbed);
+    Stream<MarketplaceListingPlan> listPlansStubbed();
 
     @GET
     @Path("/installation/repositories")
@@ -437,7 +386,7 @@ public interface AppsClient {
     @Category("apps")
     @Subcategory("installations")
     @Paged(RepositoriesPage.class)
-    Stream<Repository> listRepositoriesAccessibleToAppInstallation(final ListRepositoriesAccessibleToAppInstallation listRepositoriesAccessibleToAppInstallation);
+    Stream<Repository> listRepositoriesAccessibleToAppInstallation();
 
     @GET
     @Path("/user/installations/{installation_id}/repositories")
@@ -468,7 +417,7 @@ public interface AppsClient {
     @Category("apps")
     @Subcategory("marketplace")
     @Paged(UserMarketplacePurchase[].class)
-    Stream<UserMarketplacePurchase> listSubscriptionsForAuthenticatedUser(final ListSubscriptionsForAuthenticatedUser listSubscriptionsForAuthenticatedUser);
+    Stream<UserMarketplacePurchase> listSubscriptionsForAuthenticatedUser();
 
     @GET
     @Path("/user/marketplace_purchases/stubbed")
@@ -477,7 +426,7 @@ public interface AppsClient {
     @Category("apps")
     @Subcategory("marketplace")
     @Paged(UserMarketplacePurchase[].class)
-    Stream<UserMarketplacePurchase> listSubscriptionsForAuthenticatedUserStubbed(final ListSubscriptionsForAuthenticatedUserStubbed listSubscriptionsForAuthenticatedUserStubbed);
+    Stream<UserMarketplacePurchase> listSubscriptionsForAuthenticatedUserStubbed();
 
     @DELETE
     @Path("/user/installations/{installation_id}/repositories/{repository_id}")
@@ -524,14 +473,6 @@ public interface AppsClient {
     @Category("apps")
     @Subcategory("oauth-applications")
     Authorization resetToken(final ResetToken resetToken);
-
-    @PATCH
-    @Path("/applications/{client_id}/token")
-    @OperationId("apps/reset-token")
-    @Docs("https://developer.github.com/v3/apps/oauth_applications/#reset-a-token")
-    @Category("apps")
-    @Subcategory("oauth-applications")
-    Authorization resetToken(@PathParam("client-id") final String clientId);
 
     @DELETE
     @Path("/applications/{client_id}/tokens/{access_token}")
@@ -580,7 +521,7 @@ public interface AppsClient {
     @EnabledForGithubApps
     @Category("apps")
     @Subcategory("installations")
-    void revokeInstallationAccessToken(final RevokeInstallationAccessToken revokeInstallationAccessToken);
+    void revokeInstallationAccessToken();
 
     @PUT
     @Path("/app/installations/{installation_id}/suspended")

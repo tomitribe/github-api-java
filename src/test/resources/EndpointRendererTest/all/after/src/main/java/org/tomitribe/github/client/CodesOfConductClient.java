@@ -20,7 +20,6 @@ import java.util.stream.Stream;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import org.tomitribe.github.model.CodeOfConduct;
-import org.tomitribe.github.model.GetAllCodesOfConduct;
 import org.tomitribe.github.model.GetCodeOfConduct;
 import org.tomitribe.github.model.GetCodeOfConductForRepository;
 
@@ -33,7 +32,7 @@ public interface CodesOfConductClient {
     @EnabledForGithubApps
     @Preview("scarlet-witch")
     @Category("codes-of-conduct")
-    Stream<CodeOfConduct> getAllCodesOfConduct(final GetAllCodesOfConduct getAllCodesOfConduct);
+    Stream<CodeOfConduct> getAllCodesOfConduct();
 
     @GET
     @Path("/codes_of_conduct/{key}")

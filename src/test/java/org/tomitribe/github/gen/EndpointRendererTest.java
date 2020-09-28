@@ -16,6 +16,7 @@
  */
 package org.tomitribe.github.gen;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.tomitribe.github.gen.openapi.OpenApi;
 import org.tomitribe.util.Files;
@@ -87,6 +88,35 @@ public class EndpointRendererTest {
         assertScenario(Scenario.get("all"));
     }
 
+    /**
+     * Use this to regenerate the expected java files for any of the test scenarios.
+     */
+    @Test
+    @Ignore("Run this to regenerate any scenario files")
+    public void regenerateScenarios() throws Exception {
+        regenerateScenario(Scenario.source("all"));
+        regenerateScenario(Scenario.source("requestBody"));
+        regenerateScenario(Scenario.source("returnArrayOfString"));
+    }
+
+    private void regenerateScenario(final Scenario scenario) throws IOException {
+        final Project expected = scenario.after();
+
+        // Delete the old files
+        Files.remove(expected.src().get());
+
+        // Generate new "expected" files
+        Generator.builder()
+                .openApi(scenario.getOpenApi())
+                .project(expected)
+                .generateClient(true)
+                .generateModel(scenario.generateModels())
+                .clientPackage("org.tomitribe.github.client")
+                .modelPackage("org.tomitribe.github.model")
+                .build()
+                .generate();
+    }
+
     private void assertScenario(final Scenario scenario) throws IOException {
 
         final Project actual = Project.from(Files.tmpdir());
@@ -142,6 +172,17 @@ public class EndpointRendererTest {
             }
 
             return Dir.of(Scenario.class, tmpdir);
+        }
+
+        static Scenario source(final String testName) {
+            final Class<?> clazz = EndpointRendererTest.class;
+            final File testClasses = JarLocation.jarLocation(clazz);
+            final File target = testClasses.getParentFile();
+            final File module = target.getParentFile();
+            final Project project = Project.from(module);
+            final Dir source = project.src().test().resources().dir(clazz.getSimpleName()).dir(testName);
+
+            return Dir.of(Scenario.class, source.get());
         }
     }
 

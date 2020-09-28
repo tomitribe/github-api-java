@@ -44,7 +44,6 @@ import org.tomitribe.github.model.ListOrganizationMembers;
 import org.tomitribe.github.model.ListOrganizationMembershipsForAuthenticatedUser;
 import org.tomitribe.github.model.ListOrganizationWebhooks;
 import org.tomitribe.github.model.ListOrganizations;
-import org.tomitribe.github.model.ListOrganizationsForAuthenticatedUser;
 import org.tomitribe.github.model.ListOrganizationsForUser;
 import org.tomitribe.github.model.ListOutsideCollaboratorsForOrganization;
 import org.tomitribe.github.model.ListPendingOrganizationInvitations;
@@ -173,15 +172,6 @@ public interface OrgsClient {
     OrganizationInvitation createOrganizationInvitation(final CreateOrganizationInvitation createOrganizationInvitation);
 
     @POST
-    @Path("/orgs/{org}/invitations")
-    @OperationId("orgs/create-invitation")
-    @Docs("https://developer.github.com/v3/orgs/members/#create-an-organization-invitation")
-    @EnabledForGithubApps
-    @Category("orgs")
-    @Subcategory("members")
-    OrganizationInvitation createOrganizationInvitation(@PathParam("org") final String org);
-
-    @POST
     @Path("/orgs/{org}/hooks")
     @OperationId("orgs/create-webhook")
     @Docs("https://developer.github.com/v3/orgs/hooks/#create-an-organization-webhook")
@@ -189,15 +179,6 @@ public interface OrgsClient {
     @Category("orgs")
     @Subcategory("hooks")
     OrgHook createOrganizationWebhook(final CreateOrganizationWebhook createOrganizationWebhook);
-
-    @POST
-    @Path("/orgs/{org}/hooks")
-    @OperationId("orgs/create-webhook")
-    @Docs("https://developer.github.com/v3/orgs/hooks/#create-an-organization-webhook")
-    @EnabledForGithubApps
-    @Category("orgs")
-    @Subcategory("hooks")
-    OrgHook createOrganizationWebhook(@PathParam("org") final String org);
 
     @DELETE
     @Path("/orgs/{org}/hooks/{hook_id}")
@@ -391,7 +372,7 @@ public interface OrgsClient {
     @Docs("https://developer.github.com/v3/orgs/#list-organizations-for-the-authenticated-user")
     @Category("orgs")
     @Paged(OrganizationSimple[].class)
-    Stream<OrganizationSimple> listOrganizationsForAuthenticatedUser(final ListOrganizationsForAuthenticatedUser listOrganizationsForAuthenticatedUser);
+    Stream<OrganizationSimple> listOrganizationsForAuthenticatedUser();
 
     @GET
     @Path("/users/{username}/orgs")
@@ -623,15 +604,6 @@ public interface OrgsClient {
     OrgMembership setOrganizationMembershipForUser(final SetOrganizationMembershipForUser setOrganizationMembershipForUser);
 
     @PUT
-    @Path("/orgs/{org}/memberships/{username}")
-    @OperationId("orgs/set-membership-for-user")
-    @Docs("https://developer.github.com/v3/orgs/members/#set-organization-membership-for-a-user")
-    @EnabledForGithubApps
-    @Category("orgs")
-    @Subcategory("members")
-    OrgMembership setOrganizationMembershipForUser(@PathParam("org") final String org, @PathParam("username") final String username);
-
-    @PUT
     @Path("/orgs/{org}/public_members/{username}")
     @OperationId("orgs/set-public-membership-for-authenticated-user")
     @Docs("https://developer.github.com/v3/orgs/members/#set-public-organization-membership-for-the-authenticated-user")
@@ -675,29 +647,12 @@ public interface OrgsClient {
     OrganizationFull updateOrganization(final UpdateOrganization updateOrganization);
 
     @PATCH
-    @Path("/orgs/{org}")
-    @OperationId("orgs/update")
-    @Docs("https://developer.github.com/v3/orgs/#update-an-organization")
-    @EnabledForGithubApps
-    @Preview("surtur")
-    @Category("orgs")
-    OrganizationFull updateOrganization(@PathParam("org") final String org);
-
-    @PATCH
     @Path("/user/memberships/orgs/{org}")
     @OperationId("orgs/update-membership-for-authenticated-user")
     @Docs("https://developer.github.com/v3/orgs/members/#update-an-organization-membership-for-the-authenticated-user")
     @Category("orgs")
     @Subcategory("members")
     OrgMembership updateOrganizationMembershipForAuthenticatedUser(final UpdateOrganizationMembershipForAuthenticatedUser updateOrganizationMembershipForAuthenticatedUser);
-
-    @PATCH
-    @Path("/user/memberships/orgs/{org}")
-    @OperationId("orgs/update-membership-for-authenticated-user")
-    @Docs("https://developer.github.com/v3/orgs/members/#update-an-organization-membership-for-the-authenticated-user")
-    @Category("orgs")
-    @Subcategory("members")
-    OrgMembership updateOrganizationMembershipForAuthenticatedUser(@PathParam("org") final String org);
 
     @PATCH
     @Path("/orgs/{org}/hooks/{hook_id}")
@@ -707,13 +662,4 @@ public interface OrgsClient {
     @Category("orgs")
     @Subcategory("hooks")
     OrgHook updateOrganizationWebhook(final UpdateOrganizationWebhook updateOrganizationWebhook);
-
-    @PATCH
-    @Path("/orgs/{org}/hooks/{hook_id}")
-    @OperationId("orgs/update-webhook")
-    @Docs("https://developer.github.com/v3/orgs/hooks/#update-an-organization-webhook")
-    @EnabledForGithubApps
-    @Category("orgs")
-    @Subcategory("hooks")
-    OrgHook updateOrganizationWebhook(@PathParam("org") final String org, @PathParam("hook-id") final int hookId);
 }

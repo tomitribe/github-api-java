@@ -18,7 +18,6 @@ package org.tomitribe.github.client;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
-import org.tomitribe.github.model.GetRateLimitStatusForAuthenticatedUser;
 import org.tomitribe.github.model.RateLimitOverview;
 
 public interface RateLimitClient {
@@ -29,5 +28,5 @@ public interface RateLimitClient {
     @Docs("https://developer.github.com/v3/rate_limit/#get-rate-limit-status-for-the-authenticated-user")
     @EnabledForGithubApps
     @Category("rate-limit")
-    RateLimitOverview getRateLimitStatusForAuthenticatedUser(final GetRateLimitStatusForAuthenticatedUser getRateLimitStatusForAuthenticatedUser);
+    RateLimitOverview getRateLimitStatusForAuthenticatedUser();
 }

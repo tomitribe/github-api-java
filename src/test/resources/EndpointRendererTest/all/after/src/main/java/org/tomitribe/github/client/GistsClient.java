@@ -79,14 +79,6 @@ public interface GistsClient {
     @Subcategory("comments")
     GistComment createGistComment(final CreateGistComment createGistComment);
 
-    @POST
-    @Path("/gists/{gist_id}/comments")
-    @OperationId("gists/create-comment")
-    @Docs("https://developer.github.com/v3/gists/comments/#create-a-gist-comment")
-    @Category("gists")
-    @Subcategory("comments")
-    GistComment createGistComment(@PathParam("gist_id") final String gistId);
-
     @DELETE
     @Path("/gists/{gist_id}")
     @OperationId("gists/delete")
@@ -301,25 +293,10 @@ public interface GistsClient {
     GistFull updateGist(final UpdateGist updateGist);
 
     @PATCH
-    @Path("/gists/{gist_id}")
-    @OperationId("gists/update")
-    @Docs("https://developer.github.com/v3/gists/#update-a-gist")
-    @Category("gists")
-    GistFull updateGist(@PathParam("gist_id") final String gistId);
-
-    @PATCH
     @Path("/gists/{gist_id}/comments/{comment_id}")
     @OperationId("gists/update-comment")
     @Docs("https://developer.github.com/v3/gists/comments/#update-a-gist-comment")
     @Category("gists")
     @Subcategory("comments")
     GistComment updateGistComment(final UpdateGistComment updateGistComment);
-
-    @PATCH
-    @Path("/gists/{gist_id}/comments/{comment_id}")
-    @OperationId("gists/update-comment")
-    @Docs("https://developer.github.com/v3/gists/comments/#update-a-gist-comment")
-    @Category("gists")
-    @Subcategory("comments")
-    GistComment updateGistComment(@PathParam("gist_id") final String gistId, @PathParam("comment_id") final int commentId);
 }

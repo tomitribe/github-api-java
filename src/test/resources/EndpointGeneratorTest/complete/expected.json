@@ -136,28 +136,6 @@
                 "packageName": "java.lang",
                 "simpleName": "String"
               }
-            },
-            {
-              "collection": false,
-              "in": "QUERY",
-              "jsonName": "per_page",
-              "map": false,
-              "name": "perPage",
-              "type": {
-                "packageName": "java.lang",
-                "simpleName": "Integer"
-              }
-            },
-            {
-              "collection": false,
-              "in": "QUERY",
-              "jsonName": "page",
-              "map": false,
-              "name": "page",
-              "type": {
-                "packageName": "java.lang",
-                "simpleName": "Integer"
-              }
             }
           ],
           "innerClasses": [

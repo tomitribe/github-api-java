@@ -35,7 +35,6 @@ import org.tomitribe.github.model.DeleteGPGKeyForAuthenticatedUser;
 import org.tomitribe.github.model.DeletePublicSSHKeyForAuthenticatedUser;
 import org.tomitribe.github.model.Email;
 import org.tomitribe.github.model.FollowUser;
-import org.tomitribe.github.model.GetAuthenticatedUser;
 import org.tomitribe.github.model.GetAuthenticatedUserResponse;
 import org.tomitribe.github.model.GetContextualInformationForUser;
 import org.tomitribe.github.model.GetGPGKeyForAuthenticatedUser;
@@ -46,18 +45,11 @@ import org.tomitribe.github.model.GpgKey;
 import org.tomitribe.github.model.Hovercard;
 import org.tomitribe.github.model.Key;
 import org.tomitribe.github.model.KeySimple;
-import org.tomitribe.github.model.ListEmailAddressesForAuthenticatedUser;
-import org.tomitribe.github.model.ListFollowersOfAuthenticatedUser;
 import org.tomitribe.github.model.ListFollowersOfUser;
-import org.tomitribe.github.model.ListGPGKeysForAuthenticatedUser;
 import org.tomitribe.github.model.ListGPGKeysForUser;
-import org.tomitribe.github.model.ListPeopleAuthenticatedUserFollows;
 import org.tomitribe.github.model.ListPeopleUserFollows;
-import org.tomitribe.github.model.ListPublicEmailAddressesForAuthenticatedUser;
 import org.tomitribe.github.model.ListPublicKeysForUser;
-import org.tomitribe.github.model.ListPublicSSHKeysForAuthenticatedUser;
 import org.tomitribe.github.model.ListUsers;
-import org.tomitribe.github.model.ListUsersBlockedByAuthenticatedUser;
 import org.tomitribe.github.model.PrivateUser;
 import org.tomitribe.github.model.SetPrimaryEmailVisibilityForAuthenticatedUser;
 import org.tomitribe.github.model.SimpleUser;
@@ -218,7 +210,7 @@ public interface UsersClient {
     @OperationId("users/get-authenticated")
     @Docs("https://developer.github.com/v3/users/#get-the-authenticated-user")
     @Category("users")
-    GetAuthenticatedUserResponse getAuthenticatedUser(final GetAuthenticatedUser getAuthenticatedUser);
+    GetAuthenticatedUserResponse getAuthenticatedUser();
 
     @GET
     @Path("/users/{username}/hovercard")
@@ -289,7 +281,7 @@ public interface UsersClient {
     @Category("users")
     @Subcategory("emails")
     @Paged(Email[].class)
-    Stream<Email> listEmailAddressesForAuthenticatedUser(final ListEmailAddressesForAuthenticatedUser listEmailAddressesForAuthenticatedUser);
+    Stream<Email> listEmailAddressesForAuthenticatedUser();
 
     @GET
     @Path("/user/followers")
@@ -298,7 +290,7 @@ public interface UsersClient {
     @Category("users")
     @Subcategory("followers")
     @Paged(SimpleUser[].class)
-    Stream<SimpleUser> listFollowersOfAuthenticatedUser(final ListFollowersOfAuthenticatedUser listFollowersOfAuthenticatedUser);
+    Stream<SimpleUser> listFollowersOfAuthenticatedUser();
 
     @GET
     @Path("/users/{username}/followers")
@@ -327,7 +319,7 @@ public interface UsersClient {
     @Category("users")
     @Subcategory("gpg-keys")
     @Paged(GpgKey[].class)
-    Stream<GpgKey> listGPGKeysForAuthenticatedUser(final ListGPGKeysForAuthenticatedUser listGPGKeysForAuthenticatedUser);
+    Stream<GpgKey> listGPGKeysForAuthenticatedUser();
 
     @GET
     @Path("/users/{username}/gpg_keys")
@@ -356,7 +348,7 @@ public interface UsersClient {
     @Category("users")
     @Subcategory("followers")
     @Paged(SimpleUser[].class)
-    Stream<SimpleUser> listPeopleAuthenticatedUserFollows(final ListPeopleAuthenticatedUserFollows listPeopleAuthenticatedUserFollows);
+    Stream<SimpleUser> listPeopleAuthenticatedUserFollows();
 
     @GET
     @Path("/users/{username}/following")
@@ -385,7 +377,7 @@ public interface UsersClient {
     @Category("users")
     @Subcategory("emails")
     @Paged(Email[].class)
-    Stream<Email> listPublicEmailAddressesForAuthenticatedUser(final ListPublicEmailAddressesForAuthenticatedUser listPublicEmailAddressesForAuthenticatedUser);
+    Stream<Email> listPublicEmailAddressesForAuthenticatedUser();
 
     @GET
     @Path("/users/{username}/keys")
@@ -414,7 +406,7 @@ public interface UsersClient {
     @Category("users")
     @Subcategory("keys")
     @Paged(Key[].class)
-    Stream<Key> listPublicSSHKeysForAuthenticatedUser(final ListPublicSSHKeysForAuthenticatedUser listPublicSSHKeysForAuthenticatedUser);
+    Stream<Key> listPublicSSHKeysForAuthenticatedUser();
 
     @GET
     @Path("/users")
@@ -431,7 +423,7 @@ public interface UsersClient {
     @Docs("https://developer.github.com/v3/users/blocking/#list-users-blocked-by-the-authenticated-user")
     @Category("users")
     @Subcategory("blocking")
-    Stream<SimpleUser> listUsersBlockedByAuthenticatedUser(final ListUsersBlockedByAuthenticatedUser listUsersBlockedByAuthenticatedUser);
+    Stream<SimpleUser> listUsersBlockedByAuthenticatedUser();
 
     @PATCH
     @Path("/user/email/visibility")

@@ -22,6 +22,7 @@ import org.tomitribe.github.gen.code.endpoint.Endpoint;
 import org.tomitribe.github.gen.code.endpoint.EndpointRenderer;
 import org.tomitribe.github.gen.code.model.ArrayClazz;
 import org.tomitribe.github.gen.code.model.Clazz;
+import org.tomitribe.github.gen.code.model.VoidClazz;
 import org.tomitribe.github.gen.openapi.OpenApi;
 
 import java.util.ArrayList;
@@ -76,6 +77,7 @@ public class Generator {
 
             classes.stream()
                     .map(this::replaceArrays)
+                    .filter(clazz -> !(clazz instanceof VoidClazz))
                     .forEach(renderer::render);
         }
 
