@@ -23,7 +23,9 @@ import org.tomitribe.github.gen.code.model.Clazz;
 import org.tomitribe.github.gen.code.model.ClazzReference;
 import org.tomitribe.github.gen.code.model.EnumClazz;
 import org.tomitribe.github.gen.code.model.Field;
+import org.tomitribe.github.gen.code.model.Name;
 import org.tomitribe.github.gen.openapi.Schema;
+import org.tomitribe.github.gen.util.Words;
 
 import java.net.URI;
 import java.util.ArrayList;
@@ -84,7 +86,11 @@ public class ModelGenerator {
         }
 
         if ("array".equals(schema.getType())) {
-            return ArrayClazz.of(build(schema.getItems()));
+            final Clazz item = build(schema.getItems());
+            if (item.getName() == null && schema.getName() != null) {
+                item.setName(new Name(packageName, Words.getTypeName(schema.getName())));
+            }
+            return ArrayClazz.of(item);
         }
 
         if ("string".equals(schema.getType())) {

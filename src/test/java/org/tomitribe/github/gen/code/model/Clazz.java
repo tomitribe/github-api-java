@@ -116,6 +116,20 @@ public class Clazz {
         };
     }
 
+    /**
+     * There are roughly 1700 classes that get generated from the Github OpenAPI definition.
+     *
+     * This makes debugging exceptions in the generation process exceptionally hard.  It is
+     * unrealistic to put a breakpoint and step past it potentially 1700 times.  To make
+     * debugging survivable, this Id class gives each class instance a predictable number
+     * that can be used to create conditional breakpoints.
+     *
+     * For example let's say an exception is being thrown from the EndpointRenderer and a
+     * breakpoint on the related catch clause shows a Clazz instance with id 1357 is missing
+     * some necessary data.  Let's also say that there's a specific line in ModelGenerator
+     * where that data should be filled in.  We would put a breakpoint on that line in
+     * ModelGenerator with the condition `clazz.getId().getId() == 1357`
+     */
     public static class Id {
         private static final AtomicInteger ids = new AtomicInteger(1000);
 

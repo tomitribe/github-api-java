@@ -16,14 +16,12 @@
  */
 package org.tomitribe.github.gen;
 
-import org.tomitribe.github.gen.code.endpoint.Endpoint;
 import org.tomitribe.github.gen.code.endpoint.EndpointMethod;
 import org.tomitribe.github.gen.code.model.ArrayClazz;
 import org.tomitribe.github.gen.code.model.Clazz;
 import org.tomitribe.github.gen.code.model.ClazzReference;
 import org.tomitribe.github.gen.code.model.Field;
 
-import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
@@ -74,6 +72,12 @@ public class ResolveReferences {
                 final Field resolvedField = (Field) resolved;
                 fields.set(i, resolvedField);
 
+            } else if (resolved instanceof ArrayClazz) {
+
+                final ArrayClazz resolvedClazz = (ArrayClazz) resolved;
+                field.setType(resolvedClazz.getOf().getName());
+                field.setCollection(true);
+                field.setReference(null);
             } else if (resolved instanceof Clazz) {
 
                 final Clazz resolvedClazz = (Clazz) resolved;

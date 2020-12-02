@@ -19,7 +19,6 @@ package org.tomitribe.github.client;
 import java.util.stream.Stream;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
-import org.tomitribe.github.model.GetAllGitignoreTemplates;
 
 public interface GitignoreClient {
 
@@ -29,5 +28,5 @@ public interface GitignoreClient {
     @Docs("https://developer.github.com/v3/gitignore/#get-all-gitignore-templates")
     @EnabledForGithubApps
     @Category("gitignore")
-    Stream<String> getAllGitignoreTemplates(final GetAllGitignoreTemplates getAllGitignoreTemplates);
+    Stream<String> getAllGitignoreTemplates();
 }

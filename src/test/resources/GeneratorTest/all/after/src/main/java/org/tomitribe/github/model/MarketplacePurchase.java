@@ -1,0 +1,76 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
+ */
+package org.tomitribe.github.model;
+
+import javax.json.bind.annotation.JsonbProperty;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+@ComponentId("#/components/schemas/marketplace-purchase")
+public class MarketplacePurchase {
+
+    @JsonbProperty("billing_cycle")
+    private String billingCycle;
+
+    @JsonbProperty("free_trial_ends_on")
+    private String freeTrialEndsOn;
+
+    @JsonbProperty("id")
+    private Integer id;
+
+    @JsonbProperty("is_installed")
+    private Boolean isInstalled;
+
+    @JsonbProperty("login")
+    private String login;
+
+    @JsonbProperty("marketplace_pending_change")
+    private MarketplacePendingChange marketplacePendingChange;
+
+    @JsonbProperty("marketplace_purchase")
+    private MarketplacePurchase marketplacePurchase;
+
+    @JsonbProperty("next_billing_date")
+    private String nextBillingDate;
+
+    @JsonbProperty("on_free_trial")
+    private Boolean onFreeTrial;
+
+    @JsonbProperty("organization_billing_email")
+    private String organizationBillingEmail;
+
+    @JsonbProperty("plan")
+    private MarketplaceListingPlan plan;
+
+    @JsonbProperty("type")
+    private String type;
+
+    @JsonbProperty("unit_count")
+    private Integer unitCount;
+
+    @JsonbProperty("updated_at")
+    private String updatedAt;
+
+    @JsonbProperty("url")
+    private String url;
+}

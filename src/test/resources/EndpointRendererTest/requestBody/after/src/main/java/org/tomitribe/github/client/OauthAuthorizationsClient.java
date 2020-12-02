@@ -22,7 +22,6 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import org.tomitribe.github.model.Authorization;
 import org.tomitribe.github.model.CreateNewAuthorization;
-import org.tomitribe.github.model.ListYourAuthorizations;
 
 public interface OauthAuthorizationsClient {
 
@@ -43,5 +42,5 @@ public interface OauthAuthorizationsClient {
     @DeprecationDate("2020-02-14")
     @Category("oauth-authorizations")
     @Paged(Authorization[].class)
-    Stream<Authorization> listYourAuthorizations(final ListYourAuthorizations listYourAuthorizations);
+    Stream<Authorization> listYourAuthorizations();
 }

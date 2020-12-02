@@ -88,6 +88,11 @@ public class EndpointRendererTest {
         assertScenario(Scenario.get("all"));
     }
 
+    @Test
+    public void allModels() throws Exception {
+        assertScenario(Scenario.get("allModels"));
+    }
+
     /**
      * Use this to regenerate the expected java files for any of the test scenarios.
      */

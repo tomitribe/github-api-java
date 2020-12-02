@@ -42,4 +42,15 @@ public class EnumClazz extends Clazz {
         if (values == null || values.size() == 0) throw new IllegalArgumentException("Enum requires at least one value");
         return new EnumClazz(Name.name(type), values);
     }
+
+    public static String asConstant(final String value) {
+        return value
+                .replace("'", "")
+                .replace("!", "")
+                .replaceAll("[^A-Za-z0-9]", "_")
+                .replaceAll("__+", "_")
+                .replaceAll("^_|_$", "")
+                .replaceAll("^([0-9])", "_$1")
+                .toUpperCase();
+    }
 }

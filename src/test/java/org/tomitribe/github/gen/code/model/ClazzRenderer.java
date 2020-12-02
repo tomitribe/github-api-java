@@ -83,7 +83,12 @@ public class ClazzRenderer {
             content = classTemplate(className);
         }
 
-        final ClassDefinition definition = ClassDefinition.parse(content);
+        final ClassDefinition definition;
+        try {
+            definition = ClassDefinition.parse(content);
+        } catch (Exception e) {
+            throw new IllegalStateException(e);
+        }
         if (definition.getClazz() == null) throw new IllegalStateException("Parsed clazz is null");
 
         imports(clazz)
@@ -194,7 +199,7 @@ public class ClazzRenderer {
                             .collect(Collectors.toMap(EnumConstantDeclaration::getNameAsString, Function.identity()));
 
                     for (final String value : enumClazz.getValues()) {
-                        final String constant = value.replaceAll("[ .:-]", "_").toUpperCase();
+                        final String constant = EnumClazz.asConstant(value);
                         if (entries.containsKey(constant)) continue;
 
                         // Some github enums have dashes such as "long-running"
