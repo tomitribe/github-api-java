@@ -63,7 +63,7 @@ public class RequestAnnotationsTest {
     @Test
     public void getURI() {
         final URI uri = request.getURI();
-        assertEquals("/repos/tomitribe/orange/pulls?head=cabeza&sort=long-running&state=closed&direction=asc&base=orange", uri.toASCIIString());
+        assertEquals("/repos/tomitribe/orange/pulls?base=orange&direction=asc&head=cabeza&sort=long-running&state=closed", uri.toASCIIString());
     }
 
     @Test
@@ -73,11 +73,11 @@ public class RequestAnnotationsTest {
                 .reduce((s, s2) -> s + "\n" + s2)
                 .get();
 
-        assertEquals("Query{name='head', value='cabeza'}\n" +
-                "Query{name='sort', value='long-running'}\n" +
-                "Query{name='state', value='closed'}\n" +
+        assertEquals("Query{name='base', value='orange'}\n" +
                 "Query{name='direction', value='asc'}\n" +
-                "Query{name='base', value='orange'}", actual);
+                "Query{name='head', value='cabeza'}\n" +
+                "Query{name='sort', value='long-running'}\n" +
+                "Query{name='state', value='closed'}", actual);
     }
 
     @Test

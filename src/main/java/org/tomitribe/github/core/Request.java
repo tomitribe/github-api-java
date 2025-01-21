@@ -30,10 +30,13 @@ import java.net.URI;
 import java.security.AccessController;
 import java.security.PrivilegedAction;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Map;
+import java.util.TreeMap;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -56,9 +59,9 @@ public class Request<ResponseType> {
     private Request(final Request<?> request, final Class<ResponseType> responseType) {
         this.path = request.path;
         this.body = request.body;
-        this.queryParams = new HashMap<>(request.queryParams);
-        this.headerParams = new HashMap<>(request.headerParams);
-        this.pathParams = new HashMap<>(request.pathParams);
+        this.queryParams = new TreeMap<>(request.queryParams);
+        this.headerParams = new TreeMap<>(request.headerParams);
+        this.pathParams = new TreeMap<>(request.pathParams);
         this.responseType = responseType;
     }
 
@@ -154,6 +157,7 @@ public class Request<ResponseType> {
 
     public static Request<?> from(final String pathTemplate, final Object annotatedObject) {
         final Map<AnnotatedField.Type, List<AnnotatedField>> fields = Stream.of(annotatedObject.getClass().getDeclaredFields())
+                .sorted(Comparator.comparing(Field::getName))
                 .map(field -> AnnotatedField.from(field, annotatedObject))
                 .collect(Collectors.groupingBy(AnnotatedField::getType));
 
@@ -170,7 +174,12 @@ public class Request<ResponseType> {
         final List<AnnotatedField> list = fields.getOrDefault(type, Collections.EMPTY_LIST);
 
         return list.stream()
-                .collect(Collectors.toMap(AnnotatedField::getName, AnnotatedField::getValue));
+                .collect(Collectors.toMap(
+                        AnnotatedField::getName, // Key mapper
+                        AnnotatedField::getValue, // Value mapper
+                        (existing, replacement) -> replacement, // Merge function for duplicates
+                        LinkedHashMap::new // Supplier for the desired Map type
+                ));
     }
 
     private static String toJson(final Object body) {

@@ -40,6 +40,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.HashSet;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -195,7 +196,12 @@ class ClientHandler implements InvocationHandler {
         return Stream.concat(fields.stream(), params.stream())
                 .filter(param -> path.equals(param.getType()))
                 .filter(param -> param.get() != null)
-                .collect(Collectors.toMap(Param::getName, Param::get));
+                .collect(Collectors.toMap(
+                        Param::getName, // Key mapper
+                        Param::get,     // Value mapper
+                        (existing, replacement) -> replacement, // Merge function
+                        LinkedHashMap::new // Supplier for LinkedHashMap
+                ));
     }
 
     private Function<Request<?>, Object> getRequestMethod(final Method method) {
