@@ -131,6 +131,13 @@
       <version>3.22.0</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>org.eclipse.platform</groupId>
+      <artifactId>org.eclipse.text</artifactId>
+      <version>3.10.400</version>
+      <scope>test</scope>
+    </dependency>
+
   </dependencies>
 
   <build>
