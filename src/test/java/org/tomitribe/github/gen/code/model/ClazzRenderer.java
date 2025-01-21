@@ -51,6 +51,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.function.Function;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -58,6 +59,8 @@ import static org.tomitribe.github.gen.code.model.Name.DATE;
 import static org.tomitribe.github.gen.code.model.Name.OBJECT;
 
 public class ClazzRenderer {
+
+    static final Logger LOGGER = Logger.getLogger(ClazzRenderer.class.getSimpleName());
 
     private final Project project;
     private final String packageName;
@@ -68,9 +71,15 @@ public class ClazzRenderer {
     }
 
     public void render(final Clazz clazz) {
+        if (clazz.getName() == null) {
+            LOGGER.warning("Class has no name: " + clazz);
+            return;
+        }
         final String className = clazz.getName().getSimpleName();
         final Package aPackage = project.src().main().java().packageName(packageName);
         final File sourceFile = aPackage.file(className + ".java");
+
+        LOGGER.info(String.format("Generating class '%s'", clazz.getName()));
 
         final String content;
         if (sourceFile.exists()) {
@@ -185,6 +194,7 @@ public class ClazzRenderer {
 
     public void addInnerClasses(final Clazz clazz, final ClassDefinition definition) {
         for (final Clazz innerClass : clazz.getInnerClasses()) {
+            LOGGER.info(String.format("Adding inner class '%s' to '%s'", innerClass.getName(), clazz.getName()));
             if (innerClass instanceof EnumClazz) {
                 final EnumClazz enumClazz = (EnumClazz) innerClass;
 

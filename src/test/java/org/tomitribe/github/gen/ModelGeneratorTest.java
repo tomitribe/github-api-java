@@ -50,6 +50,11 @@ public class ModelGeneratorTest {
     }
 
     @Test
+    public void voteEnums() throws Exception {
+        assertScenario("voteEnums", "voteEnums.json", "enums");
+    }
+
+    @Test
     public void arrays() throws Exception {
         assertScenario("arrays", "arrays.json", "arrays");
     }

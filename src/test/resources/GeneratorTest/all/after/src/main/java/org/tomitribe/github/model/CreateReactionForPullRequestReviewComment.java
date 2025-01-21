@@ -50,8 +50,8 @@ public class CreateReactionForPullRequestReviewComment {
 
     public enum Content {
 
-        _1("+1"),
-        _1("-1"),
+        PLUS_ONE("+1"),
+        MINUS_ONE("-1"),
         LAUGH("laugh"),
         CONFUSED("confused"),
         HEART("heart"),

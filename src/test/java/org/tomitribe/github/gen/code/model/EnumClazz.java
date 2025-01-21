@@ -44,6 +44,8 @@ public class EnumClazz extends Clazz {
     }
 
     public static String asConstant(final String value) {
+        if (value.equals("+1")) return "PLUS_ONE";
+        if (value.equals("-1")) return "MINUS_ONE";
         return value
                 .replace("'", "")
                 .replace("!", "")
