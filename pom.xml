@@ -21,7 +21,7 @@
   <parent>
     <groupId>org.tomitribe</groupId>
     <artifactId>oss-parent</artifactId>
-    <version>5</version>
+    <version>7</version>
   </parent>
 
   <!-- Change: groupId, artifactId, version -->
